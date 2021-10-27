@@ -1,5 +1,5 @@
-import * as Funcs from './core/modules/index';
-import {deprecated as _deprecated_funcs} from './core/deprecated';
+import * as Funcs from './modules/index';
+import {deprecated as _deprecated_funcs} from './deprecated';
 
 export {
     Funcs,

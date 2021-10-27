@@ -36,7 +36,7 @@
     "build": "tsc",
     "publ": "npm run build && npm publish --access public",
     "moduleDocs": "npm run typedoc && node ./typedoc-json/docConvert.js",
-    "typedoc": "typedoc --exclude **/*.spec.ts --json typedoc-json/doc.json src/core/modules"
+    "typedoc": "typedoc --exclude **/*.spec.ts --json typedoc-json/doc.json src/modules"
   },
   "repository": {
     "type": "git",
