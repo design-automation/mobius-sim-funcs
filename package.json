@@ -1,10 +1,10 @@
 {
   "name": "@design-automation/mobius-sim-funcs",
-  "version": "0.1.5",
+  "version": "0.1.0",
   "description": "Mobius Spatial Information Model",
   "main": "index.js",
   "dependencies": {
-    "@design-automation/mobius-sim": "^0.1.5",
+    "@design-automation/mobius-sim": "^0.2.0",
     "@doodle3d/clipper-js": "^1.0.11",
     "chroma-js": "^2.0.3",
     "cytoscape": "^3.14.1",
