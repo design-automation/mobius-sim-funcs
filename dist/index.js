@@ -1,4 +1,5 @@
-import * as Funcs from './core/modules/index';
-import { deprecated as _deprecated_funcs } from './core/deprecated';
-export { Funcs, _deprecated_funcs };
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi9zcmMvaW5kZXgudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsT0FBTyxLQUFLLEtBQUssTUFBTSxzQkFBc0IsQ0FBQztBQUM5QyxPQUFPLEVBQUMsVUFBVSxJQUFJLGlCQUFpQixFQUFDLE1BQU0sbUJBQW1CLENBQUM7QUFFbEUsT0FBTyxFQUNILEtBQUssRUFDTCxpQkFBaUIsRUFDcEIsQ0FBQyJ9
+import * as Funcs from './modules/index';
+import { deprecated as _deprecated_funcs } from './deprecated';
+import { _parameterTypes } from './_parameterTypes';
+export { Funcs, _parameterTypes, _deprecated_funcs, };
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi9zcmMvaW5kZXgudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsT0FBTyxLQUFLLEtBQUssTUFBTSxpQkFBaUIsQ0FBQztBQUN6QyxPQUFPLEVBQUMsVUFBVSxJQUFJLGlCQUFpQixFQUFDLE1BQU0sY0FBYyxDQUFDO0FBQzdELE9BQU8sRUFBQyxlQUFlLEVBQUMsTUFBTSxtQkFBbUIsQ0FBQztBQUVsRCxPQUFPLEVBQ0gsS0FBSyxFQUNMLGVBQWUsRUFDZixpQkFBaUIsR0FDcEIsQ0FBQyJ9
