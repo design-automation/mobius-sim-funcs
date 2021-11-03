@@ -11,10 +11,11 @@ declare global {
         };
     }
 }
-export declare enum _EIODataFormat {
+export declare enum _EIOImportDataFormat {
     GI = "gi",
     OBJ = "obj",
-    GEOJSON = "geojson"
+    GEOJSON = "geojson",
+    CITYJSON = "CityJSON"
 }
 export declare enum _EIODataSource {
     DEFAULT = "From URL",
@@ -58,9 +59,9 @@ export declare function _Async_Param_Write(__model__: GIModel, data: string, fil
  * @example io.Import ("my_data.obj", obj)
  * @example_info Imports the data from my_data.obj, from local storage.
  */
-export declare function Import(__model__: GIModel, input_data: string, data_format: _EIODataFormat): Promise<TId | TId[] | {}>;
-export declare function _Async_Param_Import(__model__: GIModel, input_data: string, data_format: _EIODataFormat): Promise<TId | TId[] | {}>;
-export declare function _import(__model__: GIModel, model_data: string, data_format: _EIODataFormat): TId;
+export declare function Import(__model__: GIModel, input_data: string, data_format: _EIOImportDataFormat): Promise<TId | TId[] | {}>;
+export declare function _Async_Param_Import(__model__: GIModel, input_data: string, data_format: _EIOImportDataFormat): Promise<TId | TId[] | {}>;
+export declare function _import(__model__: GIModel, model_data: string, data_format: _EIOImportDataFormat): TId;
 export declare function _importGI(__model__: GIModel, json_str: string): number;
 export declare enum _EIOExportDataFormat {
     GI = "gi",
