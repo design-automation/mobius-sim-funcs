@@ -1,10 +1,10 @@
 {
   "name": "@design-automation/mobius-sim-funcs",
-  "version": "0.1.1",
+  "version": "0.1.3",
   "description": "Mobius Spatial Information Model",
   "main": "index.js",
   "dependencies": {
-    "@design-automation/mobius-sim": "^0.2.1",
+    "@design-automation/mobius-sim": "^0.2.3",
     "@doodle3d/clipper-js": "^1.0.11",
     "chroma-js": "^2.0.3",
     "cytoscape": "^3.14.1",
@@ -34,8 +34,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "publ": "npm run build && npm publish --access public",
-    "moduleDocs": "npm run typedoc && node ./typedoc-json/docConvert.js",
+    "publ": "npm run build && npm run typedoc && npm publish --access public",
+    "moduleDocs": "npm run typedoc",
     "typedoc": "typedoc --exclude **/*.spec.ts --json typedoc-json/doc.json src/modules"
   },
   "repository": {
