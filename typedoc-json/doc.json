@@ -7,14 +7,14 @@
 	"originalName": "",
 	"children": [
 		{
-			"id": 1175,
+			"id": 1176,
 			"name": "_Output",
 			"kind": 4,
 			"kindString": "Namespace",
 			"flags": {},
 			"children": [
 				{
-					"id": 1176,
+					"id": 1177,
 					"name": "Return",
 					"kind": 64,
 					"kindString": "Function",
@@ -28,7 +28,7 @@
 					],
 					"signatures": [
 						{
-							"id": 1177,
+							"id": 1178,
 							"name": "Return",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -45,7 +45,7 @@
 							},
 							"parameters": [
 								{
-									"id": 1178,
+									"id": 1179,
 									"name": "__model__",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -59,7 +59,7 @@
 									}
 								},
 								{
-									"id": 1179,
+									"id": 1180,
 									"name": "value",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -86,7 +86,7 @@
 					"title": "Functions",
 					"kind": 64,
 					"children": [
-						1176
+						1177
 					]
 				}
 			],
@@ -7921,12 +7921,243 @@
 			},
 			"children": [
 				{
-					"id": 1105,
-					"name": "_EIODataFormat",
+					"id": 1110,
+					"name": "_EIODataSource",
 					"kind": 8,
 					"kindString": "Enumeration",
 					"flags": {},
 					"children": [
+						{
+							"id": 1111,
+							"name": "DEFAULT",
+							"kind": 16,
+							"kindString": "Enumeration member",
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "modules/basic/io.ts",
+									"line": 49,
+									"character": 4
+								}
+							],
+							"defaultValue": "\"From URL\""
+						},
+						{
+							"id": 1112,
+							"name": "FILESYS",
+							"kind": 16,
+							"kindString": "Enumeration member",
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "modules/basic/io.ts",
+									"line": 50,
+									"character": 4
+								}
+							],
+							"defaultValue": "\"From Local Storage\""
+						}
+					],
+					"groups": [
+						{
+							"title": "Enumeration members",
+							"kind": 16,
+							"children": [
+								1111,
+								1112
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "modules/basic/io.ts",
+							"line": 48,
+							"character": 12
+						}
+					]
+				},
+				{
+					"id": 1113,
+					"name": "_EIODataTarget",
+					"kind": 8,
+					"kindString": "Enumeration",
+					"flags": {},
+					"children": [
+						{
+							"id": 1114,
+							"name": "DEFAULT",
+							"kind": 16,
+							"kindString": "Enumeration member",
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "modules/basic/io.ts",
+									"line": 53,
+									"character": 4
+								}
+							],
+							"defaultValue": "\"Save to Hard Disk\""
+						},
+						{
+							"id": 1115,
+							"name": "FILESYS",
+							"kind": 16,
+							"kindString": "Enumeration member",
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "modules/basic/io.ts",
+									"line": 54,
+									"character": 4
+								}
+							],
+							"defaultValue": "\"Save to Local Storage\""
+						}
+					],
+					"groups": [
+						{
+							"title": "Enumeration members",
+							"kind": 16,
+							"children": [
+								1114,
+								1115
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "modules/basic/io.ts",
+							"line": 52,
+							"character": 12
+						}
+					]
+				},
+				{
+					"id": 1116,
+					"name": "_EIOExportDataFormat",
+					"kind": 8,
+					"kindString": "Enumeration",
+					"flags": {},
+					"children": [
+						{
+							"id": 1120,
+							"name": "GEOJSON",
+							"kind": 16,
+							"kindString": "Enumeration member",
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "modules/basic/io.ts",
+									"line": 270,
+									"character": 4
+								}
+							],
+							"defaultValue": "\"geojson\""
+						},
+						{
+							"id": 1117,
+							"name": "GI",
+							"kind": 16,
+							"kindString": "Enumeration member",
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "modules/basic/io.ts",
+									"line": 266,
+									"character": 4
+								}
+							],
+							"defaultValue": "\"gi\""
+						},
+						{
+							"id": 1121,
+							"name": "GLTF",
+							"kind": 16,
+							"kindString": "Enumeration member",
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "modules/basic/io.ts",
+									"line": 271,
+									"character": 4
+								}
+							],
+							"defaultValue": "\"gltf\""
+						},
+						{
+							"id": 1119,
+							"name": "OBJ_POSI",
+							"kind": 16,
+							"kindString": "Enumeration member",
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "modules/basic/io.ts",
+									"line": 268,
+									"character": 4
+								}
+							],
+							"defaultValue": "\"obj_ps\""
+						},
+						{
+							"id": 1118,
+							"name": "OBJ_VERT",
+							"kind": 16,
+							"kindString": "Enumeration member",
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "modules/basic/io.ts",
+									"line": 267,
+									"character": 4
+								}
+							],
+							"defaultValue": "\"obj_v\""
+						}
+					],
+					"groups": [
+						{
+							"title": "Enumeration members",
+							"kind": 16,
+							"children": [
+								1120,
+								1117,
+								1121,
+								1119,
+								1118
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "modules/basic/io.ts",
+							"line": 265,
+							"character": 12
+						}
+					]
+				},
+				{
+					"id": 1105,
+					"name": "_EIOImportDataFormat",
+					"kind": 8,
+					"kindString": "Enumeration",
+					"flags": {},
+					"children": [
+						{
+							"id": 1109,
+							"name": "CITYJSON",
+							"kind": 16,
+							"kindString": "Enumeration member",
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "modules/basic/io.ts",
+									"line": 46,
+									"character": 4
+								}
+							],
+							"defaultValue": "\"CityJSON\""
+						},
 						{
 							"id": 1108,
 							"name": "GEOJSON",
@@ -7936,7 +8167,7 @@
 							"sources": [
 								{
 									"fileName": "modules/basic/io.ts",
-									"line": 43,
+									"line": 45,
 									"character": 4
 								}
 							],
@@ -7951,7 +8182,7 @@
 							"sources": [
 								{
 									"fileName": "modules/basic/io.ts",
-									"line": 41,
+									"line": 43,
 									"character": 4
 								}
 							],
@@ -7966,7 +8197,7 @@
 							"sources": [
 								{
 									"fileName": "modules/basic/io.ts",
-									"line": 42,
+									"line": 44,
 									"character": 4
 								}
 							],
@@ -7978,6 +8209,7 @@
 							"title": "Enumeration members",
 							"kind": 16,
 							"children": [
+								1109,
 								1108,
 								1106,
 								1107
@@ -7987,223 +8219,7 @@
 					"sources": [
 						{
 							"fileName": "modules/basic/io.ts",
-							"line": 40,
-							"character": 12
-						}
-					]
-				},
-				{
-					"id": 1109,
-					"name": "_EIODataSource",
-					"kind": 8,
-					"kindString": "Enumeration",
-					"flags": {},
-					"children": [
-						{
-							"id": 1110,
-							"name": "DEFAULT",
-							"kind": 16,
-							"kindString": "Enumeration member",
-							"flags": {},
-							"sources": [
-								{
-									"fileName": "modules/basic/io.ts",
-									"line": 46,
-									"character": 4
-								}
-							],
-							"defaultValue": "\"From URL\""
-						},
-						{
-							"id": 1111,
-							"name": "FILESYS",
-							"kind": 16,
-							"kindString": "Enumeration member",
-							"flags": {},
-							"sources": [
-								{
-									"fileName": "modules/basic/io.ts",
-									"line": 47,
-									"character": 4
-								}
-							],
-							"defaultValue": "\"From Local Storage\""
-						}
-					],
-					"groups": [
-						{
-							"title": "Enumeration members",
-							"kind": 16,
-							"children": [
-								1110,
-								1111
-							]
-						}
-					],
-					"sources": [
-						{
-							"fileName": "modules/basic/io.ts",
-							"line": 45,
-							"character": 12
-						}
-					]
-				},
-				{
-					"id": 1112,
-					"name": "_EIODataTarget",
-					"kind": 8,
-					"kindString": "Enumeration",
-					"flags": {},
-					"children": [
-						{
-							"id": 1113,
-							"name": "DEFAULT",
-							"kind": 16,
-							"kindString": "Enumeration member",
-							"flags": {},
-							"sources": [
-								{
-									"fileName": "modules/basic/io.ts",
-									"line": 50,
-									"character": 4
-								}
-							],
-							"defaultValue": "\"Save to Hard Disk\""
-						},
-						{
-							"id": 1114,
-							"name": "FILESYS",
-							"kind": 16,
-							"kindString": "Enumeration member",
-							"flags": {},
-							"sources": [
-								{
-									"fileName": "modules/basic/io.ts",
-									"line": 51,
-									"character": 4
-								}
-							],
-							"defaultValue": "\"Save to Local Storage\""
-						}
-					],
-					"groups": [
-						{
-							"title": "Enumeration members",
-							"kind": 16,
-							"children": [
-								1113,
-								1114
-							]
-						}
-					],
-					"sources": [
-						{
-							"fileName": "modules/basic/io.ts",
-							"line": 49,
-							"character": 12
-						}
-					]
-				},
-				{
-					"id": 1115,
-					"name": "_EIOExportDataFormat",
-					"kind": 8,
-					"kindString": "Enumeration",
-					"flags": {},
-					"children": [
-						{
-							"id": 1119,
-							"name": "GEOJSON",
-							"kind": 16,
-							"kindString": "Enumeration member",
-							"flags": {},
-							"sources": [
-								{
-									"fileName": "modules/basic/io.ts",
-									"line": 252,
-									"character": 4
-								}
-							],
-							"defaultValue": "\"geojson\""
-						},
-						{
-							"id": 1116,
-							"name": "GI",
-							"kind": 16,
-							"kindString": "Enumeration member",
-							"flags": {},
-							"sources": [
-								{
-									"fileName": "modules/basic/io.ts",
-									"line": 248,
-									"character": 4
-								}
-							],
-							"defaultValue": "\"gi\""
-						},
-						{
-							"id": 1120,
-							"name": "GLTF",
-							"kind": 16,
-							"kindString": "Enumeration member",
-							"flags": {},
-							"sources": [
-								{
-									"fileName": "modules/basic/io.ts",
-									"line": 253,
-									"character": 4
-								}
-							],
-							"defaultValue": "\"gltf\""
-						},
-						{
-							"id": 1118,
-							"name": "OBJ_POSI",
-							"kind": 16,
-							"kindString": "Enumeration member",
-							"flags": {},
-							"sources": [
-								{
-									"fileName": "modules/basic/io.ts",
-									"line": 250,
-									"character": 4
-								}
-							],
-							"defaultValue": "\"obj_ps\""
-						},
-						{
-							"id": 1117,
-							"name": "OBJ_VERT",
-							"kind": 16,
-							"kindString": "Enumeration member",
-							"flags": {},
-							"sources": [
-								{
-									"fileName": "modules/basic/io.ts",
-									"line": 249,
-									"character": 4
-								}
-							],
-							"defaultValue": "\"obj_v\""
-						}
-					],
-					"groups": [
-						{
-							"title": "Enumeration members",
-							"kind": 16,
-							"children": [
-								1119,
-								1116,
-								1120,
-								1118,
-								1117
-							]
-						}
-					],
-					"sources": [
-						{
-							"fileName": "modules/basic/io.ts",
-							"line": 247,
+							"line": 42,
 							"character": 12
 						}
 					]
@@ -8217,7 +8233,7 @@
 					"sources": [
 						{
 							"fileName": "modules/basic/io.ts",
-							"line": 272,
+							"line": 290,
 							"character": 22
 						}
 					],
@@ -8316,7 +8332,7 @@
 									},
 									"type": {
 										"type": "reference",
-										"id": 1115,
+										"id": 1116,
 										"name": "_EIOExportDataFormat"
 									}
 								},
@@ -8331,7 +8347,7 @@
 									},
 									"type": {
 										"type": "reference",
-										"id": 1112,
+										"id": 1113,
 										"name": "_EIODataTarget"
 									}
 								}
@@ -8358,7 +8374,7 @@
 					"sources": [
 						{
 							"fileName": "modules/basic/io.ts",
-							"line": 410,
+							"line": 428,
 							"character": 17
 						}
 					],
@@ -8445,7 +8461,7 @@
 					"sources": [
 						{
 							"fileName": "modules/basic/io.ts",
-							"line": 369,
+							"line": 387,
 							"character": 17
 						}
 					],
@@ -8532,7 +8548,7 @@
 					"sources": [
 						{
 							"fileName": "modules/basic/io.ts",
-							"line": 106,
+							"line": 109,
 							"character": 22
 						}
 					],
@@ -8592,7 +8608,7 @@
 									"type": {
 										"type": "reference",
 										"id": 1105,
-										"name": "_EIODataFormat"
+										"name": "_EIOImportDataFormat"
 									}
 								}
 							],
@@ -8624,8 +8640,8 @@
 													"sources": [
 														{
 															"fileName": "modules/basic/io.ts",
-															"line": 106,
-															"character": 117
+															"line": 109,
+															"character": 123
 														}
 													]
 												}
@@ -8647,7 +8663,7 @@
 					"sources": [
 						{
 							"fileName": "modules/basic/io.ts",
-							"line": 555,
+							"line": 573,
 							"character": 17
 						}
 					],
@@ -8720,7 +8736,7 @@
 					"sources": [
 						{
 							"fileName": "modules/basic/io.ts",
-							"line": 60,
+							"line": 63,
 							"character": 23
 						}
 					],
@@ -8783,7 +8799,7 @@
 													"sources": [
 														{
 															"fileName": "modules/basic/io.ts",
-															"line": 60,
+															"line": 63,
 															"character": 78
 														}
 													]
@@ -8806,7 +8822,7 @@
 					"sources": [
 						{
 							"fileName": "modules/basic/io.ts",
-							"line": 75,
+							"line": 78,
 							"character": 22
 						}
 					],
@@ -8872,7 +8888,7 @@
 									},
 									"type": {
 										"type": "reference",
-										"id": 1112,
+										"id": 1113,
 										"name": "_EIODataTarget"
 									}
 								}
@@ -8899,7 +8915,7 @@
 					"sources": [
 						{
 							"fileName": "modules/basic/io.ts",
-							"line": 294,
+							"line": 312,
 							"character": 16
 						}
 					],
@@ -8974,7 +8990,7 @@
 									"flags": {},
 									"type": {
 										"type": "reference",
-										"id": 1115,
+										"id": 1116,
 										"name": "_EIOExportDataFormat"
 									}
 								},
@@ -8986,7 +9002,7 @@
 									"flags": {},
 									"type": {
 										"type": "reference",
-										"id": 1112,
+										"id": 1113,
 										"name": "_EIODataTarget"
 									}
 								}
@@ -9007,7 +9023,7 @@
 					"sources": [
 						{
 							"fileName": "modules/basic/io.ts",
-							"line": 124,
+							"line": 127,
 							"character": 16
 						}
 					],
@@ -9050,7 +9066,7 @@
 									"type": {
 										"type": "reference",
 										"id": 1105,
-										"name": "_EIODataFormat"
+										"name": "_EIOImportDataFormat"
 									}
 								}
 							],
@@ -9082,8 +9098,8 @@
 													"sources": [
 														{
 															"fileName": "modules/basic/io.ts",
-															"line": 124,
-															"character": 124
+															"line": 127,
+															"character": 130
 														}
 													]
 												}
@@ -9105,7 +9121,7 @@
 					"sources": [
 						{
 							"fileName": "modules/basic/io.ts",
-							"line": 63,
+							"line": 66,
 							"character": 17
 						}
 					],
@@ -9161,7 +9177,7 @@
 													"sources": [
 														{
 															"fileName": "modules/basic/io.ts",
-															"line": 63,
+															"line": 66,
 															"character": 85
 														}
 													]
@@ -9184,7 +9200,7 @@
 					"sources": [
 						{
 							"fileName": "modules/basic/io.ts",
-							"line": 85,
+							"line": 88,
 							"character": 16
 						}
 					],
@@ -9237,7 +9253,7 @@
 									"flags": {},
 									"type": {
 										"type": "reference",
-										"id": 1112,
+										"id": 1113,
 										"name": "_EIODataTarget"
 									}
 								}
@@ -9264,7 +9280,7 @@
 					"sources": [
 						{
 							"fileName": "modules/basic/io.ts",
-							"line": 788,
+							"line": 806,
 							"character": 16
 						}
 					],
@@ -9304,7 +9320,7 @@
 					"sources": [
 						{
 							"fileName": "modules/basic/io.ts",
-							"line": 727,
+							"line": 745,
 							"character": 22
 						}
 					],
@@ -9350,7 +9366,7 @@
 					"sources": [
 						{
 							"fileName": "modules/basic/io.ts",
-							"line": 127,
+							"line": 130,
 							"character": 16
 						}
 					],
@@ -9393,7 +9409,7 @@
 									"type": {
 										"type": "reference",
 										"id": 1105,
-										"name": "_EIODataFormat"
+										"name": "_EIOImportDataFormat"
 									}
 								}
 							],
@@ -9413,7 +9429,7 @@
 					"sources": [
 						{
 							"fileName": "modules/basic/io.ts",
-							"line": 142,
+							"line": 148,
 							"character": 16
 						}
 					],
@@ -9461,10 +9477,10 @@
 					"title": "Enumerations",
 					"kind": 8,
 					"children": [
-						1105,
-						1109,
-						1112,
-						1115
+						1110,
+						1113,
+						1116,
+						1105
 					]
 				},
 				{
@@ -19764,7 +19780,7 @@
 			]
 		},
 		{
-			"id": 1121,
+			"id": 1122,
 			"name": "util",
 			"kind": 4,
 			"kindString": "Namespace",
@@ -19774,7 +19790,7 @@
 			},
 			"children": [
 				{
-					"id": 1145,
+					"id": 1146,
 					"name": "EntityInfo",
 					"kind": 64,
 					"kindString": "Function",
@@ -19788,7 +19804,7 @@
 					],
 					"signatures": [
 						{
-							"id": 1146,
+							"id": 1147,
 							"name": "EntityInfo",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -19799,7 +19815,7 @@
 							},
 							"parameters": [
 								{
-									"id": 1147,
+									"id": 1148,
 									"name": "__model__",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -19811,7 +19827,7 @@
 									}
 								},
 								{
-									"id": 1148,
+									"id": 1149,
 									"name": "entities",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -19845,7 +19861,7 @@
 					]
 				},
 				{
-					"id": 1152,
+					"id": 1153,
 					"name": "ModelCheck",
 					"kind": 64,
 					"kindString": "Function",
@@ -19859,7 +19875,7 @@
 					],
 					"signatures": [
 						{
-							"id": 1153,
+							"id": 1154,
 							"name": "ModelCheck",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -19870,7 +19886,7 @@
 							},
 							"parameters": [
 								{
-									"id": 1154,
+									"id": 1155,
 									"name": "__model__",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -19890,7 +19906,7 @@
 					]
 				},
 				{
-					"id": 1155,
+					"id": 1156,
 					"name": "ModelCompare",
 					"kind": 64,
 					"kindString": "Function",
@@ -19904,7 +19920,7 @@
 					],
 					"signatures": [
 						{
-							"id": 1156,
+							"id": 1157,
 							"name": "ModelCompare",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -19916,7 +19932,7 @@
 							},
 							"parameters": [
 								{
-									"id": 1157,
+									"id": 1158,
 									"name": "__model__",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -19928,7 +19944,7 @@
 									}
 								},
 								{
-									"id": 1158,
+									"id": 1159,
 									"name": "input_data",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -19956,7 +19972,7 @@
 					]
 				},
 				{
-					"id": 1149,
+					"id": 1150,
 					"name": "ModelInfo",
 					"kind": 64,
 					"kindString": "Function",
@@ -19970,7 +19986,7 @@
 					],
 					"signatures": [
 						{
-							"id": 1150,
+							"id": 1151,
 							"name": "ModelInfo",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -19981,7 +19997,7 @@
 							},
 							"parameters": [
 								{
-									"id": 1151,
+									"id": 1152,
 									"name": "__model__",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -20001,7 +20017,7 @@
 					]
 				},
 				{
-					"id": 1163,
+					"id": 1164,
 					"name": "ModelMerge",
 					"kind": 64,
 					"kindString": "Function",
@@ -20015,7 +20031,7 @@
 					],
 					"signatures": [
 						{
-							"id": 1164,
+							"id": 1165,
 							"name": "ModelMerge",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -20027,7 +20043,7 @@
 							},
 							"parameters": [
 								{
-									"id": 1165,
+									"id": 1166,
 									"name": "__model__",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -20039,7 +20055,7 @@
 									}
 								},
 								{
-									"id": 1166,
+									"id": 1167,
 									"name": "input_data",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -20070,7 +20086,7 @@
 					]
 				},
 				{
-					"id": 1140,
+					"id": 1141,
 					"name": "ParamInfo",
 					"kind": 64,
 					"kindString": "Function",
@@ -20084,7 +20100,7 @@
 					],
 					"signatures": [
 						{
-							"id": 1141,
+							"id": 1142,
 							"name": "ParamInfo",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -20095,7 +20111,7 @@
 							},
 							"parameters": [
 								{
-									"id": 1142,
+									"id": 1143,
 									"name": "__model__",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -20107,7 +20123,7 @@
 									}
 								},
 								{
-									"id": 1143,
+									"id": 1144,
 									"name": "__constList__",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -20116,7 +20132,7 @@
 									"type": {
 										"type": "reflection",
 										"declaration": {
-											"id": 1144,
+											"id": 1145,
 											"name": "__type",
 											"kind": 65536,
 											"kindString": "Type literal",
@@ -20133,7 +20149,7 @@
 					]
 				},
 				{
-					"id": 1122,
+					"id": 1123,
 					"name": "Select",
 					"kind": 64,
 					"kindString": "Function",
@@ -20147,7 +20163,7 @@
 					],
 					"signatures": [
 						{
-							"id": 1123,
+							"id": 1124,
 							"name": "Select",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -20158,7 +20174,7 @@
 							},
 							"parameters": [
 								{
-									"id": 1124,
+									"id": 1125,
 									"name": "__model__",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -20170,7 +20186,7 @@
 									}
 								},
 								{
-									"id": 1125,
+									"id": 1126,
 									"name": "entities",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -20212,7 +20228,7 @@
 					]
 				},
 				{
-					"id": 1171,
+					"id": 1172,
 					"name": "SendData",
 					"kind": 64,
 					"kindString": "Function",
@@ -20226,7 +20242,7 @@
 					],
 					"signatures": [
 						{
-							"id": 1172,
+							"id": 1173,
 							"name": "SendData",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -20237,7 +20253,7 @@
 							},
 							"parameters": [
 								{
-									"id": 1173,
+									"id": 1174,
 									"name": "__model__",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -20249,7 +20265,7 @@
 									}
 								},
 								{
-									"id": 1174,
+									"id": 1175,
 									"name": "data",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -20271,7 +20287,7 @@
 					]
 				},
 				{
-					"id": 1126,
+					"id": 1127,
 					"name": "VrHotspot",
 					"kind": 64,
 					"kindString": "Function",
@@ -20285,7 +20301,7 @@
 					],
 					"signatures": [
 						{
-							"id": 1127,
+							"id": 1128,
 							"name": "VrHotspot",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -20296,7 +20312,7 @@
 							},
 							"parameters": [
 								{
-									"id": 1128,
+									"id": 1129,
 									"name": "__model__",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -20308,7 +20324,7 @@
 									}
 								},
 								{
-									"id": 1129,
+									"id": 1130,
 									"name": "point",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -20322,7 +20338,7 @@
 									}
 								},
 								{
-									"id": 1130,
+									"id": 1131,
 									"name": "name",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -20336,7 +20352,7 @@
 									}
 								},
 								{
-									"id": 1131,
+									"id": 1132,
 									"name": "camera_rot",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -20358,7 +20374,7 @@
 					]
 				},
 				{
-					"id": 1132,
+					"id": 1133,
 					"name": "VrPanorama",
 					"kind": 64,
 					"kindString": "Function",
@@ -20372,7 +20388,7 @@
 					],
 					"signatures": [
 						{
-							"id": 1133,
+							"id": 1134,
 							"name": "VrPanorama",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -20383,7 +20399,7 @@
 							},
 							"parameters": [
 								{
-									"id": 1134,
+									"id": 1135,
 									"name": "__model__",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -20395,7 +20411,7 @@
 									}
 								},
 								{
-									"id": 1135,
+									"id": 1136,
 									"name": "point",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -20409,7 +20425,7 @@
 									}
 								},
 								{
-									"id": 1136,
+									"id": 1137,
 									"name": "back_url",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -20423,7 +20439,7 @@
 									}
 								},
 								{
-									"id": 1137,
+									"id": 1138,
 									"name": "back_rot",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -20434,7 +20450,7 @@
 									}
 								},
 								{
-									"id": 1138,
+									"id": 1139,
 									"name": "fore_url",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -20448,7 +20464,7 @@
 									}
 								},
 								{
-									"id": 1139,
+									"id": 1140,
 									"name": "fore_rot",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -20470,7 +20486,7 @@
 					]
 				},
 				{
-					"id": 1159,
+					"id": 1160,
 					"name": "_Async_Param_ModelCompare",
 					"kind": 64,
 					"kindString": "Function",
@@ -20484,14 +20500,14 @@
 					],
 					"signatures": [
 						{
-							"id": 1160,
+							"id": 1161,
 							"name": "_Async_Param_ModelCompare",
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
 							"parameters": [
 								{
-									"id": 1161,
+									"id": 1162,
 									"name": "__model__",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -20502,7 +20518,7 @@
 									}
 								},
 								{
-									"id": 1162,
+									"id": 1163,
 									"name": "input_data",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -20527,7 +20543,7 @@
 					]
 				},
 				{
-					"id": 1167,
+					"id": 1168,
 					"name": "_Async_Param_ModelMerge",
 					"kind": 64,
 					"kindString": "Function",
@@ -20541,14 +20557,14 @@
 					],
 					"signatures": [
 						{
-							"id": 1168,
+							"id": 1169,
 							"name": "_Async_Param_ModelMerge",
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
 							"parameters": [
 								{
-									"id": 1169,
+									"id": 1170,
 									"name": "__model__",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -20559,7 +20575,7 @@
 									}
 								},
 								{
-									"id": 1170,
+									"id": 1171,
 									"name": "input_data",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -20592,18 +20608,18 @@
 					"title": "Functions",
 					"kind": 64,
 					"children": [
-						1145,
-						1152,
-						1155,
-						1149,
-						1163,
-						1140,
-						1122,
-						1171,
-						1126,
-						1132,
-						1159,
-						1167
+						1146,
+						1153,
+						1156,
+						1150,
+						1164,
+						1141,
+						1123,
+						1172,
+						1127,
+						1133,
+						1160,
+						1168
 					]
 				}
 			],
@@ -22319,7 +22335,7 @@
 			]
 		},
 		{
-			"id": 1180,
+			"id": 1181,
 			"name": "_parameterTypes",
 			"kind": 32,
 			"kindString": "Variable",
@@ -22334,14 +22350,14 @@
 			"type": {
 				"type": "reflection",
 				"declaration": {
-					"id": 1181,
+					"id": 1182,
 					"name": "__type",
 					"kind": 65536,
 					"kindString": "Type literal",
 					"flags": {},
 					"children": [
 						{
-							"id": 1212,
+							"id": 1213,
 							"name": "LONGLAT",
 							"kind": 1024,
 							"kindString": "Property",
@@ -22356,7 +22372,7 @@
 							"defaultValue": "..."
 						},
 						{
-							"id": 1202,
+							"id": 1203,
 							"name": "addData",
 							"kind": 1024,
 							"kindString": "Property",
@@ -22368,7 +22384,7 @@
 							"defaultValue": "'_model.addGiData'"
 						},
 						{
-							"id": 1211,
+							"id": 1212,
 							"name": "asyncFuncs",
 							"kind": 1024,
 							"kindString": "Property",
@@ -22383,7 +22399,7 @@
 							"defaultValue": "..."
 						},
 						{
-							"id": 1198,
+							"id": 1199,
 							"name": "cloneFn",
 							"kind": 1024,
 							"kindString": "Property",
@@ -22391,14 +22407,14 @@
 							"type": {
 								"type": "reflection",
 								"declaration": {
-									"id": 1199,
+									"id": 1200,
 									"name": "__type",
 									"kind": 65536,
 									"kindString": "Type literal",
 									"flags": {},
 									"signatures": [
 										{
-											"id": 1200,
+											"id": 1201,
 											"name": "__type",
 											"kind": 4096,
 											"kindString": "Call signature",
@@ -22408,7 +22424,7 @@
 											},
 											"parameters": [
 												{
-													"id": 1201,
+													"id": 1202,
 													"name": "model",
 													"kind": 32768,
 													"kindString": "Parameter",
@@ -22433,7 +22449,7 @@
 							"defaultValue": "..."
 						},
 						{
-							"id": 1186,
+							"id": 1187,
 							"name": "console",
 							"kind": 1024,
 							"kindString": "Property",
@@ -22445,7 +22461,7 @@
 							"defaultValue": "'__console__'"
 						},
 						{
-							"id": 1183,
+							"id": 1184,
 							"name": "constList",
 							"kind": 1024,
 							"kindString": "Property",
@@ -22457,7 +22473,7 @@
 							"defaultValue": "'__constList__'"
 						},
 						{
-							"id": 1187,
+							"id": 1188,
 							"name": "fileName",
 							"kind": 1024,
 							"kindString": "Property",
@@ -22469,7 +22485,7 @@
 							"defaultValue": "'__fileName__'"
 						},
 						{
-							"id": 1206,
+							"id": 1207,
 							"name": "getattrib",
 							"kind": 1024,
 							"kindString": "Property",
@@ -22481,7 +22497,7 @@
 							"defaultValue": "'attrib.Get'"
 						},
 						{
-							"id": 1185,
+							"id": 1186,
 							"name": "input",
 							"kind": 1024,
 							"kindString": "Property",
@@ -22493,7 +22509,7 @@
 							"defaultValue": "'__input__'"
 						},
 						{
-							"id": 1189,
+							"id": 1190,
 							"name": "merge",
 							"kind": 1024,
 							"kindString": "Property",
@@ -22505,7 +22521,7 @@
 							"defaultValue": "'_model.__merge__'"
 						},
 						{
-							"id": 1193,
+							"id": 1194,
 							"name": "mergeFn",
 							"kind": 1024,
 							"kindString": "Property",
@@ -22513,14 +22529,14 @@
 							"type": {
 								"type": "reflection",
 								"declaration": {
-									"id": 1194,
+									"id": 1195,
 									"name": "__type",
 									"kind": 65536,
 									"kindString": "Type literal",
 									"flags": {},
 									"signatures": [
 										{
-											"id": 1195,
+											"id": 1196,
 											"name": "__type",
 											"kind": 4096,
 											"kindString": "Call signature",
@@ -22530,7 +22546,7 @@
 											},
 											"parameters": [
 												{
-													"id": 1196,
+													"id": 1197,
 													"name": "model1",
 													"kind": 32768,
 													"kindString": "Parameter",
@@ -22544,7 +22560,7 @@
 													}
 												},
 												{
-													"id": 1197,
+													"id": 1198,
 													"name": "model2",
 													"kind": 32768,
 													"kindString": "Parameter",
@@ -22569,7 +22585,7 @@
 							"defaultValue": "..."
 						},
 						{
-							"id": 1184,
+							"id": 1185,
 							"name": "model",
 							"kind": 1024,
 							"kindString": "Property",
@@ -22581,7 +22597,7 @@
 							"defaultValue": "'__model__'"
 						},
 						{
-							"id": 1188,
+							"id": 1189,
 							"name": "new",
 							"kind": 1024,
 							"kindString": "Property",
@@ -22593,7 +22609,7 @@
 							"defaultValue": "'_model.__new__'"
 						},
 						{
-							"id": 1190,
+							"id": 1191,
 							"name": "newFn",
 							"kind": 1024,
 							"kindString": "Property",
@@ -22601,14 +22617,14 @@
 							"type": {
 								"type": "reflection",
 								"declaration": {
-									"id": 1191,
+									"id": 1192,
 									"name": "__type",
 									"kind": 65536,
 									"kindString": "Type literal",
 									"flags": {},
 									"signatures": [
 										{
-											"id": 1192,
+											"id": 1193,
 											"name": "__type",
 											"kind": 4096,
 											"kindString": "Call signature",
@@ -22628,7 +22644,7 @@
 							"defaultValue": "..."
 						},
 						{
-							"id": 1182,
+							"id": 1183,
 							"name": "newMeta",
 							"kind": 1024,
 							"kindString": "Property",
@@ -22643,7 +22659,7 @@
 							"defaultValue": "..."
 						},
 						{
-							"id": 1204,
+							"id": 1205,
 							"name": "postprocess",
 							"kind": 1024,
 							"kindString": "Property",
@@ -22655,7 +22671,7 @@
 							"defaultValue": "'_model.__postprocess__'"
 						},
 						{
-							"id": 1203,
+							"id": 1204,
 							"name": "preprocess",
 							"kind": 1024,
 							"kindString": "Property",
@@ -22667,7 +22683,7 @@
 							"defaultValue": "'_model.__preprocess__'"
 						},
 						{
-							"id": 1208,
+							"id": 1209,
 							"name": "queryFilter",
 							"kind": 1024,
 							"kindString": "Property",
@@ -22679,7 +22695,7 @@
 							"defaultValue": "'query.Filter'"
 						},
 						{
-							"id": 1207,
+							"id": 1208,
 							"name": "queryGet",
 							"kind": 1024,
 							"kindString": "Property",
@@ -22691,7 +22707,7 @@
 							"defaultValue": "'query.Get'"
 						},
 						{
-							"id": 1210,
+							"id": 1211,
 							"name": "return",
 							"kind": 1024,
 							"kindString": "Property",
@@ -22703,7 +22719,7 @@
 							"defaultValue": "'_Output.Return'"
 						},
 						{
-							"id": 1209,
+							"id": 1210,
 							"name": "select",
 							"kind": 1024,
 							"kindString": "Property",
@@ -22715,7 +22731,7 @@
 							"defaultValue": "'_model.__select__'"
 						},
 						{
-							"id": 1205,
+							"id": 1206,
 							"name": "setattrib",
 							"kind": 1024,
 							"kindString": "Property",
@@ -22732,28 +22748,28 @@
 							"title": "Properties",
 							"kind": 1024,
 							"children": [
+								1213,
+								1203,
 								1212,
-								1202,
-								1211,
-								1198,
-								1186,
-								1183,
+								1199,
 								1187,
-								1206,
-								1185,
-								1189,
-								1193,
 								1184,
 								1188,
-								1190,
-								1182,
-								1204,
-								1203,
-								1208,
 								1207,
-								1210,
+								1186,
+								1190,
+								1194,
+								1185,
+								1189,
+								1191,
+								1183,
+								1205,
+								1204,
 								1209,
-								1205
+								1208,
+								1211,
+								1210,
+								1206
 							]
 						}
 					]
@@ -22767,7 +22783,7 @@
 			"title": "Namespaces",
 			"kind": 4,
 			"children": [
-				1175,
+				1176,
 				1,
 				603,
 				491,
@@ -22784,7 +22800,7 @@
 				219,
 				941,
 				102,
-				1121,
+				1122,
 				774
 			]
 		},
@@ -22792,7 +22808,7 @@
 			"title": "Variables",
 			"kind": 32,
 			"children": [
-				1180
+				1181
 			]
 		}
 	],

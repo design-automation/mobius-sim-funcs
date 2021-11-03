@@ -34,7 +34,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "publ": "npm run build && npm run typedoc && npm publish --access public",
+    "deploy": "npm run build && npm run typedoc && npm publish --access public",
     "moduleDocs": "npm run typedoc",
     "typedoc": "typedoc --exclude **/*.spec.ts --json typedoc-json/doc.json src/modules"
   },
