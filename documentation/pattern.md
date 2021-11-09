@@ -166,7 +166,7 @@ For example, consider the following function call:
 This will generate the following grid:
 
 
-![An example of pattern.Grid](assets/typedoc-json/docMDimgs/pattern_grid.png)
+![An example of pattern.Grid](../typedoc-json/docMDimgs/pattern_grid.png)
 
 
 The positions can either be returned as a flat list or as nested lists.
@@ -296,7 +296,7 @@ For example, consider the following function call:
 This will generate the following box:
 
 
-![An example of pattern.Box](assets/typedoc-json/docMDimgs/pattern_box.png)
+![An example of pattern.Box](../typedoc-json/docMDimgs/pattern_box.png)
 
 
 Below are the varying results when calling the function with the method set to
@@ -479,7 +479,7 @@ pgons = make.Polygon(posis)
 ```
 
 
-![Tetrahedron with triangular faces](assets/typedoc-json/docMDimgs/polyhedron_tetra.png)
+![Tetrahedron with triangular faces](../typedoc-json/docMDimgs/polyhedron_tetra.png)
 
   
   
