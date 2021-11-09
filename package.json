@@ -36,7 +36,7 @@
     "build": "tsc",
     "deploy": "npm run build && npm run typedoc && npm publish --access public",
     "moduleDocs": "npm run typedoc",
-    "typedoc": "typedoc --exclude **/*.spec.ts --json typedoc-json/doc.json src/modules"
+    "typedoc": "typedoc --exclude **/*.spec.ts --json typedoc-json/doc.json src/modules && node genDoc.js"
   },
   "repository": {
     "type": "git",
