@@ -23,7 +23,7 @@ function replaceText(text) {
             }
         }
     }
-    return splittedText.join('');
+    return splittedText.join('').replace(/assets\/typedoc\-json\/docMDimgs/g, '../typedoc-json/docMDimgs');
 }
 
 function analyzeParamType(fn, paramType) {
