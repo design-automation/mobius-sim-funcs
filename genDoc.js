@@ -208,12 +208,12 @@ fs.readdirSync('./documentation', (err, files) => {
 
 genModuleDocs(moduleDocs)
 
-fs.writeFile(`./typedoc-json/doc.json`, replaceText(JSON.stringify(dc, null, 2)), function(err) {
-    if (err) {
-        return console.log(err);
-    }
-    console.log(`successfully saved doc.json`);
-});
+// fs.writeFile(`./typedoc-json/doc.json`, replaceText(JSON.stringify(dc, null, 2)), function(err) {
+//     if (err) {
+//         return console.log(err);
+//     }
+//     console.log(`successfully saved doc.json`);
+// });
 
 
 
