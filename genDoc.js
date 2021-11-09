@@ -123,7 +123,7 @@ function genModuleDocs(docs) {
             mdString += mod.description + '  \n  \n  \n'
             indexString += mod.description + '  \n'
         }
-        indexString += `Link: <${mod.name}.md>  \n  \n  \n`
+        indexString += `link: [${mod.name}.md](${mod.name}.md)  \n  \n  \n`
         for (const func of mod.func) {
             fnString = ``;
             fnString += `**Description:** ${func.description}  \n  \n`;
