@@ -14,6 +14,15 @@ The `io` module has functions for importing and exporting.
 **Returns:** the data.  
   
   
+## _Async_Param_Read  
+  
+  
+**Description:** undefined  
+  
+**Parameters:**  
+  * *data:* undefined  
+  
+  
 ## Write  
   
   
@@ -25,6 +34,17 @@ The `io` module has functions for importing and exporting.
   * *data\_target:* Enum, where the data is to be exported to.  
   
 **Returns:** whether the data is successfully saved.  
+  
+  
+## _Async_Param_Write  
+  
+  
+**Description:** undefined  
+  
+**Parameters:**  
+  * *data:* undefined  
+  * *file\_name:* undefined  
+  * *data\_target:* undefined  
   
   
 ## Import  
@@ -54,6 +74,35 @@ Note that a script using a file in local storage may fail when others try to ope
   
   
   
+## _Async_Param_Import  
+  
+  
+**Description:** undefined  
+  
+**Parameters:**  
+  * *input\_data:* undefined  
+  * *data\_format:* undefined  
+  
+  
+## _import  
+  
+  
+**Description:** undefined  
+  
+**Parameters:**  
+  * *model\_data:* undefined  
+  * *data\_format:* undefined  
+  
+  
+## _importGI  
+  
+  
+**Description:** undefined  
+  
+**Parameters:**  
+  * *json\_str:* undefined  
+  
+  
 ## Export  
   
   
@@ -79,6 +128,18 @@ If you export to Local Storage, there will be no popup.
   * io.Export (#pg, 'my_model.obj', obj)  
     Exports all the polgons in the model as an OBJ.
   
+  
+  
+## _Async_Param_Export  
+  
+  
+**Description:** undefined  
+  
+**Parameters:**  
+  * *entities:* undefined  
+  * *file\_name:* undefined  
+  * *data\_format:* undefined  
+  * *data\_target:* undefined  
   
   
 ## Geolocate  
@@ -127,5 +188,23 @@ based on the geolocation of the model.
   * *elev:* Set the elevation of the Cartesian coordinate system above the ground plane.  
   
 **Returns:** XYZ coordinates  
+  
+  
+## _getFile  
+  
+  
+**Description:** undefined  
+  
+**Parameters:**  
+  * *source:* undefined  
+  
+  
+## _Async_Param__getFile  
+  
+  
+**Description:** undefined  
+  
+**Parameters:**  
+  * *source:* undefined  
   
   

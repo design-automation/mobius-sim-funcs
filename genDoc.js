@@ -57,7 +57,7 @@ function addDoc(mod, modName, docs) {
     }
     if (!mod.children) { return; }
     for (const func of mod.children) {
-        if (func.name[0] === '_') { continue; }
+        // if (func.name[0] === '_') { continue; }
         const fn = {};
         fn['id'] = func.id;
         fn['name'] = func.name;

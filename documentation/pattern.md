@@ -498,6 +498,18 @@ positions are returned as nested lists, where each list contains the positions f
   
   
   
+## _polyhedron  
+  
+  
+**Description:** undefined  
+  
+**Parameters:**  
+  * *matrix:* undefined  
+  * *radius:* undefined  
+  * *detail:* undefined  
+  * *method:* undefined  
+  
+  
 ## Arc  
   
   
