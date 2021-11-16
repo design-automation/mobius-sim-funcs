@@ -7,17 +7,13 @@
 
 
 import * as chk from '../../_check_types';
-
-import { Txyz, TPlane, XYPLANE, TId, EEntType, Txy } from '@design-automation/mobius-sim/dist/geo-info/common';
-import { idsMake, idsMakeFromIdxs } from '@design-automation/mobius-sim/dist/geo-info/common_id_funcs';
-import { getArrDepth } from '@design-automation/mobius-sim/dist/util/arrs';
-import { vecAdd, vecDiv, vecFromTo, vecSub } from '@design-automation/mobius-sim/dist/geom/vectors';
-import { xfromSourceTargetMatrix, multMatrix } from '@design-automation/mobius-sim/dist/geom/matrix';
-import { Matrix4 } from 'three';
-import { GIModel } from '@design-automation/mobius-sim/dist/geo-info/GIModel';
 import * as THREE from 'three';
+
+import { Txyz, TPlane, XYPLANE, TId, EEntType, Txy, idsMake, idsMakeFromIdxs,
+    getArrDepth, vecAdd, vecDiv, vecFromTo, vecSub, xfromSourceTargetMatrix,
+    multMatrix, GIModel, arrFill, arrMakeFlat } from '@design-automation/mobius-sim';
 import * as VERB from '@design-automation/mobius-sim/libs/verb/verb';
-import { arrFill, arrMakeFlat } from '@design-automation/mobius-sim/dist/util/arrs';
+
 // ================================================================================================
 /**
  * Creates a set of positions in a straight line pattern.
@@ -47,7 +43,7 @@ export function Line(__model__: GIModel, origin: Txyz|TPlane, length: number, nu
     }
     // --- Error Check ---
     // create the matrix one time
-    let matrix: Matrix4;
+    let matrix: THREE.Matrix4;
     const origin_is_plane = getArrDepth(origin) === 2;
     if (origin_is_plane) {
         matrix = xfromSourceTargetMatrix(XYPLANE, origin as TPlane);
@@ -182,7 +178,7 @@ export function Rectangle(__model__: GIModel, origin: Txyz|TPlane,
     }
     // --- Error Check ---
     // create the matrix one time
-    let matrix: Matrix4;
+    let matrix: THREE.Matrix4;
     const origin_is_plane = getArrDepth(origin) === 2;
     if (origin_is_plane) {
         matrix = xfromSourceTargetMatrix(XYPLANE, origin as TPlane);
@@ -328,7 +324,7 @@ export function Grid(__model__: GIModel, origin: Txyz|TPlane, size: number|[numb
     }
     // --- Error Check ---
     // create the matrix one time
-    let matrix: Matrix4;
+    let matrix: THREE.Matrix4;
     const origin_is_plane = getArrDepth(origin) === 2;
     if (origin_is_plane) {
         matrix = xfromSourceTargetMatrix(XYPLANE, origin as  TPlane);
@@ -536,7 +532,7 @@ export function Box(__model__: GIModel, origin: Txyz | TPlane,
     }
     // --- Error Check ---
     // create the matrix one time
-    let matrix: Matrix4;
+    let matrix: THREE.Matrix4;
     const origin_is_plane = getArrDepth(origin) === 2;
     if (origin_is_plane) {
         matrix = xfromSourceTargetMatrix(XYPLANE, origin as TPlane);
@@ -879,12 +875,12 @@ export function Polyhedron(__model__: GIModel, origin: Txyz | TPlane, radius: nu
     }
     // --- Error Check ---
     // create the matrix one time
-    let matrix: Matrix4 = null;
+    let matrix: THREE.Matrix4 = null;
     const origin_is_plane = getArrDepth(origin) === 2;
     if (origin_is_plane) {
         matrix = xfromSourceTargetMatrix(XYPLANE, origin as TPlane);
     } else {
-        matrix = new Matrix4();
+        matrix = new THREE.Matrix4();
         matrix.makeTranslation(...origin as Txyz);
     }
     // make polyhedron posis
@@ -892,7 +888,7 @@ export function Polyhedron(__model__: GIModel, origin: Txyz | TPlane, radius: nu
     return idsMakeFromIdxs(EEntType.POSI, posis_i) as TId[][];
 }
 // create the polyhedron
-export function _polyhedron(__model__: GIModel, matrix: Matrix4, radius: number, detail: number,
+export function _polyhedron(__model__: GIModel, matrix: THREE.Matrix4, radius: number, detail: number,
     method: _EPolyhedronMethod): number[]|number[][] {
     // create the posis
     let xyzs: Txyz[];
@@ -1269,7 +1265,7 @@ export function Arc(__model__: GIModel, origin: Txyz|TPlane, radius: number, num
     }
     // --- Error Check ---
     // create the matrix one time
-    let matrix: Matrix4;
+    let matrix: THREE.Matrix4;
     const origin_is_plane = getArrDepth(origin) === 2;
     if (origin_is_plane) {
         matrix = xfromSourceTargetMatrix(XYPLANE, origin as  TPlane);

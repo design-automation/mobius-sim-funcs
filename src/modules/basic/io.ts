@@ -5,27 +5,15 @@
 
 import { checkIDs, ID } from '../../_check_ids';
 
-import * as chk from '../../_check_types';
-
-import { GIModel } from '@design-automation/mobius-sim/dist/geo-info/GIModel';
-import { importObj, exportPosiBasedObj, exportVertBasedObj } from '@design-automation/mobius-sim/dist/geo-info/io/io_obj';
-import { importGeojson, exportGeojson } from '@design-automation/mobius-sim/dist/geo-info/io/io_geojson';
-import { download } from '@design-automation/mobius-sim/dist/filesys/download';
-import { TId, EEntType, TEntTypeIdx, IEntSets, Txyz, Txy, TAttribDataTypes } from '@design-automation/mobius-sim/dist/geo-info/common';
-// import { __merge__ } from '../_model';
-// import { _model } from '..';
-import { idsMake, idsBreak, idsMakeFromIdxs, idMake } from '@design-automation/mobius-sim/dist/geo-info/common_id_funcs';
-import { arrMakeFlat, getArrDepth } from '@design-automation/mobius-sim/dist/util/arrs';
-import JSZip from 'jszip';
-// import fetch from 'node-fetch';
-import { exportGltf } from '@design-automation/mobius-sim/dist/geo-info/io/io_gltf';
-
-import { vecAng2, vecFromTo, vecRot } from '@design-automation/mobius-sim/dist/geom/vectors';
-import { multMatrix, rotateMatrix } from '@design-automation/mobius-sim/dist/geom/matrix';
+import { checkArgs, isNull, isNum, isStr, isStrL, isXY } from '../../_check_types';
 import { Matrix4 } from 'three';
 import proj4 from 'proj4';
-import { checkArgs, isNull, isNum, isNumL, isStr, isXY } from '../../_check_types';
-import { importCityJSON } from '@design-automation/mobius-sim/dist/geo-info/io/io_cityjson';
+import { loadAsync } from 'jszip';
+
+import { GIModel, importObj, exportPosiBasedObj, exportVertBasedObj, importGeojson, exportGeojson,
+    download, TId, EEntType, TEntTypeIdx, Txyz, Txy, TAttribDataTypes,
+    idsBreak, idMake, arrMakeFlat, getArrDepth, exportGltf,
+    vecAng2, vecFromTo, vecRot, multMatrix, rotateMatrix, importCityJSON } from '@design-automation/mobius-sim';
 
 const requestedBytes = 1024 * 1024 * 200; // 200 MB local storage quota
 
@@ -319,7 +307,7 @@ export async function ExportFile(__model__: GIModel, entities: TId|TId[]|TId[][]
             ents_arr = checkIDs(__model__, fn_name, 'entities', entities,
                 [ID.isIDL1], [EEntType.PLINE, EEntType.PGON, EEntType.COLL])  as TEntTypeIdx[];
         }
-        chk.checkArgs(fn_name, 'file_name', file_name, [chk.isStr, chk.isStrL]);
+        checkArgs(fn_name, 'file_name', file_name, [isStr, isStrL]);
     } else {
         if (entities !== null) {
             entities = arrMakeFlat(entities) as TId[];
@@ -374,7 +362,7 @@ export async function Export(__model__: GIModel, entities: TId|TId[]|TId[][],
             ents_arr = checkIDs(__model__, fn_name, 'entities', entities,
                 [ID.isIDL1], [EEntType.PLINE, EEntType.PGON, EEntType.COLL])  as TEntTypeIdx[];
         }
-        chk.checkArgs(fn_name, 'file_name', file_name, [chk.isStr, chk.isStrL]);
+        checkArgs(fn_name, 'file_name', file_name, [isStr, isStrL]);
     } else {
         if (entities !== null) {
             entities = arrMakeFlat(entities) as TId[];
@@ -771,7 +759,7 @@ async function getURLContent(url: string): Promise<any> {
 }
 async function openZipFile(zipFile) {
     const result = {};
-    await JSZip.loadAsync(zipFile).then(async function (zip) {
+    await loadAsync(zipFile).then(async function (zip) {
         for (const filename of Object.keys(zip.files)) {
             // const splittedNames = filename.split('/').slice(1).join('/');
             await zip.files[filename].async('text').then(function (fileData) {

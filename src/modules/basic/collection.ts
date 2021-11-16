@@ -7,13 +7,8 @@ import { checkIDs, ID } from '../../_check_ids';
 
 import * as chk from '../../_check_types';
 
-import { GIModel } from '@design-automation/mobius-sim/dist/geo-info/GIModel';
-import { TId, EEntType, TEntTypeIdx, EFilterOperatorTypes, EAttribNames } from '@design-automation/mobius-sim/dist/geo-info/common';
-import { idsBreak, idMake, idsMakeFromIdxs } from '@design-automation/mobius-sim/dist/geo-info/common_id_funcs';
-import { isEmptyArr } from '@design-automation/mobius-sim/dist/util/arrs';
-// import { __merge__} from '../_model';
-// import { _model } from '..';
-import { arrMakeFlat } from '@design-automation/mobius-sim/dist/util/arrs';
+import { GIModel, TId, EEntType, TEntTypeIdx, EFilterOperatorTypes, EAttribNames,
+    idsBreak, idMake, idsMakeFromIdxs, isEmptyArr, arrMakeFlat } from '@design-automation/mobius-sim';
 
 // ================================================================================================
 /**

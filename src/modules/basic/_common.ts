@@ -4,14 +4,12 @@
  */
 
 import { checkIDs, ID } from '../../_check_ids';
-
-import { GIModel } from '@design-automation/mobius-sim/dist/geo-info/GIModel';
-import { TId, TPlane, Txyz, EEntType, TRay, TEntTypeIdx } from '@design-automation/mobius-sim/dist/geo-info/common';
-import { getArrDepth } from '@design-automation/mobius-sim/dist/util/arrs';
-import { vecDiv, vecSum, vecAvg, vecFromTo, vecLen, vecCross, vecNorm, vecAdd, vecSetLen, vecDot } from '@design-automation/mobius-sim/dist/geom/vectors';
-import { isRay, isPlane, isXYZ } from '@design-automation/mobius-sim/dist/geo-info/common_func';
 import * as THREE from 'three';
 import { Vector3 } from 'three';
+
+import { GIModel, TId, TPlane, Txyz, EEntType, TRay, TEntTypeIdx,
+    getArrDepth, vecDiv, vecSum, vecAvg, vecFromTo, vecLen, vecCross,
+    vecNorm, vecAdd, vecSetLen, vecDot, isRay, isPlane, isXYZ } from '@design-automation/mobius-sim';
 const EPS = 1e-8;
 function rayFromPln(pln: TPlane|TPlane[]): TRay|TRay[] {
     // overloaded case

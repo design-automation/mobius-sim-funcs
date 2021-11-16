@@ -1,4 +1,4 @@
-import { GIModel } from '@design-automation/mobius-sim/dist/geo-info/GIModel';
+import { GIModel } from '@design-automation/mobius-sim';
 
 /**
 * Return certain value from the model for the flowchart's end node

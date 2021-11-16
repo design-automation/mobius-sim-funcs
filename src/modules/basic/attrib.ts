@@ -9,13 +9,11 @@ import { checkIDs, ID } from '../../_check_ids';
 import { checkAttribValue, checkAttribName,
     checkAttribIdxKey, checkAttribNameIdxKey, splitAttribNameIdxKey } from '../../_check_attribs';
 
+import {cloneDeep} from 'lodash';
 import uscore from 'underscore';
-import { GIModel } from '@design-automation/mobius-sim/dist/geo-info/GIModel';
-import { TId, EEntType, TEntTypeIdx,
-    EAttribPush, TAttribDataTypes, EEntTypeStr, EAttribDataTypeStrs } from '@design-automation/mobius-sim/dist/geo-info/common';
-import { idsBreak } from '@design-automation/mobius-sim/dist/geo-info/common_id_funcs';
-import { getArrDepth } from '@design-automation/mobius-sim/dist/util/arrs';
-import * as lodash from 'lodash';
+
+import { GIModel, TId, EEntType, TEntTypeIdx, EAttribPush, TAttribDataTypes, EEntTypeStr,
+    EAttribDataTypeStrs, idsBreak, getArrDepth } from '@design-automation/mobius-sim';
 // ================================================================================================
 
 export enum _EEntType {
@@ -204,7 +202,7 @@ function _setEachEntDifferentAttribValue(__model__: GIModel, ents_arr: TEntTypeI
         // --- Error Check ---
         // if this is a complex type, make a deep copy
         let val: TAttribDataTypes = attrib_values[i];
-        if (val instanceof Object) { val = lodash.cloneDeep(val); }
+        if (val instanceof Object) { val = cloneDeep(val); }
         if (typeof idx_or_key === 'number') {
             __model__.modeldata.attribs.set.setEntsAttribListIdxVal(ent_type, ents_i[i], attrib_name, idx_or_key, val);
         } if (typeof idx_or_key === 'string') {
@@ -223,7 +221,7 @@ function _setEachEntSameAttribValue(__model__: GIModel, ents_arr: TEntTypeIdx[],
     }
     // --- Error Check ---
     // if this is a complex type, make a deep copy
-    if (attrib_value instanceof Object) { attrib_value = lodash.cloneDeep(attrib_value); }
+    if (attrib_value instanceof Object) { attrib_value = cloneDeep(attrib_value); }
     const ent_type: number = ents_arr[0][0];
     const ents_i: number[] = _getEntsIndices(__model__, ents_arr);
     if (typeof idx_or_key === 'number') {
@@ -313,7 +311,7 @@ function _get(__model__: GIModel, ents_arr: TEntTypeIdx|TEntTypeIdx[],
             val = __model__.modeldata.attribs.get.getEntAttribVal(ent_type, ent_i, attrib_name);
         }
         // if this is a complex type, make a deep copy
-        if (val instanceof Object) { val = lodash.cloneDeep(val); }
+        if (val instanceof Object) { val = cloneDeep(val); }
         return val;
     } else {
         return (ents_arr as TEntTypeIdx[]).map( ent_arr =>

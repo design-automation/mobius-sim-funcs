@@ -9,8 +9,7 @@ import { checkIDs, ID } from '../../_check_ids';
 
 import * as chk from '../../_check_types';
 
-import { GIModel } from '@design-automation/mobius-sim/dist/geo-info/GIModel';
-import { TId, TPlane } from '@design-automation/mobius-sim/dist/geo-info/common';
+import { GIModel, TId, TPlane } from '@design-automation/mobius-sim';
 // import { __merge__ } from '../_model';
 
 /**

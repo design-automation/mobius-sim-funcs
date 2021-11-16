@@ -8,22 +8,16 @@ import { checkIDs, ID } from '../../_check_ids';
 
 import * as chk from '../../_check_types';
 
-import { GIModel } from '@design-automation/mobius-sim/dist/geo-info/GIModel';
-import { TId, Txyz, EEntType, TEntTypeIdx, TRay, TPlane, Txy,
-    EAttribDataTypeStrs } from '@design-automation/mobius-sim/dist/geo-info/common';
-import { idsMakeFromIdxs, idsMake, idsBreak, idMake } from '@design-automation/mobius-sim/dist/geo-info/common_id_funcs';
-import { distance } from '@design-automation/mobius-sim/dist/geom/distance';
-import { vecAdd, vecCross, vecMult, vecNorm, vecAng2, vecSetLen, vecRot } from '@design-automation/mobius-sim/dist/geom/vectors';
+import * as Mathjs from 'mathjs';
 import uscore from 'underscore';
-import { arrMakeFlat, getArrDepth } from '@design-automation/mobius-sim/dist/util/arrs';
-import { multMatrix } from '@design-automation/mobius-sim/dist/geom/matrix';
-import { XAXIS, YAXIS, ZAXIS } from '@design-automation/mobius-sim/dist/geom/constants';
 import cytoscape from 'cytoscape';
 import * as THREE from 'three';
-import { TypedArrayUtils } from '@design-automation/mobius-sim/dist/TypedArrayUtils.js';
-import * as Mathjs from 'mathjs';
-import { createSingleMeshBufTjs } from '@design-automation/mobius-sim/dist/geom/mesh';
-import { isRay, isXYZ, isPlane } from '@design-automation/mobius-sim/dist/geo-info/common_func';
+
+import { GIModel, TId, Txyz, EEntType, TEntTypeIdx, TRay, TPlane, Txy,
+    EAttribDataTypeStrs, idsMakeFromIdxs, idsMake, idsBreak, idMake,
+    distance, vecAdd, vecCross, vecMult, vecNorm, vecAng2, vecSetLen,
+    vecRot, arrMakeFlat, getArrDepth, multMatrix, XAXIS, YAXIS, ZAXIS,
+    TypedArrayUtils, createSingleMeshBufTjs, isRay, isXYZ, isPlane } from '@design-automation/mobius-sim';
 
 function degToRad(deg: number|number[]): number|number[] {
     if (Array.isArray(deg)) { return deg.map(a_deg => degToRad(a_deg)) as number[]; }

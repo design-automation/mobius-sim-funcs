@@ -2,9 +2,10 @@
   "name": "@design-automation/mobius-sim-funcs",
   "version": "0.1.4",
   "description": "Mobius Spatial Information Model",
-  "main": "index.js",
+  "main": "build/index.js",
+  "module": "build/mobius-sim-funcs.module.es.js",
   "dependencies": {
-    "@design-automation/mobius-sim": "^0.2.3",
+    "@design-automation/mobius-sim": "^0.2.4",
     "@doodle3d/clipper-js": "^1.0.11",
     "chroma-js": "^2.0.3",
     "cytoscape": "^3.14.1",
@@ -19,6 +20,9 @@
     "underscore": "^1.13.1"
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-node-resolve": "^13.0.6",
+    "@rollup/plugin-typescript": "^8.3.0",
     "@types/chroma-js": "^1.4.1",
     "@types/d3-delaunay": "^4.1.0",
     "@types/d3-polygon": "^1.0.7",
@@ -28,12 +32,17 @@
     "@types/three": "^0.130.0",
     "@types/underscore": "^1.8.14",
     "@types/webgl2": "0.0.5",
+    "http-server": "^14.0.0",
+    "rollup": "^2.60.0",
+    "rollup-plugin-node-globals": "^1.4.0",
     "typedoc": "^0.22.5",
     "typescript": "^4.4.3"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "babel-node example/nodeServer.js",
     "build": "tsc",
+    "rollup": "rollup --config rollup.config.js",
     "deploy": "npm run build && npm run typedoc && npm publish --access public",
     "moduleDocs": "npm run typedoc",
     "typedoc": "typedoc --exclude **/*.spec.ts --json typedoc-json/doc.json src/modules && node genDoc.js"

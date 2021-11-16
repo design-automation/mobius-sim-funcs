@@ -4,10 +4,8 @@
  */
 
 import { checkIDs, ID } from '../../_check_ids';
-import { GIModel } from '@design-automation/mobius-sim/dist/geo-info/GIModel';
-import { EEntType, TId, TEntTypeIdx, EAttribNames, EAttribDataTypeStrs, IModelJSONData, Txyz, Txy, TAttribDataTypes } from '@design-automation/mobius-sim/dist/geo-info/common';
-import { arrMakeFlat } from '@design-automation/mobius-sim/dist/util/arrs';
-import { idsBreak, idsMake } from '@design-automation/mobius-sim/dist/geo-info/common_id_funcs';
+import { GIModel, EEntType, TId, TEntTypeIdx, EAttribNames, EAttribDataTypeStrs,
+    arrMakeFlat, idsBreak, idsMake } from '@design-automation/mobius-sim';
 import { _getFile } from './io';
 import { checkArgs, isNull, isNum, isNumL, isStr, isXY } from '../../_check_types';
 

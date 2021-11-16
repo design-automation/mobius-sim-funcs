@@ -1,8 +1,5 @@
-import { GIModel } from '@design-automation/mobius-sim/dist/geo-info/GIModel';
-import { EEntType, TEntTypeIdx } from '@design-automation/mobius-sim/dist/geo-info/common';
-import { idsBreak } from '@design-automation/mobius-sim/dist/geo-info/common_id_funcs';
-import { getArrDepth } from '@design-automation/mobius-sim/dist/util/arrs';
 import { getDataTypeStrFromValue } from './_check_types';
+import { GIModel, EEntType, TEntTypeIdx, idsBreak, getArrDepth } from '@design-automation/mobius-sim';
 
 export const ID = {
     isNull: -1,

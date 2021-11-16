@@ -8,10 +8,7 @@ import { checkIDs, ID } from '../../_check_ids';
 
 import * as chk from '../../_check_types';
 
-import { GIModel } from '@design-automation/mobius-sim/dist/geo-info/GIModel';
-import { TId, EEntType, Txyz, TEntTypeIdx, TPlane } from '@design-automation/mobius-sim/dist/geo-info/common';
-import { idsMake, idsBreak } from '@design-automation/mobius-sim/dist/geo-info/common_id_funcs';
-import { isEmptyArr, arrMakeFlat, getArrDepth } from '@design-automation/mobius-sim/dist/util/arrs';
+import { GIModel, TId, EEntType, Txyz, TEntTypeIdx, TPlane, idsMake, idsBreak, isEmptyArr, arrMakeFlat, getArrDepth } from '@design-automation/mobius-sim';
 
 
 // Enums

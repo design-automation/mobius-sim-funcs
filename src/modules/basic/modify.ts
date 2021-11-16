@@ -9,12 +9,9 @@
 import { checkIDs, ID } from '../../_check_ids';
 
 import * as chk from '../../_check_types';
-
-import { GIModel } from '@design-automation/mobius-sim/dist/geo-info/GIModel';
-import { TId, TPlane, Txyz, EEntType, TEntTypeIdx, TRay, IEntSets} from '@design-automation/mobius-sim/dist/geo-info/common';
-import { idsBreak } from '@design-automation/mobius-sim/dist/geo-info/common_id_funcs';
-import { arrMakeFlat, isEmptyArr } from '@design-automation/mobius-sim/dist/util/arrs';
 import { getRay, getPlane } from './_common';
+
+import { GIModel, TId, TPlane, Txyz, EEntType, TEntTypeIdx, TRay, idsBreak, arrMakeFlat, isEmptyArr } from '@design-automation/mobius-sim';
 
 
 // ================================================================================================

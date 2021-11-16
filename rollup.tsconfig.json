@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "ES2019",                       
+    "module": "ESNext",                       
+    "allowJs": true,                       
+    "checkJs": false,                       
+    "declaration": true,                   
+    "outDir": "./build",                       
+    "strict": false,                          
+    "moduleResolution": "node",            
+    "baseUrl": "./",                          
+    "typeRoots": [
+        "node_modules/@types"
+    ],                                        
+    "types": [
+        "node",
+        "webgl2"
+    ],                                        
+    "esModuleInterop": true,                  
+    "skipLibCheck": true,
+    "inlineSourceMap": true,      
+    "paths": {}
+  },
+  "include" : [
+    "src/**/*"
+  ]
+}

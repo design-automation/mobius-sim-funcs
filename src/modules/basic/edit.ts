@@ -9,10 +9,7 @@ import { checkIDs, ID } from '../../_check_ids';
 
 import * as chk from '../../_check_types';
 
-import { GIModel } from '@design-automation/mobius-sim/dist/geo-info/GIModel';
-import { TId, EEntType, TEntTypeIdx, IEntSets } from '@design-automation/mobius-sim/dist/geo-info/common';
-import { idsMake, idsBreak } from '@design-automation/mobius-sim/dist/geo-info/common_id_funcs';
-import { arrMakeFlat, isEmptyArr } from '@design-automation/mobius-sim/dist/util/arrs';
+import { GIModel, TId, EEntType, TEntTypeIdx, idsMake, idsBreak, arrMakeFlat, isEmptyArr } from '@design-automation/mobius-sim';
 
 // Enums
 export enum _EDivisorMethod {

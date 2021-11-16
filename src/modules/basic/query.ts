@@ -7,10 +7,8 @@
 import { checkIDs, ID } from '../../_check_ids';
 import { checkAttribNameIdxKey, checkAttribValue, splitAttribNameIdxKey } from '../../_check_attribs';
 
-import { GIModel } from '@design-automation/mobius-sim/dist/geo-info/GIModel';
-import { TId, EEntType, ESort, TEntTypeIdx, EFilterOperatorTypes, TAttribDataTypes} from '@design-automation/mobius-sim/dist/geo-info/common';
-import { idsMake, idsBreak, idsMakeFromIdxs } from '@design-automation/mobius-sim/dist/geo-info/common_id_funcs';
-import { isEmptyArr, getArrDepth, arrMakeFlat } from '@design-automation/mobius-sim/dist/util/arrs';
+import { GIModel, TId, EEntType, ESort, TEntTypeIdx, EFilterOperatorTypes, TAttribDataTypes,
+    idsMake, idsBreak, idsMakeFromIdxs, isEmptyArr, getArrDepth, arrMakeFlat } from '@design-automation/mobius-sim';
 // ================================================================================================
 export enum _EEntType {
     POSI =   'ps',

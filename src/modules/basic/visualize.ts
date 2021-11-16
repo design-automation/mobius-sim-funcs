@@ -8,12 +8,10 @@ import { checkIDs, ID } from '../../_check_ids';
 
 import * as chk from '../../_check_types';
 
-import { GIModel } from '@design-automation/mobius-sim/dist/geo-info/GIModel';
-import { Txyz, TColor, EAttribNames, EAttribDataTypeStrs, EAttribPush, TRay, TPlane, TBBox } from '@design-automation/mobius-sim/dist/geo-info/common';
-import { TId, EEntType, TEntTypeIdx } from '@design-automation/mobius-sim/dist/geo-info/common';
-import { idsMake, idsBreak } from '@design-automation/mobius-sim/dist/geo-info/common_id_funcs';
-import { isEmptyArr, arrMakeFlat, getArrDepth } from '@design-automation/mobius-sim/dist/util/arrs';
-import { vecMult, vecAdd, vecSetLen, vecCross, vecNorm, vecSub, vecDot } from '@design-automation/mobius-sim/dist/geom/vectors';
+import { GIModel, Txyz, TColor, EAttribNames, EAttribDataTypeStrs, EAttribPush,
+    TRay, TPlane, TBBox, TId, EEntType, TEntTypeIdx, idsMake, idsBreak, isEmptyArr,
+    arrMakeFlat, getArrDepth, vecMult, vecAdd, vecSetLen, vecCross, vecNorm, vecSub, vecDot
+} from '@design-automation/mobius-sim';
 import * as ch from 'chroma-js';
 import * as Mathjs from 'mathjs';
 // ================================================================================================

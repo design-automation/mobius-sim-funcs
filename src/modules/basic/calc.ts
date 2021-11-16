@@ -9,16 +9,11 @@ import { checkIDs, ID } from '../../_check_ids';
 
 import * as chk from '../../_check_types';
 
-import { GIModel } from '@design-automation/mobius-sim/dist/geo-info/GIModel';
-import { TId, Txyz, EEntType, TEntTypeIdx, TRay, TPlane, TBBox, Txy } from '@design-automation/mobius-sim/dist/geo-info/common';
-import { idsBreak } from '@design-automation/mobius-sim/dist/geo-info/common_id_funcs';
-import { distance } from '@design-automation/mobius-sim/dist/geom/distance';
-import { vecSum, vecDiv, vecAdd, vecSub, vecCross, vecMult, vecFromTo, vecLen, vecDot, vecNorm, vecSetLen } from '@design-automation/mobius-sim/dist/geom/vectors';
-import { triangulate } from '@design-automation/mobius-sim/dist/triangulate/triangulate';
-import { area } from '@design-automation/mobius-sim/dist/geom/triangle';
+import { GIModel, TId, Txyz, EEntType, TEntTypeIdx, TRay, TPlane, TBBox, idsBreak, distance,
+    vecSum, vecDiv, vecAdd, vecSub, vecCross, vecMult, vecFromTo, vecLen, vecDot, vecNorm, vecSetLen,
+    triangulate, area, isEmptyArr, arrMakeFlat, arrMaxDepth, getArrDepth } from '@design-automation/mobius-sim';
 import uscore from 'underscore';
 import { getCentroid, getCenterOfMass } from './_common';
-import { isEmptyArr, arrMakeFlat, arrMaxDepth, getArrDepth } from '@design-automation/mobius-sim/dist/util/arrs';
 
 function rayFromPln(pln: TPlane|TPlane[]): TRay|TRay[] {
     // overloaded case

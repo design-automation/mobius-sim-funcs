@@ -1,6 +1,4 @@
-import { GIModel } from '@design-automation/mobius-sim/dist/geo-info/GIModel';
-import { EAttribDataTypeStrs, TEntTypeIdx } from '@design-automation/mobius-sim/dist/geo-info/common';
-import { idsBreak } from '@design-automation/mobius-sim/dist/geo-info/common_id_funcs';
+import { GIModel, EAttribDataTypeStrs, TEntTypeIdx, idsBreak } from '@design-automation/mobius-sim';
 
 //  ===============================================================================================
 //  Functions used by Mobius

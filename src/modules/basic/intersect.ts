@@ -6,14 +6,11 @@
 import { checkIDs, ID } from '../../_check_ids';
 
 import * as chk from '../../_check_types';
-
-import { TId, Txyz, EEntType, TPlane, TRay, TEntTypeIdx } from '@design-automation/mobius-sim/dist/geo-info/common';
-import { GIModel } from '@design-automation/mobius-sim/dist/geo-info/GIModel';
-import { idsBreak } from '@design-automation/mobius-sim/dist/geo-info/common_id_funcs';
-import { getArrDepth } from '@design-automation/mobius-sim/dist/util/arrs';
-import { vecCross} from '@design-automation/mobius-sim/dist/geom/vectors';
 import { _normal } from './calc';
 import * as THREE from 'three';
+
+import { TId, Txyz, EEntType, TPlane, TRay, TEntTypeIdx,
+    GIModel, idsBreak, getArrDepth, vecCross} from '@design-automation/mobius-sim';
 
 // ================================================================================================
 /**

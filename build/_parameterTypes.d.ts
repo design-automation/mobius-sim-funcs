@@ -1,0 +1,26 @@
+import { __new__, __merge__, __clone__ } from './modules/_model';
+import { GIMetaData } from '@design-automation/mobius-sim';
+export declare const _parameterTypes: {
+    newMeta: typeof GIMetaData;
+    constList: string;
+    model: string;
+    input: string;
+    console: string;
+    fileName: string;
+    new: string;
+    merge: string;
+    newFn: typeof __new__;
+    mergeFn: typeof __merge__;
+    cloneFn: typeof __clone__;
+    addData: string;
+    preprocess: string;
+    postprocess: string;
+    setattrib: string;
+    getattrib: string;
+    queryGet: string;
+    queryFilter: string;
+    select: string;
+    return: string;
+    asyncFuncs: string[];
+    LONGLAT: number[];
+};

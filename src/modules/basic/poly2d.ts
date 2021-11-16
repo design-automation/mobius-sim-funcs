@@ -6,20 +6,16 @@
 import { checkIDs, ID } from '../../_check_ids';
 
 import * as chk from '../../_check_types';
-
-import { GIModel } from '@design-automation/mobius-sim/dist/geo-info/GIModel';
-import { EEntType, TId, TEntTypeIdx, Txyz, Txy, TPlane } from '@design-automation/mobius-sim/dist/geo-info/common';
-import Shape from '@doodle3d/clipper-js';
-import { idsMake, idsBreak, idsMakeFromIdxs, idMake } from '@design-automation/mobius-sim/dist/geo-info/common_id_funcs';
-import { isEmptyArr, arrMakeFlat } from '@design-automation/mobius-sim/dist/util/arrs';
 import * as d3del from 'd3-delaunay';
 import * as d3poly from 'd3-polygon';
 import * as d3vor from 'd3-voronoi';
-import { distance } from '@design-automation/mobius-sim/dist/geom/distance';
-import { vecFromTo, vecNorm, vecMult, vecAdd } from '@design-automation/mobius-sim/dist/geom/vectors';
-import { xfromSourceTargetMatrix, multMatrix } from '@design-automation/mobius-sim/dist/geom/matrix';
 import { Matrix4 } from 'three';
-import { distanceManhattan } from '@design-automation/mobius-sim/dist/geom/distance';
+import Shape from '@doodle3d/clipper-js';
+
+import { GIModel, EEntType, TId, TEntTypeIdx, Txyz, Txy, TPlane, idsMake,
+    idsBreak, idsMakeFromIdxs, idMake, isEmptyArr, arrMakeFlat, distance,
+    vecFromTo, vecNorm, vecMult, vecAdd, xfromSourceTargetMatrix,
+    multMatrix, distanceManhattan } from '@design-automation/mobius-sim';
 
 const SCALE = 1e9;
 type TPosisMap = Map<number, Map<number, number>>;

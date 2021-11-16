@@ -9,9 +9,7 @@
 
 import * as chk from '../../_check_types';
 
-import { idsBreak } from '@design-automation/mobius-sim/dist/geo-info/common_id_funcs';
-import { TEntTypeIdx } from '@design-automation/mobius-sim/dist/geo-info/common';
-import { getArrDepth } from '@design-automation/mobius-sim/dist/util/arrs';
+import { idsBreak, TEntTypeIdx, getArrDepth } from '@design-automation/mobius-sim';
 
 
 // ================================================================================================
