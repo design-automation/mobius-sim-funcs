@@ -3,10 +3,9 @@
  *
  */
 
-// const mobius_sim_funcs = require('../build/mobius-sim-funcs.module');
-// const Funcs = mobius_sim_funcs.Funcs;
-// const Model = mobius_sim_funcs.Model;
-import {Funcs, Model} from '../build/index'
+const mobius_sim_funcs = require('../build/mobius-sim-funcs.module');
+const Funcs = mobius_sim_funcs.Funcs;
+const Model = mobius_sim_funcs.Model;
 // -------------------------------
 
 const model = new Model(); // create a new model
