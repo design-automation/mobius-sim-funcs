@@ -295,8 +295,7 @@ export enum _EIOExportDataFormat {
  * @example io.Export (#pg, 'my_model.obj', obj)
  * @example_info Exports all the polgons in the model as an OBJ.
  */
-export async function ExportFile(__model__: GIModel, entities: TId|TId[]|TId[][],
-        file_name: string, data_format: _EIOExportDataFormat): Promise<string> {
+export async function ExportFile(__model__: GIModel, entities: TId|TId[]|TId[][], data_format: _EIOExportDataFormat): Promise<string> {
     if ( typeof localStorage === 'undefined') { return; }
     // --- Error Check ---
     const fn_name = 'io.Export';
@@ -307,7 +306,6 @@ export async function ExportFile(__model__: GIModel, entities: TId|TId[]|TId[][]
             ents_arr = checkIDs(__model__, fn_name, 'entities', entities,
                 [ID.isIDL1], [EEntType.PLINE, EEntType.PGON, EEntType.COLL])  as TEntTypeIdx[];
         }
-        checkArgs(fn_name, 'file_name', file_name, [isStr, isStrL]);
     } else {
         if (entities !== null) {
             entities = arrMakeFlat(entities) as TId[];

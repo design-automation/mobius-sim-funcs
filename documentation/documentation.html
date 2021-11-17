@@ -1,11 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>documentation</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<link type="text/css" rel="stylesheet" href="documentation.css">
-	</head>
-	<body>
-	</body>
+    <head>
+        <title>CSS Template</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link type="text/css" rel="stylesheet" href="documentation.css" />
+    </head>
+    <body>
+        <script defer src="/node_modules/showdown/dist/showdown.js">
+        </script>
+        <script defer>
+            init();
+            async function init() {
+                const indexmd = (await (await fetch("index.md")).text()).split('# ');
+                const files = [];
+                indexmd.forEach(f => {
+                    if (f.trim() === '') { return; }
+                    files.push(f.split('\n')[0].trim().toLowerCase())
+                })
+                const sideMenu = document.getElementById("sideMenu");
+                for (const f of files) {
+                    const newLink = createLink(f);
+                    sideMenu.appendChild(newLink);
+                }
+            }
+            function createLink(docFile) {
+                const template = `<a onclick="loadDoc('${docFile}.md')">${docFile}</a>`;
+                const link = createElementFromHTML(template);
+                return link;
+            }
+            function createElementFromHTML(htmlString) {
+                const div = document.createElement("div");
+                div.innerHTML = htmlString.trim();
+                return div.firstChild;
+            }
+            async function loadDoc(docFile) {
+                const fileContent = await (await fetch(docFile)).text();
+                const showdownConverter = new showdown.Converter()
+                const html = showdownConverter.makeHtml(fileContent)
+                document.getElementById('docContent').innerHTML = html;
+            }
+        </script>
+
+        <div id="sideMenu" class="sidenav">
+            <a href='/index.html' class='back'>Back</a>
+        </div>
+
+        <div id='docContent' class="content"></div>
+    </body>
 </html>

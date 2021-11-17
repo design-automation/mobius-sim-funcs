@@ -12,7 +12,7 @@ import { GIModel, Txyz, TColor, EAttribNames, EAttribDataTypeStrs, EAttribPush,
     TRay, TPlane, TBBox, TId, EEntType, TEntTypeIdx, idsMake, idsBreak, isEmptyArr,
     arrMakeFlat, getArrDepth, vecMult, vecAdd, vecSetLen, vecCross, vecNorm, vecSub, vecDot
 } from '@design-automation/mobius-sim';
-import * as ch from 'chroma-js';
+import {scale as chromaScale} from 'chroma-js';
 import * as Mathjs from 'mathjs';
 // ================================================================================================
 export enum _ESide {
@@ -236,7 +236,7 @@ function _gradient(__model__: GIModel, ents_arr: TEntTypeIdx[], attrib_name: str
     } else {
         scale = method;
     }
-    const col_scale = ch.scale(scale);
+    const col_scale = chromaScale(scale);
     const col_domain  = col_scale.domain(range);
 
     // make a values map, grouping together all the verts that have the same value

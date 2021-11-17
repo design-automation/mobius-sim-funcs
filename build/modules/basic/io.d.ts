@@ -90,7 +90,7 @@ export declare enum _EIOExportDataFormat {
  * @example io.Export (#pg, 'my_model.obj', obj)
  * @example_info Exports all the polgons in the model as an OBJ.
  */
-export declare function ExportFile(__model__: GIModel, entities: TId | TId[] | TId[][], file_name: string, data_format: _EIOExportDataFormat): Promise<string>;
+export declare function ExportFile(__model__: GIModel, entities: TId | TId[] | TId[][], data_format: _EIOExportDataFormat): Promise<string>;
 /**
  * Export data from the model as a file.
  * \n
