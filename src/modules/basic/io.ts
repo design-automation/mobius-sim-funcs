@@ -295,7 +295,7 @@ export enum _EIOExportDataFormat {
  * @example io.Export (#pg, 'my_model.obj', obj)
  * @example_info Exports all the polgons in the model as an OBJ.
  */
-export async function ExportFile(__model__: GIModel, entities: TId|TId[]|TId[][], data_format: _EIOExportDataFormat): Promise<string> {
+export async function ExportData(__model__: GIModel, entities: TId|TId[]|TId[][], data_format: _EIOExportDataFormat): Promise<string> {
     if ( typeof localStorage === 'undefined') { return; }
     // --- Error Check ---
     const fn_name = 'io.Export';
@@ -757,7 +757,7 @@ async function getURLContent(url: string): Promise<any> {
 }
 async function openZipFile(zipFile) {
     const result = {};
-    await loadAsync(zipFile).then(async function (zip) {
+    await loadAsync(zipFile.arrayBuffer()).then(async function (zip) {
         for (const filename of Object.keys(zip.files)) {
             // const splittedNames = filename.split('/').slice(1).join('/');
             await zip.files[filename].async('text').then(function (fileData) {
