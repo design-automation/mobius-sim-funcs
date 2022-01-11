@@ -2,8 +2,14 @@
   "name": "@design-automation/mobius-sim-funcs",
   "version": "0.2.1",
   "description": "Mobius Spatial Information Model",
-  "main": "build/index.js",
-  "module": "build/mobius-sim-funcs.module.es.js",
+  "main": "build/cjs/index.js",
+  "module": "build/mjs/index.js",
+  "exports": {
+    ".": {
+        "import": "./build/mjs/index.js",
+        "require": "./build/cjs/index.js"
+    }
+  },
   "dependencies": {
     "@design-automation/mobius-sim": "^0.2.4",
     "@doodle3d/clipper-js": "^1.0.11",
@@ -42,11 +48,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "http-server -p 4200",
-    "build": "tsc",
+    "build": "npm run build-del && npm run build-mjs && npm run build-cjs && fixup.sh",
+    "build-del": "del /s /q build\\*",
+    "build-mjs": "tsc -p tsconfig.json",
+    "build-cjs": "tsc -p tsconfig-cjs.json",
     "rollup": "rollup --config rollup.config.js",
     "deploy": "npm run build && npm run typedoc && npm publish --access public",
     "moduleDocs": "npm run typedoc",
-    "typedoc": "typedoc --exclude **/*.spec.ts --json typedoc-json/doc.json src/modules && node genDoc.js"
+    "typedoc": "typedoc --exclude **/*.spec.ts --json typedoc-json/doc.json src/modules/doc_export.ts && node genDoc.js"
   },
   "repository": {
     "type": "git",
