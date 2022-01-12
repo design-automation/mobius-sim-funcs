@@ -1,5 +1,6 @@
-import {__new__, __merge__, __clone__} from './modules/_model';
 import { GIMetaData, LONGLAT } from '@design-automation/mobius-sim';
+
+import { __clone__, __merge__, __new__ } from './modules/_model';
 
 export const _parameterTypes = {
     // classes
@@ -30,7 +31,7 @@ export const _parameterTypes = {
 
     select: '_model.__select__',
 
-    return: '_Output.Return',
+    return: '_output.Return',
 
     asyncFuncs: [
         'util.ModelCompare',

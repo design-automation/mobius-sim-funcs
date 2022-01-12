@@ -6,12 +6,12 @@
   "module": "build/mjs/index.js",
   "exports": {
     ".": {
-        "import": "./build/mjs/index.js",
-        "require": "./build/cjs/index.js"
+      "import": "./build/mjs/index.js",
+      "require": "./build/cjs/index.js"
     }
   },
   "dependencies": {
-    "@design-automation/mobius-sim": "^0.2.4",
+    "@design-automation/mobius-sim": "^0.2.6",
     "@doodle3d/clipper-js": "^1.0.11",
     "chroma-js": "^2.0.3",
     "cytoscape": "^3.14.1",
@@ -22,7 +22,7 @@
     "lodash": "^4.17.21",
     "mathjs": "^5.10.3",
     "proj4": "^2.5.0",
-    "three": "^0.131.3",
+    "three": "^0.133.1",
     "underscore": "^1.13.1"
   },
   "devDependencies": {
@@ -35,7 +35,7 @@
     "@types/d3-voronoi": "^1.1.9",
     "@types/lodash": "^4.14.175",
     "@types/node": "^16.0.0",
-    "@types/three": "^0.130.0",
+    "@types/three": "^0.133.1",
     "@types/underscore": "^1.8.14",
     "@types/webgl2": "0.0.5",
     "http-server": "^14.0.0",

@@ -1,0 +1,44 @@
+import { GIModel } from '@design-automation/mobius-sim';
+import * as Enum from './_enum';
+import { _getFile } from './_getFile';
+import { Export } from './Export';
+import { ExportData } from './ExportData';
+import { Geoalign } from './Geoalign';
+import { Geolocate } from './Geolocate';
+import { Import } from './Import';
+import { ImportData } from './ImportData';
+import { LatLong2XYZ } from './LatLong2XYZ';
+import { Read } from './Read';
+import { Write } from './Write';
+export { Read };
+export { Write };
+export { ImportData };
+export { Import };
+export { Export };
+export { ExportData };
+export { Geolocate };
+export { Geoalign };
+export { LatLong2XYZ };
+export { _getFile };
+export declare class IoFunc {
+    __model__: GIModel;
+    __enum__: {
+        _EIOImportDataFormat: typeof Enum._EIOImportDataFormat;
+        _EIODataSource: typeof Enum._EIODataSource;
+        _EIODataTarget: typeof Enum._EIODataTarget;
+        _EIOExportDataFormat: typeof Enum._EIOExportDataFormat;
+    };
+    constructor(model: GIModel);
+    Read(data: any): Promise<any>;
+    Write(data: any, file_name: any, data_target: any): Promise<any>;
+    ImportData(model_data: any, data_format: any): any;
+    Import(input_data: any, data_format: any): Promise<any>;
+    Export(entities: any, file_name: any, data_format: any, data_target: any): Promise<any>;
+    Geolocate(lat_long: any, rot: any, elev: any): any;
+    Geoalign(lat_long_o: any, lat_long_x: any, elev: any): any;
+    LatLong2XYZ(lat_long: any, elev: any): any;
+    _Async_Param_Read(data: any): any;
+    _Async_Param_Write(data: any, file_name: any, data_target: any): any;
+    _Async_Param_Import(input_data: any, data_format: any): any;
+    _Async_Param_Export(entities: any, file_name: any, data_format: any, data_target: any): void;
+}

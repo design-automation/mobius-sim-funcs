@@ -1,0 +1,37 @@
+import { GIModel } from '@design-automation/mobius-sim';
+import { EntityInfo } from './EntityInfo';
+import { ModelCheck } from './ModelCheck';
+import { ModelCompare } from './ModelCompare';
+import { ModelInfo } from './ModelInfo';
+import { ModelMerge } from './ModelMerge';
+import { ParamInfo } from './ParamInfo';
+import { Select } from './Select';
+import { SendData } from './SendData';
+import { VrHotspot } from './VrHotspot';
+import { VrPanorama } from './VrPanorama';
+export { Select };
+export { VrHotspot };
+export { VrPanorama };
+export { ParamInfo };
+export { EntityInfo };
+export { ModelInfo };
+export { ModelCheck };
+export { ModelCompare };
+export { ModelMerge };
+export { SendData };
+export declare class UtilFunc {
+    __model__: GIModel;
+    constructor(model: GIModel);
+    Select(entities: any): any;
+    VrHotspot(point: any, name: any, camera_rot: any): any;
+    VrPanorama(point: any, back_url: any, back_rot: any, fore_url: any, fore_rot: any): any;
+    ParamInfo(__constList__: any): any;
+    EntityInfo(entities: any): any;
+    ModelInfo(): any;
+    ModelCheck(): any;
+    ModelCompare(input_data: any): any;
+    ModelMerge(input_data: any): any;
+    SendData(data: any): any;
+    _Async_Param_ModelCompare(input_data: any): any;
+    _Async_Param_ModelMerge(input_data: any): any;
+}

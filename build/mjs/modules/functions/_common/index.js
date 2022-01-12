@@ -1,0 +1,21 @@
+/**
+ * Shared utility functions
+ * @module
+ */
+import { plnFromRay } from './plnFromRay';
+export { plnFromRay };
+import { getOrigin } from './getOrigin';
+export { getOrigin };
+import { getRay } from './getRay';
+export { getRay };
+import { getPlane } from './getPlane';
+export { getPlane };
+import { getCentoridFromEnts } from './getCentoridFromEnts';
+export { getCentoridFromEnts };
+import { getCentroid } from './getCentroid';
+export { getCentroid };
+import { getCenterOfMass } from './getCenterOfMass';
+export { getCenterOfMass };
+import { getPlanesSeq } from './getPlanesSeq';
+export { getPlanesSeq };
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi8uLi9zcmMvbW9kdWxlcy9mdW5jdGlvbnMvX2NvbW1vbi9pbmRleC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTs7O0dBR0c7QUFFSCxPQUFPLEVBQUUsVUFBVSxFQUFFLE1BQU0sY0FBYyxDQUFDO0FBQzFDLE9BQU8sRUFBRSxVQUFVLEVBQUUsQ0FBQTtBQUVyQixPQUFPLEVBQUUsU0FBUyxFQUFFLE1BQU0sYUFBYSxDQUFDO0FBQ3hDLE9BQU8sRUFBRSxTQUFTLEVBQUUsQ0FBQTtBQUVwQixPQUFPLEVBQUUsTUFBTSxFQUFFLE1BQU0sVUFBVSxDQUFDO0FBQ2xDLE9BQU8sRUFBRSxNQUFNLEVBQUUsQ0FBQTtBQUVqQixPQUFPLEVBQUUsUUFBUSxFQUFFLE1BQU0sWUFBWSxDQUFDO0FBQ3RDLE9BQU8sRUFBRSxRQUFRLEVBQUUsQ0FBQTtBQUVuQixPQUFPLEVBQUUsbUJBQW1CLEVBQUUsTUFBTSx1QkFBdUIsQ0FBQztBQUM1RCxPQUFPLEVBQUUsbUJBQW1CLEVBQUUsQ0FBQTtBQUU5QixPQUFPLEVBQUUsV0FBVyxFQUFFLE1BQU0sZUFBZSxDQUFDO0FBQzVDLE9BQU8sRUFBRSxXQUFXLEVBQUUsQ0FBQTtBQUV0QixPQUFPLEVBQUUsZUFBZSxFQUFFLE1BQU0sbUJBQW1CLENBQUM7QUFDcEQsT0FBTyxFQUFFLGVBQWUsRUFBRSxDQUFBO0FBRTFCLE9BQU8sRUFBRSxZQUFZLEVBQUUsTUFBTSxnQkFBZ0IsQ0FBQztBQUM5QyxPQUFPLEVBQUUsWUFBWSxFQUFFLENBQUEifQ==

@@ -1,0 +1,24 @@
+/**
+ * The `collections` module has functions for creating and modifying collections.
+ * @module
+ */
+import { GIModel } from '@design-automation/mobius-sim';
+import { Add } from './Add';
+import { Create } from './Create';
+import { Delete } from './Delete';
+import { Get } from './Get';
+import { Remove } from './Remove';
+export { Create };
+export { Get };
+export { Add };
+export { Remove };
+export { Delete };
+export declare class CollectionFunc {
+    __model__: GIModel;
+    constructor(model: GIModel);
+    Create(entities: any, name: any): any;
+    Get(names: any): any;
+    Add(coll: any, entities: any): any;
+    Remove(coll: any, entities: any): any;
+    Delete(coll: any): any;
+}

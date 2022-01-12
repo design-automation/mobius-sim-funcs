@@ -1,0 +1,16 @@
+import { PlaneEdge } from './PlaneEdge';
+import { RayFace } from './RayFace';
+export { RayFace };
+export { PlaneEdge };
+export class IntersectFunc {
+    constructor(model) {
+        this.__model__ = model;
+    }
+    RayFace(ray, entities) {
+        return RayFace(this.__model__, ray, entities);
+    }
+    PlaneEdge(plane, entities) {
+        return PlaneEdge(this.__model__, plane, entities);
+    }
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi8uLi9zcmMvbW9kdWxlcy9mdW5jdGlvbnMvaW50ZXJzZWN0L2luZGV4LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUVBLE9BQU8sRUFBRSxTQUFTLEVBQUUsTUFBTSxhQUFhLENBQUM7QUFDeEMsT0FBTyxFQUFFLE9BQU8sRUFBRSxNQUFNLFdBQVcsQ0FBQztBQUVwQyxPQUFPLEVBQUUsT0FBTyxFQUFFLENBQUM7QUFDbkIsT0FBTyxFQUFFLFNBQVMsRUFBRSxDQUFDO0FBQ3JCLE1BQU0sT0FBTyxhQUFhO0lBRXRCLFlBQVksS0FBYztRQUN0QixJQUFJLENBQUMsU0FBUyxHQUFHLEtBQUssQ0FBQztJQUMzQixDQUFDO0lBQ0QsT0FBTyxDQUFDLEdBQUcsRUFBRSxRQUFRO1FBQ2pCLE9BQU8sT0FBTyxDQUFDLElBQUksQ0FBQyxTQUFTLEVBQUUsR0FBRyxFQUFFLFFBQVEsQ0FBQyxDQUFDO0lBQ2xELENBQUM7SUFDRCxTQUFTLENBQUMsS0FBSyxFQUFFLFFBQVE7UUFDckIsT0FBTyxTQUFTLENBQUMsSUFBSSxDQUFDLFNBQVMsRUFBRSxLQUFLLEVBQUUsUUFBUSxDQUFDLENBQUM7SUFDdEQsQ0FBQztDQUNKIn0=
