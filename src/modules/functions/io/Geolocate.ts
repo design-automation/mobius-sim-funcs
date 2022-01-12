@@ -1,10 +1,7 @@
-/**
- * The `io` module has functions for importing and exporting.
- * @module
- */
 import { GIModel, Txy, Txyz, vecRot } from '@design-automation/mobius-sim';
 
 import { checkArgs, isNull, isNum, isXY } from '../../../_check_types';
+
 
 
 const requestedBytes = 1024 * 1024 * 200; // 200 MB local storage quota

@@ -1,7 +1,3 @@
-/**
- * The `util` module has some utility functions used for debugging.
- * @module
- */
 import { EAttribDataTypeStrs, GIModel, idsBreak, TEntTypeIdx } from '@design-automation/mobius-sim';
 
 

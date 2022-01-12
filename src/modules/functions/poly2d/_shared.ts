@@ -1,7 +1,3 @@
-/**
- * The `poly2D` module has a set of functions for working with 2D polygons, on the XY plane.
- * @module
- */
 import { EEntType, GIModel, TEntTypeIdx, Txyz } from '@design-automation/mobius-sim';
 import Shape from '@doodle3d/clipper-js';
 import * as d3poly from 'd3-polygon';

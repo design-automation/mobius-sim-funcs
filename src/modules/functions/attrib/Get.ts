@@ -1,8 +1,3 @@
-/**
- * The `attrib` module has functions for working with attributes in teh model.
- * Note that attributes can also be set and retrieved using the "@" symbol.
- * @module
- */
 import {
     EEntTypeStr,
     getArrDepth,
@@ -17,6 +12,7 @@ import uscore from 'underscore';
 
 import { checkAttribName, checkAttribNameIdxKey, splitAttribNameIdxKey } from '../../../_check_attribs';
 import { checkIDs, ID } from '../../../_check_ids';
+
 
 
 // ================================================================================================

@@ -1,3 +1,7 @@
+/**
+ * The `io` module has functions for importing and exporting.
+ * @module
+ */
 import { GIModel } from '@design-automation/mobius-sim';
 
 import * as Enum from './_enum';
@@ -44,6 +48,9 @@ export class IoFunc {
     }
     async Export(entities, file_name, data_format, data_target): Promise<any> {
         return Export(this.__model__, entities, file_name, data_format, data_target);
+    }
+    ExportData(entities, data_format): any {
+        return ExportData(this.__model__, entities, data_format);
     }
     Geolocate(lat_long, rot, elev): any {
         return Geolocate(this.__model__, lat_long, rot, elev);

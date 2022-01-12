@@ -1,3 +1,8 @@
+/**
+ * The `query` module has functions for querying entities in the the model.
+ * Most of these functions all return a list of IDs of entities in the model.
+ * @module
+ */
 import { GIModel } from '@design-automation/mobius-sim';
 
 import * as Enum from './_enum';

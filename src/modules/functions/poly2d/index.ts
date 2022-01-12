@@ -1,3 +1,7 @@
+/**
+ * The `poly2D` module has a set of functions for working with 2D polygons, on the XY plane.
+ * @module
+ */
 import { GIModel } from '@design-automation/mobius-sim';
 
 import * as Enum from './_enum';

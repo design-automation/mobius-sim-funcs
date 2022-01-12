@@ -1,7 +1,3 @@
-/**
- * The `io` module has functions for importing and exporting.
- * @module
- */
 import {
     arrMakeFlat,
     download,
@@ -19,6 +15,7 @@ import {
 import { checkIDs, ID } from '../../../_check_ids';
 import { checkArgs, isStr, isStrL } from '../../../_check_types';
 import { _EIODataTarget, _EIOExportDataFormat } from './_enum';
+
 
 
 const requestedBytes = 1024 * 1024 * 200; // 200 MB local storage quota

@@ -1,9 +1,3 @@
-/**
- * The `edit` module has functions for editing entities in the model.
- * These function modify the topology of objects: vertices, edges, wires and faces.
- * Some functions return the IDs of the entities that are created or modified.
- * @module
- */
 import {
     arrMakeFlat,
     EEntType,
@@ -18,6 +12,7 @@ import {
 import { checkIDs, ID } from '../../../_check_ids';
 import * as chk from '../../../_check_types';
 import { _EDivisorMethod } from './_enum';
+
 
 
 // ================================================================================================

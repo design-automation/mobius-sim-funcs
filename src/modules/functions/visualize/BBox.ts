@@ -1,8 +1,3 @@
-/**
- * The `visualize` module has functions for defining various settings for the 3D viewer.
- * Color is saved as vertex attributes.
- * @module
- */
 import { EEntType, getArrDepth, GIModel, idsMake, TBBox, TEntTypeIdx, TId, Txyz } from '@design-automation/mobius-sim';
 
 import * as chk from '../../../_check_types';

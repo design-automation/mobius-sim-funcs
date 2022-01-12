@@ -1,3 +1,7 @@
+/**
+ * The `intersect` module has functions for calculating intersections between different types of entities.
+ * @module
+*/
 import { GIModel } from '@design-automation/mobius-sim';
 
 import { PlaneEdge } from './PlaneEdge';

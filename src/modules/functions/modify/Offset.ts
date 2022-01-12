@@ -1,14 +1,8 @@
-/**
- * The `modify` module has functions for modifying existing entities in the model.
- * These functions do not make any new entities, and they do not change the topology of objects.
- * These functions only change attribute values.
- * All these functions have no return value.
- * @module
- */
 import { arrMakeFlat, EEntType, GIModel, idsBreak, isEmptyArr, TEntTypeIdx, TId } from '@design-automation/mobius-sim';
 
 import { checkIDs, ID } from '../../../_check_ids';
 import * as chk from '../../../_check_types';
+
 
 
 

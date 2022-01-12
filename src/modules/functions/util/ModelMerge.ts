@@ -1,7 +1,3 @@
-/**
- * The `util` module has some utility functions used for debugging.
- * @module
- */
 import { GIModel, idsMake, TEntTypeIdx, TId } from '@design-automation/mobius-sim';
 
 import { _getFile } from '../io';

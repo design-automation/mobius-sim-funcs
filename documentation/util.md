@@ -106,15 +106,6 @@ The string can be printed to the console for viewing.
 **Returns:** Text that summarises the comparison between the two models.  
   
   
-## _Async_Param_ModelCompare  
-  
-  
-**Description:** undefined  
-  
-**Parameters:**  
-  * *input\_data:* undefined  
-  
-  
 ## ModelMerge  
   
   
@@ -125,15 +116,6 @@ This is the same as importing the model, except that no collection is created.
   * *input\_data:* The location of the GI Model to import into this model to.  
   
 **Returns:** Text that summarises the comparison between the two models.  
-  
-  
-## _Async_Param_ModelMerge  
-  
-  
-**Description:** undefined  
-  
-**Parameters:**  
-  * *input\_data:* undefined  
   
   
 ## SendData  

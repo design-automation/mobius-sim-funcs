@@ -1,3 +1,11 @@
+/**
+ * The `list` module has functions for working with lists of items.
+ * These functions have no direct link with the model, the are generic functions for manipulating lists.
+ * The functions are often used when manipulating lists of IDs of entities in the model.
+ * These functions neither make nor modify anything in the model.
+ * In addition to these functions, there are also various inline functions available for working with lists.
+ * @module
+ */
 import * as Enum from './_enum';
 import { Add } from './Add';
 import { Remove } from './Remove';

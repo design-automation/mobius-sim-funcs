@@ -1,43 +1,20 @@
-/**
- * The `calc` module has functions for performing various types of calculations with entities in the model.
- * These functions neither make nor modify anything in the model.
- * These functions all return either numbers or lists of numbers.
- * @module
- */
 import {
-    area,
-    arrMakeFlat,
-    arrMaxDepth,
     distance,
     EEntType,
     getArrDepth,
     GIModel,
     idsBreak,
     isEmptyArr,
-    TBBox,
     TEntTypeIdx,
     TId,
     TPlane,
     TRay,
-    triangulate,
     Txyz,
-    vecAdd,
     vecCross,
-    vecDiv,
-    vecDot,
-    vecFromTo,
-    vecLen,
-    vecMult,
-    vecNorm,
-    vecSetLen,
-    vecSub,
-    vecSum,
 } from '@design-automation/mobius-sim';
 import uscore from 'underscore';
 
 import { checkIDs, ID } from '../../../_check_ids';
-import * as chk from '../../../_check_types';
-import { getCenterOfMass, getCentroid } from '../_common';
 
 
 function rayFromPln(pln: TPlane|TPlane[]): TRay|TRay[] {

@@ -115,16 +115,6 @@ entities must be part of the set of input entities and must have naked edges.
   
   
   
-## _perimeter  
-  
-  
-**Description:** undefined  
-  
-**Parameters:**  
-  * *select\_ent\_type:* undefined  
-  * *ents\_arr:* undefined  
-  
-  
 ## Neighbor  
   
   
@@ -142,16 +132,6 @@ entities must not be part of the set of input entities, but must be welded to on
   * query.neighbor('edges', [polyline1,polyline2,polyline3])  
     Returns list of edges that are welded to polyline1, polyline2, or polyline3.
   
-  
-  
-## _neighbors  
-  
-  
-**Description:** undefined  
-  
-**Parameters:**  
-  * *select\_ent\_type:* undefined  
-  * *ents\_arr:* undefined  
   
   
 ## Edge  

@@ -1,7 +1,3 @@
-/**
- * The `collections` module has functions for creating and modifying collections.
- * @module
- */
 import {
     EAttribNames,
     EEntType,
@@ -13,6 +9,7 @@ import {
 } from '@design-automation/mobius-sim';
 
 import * as chk from '../../../_check_types';
+
 
 
 // ================================================================================================

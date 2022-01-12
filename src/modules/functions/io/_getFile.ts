@@ -1,14 +1,8 @@
-/**
- * The `io` module has functions for importing and exporting.
- * @module
- */
 import { loadAsync } from 'jszip';
 
 
-/**
- * The `io` module has functions for importing and exporting.
- * @module
- */
+
+
 
  const requestedBytes = 1024 * 1024 * 200; // 200 MB local storage quota
 

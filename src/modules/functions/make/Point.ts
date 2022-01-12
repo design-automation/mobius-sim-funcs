@@ -1,11 +1,7 @@
-/**
- * The `make` module has functions for making new entities in the model.
- * All these functions return the IDs of the entities that are created.
- * @module
- */
 import { EEntType, GIModel, idsBreak, idsMake, isEmptyArr, TEntTypeIdx, TId } from '@design-automation/mobius-sim';
 
 import { checkIDs, ID } from '../../../_check_ids';
+
 
 
 

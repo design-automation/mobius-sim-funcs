@@ -8,10 +8,7 @@
     </head>
     <body>
         <script type="module">
-            import {
-                Funcs,
-                Model,
-            } from "./mobius-sim-funcs.module.es.js";
+            import { Funcs } from "./mobius-sim-funcs.module.es.js";
             init();
             async function init() {
                 const files = await (await fetch("files.json")).json();
@@ -46,10 +43,9 @@
                         )[1];
                         const fn = new AsyncFunction(
                             "Funcs",
-                            "Model",
                             fnString
                         );
-                        const x = await fn(Funcs, Model);
+                        const x = await fn(new Funcs());
                         const iframe = document.getElementById(
                             "mobius-viewer-iframe"
                         ).contentWindow;

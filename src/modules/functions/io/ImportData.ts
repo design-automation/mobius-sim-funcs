@@ -1,11 +1,8 @@
-/**
- * The `io` module has functions for importing and exporting.
- * @module
- */
 import { GIModel, TId } from '@design-automation/mobius-sim';
 
 import { _EIOImportDataFormat } from './_enum';
 import { _import } from './Import';
+
 
 
 

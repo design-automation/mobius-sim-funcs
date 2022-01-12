@@ -1,10 +1,7 @@
-/**
- * The `collections` module has functions for creating and modifying collections.
- * @module
- */
 import { arrMakeFlat, EEntType, GIModel, idsBreak, isEmptyArr, TEntTypeIdx, TId } from '@design-automation/mobius-sim';
 
 import { checkIDs, ID } from '../../../_check_ids';
+
 
 
 // ================================================================================================

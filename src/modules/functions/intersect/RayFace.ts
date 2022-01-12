@@ -1,7 +1,3 @@
-/**
- * The `intersect` module has functions for calculating intersections between different types of entities.
- * @module
- */
 import { EEntType, getArrDepth, GIModel, idsBreak, TEntTypeIdx, TId, TRay, Txyz } from '@design-automation/mobius-sim';
 import * as THREE from 'three';
 

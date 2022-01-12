@@ -1,8 +1,3 @@
-/**
- * The `attrib` module has functions for working with attributes in teh model.
- * Note that attributes can also be set and retrieved using the "@" symbol.
- * @module
- */
 import { EAttribPush, EEntType, getArrDepth, GIModel, idsBreak, TEntTypeIdx, TId } from '@design-automation/mobius-sim';
 import uscore from 'underscore';
 
@@ -10,6 +5,7 @@ import { checkAttribName, checkAttribNameIdxKey, splitAttribNameIdxKey } from '.
 import { checkIDs, ID } from '../../../_check_ids';
 import { _EAttribPushTarget } from './_enum';
 import { _getAttribPushTarget } from './_shared';
+
 
 
 // ================================================================================================

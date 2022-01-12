@@ -178,19 +178,11 @@ const doc = dc;
 const moduleDocs = [];
 
 for (const mod of doc.children) {
-    const modSourceSplit = mod.sources[0].fileName.replace(/"/g, '').replace(/'/g, '').split('/');
-    // const coreIndex = modSourceSplit.indexOf('core');
-    // if (modSourceSplit.length < 3 || coreIndex === -1) {
-    //     continue;
-    // }
-    if (modSourceSplit[0] === 'inline') {
-    } else if (modSourceSplit[0] === 'modules') {
-        const modName = mod.name;
-        if (modName.substr(0, 1) === '_' || modName === 'index' || modName === 'categorization') {
-            continue;
-        }
-        addDoc(mod, modName, moduleDocs);
+    const modName = mod.name;
+    if (modName.substring(0, 1) === '_' || modName === 'index' || modName === 'categorization') {
+        continue;
     }
+    addDoc(mod, modName, moduleDocs);
 }
 
 fs.mkdirSync('./documentation', { recursive: true }, (err) => {

@@ -14,15 +14,6 @@ The `io` module has functions for importing and exporting.
 **Returns:** the data.  
   
   
-## _Async_Param_Read  
-  
-  
-**Description:** undefined  
-  
-**Parameters:**  
-  * *data:* undefined  
-  
-  
 ## Write  
   
   
@@ -36,15 +27,22 @@ The `io` module has functions for importing and exporting.
 **Returns:** whether the data is successfully saved.  
   
   
-## _Async_Param_Write  
+## ImportData  
   
   
-**Description:** undefined  
+**Description:** Imports a string of data into the model.
+
+  
   
 **Parameters:**  
-  * *data:* undefined  
-  * *file\_name:* undefined  
-  * *data\_target:* undefined  
+  * *model\_data:* The model data  
+  * *data\_format:* Enum, the file format.  
+  
+**Returns:** A list of the positions, points, polylines, polygons and collections added to the model.  
+**Examples:**  
+  * io.Import ("my_data.obj", obj)  
+    Imports the data from my_data.obj, from local storage.
+  
   
   
 ## Import  
@@ -64,7 +62,7 @@ Note that a script using a file in local storage may fail when others try to ope
   
   
 **Parameters:**  
-  * *input\_data:* undefined  
+  * *data\_url:* The url to retrieve the data from  
   * *data\_format:* Enum, the file format.  
   
 **Returns:** A list of the positions, points, polylines, polygons and collections added to the model.  
@@ -72,35 +70,6 @@ Note that a script using a file in local storage may fail when others try to ope
   * io.Import ("my_data.obj", obj)  
     Imports the data from my_data.obj, from local storage.
   
-  
-  
-## _Async_Param_Import  
-  
-  
-**Description:** undefined  
-  
-**Parameters:**  
-  * *input\_data:* undefined  
-  * *data\_format:* undefined  
-  
-  
-## _import  
-  
-  
-**Description:** undefined  
-  
-**Parameters:**  
-  * *model\_data:* undefined  
-  * *data\_format:* undefined  
-  
-  
-## _importGI  
-  
-  
-**Description:** undefined  
-  
-**Parameters:**  
-  * *json\_str:* undefined  
   
   
 ## Export  
@@ -130,16 +99,22 @@ If you export to Local Storage, there will be no popup.
   
   
   
-## _Async_Param_Export  
+## ExportData  
   
   
-**Description:** undefined  
+**Description:** Export data from the model as a string.
+
+  
   
 **Parameters:**  
-  * *entities:* undefined  
-  * *file\_name:* undefined  
-  * *data\_format:* undefined  
-  * *data\_target:* undefined  
+  * *entities:* Optional. Entities to be exported. If null, the whole model will be exported.  
+  * *data\_format:* Enum, the file format.  
+  
+**Returns:** the model data as a string.  
+**Examples:**  
+  * io.Export (#pg, 'my_model.obj', obj)  
+    Exports all the polgons in the model as an OBJ.
+  
   
   
 ## Geolocate  
@@ -191,15 +166,6 @@ based on the geolocation of the model.
   
   
 ## _getFile  
-  
-  
-**Description:** undefined  
-  
-**Parameters:**  
-  * *source:* undefined  
-  
-  
-## _Async_Param__getFile  
   
   
 **Description:** undefined  

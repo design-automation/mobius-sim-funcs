@@ -1,8 +1,3 @@
-/**
- * The `make` module has functions for making new entities in the model.
- * All these functions return the IDs of the entities that are created.
- * @module
- */
 import {
     EEntType,
     getArrDepth,
@@ -16,6 +11,7 @@ import {
 
 import { checkIDs, ID } from '../../../_check_ids';
 import { _EClose } from './_enum';
+
 
 
 

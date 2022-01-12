@@ -1,11 +1,8 @@
-/**
- * The `io` module has functions for importing and exporting.
- * @module
- */
 import { download, GIModel } from '@design-automation/mobius-sim';
 
 import { _EIODataTarget } from './_enum';
 import { saveResource } from './Export';
+
 
 
 

@@ -1,7 +1,3 @@
-/**
- * The `io` module has functions for importing and exporting.
- * @module
- */
 import {
     EEntType,
     GIModel,
@@ -15,6 +11,7 @@ import {
 
 import { _getFile } from '.';
 import { _EIOImportDataFormat } from './_enum';
+
 
 
 

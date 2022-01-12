@@ -1,3 +1,8 @@
+/**
+ * The `visualize` module has functions for defining various settings for the 3D viewer.
+ * Color is saved as vertex attributes.
+ * @module
+ */
 import { GIModel } from '@design-automation/mobius-sim';
 
 import * as Enum from './_enum';

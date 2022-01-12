@@ -94,16 +94,6 @@ by the specified scale factor.
   
   
   
-## _normal  
-  
-  
-**Description:** undefined  
-  
-**Parameters:**  
-  * *ents\_arr:* undefined  
-  * *scale:* undefined  
-  
-  
 ## Eval  
   
   

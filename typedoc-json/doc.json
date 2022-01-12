@@ -1594,7 +1594,7 @@
 					"sources": [
 						{
 							"fileName": "functions/analyze/Centrality.ts",
-							"line": 58,
+							"line": 53,
 							"character": 16
 						}
 					],
@@ -1742,7 +1742,7 @@
 					"sources": [
 						{
 							"fileName": "functions/analyze/ClosestPath.ts",
-							"line": 72,
+							"line": 67,
 							"character": 16
 						}
 					],
@@ -1926,7 +1926,7 @@
 					"sources": [
 						{
 							"fileName": "functions/analyze/Degree.ts",
-							"line": 54,
+							"line": 49,
 							"character": 16
 						}
 					],
@@ -2074,7 +2074,7 @@
 					"sources": [
 						{
 							"fileName": "functions/analyze/Isovist.ts",
-							"line": 76,
+							"line": 71,
 							"character": 16
 						}
 					],
@@ -2211,7 +2211,7 @@
 					"sources": [
 						{
 							"fileName": "functions/analyze/Nearest.ts",
-							"line": 52,
+							"line": 47,
 							"character": 16
 						}
 					],
@@ -2338,7 +2338,7 @@
 											"sources": [
 												{
 													"fileName": "functions/analyze/Nearest.ts",
-													"line": 58,
+													"line": 53,
 													"character": 47
 												}
 											],
@@ -2374,7 +2374,7 @@
 											"sources": [
 												{
 													"fileName": "functions/analyze/Nearest.ts",
-													"line": 58,
+													"line": 53,
 													"character": 19
 												}
 											],
@@ -2410,7 +2410,7 @@
 											"sources": [
 												{
 													"fileName": "functions/analyze/Nearest.ts",
-													"line": 58,
+													"line": 53,
 													"character": 5
 												}
 											],
@@ -2437,7 +2437,7 @@
 									"sources": [
 										{
 											"fileName": "functions/analyze/Nearest.ts",
-											"line": 58,
+											"line": 53,
 											"character": 3
 										}
 									]
@@ -2455,7 +2455,7 @@
 					"sources": [
 						{
 							"fileName": "functions/analyze/Raytrace.ts",
-							"line": 92,
+							"line": 87,
 							"character": 16
 						}
 					],
@@ -2629,7 +2629,7 @@
 					"sources": [
 						{
 							"fileName": "functions/analyze/ShortestPath.ts",
-							"line": 65,
+							"line": 60,
 							"character": 16
 						}
 					],
@@ -2813,7 +2813,7 @@
 					"sources": [
 						{
 							"fileName": "functions/analyze/Sky.ts",
-							"line": 77,
+							"line": 72,
 							"character": 16
 						}
 					],
@@ -2989,7 +2989,7 @@
 					"sources": [
 						{
 							"fileName": "functions/analyze/SkyDome.ts",
-							"line": 46,
+							"line": 41,
 							"character": 16
 						}
 					],
@@ -3127,7 +3127,7 @@
 					"sources": [
 						{
 							"fileName": "functions/analyze/Sun.ts",
-							"line": 106,
+							"line": 101,
 							"character": 16
 						}
 					],
@@ -3928,7 +3928,7 @@
 					"sources": [
 						{
 							"fileName": "functions/attrib/Add.ts",
-							"line": 25,
+							"line": 21,
 							"character": 16
 						}
 					],
@@ -4026,7 +4026,7 @@
 					"sources": [
 						{
 							"fileName": "functions/attrib/Delete.ts",
-							"line": 22,
+							"line": 18,
 							"character": 17
 						}
 					],
@@ -4110,7 +4110,7 @@
 					"sources": [
 						{
 							"fileName": "functions/attrib/Get.ts",
-							"line": 33,
+							"line": 29,
 							"character": 16
 						}
 					],
@@ -4244,7 +4244,7 @@
 					"sources": [
 						{
 							"fileName": "functions/attrib/Push.ts",
-							"line": 26,
+							"line": 22,
 							"character": 16
 						}
 					],
@@ -4448,7 +4448,7 @@
 					"sources": [
 						{
 							"fileName": "functions/attrib/Rename.ts",
-							"line": 24,
+							"line": 20,
 							"character": 16
 						}
 					],
@@ -4534,7 +4534,7 @@
 					"sources": [
 						{
 							"fileName": "functions/attrib/Set.ts",
-							"line": 32,
+							"line": 28,
 							"character": 16
 						}
 					],
@@ -5363,7 +5363,7 @@
 					"sources": [
 						{
 							"fileName": "functions/calc/Area.ts",
-							"line": 38,
+							"line": 32,
 							"character": 16
 						}
 					],
@@ -5453,7 +5453,7 @@
 					"sources": [
 						{
 							"fileName": "functions/calc/BBox.ts",
-							"line": 28,
+							"line": 22,
 							"character": 16
 						}
 					],
@@ -5525,7 +5525,7 @@
 					"sources": [
 						{
 							"fileName": "functions/calc/Centroid.ts",
-							"line": 34,
+							"line": 28,
 							"character": 16
 						}
 					],
@@ -5629,7 +5629,7 @@
 					"sources": [
 						{
 							"fileName": "functions/calc/Distance.ts",
-							"line": 42,
+							"line": 36,
 							"character": 16
 						}
 					],
@@ -5762,7 +5762,7 @@
 					"sources": [
 						{
 							"fileName": "functions/calc/Eval.ts",
-							"line": 50,
+							"line": 44,
 							"character": 16
 						}
 					],
@@ -5866,7 +5866,7 @@
 					"sources": [
 						{
 							"fileName": "functions/calc/Length.ts",
-							"line": 69,
+							"line": 46,
 							"character": 16
 						}
 					],
@@ -5956,7 +5956,7 @@
 					"sources": [
 						{
 							"fileName": "functions/calc/Normal.ts",
-							"line": 58,
+							"line": 52,
 							"character": 16
 						}
 					],
@@ -6064,7 +6064,7 @@
 					"sources": [
 						{
 							"fileName": "functions/calc/Plane.ts",
-							"line": 39,
+							"line": 33,
 							"character": 16
 						}
 					],
@@ -6147,7 +6147,7 @@
 					"sources": [
 						{
 							"fileName": "functions/calc/Ray.ts",
-							"line": 49,
+							"line": 43,
 							"character": 16
 						}
 					],
@@ -6231,7 +6231,7 @@
 					"sources": [
 						{
 							"fileName": "functions/calc/Vector.ts",
-							"line": 36,
+							"line": 30,
 							"character": 16
 						}
 					],
@@ -6366,7 +6366,7 @@
 							"sources": [
 								{
 									"fileName": "functions/collection/index.ts",
-									"line": 25,
+									"line": 26,
 									"character": 4
 								}
 							],
@@ -6407,7 +6407,7 @@
 							"sources": [
 								{
 									"fileName": "functions/collection/index.ts",
-									"line": 24,
+									"line": 25,
 									"character": 4
 								}
 							],
@@ -6425,7 +6425,7 @@
 							"sources": [
 								{
 									"fileName": "functions/collection/index.ts",
-									"line": 34,
+									"line": 35,
 									"character": 4
 								}
 							],
@@ -6476,7 +6476,7 @@
 							"sources": [
 								{
 									"fileName": "functions/collection/index.ts",
-									"line": 28,
+									"line": 29,
 									"character": 4
 								}
 							],
@@ -6527,7 +6527,7 @@
 							"sources": [
 								{
 									"fileName": "functions/collection/index.ts",
-									"line": 40,
+									"line": 41,
 									"character": 4
 								}
 							],
@@ -6567,7 +6567,7 @@
 							"sources": [
 								{
 									"fileName": "functions/collection/index.ts",
-									"line": 31,
+									"line": 32,
 									"character": 4
 								}
 							],
@@ -6607,7 +6607,7 @@
 							"sources": [
 								{
 									"fileName": "functions/collection/index.ts",
-									"line": 37,
+									"line": 38,
 									"character": 4
 								}
 							],
@@ -6680,7 +6680,7 @@
 					"sources": [
 						{
 							"fileName": "functions/collection/index.ts",
-							"line": 23,
+							"line": 24,
 							"character": 13
 						}
 					]
@@ -6694,7 +6694,7 @@
 					"sources": [
 						{
 							"fileName": "functions/collection/Add.ts",
-							"line": 19,
+							"line": 16,
 							"character": 16
 						}
 					],
@@ -6779,7 +6779,7 @@
 					"sources": [
 						{
 							"fileName": "functions/collection/Create.ts",
-							"line": 38,
+							"line": 35,
 							"character": 16
 						}
 					],
@@ -6897,7 +6897,7 @@
 					"sources": [
 						{
 							"fileName": "functions/collection/Delete.ts",
-							"line": 18,
+							"line": 15,
 							"character": 16
 						}
 					],
@@ -6968,7 +6968,7 @@
 					"sources": [
 						{
 							"fileName": "functions/collection/Get.ts",
-							"line": 35,
+							"line": 32,
 							"character": 16
 						}
 					],
@@ -7051,7 +7051,7 @@
 					"sources": [
 						{
 							"fileName": "functions/collection/Remove.ts",
-							"line": 19,
+							"line": 16,
 							"character": 16
 						}
 					],
@@ -7162,6 +7162,9 @@
 			"kind": 4,
 			"kindString": "Namespace",
 			"flags": {},
+			"comment": {
+				"shortText": "The `dict` module has functions for working with dictionaries.\nThese functions have no direct link with the model, the are generic functions for manipulating dictionaries.\nThese functions neither make nor modify anything in the model.\nIn addition to these functions, there are also inline functions available for working with dictionaries."
+			},
 			"children": [
 				{
 					"id": 389,
@@ -7179,7 +7182,7 @@
 							"sources": [
 								{
 									"fileName": "functions/dict/index.ts",
-									"line": 10,
+									"line": 17,
 									"character": 4
 								}
 							],
@@ -7207,7 +7210,7 @@
 							"sources": [
 								{
 									"fileName": "functions/dict/index.ts",
-									"line": 12,
+									"line": 19,
 									"character": 4
 								}
 							],
@@ -7269,7 +7272,7 @@
 							"sources": [
 								{
 									"fileName": "functions/dict/index.ts",
-									"line": 15,
+									"line": 22,
 									"character": 4
 								}
 							],
@@ -7320,7 +7323,7 @@
 							"sources": [
 								{
 									"fileName": "functions/dict/index.ts",
-									"line": 18,
+									"line": 25,
 									"character": 4
 								}
 							],
@@ -7395,7 +7398,7 @@
 					"sources": [
 						{
 							"fileName": "functions/dict/index.ts",
-							"line": 9,
+							"line": 16,
 							"character": 13
 						}
 					]
@@ -7409,7 +7412,7 @@
 					"sources": [
 						{
 							"fileName": "functions/dict/Add.ts",
-							"line": 20,
+							"line": 13,
 							"character": 16
 						}
 					],
@@ -7496,7 +7499,7 @@
 					"sources": [
 						{
 							"fileName": "functions/dict/Remove.ts",
-							"line": 19,
+							"line": 12,
 							"character": 16
 						}
 					],
@@ -7569,7 +7572,7 @@
 					"sources": [
 						{
 							"fileName": "functions/dict/Replace.ts",
-							"line": 20,
+							"line": 13,
 							"character": 16
 						}
 					],
@@ -7681,7 +7684,7 @@
 			"sources": [
 				{
 					"fileName": "functions/dict/index.ts",
-					"line": 1,
+					"line": 8,
 					"character": 0
 				}
 			]
@@ -7692,6 +7695,9 @@
 			"kind": 4,
 			"kindString": "Namespace",
 			"flags": {},
+			"comment": {
+				"shortText": "The `edit` module has functions for editing entities in the model.\nThese function modify the topology of objects: vertices, edges, wires and faces.\nSome functions return the IDs of the entities that are created or modified."
+			},
 			"children": [
 				{
 					"id": 447,
@@ -7709,7 +7715,7 @@
 							"sources": [
 								{
 									"fileName": "functions/edit/index.ts",
-									"line": 26,
+									"line": 32,
 									"character": 4
 								}
 							],
@@ -7750,7 +7756,7 @@
 							"sources": [
 								{
 									"fileName": "functions/edit/index.ts",
-									"line": 23,
+									"line": 29,
 									"character": 4
 								}
 							],
@@ -7845,7 +7851,7 @@
 							"sources": [
 								{
 									"fileName": "functions/edit/index.ts",
-									"line": 22,
+									"line": 28,
 									"character": 4
 								}
 							],
@@ -7863,7 +7869,7 @@
 							"sources": [
 								{
 									"fileName": "functions/edit/index.ts",
-									"line": 50,
+									"line": 56,
 									"character": 4
 								}
 							],
@@ -7914,7 +7920,7 @@
 							"sources": [
 								{
 									"fileName": "functions/edit/index.ts",
-									"line": 29,
+									"line": 35,
 									"character": 4
 								}
 							],
@@ -7976,7 +7982,7 @@
 							"sources": [
 								{
 									"fileName": "functions/edit/index.ts",
-									"line": 38,
+									"line": 44,
 									"character": 4
 								}
 							],
@@ -8027,7 +8033,7 @@
 							"sources": [
 								{
 									"fileName": "functions/edit/index.ts",
-									"line": 32,
+									"line": 38,
 									"character": 4
 								}
 							],
@@ -8078,7 +8084,7 @@
 							"sources": [
 								{
 									"fileName": "functions/edit/index.ts",
-									"line": 47,
+									"line": 53,
 									"character": 4
 								}
 							],
@@ -8118,7 +8124,7 @@
 							"sources": [
 								{
 									"fileName": "functions/edit/index.ts",
-									"line": 41,
+									"line": 47,
 									"character": 4
 								}
 							],
@@ -8169,7 +8175,7 @@
 							"sources": [
 								{
 									"fileName": "functions/edit/index.ts",
-									"line": 44,
+									"line": 50,
 									"character": 4
 								}
 							],
@@ -8220,7 +8226,7 @@
 							"sources": [
 								{
 									"fileName": "functions/edit/index.ts",
-									"line": 35,
+									"line": 41,
 									"character": 4
 								}
 							],
@@ -8297,7 +8303,7 @@
 					"sources": [
 						{
 							"fileName": "functions/edit/index.ts",
-							"line": 21,
+							"line": 27,
 							"character": 13
 						}
 					]
@@ -8311,7 +8317,7 @@
 					"sources": [
 						{
 							"fileName": "functions/edit/Delete.ts",
-							"line": 40,
+							"line": 35,
 							"character": 16
 						}
 					],
@@ -8414,7 +8420,7 @@
 					"sources": [
 						{
 							"fileName": "functions/edit/Divide.ts",
-							"line": 49,
+							"line": 44,
 							"character": 16
 						}
 					],
@@ -8534,7 +8540,7 @@
 					"sources": [
 						{
 							"fileName": "functions/edit/Fuse.ts",
-							"line": 41,
+							"line": 36,
 							"character": 16
 						}
 					],
@@ -8622,7 +8628,7 @@
 					"sources": [
 						{
 							"fileName": "functions/edit/Hole.ts",
-							"line": 32,
+							"line": 27,
 							"character": 16
 						}
 					],
@@ -8720,7 +8726,7 @@
 					"sources": [
 						{
 							"fileName": "functions/edit/Reverse.ts",
-							"line": 29,
+							"line": 24,
 							"character": 16
 						}
 					],
@@ -8809,7 +8815,7 @@
 					"sources": [
 						{
 							"fileName": "functions/edit/Ring.ts",
-							"line": 31,
+							"line": 26,
 							"character": 16
 						}
 					],
@@ -8904,7 +8910,7 @@
 					"sources": [
 						{
 							"fileName": "functions/edit/Shift.ts",
-							"line": 38,
+							"line": 33,
 							"character": 16
 						}
 					],
@@ -9007,7 +9013,7 @@
 					"sources": [
 						{
 							"fileName": "functions/edit/Weld.ts",
-							"line": 32,
+							"line": 27,
 							"character": 16
 						}
 					],
@@ -9113,7 +9119,7 @@
 			"sources": [
 				{
 					"fileName": "functions/edit/index.ts",
-					"line": 1,
+					"line": 7,
 					"character": 0
 				}
 			]
@@ -9124,6 +9130,9 @@
 			"kind": 4,
 			"kindString": "Namespace",
 			"flags": {},
+			"comment": {
+				"shortText": "The `intersect` module has functions for calculating intersections between different types of entities."
+			},
 			"children": [
 				{
 					"id": 501,
@@ -9141,7 +9150,7 @@
 							"sources": [
 								{
 									"fileName": "functions/intersect/index.ts",
-									"line": 10,
+									"line": 14,
 									"character": 4
 								}
 							],
@@ -9182,7 +9191,7 @@
 							"sources": [
 								{
 									"fileName": "functions/intersect/index.ts",
-									"line": 9,
+									"line": 13,
 									"character": 4
 								}
 							],
@@ -9200,7 +9209,7 @@
 							"sources": [
 								{
 									"fileName": "functions/intersect/index.ts",
-									"line": 16,
+									"line": 20,
 									"character": 4
 								}
 							],
@@ -9251,7 +9260,7 @@
 							"sources": [
 								{
 									"fileName": "functions/intersect/index.ts",
-									"line": 13,
+									"line": 17,
 									"character": 4
 								}
 							],
@@ -9321,7 +9330,7 @@
 					"sources": [
 						{
 							"fileName": "functions/intersect/index.ts",
-							"line": 8,
+							"line": 12,
 							"character": 13
 						}
 					]
@@ -9335,7 +9344,7 @@
 					"sources": [
 						{
 							"fileName": "functions/intersect/PlaneEdge.ts",
-							"line": 36,
+							"line": 33,
 							"character": 16
 						}
 					],
@@ -9442,7 +9451,7 @@
 					"sources": [
 						{
 							"fileName": "functions/intersect/RayFace.ts",
-							"line": 26,
+							"line": 22,
 							"character": 16
 						}
 					],
@@ -9552,7 +9561,7 @@
 			"sources": [
 				{
 					"fileName": "functions/intersect/index.ts",
-					"line": 1,
+					"line": 5,
 					"character": 0
 				}
 			]
@@ -9563,6 +9572,9 @@
 			"kind": 4,
 			"kindString": "Namespace",
 			"flags": {},
+			"comment": {
+				"shortText": "The `io` module has functions for importing and exporting."
+			},
 			"children": [
 				{
 					"id": 570,
@@ -9580,7 +9592,7 @@
 							"sources": [
 								{
 									"fileName": "functions/io/index.ts",
-									"line": 30,
+									"line": 34,
 									"character": 4
 								}
 							],
@@ -9621,7 +9633,7 @@
 							"sources": [
 								{
 									"fileName": "functions/io/index.ts",
-									"line": 27,
+									"line": 31,
 									"character": 4
 								}
 							],
@@ -9716,7 +9728,7 @@
 							"sources": [
 								{
 									"fileName": "functions/io/index.ts",
-									"line": 26,
+									"line": 30,
 									"character": 4
 								}
 							],
@@ -9734,7 +9746,7 @@
 							"sources": [
 								{
 									"fileName": "functions/io/index.ts",
-									"line": 45,
+									"line": 49,
 									"character": 10
 								}
 							],
@@ -9813,7 +9825,7 @@
 							"sources": [
 								{
 									"fileName": "functions/io/index.ts",
-									"line": 51,
+									"line": 55,
 									"character": 4
 								}
 							],
@@ -9875,7 +9887,7 @@
 							"sources": [
 								{
 									"fileName": "functions/io/index.ts",
-									"line": 48,
+									"line": 52,
 									"character": 4
 								}
 							],
@@ -9937,7 +9949,7 @@
 							"sources": [
 								{
 									"fileName": "functions/io/index.ts",
-									"line": 42,
+									"line": 46,
 									"character": 10
 								}
 							],
@@ -9994,7 +10006,7 @@
 							"sources": [
 								{
 									"fileName": "functions/io/index.ts",
-									"line": 39,
+									"line": 43,
 									"character": 4
 								}
 							],
@@ -10045,7 +10057,7 @@
 							"sources": [
 								{
 									"fileName": "functions/io/index.ts",
-									"line": 54,
+									"line": 58,
 									"character": 4
 								}
 							],
@@ -10096,7 +10108,7 @@
 							"sources": [
 								{
 									"fileName": "functions/io/index.ts",
-									"line": 33,
+									"line": 37,
 									"character": 10
 								}
 							],
@@ -10142,7 +10154,7 @@
 							"sources": [
 								{
 									"fileName": "functions/io/index.ts",
-									"line": 36,
+									"line": 40,
 									"character": 10
 								}
 							],
@@ -10210,7 +10222,7 @@
 							"sources": [
 								{
 									"fileName": "functions/io/index.ts",
-									"line": 66,
+									"line": 70,
 									"character": 4
 								}
 							],
@@ -10283,7 +10295,7 @@
 							"sources": [
 								{
 									"fileName": "functions/io/index.ts",
-									"line": 63,
+									"line": 67,
 									"character": 4
 								}
 							],
@@ -10334,7 +10346,7 @@
 							"sources": [
 								{
 									"fileName": "functions/io/index.ts",
-									"line": 57,
+									"line": 61,
 									"character": 4
 								}
 							],
@@ -10374,7 +10386,7 @@
 							"sources": [
 								{
 									"fileName": "functions/io/index.ts",
-									"line": 60,
+									"line": 64,
 									"character": 4
 								}
 							],
@@ -10466,7 +10478,7 @@
 					"sources": [
 						{
 							"fileName": "functions/io/index.ts",
-							"line": 25,
+							"line": 29,
 							"character": 13
 						}
 					]
@@ -10480,7 +10492,7 @@
 					"sources": [
 						{
 							"fileName": "functions/io/Export.ts",
-							"line": 44,
+							"line": 41,
 							"character": 22
 						}
 					],
@@ -10730,7 +10742,7 @@
 					"sources": [
 						{
 							"fileName": "functions/io/Geoalign.ts",
-							"line": 28,
+							"line": 25,
 							"character": 16
 						}
 					],
@@ -10817,7 +10829,7 @@
 					"sources": [
 						{
 							"fileName": "functions/io/Geolocate.ts",
-							"line": 22,
+							"line": 19,
 							"character": 16
 						}
 					],
@@ -10904,7 +10916,7 @@
 					"sources": [
 						{
 							"fileName": "functions/io/Import.ts",
-							"line": 38,
+							"line": 35,
 							"character": 22
 						}
 					],
@@ -10998,7 +11010,7 @@
 													"sources": [
 														{
 															"fileName": "functions/io/Import.ts",
-															"line": 38,
+															"line": 35,
 															"character": 125
 														}
 													]
@@ -11021,7 +11033,7 @@
 					"sources": [
 						{
 							"fileName": "functions/io/ImportData.ts",
-							"line": 22,
+							"line": 19,
 							"character": 16
 						}
 					],
@@ -11112,7 +11124,7 @@
 											"sources": [
 												{
 													"fileName": "functions/io/ImportData.ts",
-													"line": 22,
+													"line": 19,
 													"character": 117
 												}
 											]
@@ -11132,7 +11144,7 @@
 					"sources": [
 						{
 							"fileName": "functions/io/LatLong2XYZ.ts",
-							"line": 32,
+							"line": 29,
 							"character": 16
 						}
 					],
@@ -11205,7 +11217,7 @@
 					"sources": [
 						{
 							"fileName": "functions/io/Read.ts",
-							"line": 17,
+							"line": 14,
 							"character": 22
 						}
 					],
@@ -11268,7 +11280,7 @@
 													"sources": [
 														{
 															"fileName": "functions/io/Read.ts",
-															"line": 17,
+															"line": 14,
 															"character": 79
 														}
 													]
@@ -11291,7 +11303,7 @@
 					"sources": [
 						{
 							"fileName": "functions/io/Write.ts",
-							"line": 21,
+							"line": 18,
 							"character": 22
 						}
 					],
@@ -11383,7 +11395,7 @@
 					"sources": [
 						{
 							"fileName": "functions/io/_getFile.ts",
-							"line": 104,
+							"line": 98,
 							"character": 22
 						}
 					],
@@ -11449,7 +11461,7 @@
 			"sources": [
 				{
 					"fileName": "functions/io/index.ts",
-					"line": 1,
+					"line": 5,
 					"character": 0
 				}
 			]
@@ -11460,6 +11472,9 @@
 			"kind": 4,
 			"kindString": "Namespace",
 			"flags": {},
+			"comment": {
+				"shortText": "The `list` module has functions for working with lists of items.\nThese functions have no direct link with the model, the are generic functions for manipulating lists.\nThe functions are often used when manipulating lists of IDs of entities in the model.\nThese functions neither make nor modify anything in the model.\nIn addition to these functions, there are also various inline functions available for working with lists."
+			},
 			"children": [
 				{
 					"id": 662,
@@ -11477,7 +11492,7 @@
 							"sources": [
 								{
 									"fileName": "functions/list/index.ts",
-									"line": 17,
+									"line": 25,
 									"character": 4
 								}
 							],
@@ -11505,7 +11520,7 @@
 							"sources": [
 								{
 									"fileName": "functions/list/index.ts",
-									"line": 14,
+									"line": 22,
 									"character": 4
 								}
 							],
@@ -11600,7 +11615,7 @@
 							"sources": [
 								{
 									"fileName": "functions/list/index.ts",
-									"line": 19,
+									"line": 27,
 									"character": 4
 								}
 							],
@@ -11662,7 +11677,7 @@
 							"sources": [
 								{
 									"fileName": "functions/list/index.ts",
-									"line": 22,
+									"line": 30,
 									"character": 4
 								}
 							],
@@ -11724,7 +11739,7 @@
 							"sources": [
 								{
 									"fileName": "functions/list/index.ts",
-									"line": 25,
+									"line": 33,
 									"character": 4
 								}
 							],
@@ -11797,7 +11812,7 @@
 							"sources": [
 								{
 									"fileName": "functions/list/index.ts",
-									"line": 28,
+									"line": 36,
 									"character": 4
 								}
 							],
@@ -11848,7 +11863,7 @@
 							"sources": [
 								{
 									"fileName": "functions/list/index.ts",
-									"line": 31,
+									"line": 39,
 									"character": 4
 								}
 							],
@@ -11943,7 +11958,7 @@
 					"sources": [
 						{
 							"fileName": "functions/list/index.ts",
-							"line": 13,
+							"line": 21,
 							"character": 13
 						}
 					]
@@ -11957,7 +11972,7 @@
 					"sources": [
 						{
 							"fileName": "functions/list/Add.ts",
-							"line": 33,
+							"line": 26,
 							"character": 16
 						}
 					],
@@ -12069,7 +12084,7 @@
 					"sources": [
 						{
 							"fileName": "functions/list/Remove.ts",
-							"line": 27,
+							"line": 20,
 							"character": 16
 						}
 					],
@@ -12147,7 +12162,7 @@
 					"sources": [
 						{
 							"fileName": "functions/list/Replace.ts",
-							"line": 27,
+							"line": 20,
 							"character": 16
 						}
 					],
@@ -12239,7 +12254,7 @@
 					"sources": [
 						{
 							"fileName": "functions/list/Sort.ts",
-							"line": 33,
+							"line": 26,
 							"character": 16
 						}
 					],
@@ -12321,7 +12336,7 @@
 					"sources": [
 						{
 							"fileName": "functions/list/Splice.ts",
-							"line": 29,
+							"line": 22,
 							"character": 16
 						}
 					],
@@ -12441,7 +12456,7 @@
 			"sources": [
 				{
 					"fileName": "functions/list/index.ts",
-					"line": 1,
+					"line": 9,
 					"character": 0
 				}
 			]
@@ -12452,6 +12467,9 @@
 			"kind": 4,
 			"kindString": "Namespace",
 			"flags": {},
+			"comment": {
+				"shortText": "The `make` module has functions for making new entities in the model.\nAll these functions return the IDs of the entities that are created."
+			},
 			"children": [
 				{
 					"id": 754,
@@ -12469,7 +12487,7 @@
 							"sources": [
 								{
 									"fileName": "functions/make/index.ts",
-									"line": 33,
+									"line": 38,
 									"character": 4
 								}
 							],
@@ -12510,7 +12528,7 @@
 							"sources": [
 								{
 									"fileName": "functions/make/index.ts",
-									"line": 30,
+									"line": 35,
 									"character": 4
 								}
 							],
@@ -12605,7 +12623,7 @@
 							"sources": [
 								{
 									"fileName": "functions/make/index.ts",
-									"line": 29,
+									"line": 34,
 									"character": 4
 								}
 							],
@@ -12623,7 +12641,7 @@
 							"sources": [
 								{
 									"fileName": "functions/make/index.ts",
-									"line": 66,
+									"line": 71,
 									"character": 4
 								}
 							],
@@ -12663,7 +12681,7 @@
 							"sources": [
 								{
 									"fileName": "functions/make/index.ts",
-									"line": 63,
+									"line": 68,
 									"character": 4
 								}
 							],
@@ -12714,7 +12732,7 @@
 							"sources": [
 								{
 									"fileName": "functions/make/index.ts",
-									"line": 60,
+									"line": 65,
 									"character": 4
 								}
 							],
@@ -12776,7 +12794,7 @@
 							"sources": [
 								{
 									"fileName": "functions/make/index.ts",
-									"line": 51,
+									"line": 56,
 									"character": 4
 								}
 							],
@@ -12849,7 +12867,7 @@
 							"sources": [
 								{
 									"fileName": "functions/make/index.ts",
-									"line": 57,
+									"line": 62,
 									"character": 4
 								}
 							],
@@ -12889,7 +12907,7 @@
 							"sources": [
 								{
 									"fileName": "functions/make/index.ts",
-									"line": 48,
+									"line": 53,
 									"character": 4
 								}
 							],
@@ -12951,7 +12969,7 @@
 							"sources": [
 								{
 									"fileName": "functions/make/index.ts",
-									"line": 39,
+									"line": 44,
 									"character": 4
 								}
 							],
@@ -12991,7 +13009,7 @@
 							"sources": [
 								{
 									"fileName": "functions/make/index.ts",
-									"line": 45,
+									"line": 50,
 									"character": 4
 								}
 							],
@@ -13031,7 +13049,7 @@
 							"sources": [
 								{
 									"fileName": "functions/make/index.ts",
-									"line": 42,
+									"line": 47,
 									"character": 4
 								}
 							],
@@ -13082,7 +13100,7 @@
 							"sources": [
 								{
 									"fileName": "functions/make/index.ts",
-									"line": 36,
+									"line": 41,
 									"character": 4
 								}
 							],
@@ -13122,7 +13140,7 @@
 							"sources": [
 								{
 									"fileName": "functions/make/index.ts",
-									"line": 54,
+									"line": 59,
 									"character": 4
 								}
 							],
@@ -13224,7 +13242,7 @@
 					"sources": [
 						{
 							"fileName": "functions/make/index.ts",
-							"line": 28,
+							"line": 33,
 							"character": 13
 						}
 					]
@@ -13238,7 +13256,7 @@
 					"sources": [
 						{
 							"fileName": "functions/make/Clone.ts",
-							"line": 22,
+							"line": 18,
 							"character": 16
 						}
 					],
@@ -13351,7 +13369,7 @@
 					"sources": [
 						{
 							"fileName": "functions/make/Copy.ts",
-							"line": 49,
+							"line": 45,
 							"character": 16
 						}
 					],
@@ -13490,7 +13508,7 @@
 					"sources": [
 						{
 							"fileName": "functions/make/Cut.ts",
-							"line": 43,
+							"line": 39,
 							"character": 16
 						}
 					],
@@ -13617,7 +13635,7 @@
 					"sources": [
 						{
 							"fileName": "functions/make/Extrude.ts",
-							"line": 50,
+							"line": 46,
 							"character": 16
 						}
 					],
@@ -13770,7 +13788,7 @@
 					"sources": [
 						{
 							"fileName": "functions/make/Join.ts",
-							"line": 26,
+							"line": 22,
 							"character": 16
 						}
 					],
@@ -13836,7 +13854,7 @@
 					"sources": [
 						{
 							"fileName": "functions/make/Loft.ts",
-							"line": 34,
+							"line": 30,
 							"character": 16
 						}
 					],
@@ -13968,7 +13986,7 @@
 					"sources": [
 						{
 							"fileName": "functions/make/Point.ts",
-							"line": 22,
+							"line": 18,
 							"character": 16
 						}
 					],
@@ -14081,7 +14099,7 @@
 					"sources": [
 						{
 							"fileName": "functions/make/Polygon.ts",
-							"line": 33,
+							"line": 29,
 							"character": 16
 						}
 					],
@@ -14192,7 +14210,7 @@
 					"sources": [
 						{
 							"fileName": "functions/make/Polyline.ts",
-							"line": 34,
+							"line": 30,
 							"character": 16
 						}
 					],
@@ -14309,7 +14327,7 @@
 					"sources": [
 						{
 							"fileName": "functions/make/Position.ts",
-							"line": 24,
+							"line": 20,
 							"character": 16
 						}
 					],
@@ -14430,7 +14448,7 @@
 					"sources": [
 						{
 							"fileName": "functions/make/Sweep.ts",
-							"line": 35,
+							"line": 31,
 							"character": 16
 						}
 					],
@@ -14564,7 +14582,7 @@
 			"sources": [
 				{
 					"fileName": "functions/make/index.ts",
-					"line": 1,
+					"line": 6,
 					"character": 0
 				}
 			]
@@ -14575,6 +14593,9 @@
 			"kind": 4,
 			"kindString": "Namespace",
 			"flags": {},
+			"comment": {
+				"shortText": "The `material` module has functions for defining materials.\nThe material definitions are saved as attributes at the model level.\nFor more informtion, see the threejs docs: https://threejs.org/"
+			},
 			"children": [
 				{
 					"id": 863,
@@ -14592,7 +14613,7 @@
 							"sources": [
 								{
 									"fileName": "functions/material/index.ts",
-									"line": 26,
+									"line": 32,
 									"character": 4
 								}
 							],
@@ -14633,7 +14654,7 @@
 							"sources": [
 								{
 									"fileName": "functions/material/index.ts",
-									"line": 23,
+									"line": 29,
 									"character": 4
 								}
 							],
@@ -14728,7 +14749,7 @@
 							"sources": [
 								{
 									"fileName": "functions/material/index.ts",
-									"line": 22,
+									"line": 28,
 									"character": 4
 								}
 							],
@@ -14746,7 +14767,7 @@
 							"sources": [
 								{
 									"fileName": "functions/material/index.ts",
-									"line": 38,
+									"line": 44,
 									"character": 4
 								}
 							],
@@ -14797,7 +14818,7 @@
 							"sources": [
 								{
 									"fileName": "functions/material/index.ts",
-									"line": 41,
+									"line": 47,
 									"character": 4
 								}
 							],
@@ -14848,7 +14869,7 @@
 							"sources": [
 								{
 									"fileName": "functions/material/index.ts",
-									"line": 32,
+									"line": 38,
 									"character": 4
 								}
 							],
@@ -14921,7 +14942,7 @@
 							"sources": [
 								{
 									"fileName": "functions/material/index.ts",
-									"line": 35,
+									"line": 41,
 									"character": 4
 								}
 							],
@@ -15005,7 +15026,7 @@
 							"sources": [
 								{
 									"fileName": "functions/material/index.ts",
-									"line": 44,
+									"line": 50,
 									"character": 4
 								}
 							],
@@ -15078,7 +15099,7 @@
 							"sources": [
 								{
 									"fileName": "functions/material/index.ts",
-									"line": 50,
+									"line": 56,
 									"character": 4
 								}
 							],
@@ -15162,7 +15183,7 @@
 							"sources": [
 								{
 									"fileName": "functions/material/index.ts",
-									"line": 29,
+									"line": 35,
 									"character": 4
 								}
 							],
@@ -15213,7 +15234,7 @@
 							"sources": [
 								{
 									"fileName": "functions/material/index.ts",
-									"line": 47,
+									"line": 53,
 									"character": 4
 								}
 							],
@@ -15312,7 +15333,7 @@
 					"sources": [
 						{
 							"fileName": "functions/material/index.ts",
-							"line": 21,
+							"line": 27,
 							"character": 13
 						}
 					]
@@ -15326,7 +15347,7 @@
 					"sources": [
 						{
 							"fileName": "functions/material/Glass.ts",
-							"line": 26,
+							"line": 20,
 							"character": 16
 						}
 					],
@@ -15398,7 +15419,7 @@
 					"sources": [
 						{
 							"fileName": "functions/material/Lambert.ts",
-							"line": 28,
+							"line": 22,
 							"character": 16
 						}
 					],
@@ -15470,7 +15491,7 @@
 					"sources": [
 						{
 							"fileName": "functions/material/LineMat.ts",
-							"line": 45,
+							"line": 39,
 							"character": 16
 						}
 					],
@@ -15582,7 +15603,7 @@
 					"sources": [
 						{
 							"fileName": "functions/material/MeshMat.ts",
-							"line": 46,
+							"line": 40,
 							"character": 16
 						}
 					],
@@ -15696,7 +15717,7 @@
 					"sources": [
 						{
 							"fileName": "functions/material/Phong.ts",
-							"line": 30,
+							"line": 24,
 							"character": 16
 						}
 					],
@@ -15796,7 +15817,7 @@
 					"sources": [
 						{
 							"fileName": "functions/material/Physical.ts",
-							"line": 31,
+							"line": 25,
 							"character": 16
 						}
 					],
@@ -15910,7 +15931,7 @@
 					"sources": [
 						{
 							"fileName": "functions/material/Set.ts",
-							"line": 45,
+							"line": 39,
 							"character": 16
 						}
 					],
@@ -16006,7 +16027,7 @@
 					"sources": [
 						{
 							"fileName": "functions/material/Standard.ts",
-							"line": 32,
+							"line": 26,
 							"character": 16
 						}
 					],
@@ -16124,7 +16145,7 @@
 			"sources": [
 				{
 					"fileName": "functions/material/index.ts",
-					"line": 1,
+					"line": 7,
 					"character": 0
 				}
 			]
@@ -16135,6 +16156,9 @@
 			"kind": 4,
 			"kindString": "Namespace",
 			"flags": {},
+			"comment": {
+				"shortText": "The `modify` module has functions for modifying existing entities in the model.\nThese functions do not make any new entities, and they do not change the topology of objects.\nThese functions only change attribute values.\nAll these functions have no return value."
+			},
 			"children": [
 				{
 					"id": 956,
@@ -16152,7 +16176,7 @@
 							"sources": [
 								{
 									"fileName": "functions/modify/index.ts",
-									"line": 20,
+									"line": 27,
 									"character": 4
 								}
 							],
@@ -16193,7 +16217,7 @@
 							"sources": [
 								{
 									"fileName": "functions/modify/index.ts",
-									"line": 19,
+									"line": 26,
 									"character": 4
 								}
 							],
@@ -16211,7 +16235,7 @@
 							"sources": [
 								{
 									"fileName": "functions/modify/index.ts",
-									"line": 32,
+									"line": 39,
 									"character": 4
 								}
 							],
@@ -16262,7 +16286,7 @@
 							"sources": [
 								{
 									"fileName": "functions/modify/index.ts",
-									"line": 23,
+									"line": 30,
 									"character": 4
 								}
 							],
@@ -16313,7 +16337,7 @@
 							"sources": [
 								{
 									"fileName": "functions/modify/index.ts",
-									"line": 38,
+									"line": 45,
 									"character": 4
 								}
 							],
@@ -16364,7 +16388,7 @@
 							"sources": [
 								{
 									"fileName": "functions/modify/index.ts",
-									"line": 41,
+									"line": 48,
 									"character": 4
 								}
 							],
@@ -16404,7 +16428,7 @@
 							"sources": [
 								{
 									"fileName": "functions/modify/index.ts",
-									"line": 26,
+									"line": 33,
 									"character": 4
 								}
 							],
@@ -16466,7 +16490,7 @@
 							"sources": [
 								{
 									"fileName": "functions/modify/index.ts",
-									"line": 29,
+									"line": 36,
 									"character": 4
 								}
 							],
@@ -16528,7 +16552,7 @@
 							"sources": [
 								{
 									"fileName": "functions/modify/index.ts",
-									"line": 35,
+									"line": 42,
 									"character": 4
 								}
 							],
@@ -16614,7 +16638,7 @@
 					"sources": [
 						{
 							"fileName": "functions/modify/index.ts",
-							"line": 18,
+							"line": 25,
 							"character": 13
 						}
 					]
@@ -16628,7 +16652,7 @@
 					"sources": [
 						{
 							"fileName": "functions/modify/Mirror.ts",
-							"line": 41,
+							"line": 35,
 							"character": 16
 						}
 					],
@@ -16747,7 +16771,7 @@
 					"sources": [
 						{
 							"fileName": "functions/modify/Move.ts",
-							"line": 37,
+							"line": 31,
 							"character": 16
 						}
 					],
@@ -16867,7 +16891,7 @@
 					"sources": [
 						{
 							"fileName": "functions/modify/Offset.ts",
-							"line": 26,
+							"line": 20,
 							"character": 16
 						}
 					],
@@ -16962,7 +16986,7 @@
 					"sources": [
 						{
 							"fileName": "functions/modify/Remesh.ts",
-							"line": 31,
+							"line": 25,
 							"character": 16
 						}
 					],
@@ -17034,7 +17058,7 @@
 					"sources": [
 						{
 							"fileName": "functions/modify/Rotate.ts",
-							"line": 43,
+							"line": 37,
 							"character": 16
 						}
 					],
@@ -17167,7 +17191,7 @@
 					"sources": [
 						{
 							"fileName": "functions/modify/Scale.ts",
-							"line": 45,
+							"line": 39,
 							"character": 16
 						}
 					],
@@ -17317,7 +17341,7 @@
 					"sources": [
 						{
 							"fileName": "functions/modify/XForm.ts",
-							"line": 46,
+							"line": 40,
 							"character": 16
 						}
 					],
@@ -17491,7 +17515,7 @@
 			"sources": [
 				{
 					"fileName": "functions/modify/index.ts",
-					"line": 1,
+					"line": 8,
 					"character": 0
 				}
 			]
@@ -17502,6 +17526,9 @@
 			"kind": 4,
 			"kindString": "Namespace",
 			"flags": {},
+			"comment": {
+				"shortText": "The `pattern` module has functions for creating patters of positions.\nThese functions all return lists of position IDs.\nThe list may be nested, depending on which function is selected."
+			},
 			"children": [
 				{
 					"id": 1057,
@@ -17519,7 +17546,7 @@
 							"sources": [
 								{
 									"fileName": "functions/pattern/index.ts",
-									"line": 30,
+									"line": 36,
 									"character": 4
 								}
 							],
@@ -17560,7 +17587,7 @@
 							"sources": [
 								{
 									"fileName": "functions/pattern/index.ts",
-									"line": 27,
+									"line": 33,
 									"character": 4
 								}
 							],
@@ -17670,7 +17697,7 @@
 							"sources": [
 								{
 									"fileName": "functions/pattern/index.ts",
-									"line": 26,
+									"line": 32,
 									"character": 4
 								}
 							],
@@ -17688,7 +17715,7 @@
 							"sources": [
 								{
 									"fileName": "functions/pattern/index.ts",
-									"line": 51,
+									"line": 57,
 									"character": 4
 								}
 							],
@@ -17761,7 +17788,7 @@
 							"sources": [
 								{
 									"fileName": "functions/pattern/index.ts",
-									"line": 54,
+									"line": 60,
 									"character": 4
 								}
 							],
@@ -17812,7 +17839,7 @@
 							"sources": [
 								{
 									"fileName": "functions/pattern/index.ts",
-									"line": 45,
+									"line": 51,
 									"character": 4
 								}
 							],
@@ -17885,7 +17912,7 @@
 							"sources": [
 								{
 									"fileName": "functions/pattern/index.ts",
-									"line": 42,
+									"line": 48,
 									"character": 4
 								}
 							],
@@ -17958,7 +17985,7 @@
 							"sources": [
 								{
 									"fileName": "functions/pattern/index.ts",
-									"line": 60,
+									"line": 66,
 									"character": 4
 								}
 							],
@@ -18042,7 +18069,7 @@
 							"sources": [
 								{
 									"fileName": "functions/pattern/index.ts",
-									"line": 33,
+									"line": 39,
 									"character": 4
 								}
 							],
@@ -18104,7 +18131,7 @@
 							"sources": [
 								{
 									"fileName": "functions/pattern/index.ts",
-									"line": 36,
+									"line": 42,
 									"character": 4
 								}
 							],
@@ -18166,7 +18193,7 @@
 							"sources": [
 								{
 									"fileName": "functions/pattern/index.ts",
-									"line": 57,
+									"line": 63,
 									"character": 4
 								}
 							],
@@ -18239,7 +18266,7 @@
 							"sources": [
 								{
 									"fileName": "functions/pattern/index.ts",
-									"line": 48,
+									"line": 54,
 									"character": 4
 								}
 							],
@@ -18312,7 +18339,7 @@
 							"sources": [
 								{
 									"fileName": "functions/pattern/index.ts",
-									"line": 39,
+									"line": 45,
 									"character": 4
 								}
 							],
@@ -18391,7 +18418,7 @@
 					"sources": [
 						{
 							"fileName": "functions/pattern/index.ts",
-							"line": 25,
+							"line": 31,
 							"character": 13
 						}
 					]
@@ -18405,7 +18432,7 @@
 					"sources": [
 						{
 							"fileName": "functions/pattern/Arc.ts",
-							"line": 81,
+							"line": 75,
 							"character": 16
 						}
 					],
@@ -18546,7 +18573,7 @@
 					"sources": [
 						{
 							"fileName": "functions/pattern/Bezier.ts",
-							"line": 44,
+							"line": 38,
 							"character": 16
 						}
 					],
@@ -18632,7 +18659,7 @@
 					"sources": [
 						{
 							"fileName": "functions/pattern/Box.ts",
-							"line": 151,
+							"line": 145,
 							"character": 16
 						}
 					],
@@ -18840,7 +18867,7 @@
 					"sources": [
 						{
 							"fileName": "functions/pattern/Grid.ts",
-							"line": 127,
+							"line": 121,
 							"character": 16
 						}
 					],
@@ -19022,7 +19049,7 @@
 					"sources": [
 						{
 							"fileName": "functions/pattern/Interpolate.ts",
-							"line": 47,
+							"line": 41,
 							"character": 16
 						}
 					],
@@ -19153,7 +19180,7 @@
 					"sources": [
 						{
 							"fileName": "functions/pattern/Line.ts",
-							"line": 45,
+							"line": 39,
 							"character": 16
 						}
 					],
@@ -19249,7 +19276,7 @@
 					"sources": [
 						{
 							"fileName": "functions/pattern/Linear.ts",
-							"line": 56,
+							"line": 50,
 							"character": 16
 						}
 					],
@@ -19357,7 +19384,7 @@
 					"sources": [
 						{
 							"fileName": "functions/pattern/Nurbs.ts",
-							"line": 48,
+							"line": 42,
 							"character": 16
 						}
 					],
@@ -19474,7 +19501,7 @@
 					"sources": [
 						{
 							"fileName": "functions/pattern/Polyhedron.ts",
-							"line": 111,
+							"line": 105,
 							"character": 16
 						}
 					],
@@ -19612,7 +19639,7 @@
 					"sources": [
 						{
 							"fileName": "functions/pattern/Rectangle.ts",
-							"line": 56,
+							"line": 50,
 							"character": 16
 						}
 					],
@@ -19753,7 +19780,7 @@
 			"sources": [
 				{
 					"fileName": "functions/pattern/index.ts",
-					"line": 1,
+					"line": 7,
 					"character": 0
 				}
 			]
@@ -19764,6 +19791,9 @@
 			"kind": 4,
 			"kindString": "Namespace",
 			"flags": {},
+			"comment": {
+				"shortText": "The `poly2D` module has a set of functions for working with 2D polygons, on the XY plane."
+			},
 			"children": [
 				{
 					"id": 1183,
@@ -19781,7 +19811,7 @@
 							"sources": [
 								{
 									"fileName": "functions/poly2d/index.ts",
-									"line": 32,
+									"line": 36,
 									"character": 4
 								}
 							],
@@ -19822,7 +19852,7 @@
 							"sources": [
 								{
 									"fileName": "functions/poly2d/index.ts",
-									"line": 29,
+									"line": 33,
 									"character": 4
 								}
 							],
@@ -19947,7 +19977,7 @@
 							"sources": [
 								{
 									"fileName": "functions/poly2d/index.ts",
-									"line": 28,
+									"line": 32,
 									"character": 4
 								}
 							],
@@ -19965,7 +19995,7 @@
 							"sources": [
 								{
 									"fileName": "functions/poly2d/index.ts",
-									"line": 44,
+									"line": 48,
 									"character": 4
 								}
 							],
@@ -20016,7 +20046,7 @@
 							"sources": [
 								{
 									"fileName": "functions/poly2d/index.ts",
-									"line": 50,
+									"line": 54,
 									"character": 4
 								}
 							],
@@ -20078,7 +20108,7 @@
 							"sources": [
 								{
 									"fileName": "functions/poly2d/index.ts",
-									"line": 65,
+									"line": 69,
 									"character": 4
 								}
 							],
@@ -20129,7 +20159,7 @@
 							"sources": [
 								{
 									"fileName": "functions/poly2d/index.ts",
-									"line": 41,
+									"line": 45,
 									"character": 4
 								}
 							],
@@ -20169,7 +20199,7 @@
 							"sources": [
 								{
 									"fileName": "functions/poly2d/index.ts",
-									"line": 38,
+									"line": 42,
 									"character": 4
 								}
 							],
@@ -20209,7 +20239,7 @@
 							"sources": [
 								{
 									"fileName": "functions/poly2d/index.ts",
-									"line": 56,
+									"line": 60,
 									"character": 4
 								}
 							],
@@ -20271,7 +20301,7 @@
 							"sources": [
 								{
 									"fileName": "functions/poly2d/index.ts",
-									"line": 53,
+									"line": 57,
 									"character": 4
 								}
 							],
@@ -20344,7 +20374,7 @@
 							"sources": [
 								{
 									"fileName": "functions/poly2d/index.ts",
-									"line": 59,
+									"line": 63,
 									"character": 4
 								}
 							],
@@ -20417,7 +20447,7 @@
 							"sources": [
 								{
 									"fileName": "functions/poly2d/index.ts",
-									"line": 62,
+									"line": 66,
 									"character": 4
 								}
 							],
@@ -20468,7 +20498,7 @@
 							"sources": [
 								{
 									"fileName": "functions/poly2d/index.ts",
-									"line": 47,
+									"line": 51,
 									"character": 4
 								}
 							],
@@ -20508,7 +20538,7 @@
 							"sources": [
 								{
 									"fileName": "functions/poly2d/index.ts",
-									"line": 35,
+									"line": 39,
 									"character": 4
 								}
 							],
@@ -20588,7 +20618,7 @@
 					"sources": [
 						{
 							"fileName": "functions/poly2d/index.ts",
-							"line": 27,
+							"line": 31,
 							"character": 13
 						}
 					]
@@ -20602,7 +20632,7 @@
 					"sources": [
 						{
 							"fileName": "functions/poly2d/BBoxPolygon.ts",
-							"line": 44,
+							"line": 40,
 							"character": 16
 						}
 					],
@@ -20687,7 +20717,7 @@
 					"sources": [
 						{
 							"fileName": "functions/poly2d/Boolean.ts",
-							"line": 50,
+							"line": 46,
 							"character": 16
 						}
 					],
@@ -20801,7 +20831,7 @@
 					"sources": [
 						{
 							"fileName": "functions/poly2d/Clean.ts",
-							"line": 47,
+							"line": 43,
 							"character": 16
 						}
 					],
@@ -20889,7 +20919,7 @@
 					"sources": [
 						{
 							"fileName": "functions/poly2d/ConvexHull.ts",
-							"line": 28,
+							"line": 24,
 							"character": 16
 						}
 					],
@@ -20960,7 +20990,7 @@
 					"sources": [
 						{
 							"fileName": "functions/poly2d/Delaunay.ts",
-							"line": 30,
+							"line": 26,
 							"character": 16
 						}
 					],
@@ -21034,7 +21064,7 @@
 					"sources": [
 						{
 							"fileName": "functions/poly2d/OffsetChamfer.ts",
-							"line": 30,
+							"line": 26,
 							"character": 16
 						}
 					],
@@ -21136,7 +21166,7 @@
 					"sources": [
 						{
 							"fileName": "functions/poly2d/OffsetMitre.ts",
-							"line": 33,
+							"line": 29,
 							"character": 16
 						}
 					],
@@ -21252,7 +21282,7 @@
 					"sources": [
 						{
 							"fileName": "functions/poly2d/OffsetRound.ts",
-							"line": 41,
+							"line": 37,
 							"character": 16
 						}
 					],
@@ -21368,7 +21398,7 @@
 					"sources": [
 						{
 							"fileName": "functions/poly2d/Stitch.ts",
-							"line": 36,
+							"line": 32,
 							"character": 16
 						}
 					],
@@ -21456,7 +21486,7 @@
 					"sources": [
 						{
 							"fileName": "functions/poly2d/Union.ts",
-							"line": 30,
+							"line": 26,
 							"character": 16
 						}
 					],
@@ -21530,7 +21560,7 @@
 					"sources": [
 						{
 							"fileName": "functions/poly2d/Voronoi.ts",
-							"line": 35,
+							"line": 31,
 							"character": 16
 						}
 					],
@@ -21651,7 +21681,7 @@
 			"sources": [
 				{
 					"fileName": "functions/poly2d/index.ts",
-					"line": 1,
+					"line": 5,
 					"character": 0
 				}
 			]
@@ -21662,6 +21692,9 @@
 			"kind": 4,
 			"kindString": "Namespace",
 			"flags": {},
+			"comment": {
+				"shortText": "The `query` module has functions for querying entities in the the model.\nMost of these functions all return a list of IDs of entities in the model."
+			},
 			"children": [
 				{
 					"id": 1287,
@@ -21679,7 +21712,7 @@
 							"sources": [
 								{
 									"fileName": "functions/query/index.ts",
-									"line": 26,
+									"line": 31,
 									"character": 4
 								}
 							],
@@ -21720,7 +21753,7 @@
 							"sources": [
 								{
 									"fileName": "functions/query/index.ts",
-									"line": 23,
+									"line": 28,
 									"character": 4
 								}
 							],
@@ -21845,7 +21878,7 @@
 							"sources": [
 								{
 									"fileName": "functions/query/index.ts",
-									"line": 22,
+									"line": 27,
 									"character": 4
 								}
 							],
@@ -21863,7 +21896,7 @@
 							"sources": [
 								{
 									"fileName": "functions/query/index.ts",
-									"line": 47,
+									"line": 52,
 									"character": 4
 								}
 							],
@@ -21914,7 +21947,7 @@
 							"sources": [
 								{
 									"fileName": "functions/query/index.ts",
-									"line": 32,
+									"line": 37,
 									"character": 4
 								}
 							],
@@ -21987,7 +22020,7 @@
 							"sources": [
 								{
 									"fileName": "functions/query/index.ts",
-									"line": 29,
+									"line": 34,
 									"character": 4
 								}
 							],
@@ -22038,7 +22071,7 @@
 							"sources": [
 								{
 									"fileName": "functions/query/index.ts",
-									"line": 35,
+									"line": 40,
 									"character": 4
 								}
 							],
@@ -22089,7 +22122,7 @@
 							"sources": [
 								{
 									"fileName": "functions/query/index.ts",
-									"line": 44,
+									"line": 49,
 									"character": 4
 								}
 							],
@@ -22140,7 +22173,7 @@
 							"sources": [
 								{
 									"fileName": "functions/query/index.ts",
-									"line": 41,
+									"line": 46,
 									"character": 4
 								}
 							],
@@ -22191,7 +22224,7 @@
 							"sources": [
 								{
 									"fileName": "functions/query/index.ts",
-									"line": 38,
+									"line": 43,
 									"character": 4
 								}
 							],
@@ -22253,7 +22286,7 @@
 							"sources": [
 								{
 									"fileName": "functions/query/index.ts",
-									"line": 50,
+									"line": 55,
 									"character": 4
 								}
 							],
@@ -22330,7 +22363,7 @@
 					"sources": [
 						{
 							"fileName": "functions/query/index.ts",
-							"line": 21,
+							"line": 26,
 							"character": 13
 						}
 					]
@@ -22344,7 +22377,7 @@
 					"sources": [
 						{
 							"fileName": "functions/query/Edge.ts",
-							"line": 33,
+							"line": 28,
 							"character": 16
 						}
 					],
@@ -22441,7 +22474,7 @@
 					"sources": [
 						{
 							"fileName": "functions/query/Filter.ts",
-							"line": 37,
+							"line": 32,
 							"character": 16
 						}
 					],
@@ -22599,7 +22632,7 @@
 					"sources": [
 						{
 							"fileName": "functions/query/Get.ts",
-							"line": 39,
+							"line": 34,
 							"character": 16
 						}
 					],
@@ -22712,7 +22745,7 @@
 					"sources": [
 						{
 							"fileName": "functions/query/Invert.ts",
-							"line": 38,
+							"line": 33,
 							"character": 16
 						}
 					],
@@ -22810,7 +22843,7 @@
 					"sources": [
 						{
 							"fileName": "functions/query/Neighbor.ts",
-							"line": 34,
+							"line": 29,
 							"character": 16
 						}
 					],
@@ -22908,7 +22941,7 @@
 					"sources": [
 						{
 							"fileName": "functions/query/Perimeter.ts",
-							"line": 34,
+							"line": 29,
 							"character": 16
 						}
 					],
@@ -23006,7 +23039,7 @@
 					"sources": [
 						{
 							"fileName": "functions/query/Sort.ts",
-							"line": 37,
+							"line": 32,
 							"character": 16
 						}
 					],
@@ -23136,7 +23169,7 @@
 					"sources": [
 						{
 							"fileName": "functions/query/Type.ts",
-							"line": 34,
+							"line": 29,
 							"character": 16
 						}
 					],
@@ -23261,7 +23294,7 @@
 			"sources": [
 				{
 					"fileName": "functions/query/index.ts",
-					"line": 1,
+					"line": 6,
 					"character": 0
 				}
 			]
@@ -23272,6 +23305,9 @@
 			"kind": 4,
 			"kindString": "Namespace",
 			"flags": {},
+			"comment": {
+				"shortText": "The `util` module has some utility functions used for debugging."
+			},
 			"children": [
 				{
 					"id": 1381,
@@ -23289,7 +23325,7 @@
 							"sources": [
 								{
 									"fileName": "functions/util/index.ts",
-									"line": 26,
+									"line": 30,
 									"character": 4
 								}
 							],
@@ -23330,7 +23366,7 @@
 							"sources": [
 								{
 									"fileName": "functions/util/index.ts",
-									"line": 25,
+									"line": 29,
 									"character": 4
 								}
 							],
@@ -23348,7 +23384,7 @@
 							"sources": [
 								{
 									"fileName": "functions/util/index.ts",
-									"line": 41,
+									"line": 45,
 									"character": 4
 								}
 							],
@@ -23388,7 +23424,7 @@
 							"sources": [
 								{
 									"fileName": "functions/util/index.ts",
-									"line": 47,
+									"line": 51,
 									"character": 4
 								}
 							],
@@ -23415,7 +23451,7 @@
 							"sources": [
 								{
 									"fileName": "functions/util/index.ts",
-									"line": 50,
+									"line": 54,
 									"character": 4
 								}
 							],
@@ -23455,7 +23491,7 @@
 							"sources": [
 								{
 									"fileName": "functions/util/index.ts",
-									"line": 44,
+									"line": 48,
 									"character": 4
 								}
 							],
@@ -23482,7 +23518,7 @@
 							"sources": [
 								{
 									"fileName": "functions/util/index.ts",
-									"line": 53,
+									"line": 57,
 									"character": 4
 								}
 							],
@@ -23522,7 +23558,7 @@
 							"sources": [
 								{
 									"fileName": "functions/util/index.ts",
-									"line": 38,
+									"line": 42,
 									"character": 4
 								}
 							],
@@ -23562,7 +23598,7 @@
 							"sources": [
 								{
 									"fileName": "functions/util/index.ts",
-									"line": 29,
+									"line": 33,
 									"character": 4
 								}
 							],
@@ -23602,7 +23638,7 @@
 							"sources": [
 								{
 									"fileName": "functions/util/index.ts",
-									"line": 56,
+									"line": 60,
 									"character": 4
 								}
 							],
@@ -23642,7 +23678,7 @@
 							"sources": [
 								{
 									"fileName": "functions/util/index.ts",
-									"line": 32,
+									"line": 36,
 									"character": 4
 								}
 							],
@@ -23704,7 +23740,7 @@
 							"sources": [
 								{
 									"fileName": "functions/util/index.ts",
-									"line": 35,
+									"line": 39,
 									"character": 4
 								}
 							],
@@ -23788,7 +23824,7 @@
 							"sources": [
 								{
 									"fileName": "functions/util/index.ts",
-									"line": 59,
+									"line": 63,
 									"character": 4
 								}
 							],
@@ -23828,7 +23864,7 @@
 							"sources": [
 								{
 									"fileName": "functions/util/index.ts",
-									"line": 62,
+									"line": 66,
 									"character": 4
 								}
 							],
@@ -23897,7 +23933,7 @@
 					"sources": [
 						{
 							"fileName": "functions/util/index.ts",
-							"line": 24,
+							"line": 28,
 							"character": 13
 						}
 					]
@@ -23911,7 +23947,7 @@
 					"sources": [
 						{
 							"fileName": "functions/util/EntityInfo.ts",
-							"line": 19,
+							"line": 15,
 							"character": 16
 						}
 					],
@@ -23982,7 +24018,7 @@
 					"sources": [
 						{
 							"fileName": "functions/util/ModelCheck.ts",
-							"line": 15,
+							"line": 11,
 							"character": 16
 						}
 					],
@@ -24027,7 +24063,7 @@
 					"sources": [
 						{
 							"fileName": "functions/util/ModelCompare.ts",
-							"line": 32,
+							"line": 28,
 							"character": 22
 						}
 					],
@@ -24093,7 +24129,7 @@
 					"sources": [
 						{
 							"fileName": "functions/util/ModelInfo.ts",
-							"line": 16,
+							"line": 12,
 							"character": 16
 						}
 					],
@@ -24138,7 +24174,7 @@
 					"sources": [
 						{
 							"fileName": "functions/util/ModelMerge.ts",
-							"line": 22,
+							"line": 18,
 							"character": 22
 						}
 					],
@@ -24207,7 +24243,7 @@
 					"sources": [
 						{
 							"fileName": "functions/util/ParamInfo.ts",
-							"line": 17,
+							"line": 13,
 							"character": 16
 						}
 					],
@@ -24270,7 +24306,7 @@
 					"sources": [
 						{
 							"fileName": "functions/util/Select.ts",
-							"line": 16,
+							"line": 12,
 							"character": 16
 						}
 					],
@@ -24349,7 +24385,7 @@
 					"sources": [
 						{
 							"fileName": "functions/util/SendData.ts",
-							"line": 16,
+							"line": 12,
 							"character": 16
 						}
 					],
@@ -24408,7 +24444,7 @@
 					"sources": [
 						{
 							"fileName": "functions/util/VrHotspot.ts",
-							"line": 23,
+							"line": 19,
 							"character": 17
 						}
 					],
@@ -24495,7 +24531,7 @@
 					"sources": [
 						{
 							"fileName": "functions/util/VrPanorama.ts",
-							"line": 27,
+							"line": 23,
 							"character": 17
 						}
 					],
@@ -24627,7 +24663,7 @@
 			"sources": [
 				{
 					"fileName": "functions/util/index.ts",
-					"line": 1,
+					"line": 5,
 					"character": 0
 				}
 			]
@@ -24638,6 +24674,9 @@
 			"kind": 4,
 			"kindString": "Namespace",
 			"flags": {},
+			"comment": {
+				"shortText": "The `visualize` module has functions for defining various settings for the 3D viewer.\nColor is saved as vertex attributes."
+			},
 			"children": [
 				{
 					"id": 1463,
@@ -24655,7 +24694,7 @@
 							"sources": [
 								{
 									"fileName": "functions/visualize/index.ts",
-									"line": 24,
+									"line": 29,
 									"character": 4
 								}
 							],
@@ -24696,7 +24735,7 @@
 							"sources": [
 								{
 									"fileName": "functions/visualize/index.ts",
-									"line": 21,
+									"line": 26,
 									"character": 4
 								}
 							],
@@ -24761,7 +24800,7 @@
 							"sources": [
 								{
 									"fileName": "functions/visualize/index.ts",
-									"line": 20,
+									"line": 25,
 									"character": 4
 								}
 							],
@@ -24779,7 +24818,7 @@
 							"sources": [
 								{
 									"fileName": "functions/visualize/index.ts",
-									"line": 45,
+									"line": 50,
 									"character": 4
 								}
 							],
@@ -24819,7 +24858,7 @@
 							"sources": [
 								{
 									"fileName": "functions/visualize/index.ts",
-									"line": 27,
+									"line": 32,
 									"character": 4
 								}
 							],
@@ -24870,7 +24909,7 @@
 							"sources": [
 								{
 									"fileName": "functions/visualize/index.ts",
-									"line": 33,
+									"line": 38,
 									"character": 4
 								}
 							],
@@ -24921,7 +24960,7 @@
 							"sources": [
 								{
 									"fileName": "functions/visualize/index.ts",
-									"line": 30,
+									"line": 35,
 									"character": 4
 								}
 							],
@@ -24994,7 +25033,7 @@
 							"sources": [
 								{
 									"fileName": "functions/visualize/index.ts",
-									"line": 36,
+									"line": 41,
 									"character": 4
 								}
 							],
@@ -25045,7 +25084,7 @@
 							"sources": [
 								{
 									"fileName": "functions/visualize/index.ts",
-									"line": 42,
+									"line": 47,
 									"character": 4
 								}
 							],
@@ -25096,7 +25135,7 @@
 							"sources": [
 								{
 									"fileName": "functions/visualize/index.ts",
-									"line": 39,
+									"line": 44,
 									"character": 4
 								}
 							],
@@ -25172,7 +25211,7 @@
 					"sources": [
 						{
 							"fileName": "functions/visualize/index.ts",
-							"line": 19,
+							"line": 24,
 							"character": 13
 						}
 					]
@@ -25186,7 +25225,7 @@
 					"sources": [
 						{
 							"fileName": "functions/visualize/BBox.ts",
-							"line": 21,
+							"line": 16,
 							"character": 16
 						}
 					],
@@ -25258,7 +25297,7 @@
 					"sources": [
 						{
 							"fileName": "functions/visualize/Color.ts",
-							"line": 31,
+							"line": 26,
 							"character": 16
 						}
 					],
@@ -25342,7 +25381,7 @@
 					"sources": [
 						{
 							"fileName": "functions/visualize/Edge.ts",
-							"line": 35,
+							"line": 30,
 							"character": 16
 						}
 					],
@@ -25426,7 +25465,7 @@
 					"sources": [
 						{
 							"fileName": "functions/visualize/Gradient.ts",
-							"line": 39,
+							"line": 34,
 							"character": 16
 						}
 					],
@@ -25587,7 +25626,7 @@
 					"sources": [
 						{
 							"fileName": "functions/visualize/Mesh.ts",
-							"line": 36,
+							"line": 31,
 							"character": 16
 						}
 					],
@@ -25671,7 +25710,7 @@
 					"sources": [
 						{
 							"fileName": "functions/visualize/Plane.ts",
-							"line": 35,
+							"line": 30,
 							"character": 16
 						}
 					],
@@ -25763,7 +25802,7 @@
 					"sources": [
 						{
 							"fileName": "functions/visualize/Ray.ts",
-							"line": 37,
+							"line": 32,
 							"character": 16
 						}
 					],
@@ -25874,7 +25913,7 @@
 			"sources": [
 				{
 					"fileName": "functions/visualize/index.ts",
-					"line": 1,
+					"line": 6,
 					"character": 0
 				}
 			]

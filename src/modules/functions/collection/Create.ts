@@ -1,7 +1,3 @@
-/**
- * The `collections` module has functions for creating and modifying collections.
- * @module
- */
 import {
     arrMakeFlat,
     EAttribNames,
@@ -15,6 +11,7 @@ import {
 
 import { checkIDs, ID } from '../../../_check_ids';
 import * as chk from '../../../_check_types';
+
 
 
 // ================================================================================================

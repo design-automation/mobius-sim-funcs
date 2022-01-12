@@ -1,10 +1,7 @@
-/**
- * The `io` module has functions for importing and exporting.
- * @module
- */
 import { GIModel } from '@design-automation/mobius-sim';
 
 import { _getFile } from './_getFile';
+
 
 
 // ================================================================================================

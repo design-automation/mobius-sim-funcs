@@ -1,8 +1,3 @@
-/**
- * The `attrib` module has functions for working with attributes in teh model.
- * Note that attributes can also be set and retrieved using the "@" symbol.
- * @module
- */
 import { getArrDepth, GIModel, idsBreak, TAttribDataTypes, TEntTypeIdx, TId } from '@design-automation/mobius-sim';
 import { cloneDeep } from 'lodash';
 import uscore from 'underscore';
@@ -15,6 +10,7 @@ import {
     splitAttribNameIdxKey,
 } from '../../../_check_attribs';
 import { checkIDs, ID } from '../../../_check_ids';
+
 
 
 // ================================================================================================
