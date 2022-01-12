@@ -1,4 +1,5 @@
 [
-    "pattern.grid",
-    "make.polygon"
+    "modify.rotate",
+    "make.polygon",
+    "pattern.grid"
 ]
