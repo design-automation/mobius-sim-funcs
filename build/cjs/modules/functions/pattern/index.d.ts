@@ -42,14 +42,14 @@ export declare class PatternFunc {
     };
     __model__: GIModel;
     constructor(model: GIModel);
-    Arc(origin: any, radius: any, num_positions: any, arc_angle: any): Promise<any>;
-    Bezier(coords: any, num_positions: any): Promise<any>;
-    Box(origin: any, size: any, num_positions: any, method: any): Promise<any>;
-    Grid(origin: any, size: any, num_positions: any, method: any): Promise<any>;
-    Interpolate(coords: any, type: any, tension: any, close: any, num_positions: any): Promise<any>;
-    Line(origin: any, length: any, num_positions: any): Promise<any>;
-    Linear(coords: any, close: any, num_positions: any): Promise<any>;
-    Nurbs(coords: any, degree: any, close: any, num_positions: any): Promise<any>;
-    Polyhedron(origin: any, radius: any, detail: any, method: any): Promise<any>;
-    Rectangle(origin: any, size: any): Promise<any>;
+    Arc(origin: any, radius: any, num_positions: any, arc_angle: any): any;
+    Bezier(coords: any, num_positions: any): any;
+    Box(origin: any, size: any, num_positions: any, method: any): any;
+    Grid(origin: any, size: any, num_positions: any, method: any): any;
+    Interpolate(coords: any, type: any, tension: any, close: any, num_positions: any): any;
+    Line(origin: any, length: any, num_positions: any): any;
+    Linear(coords: any, close: any, num_positions: any): any;
+    Nurbs(coords: any, degree: any, close: any, num_positions: any): any;
+    Polyhedron(origin: any, radius: any, detail: any, method: any): any;
+    Rectangle(origin: any, size: any): any;
 }

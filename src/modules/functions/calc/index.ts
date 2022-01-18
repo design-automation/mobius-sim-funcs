@@ -49,34 +49,34 @@ export class CalcFunc {
     constructor(model: GIModel) {
         this.__model__ = model;
     }
-    async Area(entities): Promise<any> {
+    Area(entities): any {
         return Area(this.__model__, entities);
     }
-    async BBox(entities): Promise<any> {
+    BBox(entities): any {
         return BBox(this.__model__, entities);
     }
-    async Centroid(entities, method): Promise<any> {
+    Centroid(entities, method): any {
         return Centroid(this.__model__, entities, method);
     }
-    async Distance(entities1, entities2, method): Promise<any> {
+    Distance(entities1, entities2, method): any {
         return Distance(this.__model__, entities1, entities2, method);
     }
-    async Eval(entities, t_param): Promise<any> {
+    Eval(entities, t_param): any {
         return Eval(this.__model__, entities, t_param);
     }
-    async Length(entities): Promise<any> {
+    Length(entities): any {
         return Length(this.__model__, entities);
     }
-    async Normal(entities, scale): Promise<any> {
+    Normal(entities, scale): any {
         return Normal(this.__model__, entities, scale);
     }
-    async Plane(entities): Promise<any> {
+    Plane(entities): any {
         return Plane(this.__model__, entities);
     }
-    async Ray(entities): Promise<any> {
+    Ray(entities): any {
         return Ray(this.__model__, entities);
     }
-    async Vector(entities): Promise<any> {
+    Vector(entities): any {
         return Vector(this.__model__, entities);
     }
 

@@ -17,13 +17,13 @@ export { Replace };
 // CLASS DEFINITION
 export class DictFunc {
 
-    async Add(dict, keys, values): Promise<void> {
+    Add(dict, keys, values): void {
         Add(dict, keys, values);
     }
-    async Remove(dict, keys): Promise<void> {
+    Remove(dict, keys): void {
         Remove(dict, keys);
     }
-    async Replace(dict, old_keys, new_keys): Promise<void> {
+    Replace(dict, old_keys, new_keys): void {
         Replace(dict, old_keys, new_keys);
     }
 

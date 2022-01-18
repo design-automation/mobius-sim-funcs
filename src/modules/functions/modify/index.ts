@@ -30,25 +30,25 @@ export class ModifyFunc {
     constructor(model: GIModel) {
         this.__model__ = model;
     }
-    async Mirror(entities, plane): Promise<void> {
+    Mirror(entities, plane): void {
         Mirror(this.__model__, entities, plane);
     }
-    async Move(entities, vectors): Promise<void> {
+    Move(entities, vectors): void {
         Move(this.__model__, entities, vectors);
     }
-    async Offset(entities, dist): Promise<void> {
+    Offset(entities, dist): void {
         Offset(this.__model__, entities, dist);
     }
-    async Remesh(entities): Promise<void> {
+    Remesh(entities): void {
         Remesh(this.__model__, entities);
     }
-    async Rotate(entities, ray, angle): Promise<void> {
+    Rotate(entities, ray, angle): void {
         Rotate(this.__model__, entities, ray, angle);
     }
-    async Scale(entities, plane, scale): Promise<void> {
+    Scale(entities, plane, scale): void {
         Scale(this.__model__, entities, plane, scale);
     }
-    async XForm(entities, from_plane, to_plane): Promise<void> {
+    XForm(entities, from_plane, to_plane): void {
         XForm(this.__model__, entities, from_plane, to_plane);
     }
 

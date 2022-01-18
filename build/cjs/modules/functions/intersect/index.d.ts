@@ -10,6 +10,6 @@ export { PlaneEdge };
 export declare class IntersectFunc {
     __model__: GIModel;
     constructor(model: GIModel);
-    PlaneEdge(plane: any, entities: any): Promise<any>;
-    RayFace(ray: any, entities: any): Promise<any>;
+    PlaneEdge(plane: any, entities: any): any;
+    RayFace(ray: any, entities: any): any;
 }

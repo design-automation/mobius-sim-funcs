@@ -18,15 +18,6 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ListFunc = exports.Splice = exports.Sort = exports.Replace = exports.Remove = exports.Add = void 0;
 /**
@@ -54,30 +45,20 @@ class ListFunc {
         this.__enum__ = Object.assign({}, Enum);
     }
     Add(list, item, method) {
-        return __awaiter(this, void 0, void 0, function* () {
-            (0, Add_1.Add)(list, item, method);
-        });
+        (0, Add_1.Add)(list, item, method);
     }
     Remove(list, item, method) {
-        return __awaiter(this, void 0, void 0, function* () {
-            (0, Remove_1.Remove)(list, item, method);
-        });
+        (0, Remove_1.Remove)(list, item, method);
     }
     Replace(list, old_item, new_item, method) {
-        return __awaiter(this, void 0, void 0, function* () {
-            (0, Replace_1.Replace)(list, old_item, new_item, method);
-        });
+        (0, Replace_1.Replace)(list, old_item, new_item, method);
     }
     Sort(list, method) {
-        return __awaiter(this, void 0, void 0, function* () {
-            (0, Sort_1.Sort)(list, method);
-        });
+        (0, Sort_1.Sort)(list, method);
     }
     Splice(list, index, num_to_remove, items_to_insert) {
-        return __awaiter(this, void 0, void 0, function* () {
-            (0, Splice_1.Splice)(list, index, num_to_remove, items_to_insert);
-        });
+        (0, Splice_1.Splice)(list, index, num_to_remove, items_to_insert);
     }
 }
 exports.ListFunc = ListFunc;
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi8uLi9zcmMvbW9kdWxlcy9mdW5jdGlvbnMvbGlzdC9pbmRleC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBQUE7Ozs7Ozs7R0FPRztBQUNILDhDQUFnQztBQUNoQywrQkFBNEI7QUFNbkIsb0ZBTkEsU0FBRyxPQU1BO0FBTFoscUNBQWtDO0FBTXpCLHVGQU5BLGVBQU0sT0FNQTtBQUxmLHVDQUFvQztBQU0zQix3RkFOQSxpQkFBTyxPQU1BO0FBTGhCLGlDQUE4QjtBQU1yQixxRkFOQSxXQUFJLE9BTUE7QUFMYixxQ0FBa0M7QUFNekIsdUZBTkEsZUFBTSxPQU1BO0FBRWYsbUJBQW1CO0FBQ25CLE1BQWEsUUFBUTtJQUFyQjtRQUNJLGFBQVEscUJBQ0QsSUFBSSxFQUNWO0lBa0JMLENBQUM7SUFoQlMsR0FBRyxDQUFDLElBQUksRUFBRSxJQUFJLEVBQUUsTUFBTTs7WUFDeEIsSUFBQSxTQUFHLEVBQUMsSUFBSSxFQUFFLElBQUksRUFBRSxNQUFNLENBQUMsQ0FBQztRQUM1QixDQUFDO0tBQUE7SUFDSyxNQUFNLENBQUMsSUFBSSxFQUFFLElBQUksRUFBRSxNQUFNOztZQUMzQixJQUFBLGVBQU0sRUFBQyxJQUFJLEVBQUUsSUFBSSxFQUFFLE1BQU0sQ0FBQyxDQUFDO1FBQy9CLENBQUM7S0FBQTtJQUNLLE9BQU8sQ0FBQyxJQUFJLEVBQUUsUUFBUSxFQUFFLFFBQVEsRUFBRSxNQUFNOztZQUMxQyxJQUFBLGlCQUFPLEVBQUMsSUFBSSxFQUFFLFFBQVEsRUFBRSxRQUFRLEVBQUUsTUFBTSxDQUFDLENBQUM7UUFDOUMsQ0FBQztLQUFBO0lBQ0ssSUFBSSxDQUFDLElBQUksRUFBRSxNQUFNOztZQUNuQixJQUFBLFdBQUksRUFBQyxJQUFJLEVBQUUsTUFBTSxDQUFDLENBQUM7UUFDdkIsQ0FBQztLQUFBO0lBQ0ssTUFBTSxDQUFDLElBQUksRUFBRSxLQUFLLEVBQUUsYUFBYSxFQUFFLGVBQWU7O1lBQ3BELElBQUEsZUFBTSxFQUFDLElBQUksRUFBRSxLQUFLLEVBQUUsYUFBYSxFQUFFLGVBQWUsQ0FBQyxDQUFDO1FBQ3hELENBQUM7S0FBQTtDQUVKO0FBckJELDRCQXFCQyJ9
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi8uLi9zcmMvbW9kdWxlcy9mdW5jdGlvbnMvbGlzdC9pbmRleC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBQUE7Ozs7Ozs7R0FPRztBQUNILDhDQUFnQztBQUNoQywrQkFBNEI7QUFNbkIsb0ZBTkEsU0FBRyxPQU1BO0FBTFoscUNBQWtDO0FBTXpCLHVGQU5BLGVBQU0sT0FNQTtBQUxmLHVDQUFvQztBQU0zQix3RkFOQSxpQkFBTyxPQU1BO0FBTGhCLGlDQUE4QjtBQU1yQixxRkFOQSxXQUFJLE9BTUE7QUFMYixxQ0FBa0M7QUFNekIsdUZBTkEsZUFBTSxPQU1BO0FBRWYsbUJBQW1CO0FBQ25CLE1BQWEsUUFBUTtJQUFyQjtRQUNJLGFBQVEscUJBQ0QsSUFBSSxFQUNWO0lBa0JMLENBQUM7SUFoQkcsR0FBRyxDQUFDLElBQUksRUFBRSxJQUFJLEVBQUUsTUFBTTtRQUNsQixJQUFBLFNBQUcsRUFBQyxJQUFJLEVBQUUsSUFBSSxFQUFFLE1BQU0sQ0FBQyxDQUFDO0lBQzVCLENBQUM7SUFDRCxNQUFNLENBQUMsSUFBSSxFQUFFLElBQUksRUFBRSxNQUFNO1FBQ3JCLElBQUEsZUFBTSxFQUFDLElBQUksRUFBRSxJQUFJLEVBQUUsTUFBTSxDQUFDLENBQUM7SUFDL0IsQ0FBQztJQUNELE9BQU8sQ0FBQyxJQUFJLEVBQUUsUUFBUSxFQUFFLFFBQVEsRUFBRSxNQUFNO1FBQ3BDLElBQUEsaUJBQU8sRUFBQyxJQUFJLEVBQUUsUUFBUSxFQUFFLFFBQVEsRUFBRSxNQUFNLENBQUMsQ0FBQztJQUM5QyxDQUFDO0lBQ0QsSUFBSSxDQUFDLElBQUksRUFBRSxNQUFNO1FBQ2IsSUFBQSxXQUFJLEVBQUMsSUFBSSxFQUFFLE1BQU0sQ0FBQyxDQUFDO0lBQ3ZCLENBQUM7SUFDRCxNQUFNLENBQUMsSUFBSSxFQUFFLEtBQUssRUFBRSxhQUFhLEVBQUUsZUFBZTtRQUM5QyxJQUFBLGVBQU0sRUFBQyxJQUFJLEVBQUUsS0FBSyxFQUFFLGFBQWEsRUFBRSxlQUFlLENBQUMsQ0FBQztJQUN4RCxDQUFDO0NBRUo7QUFyQkQsNEJBcUJDIn0=

@@ -37,12 +37,12 @@ export declare class MaterialFunc {
     };
     __model__: GIModel;
     constructor(model: GIModel);
-    Glass(name: any, opacity: any): Promise<void>;
-    Lambert(name: any, emissive: any): Promise<void>;
-    LineMat(name: any, color: any, dash_gap_scale: any, select_vert_colors: any): Promise<void>;
-    MeshMat(name: any, color: any, opacity: any, select_side: any, select_vert_colors: any): Promise<void>;
-    Phong(name: any, emissive: any, specular: any, shininess: any): Promise<void>;
-    Physical(name: any, emissive: any, roughness: any, metalness: any, reflectivity: any): Promise<void>;
-    Set(entities: any, material: any): Promise<void>;
-    Standard(name: any, emissive: any, roughness: any, metalness: any): Promise<void>;
+    Glass(name: any, opacity: any): void;
+    Lambert(name: any, emissive: any): void;
+    LineMat(name: any, color: any, dash_gap_scale: any, select_vert_colors: any): void;
+    MeshMat(name: any, color: any, opacity: any, select_side: any, select_vert_colors: any): void;
+    Phong(name: any, emissive: any, specular: any, shininess: any): void;
+    Physical(name: any, emissive: any, roughness: any, metalness: any, reflectivity: any): void;
+    Set(entities: any, material: any): void;
+    Standard(name: any, emissive: any, roughness: any, metalness: any): void;
 }

@@ -1,13 +1,4 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ModifyFunc = exports.Remesh = exports.Offset = exports.XForm = exports.Mirror = exports.Scale = exports.Rotate = exports.Move = void 0;
 const Mirror_1 = require("./Mirror");
@@ -30,40 +21,26 @@ class ModifyFunc {
         this.__model__ = model;
     }
     Mirror(entities, plane) {
-        return __awaiter(this, void 0, void 0, function* () {
-            (0, Mirror_1.Mirror)(this.__model__, entities, plane);
-        });
+        (0, Mirror_1.Mirror)(this.__model__, entities, plane);
     }
     Move(entities, vectors) {
-        return __awaiter(this, void 0, void 0, function* () {
-            (0, Move_1.Move)(this.__model__, entities, vectors);
-        });
+        (0, Move_1.Move)(this.__model__, entities, vectors);
     }
     Offset(entities, dist) {
-        return __awaiter(this, void 0, void 0, function* () {
-            (0, Offset_1.Offset)(this.__model__, entities, dist);
-        });
+        (0, Offset_1.Offset)(this.__model__, entities, dist);
     }
     Remesh(entities) {
-        return __awaiter(this, void 0, void 0, function* () {
-            (0, Remesh_1.Remesh)(this.__model__, entities);
-        });
+        (0, Remesh_1.Remesh)(this.__model__, entities);
     }
     Rotate(entities, ray, angle) {
-        return __awaiter(this, void 0, void 0, function* () {
-            (0, Rotate_1.Rotate)(this.__model__, entities, ray, angle);
-        });
+        (0, Rotate_1.Rotate)(this.__model__, entities, ray, angle);
     }
     Scale(entities, plane, scale) {
-        return __awaiter(this, void 0, void 0, function* () {
-            (0, Scale_1.Scale)(this.__model__, entities, plane, scale);
-        });
+        (0, Scale_1.Scale)(this.__model__, entities, plane, scale);
     }
     XForm(entities, from_plane, to_plane) {
-        return __awaiter(this, void 0, void 0, function* () {
-            (0, XForm_1.XForm)(this.__model__, entities, from_plane, to_plane);
-        });
+        (0, XForm_1.XForm)(this.__model__, entities, from_plane, to_plane);
     }
 }
 exports.ModifyFunc = ModifyFunc;
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi8uLi9zcmMvbW9kdWxlcy9mdW5jdGlvbnMvbW9kaWZ5L2luZGV4LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7OztBQVNBLHFDQUFrQztBQVd6Qix1RkFYQSxlQUFNLE9BV0E7QUFWZixpQ0FBOEI7QUFPckIscUZBUEEsV0FBSSxPQU9BO0FBTmIscUNBQWtDO0FBV3pCLHVGQVhBLGVBQU0sT0FXQTtBQVZmLHFDQUFrQztBQVd6Qix1RkFYQSxlQUFNLE9BV0E7QUFWZixxQ0FBa0M7QUFLekIsdUZBTEEsZUFBTSxPQUtBO0FBSmYsbUNBQWdDO0FBS3ZCLHNGQUxBLGFBQUssT0FLQTtBQUpkLG1DQUFnQztBQU12QixzRkFOQSxhQUFLLE9BTUE7QUFJZCxtQkFBbUI7QUFDbkIsTUFBYSxVQUFVO0lBR25CLFlBQVksS0FBYztRQUN0QixJQUFJLENBQUMsU0FBUyxHQUFHLEtBQUssQ0FBQztJQUMzQixDQUFDO0lBQ0ssTUFBTSxDQUFDLFFBQVEsRUFBRSxLQUFLOztZQUN4QixJQUFBLGVBQU0sRUFBQyxJQUFJLENBQUMsU0FBUyxFQUFFLFFBQVEsRUFBRSxLQUFLLENBQUMsQ0FBQztRQUM1QyxDQUFDO0tBQUE7SUFDSyxJQUFJLENBQUMsUUFBUSxFQUFFLE9BQU87O1lBQ3hCLElBQUEsV0FBSSxFQUFDLElBQUksQ0FBQyxTQUFTLEVBQUUsUUFBUSxFQUFFLE9BQU8sQ0FBQyxDQUFDO1FBQzVDLENBQUM7S0FBQTtJQUNLLE1BQU0sQ0FBQyxRQUFRLEVBQUUsSUFBSTs7WUFDdkIsSUFBQSxlQUFNLEVBQUMsSUFBSSxDQUFDLFNBQVMsRUFBRSxRQUFRLEVBQUUsSUFBSSxDQUFDLENBQUM7UUFDM0MsQ0FBQztLQUFBO0lBQ0ssTUFBTSxDQUFDLFFBQVE7O1lBQ2pCLElBQUEsZUFBTSxFQUFDLElBQUksQ0FBQyxTQUFTLEVBQUUsUUFBUSxDQUFDLENBQUM7UUFDckMsQ0FBQztLQUFBO0lBQ0ssTUFBTSxDQUFDLFFBQVEsRUFBRSxHQUFHLEVBQUUsS0FBSzs7WUFDN0IsSUFBQSxlQUFNLEVBQUMsSUFBSSxDQUFDLFNBQVMsRUFBRSxRQUFRLEVBQUUsR0FBRyxFQUFFLEtBQUssQ0FBQyxDQUFDO1FBQ2pELENBQUM7S0FBQTtJQUNLLEtBQUssQ0FBQyxRQUFRLEVBQUUsS0FBSyxFQUFFLEtBQUs7O1lBQzlCLElBQUEsYUFBSyxFQUFDLElBQUksQ0FBQyxTQUFTLEVBQUUsUUFBUSxFQUFFLEtBQUssRUFBRSxLQUFLLENBQUMsQ0FBQztRQUNsRCxDQUFDO0tBQUE7SUFDSyxLQUFLLENBQUMsUUFBUSxFQUFFLFVBQVUsRUFBRSxRQUFROztZQUN0QyxJQUFBLGFBQUssRUFBQyxJQUFJLENBQUMsU0FBUyxFQUFFLFFBQVEsRUFBRSxVQUFVLEVBQUUsUUFBUSxDQUFDLENBQUM7UUFDMUQsQ0FBQztLQUFBO0NBRUo7QUE1QkQsZ0NBNEJDIn0=
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi8uLi9zcmMvbW9kdWxlcy9mdW5jdGlvbnMvbW9kaWZ5L2luZGV4LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7OztBQVNBLHFDQUFrQztBQVd6Qix1RkFYQSxlQUFNLE9BV0E7QUFWZixpQ0FBOEI7QUFPckIscUZBUEEsV0FBSSxPQU9BO0FBTmIscUNBQWtDO0FBV3pCLHVGQVhBLGVBQU0sT0FXQTtBQVZmLHFDQUFrQztBQVd6Qix1RkFYQSxlQUFNLE9BV0E7QUFWZixxQ0FBa0M7QUFLekIsdUZBTEEsZUFBTSxPQUtBO0FBSmYsbUNBQWdDO0FBS3ZCLHNGQUxBLGFBQUssT0FLQTtBQUpkLG1DQUFnQztBQU12QixzRkFOQSxhQUFLLE9BTUE7QUFJZCxtQkFBbUI7QUFDbkIsTUFBYSxVQUFVO0lBR25CLFlBQVksS0FBYztRQUN0QixJQUFJLENBQUMsU0FBUyxHQUFHLEtBQUssQ0FBQztJQUMzQixDQUFDO0lBQ0QsTUFBTSxDQUFDLFFBQVEsRUFBRSxLQUFLO1FBQ2xCLElBQUEsZUFBTSxFQUFDLElBQUksQ0FBQyxTQUFTLEVBQUUsUUFBUSxFQUFFLEtBQUssQ0FBQyxDQUFDO0lBQzVDLENBQUM7SUFDRCxJQUFJLENBQUMsUUFBUSxFQUFFLE9BQU87UUFDbEIsSUFBQSxXQUFJLEVBQUMsSUFBSSxDQUFDLFNBQVMsRUFBRSxRQUFRLEVBQUUsT0FBTyxDQUFDLENBQUM7SUFDNUMsQ0FBQztJQUNELE1BQU0sQ0FBQyxRQUFRLEVBQUUsSUFBSTtRQUNqQixJQUFBLGVBQU0sRUFBQyxJQUFJLENBQUMsU0FBUyxFQUFFLFFBQVEsRUFBRSxJQUFJLENBQUMsQ0FBQztJQUMzQyxDQUFDO0lBQ0QsTUFBTSxDQUFDLFFBQVE7UUFDWCxJQUFBLGVBQU0sRUFBQyxJQUFJLENBQUMsU0FBUyxFQUFFLFFBQVEsQ0FBQyxDQUFDO0lBQ3JDLENBQUM7SUFDRCxNQUFNLENBQUMsUUFBUSxFQUFFLEdBQUcsRUFBRSxLQUFLO1FBQ3ZCLElBQUEsZUFBTSxFQUFDLElBQUksQ0FBQyxTQUFTLEVBQUUsUUFBUSxFQUFFLEdBQUcsRUFBRSxLQUFLLENBQUMsQ0FBQztJQUNqRCxDQUFDO0lBQ0QsS0FBSyxDQUFDLFFBQVEsRUFBRSxLQUFLLEVBQUUsS0FBSztRQUN4QixJQUFBLGFBQUssRUFBQyxJQUFJLENBQUMsU0FBUyxFQUFFLFFBQVEsRUFBRSxLQUFLLEVBQUUsS0FBSyxDQUFDLENBQUM7SUFDbEQsQ0FBQztJQUNELEtBQUssQ0FBQyxRQUFRLEVBQUUsVUFBVSxFQUFFLFFBQVE7UUFDaEMsSUFBQSxhQUFLLEVBQUMsSUFBSSxDQUFDLFNBQVMsRUFBRSxRQUFRLEVBQUUsVUFBVSxFQUFFLFFBQVEsQ0FBQyxDQUFDO0lBQzFELENBQUM7Q0FFSjtBQTVCRCxnQ0E0QkMifQ==

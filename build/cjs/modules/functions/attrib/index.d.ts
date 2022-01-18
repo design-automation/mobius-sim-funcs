@@ -31,10 +31,10 @@ export declare class AttribFunc {
     };
     __model__: GIModel;
     constructor(model: GIModel);
-    Add(ent_type_sel: any, data_type_sel: any, attribs: any): Promise<void>;
-    Delete(ent_type_sel: any, attribs: any): Promise<void>;
-    Get(entities: any, attrib: any): Promise<any>;
-    Push(entities: any, attrib: any, ent_type_sel: any, method_sel: any): Promise<void>;
-    Rename(ent_type_sel: any, old_attrib: any, new_attrib: any): Promise<void>;
-    Set(entities: any, attrib: any, value: any, method: any): Promise<void>;
+    Add(ent_type_sel: any, data_type_sel: any, attribs: any): void;
+    Delete(ent_type_sel: any, attribs: any): void;
+    Get(entities: any, attrib: any): any;
+    Push(entities: any, attrib: any, ent_type_sel: any, method_sel: any): void;
+    Rename(ent_type_sel: any, old_attrib: any, new_attrib: any): void;
+    Set(entities: any, attrib: any, value: any, method: any): void;
 }

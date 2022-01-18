@@ -29,19 +29,19 @@ export class CollectionFunc {
     constructor(model: GIModel) {
         this.__model__ = model;
     }
-    async Add(coll, entities): Promise<void> {
+    Add(coll, entities): void {
         Add(this.__model__, coll, entities);
     }
-    async Create(entities, name): Promise<any> {
+    Create(entities, name): any {
         return Create(this.__model__, entities, name);
     }
-    async Delete(coll): Promise<void> {
+    Delete(coll): void {
         Delete(this.__model__, coll);
     }
-    async Get(names): Promise<any> {
+    Get(names): any {
         return Get(this.__model__, names);
     }
-    async Remove(coll, entities): Promise<void> {
+    Remove(coll, entities): void {
         Remove(this.__model__, coll, entities);
     }
 

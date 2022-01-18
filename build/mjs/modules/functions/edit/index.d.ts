@@ -37,12 +37,12 @@ export declare class EditFunc {
     };
     __model__: GIModel;
     constructor(model: GIModel);
-    Delete(entities: any, method: any): Promise<void>;
-    Divide(entities: any, divisor: any, method: any): Promise<any>;
-    Fuse(entities: any, tolerance: any): Promise<any>;
-    Hole(pgon: any, entities: any): Promise<any>;
-    Reverse(entities: any): Promise<void>;
-    Ring(entities: any, method: any): Promise<void>;
-    Shift(entities: any, offset: any): Promise<void>;
-    Weld(entities: any, method: any): Promise<any>;
+    Delete(entities: any, method: any): void;
+    Divide(entities: any, divisor: any, method: any): any;
+    Fuse(entities: any, tolerance: any): any;
+    Hole(pgon: any, entities: any): any;
+    Reverse(entities: any): void;
+    Ring(entities: any, method: any): void;
+    Shift(entities: any, offset: any): void;
+    Weld(entities: any, method: any): any;
 }

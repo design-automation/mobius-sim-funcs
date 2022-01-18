@@ -43,19 +43,19 @@ export class IoFunc {
     async ExportData(entities, data_format): Promise<any> {
         return ExportData(this.__model__, entities, data_format);
     }
-    async Geoalign(lat_long_o, lat_long_x, elev): Promise<void> {
+    Geoalign(lat_long_o, lat_long_x, elev): void {
         Geoalign(this.__model__, lat_long_o, lat_long_x, elev);
     }
-    async Geolocate(lat_long, rot, elev): Promise<void> {
+    Geolocate(lat_long, rot, elev): void {
         Geolocate(this.__model__, lat_long, rot, elev);
     }
     async Import(data_url, data_format): Promise<any> {
         return Import(this.__model__, data_url, data_format);
     }
-    async ImportData(model_data, data_format): Promise<any> {
+    ImportData(model_data, data_format): any {
         return ImportData(this.__model__, model_data, data_format);
     }
-    async LatLong2XYZ(lat_long, elev): Promise<any> {
+    LatLong2XYZ(lat_long, elev): any {
         return LatLong2XYZ(this.__model__, lat_long, elev);
     }
     async Read(data): Promise<any> {

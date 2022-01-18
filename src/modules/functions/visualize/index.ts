@@ -32,25 +32,25 @@ export class VisualizeFunc {
     constructor(model: GIModel) {
         this.__model__ = model;
     }
-    async BBox(bboxes): Promise<any> {
+    BBox(bboxes): any {
         return BBox(this.__model__, bboxes);
     }
-    async Color(entities, color): Promise<void> {
+    Color(entities, color): void {
         Color(this.__model__, entities, color);
     }
-    async Edge(entities, method): Promise<void> {
+    Edge(entities, method): void {
         Edge(this.__model__, entities, method);
     }
-    async Gradient(entities, attrib, range, method): Promise<void> {
+    Gradient(entities, attrib, range, method): void {
         Gradient(this.__model__, entities, attrib, range, method);
     }
-    async Mesh(entities, method): Promise<void> {
+    Mesh(entities, method): void {
         Mesh(this.__model__, entities, method);
     }
-    async Plane(planes, scale): Promise<any> {
+    Plane(planes, scale): any {
         return Plane(this.__model__, planes, scale);
     }
-    async Ray(rays, scale): Promise<any> {
+    Ray(rays, scale): any {
         return Ray(this.__model__, rays, scale);
     }
 

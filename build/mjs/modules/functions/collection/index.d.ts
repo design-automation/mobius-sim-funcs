@@ -16,9 +16,9 @@ export { Delete };
 export declare class CollectionFunc {
     __model__: GIModel;
     constructor(model: GIModel);
-    Add(coll: any, entities: any): Promise<void>;
-    Create(entities: any, name: any): Promise<any>;
-    Delete(coll: any): Promise<void>;
-    Get(names: any): Promise<any>;
-    Remove(coll: any, entities: any): Promise<void>;
+    Add(coll: any, entities: any): void;
+    Create(entities: any, name: any): any;
+    Delete(coll: any): void;
+    Get(names: any): any;
+    Remove(coll: any, entities: any): void;
 }

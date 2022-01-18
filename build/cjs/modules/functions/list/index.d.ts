@@ -32,9 +32,9 @@ export declare class ListFunc {
         _EReplaceMethod: typeof Enum._EReplaceMethod;
         _ESortMethod: typeof Enum._ESortMethod;
     };
-    Add(list: any, item: any, method: any): Promise<void>;
-    Remove(list: any, item: any, method: any): Promise<void>;
-    Replace(list: any, old_item: any, new_item: any, method: any): Promise<void>;
-    Sort(list: any, method: any): Promise<void>;
-    Splice(list: any, index: any, num_to_remove: any, items_to_insert: any): Promise<void>;
+    Add(list: any, item: any, method: any): void;
+    Remove(list: any, item: any, method: any): void;
+    Replace(list: any, old_item: any, new_item: any, method: any): void;
+    Sort(list: any, method: any): void;
+    Splice(list: any, index: any, num_to_remove: any, items_to_insert: any): void;
 }

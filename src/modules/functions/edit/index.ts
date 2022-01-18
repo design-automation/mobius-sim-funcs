@@ -35,28 +35,28 @@ export class EditFunc {
     constructor(model: GIModel) {
         this.__model__ = model;
     }
-    async Delete(entities, method): Promise<void> {
+    Delete(entities, method): void {
         Delete(this.__model__, entities, method);
     }
-    async Divide(entities, divisor, method): Promise<any> {
+    Divide(entities, divisor, method): any {
         return Divide(this.__model__, entities, divisor, method);
     }
-    async Fuse(entities, tolerance): Promise<any> {
+    Fuse(entities, tolerance): any {
         return Fuse(this.__model__, entities, tolerance);
     }
-    async Hole(pgon, entities): Promise<any> {
+    Hole(pgon, entities): any {
         return Hole(this.__model__, pgon, entities);
     }
-    async Reverse(entities): Promise<void> {
+    Reverse(entities): void {
         Reverse(this.__model__, entities);
     }
-    async Ring(entities, method): Promise<void> {
+    Ring(entities, method): void {
         Ring(this.__model__, entities, method);
     }
-    async Shift(entities, offset): Promise<void> {
+    Shift(entities, offset): void {
         Shift(this.__model__, entities, offset);
     }
-    async Weld(entities, method): Promise<any> {
+    Weld(entities, method): any {
         return Weld(this.__model__, entities, method);
     }
 

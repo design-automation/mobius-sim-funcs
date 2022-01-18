@@ -54,7 +54,7 @@ function extract_params(funcString){
         params2: params2,
         async: false
     }
-    if(result.return.indexOf('Promise' !== -1)) {
+    if(result.return.indexOf('Promise') !== -1) {
         result.async = true;
     }
     return result

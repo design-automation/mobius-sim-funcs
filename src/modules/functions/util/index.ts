@@ -33,34 +33,34 @@ export class UtilFunc {
     constructor(model: GIModel) {
         this.__model__ = model;
     }
-    async EntityInfo(entities): Promise<any> {
+    EntityInfo(entities): any {
         return EntityInfo(this.__model__, entities);
     }
-    async ModelCheck(): Promise<any> {
+    ModelCheck(): any {
         return ModelCheck(this.__model__);
     }
     async ModelCompare(input_data): Promise<any> {
         return ModelCompare(this.__model__, input_data);
     }
-    async ModelInfo(): Promise<any> {
+    ModelInfo(): any {
         return ModelInfo(this.__model__);
     }
     async ModelMerge(input_data): Promise<any> {
         return ModelMerge(this.__model__, input_data);
     }
-    async ParamInfo(__constList__): Promise<any> {
+    ParamInfo(__constList__): any {
         return ParamInfo(this.__model__, __constList__);
     }
-    async Select(entities): Promise<void> {
+    Select(entities): void {
         Select(this.__model__, entities);
     }
-    async SendData(data): Promise<void> {
+    SendData(data): void {
         SendData(this.__model__, data);
     }
-    async VrHotspot(point, name, camera_rot): Promise<void> {
+    VrHotspot(point, name, camera_rot): void {
         VrHotspot(this.__model__, point, name, camera_rot);
     }
-    async VrPanorama(point, back_url, back_rot, fore_url, fore_rot): Promise<void> {
+    VrPanorama(point, back_url, back_rot, fore_url, fore_rot): void {
         VrPanorama(this.__model__, point, back_url, back_rot, fore_url, fore_rot);
     }
 

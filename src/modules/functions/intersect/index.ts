@@ -17,10 +17,10 @@ export class IntersectFunc {
     constructor(model: GIModel) {
         this.__model__ = model;
     }
-    async PlaneEdge(plane, entities): Promise<any> {
+    PlaneEdge(plane, entities): any {
         return PlaneEdge(this.__model__, plane, entities);
     }
-    async RayFace(ray, entities): Promise<any> {
+    RayFace(ray, entities): any {
         return RayFace(this.__model__, ray, entities);
     }
 

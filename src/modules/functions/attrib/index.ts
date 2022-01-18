@@ -37,22 +37,22 @@ export class AttribFunc {
     constructor(model: GIModel) {
         this.__model__ = model;
     }
-    async Add(ent_type_sel, data_type_sel, attribs): Promise<void> {
+    Add(ent_type_sel, data_type_sel, attribs): void {
         Add(this.__model__, ent_type_sel, data_type_sel, attribs);
     }
-    async Delete(ent_type_sel, attribs): Promise<void> {
+    Delete(ent_type_sel, attribs): void {
         Delete(this.__model__, ent_type_sel, attribs);
     }
-    async Get(entities, attrib): Promise<any> {
+    Get(entities, attrib): any {
         return Get(this.__model__, entities, attrib);
     }
-    async Push(entities, attrib, ent_type_sel, method_sel): Promise<void> {
+    Push(entities, attrib, ent_type_sel, method_sel): void {
         Push(this.__model__, entities, attrib, ent_type_sel, method_sel);
     }
-    async Rename(ent_type_sel, old_attrib, new_attrib): Promise<void> {
+    Rename(ent_type_sel, old_attrib, new_attrib): void {
         Rename(this.__model__, ent_type_sel, old_attrib, new_attrib);
     }
-    async Set(entities, attrib, value, method): Promise<void> {
+    Set(entities, attrib, value, method): void {
         Set(this.__model__, entities, attrib, value, method);
     }
 

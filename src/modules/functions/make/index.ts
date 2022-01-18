@@ -41,37 +41,37 @@ export class MakeFunc {
     constructor(model: GIModel) {
         this.__model__ = model;
     }
-    async Clone(entities): Promise<any> {
+    Clone(entities): any {
         return Clone(this.__model__, entities);
     }
-    async Copy(entities, vector): Promise<any> {
+    Copy(entities, vector): any {
         return Copy(this.__model__, entities, vector);
     }
-    async Cut(entities, plane, method): Promise<any> {
+    Cut(entities, plane, method): any {
         return Cut(this.__model__, entities, plane, method);
     }
-    async Extrude(entities, dist, divisions, method): Promise<any> {
+    Extrude(entities, dist, divisions, method): any {
         return Extrude(this.__model__, entities, dist, divisions, method);
     }
-    async Join(entities): Promise<any> {
+    Join(entities): any {
         return Join(this.__model__, entities);
     }
-    async Loft(entities, divisions, method): Promise<any> {
+    Loft(entities, divisions, method): any {
         return Loft(this.__model__, entities, divisions, method);
     }
-    async Point(entities): Promise<any> {
+    Point(entities): any {
         return Point(this.__model__, entities);
     }
-    async Polygon(entities): Promise<any> {
+    Polygon(entities): any {
         return Polygon(this.__model__, entities);
     }
-    async Polyline(entities, close): Promise<any> {
+    Polyline(entities, close): any {
         return Polyline(this.__model__, entities, close);
     }
-    async Position(coords): Promise<any> {
+    Position(coords): any {
         return Position(this.__model__, coords);
     }
-    async Sweep(entities, x_section, divisions, method): Promise<any> {
+    Sweep(entities, x_section, divisions, method): any {
         return Sweep(this.__model__, entities, x_section, divisions, method);
     }
 

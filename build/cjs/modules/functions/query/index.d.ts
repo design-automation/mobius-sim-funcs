@@ -37,12 +37,12 @@ export declare class QueryFunc {
     };
     __model__: GIModel;
     constructor(model: GIModel);
-    Edge(entities: any, edge_query_enum: any): Promise<any>;
-    Filter(entities: any, attrib: any, operator_enum: any, value: any): Promise<any>;
-    Get(ent_type_enum: any, entities: any): Promise<any>;
-    Invert(ent_type_enum: any, entities: any): Promise<any>;
-    Neighbor(ent_type_enum: any, entities: any): Promise<any>;
-    Perimeter(ent_type: any, entities: any): Promise<any>;
-    Sort(entities: any, attrib: any, method_enum: any): Promise<any>;
-    Type(entities: any, type_query_enum: any): Promise<any>;
+    Edge(entities: any, edge_query_enum: any): any;
+    Filter(entities: any, attrib: any, operator_enum: any, value: any): any;
+    Get(ent_type_enum: any, entities: any): any;
+    Invert(ent_type_enum: any, entities: any): any;
+    Neighbor(ent_type_enum: any, entities: any): any;
+    Perimeter(ent_type: any, entities: any): any;
+    Sort(entities: any, attrib: any, method_enum: any): any;
+    Type(entities: any, type_query_enum: any): any;
 }

@@ -31,11 +31,11 @@ export declare class VisualizeFunc {
     };
     __model__: GIModel;
     constructor(model: GIModel);
-    BBox(bboxes: any): Promise<any>;
-    Color(entities: any, color: any): Promise<void>;
-    Edge(entities: any, method: any): Promise<void>;
-    Gradient(entities: any, attrib: any, range: any, method: any): Promise<void>;
-    Mesh(entities: any, method: any): Promise<void>;
-    Plane(planes: any, scale: any): Promise<any>;
-    Ray(rays: any, scale: any): Promise<any>;
+    BBox(bboxes: any): any;
+    Color(entities: any, color: any): void;
+    Edge(entities: any, method: any): void;
+    Gradient(entities: any, attrib: any, range: any, method: any): void;
+    Mesh(entities: any, method: any): void;
+    Plane(planes: any, scale: any): any;
+    Ray(rays: any, scale: any): any;
 }

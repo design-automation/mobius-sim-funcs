@@ -43,14 +43,14 @@ export declare class AnalyzeFunc {
     };
     __model__: GIModel;
     constructor(model: GIModel);
-    Centrality(source: any, entities: any, method: any, cen_type: any): Promise<any>;
-    ClosestPath(source: any, target: any, entities: any, method: any, result: any): Promise<any>;
-    Degree(source: any, entities: any, alpha: any, method: any): Promise<any>;
-    Isovist(origins: any, entities: any, radius: any, num_rays: any): Promise<any>;
-    Nearest(source: any, target: any, radius: any, max_neighbors: any): Promise<any>;
-    Raytrace(rays: any, entities: any, dist: any, method: any): Promise<any>;
-    ShortestPath(source: any, target: any, entities: any, method: any, result: any): Promise<any>;
-    Sky(origins: any, detail: any, entities: any, limits: any, method: any): Promise<any>;
-    SkyDome(origin: any, detail: any, radius: any, method: any): Promise<any>;
-    Sun(origins: any, detail: any, entities: any, limits: any, method: any): Promise<any>;
+    Centrality(source: any, entities: any, method: any, cen_type: any): any;
+    ClosestPath(source: any, target: any, entities: any, method: any, result: any): any;
+    Degree(source: any, entities: any, alpha: any, method: any): any;
+    Isovist(origins: any, entities: any, radius: any, num_rays: any): any;
+    Nearest(source: any, target: any, radius: any, max_neighbors: any): any;
+    Raytrace(rays: any, entities: any, dist: any, method: any): any;
+    ShortestPath(source: any, target: any, entities: any, method: any, result: any): any;
+    Sky(origins: any, detail: any, entities: any, limits: any, method: any): any;
+    SkyDome(origin: any, detail: any, radius: any, method: any): any;
+    Sun(origins: any, detail: any, entities: any, limits: any, method: any): any;
 }

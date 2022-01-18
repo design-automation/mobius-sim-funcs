@@ -12,7 +12,7 @@ export { Add };
 export { Remove };
 export { Replace };
 export declare class DictFunc {
-    Add(dict: any, keys: any, values: any): Promise<void>;
-    Remove(dict: any, keys: any): Promise<void>;
-    Replace(dict: any, old_keys: any, new_keys: any): Promise<void>;
+    Add(dict: any, keys: any, values: any): void;
+    Remove(dict: any, keys: any): void;
+    Replace(dict: any, old_keys: any, new_keys: any): void;
 }

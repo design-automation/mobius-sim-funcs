@@ -49,34 +49,34 @@ export class AnalyzeFunc {
     constructor(model: GIModel) {
         this.__model__ = model;
     }
-    async Centrality(source, entities, method, cen_type): Promise<any> {
+    Centrality(source, entities, method, cen_type): any {
         return Centrality(this.__model__, source, entities, method, cen_type);
     }
-    async ClosestPath(source, target, entities, method, result): Promise<any> {
+    ClosestPath(source, target, entities, method, result): any {
         return ClosestPath(this.__model__, source, target, entities, method, result);
     }
-    async Degree(source, entities, alpha, method): Promise<any> {
+    Degree(source, entities, alpha, method): any {
         return Degree(this.__model__, source, entities, alpha, method);
     }
-    async Isovist(origins, entities, radius, num_rays): Promise<any> {
+    Isovist(origins, entities, radius, num_rays): any {
         return Isovist(this.__model__, origins, entities, radius, num_rays);
     }
-    async Nearest(source, target, radius, max_neighbors): Promise<any> {
+    Nearest(source, target, radius, max_neighbors): any {
         return Nearest(this.__model__, source, target, radius, max_neighbors);
     }
-    async Raytrace(rays, entities, dist, method): Promise<any> {
+    Raytrace(rays, entities, dist, method): any {
         return Raytrace(this.__model__, rays, entities, dist, method);
     }
-    async ShortestPath(source, target, entities, method, result): Promise<any> {
+    ShortestPath(source, target, entities, method, result): any {
         return ShortestPath(this.__model__, source, target, entities, method, result);
     }
-    async Sky(origins, detail, entities, limits, method): Promise<any> {
+    Sky(origins, detail, entities, limits, method): any {
         return Sky(this.__model__, origins, detail, entities, limits, method);
     }
-    async SkyDome(origin, detail, radius, method): Promise<any> {
+    SkyDome(origin, detail, radius, method): any {
         return SkyDome(this.__model__, origin, detail, radius, method);
     }
-    async Sun(origins, detail, entities, limits, method): Promise<any> {
+    Sun(origins, detail, entities, limits, method): any {
         return Sun(this.__model__, origins, detail, entities, limits, method);
     }
 

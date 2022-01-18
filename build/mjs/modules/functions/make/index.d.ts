@@ -41,15 +41,15 @@ export declare class MakeFunc {
     };
     __model__: GIModel;
     constructor(model: GIModel);
-    Clone(entities: any): Promise<any>;
-    Copy(entities: any, vector: any): Promise<any>;
-    Cut(entities: any, plane: any, method: any): Promise<any>;
-    Extrude(entities: any, dist: any, divisions: any, method: any): Promise<any>;
-    Join(entities: any): Promise<any>;
-    Loft(entities: any, divisions: any, method: any): Promise<any>;
-    Point(entities: any): Promise<any>;
-    Polygon(entities: any): Promise<any>;
-    Polyline(entities: any, close: any): Promise<any>;
-    Position(coords: any): Promise<any>;
-    Sweep(entities: any, x_section: any, divisions: any, method: any): Promise<any>;
+    Clone(entities: any): any;
+    Copy(entities: any, vector: any): any;
+    Cut(entities: any, plane: any, method: any): any;
+    Extrude(entities: any, dist: any, divisions: any, method: any): any;
+    Join(entities: any): any;
+    Loft(entities: any, divisions: any, method: any): any;
+    Point(entities: any): any;
+    Polygon(entities: any): any;
+    Polyline(entities: any, close: any): any;
+    Position(coords: any): any;
+    Sweep(entities: any, x_section: any, divisions: any, method: any): any;
 }

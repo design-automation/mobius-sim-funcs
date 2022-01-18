@@ -23,11 +23,11 @@ export { Remesh };
 export declare class ModifyFunc {
     __model__: GIModel;
     constructor(model: GIModel);
-    Mirror(entities: any, plane: any): Promise<void>;
-    Move(entities: any, vectors: any): Promise<void>;
-    Offset(entities: any, dist: any): Promise<void>;
-    Remesh(entities: any): Promise<void>;
-    Rotate(entities: any, ray: any, angle: any): Promise<void>;
-    Scale(entities: any, plane: any, scale: any): Promise<void>;
-    XForm(entities: any, from_plane: any, to_plane: any): Promise<void>;
+    Mirror(entities: any, plane: any): void;
+    Move(entities: any, vectors: any): void;
+    Offset(entities: any, dist: any): void;
+    Remesh(entities: any): void;
+    Rotate(entities: any, ray: any, angle: any): void;
+    Scale(entities: any, plane: any, scale: any): void;
+    XForm(entities: any, from_plane: any, to_plane: any): void;
 }

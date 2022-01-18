@@ -18,15 +18,6 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CalcFunc = exports.BBox = exports.Plane = exports.Ray = exports.Eval = exports.Normal = exports.Centroid = exports.Vector = exports.Area = exports.Length = exports.Distance = void 0;
 const Enum = __importStar(require("./_enum"));
@@ -57,55 +48,35 @@ class CalcFunc {
         this.__model__ = model;
     }
     Area(entities) {
-        return __awaiter(this, void 0, void 0, function* () {
-            return (0, Area_1.Area)(this.__model__, entities);
-        });
+        return (0, Area_1.Area)(this.__model__, entities);
     }
     BBox(entities) {
-        return __awaiter(this, void 0, void 0, function* () {
-            return (0, BBox_1.BBox)(this.__model__, entities);
-        });
+        return (0, BBox_1.BBox)(this.__model__, entities);
     }
     Centroid(entities, method) {
-        return __awaiter(this, void 0, void 0, function* () {
-            return (0, Centroid_1.Centroid)(this.__model__, entities, method);
-        });
+        return (0, Centroid_1.Centroid)(this.__model__, entities, method);
     }
     Distance(entities1, entities2, method) {
-        return __awaiter(this, void 0, void 0, function* () {
-            return (0, Distance_1.Distance)(this.__model__, entities1, entities2, method);
-        });
+        return (0, Distance_1.Distance)(this.__model__, entities1, entities2, method);
     }
     Eval(entities, t_param) {
-        return __awaiter(this, void 0, void 0, function* () {
-            return (0, Eval_1.Eval)(this.__model__, entities, t_param);
-        });
+        return (0, Eval_1.Eval)(this.__model__, entities, t_param);
     }
     Length(entities) {
-        return __awaiter(this, void 0, void 0, function* () {
-            return (0, Length_1.Length)(this.__model__, entities);
-        });
+        return (0, Length_1.Length)(this.__model__, entities);
     }
     Normal(entities, scale) {
-        return __awaiter(this, void 0, void 0, function* () {
-            return (0, Normal_1.Normal)(this.__model__, entities, scale);
-        });
+        return (0, Normal_1.Normal)(this.__model__, entities, scale);
     }
     Plane(entities) {
-        return __awaiter(this, void 0, void 0, function* () {
-            return (0, Plane_1.Plane)(this.__model__, entities);
-        });
+        return (0, Plane_1.Plane)(this.__model__, entities);
     }
     Ray(entities) {
-        return __awaiter(this, void 0, void 0, function* () {
-            return (0, Ray_1.Ray)(this.__model__, entities);
-        });
+        return (0, Ray_1.Ray)(this.__model__, entities);
     }
     Vector(entities) {
-        return __awaiter(this, void 0, void 0, function* () {
-            return (0, Vector_1.Vector)(this.__model__, entities);
-        });
+        return (0, Vector_1.Vector)(this.__model__, entities);
     }
 }
 exports.CalcFunc = CalcFunc;
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi8uLi9zcmMvbW9kdWxlcy9mdW5jdGlvbnMvY2FsYy9pbmRleC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBUUEsOENBQWdDO0FBQ2hDLGlDQUE4QjtBQWVyQixxRkFmQSxXQUFJLE9BZUE7QUFkYixpQ0FBOEI7QUE0QnJCLHFGQTVCQSxXQUFJLE9BNEJBO0FBM0JiLHlDQUFzQztBQWlCN0IseUZBakJBLG1CQUFRLE9BaUJBO0FBaEJqQix5Q0FBc0M7QUFRN0IseUZBUkEsbUJBQVEsT0FRQTtBQVBqQixpQ0FBOEI7QUFtQnJCLHFGQW5CQSxXQUFJLE9BbUJBO0FBbEJiLHFDQUFrQztBQVF6Qix1RkFSQSxlQUFNLE9BUUE7QUFQZixxQ0FBa0M7QUFlekIsdUZBZkEsZUFBTSxPQWVBO0FBZGYsbUNBQWdDO0FBb0J2QixzRkFwQkEsYUFBSyxPQW9CQTtBQW5CZCwrQkFBNEI7QUFpQm5CLG9GQWpCQSxTQUFHLE9BaUJBO0FBaEJaLHFDQUFrQztBQVF6Qix1RkFSQSxlQUFNLE9BUUE7QUFlZixtQkFBbUI7QUFDbkIsTUFBYSxRQUFRO0lBTWpCLFlBQVksS0FBYztRQUwxQixhQUFRLHFCQUNELElBQUksRUFDVjtRQUlHLElBQUksQ0FBQyxTQUFTLEdBQUcsS0FBSyxDQUFDO0lBQzNCLENBQUM7SUFDSyxJQUFJLENBQUMsUUFBUTs7WUFDZixPQUFPLElBQUEsV0FBSSxFQUFDLElBQUksQ0FBQyxTQUFTLEVBQUUsUUFBUSxDQUFDLENBQUM7UUFDMUMsQ0FBQztLQUFBO0lBQ0ssSUFBSSxDQUFDLFFBQVE7O1lBQ2YsT0FBTyxJQUFBLFdBQUksRUFBQyxJQUFJLENBQUMsU0FBUyxFQUFFLFFBQVEsQ0FBQyxDQUFDO1FBQzFDLENBQUM7S0FBQTtJQUNLLFFBQVEsQ0FBQyxRQUFRLEVBQUUsTUFBTTs7WUFDM0IsT0FBTyxJQUFBLG1CQUFRLEVBQUMsSUFBSSxDQUFDLFNBQVMsRUFBRSxRQUFRLEVBQUUsTUFBTSxDQUFDLENBQUM7UUFDdEQsQ0FBQztLQUFBO0lBQ0ssUUFBUSxDQUFDLFNBQVMsRUFBRSxTQUFTLEVBQUUsTUFBTTs7WUFDdkMsT0FBTyxJQUFBLG1CQUFRLEVBQUMsSUFBSSxDQUFDLFNBQVMsRUFBRSxTQUFTLEVBQUUsU0FBUyxFQUFFLE1BQU0sQ0FBQyxDQUFDO1FBQ2xFLENBQUM7S0FBQTtJQUNLLElBQUksQ0FBQyxRQUFRLEVBQUUsT0FBTzs7WUFDeEIsT0FBTyxJQUFBLFdBQUksRUFBQyxJQUFJLENBQUMsU0FBUyxFQUFFLFFBQVEsRUFBRSxPQUFPLENBQUMsQ0FBQztRQUNuRCxDQUFDO0tBQUE7SUFDSyxNQUFNLENBQUMsUUFBUTs7WUFDakIsT0FBTyxJQUFBLGVBQU0sRUFBQyxJQUFJLENBQUMsU0FBUyxFQUFFLFFBQVEsQ0FBQyxDQUFDO1FBQzVDLENBQUM7S0FBQTtJQUNLLE1BQU0sQ0FBQyxRQUFRLEVBQUUsS0FBSzs7WUFDeEIsT0FBTyxJQUFBLGVBQU0sRUFBQyxJQUFJLENBQUMsU0FBUyxFQUFFLFFBQVEsRUFBRSxLQUFLLENBQUMsQ0FBQztRQUNuRCxDQUFDO0tBQUE7SUFDSyxLQUFLLENBQUMsUUFBUTs7WUFDaEIsT0FBTyxJQUFBLGFBQUssRUFBQyxJQUFJLENBQUMsU0FBUyxFQUFFLFFBQVEsQ0FBQyxDQUFDO1FBQzNDLENBQUM7S0FBQTtJQUNLLEdBQUcsQ0FBQyxRQUFROztZQUNkLE9BQU8sSUFBQSxTQUFHLEVBQUMsSUFBSSxDQUFDLFNBQVMsRUFBRSxRQUFRLENBQUMsQ0FBQztRQUN6QyxDQUFDO0tBQUE7SUFDSyxNQUFNLENBQUMsUUFBUTs7WUFDakIsT0FBTyxJQUFBLGVBQU0sRUFBQyxJQUFJLENBQUMsU0FBUyxFQUFFLFFBQVEsQ0FBQyxDQUFDO1FBQzVDLENBQUM7S0FBQTtDQUVKO0FBeENELDRCQXdDQyJ9
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi8uLi9zcmMvbW9kdWxlcy9mdW5jdGlvbnMvY2FsYy9pbmRleC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBUUEsOENBQWdDO0FBQ2hDLGlDQUE4QjtBQWVyQixxRkFmQSxXQUFJLE9BZUE7QUFkYixpQ0FBOEI7QUE0QnJCLHFGQTVCQSxXQUFJLE9BNEJBO0FBM0JiLHlDQUFzQztBQWlCN0IseUZBakJBLG1CQUFRLE9BaUJBO0FBaEJqQix5Q0FBc0M7QUFRN0IseUZBUkEsbUJBQVEsT0FRQTtBQVBqQixpQ0FBOEI7QUFtQnJCLHFGQW5CQSxXQUFJLE9BbUJBO0FBbEJiLHFDQUFrQztBQVF6Qix1RkFSQSxlQUFNLE9BUUE7QUFQZixxQ0FBa0M7QUFlekIsdUZBZkEsZUFBTSxPQWVBO0FBZGYsbUNBQWdDO0FBb0J2QixzRkFwQkEsYUFBSyxPQW9CQTtBQW5CZCwrQkFBNEI7QUFpQm5CLG9GQWpCQSxTQUFHLE9BaUJBO0FBaEJaLHFDQUFrQztBQVF6Qix1RkFSQSxlQUFNLE9BUUE7QUFlZixtQkFBbUI7QUFDbkIsTUFBYSxRQUFRO0lBTWpCLFlBQVksS0FBYztRQUwxQixhQUFRLHFCQUNELElBQUksRUFDVjtRQUlHLElBQUksQ0FBQyxTQUFTLEdBQUcsS0FBSyxDQUFDO0lBQzNCLENBQUM7SUFDRCxJQUFJLENBQUMsUUFBUTtRQUNULE9BQU8sSUFBQSxXQUFJLEVBQUMsSUFBSSxDQUFDLFNBQVMsRUFBRSxRQUFRLENBQUMsQ0FBQztJQUMxQyxDQUFDO0lBQ0QsSUFBSSxDQUFDLFFBQVE7UUFDVCxPQUFPLElBQUEsV0FBSSxFQUFDLElBQUksQ0FBQyxTQUFTLEVBQUUsUUFBUSxDQUFDLENBQUM7SUFDMUMsQ0FBQztJQUNELFFBQVEsQ0FBQyxRQUFRLEVBQUUsTUFBTTtRQUNyQixPQUFPLElBQUEsbUJBQVEsRUFBQyxJQUFJLENBQUMsU0FBUyxFQUFFLFFBQVEsRUFBRSxNQUFNLENBQUMsQ0FBQztJQUN0RCxDQUFDO0lBQ0QsUUFBUSxDQUFDLFNBQVMsRUFBRSxTQUFTLEVBQUUsTUFBTTtRQUNqQyxPQUFPLElBQUEsbUJBQVEsRUFBQyxJQUFJLENBQUMsU0FBUyxFQUFFLFNBQVMsRUFBRSxTQUFTLEVBQUUsTUFBTSxDQUFDLENBQUM7SUFDbEUsQ0FBQztJQUNELElBQUksQ0FBQyxRQUFRLEVBQUUsT0FBTztRQUNsQixPQUFPLElBQUEsV0FBSSxFQUFDLElBQUksQ0FBQyxTQUFTLEVBQUUsUUFBUSxFQUFFLE9BQU8sQ0FBQyxDQUFDO0lBQ25ELENBQUM7SUFDRCxNQUFNLENBQUMsUUFBUTtRQUNYLE9BQU8sSUFBQSxlQUFNLEVBQUMsSUFBSSxDQUFDLFNBQVMsRUFBRSxRQUFRLENBQUMsQ0FBQztJQUM1QyxDQUFDO0lBQ0QsTUFBTSxDQUFDLFFBQVEsRUFBRSxLQUFLO1FBQ2xCLE9BQU8sSUFBQSxlQUFNLEVBQUMsSUFBSSxDQUFDLFNBQVMsRUFBRSxRQUFRLEVBQUUsS0FBSyxDQUFDLENBQUM7SUFDbkQsQ0FBQztJQUNELEtBQUssQ0FBQyxRQUFRO1FBQ1YsT0FBTyxJQUFBLGFBQUssRUFBQyxJQUFJLENBQUMsU0FBUyxFQUFFLFFBQVEsQ0FBQyxDQUFDO0lBQzNDLENBQUM7SUFDRCxHQUFHLENBQUMsUUFBUTtRQUNSLE9BQU8sSUFBQSxTQUFHLEVBQUMsSUFBSSxDQUFDLFNBQVMsRUFBRSxRQUFRLENBQUMsQ0FBQztJQUN6QyxDQUFDO0lBQ0QsTUFBTSxDQUFDLFFBQVE7UUFDWCxPQUFPLElBQUEsZUFBTSxFQUFDLElBQUksQ0FBQyxTQUFTLEVBQUUsUUFBUSxDQUFDLENBQUM7SUFDNUMsQ0FBQztDQUVKO0FBeENELDRCQXdDQyJ9

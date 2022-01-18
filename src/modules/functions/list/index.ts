@@ -25,19 +25,19 @@ export class ListFunc {
         ...Enum
     }
 
-    async Add(list, item, method): Promise<void> {
+    Add(list, item, method): void {
         Add(list, item, method);
     }
-    async Remove(list, item, method): Promise<void> {
+    Remove(list, item, method): void {
         Remove(list, item, method);
     }
-    async Replace(list, old_item, new_item, method): Promise<void> {
+    Replace(list, old_item, new_item, method): void {
         Replace(list, old_item, new_item, method);
     }
-    async Sort(list, method): Promise<void> {
+    Sort(list, method): void {
         Sort(list, method);
     }
-    async Splice(list, index, num_to_remove, items_to_insert): Promise<void> {
+    Splice(list, index, num_to_remove, items_to_insert): void {
         Splice(list, index, num_to_remove, items_to_insert);
     }
 

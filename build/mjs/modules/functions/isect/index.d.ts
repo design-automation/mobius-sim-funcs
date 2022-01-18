@@ -24,7 +24,7 @@ export declare class IsectFunc {
     };
     __model__: GIModel;
     constructor(model: GIModel);
-    Intersect(entities1: any, entities2: any): Promise<any>;
-    Knife(geometry: any, plane: any, keep: any): Promise<any>;
-    Split(geometry: any, polyline: any): Promise<any>;
+    Intersect(entities1: any, entities2: any): any;
+    Knife(geometry: any, plane: any, keep: any): any;
+    Split(geometry: any, polyline: any): any;
 }

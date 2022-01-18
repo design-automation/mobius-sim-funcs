@@ -35,28 +35,28 @@ export class MaterialFunc {
     constructor(model: GIModel) {
         this.__model__ = model;
     }
-    async Glass(name, opacity): Promise<void> {
+    Glass(name, opacity): void {
         Glass(this.__model__, name, opacity);
     }
-    async Lambert(name, emissive): Promise<void> {
+    Lambert(name, emissive): void {
         Lambert(this.__model__, name, emissive);
     }
-    async LineMat(name, color, dash_gap_scale, select_vert_colors): Promise<void> {
+    LineMat(name, color, dash_gap_scale, select_vert_colors): void {
         LineMat(this.__model__, name, color, dash_gap_scale, select_vert_colors);
     }
-    async MeshMat(name, color, opacity, select_side, select_vert_colors): Promise<void> {
+    MeshMat(name, color, opacity, select_side, select_vert_colors): void {
         MeshMat(this.__model__, name, color, opacity, select_side, select_vert_colors);
     }
-    async Phong(name, emissive, specular, shininess): Promise<void> {
+    Phong(name, emissive, specular, shininess): void {
         Phong(this.__model__, name, emissive, specular, shininess);
     }
-    async Physical(name, emissive, roughness, metalness, reflectivity): Promise<void> {
+    Physical(name, emissive, roughness, metalness, reflectivity): void {
         Physical(this.__model__, name, emissive, roughness, metalness, reflectivity);
     }
-    async Set(entities, material): Promise<void> {
+    Set(entities, material): void {
         Set(this.__model__, entities, material);
     }
-    async Standard(name, emissive, roughness, metalness): Promise<void> {
+    Standard(name, emissive, roughness, metalness): void {
         Standard(this.__model__, name, emissive, roughness, metalness);
     }
 

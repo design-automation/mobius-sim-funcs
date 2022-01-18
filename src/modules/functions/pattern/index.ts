@@ -39,34 +39,34 @@ export class PatternFunc {
     constructor(model: GIModel) {
         this.__model__ = model;
     }
-    async Arc(origin, radius, num_positions, arc_angle): Promise<any> {
+    Arc(origin, radius, num_positions, arc_angle): any {
         return Arc(this.__model__, origin, radius, num_positions, arc_angle);
     }
-    async Bezier(coords, num_positions): Promise<any> {
+    Bezier(coords, num_positions): any {
         return Bezier(this.__model__, coords, num_positions);
     }
-    async Box(origin, size, num_positions, method): Promise<any> {
+    Box(origin, size, num_positions, method): any {
         return Box(this.__model__, origin, size, num_positions, method);
     }
-    async Grid(origin, size, num_positions, method): Promise<any> {
+    Grid(origin, size, num_positions, method): any {
         return Grid(this.__model__, origin, size, num_positions, method);
     }
-    async Interpolate(coords, type, tension, close, num_positions): Promise<any> {
+    Interpolate(coords, type, tension, close, num_positions): any {
         return Interpolate(this.__model__, coords, type, tension, close, num_positions);
     }
-    async Line(origin, length, num_positions): Promise<any> {
+    Line(origin, length, num_positions): any {
         return Line(this.__model__, origin, length, num_positions);
     }
-    async Linear(coords, close, num_positions): Promise<any> {
+    Linear(coords, close, num_positions): any {
         return Linear(this.__model__, coords, close, num_positions);
     }
-    async Nurbs(coords, degree, close, num_positions): Promise<any> {
+    Nurbs(coords, degree, close, num_positions): any {
         return Nurbs(this.__model__, coords, degree, close, num_positions);
     }
-    async Polyhedron(origin, radius, detail, method): Promise<any> {
+    Polyhedron(origin, radius, detail, method): any {
         return Polyhedron(this.__model__, origin, radius, detail, method);
     }
-    async Rectangle(origin, size): Promise<any> {
+    Rectangle(origin, size): any {
         return Rectangle(this.__model__, origin, size);
     }
 

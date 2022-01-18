@@ -39,11 +39,11 @@ export declare class IoFunc {
     constructor(model: GIModel);
     Export(entities: any, file_name: any, data_format: any, data_target: any): Promise<void>;
     ExportData(entities: any, data_format: any): Promise<any>;
-    Geoalign(lat_long_o: any, lat_long_x: any, elev: any): Promise<void>;
-    Geolocate(lat_long: any, rot: any, elev: any): Promise<void>;
+    Geoalign(lat_long_o: any, lat_long_x: any, elev: any): void;
+    Geolocate(lat_long: any, rot: any, elev: any): void;
     Import(data_url: any, data_format: any): Promise<any>;
-    ImportData(model_data: any, data_format: any): Promise<any>;
-    LatLong2XYZ(lat_long: any, elev: any): Promise<any>;
+    ImportData(model_data: any, data_format: any): any;
+    LatLong2XYZ(lat_long: any, elev: any): any;
     Read(data: any): Promise<any>;
     Write(data: any, file_name: any, data_target: any): Promise<any>;
 }

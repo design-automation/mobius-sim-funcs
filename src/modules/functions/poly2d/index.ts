@@ -39,37 +39,37 @@ export class Poly2dFunc {
     constructor(model: GIModel) {
         this.__model__ = model;
     }
-    async BBoxPolygon(entities, method): Promise<any> {
+    BBoxPolygon(entities, method): any {
         return BBoxPolygon(this.__model__, entities, method);
     }
-    async Boolean(a_entities, b_entities, method): Promise<any> {
+    Boolean(a_entities, b_entities, method): any {
         return Boolean(this.__model__, a_entities, b_entities, method);
     }
-    async Clean(entities, tolerance): Promise<any> {
+    Clean(entities, tolerance): any {
         return Clean(this.__model__, entities, tolerance);
     }
-    async ConvexHull(entities): Promise<any> {
+    ConvexHull(entities): any {
         return ConvexHull(this.__model__, entities);
     }
-    async Delaunay(entities): Promise<any> {
+    Delaunay(entities): any {
         return Delaunay(this.__model__, entities);
     }
-    async OffsetChamfer(entities, dist, end_type): Promise<any> {
+    OffsetChamfer(entities, dist, end_type): any {
         return OffsetChamfer(this.__model__, entities, dist, end_type);
     }
-    async OffsetMitre(entities, dist, limit, end_type): Promise<any> {
+    OffsetMitre(entities, dist, limit, end_type): any {
         return OffsetMitre(this.__model__, entities, dist, limit, end_type);
     }
-    async OffsetRound(entities, dist, tolerance, end_type): Promise<any> {
+    OffsetRound(entities, dist, tolerance, end_type): any {
         return OffsetRound(this.__model__, entities, dist, tolerance, end_type);
     }
-    async Stitch(entities, tolerance): Promise<any> {
+    Stitch(entities, tolerance): any {
         return Stitch(this.__model__, entities, tolerance);
     }
-    async Union(entities): Promise<any> {
+    Union(entities): any {
         return Union(this.__model__, entities);
     }
-    async Voronoi(pgons, entities): Promise<any> {
+    Voronoi(pgons, entities): any {
         return Voronoi(this.__model__, pgons, entities);
     }
 

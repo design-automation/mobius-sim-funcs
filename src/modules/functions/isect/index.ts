@@ -25,13 +25,13 @@ export class IsectFunc {
     constructor(model: GIModel) {
         this.__model__ = model;
     }
-    async Intersect(entities1, entities2): Promise<any> {
+    Intersect(entities1, entities2): any {
         return Intersect(this.__model__, entities1, entities2);
     }
-    async Knife(geometry, plane, keep): Promise<any> {
+    Knife(geometry, plane, keep): any {
         return Knife(this.__model__, geometry, plane, keep);
     }
-    async Split(geometry, polyline): Promise<any> {
+    Split(geometry, polyline): any {
         return Split(this.__model__, geometry, polyline);
     }
 
