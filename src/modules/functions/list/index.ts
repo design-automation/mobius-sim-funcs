@@ -18,25 +18,27 @@ export { Remove };
 export { Replace };
 export { Sort };
 export { Splice };
+
+// CLASS DEFINITION
 export class ListFunc {
     __enum__ = {
         ...Enum
     }
-    constructor() {
+
+    async Add(list, item, method): Promise<void> {
+        Add(list, item, method);
     }
-    Add(list, item, method): any {
-        return Add(list, item, method);
+    async Remove(list, item, method): Promise<void> {
+        Remove(list, item, method);
     }
-    Remove(list, item, method): any {
-        return Remove(list, item, method);
+    async Replace(list, old_item, new_item, method): Promise<void> {
+        Replace(list, old_item, new_item, method);
     }
-    Replace(list, old_item, new_item, method): any {
-        return Replace(list, old_item, new_item, method);
+    async Sort(list, method): Promise<void> {
+        Sort(list, method);
     }
-    Sort(list, method): any {
-        return Sort(list, method);
+    async Splice(list, index, num_to_remove, items_to_insert): Promise<void> {
+        Splice(list, index, num_to_remove, items_to_insert);
     }
-    Splice(list, index, num_to_remove, items_to_insert): any {
-        return Splice(list, index, num_to_remove, items_to_insert);
-    }
+
 }

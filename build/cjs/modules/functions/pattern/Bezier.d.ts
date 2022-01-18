@@ -1,9 +1,3 @@
-/**
- * The `pattern` module has functions for creating patters of positions.
- * These functions all return lists of position IDs.
- * The list may be nested, depending on which function is selected.
- * @module
- */
 import { GIModel, TId, Txyz } from '@design-automation/mobius-sim';
 /**
  * Creates positions in an Bezier curve pattern, defined by a list of coordinates.

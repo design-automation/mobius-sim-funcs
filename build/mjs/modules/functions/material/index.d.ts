@@ -1,3 +1,9 @@
+/**
+ * The `material` module has functions for defining materials.
+ * The material definitions are saved as attributes at the model level.
+ * For more informtion, see the threejs docs: https://threejs.org/
+ * @module
+ */
 import { GIModel } from '@design-automation/mobius-sim';
 import * as Enum from './_enum';
 import { Glass } from './Glass';
@@ -17,20 +23,26 @@ export { Phong };
 export { Standard };
 export { Physical };
 export declare class MaterialFunc {
-    __model__: GIModel;
     __enum__: {
+        /**
+         * The `material` module has functions for defining materials.
+         * The material definitions are saved as attributes at the model level.
+         * For more informtion, see the threejs docs: https://threejs.org/
+         * @module
+         */
         _ESide: typeof Enum._ESide;
         _Ecolors: typeof Enum._Ecolors;
         _ELineMaterialType: typeof Enum._ELineMaterialType;
         _EMeshMaterialType: typeof Enum._EMeshMaterialType;
     };
+    __model__: GIModel;
     constructor(model: GIModel);
-    Set(entities: any, material: any): any;
-    LineMat(name: any, color: any, dash_gap_scale: any, select_vert_colors: any): any;
-    MeshMat(name: any, color: any, opacity: any, select_side: any, select_vert_colors: any): any;
-    Glass(name: any, opacity: any): any;
-    Lambert(name: any, emissive: any): any;
-    Phong(name: any, emissive: any, specular: any, shininess: any): any;
-    Standard(name: any, emissive: any, roughness: any, metalness: any): any;
-    Physical(name: any, emissive: any, roughness: any, metalness: any, reflectivity: any): any;
+    Glass(name: any, opacity: any): Promise<void>;
+    Lambert(name: any, emissive: any): Promise<void>;
+    LineMat(name: any, color: any, dash_gap_scale: any, select_vert_colors: any): Promise<void>;
+    MeshMat(name: any, color: any, opacity: any, select_side: any, select_vert_colors: any): Promise<void>;
+    Phong(name: any, emissive: any, specular: any, shininess: any): Promise<void>;
+    Physical(name: any, emissive: any, roughness: any, metalness: any, reflectivity: any): Promise<void>;
+    Set(entities: any, material: any): Promise<void>;
+    Standard(name: any, emissive: any, roughness: any, metalness: any): Promise<void>;
 }

@@ -1,7 +1,3 @@
-/**
- * The `util` module has some utility functions used for debugging.
- * @module
- */
 import { GIModel } from '@design-automation/mobius-sim';
 /**
  * Checks the internal consistency of the model. Used for debugigng Mobius.

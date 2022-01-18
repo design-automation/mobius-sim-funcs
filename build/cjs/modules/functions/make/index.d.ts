@@ -1,3 +1,8 @@
+/**
+ * The `make` module has functions for making new entities in the model.
+ * All these functions return the IDs of the entities that are created.
+ * @module
+ */
 import { GIModel } from '@design-automation/mobius-sim';
 import * as Enum from './_enum';
 import { Clone } from './Clone';
@@ -23,23 +28,28 @@ export { Cut };
 export { Copy };
 export { Clone };
 export declare class MakeFunc {
-    __model__: GIModel;
     __enum__: {
+        /**
+         * The `make` module has functions for making new entities in the model.
+         * All these functions return the IDs of the entities that are created.
+         * @module
+         */
         _ECutMethod: typeof Enum._ECutMethod;
         _EExtrudeMethod: typeof Enum._EExtrudeMethod;
         _ELoftMethod: typeof Enum._ELoftMethod;
         _EClose: typeof Enum._EClose;
     };
+    __model__: GIModel;
     constructor(model: GIModel);
-    Position(coords: any): any;
-    Point(entities: any): any;
-    Polyline(entities: any, close: any): any;
-    Polygon(entities: any): any;
-    Loft(entities: any, divisions: any, method: any): any;
-    Extrude(entities: any, dist: any, divisions: any, method: any): any;
-    Sweep(entities: any, x_section: any, divisions: any, method: any): any;
-    Join(entities: any): any;
-    Cut(entities: any, plane: any, method: any): any;
-    Copy(entities: any, vector: any): any;
-    Clone(entities: any): any;
+    Clone(entities: any): Promise<any>;
+    Copy(entities: any, vector: any): Promise<any>;
+    Cut(entities: any, plane: any, method: any): Promise<any>;
+    Extrude(entities: any, dist: any, divisions: any, method: any): Promise<any>;
+    Join(entities: any): Promise<any>;
+    Loft(entities: any, divisions: any, method: any): Promise<any>;
+    Point(entities: any): Promise<any>;
+    Polygon(entities: any): Promise<any>;
+    Polyline(entities: any, close: any): Promise<any>;
+    Position(coords: any): Promise<any>;
+    Sweep(entities: any, x_section: any, divisions: any, method: any): Promise<any>;
 }

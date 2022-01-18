@@ -1,9 +1,3 @@
-/**
- * The `edit` module has functions for editing entities in the model.
- * These function modify the topology of objects: vertices, edges, wires and faces.
- * Some functions return the IDs of the entities that are created or modified.
- * @module
- */
 import { GIModel, TId } from '@design-automation/mobius-sim';
 import { _EDeleteMethod } from './_enum';
 /**

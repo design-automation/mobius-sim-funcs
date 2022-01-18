@@ -1,7 +1,3 @@
-/**
- * The `util` module has some utility functions used for debugging.
- * @module
- */
 import { GIModel, TId } from '@design-automation/mobius-sim';
 /**
  * Merges data from another model into this model.

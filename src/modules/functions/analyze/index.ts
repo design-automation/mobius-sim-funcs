@@ -38,43 +38,46 @@ export { Degree }
 
 export { Centrality }
 
+
+// CLASS DEFINITION
 export class AnalyzeFunc {
-    __model__: GIModel;
     __enum__ = {
         ...Enum
     }
+
+    __model__: GIModel;
     constructor(model: GIModel) {
         this.__model__ = model;
     }
-    Raytrace(rays, entities, dist, method): any {
-        return Raytrace(this.__model__, rays, entities, dist, method);
+    async Centrality(source, entities, method, cen_type): Promise<any> {
+        return Centrality(this.__model__, source, entities, method, cen_type);
     }
-    Isovist(origins, entities, radius, num_rays): any {
-        return Isovist(this.__model__, origins, entities, radius, num_rays);
-    }
-    Sky(origins, detail, entities, limits, method): any {
-        return Sky(this.__model__, origins, detail, entities, limits, method);
-    }
-    Sun(origins, detail, entities, limits, method): any {
-        return Sun(this.__model__, origins, detail, entities, limits, method);
-    }
-    SkyDome(origin, detail, radius, method): any {
-        return SkyDome(this.__model__, origin, detail, radius, method);
-    }
-    Nearest(source, target, radius, max_neighbors): any {
-        return Nearest(this.__model__, source, target, radius, max_neighbors);
-    }
-    ShortestPath(source, target, entities, method, result): any {
-        return ShortestPath(this.__model__, source, target, entities, method, result);
-    }
-    ClosestPath(source, target, entities, method, result): any {
+    async ClosestPath(source, target, entities, method, result): Promise<any> {
         return ClosestPath(this.__model__, source, target, entities, method, result);
     }
-    Degree(source, entities, alpha, method): any {
+    async Degree(source, entities, alpha, method): Promise<any> {
         return Degree(this.__model__, source, entities, alpha, method);
     }
-    Centrality(source, entities, method, cen_type): any {
-        return Centrality(this.__model__, source, entities, method, cen_type);
+    async Isovist(origins, entities, radius, num_rays): Promise<any> {
+        return Isovist(this.__model__, origins, entities, radius, num_rays);
+    }
+    async Nearest(source, target, radius, max_neighbors): Promise<any> {
+        return Nearest(this.__model__, source, target, radius, max_neighbors);
+    }
+    async Raytrace(rays, entities, dist, method): Promise<any> {
+        return Raytrace(this.__model__, rays, entities, dist, method);
+    }
+    async ShortestPath(source, target, entities, method, result): Promise<any> {
+        return ShortestPath(this.__model__, source, target, entities, method, result);
+    }
+    async Sky(origins, detail, entities, limits, method): Promise<any> {
+        return Sky(this.__model__, origins, detail, entities, limits, method);
+    }
+    async SkyDome(origin, detail, radius, method): Promise<any> {
+        return SkyDome(this.__model__, origin, detail, radius, method);
+    }
+    async Sun(origins, detail, entities, limits, method): Promise<any> {
+        return Sun(this.__model__, origins, detail, entities, limits, method);
     }
 
 }

@@ -18,7 +18,6 @@ export { Delete };
 export { Rename };
 export { Push };
 export declare class AttribFunc {
-    __model__: GIModel;
     __enum__: {
         /**
          * The `attrib` module has functions for working with attributes in teh model.
@@ -30,11 +29,12 @@ export declare class AttribFunc {
         _EAttribPushTarget: typeof Enum._EAttribPushTarget;
         _EDataType: typeof Enum._EDataType;
     };
+    __model__: GIModel;
     constructor(model: GIModel);
-    Set(entities: any, attrib: any, value: any, method: any): any;
-    Get(entities: any, attrib: any): any;
-    Add(ent_type_sel: any, data_type_sel: any, attribs: any): any;
-    Delete(ent_type_sel: any, attribs: any): any;
-    Rename(ent_type_sel: any, old_attrib: any, new_attrib: any): any;
-    Push(entities: any, attrib: any, ent_type_sel: any, method_sel: any): any;
+    Add(ent_type_sel: any, data_type_sel: any, attribs: any): Promise<void>;
+    Delete(ent_type_sel: any, attribs: any): Promise<void>;
+    Get(entities: any, attrib: any): Promise<any>;
+    Push(entities: any, attrib: any, ent_type_sel: any, method_sel: any): Promise<void>;
+    Rename(ent_type_sel: any, old_attrib: any, new_attrib: any): Promise<void>;
+    Set(entities: any, attrib: any, value: any, method: any): Promise<void>;
 }

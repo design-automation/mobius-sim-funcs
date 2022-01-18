@@ -10,10 +10,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports._Async_Param_Write = exports.Write = void 0;
-/**
- * The `io` module has functions for importing and exporting.
- * @module
- */
 const mobius_sim_1 = require("@design-automation/mobius-sim");
 const _enum_1 = require("./_enum");
 const Export_1 = require("./Export");
@@ -32,7 +28,7 @@ function Write(__model__, data, file_name, data_target) {
             if (data_target === _enum_1._EIODataTarget.DEFAULT) {
                 return (0, mobius_sim_1.download)(data, file_name);
             }
-            return (0, Export_1.saveResource)(data, file_name);
+            return (0, Export_1._saveResource)(data, file_name);
         }
         catch (ex) {
             return false;
@@ -44,4 +40,4 @@ function _Async_Param_Write(__model__, data, file_name, data_target) {
     return null;
 }
 exports._Async_Param_Write = _Async_Param_Write;
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiV3JpdGUuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi8uLi9zcmMvbW9kdWxlcy9mdW5jdGlvbnMvaW8vV3JpdGUudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7O0FBQUE7OztHQUdHO0FBQ0gsOERBQWtFO0FBRWxFLG1DQUF5QztBQUN6QyxxQ0FBd0M7QUFJeEMsbUdBQW1HO0FBQ25HOzs7Ozs7O0dBT0c7QUFDSCxTQUFzQixLQUFLLENBQUMsU0FBa0IsRUFBRSxJQUFZLEVBQUUsU0FBaUIsRUFBRSxXQUEyQjs7UUFDeEcsSUFBSTtZQUNBLElBQUksV0FBVyxLQUFLLHNCQUFjLENBQUMsT0FBTyxFQUFFO2dCQUN4QyxPQUFPLElBQUEscUJBQVEsRUFBQyxJQUFJLEVBQUUsU0FBUyxDQUFDLENBQUM7YUFDcEM7WUFDRCxPQUFPLElBQUEscUJBQVksRUFBQyxJQUFJLEVBQUUsU0FBUyxDQUFDLENBQUM7U0FDeEM7UUFBQyxPQUFPLEVBQUUsRUFBRTtZQUNULE9BQU8sS0FBSyxDQUFDO1NBQ2hCO0lBQ0wsQ0FBQztDQUFBO0FBVEQsc0JBU0M7QUFDRCxTQUFnQixrQkFBa0IsQ0FBQyxTQUFrQixFQUFFLElBQVksRUFBRSxTQUFpQixFQUFFLFdBQTJCO0lBQy9HLE9BQU8sSUFBSSxDQUFDO0FBQ2hCLENBQUM7QUFGRCxnREFFQyJ9
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiV3JpdGUuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi8uLi9zcmMvbW9kdWxlcy9mdW5jdGlvbnMvaW8vV3JpdGUudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7O0FBQUEsOERBQWtFO0FBRWxFLG1DQUF5QztBQUN6QyxxQ0FBeUM7QUFLekMsbUdBQW1HO0FBQ25HOzs7Ozs7O0dBT0c7QUFDSCxTQUFzQixLQUFLLENBQUMsU0FBa0IsRUFBRSxJQUFZLEVBQUUsU0FBaUIsRUFBRSxXQUEyQjs7UUFDeEcsSUFBSTtZQUNBLElBQUksV0FBVyxLQUFLLHNCQUFjLENBQUMsT0FBTyxFQUFFO2dCQUN4QyxPQUFPLElBQUEscUJBQVEsRUFBQyxJQUFJLEVBQUUsU0FBUyxDQUFDLENBQUM7YUFDcEM7WUFDRCxPQUFPLElBQUEsc0JBQWEsRUFBQyxJQUFJLEVBQUUsU0FBUyxDQUFDLENBQUM7U0FDekM7UUFBQyxPQUFPLEVBQUUsRUFBRTtZQUNULE9BQU8sS0FBSyxDQUFDO1NBQ2hCO0lBQ0wsQ0FBQztDQUFBO0FBVEQsc0JBU0M7QUFDRCxTQUFnQixrQkFBa0IsQ0FBQyxTQUFrQixFQUFFLElBQVksRUFBRSxTQUFpQixFQUFFLFdBQTJCO0lBQy9HLE9BQU8sSUFBSSxDQUFDO0FBQ2hCLENBQUM7QUFGRCxnREFFQyJ9

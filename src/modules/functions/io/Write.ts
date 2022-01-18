@@ -1,7 +1,7 @@
 import { download, GIModel } from '@design-automation/mobius-sim';
 
 import { _EIODataTarget } from './_enum';
-import { saveResource } from './Export';
+import { _saveResource } from './Export';
 
 
 
@@ -20,7 +20,7 @@ export async function Write(__model__: GIModel, data: string, file_name: string,
         if (data_target === _EIODataTarget.DEFAULT) {
             return download(data, file_name);
         }
-        return saveResource(data, file_name);
+        return _saveResource(data, file_name);
     } catch (ex) {
         return false;
     }

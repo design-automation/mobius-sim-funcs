@@ -1,8 +1,3 @@
-/**
- * The `visualize` module has functions for defining various settings for the 3D viewer.
- * Color is saved as vertex attributes.
- * @module
- */
 import { GIModel, TId, TRay } from '@design-automation/mobius-sim';
 /**
  * Visualises a ray or a list of rays by creating a polyline with an arrow head.

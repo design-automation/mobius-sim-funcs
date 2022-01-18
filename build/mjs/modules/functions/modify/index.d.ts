@@ -1,3 +1,10 @@
+/**
+ * The `modify` module has functions for modifying existing entities in the model.
+ * These functions do not make any new entities, and they do not change the topology of objects.
+ * These functions only change attribute values.
+ * All these functions have no return value.
+ * @module
+ */
 import { GIModel } from '@design-automation/mobius-sim';
 import { Mirror } from './Mirror';
 import { Move } from './Move';
@@ -16,11 +23,11 @@ export { Remesh };
 export declare class ModifyFunc {
     __model__: GIModel;
     constructor(model: GIModel);
-    Move(entities: any, vectors: any): any;
-    Rotate(entities: any, ray: any, angle: any): any;
-    Scale(entities: any, plane: any, scale: any): any;
-    Mirror(entities: any, plane: any): any;
-    XForm(entities: any, from_plane: any, to_plane: any): any;
-    Offset(entities: any, dist: any): any;
-    Remesh(entities: any): any;
+    Mirror(entities: any, plane: any): Promise<void>;
+    Move(entities: any, vectors: any): Promise<void>;
+    Offset(entities: any, dist: any): Promise<void>;
+    Remesh(entities: any): Promise<void>;
+    Rotate(entities: any, ray: any, angle: any): Promise<void>;
+    Scale(entities: any, plane: any, scale: any): Promise<void>;
+    XForm(entities: any, from_plane: any, to_plane: any): Promise<void>;
 }

@@ -18,6 +18,15 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.QueryFunc = exports.Type = exports.Edge = exports.Neighbor = exports.Perimeter = exports.Sort = exports.Invert = exports.Filter = exports.Get = void 0;
 const Enum = __importStar(require("./_enum"));
@@ -37,35 +46,52 @@ const Sort_1 = require("./Sort");
 Object.defineProperty(exports, "Sort", { enumerable: true, get: function () { return Sort_1.Sort; } });
 const Type_1 = require("./Type");
 Object.defineProperty(exports, "Type", { enumerable: true, get: function () { return Type_1.Type; } });
+// CLASS DEFINITION
 class QueryFunc {
     constructor(model) {
         this.__enum__ = Object.assign({}, Enum);
         this.__model__ = model;
     }
-    Get(ent_type_enum, entities) {
-        return (0, Get_1.Get)(this.__model__, ent_type_enum, entities);
+    Edge(entities, edge_query_enum) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return (0, Edge_1.Edge)(this.__model__, entities, edge_query_enum);
+        });
     }
     Filter(entities, attrib, operator_enum, value) {
-        return (0, Filter_1.Filter)(this.__model__, entities, attrib, operator_enum, value);
+        return __awaiter(this, void 0, void 0, function* () {
+            return (0, Filter_1.Filter)(this.__model__, entities, attrib, operator_enum, value);
+        });
+    }
+    Get(ent_type_enum, entities) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return (0, Get_1.Get)(this.__model__, ent_type_enum, entities);
+        });
     }
     Invert(ent_type_enum, entities) {
-        return (0, Invert_1.Invert)(this.__model__, ent_type_enum, entities);
-    }
-    Sort(entities, attrib, method_enum) {
-        return (0, Sort_1.Sort)(this.__model__, entities, attrib, method_enum);
-    }
-    Perimeter(ent_type, entities) {
-        return (0, Perimeter_1.Perimeter)(this.__model__, ent_type, entities);
+        return __awaiter(this, void 0, void 0, function* () {
+            return (0, Invert_1.Invert)(this.__model__, ent_type_enum, entities);
+        });
     }
     Neighbor(ent_type_enum, entities) {
-        return (0, Neighbor_1.Neighbor)(this.__model__, ent_type_enum, entities);
+        return __awaiter(this, void 0, void 0, function* () {
+            return (0, Neighbor_1.Neighbor)(this.__model__, ent_type_enum, entities);
+        });
     }
-    Edge(entities, edge_query_enum) {
-        return (0, Edge_1.Edge)(this.__model__, entities, edge_query_enum);
+    Perimeter(ent_type, entities) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return (0, Perimeter_1.Perimeter)(this.__model__, ent_type, entities);
+        });
+    }
+    Sort(entities, attrib, method_enum) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return (0, Sort_1.Sort)(this.__model__, entities, attrib, method_enum);
+        });
     }
     Type(entities, type_query_enum) {
-        return (0, Type_1.Type)(this.__model__, entities, type_query_enum);
+        return __awaiter(this, void 0, void 0, function* () {
+            return (0, Type_1.Type)(this.__model__, entities, type_query_enum);
+        });
     }
 }
 exports.QueryFunc = QueryFunc;
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi8uLi9zcmMvbW9kdWxlcy9mdW5jdGlvbnMvcXVlcnkvaW5kZXgudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQUVBLDhDQUFnQztBQUNoQyxpQ0FBOEI7QUFlckIscUZBZkEsV0FBSSxPQWVBO0FBZGIscUNBQWtDO0FBU3pCLHVGQVRBLGVBQU0sT0FTQTtBQVJmLCtCQUE0QjtBQU9uQixvRkFQQSxTQUFHLE9BT0E7QUFOWixxQ0FBa0M7QUFRekIsdUZBUkEsZUFBTSxPQVFBO0FBUGYseUNBQXNDO0FBVTdCLHlGQVZBLG1CQUFRLE9BVUE7QUFUakIsMkNBQXdDO0FBUS9CLDBGQVJBLHFCQUFTLE9BUUE7QUFQbEIsaUNBQThCO0FBTXJCLHFGQU5BLFdBQUksT0FNQTtBQUxiLGlDQUE4QjtBQVNyQixxRkFUQSxXQUFJLE9BU0E7QUFDYixNQUFhLFNBQVM7SUFLbEIsWUFBWSxLQUFjO1FBSDFCLGFBQVEscUJBQ0QsSUFBSSxFQUNWO1FBRUcsSUFBSSxDQUFDLFNBQVMsR0FBRyxLQUFLLENBQUM7SUFDM0IsQ0FBQztJQUNELEdBQUcsQ0FBQyxhQUFhLEVBQUUsUUFBUTtRQUN2QixPQUFPLElBQUEsU0FBRyxFQUFDLElBQUksQ0FBQyxTQUFTLEVBQUUsYUFBYSxFQUFFLFFBQVEsQ0FBQyxDQUFDO0lBQ3hELENBQUM7SUFDRCxNQUFNLENBQUMsUUFBUSxFQUFFLE1BQU0sRUFBRSxhQUFhLEVBQUUsS0FBSztRQUN6QyxPQUFPLElBQUEsZUFBTSxFQUFDLElBQUksQ0FBQyxTQUFTLEVBQUUsUUFBUSxFQUFFLE1BQU0sRUFBRSxhQUFhLEVBQUUsS0FBSyxDQUFDLENBQUM7SUFDMUUsQ0FBQztJQUNELE1BQU0sQ0FBQyxhQUFhLEVBQUUsUUFBUTtRQUMxQixPQUFPLElBQUEsZUFBTSxFQUFDLElBQUksQ0FBQyxTQUFTLEVBQUUsYUFBYSxFQUFFLFFBQVEsQ0FBQyxDQUFDO0lBQzNELENBQUM7SUFDRCxJQUFJLENBQUMsUUFBUSxFQUFFLE1BQU0sRUFBRSxXQUFXO1FBQzlCLE9BQU8sSUFBQSxXQUFJLEVBQUMsSUFBSSxDQUFDLFNBQVMsRUFBRSxRQUFRLEVBQUUsTUFBTSxFQUFFLFdBQVcsQ0FBQyxDQUFDO0lBQy9ELENBQUM7SUFDRCxTQUFTLENBQUMsUUFBUSxFQUFFLFFBQVE7UUFDeEIsT0FBTyxJQUFBLHFCQUFTLEVBQUMsSUFBSSxDQUFDLFNBQVMsRUFBRSxRQUFRLEVBQUUsUUFBUSxDQUFDLENBQUM7SUFDekQsQ0FBQztJQUNELFFBQVEsQ0FBQyxhQUFhLEVBQUUsUUFBUTtRQUM1QixPQUFPLElBQUEsbUJBQVEsRUFBQyxJQUFJLENBQUMsU0FBUyxFQUFFLGFBQWEsRUFBRSxRQUFRLENBQUMsQ0FBQztJQUM3RCxDQUFDO0lBQ0QsSUFBSSxDQUFDLFFBQVEsRUFBRSxlQUFlO1FBQzFCLE9BQU8sSUFBQSxXQUFJLEVBQUMsSUFBSSxDQUFDLFNBQVMsRUFBRSxRQUFRLEVBQUUsZUFBZSxDQUFDLENBQUM7SUFDM0QsQ0FBQztJQUNELElBQUksQ0FBQyxRQUFRLEVBQUUsZUFBZTtRQUMxQixPQUFPLElBQUEsV0FBSSxFQUFDLElBQUksQ0FBQyxTQUFTLEVBQUUsUUFBUSxFQUFFLGVBQWUsQ0FBQyxDQUFDO0lBQzNELENBQUM7Q0FDSjtBQWhDRCw4QkFnQ0MifQ==
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi8uLi9zcmMvbW9kdWxlcy9mdW5jdGlvbnMvcXVlcnkvaW5kZXgudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQU9BLDhDQUFnQztBQUNoQyxpQ0FBOEI7QUFlckIscUZBZkEsV0FBSSxPQWVBO0FBZGIscUNBQWtDO0FBU3pCLHVGQVRBLGVBQU0sT0FTQTtBQVJmLCtCQUE0QjtBQU9uQixvRkFQQSxTQUFHLE9BT0E7QUFOWixxQ0FBa0M7QUFRekIsdUZBUkEsZUFBTSxPQVFBO0FBUGYseUNBQXNDO0FBVTdCLHlGQVZBLG1CQUFRLE9BVUE7QUFUakIsMkNBQXdDO0FBUS9CLDBGQVJBLHFCQUFTLE9BUUE7QUFQbEIsaUNBQThCO0FBTXJCLHFGQU5BLFdBQUksT0FNQTtBQUxiLGlDQUE4QjtBQVNyQixxRkFUQSxXQUFJLE9BU0E7QUFFYixtQkFBbUI7QUFDbkIsTUFBYSxTQUFTO0lBTWxCLFlBQVksS0FBYztRQUwxQixhQUFRLHFCQUNELElBQUksRUFDVjtRQUlHLElBQUksQ0FBQyxTQUFTLEdBQUcsS0FBSyxDQUFDO0lBQzNCLENBQUM7SUFDSyxJQUFJLENBQUMsUUFBUSxFQUFFLGVBQWU7O1lBQ2hDLE9BQU8sSUFBQSxXQUFJLEVBQUMsSUFBSSxDQUFDLFNBQVMsRUFBRSxRQUFRLEVBQUUsZUFBZSxDQUFDLENBQUM7UUFDM0QsQ0FBQztLQUFBO0lBQ0ssTUFBTSxDQUFDLFFBQVEsRUFBRSxNQUFNLEVBQUUsYUFBYSxFQUFFLEtBQUs7O1lBQy9DLE9BQU8sSUFBQSxlQUFNLEVBQUMsSUFBSSxDQUFDLFNBQVMsRUFBRSxRQUFRLEVBQUUsTUFBTSxFQUFFLGFBQWEsRUFBRSxLQUFLLENBQUMsQ0FBQztRQUMxRSxDQUFDO0tBQUE7SUFDSyxHQUFHLENBQUMsYUFBYSxFQUFFLFFBQVE7O1lBQzdCLE9BQU8sSUFBQSxTQUFHLEVBQUMsSUFBSSxDQUFDLFNBQVMsRUFBRSxhQUFhLEVBQUUsUUFBUSxDQUFDLENBQUM7UUFDeEQsQ0FBQztLQUFBO0lBQ0ssTUFBTSxDQUFDLGFBQWEsRUFBRSxRQUFROztZQUNoQyxPQUFPLElBQUEsZUFBTSxFQUFDLElBQUksQ0FBQyxTQUFTLEVBQUUsYUFBYSxFQUFFLFFBQVEsQ0FBQyxDQUFDO1FBQzNELENBQUM7S0FBQTtJQUNLLFFBQVEsQ0FBQyxhQUFhLEVBQUUsUUFBUTs7WUFDbEMsT0FBTyxJQUFBLG1CQUFRLEVBQUMsSUFBSSxDQUFDLFNBQVMsRUFBRSxhQUFhLEVBQUUsUUFBUSxDQUFDLENBQUM7UUFDN0QsQ0FBQztLQUFBO0lBQ0ssU0FBUyxDQUFDLFFBQVEsRUFBRSxRQUFROztZQUM5QixPQUFPLElBQUEscUJBQVMsRUFBQyxJQUFJLENBQUMsU0FBUyxFQUFFLFFBQVEsRUFBRSxRQUFRLENBQUMsQ0FBQztRQUN6RCxDQUFDO0tBQUE7SUFDSyxJQUFJLENBQUMsUUFBUSxFQUFFLE1BQU0sRUFBRSxXQUFXOztZQUNwQyxPQUFPLElBQUEsV0FBSSxFQUFDLElBQUksQ0FBQyxTQUFTLEVBQUUsUUFBUSxFQUFFLE1BQU0sRUFBRSxXQUFXLENBQUMsQ0FBQztRQUMvRCxDQUFDO0tBQUE7SUFDSyxJQUFJLENBQUMsUUFBUSxFQUFFLGVBQWU7O1lBQ2hDLE9BQU8sSUFBQSxXQUFJLEVBQUMsSUFBSSxDQUFDLFNBQVMsRUFBRSxRQUFRLEVBQUUsZUFBZSxDQUFDLENBQUM7UUFDM0QsQ0FBQztLQUFBO0NBRUo7QUFsQ0QsOEJBa0NDIn0=

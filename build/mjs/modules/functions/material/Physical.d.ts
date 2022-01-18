@@ -1,9 +1,3 @@
-/**
- * The `material` module has functions for defining materials.
- * The material definitions are saved as attributes at the model level.
- * For more informtion, see the threejs docs: https://threejs.org/
- * @module
- */
 import { GIModel, TColor } from '@design-automation/mobius-sim';
 /**
  * Creates a Physical material and saves it in the model attributes.

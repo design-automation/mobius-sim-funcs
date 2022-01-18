@@ -1,7 +1,3 @@
-/**
- * The `io` module has functions for importing and exporting.
- * @module
- */
 import { GIModel, TId } from '@design-automation/mobius-sim';
 import { _EIODataTarget, _EIOExportDataFormat } from './_enum';
 /**
@@ -26,4 +22,4 @@ export declare function _Async_Param_Export(__model__: GIModel, entities: TId | 
 /**
  * Functions for saving and loading resources to file system.
  */
-export declare function saveResource(file: string, name: string): Promise<boolean>;
+export declare function _saveResource(file: string, name: string): Promise<boolean>;

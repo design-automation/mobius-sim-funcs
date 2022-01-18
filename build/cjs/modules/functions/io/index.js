@@ -50,10 +50,46 @@ const Read_1 = require("./Read");
 Object.defineProperty(exports, "Read", { enumerable: true, get: function () { return Read_1.Read; } });
 const Write_1 = require("./Write");
 Object.defineProperty(exports, "Write", { enumerable: true, get: function () { return Write_1.Write; } });
+// CLASS DEFINITION
 class IoFunc {
     constructor(model) {
         this.__enum__ = Object.assign({}, Enum);
         this.__model__ = model;
+    }
+    Export(entities, file_name, data_format, data_target) {
+        return __awaiter(this, void 0, void 0, function* () {
+            (0, Export_1.Export)(this.__model__, entities, file_name, data_format, data_target);
+        });
+    }
+    ExportData(entities, data_format) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return (0, ExportData_1.ExportData)(this.__model__, entities, data_format);
+        });
+    }
+    Geoalign(lat_long_o, lat_long_x, elev) {
+        return __awaiter(this, void 0, void 0, function* () {
+            (0, Geoalign_1.Geoalign)(this.__model__, lat_long_o, lat_long_x, elev);
+        });
+    }
+    Geolocate(lat_long, rot, elev) {
+        return __awaiter(this, void 0, void 0, function* () {
+            (0, Geolocate_1.Geolocate)(this.__model__, lat_long, rot, elev);
+        });
+    }
+    Import(data_url, data_format) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return (0, Import_1.Import)(this.__model__, data_url, data_format);
+        });
+    }
+    ImportData(model_data, data_format) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return (0, ImportData_1.ImportData)(this.__model__, model_data, data_format);
+        });
+    }
+    LatLong2XYZ(lat_long, elev) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return (0, LatLong2XYZ_1.LatLong2XYZ)(this.__model__, lat_long, elev);
+        });
     }
     Read(data) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -65,39 +101,6 @@ class IoFunc {
             return (0, Write_1.Write)(this.__model__, data, file_name, data_target);
         });
     }
-    ImportData(model_data, data_format) {
-        return (0, ImportData_1.ImportData)(this.__model__, model_data, data_format);
-    }
-    Import(input_data, data_format) {
-        return __awaiter(this, void 0, void 0, function* () {
-            return (0, Import_1.Import)(this.__model__, input_data, data_format);
-        });
-    }
-    Export(entities, file_name, data_format, data_target) {
-        return __awaiter(this, void 0, void 0, function* () {
-            return (0, Export_1.Export)(this.__model__, entities, file_name, data_format, data_target);
-        });
-    }
-    Geolocate(lat_long, rot, elev) {
-        return (0, Geolocate_1.Geolocate)(this.__model__, lat_long, rot, elev);
-    }
-    Geoalign(lat_long_o, lat_long_x, elev) {
-        return (0, Geoalign_1.Geoalign)(this.__model__, lat_long_o, lat_long_x, elev);
-    }
-    LatLong2XYZ(lat_long, elev) {
-        return (0, LatLong2XYZ_1.LatLong2XYZ)(this.__model__, lat_long, elev);
-    }
-    _Async_Param_Read(data) {
-        return null;
-    }
-    _Async_Param_Write(data, file_name, data_target) {
-        return null;
-    }
-    _Async_Param_Import(input_data, data_format) {
-        return null;
-    }
-    _Async_Param_Export(entities, file_name, data_format, data_target) {
-    }
 }
 exports.IoFunc = IoFunc;
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi8uLi9zcmMvbW9kdWxlcy9mdW5jdGlvbnMvaW8vaW5kZXgudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQUVBLDhDQUFnQztBQUNoQyx5Q0FBc0M7QUFvQjdCLHlGQXBCQSxtQkFBUSxPQW9CQTtBQW5CakIscUNBQWtDO0FBY3pCLHVGQWRBLGVBQU0sT0FjQTtBQWJmLDZDQUEwQztBQWNqQywyRkFkQSx1QkFBVSxPQWNBO0FBYm5CLHlDQUFzQztBQWU3Qix5RkFmQSxtQkFBUSxPQWVBO0FBZGpCLDJDQUF3QztBQWEvQiwwRkFiQSxxQkFBUyxPQWFBO0FBWmxCLHFDQUFrQztBQVN6Qix1RkFUQSxlQUFNLE9BU0E7QUFSZiw2Q0FBMEM7QUFPakMsMkZBUEEsdUJBQVUsT0FPQTtBQU5uQiwrQ0FBNEM7QUFZbkMsNEZBWkEseUJBQVcsT0FZQTtBQVhwQixpQ0FBOEI7QUFHckIscUZBSEEsV0FBSSxPQUdBO0FBRmIsbUNBQWdDO0FBR3ZCLHNGQUhBLGFBQUssT0FHQTtBQVNkLE1BQWEsTUFBTTtJQUtmLFlBQVksS0FBYztRQUgxQixhQUFRLHFCQUNELElBQUksRUFDVjtRQUVHLElBQUksQ0FBQyxTQUFTLEdBQUcsS0FBSyxDQUFDO0lBQzNCLENBQUM7SUFDSyxJQUFJLENBQUMsSUFBSTs7WUFDWCxPQUFPLElBQUEsV0FBSSxFQUFDLElBQUksQ0FBQyxTQUFTLEVBQUUsSUFBSSxDQUFDLENBQUM7UUFDdEMsQ0FBQztLQUFBO0lBQ0ssS0FBSyxDQUFDLElBQUksRUFBRSxTQUFTLEVBQUUsV0FBVzs7WUFDcEMsT0FBTyxJQUFBLGFBQUssRUFBQyxJQUFJLENBQUMsU0FBUyxFQUFFLElBQUksRUFBRSxTQUFTLEVBQUUsV0FBVyxDQUFDLENBQUM7UUFDL0QsQ0FBQztLQUFBO0lBQ0QsVUFBVSxDQUFDLFVBQVUsRUFBRSxXQUFXO1FBQzlCLE9BQU8sSUFBQSx1QkFBVSxFQUFDLElBQUksQ0FBQyxTQUFTLEVBQUUsVUFBVSxFQUFFLFdBQVcsQ0FBQyxDQUFDO0lBQy9ELENBQUM7SUFDSyxNQUFNLENBQUMsVUFBVSxFQUFFLFdBQVc7O1lBQ2hDLE9BQU8sSUFBQSxlQUFNLEVBQUMsSUFBSSxDQUFDLFNBQVMsRUFBRSxVQUFVLEVBQUUsV0FBVyxDQUFDLENBQUM7UUFDM0QsQ0FBQztLQUFBO0lBQ0ssTUFBTSxDQUFDLFFBQVEsRUFBRSxTQUFTLEVBQUUsV0FBVyxFQUFFLFdBQVc7O1lBQ3RELE9BQU8sSUFBQSxlQUFNLEVBQUMsSUFBSSxDQUFDLFNBQVMsRUFBRSxRQUFRLEVBQUUsU0FBUyxFQUFFLFdBQVcsRUFBRSxXQUFXLENBQUMsQ0FBQztRQUNqRixDQUFDO0tBQUE7SUFDRCxTQUFTLENBQUMsUUFBUSxFQUFFLEdBQUcsRUFBRSxJQUFJO1FBQ3pCLE9BQU8sSUFBQSxxQkFBUyxFQUFDLElBQUksQ0FBQyxTQUFTLEVBQUUsUUFBUSxFQUFFLEdBQUcsRUFBRSxJQUFJLENBQUMsQ0FBQztJQUMxRCxDQUFDO0lBQ0QsUUFBUSxDQUFDLFVBQVUsRUFBRSxVQUFVLEVBQUUsSUFBSTtRQUNqQyxPQUFPLElBQUEsbUJBQVEsRUFBQyxJQUFJLENBQUMsU0FBUyxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsSUFBSSxDQUFDLENBQUM7SUFDbEUsQ0FBQztJQUNELFdBQVcsQ0FBQyxRQUFRLEVBQUUsSUFBSTtRQUN0QixPQUFPLElBQUEseUJBQVcsRUFBQyxJQUFJLENBQUMsU0FBUyxFQUFFLFFBQVEsRUFBRSxJQUFJLENBQUMsQ0FBQztJQUN2RCxDQUFDO0lBQ0QsaUJBQWlCLENBQUMsSUFBSTtRQUNsQixPQUFPLElBQUksQ0FBQztJQUNoQixDQUFDO0lBQ0Qsa0JBQWtCLENBQUMsSUFBSSxFQUFFLFNBQVMsRUFBRSxXQUFXO1FBQzNDLE9BQU8sSUFBSSxDQUFDO0lBQ2hCLENBQUM7SUFDRCxtQkFBbUIsQ0FBQyxVQUFVLEVBQUUsV0FBVztRQUN2QyxPQUFPLElBQUksQ0FBQztJQUNoQixDQUFDO0lBQ0QsbUJBQW1CLENBQUMsUUFBUSxFQUFFLFNBQVMsRUFBRSxXQUFXLEVBQUUsV0FBVztJQUNqRSxDQUFDO0NBQ0o7QUEzQ0Qsd0JBMkNDIn0=
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi8uLi9zcmMvbW9kdWxlcy9mdW5jdGlvbnMvaW8vaW5kZXgudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQU1BLDhDQUFnQztBQUNoQyx5Q0FBc0M7QUFvQjdCLHlGQXBCQSxtQkFBUSxPQW9CQTtBQW5CakIscUNBQWtDO0FBY3pCLHVGQWRBLGVBQU0sT0FjQTtBQWJmLDZDQUEwQztBQWNqQywyRkFkQSx1QkFBVSxPQWNBO0FBYm5CLHlDQUFzQztBQWU3Qix5RkFmQSxtQkFBUSxPQWVBO0FBZGpCLDJDQUF3QztBQWEvQiwwRkFiQSxxQkFBUyxPQWFBO0FBWmxCLHFDQUFrQztBQVN6Qix1RkFUQSxlQUFNLE9BU0E7QUFSZiw2Q0FBMEM7QUFPakMsMkZBUEEsdUJBQVUsT0FPQTtBQU5uQiwrQ0FBNEM7QUFZbkMsNEZBWkEseUJBQVcsT0FZQTtBQVhwQixpQ0FBOEI7QUFHckIscUZBSEEsV0FBSSxPQUdBO0FBRmIsbUNBQWdDO0FBR3ZCLHNGQUhBLGFBQUssT0FHQTtBQVVkLG1CQUFtQjtBQUNuQixNQUFhLE1BQU07SUFNZixZQUFZLEtBQWM7UUFMMUIsYUFBUSxxQkFDRCxJQUFJLEVBQ1Y7UUFJRyxJQUFJLENBQUMsU0FBUyxHQUFHLEtBQUssQ0FBQztJQUMzQixDQUFDO0lBQ0ssTUFBTSxDQUFDLFFBQVEsRUFBRSxTQUFTLEVBQUUsV0FBVyxFQUFFLFdBQVc7O1lBQ3RELElBQUEsZUFBTSxFQUFDLElBQUksQ0FBQyxTQUFTLEVBQUUsUUFBUSxFQUFFLFNBQVMsRUFBRSxXQUFXLEVBQUUsV0FBVyxDQUFDLENBQUM7UUFDMUUsQ0FBQztLQUFBO0lBQ0ssVUFBVSxDQUFDLFFBQVEsRUFBRSxXQUFXOztZQUNsQyxPQUFPLElBQUEsdUJBQVUsRUFBQyxJQUFJLENBQUMsU0FBUyxFQUFFLFFBQVEsRUFBRSxXQUFXLENBQUMsQ0FBQztRQUM3RCxDQUFDO0tBQUE7SUFDSyxRQUFRLENBQUMsVUFBVSxFQUFFLFVBQVUsRUFBRSxJQUFJOztZQUN2QyxJQUFBLG1CQUFRLEVBQUMsSUFBSSxDQUFDLFNBQVMsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLElBQUksQ0FBQyxDQUFDO1FBQzNELENBQUM7S0FBQTtJQUNLLFNBQVMsQ0FBQyxRQUFRLEVBQUUsR0FBRyxFQUFFLElBQUk7O1lBQy9CLElBQUEscUJBQVMsRUFBQyxJQUFJLENBQUMsU0FBUyxFQUFFLFFBQVEsRUFBRSxHQUFHLEVBQUUsSUFBSSxDQUFDLENBQUM7UUFDbkQsQ0FBQztLQUFBO0lBQ0ssTUFBTSxDQUFDLFFBQVEsRUFBRSxXQUFXOztZQUM5QixPQUFPLElBQUEsZUFBTSxFQUFDLElBQUksQ0FBQyxTQUFTLEVBQUUsUUFBUSxFQUFFLFdBQVcsQ0FBQyxDQUFDO1FBQ3pELENBQUM7S0FBQTtJQUNLLFVBQVUsQ0FBQyxVQUFVLEVBQUUsV0FBVzs7WUFDcEMsT0FBTyxJQUFBLHVCQUFVLEVBQUMsSUFBSSxDQUFDLFNBQVMsRUFBRSxVQUFVLEVBQUUsV0FBVyxDQUFDLENBQUM7UUFDL0QsQ0FBQztLQUFBO0lBQ0ssV0FBVyxDQUFDLFFBQVEsRUFBRSxJQUFJOztZQUM1QixPQUFPLElBQUEseUJBQVcsRUFBQyxJQUFJLENBQUMsU0FBUyxFQUFFLFFBQVEsRUFBRSxJQUFJLENBQUMsQ0FBQztRQUN2RCxDQUFDO0tBQUE7SUFDSyxJQUFJLENBQUMsSUFBSTs7WUFDWCxPQUFPLElBQUEsV0FBSSxFQUFDLElBQUksQ0FBQyxTQUFTLEVBQUUsSUFBSSxDQUFDLENBQUM7UUFDdEMsQ0FBQztLQUFBO0lBQ0ssS0FBSyxDQUFDLElBQUksRUFBRSxTQUFTLEVBQUUsV0FBVzs7WUFDcEMsT0FBTyxJQUFBLGFBQUssRUFBQyxJQUFJLENBQUMsU0FBUyxFQUFFLElBQUksRUFBRSxTQUFTLEVBQUUsV0FBVyxDQUFDLENBQUM7UUFDL0QsQ0FBQztLQUFBO0NBRUo7QUFyQ0Qsd0JBcUNDIn0=

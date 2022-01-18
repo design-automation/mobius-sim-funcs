@@ -1,7 +1,3 @@
-/**
- * The `collections` module has functions for creating and modifying collections.
- * @module
- */
 import { GIModel, TId } from '@design-automation/mobius-sim';
 /**
  * Get one or more collections from the model, given a name or list of names.

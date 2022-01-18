@@ -1,7 +1,3 @@
-/**
- * The `io` module has functions for importing and exporting.
- * @module
- */
 import { GIModel, Txy, Txyz } from '@design-automation/mobius-sim';
 import proj4 from 'proj4';
 /**

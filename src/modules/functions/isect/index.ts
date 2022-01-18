@@ -14,21 +14,25 @@ import { Split } from './Split';
 export { Intersect };
 export { Knife };
 export { Split };
-export class AnalyzeFunc {
-    __model__: GIModel;
+
+// CLASS DEFINITION
+export class IsectFunc {
     __enum__ = {
         ...Enum
     }
+
+    __model__: GIModel;
     constructor(model: GIModel) {
         this.__model__ = model;
     }
-    Intersect(entities1, entities2): any {
+    async Intersect(entities1, entities2): Promise<any> {
         return Intersect(this.__model__, entities1, entities2);
     }
-    Knife(geometry, plane, keep): any {
+    async Knife(geometry, plane, keep): Promise<any> {
         return Knife(this.__model__, geometry, plane, keep);
     }
-    Split(geometry, polyline): any {
+    async Split(geometry, polyline): Promise<any> {
         return Split(this.__model__, geometry, polyline);
     }
+
 }

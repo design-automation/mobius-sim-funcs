@@ -1,9 +1,3 @@
-/**
- * The `calc` module has functions for performing various types of calculations with entities in the model.
- * These functions neither make nor modify anything in the model.
- * These functions all return either numbers or lists of numbers.
- * @module
- */
 import { GIModel, TId, Txyz } from '@design-automation/mobius-sim';
 /**
  * Calculates the xyz coord along an edge, wire, or polyline given a t parameter.

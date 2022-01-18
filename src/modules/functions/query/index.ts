@@ -23,36 +23,40 @@ export { Perimeter };
 export { Neighbor };
 export { Edge };
 export { Type };
+
+// CLASS DEFINITION
 export class QueryFunc {
-    __model__: GIModel;
     __enum__ = {
         ...Enum
     }
+
+    __model__: GIModel;
     constructor(model: GIModel) {
         this.__model__ = model;
     }
-    Get(ent_type_enum, entities): any {
-        return Get(this.__model__, ent_type_enum, entities);
-    }
-    Filter(entities, attrib, operator_enum, value): any {
-        return Filter(this.__model__, entities, attrib, operator_enum, value);
-    }
-    Invert(ent_type_enum, entities): any {
-        return Invert(this.__model__, ent_type_enum, entities);
-    }
-    Sort(entities, attrib, method_enum): any {
-        return Sort(this.__model__, entities, attrib, method_enum);
-    }
-    Perimeter(ent_type, entities): any {
-        return Perimeter(this.__model__, ent_type, entities);
-    }
-    Neighbor(ent_type_enum, entities): any {
-        return Neighbor(this.__model__, ent_type_enum, entities);
-    }
-    Edge(entities, edge_query_enum): any {
+    async Edge(entities, edge_query_enum): Promise<any> {
         return Edge(this.__model__, entities, edge_query_enum);
     }
-    Type(entities, type_query_enum): any {
+    async Filter(entities, attrib, operator_enum, value): Promise<any> {
+        return Filter(this.__model__, entities, attrib, operator_enum, value);
+    }
+    async Get(ent_type_enum, entities): Promise<any> {
+        return Get(this.__model__, ent_type_enum, entities);
+    }
+    async Invert(ent_type_enum, entities): Promise<any> {
+        return Invert(this.__model__, ent_type_enum, entities);
+    }
+    async Neighbor(ent_type_enum, entities): Promise<any> {
+        return Neighbor(this.__model__, ent_type_enum, entities);
+    }
+    async Perimeter(ent_type, entities): Promise<any> {
+        return Perimeter(this.__model__, ent_type, entities);
+    }
+    async Sort(entities, attrib, method_enum): Promise<any> {
+        return Sort(this.__model__, entities, attrib, method_enum);
+    }
+    async Type(entities, type_query_enum): Promise<any> {
         return Type(this.__model__, entities, type_query_enum);
     }
+
 }

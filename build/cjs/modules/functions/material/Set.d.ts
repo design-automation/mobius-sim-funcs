@@ -1,9 +1,3 @@
-/**
- * The `material` module has functions for defining materials.
- * The material definitions are saved as attributes at the model level.
- * For more informtion, see the threejs docs: https://threejs.org/
- * @module
- */
 import { GIModel, TId } from '@design-automation/mobius-sim';
 /**
  * Assign a material to one or more polylines or polygons.

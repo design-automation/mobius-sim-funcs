@@ -1,4 +1,13 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UtilFunc = exports.SendData = exports.ModelMerge = exports.ModelCompare = exports.ModelCheck = exports.ModelInfo = exports.EntityInfo = exports.ParamInfo = exports.VrPanorama = exports.VrHotspot = exports.Select = void 0;
 const EntityInfo_1 = require("./EntityInfo");
@@ -21,46 +30,61 @@ const VrHotspot_1 = require("./VrHotspot");
 Object.defineProperty(exports, "VrHotspot", { enumerable: true, get: function () { return VrHotspot_1.VrHotspot; } });
 const VrPanorama_1 = require("./VrPanorama");
 Object.defineProperty(exports, "VrPanorama", { enumerable: true, get: function () { return VrPanorama_1.VrPanorama; } });
+// CLASS DEFINITION
 class UtilFunc {
     constructor(model) {
         this.__model__ = model;
     }
-    Select(entities) {
-        return (0, Select_1.Select)(this.__model__, entities);
-    }
-    VrHotspot(point, name, camera_rot) {
-        return (0, VrHotspot_1.VrHotspot)(this.__model__, point, name, camera_rot);
-    }
-    VrPanorama(point, back_url, back_rot, fore_url, fore_rot) {
-        return (0, VrPanorama_1.VrPanorama)(this.__model__, point, back_url, back_rot, fore_url, fore_rot);
-    }
-    ParamInfo(__constList__) {
-        return (0, ParamInfo_1.ParamInfo)(this.__model__, __constList__);
-    }
     EntityInfo(entities) {
-        return (0, EntityInfo_1.EntityInfo)(this.__model__, entities);
-    }
-    ModelInfo() {
-        return (0, ModelInfo_1.ModelInfo)(this.__model__);
+        return __awaiter(this, void 0, void 0, function* () {
+            return (0, EntityInfo_1.EntityInfo)(this.__model__, entities);
+        });
     }
     ModelCheck() {
-        return (0, ModelCheck_1.ModelCheck)(this.__model__);
+        return __awaiter(this, void 0, void 0, function* () {
+            return (0, ModelCheck_1.ModelCheck)(this.__model__);
+        });
     }
     ModelCompare(input_data) {
-        return (0, ModelCompare_1.ModelCompare)(this.__model__, input_data);
+        return __awaiter(this, void 0, void 0, function* () {
+            return (0, ModelCompare_1.ModelCompare)(this.__model__, input_data);
+        });
+    }
+    ModelInfo() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return (0, ModelInfo_1.ModelInfo)(this.__model__);
+        });
     }
     ModelMerge(input_data) {
-        return (0, ModelMerge_1.ModelMerge)(this.__model__, input_data);
+        return __awaiter(this, void 0, void 0, function* () {
+            return (0, ModelMerge_1.ModelMerge)(this.__model__, input_data);
+        });
+    }
+    ParamInfo(__constList__) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return (0, ParamInfo_1.ParamInfo)(this.__model__, __constList__);
+        });
+    }
+    Select(entities) {
+        return __awaiter(this, void 0, void 0, function* () {
+            (0, Select_1.Select)(this.__model__, entities);
+        });
     }
     SendData(data) {
-        return (0, SendData_1.SendData)(this.__model__, data);
+        return __awaiter(this, void 0, void 0, function* () {
+            (0, SendData_1.SendData)(this.__model__, data);
+        });
     }
-    _Async_Param_ModelCompare(input_data) {
-        return null;
+    VrHotspot(point, name, camera_rot) {
+        return __awaiter(this, void 0, void 0, function* () {
+            (0, VrHotspot_1.VrHotspot)(this.__model__, point, name, camera_rot);
+        });
     }
-    _Async_Param_ModelMerge(input_data) {
-        return null;
+    VrPanorama(point, back_url, back_rot, fore_url, fore_rot) {
+        return __awaiter(this, void 0, void 0, function* () {
+            (0, VrPanorama_1.VrPanorama)(this.__model__, point, back_url, back_rot, fore_url, fore_rot);
+        });
     }
 }
 exports.UtilFunc = UtilFunc;
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi8uLi9zcmMvbW9kdWxlcy9mdW5jdGlvbnMvdXRpbC9pbmRleC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7QUFFQSw2Q0FBMEM7QUFlakMsMkZBZkEsdUJBQVUsT0FlQTtBQWRuQiw2Q0FBMEM7QUFnQmpDLDJGQWhCQSx1QkFBVSxPQWdCQTtBQWZuQixpREFBOEM7QUFnQnJDLDZGQWhCQSwyQkFBWSxPQWdCQTtBQWZyQiwyQ0FBd0M7QUFhL0IsMEZBYkEscUJBQVMsT0FhQTtBQVpsQiw2Q0FBMEM7QUFlakMsMkZBZkEsdUJBQVUsT0FlQTtBQWRuQiwyQ0FBd0M7QUFTL0IsMEZBVEEscUJBQVMsT0FTQTtBQVJsQixxQ0FBa0M7QUFLekIsdUZBTEEsZUFBTSxPQUtBO0FBSmYseUNBQXNDO0FBYTdCLHlGQWJBLG1CQUFRLE9BYUE7QUFaakIsMkNBQXdDO0FBSS9CLDBGQUpBLHFCQUFTLE9BSUE7QUFIbEIsNkNBQTBDO0FBSWpDLDJGQUpBLHVCQUFVLE9BSUE7QUFRbkIsTUFBYSxRQUFRO0lBRWpCLFlBQVksS0FBYztRQUN0QixJQUFJLENBQUMsU0FBUyxHQUFHLEtBQUssQ0FBQztJQUMzQixDQUFDO0lBQ0QsTUFBTSxDQUFDLFFBQVE7UUFDWCxPQUFPLElBQUEsZUFBTSxFQUFDLElBQUksQ0FBQyxTQUFTLEVBQUUsUUFBUSxDQUFDLENBQUM7SUFDNUMsQ0FBQztJQUNELFNBQVMsQ0FBQyxLQUFLLEVBQUUsSUFBSSxFQUFFLFVBQVU7UUFDN0IsT0FBTyxJQUFBLHFCQUFTLEVBQUMsSUFBSSxDQUFDLFNBQVMsRUFBRSxLQUFLLEVBQUUsSUFBSSxFQUFFLFVBQVUsQ0FBQyxDQUFDO0lBQzlELENBQUM7SUFDRCxVQUFVLENBQUMsS0FBSyxFQUFFLFFBQVEsRUFBRSxRQUFRLEVBQUUsUUFBUSxFQUFFLFFBQVE7UUFDcEQsT0FBTyxJQUFBLHVCQUFVLEVBQUMsSUFBSSxDQUFDLFNBQVMsRUFBRSxLQUFLLEVBQUUsUUFBUSxFQUFFLFFBQVEsRUFBRSxRQUFRLEVBQUUsUUFBUSxDQUFDLENBQUM7SUFDckYsQ0FBQztJQUNELFNBQVMsQ0FBQyxhQUFhO1FBQ25CLE9BQU8sSUFBQSxxQkFBUyxFQUFDLElBQUksQ0FBQyxTQUFTLEVBQUUsYUFBYSxDQUFDLENBQUM7SUFDcEQsQ0FBQztJQUNELFVBQVUsQ0FBQyxRQUFRO1FBQ2YsT0FBTyxJQUFBLHVCQUFVLEVBQUMsSUFBSSxDQUFDLFNBQVMsRUFBRSxRQUFRLENBQUMsQ0FBQztJQUNoRCxDQUFDO0lBQ0QsU0FBUztRQUNMLE9BQU8sSUFBQSxxQkFBUyxFQUFDLElBQUksQ0FBQyxTQUFTLENBQUMsQ0FBQztJQUNyQyxDQUFDO0lBQ0QsVUFBVTtRQUNOLE9BQU8sSUFBQSx1QkFBVSxFQUFDLElBQUksQ0FBQyxTQUFTLENBQUMsQ0FBQztJQUN0QyxDQUFDO0lBQ0QsWUFBWSxDQUFDLFVBQVU7UUFDbkIsT0FBTyxJQUFBLDJCQUFZLEVBQUMsSUFBSSxDQUFDLFNBQVMsRUFBRSxVQUFVLENBQUMsQ0FBQztJQUNwRCxDQUFDO0lBQ0QsVUFBVSxDQUFDLFVBQVU7UUFDakIsT0FBTyxJQUFBLHVCQUFVLEVBQUMsSUFBSSxDQUFDLFNBQVMsRUFBRSxVQUFVLENBQUMsQ0FBQztJQUNsRCxDQUFDO0lBQ0QsUUFBUSxDQUFDLElBQUk7UUFDVCxPQUFPLElBQUEsbUJBQVEsRUFBQyxJQUFJLENBQUMsU0FBUyxFQUFFLElBQUksQ0FBQyxDQUFDO0lBQzFDLENBQUM7SUFDRCx5QkFBeUIsQ0FBQyxVQUFVO1FBQ2hDLE9BQU8sSUFBSSxDQUFDO0lBQ2hCLENBQUM7SUFDRCx1QkFBdUIsQ0FBQyxVQUFVO1FBQzlCLE9BQU8sSUFBSSxDQUFDO0lBQ2hCLENBQUM7Q0FFSjtBQTFDRCw0QkEwQ0MifQ==
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi8uLi9zcmMvbW9kdWxlcy9mdW5jdGlvbnMvdXRpbC9pbmRleC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7QUFNQSw2Q0FBMEM7QUFlakMsMkZBZkEsdUJBQVUsT0FlQTtBQWRuQiw2Q0FBMEM7QUFnQmpDLDJGQWhCQSx1QkFBVSxPQWdCQTtBQWZuQixpREFBOEM7QUFnQnJDLDZGQWhCQSwyQkFBWSxPQWdCQTtBQWZyQiwyQ0FBd0M7QUFhL0IsMEZBYkEscUJBQVMsT0FhQTtBQVpsQiw2Q0FBMEM7QUFlakMsMkZBZkEsdUJBQVUsT0FlQTtBQWRuQiwyQ0FBd0M7QUFTL0IsMEZBVEEscUJBQVMsT0FTQTtBQVJsQixxQ0FBa0M7QUFLekIsdUZBTEEsZUFBTSxPQUtBO0FBSmYseUNBQXNDO0FBYTdCLHlGQWJBLG1CQUFRLE9BYUE7QUFaakIsMkNBQXdDO0FBSS9CLDBGQUpBLHFCQUFTLE9BSUE7QUFIbEIsNkNBQTBDO0FBSWpDLDJGQUpBLHVCQUFVLE9BSUE7QUFTbkIsbUJBQW1CO0FBQ25CLE1BQWEsUUFBUTtJQUdqQixZQUFZLEtBQWM7UUFDdEIsSUFBSSxDQUFDLFNBQVMsR0FBRyxLQUFLLENBQUM7SUFDM0IsQ0FBQztJQUNLLFVBQVUsQ0FBQyxRQUFROztZQUNyQixPQUFPLElBQUEsdUJBQVUsRUFBQyxJQUFJLENBQUMsU0FBUyxFQUFFLFFBQVEsQ0FBQyxDQUFDO1FBQ2hELENBQUM7S0FBQTtJQUNLLFVBQVU7O1lBQ1osT0FBTyxJQUFBLHVCQUFVLEVBQUMsSUFBSSxDQUFDLFNBQVMsQ0FBQyxDQUFDO1FBQ3RDLENBQUM7S0FBQTtJQUNLLFlBQVksQ0FBQyxVQUFVOztZQUN6QixPQUFPLElBQUEsMkJBQVksRUFBQyxJQUFJLENBQUMsU0FBUyxFQUFFLFVBQVUsQ0FBQyxDQUFDO1FBQ3BELENBQUM7S0FBQTtJQUNLLFNBQVM7O1lBQ1gsT0FBTyxJQUFBLHFCQUFTLEVBQUMsSUFBSSxDQUFDLFNBQVMsQ0FBQyxDQUFDO1FBQ3JDLENBQUM7S0FBQTtJQUNLLFVBQVUsQ0FBQyxVQUFVOztZQUN2QixPQUFPLElBQUEsdUJBQVUsRUFBQyxJQUFJLENBQUMsU0FBUyxFQUFFLFVBQVUsQ0FBQyxDQUFDO1FBQ2xELENBQUM7S0FBQTtJQUNLLFNBQVMsQ0FBQyxhQUFhOztZQUN6QixPQUFPLElBQUEscUJBQVMsRUFBQyxJQUFJLENBQUMsU0FBUyxFQUFFLGFBQWEsQ0FBQyxDQUFDO1FBQ3BELENBQUM7S0FBQTtJQUNLLE1BQU0sQ0FBQyxRQUFROztZQUNqQixJQUFBLGVBQU0sRUFBQyxJQUFJLENBQUMsU0FBUyxFQUFFLFFBQVEsQ0FBQyxDQUFDO1FBQ3JDLENBQUM7S0FBQTtJQUNLLFFBQVEsQ0FBQyxJQUFJOztZQUNmLElBQUEsbUJBQVEsRUFBQyxJQUFJLENBQUMsU0FBUyxFQUFFLElBQUksQ0FBQyxDQUFDO1FBQ25DLENBQUM7S0FBQTtJQUNLLFNBQVMsQ0FBQyxLQUFLLEVBQUUsSUFBSSxFQUFFLFVBQVU7O1lBQ25DLElBQUEscUJBQVMsRUFBQyxJQUFJLENBQUMsU0FBUyxFQUFFLEtBQUssRUFBRSxJQUFJLEVBQUUsVUFBVSxDQUFDLENBQUM7UUFDdkQsQ0FBQztLQUFBO0lBQ0ssVUFBVSxDQUFDLEtBQUssRUFBRSxRQUFRLEVBQUUsUUFBUSxFQUFFLFFBQVEsRUFBRSxRQUFROztZQUMxRCxJQUFBLHVCQUFVLEVBQUMsSUFBSSxDQUFDLFNBQVMsRUFBRSxLQUFLLEVBQUUsUUFBUSxFQUFFLFFBQVEsRUFBRSxRQUFRLEVBQUUsUUFBUSxDQUFDLENBQUM7UUFDOUUsQ0FBQztLQUFBO0NBRUo7QUFyQ0QsNEJBcUNDIn0=

@@ -1,3 +1,8 @@
+/**
+ * The `visualize` module has functions for defining various settings for the 3D viewer.
+ * Color is saved as vertex attributes.
+ * @module
+ */
 import { GIModel } from '@design-automation/mobius-sim';
 import * as Enum from './_enum';
 import { BBox } from './BBox';
@@ -15,17 +20,22 @@ export { Ray };
 export { Plane };
 export { BBox };
 export declare class VisualizeFunc {
-    __model__: GIModel;
     __enum__: {
+        /**
+         * The `visualize` module has functions for defining various settings for the 3D viewer.
+         * Color is saved as vertex attributes.
+         * @module
+         */
         _EEdgeMethod: typeof Enum._EEdgeMethod;
         _EMeshMethod: typeof Enum._EMeshMethod;
     };
+    __model__: GIModel;
     constructor(model: GIModel);
-    Color(entities: any, color: any): any;
-    Gradient(entities: any, attrib: any, range: any, method: any): any;
-    Edge(entities: any, method: any): any;
-    Mesh(entities: any, method: any): any;
-    Ray(rays: any, scale: any): any;
-    Plane(planes: any, scale: any): any;
-    BBox(bboxes: any): any;
+    BBox(bboxes: any): Promise<any>;
+    Color(entities: any, color: any): Promise<void>;
+    Edge(entities: any, method: any): Promise<void>;
+    Gradient(entities: any, attrib: any, range: any, method: any): Promise<void>;
+    Mesh(entities: any, method: any): Promise<void>;
+    Plane(planes: any, scale: any): Promise<any>;
+    Ray(rays: any, scale: any): Promise<any>;
 }

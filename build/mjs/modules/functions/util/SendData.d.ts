@@ -1,7 +1,3 @@
-/**
- * The `util` module has some utility functions used for debugging.
- * @module
- */
 import { GIModel } from '@design-automation/mobius-sim';
 /**
  * Post a message to the parent window.

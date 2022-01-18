@@ -18,6 +18,15 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.VisualizeFunc = exports.BBox = exports.Plane = exports.Ray = exports.Mesh = exports.Edge = exports.Gradient = exports.Color = void 0;
 const Enum = __importStar(require("./_enum"));
@@ -35,32 +44,47 @@ const Plane_1 = require("./Plane");
 Object.defineProperty(exports, "Plane", { enumerable: true, get: function () { return Plane_1.Plane; } });
 const Ray_1 = require("./Ray");
 Object.defineProperty(exports, "Ray", { enumerable: true, get: function () { return Ray_1.Ray; } });
+// CLASS DEFINITION
 class VisualizeFunc {
     constructor(model) {
         this.__enum__ = Object.assign({}, Enum);
         this.__model__ = model;
     }
-    Color(entities, color) {
-        return (0, Color_1.Color)(this.__model__, entities, color);
+    BBox(bboxes) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return (0, BBox_1.BBox)(this.__model__, bboxes);
+        });
     }
-    Gradient(entities, attrib, range, method) {
-        return (0, Gradient_1.Gradient)(this.__model__, entities, attrib, range, method);
+    Color(entities, color) {
+        return __awaiter(this, void 0, void 0, function* () {
+            (0, Color_1.Color)(this.__model__, entities, color);
+        });
     }
     Edge(entities, method) {
-        return (0, Edge_1.Edge)(this.__model__, entities, method);
+        return __awaiter(this, void 0, void 0, function* () {
+            (0, Edge_1.Edge)(this.__model__, entities, method);
+        });
+    }
+    Gradient(entities, attrib, range, method) {
+        return __awaiter(this, void 0, void 0, function* () {
+            (0, Gradient_1.Gradient)(this.__model__, entities, attrib, range, method);
+        });
     }
     Mesh(entities, method) {
-        return (0, Mesh_1.Mesh)(this.__model__, entities, method);
-    }
-    Ray(rays, scale) {
-        return (0, Ray_1.Ray)(this.__model__, rays, scale);
+        return __awaiter(this, void 0, void 0, function* () {
+            (0, Mesh_1.Mesh)(this.__model__, entities, method);
+        });
     }
     Plane(planes, scale) {
-        return (0, Plane_1.Plane)(this.__model__, planes, scale);
+        return __awaiter(this, void 0, void 0, function* () {
+            return (0, Plane_1.Plane)(this.__model__, planes, scale);
+        });
     }
-    BBox(bboxes) {
-        return (0, BBox_1.BBox)(this.__model__, bboxes);
+    Ray(rays, scale) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return (0, Ray_1.Ray)(this.__model__, rays, scale);
+        });
     }
 }
 exports.VisualizeFunc = VisualizeFunc;
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi8uLi9zcmMvbW9kdWxlcy9mdW5jdGlvbnMvdmlzdWFsaXplL2luZGV4LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFFQSw4Q0FBZ0M7QUFDaEMsaUNBQThCO0FBY3JCLHFGQWRBLFdBQUksT0FjQTtBQWJiLG1DQUFnQztBQU92QixzRkFQQSxhQUFLLE9BT0E7QUFOZCxpQ0FBOEI7QUFRckIscUZBUkEsV0FBSSxPQVFBO0FBUGIseUNBQXNDO0FBTTdCLHlGQU5BLG1CQUFRLE9BTUE7QUFMakIsaUNBQThCO0FBT3JCLHFGQVBBLFdBQUksT0FPQTtBQU5iLG1DQUFnQztBQVF2QixzRkFSQSxhQUFLLE9BUUE7QUFQZCwrQkFBNEI7QUFNbkIsb0ZBTkEsU0FBRyxPQU1BO0FBR1osTUFBYSxhQUFhO0lBS3RCLFlBQVksS0FBYztRQUgxQixhQUFRLHFCQUNELElBQUksRUFDVjtRQUVHLElBQUksQ0FBQyxTQUFTLEdBQUcsS0FBSyxDQUFDO0lBQzNCLENBQUM7SUFDRCxLQUFLLENBQUMsUUFBUSxFQUFFLEtBQUs7UUFDakIsT0FBTyxJQUFBLGFBQUssRUFBQyxJQUFJLENBQUMsU0FBUyxFQUFFLFFBQVEsRUFBRSxLQUFLLENBQUMsQ0FBQztJQUNsRCxDQUFDO0lBQ0QsUUFBUSxDQUFDLFFBQVEsRUFBRSxNQUFNLEVBQUUsS0FBSyxFQUFFLE1BQU07UUFDcEMsT0FBTyxJQUFBLG1CQUFRLEVBQUMsSUFBSSxDQUFDLFNBQVMsRUFBRSxRQUFRLEVBQUUsTUFBTSxFQUFFLEtBQUssRUFBRSxNQUFNLENBQUMsQ0FBQztJQUNyRSxDQUFDO0lBQ0QsSUFBSSxDQUFDLFFBQVEsRUFBRSxNQUFNO1FBQ2pCLE9BQU8sSUFBQSxXQUFJLEVBQUMsSUFBSSxDQUFDLFNBQVMsRUFBRSxRQUFRLEVBQUUsTUFBTSxDQUFDLENBQUM7SUFDbEQsQ0FBQztJQUNELElBQUksQ0FBQyxRQUFRLEVBQUUsTUFBTTtRQUNqQixPQUFPLElBQUEsV0FBSSxFQUFDLElBQUksQ0FBQyxTQUFTLEVBQUUsUUFBUSxFQUFFLE1BQU0sQ0FBQyxDQUFDO0lBQ2xELENBQUM7SUFDRCxHQUFHLENBQUMsSUFBSSxFQUFFLEtBQUs7UUFDWCxPQUFPLElBQUEsU0FBRyxFQUFDLElBQUksQ0FBQyxTQUFTLEVBQUUsSUFBSSxFQUFFLEtBQUssQ0FBQyxDQUFDO0lBQzVDLENBQUM7SUFDRCxLQUFLLENBQUMsTUFBTSxFQUFFLEtBQUs7UUFDZixPQUFPLElBQUEsYUFBSyxFQUFDLElBQUksQ0FBQyxTQUFTLEVBQUUsTUFBTSxFQUFFLEtBQUssQ0FBQyxDQUFDO0lBQ2hELENBQUM7SUFDRCxJQUFJLENBQUMsTUFBTTtRQUNQLE9BQU8sSUFBQSxXQUFJLEVBQUMsSUFBSSxDQUFDLFNBQVMsRUFBRSxNQUFNLENBQUMsQ0FBQztJQUN4QyxDQUFDO0NBQ0o7QUE3QkQsc0NBNkJDIn0=
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi8uLi9zcmMvbW9kdWxlcy9mdW5jdGlvbnMvdmlzdWFsaXplL2luZGV4LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFPQSw4Q0FBZ0M7QUFDaEMsaUNBQThCO0FBY3JCLHFGQWRBLFdBQUksT0FjQTtBQWJiLG1DQUFnQztBQU92QixzRkFQQSxhQUFLLE9BT0E7QUFOZCxpQ0FBOEI7QUFRckIscUZBUkEsV0FBSSxPQVFBO0FBUGIseUNBQXNDO0FBTTdCLHlGQU5BLG1CQUFRLE9BTUE7QUFMakIsaUNBQThCO0FBT3JCLHFGQVBBLFdBQUksT0FPQTtBQU5iLG1DQUFnQztBQVF2QixzRkFSQSxhQUFLLE9BUUE7QUFQZCwrQkFBNEI7QUFNbkIsb0ZBTkEsU0FBRyxPQU1BO0FBSVosbUJBQW1CO0FBQ25CLE1BQWEsYUFBYTtJQU10QixZQUFZLEtBQWM7UUFMMUIsYUFBUSxxQkFDRCxJQUFJLEVBQ1Y7UUFJRyxJQUFJLENBQUMsU0FBUyxHQUFHLEtBQUssQ0FBQztJQUMzQixDQUFDO0lBQ0ssSUFBSSxDQUFDLE1BQU07O1lBQ2IsT0FBTyxJQUFBLFdBQUksRUFBQyxJQUFJLENBQUMsU0FBUyxFQUFFLE1BQU0sQ0FBQyxDQUFDO1FBQ3hDLENBQUM7S0FBQTtJQUNLLEtBQUssQ0FBQyxRQUFRLEVBQUUsS0FBSzs7WUFDdkIsSUFBQSxhQUFLLEVBQUMsSUFBSSxDQUFDLFNBQVMsRUFBRSxRQUFRLEVBQUUsS0FBSyxDQUFDLENBQUM7UUFDM0MsQ0FBQztLQUFBO0lBQ0ssSUFBSSxDQUFDLFFBQVEsRUFBRSxNQUFNOztZQUN2QixJQUFBLFdBQUksRUFBQyxJQUFJLENBQUMsU0FBUyxFQUFFLFFBQVEsRUFBRSxNQUFNLENBQUMsQ0FBQztRQUMzQyxDQUFDO0tBQUE7SUFDSyxRQUFRLENBQUMsUUFBUSxFQUFFLE1BQU0sRUFBRSxLQUFLLEVBQUUsTUFBTTs7WUFDMUMsSUFBQSxtQkFBUSxFQUFDLElBQUksQ0FBQyxTQUFTLEVBQUUsUUFBUSxFQUFFLE1BQU0sRUFBRSxLQUFLLEVBQUUsTUFBTSxDQUFDLENBQUM7UUFDOUQsQ0FBQztLQUFBO0lBQ0ssSUFBSSxDQUFDLFFBQVEsRUFBRSxNQUFNOztZQUN2QixJQUFBLFdBQUksRUFBQyxJQUFJLENBQUMsU0FBUyxFQUFFLFFBQVEsRUFBRSxNQUFNLENBQUMsQ0FBQztRQUMzQyxDQUFDO0tBQUE7SUFDSyxLQUFLLENBQUMsTUFBTSxFQUFFLEtBQUs7O1lBQ3JCLE9BQU8sSUFBQSxhQUFLLEVBQUMsSUFBSSxDQUFDLFNBQVMsRUFBRSxNQUFNLEVBQUUsS0FBSyxDQUFDLENBQUM7UUFDaEQsQ0FBQztLQUFBO0lBQ0ssR0FBRyxDQUFDLElBQUksRUFBRSxLQUFLOztZQUNqQixPQUFPLElBQUEsU0FBRyxFQUFDLElBQUksQ0FBQyxTQUFTLEVBQUUsSUFBSSxFQUFFLEtBQUssQ0FBQyxDQUFDO1FBQzVDLENBQUM7S0FBQTtDQUVKO0FBL0JELHNDQStCQyJ9

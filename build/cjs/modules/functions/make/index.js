@@ -18,6 +18,15 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MakeFunc = exports.Clone = exports.Copy = exports.Cut = exports.Join = exports.Sweep = exports.Extrude = exports.Loft = exports.Polygon = exports.Polyline = exports.Point = exports.Position = void 0;
 const Enum = __importStar(require("./_enum"));
@@ -43,44 +52,67 @@ const Position_1 = require("./Position");
 Object.defineProperty(exports, "Position", { enumerable: true, get: function () { return Position_1.Position; } });
 const Sweep_1 = require("./Sweep");
 Object.defineProperty(exports, "Sweep", { enumerable: true, get: function () { return Sweep_1.Sweep; } });
+// CLASS DEFINITION
 class MakeFunc {
     constructor(model) {
         this.__enum__ = Object.assign({}, Enum);
         this.__model__ = model;
     }
-    Position(coords) {
-        return (0, Position_1.Position)(this.__model__, coords);
-    }
-    Point(entities) {
-        return (0, Point_1.Point)(this.__model__, entities);
-    }
-    Polyline(entities, close) {
-        return (0, Polyline_1.Polyline)(this.__model__, entities, close);
-    }
-    Polygon(entities) {
-        return (0, Polygon_1.Polygon)(this.__model__, entities);
-    }
-    Loft(entities, divisions, method) {
-        return (0, Loft_1.Loft)(this.__model__, entities, divisions, method);
-    }
-    Extrude(entities, dist, divisions, method) {
-        return (0, Extrude_1.Extrude)(this.__model__, entities, dist, divisions, method);
-    }
-    Sweep(entities, x_section, divisions, method) {
-        return (0, Sweep_1.Sweep)(this.__model__, entities, x_section, divisions, method);
-    }
-    Join(entities) {
-        return (0, Join_1.Join)(this.__model__, entities);
-    }
-    Cut(entities, plane, method) {
-        return (0, Cut_1.Cut)(this.__model__, entities, plane, method);
+    Clone(entities) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return (0, Clone_1.Clone)(this.__model__, entities);
+        });
     }
     Copy(entities, vector) {
-        return (0, Copy_1.Copy)(this.__model__, entities, vector);
+        return __awaiter(this, void 0, void 0, function* () {
+            return (0, Copy_1.Copy)(this.__model__, entities, vector);
+        });
     }
-    Clone(entities) {
-        return (0, Clone_1.Clone)(this.__model__, entities);
+    Cut(entities, plane, method) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return (0, Cut_1.Cut)(this.__model__, entities, plane, method);
+        });
+    }
+    Extrude(entities, dist, divisions, method) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return (0, Extrude_1.Extrude)(this.__model__, entities, dist, divisions, method);
+        });
+    }
+    Join(entities) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return (0, Join_1.Join)(this.__model__, entities);
+        });
+    }
+    Loft(entities, divisions, method) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return (0, Loft_1.Loft)(this.__model__, entities, divisions, method);
+        });
+    }
+    Point(entities) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return (0, Point_1.Point)(this.__model__, entities);
+        });
+    }
+    Polygon(entities) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return (0, Polygon_1.Polygon)(this.__model__, entities);
+        });
+    }
+    Polyline(entities, close) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return (0, Polyline_1.Polyline)(this.__model__, entities, close);
+        });
+    }
+    Position(coords) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return (0, Position_1.Position)(this.__model__, coords);
+        });
+    }
+    Sweep(entities, x_section, divisions, method) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return (0, Sweep_1.Sweep)(this.__model__, entities, x_section, divisions, method);
+        });
     }
 }
 exports.MakeFunc = MakeFunc;
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi8uLi9zcmMvbW9kdWxlcy9mdW5jdGlvbnMvbWFrZS9pbmRleC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBRUEsOENBQWdDO0FBQ2hDLG1DQUFnQztBQXNCdkIsc0ZBdEJBLGFBQUssT0FzQkE7QUFyQmQsaUNBQThCO0FBb0JyQixxRkFwQkEsV0FBSSxPQW9CQTtBQW5CYiwrQkFBNEI7QUFrQm5CLG9GQWxCQSxTQUFHLE9Ba0JBO0FBakJaLHVDQUFvQztBQWMzQix3RkFkQSxpQkFBTyxPQWNBO0FBYmhCLGlDQUE4QjtBQWVyQixxRkFmQSxXQUFJLE9BZUE7QUFkYixpQ0FBOEI7QUFXckIscUZBWEEsV0FBSSxPQVdBO0FBVmIsbUNBQWdDO0FBT3ZCLHNGQVBBLGFBQUssT0FPQTtBQU5kLHVDQUFvQztBQVEzQix3RkFSQSxpQkFBTyxPQVFBO0FBUGhCLHlDQUFzQztBQU03Qix5RkFOQSxtQkFBUSxPQU1BO0FBTGpCLHlDQUFzQztBQUc3Qix5RkFIQSxtQkFBUSxPQUdBO0FBRmpCLG1DQUFnQztBQVF2QixzRkFSQSxhQUFLLE9BUUE7QUFNZCxNQUFhLFFBQVE7SUFLakIsWUFBWSxLQUFjO1FBSDFCLGFBQVEscUJBQ0QsSUFBSSxFQUNWO1FBRUcsSUFBSSxDQUFDLFNBQVMsR0FBRyxLQUFLLENBQUM7SUFDM0IsQ0FBQztJQUNELFFBQVEsQ0FBQyxNQUFNO1FBQ1gsT0FBTyxJQUFBLG1CQUFRLEVBQUMsSUFBSSxDQUFDLFNBQVMsRUFBRSxNQUFNLENBQUMsQ0FBQztJQUM1QyxDQUFDO0lBQ0QsS0FBSyxDQUFDLFFBQVE7UUFDVixPQUFPLElBQUEsYUFBSyxFQUFDLElBQUksQ0FBQyxTQUFTLEVBQUUsUUFBUSxDQUFDLENBQUM7SUFDM0MsQ0FBQztJQUNELFFBQVEsQ0FBQyxRQUFRLEVBQUUsS0FBSztRQUNwQixPQUFPLElBQUEsbUJBQVEsRUFBQyxJQUFJLENBQUMsU0FBUyxFQUFFLFFBQVEsRUFBRSxLQUFLLENBQUMsQ0FBQztJQUNyRCxDQUFDO0lBQ0QsT0FBTyxDQUFDLFFBQVE7UUFDWixPQUFPLElBQUEsaUJBQU8sRUFBQyxJQUFJLENBQUMsU0FBUyxFQUFFLFFBQVEsQ0FBQyxDQUFDO0lBQzdDLENBQUM7SUFDRCxJQUFJLENBQUMsUUFBUSxFQUFFLFNBQVMsRUFBRSxNQUFNO1FBQzVCLE9BQU8sSUFBQSxXQUFJLEVBQUMsSUFBSSxDQUFDLFNBQVMsRUFBRSxRQUFRLEVBQUUsU0FBUyxFQUFFLE1BQU0sQ0FBQyxDQUFDO0lBQzdELENBQUM7SUFDRCxPQUFPLENBQUMsUUFBUSxFQUFFLElBQUksRUFBRSxTQUFTLEVBQUUsTUFBTTtRQUNyQyxPQUFPLElBQUEsaUJBQU8sRUFBQyxJQUFJLENBQUMsU0FBUyxFQUFFLFFBQVEsRUFBRSxJQUFJLEVBQUUsU0FBUyxFQUFFLE1BQU0sQ0FBQyxDQUFDO0lBQ3RFLENBQUM7SUFDRCxLQUFLLENBQUMsUUFBUSxFQUFFLFNBQVMsRUFBRSxTQUFTLEVBQUUsTUFBTTtRQUN4QyxPQUFPLElBQUEsYUFBSyxFQUFDLElBQUksQ0FBQyxTQUFTLEVBQUUsUUFBUSxFQUFFLFNBQVMsRUFBRSxTQUFTLEVBQUUsTUFBTSxDQUFDLENBQUM7SUFDekUsQ0FBQztJQUNELElBQUksQ0FBQyxRQUFRO1FBQ1QsT0FBTyxJQUFBLFdBQUksRUFBQyxJQUFJLENBQUMsU0FBUyxFQUFFLFFBQVEsQ0FBQyxDQUFDO0lBQzFDLENBQUM7SUFDRCxHQUFHLENBQUMsUUFBUSxFQUFFLEtBQUssRUFBRSxNQUFNO1FBQ3ZCLE9BQU8sSUFBQSxTQUFHLEVBQUMsSUFBSSxDQUFDLFNBQVMsRUFBRSxRQUFRLEVBQUUsS0FBSyxFQUFFLE1BQU0sQ0FBQyxDQUFDO0lBQ3hELENBQUM7SUFDRCxJQUFJLENBQUMsUUFBUSxFQUFFLE1BQU07UUFDakIsT0FBTyxJQUFBLFdBQUksRUFBQyxJQUFJLENBQUMsU0FBUyxFQUFFLFFBQVEsRUFBRSxNQUFNLENBQUMsQ0FBQztJQUNsRCxDQUFDO0lBQ0QsS0FBSyxDQUFDLFFBQVE7UUFDVixPQUFPLElBQUEsYUFBSyxFQUFDLElBQUksQ0FBQyxTQUFTLEVBQUUsUUFBUSxDQUFDLENBQUM7SUFDM0MsQ0FBQztDQUNKO0FBekNELDRCQXlDQyJ9
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi8uLi9zcmMvbW9kdWxlcy9mdW5jdGlvbnMvbWFrZS9pbmRleC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBT0EsOENBQWdDO0FBQ2hDLG1DQUFnQztBQXNCdkIsc0ZBdEJBLGFBQUssT0FzQkE7QUFyQmQsaUNBQThCO0FBb0JyQixxRkFwQkEsV0FBSSxPQW9CQTtBQW5CYiwrQkFBNEI7QUFrQm5CLG9GQWxCQSxTQUFHLE9Ba0JBO0FBakJaLHVDQUFvQztBQWMzQix3RkFkQSxpQkFBTyxPQWNBO0FBYmhCLGlDQUE4QjtBQWVyQixxRkFmQSxXQUFJLE9BZUE7QUFkYixpQ0FBOEI7QUFXckIscUZBWEEsV0FBSSxPQVdBO0FBVmIsbUNBQWdDO0FBT3ZCLHNGQVBBLGFBQUssT0FPQTtBQU5kLHVDQUFvQztBQVEzQix3RkFSQSxpQkFBTyxPQVFBO0FBUGhCLHlDQUFzQztBQU03Qix5RkFOQSxtQkFBUSxPQU1BO0FBTGpCLHlDQUFzQztBQUc3Qix5RkFIQSxtQkFBUSxPQUdBO0FBRmpCLG1DQUFnQztBQVF2QixzRkFSQSxhQUFLLE9BUUE7QUFPZCxtQkFBbUI7QUFDbkIsTUFBYSxRQUFRO0lBTWpCLFlBQVksS0FBYztRQUwxQixhQUFRLHFCQUNELElBQUksRUFDVjtRQUlHLElBQUksQ0FBQyxTQUFTLEdBQUcsS0FBSyxDQUFDO0lBQzNCLENBQUM7SUFDSyxLQUFLLENBQUMsUUFBUTs7WUFDaEIsT0FBTyxJQUFBLGFBQUssRUFBQyxJQUFJLENBQUMsU0FBUyxFQUFFLFFBQVEsQ0FBQyxDQUFDO1FBQzNDLENBQUM7S0FBQTtJQUNLLElBQUksQ0FBQyxRQUFRLEVBQUUsTUFBTTs7WUFDdkIsT0FBTyxJQUFBLFdBQUksRUFBQyxJQUFJLENBQUMsU0FBUyxFQUFFLFFBQVEsRUFBRSxNQUFNLENBQUMsQ0FBQztRQUNsRCxDQUFDO0tBQUE7SUFDSyxHQUFHLENBQUMsUUFBUSxFQUFFLEtBQUssRUFBRSxNQUFNOztZQUM3QixPQUFPLElBQUEsU0FBRyxFQUFDLElBQUksQ0FBQyxTQUFTLEVBQUUsUUFBUSxFQUFFLEtBQUssRUFBRSxNQUFNLENBQUMsQ0FBQztRQUN4RCxDQUFDO0tBQUE7SUFDSyxPQUFPLENBQUMsUUFBUSxFQUFFLElBQUksRUFBRSxTQUFTLEVBQUUsTUFBTTs7WUFDM0MsT0FBTyxJQUFBLGlCQUFPLEVBQUMsSUFBSSxDQUFDLFNBQVMsRUFBRSxRQUFRLEVBQUUsSUFBSSxFQUFFLFNBQVMsRUFBRSxNQUFNLENBQUMsQ0FBQztRQUN0RSxDQUFDO0tBQUE7SUFDSyxJQUFJLENBQUMsUUFBUTs7WUFDZixPQUFPLElBQUEsV0FBSSxFQUFDLElBQUksQ0FBQyxTQUFTLEVBQUUsUUFBUSxDQUFDLENBQUM7UUFDMUMsQ0FBQztLQUFBO0lBQ0ssSUFBSSxDQUFDLFFBQVEsRUFBRSxTQUFTLEVBQUUsTUFBTTs7WUFDbEMsT0FBTyxJQUFBLFdBQUksRUFBQyxJQUFJLENBQUMsU0FBUyxFQUFFLFFBQVEsRUFBRSxTQUFTLEVBQUUsTUFBTSxDQUFDLENBQUM7UUFDN0QsQ0FBQztLQUFBO0lBQ0ssS0FBSyxDQUFDLFFBQVE7O1lBQ2hCLE9BQU8sSUFBQSxhQUFLLEVBQUMsSUFBSSxDQUFDLFNBQVMsRUFBRSxRQUFRLENBQUMsQ0FBQztRQUMzQyxDQUFDO0tBQUE7SUFDSyxPQUFPLENBQUMsUUFBUTs7WUFDbEIsT0FBTyxJQUFBLGlCQUFPLEVBQUMsSUFBSSxDQUFDLFNBQVMsRUFBRSxRQUFRLENBQUMsQ0FBQztRQUM3QyxDQUFDO0tBQUE7SUFDSyxRQUFRLENBQUMsUUFBUSxFQUFFLEtBQUs7O1lBQzFCLE9BQU8sSUFBQSxtQkFBUSxFQUFDLElBQUksQ0FBQyxTQUFTLEVBQUUsUUFBUSxFQUFFLEtBQUssQ0FBQyxDQUFDO1FBQ3JELENBQUM7S0FBQTtJQUNLLFFBQVEsQ0FBQyxNQUFNOztZQUNqQixPQUFPLElBQUEsbUJBQVEsRUFBQyxJQUFJLENBQUMsU0FBUyxFQUFFLE1BQU0sQ0FBQyxDQUFDO1FBQzVDLENBQUM7S0FBQTtJQUNLLEtBQUssQ0FBQyxRQUFRLEVBQUUsU0FBUyxFQUFFLFNBQVMsRUFBRSxNQUFNOztZQUM5QyxPQUFPLElBQUEsYUFBSyxFQUFDLElBQUksQ0FBQyxTQUFTLEVBQUUsUUFBUSxFQUFFLFNBQVMsRUFBRSxTQUFTLEVBQUUsTUFBTSxDQUFDLENBQUM7UUFDekUsQ0FBQztLQUFBO0NBRUo7QUEzQ0QsNEJBMkNDIn0=

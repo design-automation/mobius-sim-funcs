@@ -26,30 +26,34 @@ export { Rename }
 
 export { Push }
 
+
+// CLASS DEFINITION
 export class AttribFunc {
-    __model__: GIModel;
     __enum__ = {
         ...Enum
     }
+
+    __model__: GIModel;
     constructor(model: GIModel) {
         this.__model__ = model;
     }
-    Set(entities, attrib, value, method): any {
-        return Set(this.__model__, entities, attrib, value, method);
+    async Add(ent_type_sel, data_type_sel, attribs): Promise<void> {
+        Add(this.__model__, ent_type_sel, data_type_sel, attribs);
     }
-    Get(entities, attrib): any {
+    async Delete(ent_type_sel, attribs): Promise<void> {
+        Delete(this.__model__, ent_type_sel, attribs);
+    }
+    async Get(entities, attrib): Promise<any> {
         return Get(this.__model__, entities, attrib);
     }
-    Add(ent_type_sel, data_type_sel, attribs): any {
-        return Add(this.__model__, ent_type_sel, data_type_sel, attribs);
+    async Push(entities, attrib, ent_type_sel, method_sel): Promise<void> {
+        Push(this.__model__, entities, attrib, ent_type_sel, method_sel);
     }
-    Delete(ent_type_sel, attribs): any {
-        return Delete(this.__model__, ent_type_sel, attribs);
+    async Rename(ent_type_sel, old_attrib, new_attrib): Promise<void> {
+        Rename(this.__model__, ent_type_sel, old_attrib, new_attrib);
     }
-    Rename(ent_type_sel, old_attrib, new_attrib): any {
-        return Rename(this.__model__, ent_type_sel, old_attrib, new_attrib);
+    async Set(entities, attrib, value, method): Promise<void> {
+        Set(this.__model__, entities, attrib, value, method);
     }
-    Push(entities, attrib, ent_type_sel, method_sel): any {
-        return Push(this.__model__, entities, attrib, ent_type_sel, method_sel);
-    }
+
 }

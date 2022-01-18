@@ -24,36 +24,40 @@ export { Lambert };
 export { Phong };
 export { Standard };
 export { Physical };
+
+// CLASS DEFINITION
 export class MaterialFunc {
-    __model__: GIModel;
     __enum__ = {
         ...Enum
     }
+
+    __model__: GIModel;
     constructor(model: GIModel) {
         this.__model__ = model;
     }
-    Set(entities, material): any {
-        return Set(this.__model__, entities, material);
+    async Glass(name, opacity): Promise<void> {
+        Glass(this.__model__, name, opacity);
     }
-    LineMat(name, color, dash_gap_scale, select_vert_colors): any {
-        return LineMat(this.__model__, name, color, dash_gap_scale, select_vert_colors);
+    async Lambert(name, emissive): Promise<void> {
+        Lambert(this.__model__, name, emissive);
     }
-    MeshMat(name, color, opacity, select_side, select_vert_colors): any {
-        return MeshMat(this.__model__, name, color, opacity, select_side, select_vert_colors);
+    async LineMat(name, color, dash_gap_scale, select_vert_colors): Promise<void> {
+        LineMat(this.__model__, name, color, dash_gap_scale, select_vert_colors);
     }
-    Glass(name, opacity): any {
-        return Glass(this.__model__, name, opacity);
+    async MeshMat(name, color, opacity, select_side, select_vert_colors): Promise<void> {
+        MeshMat(this.__model__, name, color, opacity, select_side, select_vert_colors);
     }
-    Lambert(name, emissive): any {
-        return Lambert(this.__model__, name, emissive);
+    async Phong(name, emissive, specular, shininess): Promise<void> {
+        Phong(this.__model__, name, emissive, specular, shininess);
     }
-    Phong(name, emissive, specular, shininess): any {
-        return Phong(this.__model__, name, emissive, specular, shininess);
+    async Physical(name, emissive, roughness, metalness, reflectivity): Promise<void> {
+        Physical(this.__model__, name, emissive, roughness, metalness, reflectivity);
     }
-    Standard(name, emissive, roughness, metalness): any {
-        return Standard(this.__model__, name, emissive, roughness, metalness);
+    async Set(entities, material): Promise<void> {
+        Set(this.__model__, entities, material);
     }
-    Physical(name, emissive, roughness, metalness, reflectivity): any {
-        return Physical(this.__model__, name, emissive, roughness, metalness, reflectivity);
+    async Standard(name, emissive, roughness, metalness): Promise<void> {
+        Standard(this.__model__, name, emissive, roughness, metalness);
     }
+
 }

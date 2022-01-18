@@ -25,46 +25,43 @@ export { ModelCheck };
 export { ModelCompare };
 export { ModelMerge };
 export { SendData };
+
+// CLASS DEFINITION
 export class UtilFunc {
+
     __model__: GIModel;
     constructor(model: GIModel) {
         this.__model__ = model;
     }
-    Select(entities): any {
-        return Select(this.__model__, entities);
-    }
-    VrHotspot(point, name, camera_rot): any {
-        return VrHotspot(this.__model__, point, name, camera_rot);
-    }
-    VrPanorama(point, back_url, back_rot, fore_url, fore_rot): any {
-        return VrPanorama(this.__model__, point, back_url, back_rot, fore_url, fore_rot);
-    }
-    ParamInfo(__constList__): any {
-        return ParamInfo(this.__model__, __constList__);
-    }
-    EntityInfo(entities): any {
+    async EntityInfo(entities): Promise<any> {
         return EntityInfo(this.__model__, entities);
     }
-    ModelInfo(): any {
-        return ModelInfo(this.__model__);
-    }
-    ModelCheck(): any {
+    async ModelCheck(): Promise<any> {
         return ModelCheck(this.__model__);
     }
-    ModelCompare(input_data): any {
+    async ModelCompare(input_data): Promise<any> {
         return ModelCompare(this.__model__, input_data);
     }
-    ModelMerge(input_data): any {
+    async ModelInfo(): Promise<any> {
+        return ModelInfo(this.__model__);
+    }
+    async ModelMerge(input_data): Promise<any> {
         return ModelMerge(this.__model__, input_data);
     }
-    SendData(data): any {
-        return SendData(this.__model__, data);
+    async ParamInfo(__constList__): Promise<any> {
+        return ParamInfo(this.__model__, __constList__);
     }
-    _Async_Param_ModelCompare(input_data) {
-        return null;
+    async Select(entities): Promise<void> {
+        Select(this.__model__, entities);
     }
-    _Async_Param_ModelMerge(input_data){
-        return null;
+    async SendData(data): Promise<void> {
+        SendData(this.__model__, data);
     }
-    
+    async VrHotspot(point, name, camera_rot): Promise<void> {
+        VrHotspot(this.__model__, point, name, camera_rot);
+    }
+    async VrPanorama(point, back_url, back_rot, fore_url, fore_rot): Promise<void> {
+        VrPanorama(this.__model__, point, back_url, back_rot, fore_url, fore_rot);
+    }
+
 }

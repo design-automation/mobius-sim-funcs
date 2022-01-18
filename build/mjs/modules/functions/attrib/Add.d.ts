@@ -1,8 +1,3 @@
-/**
- * The `attrib` module has functions for working with attributes in teh model.
- * Note that attributes can also be set and retrieved using the "@" symbol.
- * @module
- */
 import { GIModel } from '@design-automation/mobius-sim';
 import { _EDataType, _EEntTypeAndMod } from './_enum';
 /**

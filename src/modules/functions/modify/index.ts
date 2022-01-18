@@ -22,30 +22,34 @@ export { Mirror };
 export { XForm };
 export { Offset };
 export { Remesh };
+
+// CLASS DEFINITION
 export class ModifyFunc {
+
     __model__: GIModel;
     constructor(model: GIModel) {
         this.__model__ = model;
     }
-    Move(entities, vectors): any {
-        return Move(this.__model__, entities, vectors);
+    async Mirror(entities, plane): Promise<void> {
+        Mirror(this.__model__, entities, plane);
     }
-    Rotate(entities, ray, angle): any {
-        return Rotate(this.__model__, entities, ray, angle);
+    async Move(entities, vectors): Promise<void> {
+        Move(this.__model__, entities, vectors);
     }
-    Scale(entities, plane, scale): any {
-        return Scale(this.__model__, entities, plane, scale);
+    async Offset(entities, dist): Promise<void> {
+        Offset(this.__model__, entities, dist);
     }
-    Mirror(entities, plane): any {
-        return Mirror(this.__model__, entities, plane);
+    async Remesh(entities): Promise<void> {
+        Remesh(this.__model__, entities);
     }
-    XForm(entities, from_plane, to_plane): any {
-        return XForm(this.__model__, entities, from_plane, to_plane);
+    async Rotate(entities, ray, angle): Promise<void> {
+        Rotate(this.__model__, entities, ray, angle);
     }
-    Offset(entities, dist): any {
-        return Offset(this.__model__, entities, dist);
+    async Scale(entities, plane, scale): Promise<void> {
+        Scale(this.__model__, entities, plane, scale);
     }
-    Remesh(entities): any {
-        return Remesh(this.__model__, entities);
+    async XForm(entities, from_plane, to_plane): Promise<void> {
+        XForm(this.__model__, entities, from_plane, to_plane);
     }
+
 }

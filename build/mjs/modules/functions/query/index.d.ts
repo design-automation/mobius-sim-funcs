@@ -1,3 +1,8 @@
+/**
+ * The `query` module has functions for querying entities in the the model.
+ * Most of these functions all return a list of IDs of entities in the model.
+ * @module
+ */
 import { GIModel } from '@design-automation/mobius-sim';
 import * as Enum from './_enum';
 import { Edge } from './Edge';
@@ -17,8 +22,12 @@ export { Neighbor };
 export { Edge };
 export { Type };
 export declare class QueryFunc {
-    __model__: GIModel;
     __enum__: {
+        /**
+         * The `query` module has functions for querying entities in the the model.
+         * Most of these functions all return a list of IDs of entities in the model.
+         * @module
+         */
         _EEntType: typeof Enum._EEntType;
         _EEntTypeAndMod: typeof Enum._EEntTypeAndMod;
         _EDataType: typeof Enum._EDataType;
@@ -26,13 +35,14 @@ export declare class QueryFunc {
         _ESortMethod: typeof Enum._ESortMethod;
         _ETypeQueryEnum: typeof Enum._ETypeQueryEnum;
     };
+    __model__: GIModel;
     constructor(model: GIModel);
-    Get(ent_type_enum: any, entities: any): any;
-    Filter(entities: any, attrib: any, operator_enum: any, value: any): any;
-    Invert(ent_type_enum: any, entities: any): any;
-    Sort(entities: any, attrib: any, method_enum: any): any;
-    Perimeter(ent_type: any, entities: any): any;
-    Neighbor(ent_type_enum: any, entities: any): any;
-    Edge(entities: any, edge_query_enum: any): any;
-    Type(entities: any, type_query_enum: any): any;
+    Edge(entities: any, edge_query_enum: any): Promise<any>;
+    Filter(entities: any, attrib: any, operator_enum: any, value: any): Promise<any>;
+    Get(ent_type_enum: any, entities: any): Promise<any>;
+    Invert(ent_type_enum: any, entities: any): Promise<any>;
+    Neighbor(ent_type_enum: any, entities: any): Promise<any>;
+    Perimeter(ent_type: any, entities: any): Promise<any>;
+    Sort(entities: any, attrib: any, method_enum: any): Promise<any>;
+    Type(entities: any, type_query_enum: any): Promise<any>;
 }

@@ -13,16 +13,18 @@ export { Add };
 export { Remove };
 export { Replace };
 
+
+// CLASS DEFINITION
 export class DictFunc {
-    constructor() {
+
+    async Add(dict, keys, values): Promise<void> {
+        Add(dict, keys, values);
     }
-    Add(dict, keys, values): any {
-        return Add(dict, keys, values);
+    async Remove(dict, keys): Promise<void> {
+        Remove(dict, keys);
     }
-    Remove(dict, keys): any {
-        return Remove(dict, keys);
+    async Replace(dict, old_keys, new_keys): Promise<void> {
+        Replace(dict, old_keys, new_keys);
     }
-    Replace(dict, old_keys, new_keys): any {
-        return Replace(dict, old_keys, new_keys);
-    }
+
 }

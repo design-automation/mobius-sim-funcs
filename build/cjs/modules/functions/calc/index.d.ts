@@ -27,7 +27,6 @@ export { Ray };
 export { Plane };
 export { BBox };
 export declare class CalcFunc {
-    __model__: GIModel;
     __enum__: {
         /**
          * The `calc` module has functions for performing various types of calculations with entities in the model.
@@ -38,15 +37,16 @@ export declare class CalcFunc {
         _ECentroidMethod: typeof Enum._ECentroidMethod;
         _EDistanceMethod: typeof Enum._EDistanceMethod;
     };
+    __model__: GIModel;
     constructor(model: GIModel);
-    Distance(entities1: any, entities2: any, method: any): any;
-    Length(entities: any): any;
-    Area(entities: any): any;
-    Vector(entities: any): any;
-    Centroid(entities: any, method: any): any;
-    Normal(entities: any, scale: any): any;
-    Eval(entities: any, t_param: any): any;
-    Ray(entities: any): any;
-    Plane(entities: any): any;
-    BBox(entities: any): any;
+    Area(entities: any): Promise<any>;
+    BBox(entities: any): Promise<any>;
+    Centroid(entities: any, method: any): Promise<any>;
+    Distance(entities1: any, entities2: any, method: any): Promise<any>;
+    Eval(entities: any, t_param: any): Promise<any>;
+    Length(entities: any): Promise<any>;
+    Normal(entities: any, scale: any): Promise<any>;
+    Plane(entities: any): Promise<any>;
+    Ray(entities: any): Promise<any>;
+    Vector(entities: any): Promise<any>;
 }

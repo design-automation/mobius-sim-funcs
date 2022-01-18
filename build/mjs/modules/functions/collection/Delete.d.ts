@@ -1,7 +1,3 @@
-/**
- * The `collections` module has functions for creating and modifying collections.
- * @module
- */
 import { GIModel, TId } from '@design-automation/mobius-sim';
 /**
  * Deletes a collection without deleting the entities in the collection.

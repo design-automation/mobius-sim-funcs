@@ -26,6 +26,7 @@
     "underscore": "^1.13.1"
   },
   "devDependencies": {
+    "@babel/cli": "^7.16.8",
     "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-node-resolve": "^13.0.6",
     "@rollup/plugin-typescript": "^8.3.0",
@@ -42,8 +43,9 @@
     "rollup": "^2.60.0",
     "rollup-plugin-polyfill-node": "^0.8.0",
     "showdown": "^1.9.1",
+    "ts-node": "^10.4.0",
     "typedoc": "^0.22.5",
-    "typescript": "^4.4.3"
+    "typescript": "^4.5.4"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

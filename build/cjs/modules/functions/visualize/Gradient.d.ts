@@ -1,8 +1,3 @@
-/**
- * The `visualize` module has functions for defining various settings for the 3D viewer.
- * Color is saved as vertex attributes.
- * @module
- */
 import { GIModel, TId } from '@design-automation/mobius-sim';
 /**
  * Generates a colour range based on a numeric attribute.

@@ -1,8 +1,3 @@
-/**
- * The `analysis` module has functions for performing various types of analysis with entities in
- * the model. These functions all return dictionaries containing the results of the analysis.
- * @module
- */
 import { GIModel, TId, TPlane, TRay, Txyz } from '@design-automation/mobius-sim';
 import { _ESolarMethod } from './_enum';
 /**

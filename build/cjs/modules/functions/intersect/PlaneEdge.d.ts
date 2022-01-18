@@ -1,7 +1,3 @@
-/**
- * The `intersect` module has functions for calculating intersections between different types of entities.
- * @module
- */
 import { GIModel, TId, TPlane, TRay, Txyz } from '@design-automation/mobius-sim';
 /**
  * Calculates the xyz intersection between a plane and a list of edges.

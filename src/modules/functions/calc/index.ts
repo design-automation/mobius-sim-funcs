@@ -38,42 +38,46 @@ export { Plane }
 
 export { BBox }
 
+
+// CLASS DEFINITION
 export class CalcFunc {
-    __model__: GIModel;
     __enum__ = {
         ...Enum
     }
+
+    __model__: GIModel;
     constructor(model: GIModel) {
         this.__model__ = model;
     }
-    Distance(entities1, entities2, method): any {
-        return Distance(this.__model__, entities1, entities2, method);
-    }
-    Length(entities): any {
-        return Length(this.__model__, entities);
-    }
-    Area(entities): any {
+    async Area(entities): Promise<any> {
         return Area(this.__model__, entities);
     }
-    Vector(entities): any {
-        return Vector(this.__model__, entities);
-    }
-    Centroid(entities, method): any {
-        return Centroid(this.__model__, entities, method);
-    }
-    Normal(entities, scale): any {
-        return Normal(this.__model__, entities, scale);
-    }
-    Eval(entities, t_param): any {
-        return Eval(this.__model__, entities, t_param);
-    }
-    Ray(entities): any {
-        return Ray(this.__model__, entities);
-    }
-    Plane(entities): any {
-        return Plane(this.__model__, entities);
-    }
-    BBox(entities): any {
+    async BBox(entities): Promise<any> {
         return BBox(this.__model__, entities);
     }
+    async Centroid(entities, method): Promise<any> {
+        return Centroid(this.__model__, entities, method);
+    }
+    async Distance(entities1, entities2, method): Promise<any> {
+        return Distance(this.__model__, entities1, entities2, method);
+    }
+    async Eval(entities, t_param): Promise<any> {
+        return Eval(this.__model__, entities, t_param);
+    }
+    async Length(entities): Promise<any> {
+        return Length(this.__model__, entities);
+    }
+    async Normal(entities, scale): Promise<any> {
+        return Normal(this.__model__, entities, scale);
+    }
+    async Plane(entities): Promise<any> {
+        return Plane(this.__model__, entities);
+    }
+    async Ray(entities): Promise<any> {
+        return Ray(this.__model__, entities);
+    }
+    async Vector(entities): Promise<any> {
+        return Vector(this.__model__, entities);
+    }
+
 }

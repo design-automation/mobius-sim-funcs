@@ -1,8 +1,3 @@
-/**
- * The `visualize` module has functions for defining various settings for the 3D viewer.
- * Color is saved as vertex attributes.
- * @module
- */
 import { GIModel, TId, TPlane } from '@design-automation/mobius-sim';
 /**
  * Visualises a plane or a list of planes by creating polylines.

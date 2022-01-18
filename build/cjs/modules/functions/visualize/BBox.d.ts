@@ -1,8 +1,3 @@
-/**
- * The `visualize` module has functions for defining various settings for the 3D viewer.
- * Color is saved as vertex attributes.
- * @module
- */
 import { GIModel, TBBox, TId } from '@design-automation/mobius-sim';
 /**
  * Visualises a bounding box by adding geometry to the model.

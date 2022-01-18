@@ -21,24 +21,28 @@ export { Remove }
 
 export { Delete }
 
+
+// CLASS DEFINITION
 export class CollectionFunc {
+
     __model__: GIModel;
     constructor(model: GIModel) {
         this.__model__ = model;
     }
-    Create(entities, name): any {
+    async Add(coll, entities): Promise<void> {
+        Add(this.__model__, coll, entities);
+    }
+    async Create(entities, name): Promise<any> {
         return Create(this.__model__, entities, name);
     }
-    Get(names): any {
+    async Delete(coll): Promise<void> {
+        Delete(this.__model__, coll);
+    }
+    async Get(names): Promise<any> {
         return Get(this.__model__, names);
     }
-    Add(coll, entities): any {
-        return Add(this.__model__, coll, entities);
+    async Remove(coll, entities): Promise<void> {
+        Remove(this.__model__, coll, entities);
     }
-    Remove(coll, entities): any {
-        return Remove(this.__model__, coll, entities);
-    }
-    Delete(coll): any {
-        return Delete(this.__model__, coll);
-    }
+
 }

@@ -1,7 +1,3 @@
-/**
- * The `util` module has some utility functions used for debugging.
- * @module
- */
 import { GIModel } from '@design-automation/mobius-sim';
 /**
  * Create a VR panorama hotspot. In the VR Viewer, you can teleport to such hotspots.When you enter

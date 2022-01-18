@@ -1,8 +1,3 @@
-/**
- * The `make` module has functions for making new entities in the model.
- * All these functions return the IDs of the entities that are created.
- * @module
- */
 import { GIModel, TId } from '@design-automation/mobius-sim';
 /**
  * Adds a new copy of specified entities to the model, and deletes the original entity.

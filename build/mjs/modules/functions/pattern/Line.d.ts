@@ -1,9 +1,3 @@
-/**
- * The `pattern` module has functions for creating patters of positions.
- * These functions all return lists of position IDs.
- * The list may be nested, depending on which function is selected.
- * @module
- */
 import { GIModel, TId, TPlane, Txyz } from '@design-automation/mobius-sim';
 /**
  * Creates a set of positions in a straight line pattern.

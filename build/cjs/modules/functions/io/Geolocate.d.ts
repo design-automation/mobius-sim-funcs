@@ -1,7 +1,3 @@
-/**
- * The `io` module has functions for importing and exporting.
- * @module
- */
 import { GIModel, Txy } from '@design-automation/mobius-sim';
 /**
  * Set the geolocation of the Cartesian coordinate system.

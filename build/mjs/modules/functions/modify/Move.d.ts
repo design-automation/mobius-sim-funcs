@@ -1,10 +1,3 @@
-/**
- * The `modify` module has functions for modifying existing entities in the model.
- * These functions do not make any new entities, and they do not change the topology of objects.
- * These functions only change attribute values.
- * All these functions have no return value.
- * @module
- */
 import { GIModel, TId, Txyz } from '@design-automation/mobius-sim';
 /**
  * Moves entities. The directio and distance if movement is specified as a vector.

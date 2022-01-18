@@ -24,36 +24,40 @@ export { Ring };
 export { Shift };
 export { Reverse };
 export { Delete };
+
+// CLASS DEFINITION
 export class EditFunc {
-    __model__: GIModel;
     __enum__ = {
         ...Enum
     }
+
+    __model__: GIModel;
     constructor(model: GIModel) {
         this.__model__ = model;
     }
-    Divide(entities, divisor, method): any {
+    async Delete(entities, method): Promise<void> {
+        Delete(this.__model__, entities, method);
+    }
+    async Divide(entities, divisor, method): Promise<any> {
         return Divide(this.__model__, entities, divisor, method);
     }
-    Hole(pgon, entities): any {
-        return Hole(this.__model__, pgon, entities);
-    }
-    Weld(entities, method): any {
-        return Weld(this.__model__, entities, method);
-    }
-    Fuse(entities, tolerance): any {
+    async Fuse(entities, tolerance): Promise<any> {
         return Fuse(this.__model__, entities, tolerance);
     }
-    Ring(entities, method): any {
-        return Ring(this.__model__, entities, method);
+    async Hole(pgon, entities): Promise<any> {
+        return Hole(this.__model__, pgon, entities);
     }
-    Shift(entities, offset): any {
-        return Shift(this.__model__, entities, offset);
+    async Reverse(entities): Promise<void> {
+        Reverse(this.__model__, entities);
     }
-    Reverse(entities): any {
-        return Reverse(this.__model__, entities);
+    async Ring(entities, method): Promise<void> {
+        Ring(this.__model__, entities, method);
     }
-    Delete(entities, method): any {
-        return Delete(this.__model__, entities, method);
+    async Shift(entities, offset): Promise<void> {
+        Shift(this.__model__, entities, offset);
     }
+    async Weld(entities, method): Promise<any> {
+        return Weld(this.__model__, entities, method);
+    }
+
 }

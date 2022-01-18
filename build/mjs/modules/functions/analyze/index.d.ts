@@ -26,7 +26,6 @@ export { ClosestPath };
 export { Degree };
 export { Centrality };
 export declare class AnalyzeFunc {
-    __model__: GIModel;
     __enum__: {
         /**
          * The `analysis` module has functions for performing various types of analysis with entities in
@@ -42,15 +41,16 @@ export declare class AnalyzeFunc {
         _ESunPathMethod: typeof Enum._ESunPathMethod;
         _ESolarMethod: typeof Enum._ESolarMethod;
     };
+    __model__: GIModel;
     constructor(model: GIModel);
-    Raytrace(rays: any, entities: any, dist: any, method: any): any;
-    Isovist(origins: any, entities: any, radius: any, num_rays: any): any;
-    Sky(origins: any, detail: any, entities: any, limits: any, method: any): any;
-    Sun(origins: any, detail: any, entities: any, limits: any, method: any): any;
-    SkyDome(origin: any, detail: any, radius: any, method: any): any;
-    Nearest(source: any, target: any, radius: any, max_neighbors: any): any;
-    ShortestPath(source: any, target: any, entities: any, method: any, result: any): any;
-    ClosestPath(source: any, target: any, entities: any, method: any, result: any): any;
-    Degree(source: any, entities: any, alpha: any, method: any): any;
-    Centrality(source: any, entities: any, method: any, cen_type: any): any;
+    Centrality(source: any, entities: any, method: any, cen_type: any): Promise<any>;
+    ClosestPath(source: any, target: any, entities: any, method: any, result: any): Promise<any>;
+    Degree(source: any, entities: any, alpha: any, method: any): Promise<any>;
+    Isovist(origins: any, entities: any, radius: any, num_rays: any): Promise<any>;
+    Nearest(source: any, target: any, radius: any, max_neighbors: any): Promise<any>;
+    Raytrace(rays: any, entities: any, dist: any, method: any): Promise<any>;
+    ShortestPath(source: any, target: any, entities: any, method: any, result: any): Promise<any>;
+    Sky(origins: any, detail: any, entities: any, limits: any, method: any): Promise<any>;
+    SkyDome(origin: any, detail: any, radius: any, method: any): Promise<any>;
+    Sun(origins: any, detail: any, entities: any, limits: any, method: any): Promise<any>;
 }

@@ -30,45 +30,49 @@ export { Cut };
 export { Copy };
 export { Clone };
 
+
+// CLASS DEFINITION
 export class MakeFunc {
-    __model__: GIModel;
     __enum__ = {
         ...Enum
     }
+
+    __model__: GIModel;
     constructor(model: GIModel) {
         this.__model__ = model;
     }
-    Position(coords): any {
-        return Position(this.__model__, coords);
-    }
-    Point(entities): any {
-        return Point(this.__model__, entities);
-    }
-    Polyline(entities, close): any {
-        return Polyline(this.__model__, entities, close);
-    }
-    Polygon(entities): any {
-        return Polygon(this.__model__, entities);
-    }
-    Loft(entities, divisions, method): any {
-        return Loft(this.__model__, entities, divisions, method);
-    }
-    Extrude(entities, dist, divisions, method): any {
-        return Extrude(this.__model__, entities, dist, divisions, method);
-    }
-    Sweep(entities, x_section, divisions, method): any {
-        return Sweep(this.__model__, entities, x_section, divisions, method);
-    }
-    Join(entities): any {
-        return Join(this.__model__, entities);
-    }
-    Cut(entities, plane, method): any {
-        return Cut(this.__model__, entities, plane, method);
-    }
-    Copy(entities, vector): any {
-        return Copy(this.__model__, entities, vector);
-    }
-    Clone(entities): any {
+    async Clone(entities): Promise<any> {
         return Clone(this.__model__, entities);
     }
+    async Copy(entities, vector): Promise<any> {
+        return Copy(this.__model__, entities, vector);
+    }
+    async Cut(entities, plane, method): Promise<any> {
+        return Cut(this.__model__, entities, plane, method);
+    }
+    async Extrude(entities, dist, divisions, method): Promise<any> {
+        return Extrude(this.__model__, entities, dist, divisions, method);
+    }
+    async Join(entities): Promise<any> {
+        return Join(this.__model__, entities);
+    }
+    async Loft(entities, divisions, method): Promise<any> {
+        return Loft(this.__model__, entities, divisions, method);
+    }
+    async Point(entities): Promise<any> {
+        return Point(this.__model__, entities);
+    }
+    async Polygon(entities): Promise<any> {
+        return Polygon(this.__model__, entities);
+    }
+    async Polyline(entities, close): Promise<any> {
+        return Polyline(this.__model__, entities, close);
+    }
+    async Position(coords): Promise<any> {
+        return Position(this.__model__, coords);
+    }
+    async Sweep(entities, x_section, divisions, method): Promise<any> {
+        return Sweep(this.__model__, entities, x_section, divisions, method);
+    }
+
 }
