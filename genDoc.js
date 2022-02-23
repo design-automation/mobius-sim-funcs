@@ -51,7 +51,13 @@ function addDoc(mod, modName, docs) {
     moduleDoc['name'] = modName;
     moduleDoc['func'] = [];
     if (mod.comment && mod.comment.shortText) {
-        moduleDoc['description'] = mod.comment.shortText;
+        let modText = mod.comment.shortText
+        if (mod.comment.tags) {
+            mod.comment.tags.forEach(t => {
+                modText += t.tag + t.text
+            })
+        }
+        moduleDoc['description'] = modText;
     } else {
         moduleDoc['description'] = ''
     }

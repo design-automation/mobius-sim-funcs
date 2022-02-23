@@ -14,6 +14,19 @@ The `util` module has some utility functions used for debugging.
 **Returns:** void  
   
   
+## HTTPRequest  
+  
+  
+**Description:** create a http request to a URL.  
+  
+**Parameters:**  
+  * *request\_data:* request data  
+  * *request\_url:* request url  
+  * *method:* HTTP method  
+  
+**Returns:** the request response  
+  
+  
 ## VrHotspot  
   
   

@@ -37,9 +37,9 @@ const _shared_1 = require("./_shared");
  * \n
  * The calculation takes into account the geolocation and the north direction of the model.
  * Geolocation is specified by a model attributes as follows:
- * @geolocation={'longitude':123,'latitude':12}.
+ *  - @geolocation={'longitude':123,'latitude':12}.
  * North direction is specified by a model attribute as follows, using a vector:
- * @north==[1,2]
+ *  - @north==[1,2]
  * If no north direction is specified, then [0,1] is the default (i.e. north is in the direction of the y-axis);
  * \n
  * Each sensor has a location and direction, specified using either rays or planes.

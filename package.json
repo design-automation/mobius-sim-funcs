@@ -1,6 +1,6 @@
 {
   "name": "@design-automation/mobius-sim-funcs",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "description": "Mobius Spatial Information Model",
   "main": "build/cjs/index.js",
   "module": "build/mjs/index.js",
@@ -13,6 +13,7 @@
   "dependencies": {
     "@design-automation/mobius-sim": "^0.2.6",
     "@doodle3d/clipper-js": "^1.0.11",
+    "axios": "^0.26.0",
     "chroma-js": "^2.0.3",
     "cytoscape": "^3.14.1",
     "d3-delaunay": "^5.2.1",
@@ -54,6 +55,7 @@
     "build-del": "del /s /q build\\*",
     "build-mjs": "tsc -p tsconfig.json",
     "build-cjs": "tsc -p tsconfig-cjs.json",
+    "mobius": "node copy_to_mobius.js",
     "rollup": "rollup --config rollup.config.js",
     "deploy": "npm run build && npm run typedoc && npm publish --access public",
     "moduleDocs": "npm run typedoc",

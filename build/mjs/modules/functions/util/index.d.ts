@@ -4,6 +4,7 @@
  */
 import { GIModel } from '@design-automation/mobius-sim';
 import { EntityInfo } from './EntityInfo';
+import { HTTPRequest } from './httpRequest';
 import { ModelCheck } from './ModelCheck';
 import { ModelCompare } from './ModelCompare';
 import { ModelInfo } from './ModelInfo';
@@ -14,6 +15,7 @@ import { SendData } from './SendData';
 import { VrHotspot } from './VrHotspot';
 import { VrPanorama } from './VrPanorama';
 export { Select };
+export { HTTPRequest };
 export { VrHotspot };
 export { VrPanorama };
 export { ParamInfo };
@@ -36,4 +38,5 @@ export declare class UtilFunc {
     SendData(data: any): void;
     VrHotspot(point: any, name: any, camera_rot: any): void;
     VrPanorama(point: any, back_url: any, back_rot: any, fore_url: any, fore_rot: any): void;
+    HTTPRequest(request_data: any, request_url: any, method: any): void;
 }
