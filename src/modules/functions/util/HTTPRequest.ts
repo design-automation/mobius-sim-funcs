@@ -2,21 +2,15 @@
 import { GIModel } from '@design-automation/mobius-sim';
 import axios from 'axios';
 
+import { _HTTPRequestMethod } from './_enum';
 
-export enum _HTTPRequestMethod {
-    GET = 'GET',
-    POST = 'POST',
-    PATCH = 'PATCH',
-    DELETE = 'DELETE',
-    PUT = 'PUT'
-}
 
 
 /**
  * create a http request to a URL.
  * @param request_data request data
  * @param request_url request url
- * @param method HTTP method
+ * @param method Enum; HTTP method
  * @returns the request response
  */
  export async function HTTPRequest(__model__: GIModel, request_data: any, request_url: string, method: _HTTPRequestMethod): Promise<string> {

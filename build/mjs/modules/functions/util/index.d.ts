@@ -3,6 +3,7 @@
  * @module
  */
 import { GIModel } from '@design-automation/mobius-sim';
+import * as Enum from './_enum';
 import { EntityInfo } from './EntityInfo';
 import { HTTPRequest } from './httpRequest';
 import { ModelCheck } from './ModelCheck';
@@ -26,6 +27,13 @@ export { ModelCompare };
 export { ModelMerge };
 export { SendData };
 export declare class UtilFunc {
+    __enum__: {
+        /**
+         * The `util` module has some utility functions used for debugging.
+         * @module
+         */
+        _HTTPRequestMethod: typeof Enum._HTTPRequestMethod;
+    };
     __model__: GIModel;
     constructor(model: GIModel);
     EntityInfo(entities: any): any;
@@ -38,5 +46,5 @@ export declare class UtilFunc {
     SendData(data: any): void;
     VrHotspot(point: any, name: any, camera_rot: any): void;
     VrPanorama(point: any, back_url: any, back_rot: any, fore_url: any, fore_rot: any): void;
-    HTTPRequest(request_data: any, request_url: any, method: any): void;
+    HTTPRequest(request_data: any, request_url: any, method: any): Promise<string>;
 }

@@ -37,7 +37,8 @@ export const _parameterTypes = {
         'util.ModelCompare',
         'util.ModelMerge',
         'io.Write', 'io.Read',
-        'io.Import', 'io.Export'
+        'io.Import', 'io.Export',
+        'util.HTTPRequest'
     ],
 
     // longitude latitude in Singapore, NUS

@@ -4,6 +4,7 @@
  */
 import { GIModel } from '@design-automation/mobius-sim';
 
+import * as Enum from './_enum';
 import { EntityInfo } from './EntityInfo';
 import { HTTPRequest } from './httpRequest';
 import { ModelCheck } from './ModelCheck';
@@ -30,6 +31,9 @@ export { SendData };
 
 // CLASS DEFINITION
 export class UtilFunc {
+    __enum__ = {
+        ...Enum
+    };
 
     __model__: GIModel;
     constructor(model: GIModel) {
@@ -42,13 +46,13 @@ export class UtilFunc {
         return ModelCheck(this.__model__);
     }
     async ModelCompare(input_data): Promise<any> {
-        return ModelCompare(this.__model__, input_data);
+        return await ModelCompare(this.__model__, input_data);
     }
     ModelInfo(): any {
         return ModelInfo(this.__model__);
     }
     async ModelMerge(input_data): Promise<any> {
-        return ModelMerge(this.__model__, input_data);
+        return await ModelMerge(this.__model__, input_data);
     }
     ParamInfo(__constList__): any {
         return ParamInfo(this.__model__, __constList__);
@@ -65,8 +69,8 @@ export class UtilFunc {
     VrPanorama(point, back_url, back_rot, fore_url, fore_rot): void {
         VrPanorama(this.__model__, point, back_url, back_rot, fore_url, fore_rot);
     }
-    HTTPRequest(request_data, request_url, method): void {
-        HTTPRequest(this.__model__, request_data, request_url, method);
+    async HTTPRequest(request_data, request_url, method) {
+        return await HTTPRequest(this.__model__, request_data, request_url, method);
     }
 
 }

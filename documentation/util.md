@@ -22,7 +22,7 @@ The `util` module has some utility functions used for debugging.
 **Parameters:**  
   * *request\_data:* request data  
   * *request\_url:* request url  
-  * *method:* HTTP method  
+  * *method:* Enum; HTTP method  
   
 **Returns:** the request response  
   

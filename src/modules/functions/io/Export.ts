@@ -77,7 +77,7 @@ async function _export(__model__: GIModel, ents_arr: TEntTypeIdx[],
                 if (data_target === _EIODataTarget.DEFAULT) {
                     return download(model_data, file_name);
                 }
-                return _saveResource(model_data, file_name);
+                return await _saveResource(model_data, file_name);
             }
         case _EIOExportDataFormat.OBJ_VERT:
             {
@@ -86,7 +86,7 @@ async function _export(__model__: GIModel, ents_arr: TEntTypeIdx[],
                 if (data_target === _EIODataTarget.DEFAULT) {
                     return download(obj_verts_data, file_name);
                 }
-                return _saveResource(obj_verts_data, file_name);
+                return await _saveResource(obj_verts_data, file_name);
             }
         case _EIOExportDataFormat.OBJ_POSI:
             {
@@ -95,7 +95,7 @@ async function _export(__model__: GIModel, ents_arr: TEntTypeIdx[],
                 if (data_target === _EIODataTarget.DEFAULT) {
                     return download(obj_posis_data, file_name);
                 }
-                return _saveResource(obj_posis_data, file_name);
+                return await _saveResource(obj_posis_data, file_name);
             }
         // case _EIOExportDataFormat.DAE:
         //     const dae_data: string = exportDae(__model__);
@@ -103,7 +103,7 @@ async function _export(__model__: GIModel, ents_arr: TEntTypeIdx[],
         //     if (data_target === _EIODataTarget.DEFAULT) {
         //         return download(dae_data, file_name);
         //     }
-        //     return _saveResource(dae_data, file_name);
+        //     return await _saveResource(dae_data, file_name);
         //     break;
         case _EIOExportDataFormat.GEOJSON:
             {
@@ -111,7 +111,7 @@ async function _export(__model__: GIModel, ents_arr: TEntTypeIdx[],
                 if (data_target === _EIODataTarget.DEFAULT) {
                     return download(geojson_data, file_name);
                 }
-                return _saveResource(geojson_data, file_name);
+                return await _saveResource(geojson_data, file_name);
             }
         case _EIOExportDataFormat.GLTF:
             {
@@ -119,7 +119,7 @@ async function _export(__model__: GIModel, ents_arr: TEntTypeIdx[],
                 if (data_target === _EIODataTarget.DEFAULT) {
                     return download(gltf_data, file_name);
                 }
-                return _saveResource(gltf_data, file_name);
+                return await _saveResource(gltf_data, file_name);
             }
         default:
             throw new Error('Data type not recognised');
@@ -163,24 +163,30 @@ export async function _saveResource(file: string, name: string): Promise<boolean
     // window['_code__'] = name;
     // window['_file__'] = file;
 
-    function saveToFS(fs) {
-        const code = name;
-        // console.log(code)
-        fs.root.getFile(code, { create: true }, function (fileEntry) {
-            fileEntry.createWriter(async function (fileWriter) {
-                const bb = new Blob([file + '_|_|_'], { type: 'text/plain;charset=utf-8' });
-                await fileWriter.write(bb);
-            }, (e) => { console.log(e); });
-        }, (e) => { console.log(e.code); });
-    }
+    const exportPromise = new Promise( resolve => {
+        function saveToFS(fs) {
+            const code = name;
+            // console.log(code)
+            fs.root.getFile(code, { create: true }, function (fileEntry) {
+                fileEntry.createWriter(async function (fileWriter) {
+                    const bb = new Blob([file + '_|_|_'], { type: 'text/plain;charset=utf-8' });
+                    await fileWriter.write(bb);
+                    resolve('success')
+                }, (e) => { resolve(e); });
+            }, (e) => { resolve(e); });
+        }
+    
+        navigator.webkitPersistentStorage.requestQuota(
+            requestedBytes, function (grantedBytes) {
+                // @ts-ignore
+                window.webkitRequestFileSystem(PERSISTENT, grantedBytes, saveToFS,
+                    function (e) { resolve(e); });
+            }, function (e) { resolve(e); }
+        );
+    
+    })
+    const endmsg = await exportPromise;
 
-    navigator.webkitPersistentStorage.requestQuota(
-        requestedBytes, function (grantedBytes) {
-            // @ts-ignore
-            window.webkitRequestFileSystem(PERSISTENT, grantedBytes, saveToFS,
-                function (e) { throw e; });
-        }, function (e) { throw e; }
-    );
     return true;
     // localStorage.setItem(code, file);
 }

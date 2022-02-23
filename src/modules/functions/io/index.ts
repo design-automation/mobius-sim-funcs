@@ -37,11 +37,11 @@ export class IoFunc {
     constructor(model: GIModel) {
         this.__model__ = model;
     }
-    async Export(entities, file_name, data_format, data_target): Promise<void> {
-        Export(this.__model__, entities, file_name, data_format, data_target);
+    async Export(entities, file_name, data_format, data_target) {
+        await Export(this.__model__, entities, file_name, data_format, data_target);
     }
     async ExportData(entities, data_format): Promise<any> {
-        return ExportData(this.__model__, entities, data_format);
+        return await ExportData(this.__model__, entities, data_format);
     }
     Geoalign(lat_long_o, lat_long_x, elev): void {
         Geoalign(this.__model__, lat_long_o, lat_long_x, elev);
@@ -59,10 +59,10 @@ export class IoFunc {
         return LatLong2XYZ(this.__model__, lat_long, elev);
     }
     async Read(data): Promise<any> {
-        return Read(this.__model__, data);
+        return await Read(this.__model__, data);
     }
     async Write(data, file_name, data_target): Promise<any> {
-        return Write(this.__model__, data, file_name, data_target);
+        return await Write(this.__model__, data, file_name, data_target);
     }
 
 }
