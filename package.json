@@ -23,7 +23,7 @@
     "lodash": "^4.17.21",
     "mathjs": "^5.10.3",
     "proj4": "^2.5.0",
-    "three": "^0.133.1",
+    "three": "^0.135.0",
     "underscore": "^1.13.1"
   },
   "devDependencies": {
@@ -38,7 +38,7 @@
     "@types/jest": "^27.4.1",
     "@types/lodash": "^4.14.175",
     "@types/node": "^16.0.0",
-    "@types/three": "^0.133.1",
+    "@types/three": "^0.135.0",
     "@types/underscore": "^1.8.14",
     "@types/webgl2": "0.0.5",
     "http-server": "^14.0.0",
