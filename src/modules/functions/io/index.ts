@@ -50,7 +50,7 @@ export class IoFunc {
         Geolocate(this.__model__, lat_long, rot, elev);
     }
     async Import(data_url, data_format): Promise<any> {
-        return Import(this.__model__, data_url, data_format);
+        return await Import(this.__model__, data_url, data_format);
     }
     ImportData(model_data, data_format): any {
         return ImportData(this.__model__, model_data, data_format);
