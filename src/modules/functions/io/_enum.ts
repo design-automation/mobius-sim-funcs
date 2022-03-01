@@ -1,5 +1,6 @@
 export enum _EIOImportDataFormat {
     GI = 'gi',
+    SIM = 'sim',
     OBJ = 'obj',
     GEOJSON = 'geojson',
     CITYJSON = 'CityJSON'
@@ -14,6 +15,7 @@ export enum _EIODataTarget {
 }
 export enum _EIOExportDataFormat {
     GI = 'gi',
+    SIM = 'sim',
     OBJ_VERT = 'obj_v',
     OBJ_POSI = 'obj_ps',
     // DAE = 'dae',
