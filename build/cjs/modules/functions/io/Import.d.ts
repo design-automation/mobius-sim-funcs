@@ -20,3 +20,4 @@ export declare function Import(__model__: GIModel, data_url: string, data_format
 export declare function _Async_Param_Import(__model__: GIModel, input_data: string, data_format: _EIOImportDataFormat): Promise<TId | TId[] | {}>;
 export declare function _import(__model__: GIModel, model_data: string, data_format: _EIOImportDataFormat): TId;
 export declare function _importGI(__model__: GIModel, json_str: string): number;
+export declare function _importSIM(__model__: GIModel, json_str: string): number;
