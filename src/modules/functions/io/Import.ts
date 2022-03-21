@@ -58,6 +58,9 @@ export function _import(__model__: GIModel, model_data: string, data_format: _EI
         case _EIOImportDataFormat.GI:
             const gi_coll_i: number = _importGI(__model__, <string>model_data);
             return idMake(EEntType.COLL, gi_coll_i) as TId;
+        case _EIOImportDataFormat.SIM:
+            const sim_coll_i: number = _importSIM(__model__, <string>model_data);
+            return idMake(EEntType.COLL, sim_coll_i) as TId;
         case _EIOImportDataFormat.OBJ:
             const obj_coll_i: number = _importObj(__model__, <string>model_data);
             return idMake(EEntType.COLL, obj_coll_i) as TId;
@@ -75,6 +78,31 @@ export function _importGI(__model__: GIModel, json_str: string): number {
     const ssid: number = __model__.modeldata.active_ssid;
     // import
     const ents: TEntTypeIdx[] = __model__.importGI(json_str);
+    const container_coll_i: number = __model__.modeldata.geom.add.addColl();
+    for (const [ent_type, ent_i] of ents) {
+        switch (ent_type) {
+            case EEntType.POINT:
+                __model__.modeldata.geom.snapshot.addCollPoints(ssid, container_coll_i, ent_i);
+                break;
+            case EEntType.PLINE:
+                __model__.modeldata.geom.snapshot.addCollPlines(ssid, container_coll_i, ent_i);
+                break;
+            case EEntType.PGON:
+                __model__.modeldata.geom.snapshot.addCollPgons(ssid, container_coll_i, ent_i);
+                break;
+            case EEntType.COLL:
+                __model__.modeldata.geom.snapshot.addCollChildren(ssid, container_coll_i, ent_i);
+                break;
+        }
+    }
+    __model__.modeldata.attribs.set.setEntAttribVal(EEntType.COLL, container_coll_i, 'name', 'import GI');
+    // return the result
+    return container_coll_i;
+}
+export function _importSIM(__model__: GIModel, json_str: string): number {
+    const ssid: number = __model__.modeldata.active_ssid;
+    // import
+    const ents: TEntTypeIdx[] = __model__.importSIM(json_str);
     const container_coll_i: number = __model__.modeldata.geom.add.addColl();
     for (const [ent_type, ent_i] of ents) {
         switch (ent_type) {

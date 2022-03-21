@@ -79,6 +79,18 @@ async function _export(__model__: GIModel, ents_arr: TEntTypeIdx[],
                 }
                 return await _saveResource(model_data, file_name);
             }
+        case _EIOExportDataFormat.SIM:
+        {
+            let model_data = '';
+            model_data = __model__.exportSIM(ents_arr);
+            // gi_data = gi_data.replace(/\\\"/g, '\\\\\\"'); // TODO temporary fix
+            model_data = model_data.replace(/\\/g, '\\\\\\'); // TODO temporary fix
+            // === save the file ===
+            if (data_target === _EIODataTarget.DEFAULT) {
+                return download(model_data, file_name);
+            }
+            return await _saveResource(model_data, file_name);
+        }
         case _EIOExportDataFormat.OBJ_VERT:
             {
                 const obj_verts_data: string = exportVertBasedObj(__model__, ents_arr, ssid);
