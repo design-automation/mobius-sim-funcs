@@ -34,6 +34,7 @@ export declare class QueryFunc {
         _EEdgeMethod: typeof Enum._EEdgeMethod;
         _ESortMethod: typeof Enum._ESortMethod;
         _ETypeQueryEnum: typeof Enum._ETypeQueryEnum;
+        _EFilterOperator: typeof Enum._EFilterOperator;
     };
     __model__: GIModel;
     constructor(model: GIModel);

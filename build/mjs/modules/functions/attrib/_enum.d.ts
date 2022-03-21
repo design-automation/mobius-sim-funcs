@@ -42,3 +42,16 @@ export declare enum _EDataType {
     LIST = "list",
     DICT = "dict"
 }
+export declare enum _ESet {
+    ONE_VALUE = "one_value",
+    MANY_VALUES = "many_values"
+}
+export declare enum _EPushMethodSel {
+    FIRST = "first",
+    LAST = "last",
+    AVERAGE = "average",
+    MEDIAN = "median",
+    SUM = "sum",
+    MIN = "min",
+    MAX = "max"
+}

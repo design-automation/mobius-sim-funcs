@@ -59,3 +59,12 @@ export declare enum _ETypeQueryEnum {
     HAS_HOLES = "has_holes",
     HAS_NO_HOLES = "has_no_holes"
 }
+export declare enum _EFilterOperator {
+    IS_EQUAL = "==",
+    IS_NOT_EQUAL = "!=",
+    IS_GREATER_OR_EQUAL = ">=",
+    IS_LESS_OR_EQUAL = "<=",
+    IS_GREATER = ">",
+    IS_LESS = "<",
+    EQUAL = "="
+}

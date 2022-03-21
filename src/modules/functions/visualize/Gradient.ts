@@ -16,6 +16,7 @@ import * as Mathjs from 'mathjs';
 
 import { checkIDs, ID } from '../../../_check_ids';
 import * as chk from '../../../_check_types';
+import { _EColorRampMethod } from './_enum';
 
 
 // ================================================================================================
@@ -77,54 +78,6 @@ export function Gradient(__model__: GIModel, entities: TId|TId[], attrib: string
         range = Array.isArray(range) ? range : [0, range];
         _gradient(__model__, ents_arr, attrib_name, attrib_idx_or_key, range as [number, number], method);
     }
-}
-// https://codesandbox.io/s/5w573r54w4
-export enum _EColorRampMethod {
-    FALSE_COLOR = 'false_color',
-    BLACK_BODY = 'black_body',
-    WHITE_RED = 'white_red',
-    WHITE_GREEN = 'white_green',
-    WHITE_BLUE = 'white_blue',
-    BLUE_RED = 'blue_red',
-    GREEN_RED = 'green_red',
-    BLUE_GREEN = 'blue_green',
-    GREY_SCALE = 'grey_scale',
-    ORRD= 'OrRd',
-    PUBU= 'PuBu',
-    BUPU= 'BuPu',
-    ORANGES= 'Oranges',
-    BUGN= 'BuGn',
-    YLORBR= 'YlOrBr',
-    YLGN= 'YlGn',
-    REDS= 'Reds',
-    RDPU= 'RdPu',
-    GREENS= 'Greens',
-    YLGNBU= 'YlGnBu',
-    PURPLES= 'Purples',
-    GNBU= 'GnBu',
-    GREYS= 'Greys',
-    YLORRD= 'YlOrRd',
-    PURD= 'PuRd',
-    BLUES= 'Blues',
-    PUBUGN= 'PuBuGn',
-    VIRIDIS= 'Viridis',
-    SPECTRAL= 'Spectral',
-    RDYLGN= 'RdYlGn',
-    RDBU= 'RdBu',
-    PIYG= 'PiYG',
-    PRGN= 'PRGn',
-    RDYLBU= 'RdYlBu',
-    BRBG= 'BrBG',
-    RDGY= 'RdGy',
-    PUOR= 'PuOr',
-    SET2= 'Set2',
-    ACCENT= 'Accent',
-    SET1= 'Set1',
-    SET3= 'Set3',
-    DARK2= 'Dark2',
-    PAIRED= 'Paired',
-    PASTEL2= 'Pastel2',
-    PASTEL1= 'Pastel1',
 }
 function _gradient(__model__: GIModel, ents_arr: TEntTypeIdx[], attrib_name: string, idx_or_key: number|string, range: [number, number],
         method: _EColorRampMethod): void {

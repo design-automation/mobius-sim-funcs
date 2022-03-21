@@ -28,6 +28,7 @@ export declare class VisualizeFunc {
          */
         _EEdgeMethod: typeof Enum._EEdgeMethod;
         _EMeshMethod: typeof Enum._EMeshMethod;
+        _EColorRampMethod: typeof Enum._EColorRampMethod;
     };
     __model__: GIModel;
     constructor(model: GIModel);

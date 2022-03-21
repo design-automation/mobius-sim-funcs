@@ -10,6 +10,7 @@ import {
     splitAttribNameIdxKey,
 } from '../../../_check_attribs';
 import { checkIDs, ID } from '../../../_check_ids';
+import { _ESet } from './_enum';
 
 
 
@@ -57,10 +58,6 @@ export function Set(
     }
     // --- Error Check ---
     _setAttrib(__model__, ents_arr, attrib_name, value, attrib_idx_key, method);
-}
-export enum _ESet {
-    ONE_VALUE = "one_value",
-    MANY_VALUES = "many_values",
 }
 function _setAttrib(
     __model__: GIModel,

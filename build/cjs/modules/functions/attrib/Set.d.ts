@@ -1,4 +1,5 @@
 import { GIModel, TAttribDataTypes, TId } from '@design-automation/mobius-sim';
+import { _ESet } from './_enum';
 /**
  * Set an attribute value for one or more entities.
  * \n
@@ -11,7 +12,3 @@ import { GIModel, TAttribDataTypes, TId } from '@design-automation/mobius-sim';
  * @param method Enum
  */
 export declare function Set(__model__: GIModel, entities: TId | TId[] | TId[][], attrib: string | [string, number | string], value: TAttribDataTypes | TAttribDataTypes[], method: _ESet): void;
-export declare enum _ESet {
-    ONE_VALUE = "one_value",
-    MANY_VALUES = "many_values"
-}

@@ -13,6 +13,7 @@ import {
 
 import { checkAttribNameIdxKey, checkAttribValue, splitAttribNameIdxKey } from '../../../_check_attribs';
 import { checkIDs, ID } from '../../../_check_ids';
+import { _EFilterOperator } from './_enum';
 
 
 // ================================================================================================
@@ -63,15 +64,6 @@ export function Filter(__model__: GIModel,
     const found_ents_arr: TEntTypeIdx[]|TEntTypeIdx[][] = _filter(__model__, ents_arr, attrib_name, attrib_idx_key, op_type, value);
     // return the result
     return idsMake(found_ents_arr) as TId[]|TId[][];
-}
-export enum _EFilterOperator {
-    IS_EQUAL =              '==',
-    IS_NOT_EQUAL =          '!=',
-    IS_GREATER_OR_EQUAL =   '>=',
-    IS_LESS_OR_EQUAL =      '<=',
-    IS_GREATER =            '>',
-    IS_LESS =               '<',
-    EQUAL =                 '='
 }
 function _filterOperator(select: _EFilterOperator): EFilterOperatorTypes {
     switch (select) {

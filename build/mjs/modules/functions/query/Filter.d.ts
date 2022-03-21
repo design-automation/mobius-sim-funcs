@@ -1,4 +1,5 @@
 import { GIModel, TAttribDataTypes, TId } from '@design-automation/mobius-sim';
+import { _EFilterOperator } from './_enum';
 /**
  * Filter a list of entities based on an attribute value.
  * \n
@@ -13,12 +14,3 @@ import { GIModel, TAttribDataTypes, TId } from '@design-automation/mobius-sim';
  * @returns Entities, a list of entities that match the conditions specified in 'expr'.
  */
 export declare function Filter(__model__: GIModel, entities: TId | TId[], attrib: string | [string, number | string], operator_enum: _EFilterOperator, value: TAttribDataTypes): TId[] | TId[][];
-export declare enum _EFilterOperator {
-    IS_EQUAL = "==",
-    IS_NOT_EQUAL = "!=",
-    IS_GREATER_OR_EQUAL = ">=",
-    IS_LESS_OR_EQUAL = "<=",
-    IS_GREATER = ">",
-    IS_LESS = "<",
-    EQUAL = "="
-}

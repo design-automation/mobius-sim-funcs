@@ -3,7 +3,7 @@ import uscore from 'underscore';
 
 import { checkAttribName, checkAttribNameIdxKey, splitAttribNameIdxKey } from '../../../_check_attribs';
 import { checkIDs, ID } from '../../../_check_ids';
-import { _EAttribPushTarget } from './_enum';
+import { _EAttribPushTarget, _EPushMethodSel } from './_enum';
 import { _getAttribPushTarget } from './_shared';
 
 
@@ -102,15 +102,6 @@ export function Push(__model__: GIModel, entities: TId|TId[],
     // do the push
     __model__.modeldata.attribs.push.pushAttribVals(source_ent_type, source_attrib_name, source_attrib_idx_key, indices,
                                          target,          target_attrib_name, target_attrib_idx_key, method);
-}
-export enum _EPushMethodSel {
-    FIRST = 'first',
-    LAST = 'last',
-    AVERAGE = 'average',
-    MEDIAN = 'median',
-    SUM = 'sum',
-    MIN = 'min',
-    MAX = 'max'
 }
 function _convertPushMethod(select: _EPushMethodSel): EAttribPush {
     switch (select) {

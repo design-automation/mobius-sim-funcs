@@ -28,6 +28,8 @@ export declare class AttribFunc {
         _EEntTypeAndMod: typeof Enum._EEntTypeAndMod;
         _EAttribPushTarget: typeof Enum._EAttribPushTarget;
         _EDataType: typeof Enum._EDataType;
+        _ESet: typeof Enum._ESet;
+        _EPushMethodSel: typeof Enum._EPushMethodSel;
     };
     __model__: GIModel;
     constructor(model: GIModel);
