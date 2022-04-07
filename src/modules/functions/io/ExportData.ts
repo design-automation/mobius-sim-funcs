@@ -27,7 +27,7 @@ import { _EIOExportDataFormat } from './_enum';
  * @example_info Exports all the polgons in the model as an OBJ.
  */
  export async function ExportData(__model__: GIModel, entities: TId | TId[] | TId[][], data_format: _EIOExportDataFormat): Promise<string> {
-    if (typeof localStorage === 'undefined') { return; }
+    // if (typeof localStorage === 'undefined') { return; }
     // --- Error Check ---
     const fn_name = 'io.Export';
     let ents_arr = null;
