@@ -96,7 +96,15 @@ All these functions return the IDs of the entities that are created.
 **Description:** Extrudes geometry by distance or by vector.
 - Extrusion of a position, vertex, or point produces polylines;
 - Extrusion of an edge, wire, or polyline produces polygons;
-- Extrusion of a face or polygon produces polygons, capped at the top.  
+- Extrusion of a face or polygon produces polygons, capped at the top.
+
+
+
+
+The geometry that is generated depends on the method that is selected.
+- The 'quads' methods will generate polygons.
+- The 'stringers' and 'ribs' methods will generate polylines.
+- The 'copies' method will generate copies of the input geometry type.  
   
 **Parameters:**  
   * *entities:* A list of entities, can be any type of entitiy.  

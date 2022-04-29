@@ -9,9 +9,11 @@ import * as Enum from './_enum';
 import { Add } from './Add';
 import { Delete } from './Delete';
 import { Get } from './Get';
-import { Push } from './Push';
 import { Rename } from './Rename';
 import { Set } from './Set';
+import { Push } from './Push';
+import { Values } from './Values';
+import { Discover } from './Discover';
 
 
 export { Set }
@@ -26,6 +28,9 @@ export { Rename }
 
 export { Push }
 
+export { Values }
+
+export { Discover }
 
 // CLASS DEFINITION
 export class AttribFunc {
@@ -46,14 +51,19 @@ export class AttribFunc {
     Get(entities, attrib): any {
         return Get(this.__model__, entities, attrib);
     }
-    Push(entities, attrib, ent_type_sel, method_sel): void {
-        Push(this.__model__, entities, attrib, ent_type_sel, method_sel);
-    }
     Rename(ent_type_sel, old_attrib, new_attrib): void {
         Rename(this.__model__, ent_type_sel, old_attrib, new_attrib);
     }
     Set(entities, attrib, value, method): void {
         Set(this.__model__, entities, attrib, value, method);
     }
-
+    Push(entities, attrib, ent_type_sel, method_sel): void {
+        Push(this.__model__, entities, attrib, ent_type_sel, method_sel);
+    }
+    Values(ent_type_sel, attribs): any {
+        return Values(this.__model__, ent_type_sel, attribs);
+    }
+    Discover(ent_type_sel): any {
+        return Discover(this.__model__, ent_type_sel);
+    }
 }
