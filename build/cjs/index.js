@@ -1,7 +1,11 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -30,4 +34,4 @@ const deprecated_1 = require("./deprecated");
 Object.defineProperty(exports, "_deprecated_funcs", { enumerable: true, get: function () { return deprecated_1.deprecated; } });
 const modules_1 = require("./modules");
 Object.defineProperty(exports, "Funcs", { enumerable: true, get: function () { return modules_1.MobiusFunc; } });
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi9zcmMvaW5kZXgudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQUFBLDhEQUFpRTtBQVM3RCxzRkFUZ0Isb0JBQUssT0FTaEI7QUFSVCx3RUFBMEQ7QUFTdEQsNEJBQVE7QUFQWix1REFBb0Q7QUFRaEQsZ0dBUkssaUNBQWUsT0FRTDtBQVBuQiw2Q0FBK0Q7QUFRM0Qsa0dBUm1CLHVCQUFpQixPQVFuQjtBQVByQix1Q0FBZ0Q7QUFHNUMsc0ZBSG1CLG9CQUFLLE9BR25CIn0=
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi9zcmMvaW5kZXgudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFBQSw4REFBaUU7QUFTN0Qsc0ZBVGdCLG9CQUFLLE9BU2hCO0FBUlQsd0VBQTBEO0FBU3RELDRCQUFRO0FBUFosdURBQW9EO0FBUWhELGdHQVJLLGlDQUFlLE9BUUw7QUFQbkIsNkNBQStEO0FBUTNELGtHQVJtQix1QkFBaUIsT0FRbkI7QUFQckIsdUNBQWdEO0FBRzVDLHNGQUhtQixvQkFBSyxPQUduQiJ9

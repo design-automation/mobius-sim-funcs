@@ -11,6 +11,7 @@ import { Get } from './Get';
 import { Rename } from './Rename';
 import { Set } from './Set';
 import { Push } from './Push';
+import { Values } from './Values';
 import { Discover } from './Discover';
 export { Set };
 export { Get };
@@ -18,6 +19,7 @@ export { Add };
 export { Delete };
 export { Rename };
 export { Push };
+export { Values };
 export { Discover };
 export declare class AttribFunc {
     __enum__: {
@@ -41,5 +43,6 @@ export declare class AttribFunc {
     Rename(ent_type_sel: any, old_attrib: any, new_attrib: any): void;
     Set(entities: any, attrib: any, value: any, method: any): void;
     Push(entities: any, attrib: any, ent_type_sel: any, method_sel: any): void;
+    Values(ent_type_sel: any, attribs: any): any;
     Discover(ent_type_sel: any): any;
 }

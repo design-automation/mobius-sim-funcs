@@ -7,8 +7,8 @@ import * as chk from '../../../_check_types';
  * - Extrusion of a position, vertex, or point produces polylines;
  * - Extrusion of an edge, wire, or polyline produces polygons;
  * - Extrusion of a face or polygon produces polygons, capped at the top.
- *
- *
+ * \n
+ * \n
  * The geometry that is generated depends on the method that is selected.
  * - The 'quads' methods will generate polygons.
  * - The 'stringers' and 'ribs' methods will generate polylines.
