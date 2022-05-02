@@ -17,6 +17,7 @@ import { Sky } from './Sky';
 import { SkyDome } from './SkyDome';
 import { Sun } from './Sun';
 import { View } from './View';
+import { Visibility } from './Visibility';
 
 export { Raytrace }
 
@@ -39,6 +40,9 @@ export { Degree }
 export { Centrality }
 
 export { View }
+
+export { Visibility }
+
 
 // CLASS DEFINITION
 export class AnalyzeFunc {
@@ -82,5 +86,8 @@ export class AnalyzeFunc {
     }
     View(origins, entities, radius, num_rays, view_ang): any {
         return View(this.__model__, origins, entities, radius, num_rays, view_ang);
+    }
+    Visibility(origins, entities, radius, targets): any {
+        return Visibility(this.__model__, origins, entities, radius, targets);
     }
 }

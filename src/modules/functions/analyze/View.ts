@@ -39,7 +39,9 @@ interface TViewResult {
     distance_ratio?: number[];
 }
 /**
- * Calculates an approximation of the unobstructed view for a set of origins, defined by XYZ coords.
+ * Calculates an approximation of the unobstructed view for a set of origins.
+ * \n
+ * Typically, the origins are created as centroids of a set of windows.
  * \n
  * The unobstructed view is calculated by shooting rays out from the origins in a fan pattern.
  * The 'radius' argument defines the maximum radius of the unobstructed view.
@@ -82,7 +84,7 @@ export function View(
                 throw new Error('If "radius" is a list, the "min_dist" must be less than the "max_dist": [min_dist, max_dist].');
             }
         }
-        chk.checkArgs(fn_name, "view_ang", num_rays, [chk.isNum]);
+        chk.checkArgs(fn_name, "num_rays", num_rays, [chk.isNum]);
         chk.checkArgs(fn_name, "view_ang", view_ang, [chk.isNum]);
     } else {
         ents_arrs = idsBreak(entities) as TEntTypeIdx[];
