@@ -83,13 +83,13 @@ export function Isovist(
     if (__model__.debug) {
         chk.checkArgs(fn_name, "origins", origins, [chk.isRayL, chk.isPlnL]);
         ents_arrs = checkIDs(__model__, fn_name, "entities", entities, [ID.isIDL1], [EEntType.PGON, EEntType.COLL]) as TEntTypeIdx[];
-        chk.checkArgs(fn_name, "dist", radius, [chk.isNum, chk.isNumL]);
+        chk.checkArgs(fn_name, "radius", radius, [chk.isNum, chk.isNumL]);
         if (Array.isArray(radius)) {
             if (radius.length !== 2) {
-                throw new Error('If "dist" is a list, it must have a length of two: [min_dist, max_dist].');
+                throw new Error('If "radius" is a list, it must have a length of two: [min_dist, max_dist].');
             }
             if (radius[0] >= radius[1]) {
-                throw new Error('If "dist" is a list, the "min_dist" must be less than the "max_dist": [min_dist, max_dist].');
+                throw new Error('If "radius" is a list, the "min_dist" must be less than the "max_dist": [min_dist, max_dist].');
             }
         }
     } else {
@@ -194,7 +194,7 @@ function _isovistOriginsTjs(__model__: GIModel, origins: Txyz[] | TRay[] | TPlan
         } else if (is_pln) {
             origin_xyz = origin[0] as Txyz;
         } else {
-            throw new Error("analyze.Solar: origins arg has invalid values");
+            throw new Error("analyze.Isovist: origins arg has invalid values");
         }
         const origin_tjs: THREE.Vector3 = new THREE.Vector3(origin_xyz[0], origin_xyz[1], origin_xyz[2] + offset);
         vectors_tjs.push(origin_tjs);

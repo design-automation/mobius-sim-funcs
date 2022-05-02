@@ -16,7 +16,7 @@ import { ShortestPath } from './ShortestPath';
 import { Sky } from './Sky';
 import { SkyDome } from './SkyDome';
 import { Sun } from './Sun';
-
+import { View } from './View';
 
 export { Raytrace }
 
@@ -38,6 +38,7 @@ export { Degree }
 
 export { Centrality }
 
+export { View }
 
 // CLASS DEFINITION
 export class AnalyzeFunc {
@@ -79,5 +80,7 @@ export class AnalyzeFunc {
     Sun(origins, detail, entities, limits, method): any {
         return Sun(this.__model__, origins, detail, entities, limits, method);
     }
-
+    View(origins, entities, radius, num_rays, view_ang): any {
+        return View(this.__model__, origins, entities, radius, num_rays, view_ang);
+    }
 }
