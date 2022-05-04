@@ -45,11 +45,13 @@ import { _EIOExportDataFormat } from './_enum';
     }
     // --- Error Check ---
     const ssid: number = __model__.modeldata.active_ssid;
-    let model_data = '';
     switch (data_format) {
         case _EIOExportDataFormat.GI:
-            model_data = __model__.exportGI(ents_arr);
-            return model_data.replace(/\\/g, '\\\\\\'); // TODO temporary fix
+            const gi_model_data: string = __model__.exportGI(ents_arr);
+            return gi_model_data.replace(/\\/g, '\\\\\\'); // TODO temporary fix
+        case _EIOExportDataFormat.SIM:
+            const sim_model_data: string = __model__.exportSIM(ents_arr);
+            return sim_model_data.replace(/\\/g, '\\\\\\'); // TODO temporary fix
         case _EIOExportDataFormat.OBJ_VERT:
             return exportVertBasedObj(__model__, ents_arr, ssid);
         case _EIOExportDataFormat.OBJ_POSI:
