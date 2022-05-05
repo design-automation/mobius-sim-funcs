@@ -217,7 +217,6 @@ export function _calcExposure(
         for (const direction_tjs of directions_tjs) {
             const dot_normal_direction: number = normal_tjs.dot(direction_tjs);
             if (dot_normal_direction > 0) {
-                console.log("1111", origin_tjs, direction_tjs)
                 const ray_tjs: THREE.Raycaster = new THREE.Raycaster(origin_tjs, direction_tjs, limits[0], limits[1]);
                 const isects: THREE.Intersection[] = ray_tjs.intersectObject(mesh_tjs, false);
                 if (isects.length === 0) {

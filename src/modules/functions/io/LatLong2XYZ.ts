@@ -113,7 +113,7 @@ export function _xformFromLongLatToXYZ(
             throw new Error('Latitude attribute must be between 0 and 90.');
         }
     }
-    console.log("lat long", latitude, longitude);
+    // console.log("lat long", latitude, longitude);
     // try to figure out what the projection is of the source file
     // let proj_from_str = 'WGS84';
     // if (geojson_obj.hasOwnProperty('crs')) {
