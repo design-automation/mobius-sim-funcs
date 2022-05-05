@@ -1,6 +1,7 @@
 import { GIModel, TEntTypeIdx, TPlane, TRay, Txy, Txyz } from '@design-automation/mobius-sim';
 import cytoscape from 'cytoscape';
 import * as THREE from 'three';
+export declare function degToRad(deg: number | number[]): number | number[];
 export declare function _skyRayDirsTjs(detail: number): THREE.Vector3[];
 export declare function _rayOrisDirsTjs(__model__: GIModel, origins: Txyz[] | TRay[] | TPlane[], offset: number): [THREE.Vector3, THREE.Vector3][];
 export declare function _solarRaysDirectTjs(latitude: number, north: Txy, detail: number): THREE.Vector3[][];

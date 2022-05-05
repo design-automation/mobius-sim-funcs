@@ -43,6 +43,6 @@ export function Discover(__model__: GIModel, ent_type_sel: _EEntTypeAndMod): Arr
             type: __model__.modeldata.attribs.query.getAttribDataType(ent_type, name)
         });
     }
-    console.log(attribs);
+    // console.log(attribs);
     return attribs;    
 }

@@ -15,6 +15,8 @@ import { ShortestPath } from './ShortestPath';
 import { Sky } from './Sky';
 import { SkyDome } from './SkyDome';
 import { Sun } from './Sun';
+import { View } from './View';
+import { Visibility } from './Visibility';
 export { Raytrace };
 export { Isovist };
 export { Sky };
@@ -25,6 +27,8 @@ export { ShortestPath };
 export { ClosestPath };
 export { Degree };
 export { Centrality };
+export { View };
+export { Visibility };
 export declare class AnalyzeFunc {
     __enum__: {
         /**
@@ -53,4 +57,6 @@ export declare class AnalyzeFunc {
     Sky(origins: any, detail: any, entities: any, limits: any, method: any): any;
     SkyDome(origin: any, detail: any, radius: any, method: any): any;
     Sun(origins: any, detail: any, entities: any, limits: any, method: any): any;
+    View(origins: any, entities: any, radius: any, num_rays: any, view_ang: any): any;
+    Visibility(origins: any, entities: any, radius: any, targets: any): any;
 }
