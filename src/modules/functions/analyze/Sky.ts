@@ -68,6 +68,7 @@ import { _calcExposure, _rayOrisDirsTjs } from './_shared';
  * @param entities The obstructions, faces, polygons, or collections of faces or polygons.
  * @param limits The max distance for raytracing.
  * @param method Enum; sky method.
+ * @returns A dictionary containing solar exposure results.
  */
 export function Sky(
     __model__: GIModel,

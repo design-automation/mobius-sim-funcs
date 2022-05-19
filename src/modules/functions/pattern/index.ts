@@ -1,5 +1,5 @@
 /**
- * The `pattern` module has functions for creating patters of positions.
+ * The `pattern` module has functions for creating patterns of positions.
  * These functions all return lists of position IDs.
  * The list may be nested, depending on which function is selected.
  * @module

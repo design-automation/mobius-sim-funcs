@@ -21,17 +21,17 @@ import * as chk from '../../../_check_types';
 // ================================================================================================
 /**
  * Calculates the xyz coord along an edge, wire, or polyline given a t parameter.
- *
+ * \n
  * The 't' parameter varies between 0 and 1, where 0 indicates the start and 1 indicates the end.
  * For example, given a polyline,
- * evaluating at t=0 gives that xyz at the start,
- * evaluating at t=0.5 gives the xyz halfway along the polyline,
- * evaluating at t=1 gives the xyz at the end of the polyline.
- *
+ * - evaluating at t=0 gives that xyz at the start,
+ * - evaluating at t=0.5 gives the xyz halfway along the polyline,
+ * - evaluating at t=1 gives the xyz at the end of the polyline.
+ * \n
  * Given a single edge, wire, or polyline, a single xyz coord will be returned.
- *
+ * \n
  * Given a list of edges, wires, or polylines, a list of xyz coords will be returned.
- *
+ * \n
  * Given any entity that has wires (faces, polygons and collections),
  * a list of wires will be extracted, and a list of coords will be returned.
  *

@@ -5,12 +5,13 @@ import { checkIDs, ID } from '../../../_check_ids';
 
 // ================================================================================================
 /**
- * Returns an html string representation of one or more entities in the model.
+ * Returns a html string representation of one or more entities in the model.
  * The string can be printed to the console for viewing.
  *
  * @param __model__
- * @param entities One or more objects ot collections.
- * @returns void
+ * @param entities One or more objects or collections.
+ * @returns Text that summarises what is in the model, click print to see this text.
+
  */
 export function EntityInfo(__model__: GIModel, entities: TId|TId[]): string {
     entities = arrMakeFlat(entities) as TId[];

@@ -1,6 +1,10 @@
 # POLY2D  
   
-The `poly2D` module has a set of functions for working with 2D polygons, on the XY plane.  
+The `poly2D` module has a set of functions for working with 2D polygons, with the results
+projected on the XY plane.
+
+
+All the functions create new entities and do not modify the original geometry.  
   
   
 ## Voronoi  
@@ -8,7 +12,8 @@ The `poly2D` module has a set of functions for working with 2D polygons, on the 
   
 **Description:** Create a voronoi subdivision of one or more polygons.
 
-  
+
+// MAKE A DIAGRAM/INSERT A REFERENCE ARTICLE  
   
 **Parameters:**  
   * *pgons:* A list of polygons, or entities from which polygons can be extracted.  
@@ -33,10 +38,10 @@ The `poly2D` module has a set of functions for working with 2D polygons, on the 
 ## ConvexHull  
   
   
-**Description:** Create a voronoi subdivision of a polygon.  
+**Description:** Creates a convex hull from a list of positions.  
   
 **Parameters:**  
-  * *entities:* A list of positions, or entities from which positions can bet extracted.  
+  * *entities:* A list of positions, or entities from which positions can be extracted.  
   
 **Returns:** A new polygons, the convex hull of the positions.  
   
@@ -84,7 +89,8 @@ The boolean operation is then performed between each polyline or polygon in A, a
 If A is an empty list, then an empty list is returned.
 If B is an empty list, then the A list is returned.
 
-  
+
+The input polygons or polylines are not deleted.  
   
 **Parameters:**  
   * *a\_entities:* A list of polyline or polygons, or entities from which polyline or polygons can be extracted.  
@@ -100,10 +106,10 @@ If B is an empty list, then the A list is returned.
 **Description:** Offset a polyline or polygon, with mitered joints.  
   
 **Parameters:**  
-  * *entities:* A list of pollines or polygons, or entities from which polylines or polygons can be extracted.  
+  * *entities:* A list of polyines or polygons, or entities from which polylines or polygons can be extracted.  
   * *dist:* Offset distance  
   * *limit:* Mitre limit  
-  * *end\_type:* Enum, the type of end shape for open polylines'.  
+  * *end\_type:* Enum, the type of end shape for open polylines.  
   
 **Returns:** A list of new polygons.  
   
@@ -114,9 +120,10 @@ If B is an empty list, then the A list is returned.
 **Description:** Offset a polyline or polygon, with chamfered joints.  
   
 **Parameters:**  
-  * *entities:* A list of pollines or polygons, or entities from which polylines or polygons can be extracted.  
+  * *entities:* A list of polyines or polygons, or entities from which polylines or polygons can
+be extracted.  
   * *dist:* Offset distance  
-  * *end\_type:* Enum, the type of end shape for open polylines'.  
+  * *end\_type:* Enum, the type of end shape for open polylines.  
   
 **Returns:** A list of new polygons.  
   
@@ -127,10 +134,11 @@ If B is an empty list, then the A list is returned.
 **Description:** Offset a polyline or polygon, with round joints.  
   
 **Parameters:**  
-  * *entities:* A list of pollines or polygons, or entities from which polylines or polygons can be extracted.  
+  * *entities:* A list of polyines or polygons, or entities from which polylines or polygons can
+be extracted.  
   * *dist:* Offset distance  
   * *tolerance:* The tolerance for the rounded corners.  
-  * *end\_type:* Enum, the type of end shape for open polylines'.  
+  * *end\_type:* Enum, the type of end shape for open polylines.  
   
 **Returns:** A list of new polygons.  
   
@@ -148,10 +156,11 @@ The input polyline and polygons are copied.
   
   
 **Parameters:**  
-  * *entities:* A list polylines or polygons, or entities from which polylines or polygons can be extracted.  
+  * *entities:* A list polylines or polygons, or entities from which polylines or polygons can be
+extracted.  
   * *tolerance:* The tolerance for extending open plines if they are almost intersecting.  
   
-**Returns:** Copies of the input polyline and polygons, stiched.  
+**Returns:** Copies of the input polyline and polygons, stitched.  
   
   
 ## Clean  

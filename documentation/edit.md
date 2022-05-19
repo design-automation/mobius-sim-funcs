@@ -15,7 +15,7 @@ Some functions return the IDs of the entities that are created or modified.
 a fixed number of equal length shorter edges.
 - If the `by_length` method is selected, then each edge is divided into
 shorter edges of the specified length.
-- The length of the last segment will be the remainder.
+The length of the last segment will be the remainder.
 - If the `by_min_length` method is selected,
 then the edge is divided into the number of shorter edges
 with lengths equal to or greater than the minimum length specified.
@@ -58,11 +58,17 @@ Multiple holes can be created.
   
   
 **Parameters:**  
-  * *pgon:* A polygon to make holes in.  
+  * *pgon:* A polygon to make holes in. This polygon is modified by the function.  
   * *entities:* List of positions, or nested lists of positions, or entities from which positions
-can be extracted.  
+can be extracted to create the holes.  
   
 **Returns:** Entities, a list of wires resulting from the hole(s).  
+**Examples:**  
+  * <a href="/editor?file=/assets/examples/Functions_edit.Hole_examples.mob&node=1" target="_blank"> Correct Example </a>  
+    A model showing proper usage of edit.Hole, such that a hole is created in the orignal polygons.  
+  * <a href="/editor?file=/assets/examples/Functions_edit.Hole_examples.mob&node=2" target="_blank"> Wrong Example </a>  
+    A model showing potential improper usage of edit.Hole, where the hole entities are outside of the original.
+  
   
   
 ## Weld  
@@ -72,11 +78,11 @@ can be extracted.
 If two vertices are welded, then they share the same position.
 
 
-- When making a weld between vertices, a new position is created. The new position is calculate
+- When making a weld between vertices (`make_weld`), a new position is created. The new position is calculated
 as the average of all the existing positions of the vertices. The vertices will then be linked
 to the new position. This means that if the position is later moved, then all vertices will be
 affected. The new position is returned. The positions that become shared are returned.
-- When breaking a weld between vetices, existing positions are duplicated. Each vertex is then
+- When breaking a weld between vetices (`break_weld`), existing positions are duplicated. Each vertex is then
 linked to one of these duplicate positions. If these positions are later moved, then only one
 vertex will be affected.  The new positions that get generated are returned.
 
@@ -86,7 +92,7 @@ vertex will be affected.  The new positions that get generated are returned.
   * *entities:* Entities, a list of vertices, or entities from which vertices can be extracted.  
   * *method:* Enum; the method to use, either `make_weld` or `break_weld`.  
   
-**Returns:** void  
+**Returns:** Entities, a list of new positions depending on type of weld.  
   
   
 ## Fuse  
@@ -123,7 +129,7 @@ The new positions that get generated are returned.
   * *entities:* Entities, a list of positions, or entities from which positions can be extracted.  
   * *tolerance:* The distance tolerance for fusing positions.  
   
-**Returns:** void  
+**Returns:** Entities, a list of new positions.  
   
   
 ## Ring  
@@ -178,7 +184,7 @@ backwards around the ring. The order of the edges in the ring will remain unchan
 **Returns:** void  
 **Examples:**  
   * `modify.Shift(polygon1, 1)`  
-    Shifts the edges in the polygon wire, so that the every edge moves back by one position
+    Shifts the edges in the polygon wire, so that every edge moves back by one position
 in the ring. The first edge will become the last edge.  
   * `edit.Shift(polyline1, -1)`  
     Shifts the edges in the closed polyline wire, so that every edge moves up by one position

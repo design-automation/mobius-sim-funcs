@@ -1791,8 +1791,8 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Calculates betweenness, closeness, and harmonic centrality\nfor positions in a network. Values are normalized in the range 0 to 1.\n\\n\nThe network is defined by a set of connected edges, consisting of polylines and/or polygons.\nFor edges to be connected, vertices must be welded.\nFor example, if the network consists of multiple polylines, then the vertcies of those polylines must be welded.\n\\n\nCentralities are calculate based on distances between positions.\nThe distance between two positions is the shortest path between those positions.\nThe shortest path is the path where the sum of the weights of the edges along the path is the minimum.\n\\n\nDefault weight is 1 for all edges. Weights can be specified using an attribute called 'weight' on edges.\n\\n\nCloseness centrality is calculated by inverting the sum of the distances to all other positions.\n\\n\nHarmonic centrality is calculated by summing up the inverted distances to all other positions.\n\\n\nBetweenness centrality os calculated in two steps.\nFirst, the shortest path between every pair of nodes is calculated.\nSecond, the betweenness centrality of each node is then the total number of times the node is traversed\nby the shortest paths.\n\\n\nFor closeness centrality, the network is first split up into connected sub-networks.\nThis is because closeness centrality cannot be calculated on networks that are not fully connected.\nThe closeness centrality is then calculated for each sub-network seperately.\n\\n\nFor harmonic centrality, care must be taken when defining custom weights.\nWeight with zero values or very small values will result in errors or will distort the results.\nThis is due to the inversion operation: 1 / weight.\n\\n\nReturns a dictionary containing the results.\n\\n\n1. 'posis': a list of position IDs.\n2. 'centrality': a list of numbers, the values for centrality, either betweenness, closeness, or harmonic.\n\\n",
-								"returns": "A list of centrality values, between 0 and 1.\n"
+								"shortText": "Calculates betweenness, closeness, and harmonic centrality\nfor positions in a network. Values are normalized in the range 0 to 1.\n\\n\nThe network is defined by a set of connected edges, consisting of polylines and/or polygons.\nFor edges to be connected, vertices must be welded.\nFor example, if the network consists of multiple polylines, then the vertcies of those polylines must be welded.\n\\n\nCentralities are calculated based on distances between positions.\nThe distance between two positions is the shortest path between those positions.\nThe shortest path is the path where the sum of the weights of the edges along the path is the minimum.\n\\n\nDefault weight is 1 for all edges. Weights can be specified using an attribute called 'weight' on edges.\n\\n\nCloseness centrality is calculated by inverting the sum of the distances to all other positions.\n\\n\nHarmonic centrality is calculated by summing up the inverted distances to all other positions.\n\\n\nBetweenness centrality is calculated in two steps.\nFirst, the shortest path between every pair of nodes is calculated.\nSecond, the betweenness centrality of each node is then the total number of times the node is traversed\nby the shortest paths.\n\\n\nFor closeness centrality, the network is first split up into connected sub-networks.\nThis is because closeness centrality cannot be calculated on networks that are not fully connected.\nThe closeness centrality is then calculated for each sub-network seperately.\n\\n\nFor harmonic centrality, care must be taken when defining custom weights.\nWeight with zero values or very small values will result in errors or will distort the results.\nThis is due to the inversion operation: 1 / weight.\n\\n\nReturns a dictionary containing the results.\n\\n\n1. 'posis': a list of position IDs.\n2. 'centrality': a list of numbers, the values for centrality, either betweenness, closeness, or harmonic.\n\\n",
+								"returns": "A dictionary containing the results (posis and centrality values, between 0 and 1.)\n"
 							},
 							"parameters": [
 								{
@@ -1905,7 +1905,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, the data to return, positions, edges, or both."
+										"shortText": "Enum, the type of centrality (betweenness, closeness or harmonic)."
 									},
 									"type": {
 										"type": "reference",
@@ -2265,7 +2265,7 @@
 					"sources": [
 						{
 							"fileName": "functions/analyze/Isovist.ts",
-							"line": 71,
+							"line": 72,
 							"character": 16
 						}
 					],
@@ -2277,7 +2277,8 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Calculates an approximation of the isovist for a set of origins, defined by XYZ coords.\n\\n\nThe isovist is calculated by shooting rays out from the origins in a radial pattern.\nThe 'radius' argument defines the maximum radius of the isovist.\n(The radius is used to define the maximum distance for shooting the rays.)\nThe 'num_rays' argument defines the number of rays that will be shot,\nin a radial pattern parallel to the XY plane, with equal angle between rays.\nMore rays will result in more accurate result, but will also be slower to execute.\n\\n\nReturns a dictionary containing different isovist metrics.\n\\n\n1. 'avg_dist': The average distance from origin to the perimeter.\n2. 'min_dist': The minimum distance from the origin to the perimeter.\n3. 'max_dist': The minimum distance from the origin to the perimeter.\n4. 'area': The area of the isovist.\n5. 'perimeter': The perimeter of the isovist.\n4. 'area_ratio': The ratio of the area of the isovist to the maximum area.\n5. 'perimeter_ratio': The ratio of the perimeter of the isovist to the maximum perimeter.\n6. 'circularity': The ratio of the square of the perimeter to area (Davis and Benedikt, 1979).\n7. 'compactness': The ratio of average distance to the maximum distance (Michael Batty, 2001).\n8. 'cluster': The ratio of the radius of an idealized circle with the actual area of the\nisovist to the radius of an idealized circle with the actual perimeter of the circle (Michael Batty, 2001).\n\\n\n\\n"
+								"shortText": "Calculates an approximation of the isovist for a set of origins, defined by XYZ coords.\n\\n\nThe isovist is calculated by shooting rays out from the origins in a radial pattern.\nThe 'radius' argument defines the maximum radius of the isovist.\n(The radius is used to define the maximum distance for shooting the rays.)\nThe 'num_rays' argument defines the number of rays that will be shot,\nin a radial pattern parallel to the XY plane, with equal angle between rays.\nMore rays will result in more accurate result, but will also be slower to execute.\n\\n\nReturns a dictionary containing different isovist metrics.\n\\n\n1. 'avg_dist': The average distance from origin to the perimeter.\n2. 'min_dist': The minimum distance from the origin to the perimeter.\n3. 'max_dist': The minimum distance from the origin to the perimeter.\n4. 'area': The area of the isovist.\n5. 'perimeter': The perimeter of the isovist.\n4. 'area_ratio': The ratio of the area of the isovist to the maximum area.\n5. 'perimeter_ratio': The ratio of the perimeter of the isovist to the maximum perimeter.\n6. 'circularity': The ratio of the square of the perimeter to area (Davis and Benedikt, 1979).\n7. 'compactness': The ratio of average distance to the maximum distance (Michael Batty, 2001).\n8. 'cluster': The ratio of the radius of an idealized circle with the actual area of the\nisovist to the radius of an idealized circle with the actual perimeter of the circle (Michael Batty, 2001).\n\\n\n\\n",
+								"returns": "A dictionary containing metrics.\n"
 							},
 							"parameters": [
 								{
@@ -2384,7 +2385,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "The number of rays to generate when calculating isovists.\n"
+										"shortText": "The number of rays to generate when calculating isovists."
 									},
 									"type": {
 										"type": "intrinsic",
@@ -2420,7 +2421,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Finds the nearest positions within a certain maximum radius.\n\\n\nThe neighbors to each source position is calculated as follows:\n1. Calculate the distance to all target positions.\n2. Creat the neighbors set by filtering out target positions that are further than the maximum radius.\n3. If the number of neighbors is greater than 'max_neighbors',\nthen select the 'max_neighbors' closest target positions.\n\\n\nReturns a dictionary containing the nearest positions.\n\\n\nIf 'num_neighbors' is 1, the dictionary will contain two lists:\n1. 'posis': a list of positions, a subset of positions from the source.\n2. 'neighbors': a list of neighbouring positions, a subset of positions from target.\n\\n\nIf 'num_neighbors' is greater than 1, the dictionary will contain two lists:\n1. 'posis': a list of positions, a subset of positions from the source.\n2. 'neighbors': a list of lists of neighbouring positions, a subset of positions from target.\n\\n",
+								"shortText": "Finds the nearest positions within a certain maximum radius.\n\\n\nThe neighbors to each source position is calculated as follows:\n1. Calculate the distance to all target positions.\n2. Creat the neighbors set by filtering out target positions that are further than the maximum radius.\n3. If the number of neighbors is greater than 'max\\_neighbors',\nthen select the 'max\\_neighbors' closest target positions.\n\\n\nReturns a dictionary containing the nearest positions.\n\\n\nIf 'num_neighbors' is 1, the dictionary will contain two lists:\n1. 'posis': a list of positions, a subset of positions from the source.\n2. 'neighbors': a list of neighbouring positions, a subset of positions from target.\n\\n\nIf 'num_neighbors' is greater than 1, the dictionary will contain two lists:\n1. 'posis': a list of positions, a subset of positions from the source.\n2. 'neighbors': a list of lists of neighbouring positions, a subset of positions from target.\n\\n",
 								"returns": "A dictionary containing the results.\n"
 							},
 							"parameters": [
@@ -2660,7 +2661,7 @@
 					"sources": [
 						{
 							"fileName": "functions/analyze/Raytrace.ts",
-							"line": 87,
+							"line": 88,
 							"character": 16
 						}
 					],
@@ -2672,7 +2673,8 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Shoot a set of rays into a set of obstructions, consisting of polygon faces.\nOne can imagine particles being shot from the ray origin in the ray direction, hitting the\nobstructions.\n\\n\nEach ray will either hit an obstruction, or will hit no obstructions.\nThe length of the ray vector is ignored, only the ray origin and direction is taken into account.\nEach particle shot out from a ray will travel a certain distance.\nThe minimum and maximum distance that the particle will travel is defined by the 'dist' argument.\n\\n\nIf a ray particle hits an obstruction, then the 'distance' for that ray is the distance from the * ray origin to the point of intersection.\nIf the ray particle does not hit an obstruction, then the 'distance' for that ray is equal to\nthe max for the 'dist' argument.\n\\n\nReturns a dictionary containing the following data.\n\\n\nIf 'stats' is selected, the dictionary will contain the following numbers:\n1. 'hit_count': the total number of rays that hit an obstruction.\n2. 'miss_count': the total number of rays that did not hit any obstruction.\n3. 'total_dist': the total of all the ray distances.\n4. 'min_dist': the minimum distance for all the rays.\n5. 'max_dist': the maximum distance for all the rays.\n6. 'avg_dist': the average dist for all the rays.\n7. 'dist_ratio': the ratio of 'total_dist' to the maximum distance if not rays hit any\nobstructions.\n\\n\nIf 'distances' is selected, the dictionary will contain the following list:\n1. 'distances': A list of numbers, the distance travelled for each ray.\n\\n\nIf 'hit_pgons' is selected, the dictionary will contain the following list:\n1. 'hit_pgons': A list of polygon IDs, the polygons hit for each ray, or 'null' if no polygon\nwas hit.\n\\n\nIf 'intersections' is selected, the dictionary will contain the following list:\n1. 'intersections': A list of XYZ coords, the point of intersection where the ray hit a polygon,\nor 'null' if no polygon was hit.\n\\n\nIf 'all' is selected, the dictionary will contain all of the above.\n\\n\nIf the input is a list of rays, the output will be a single dictionary.\nIf the list is empty (i.e. contains no rays), then 'null' is returned.\nIf the input is a list of lists of rays, then the output will be a list of dictionaries.\n\\n"
+								"shortText": "Shoot a set of rays into a set of obstructions, consisting of polygon faces.\nOne can imagine particles being shot from the ray origin in the ray direction, hitting the\nobstructions.\n\\n\nEach ray will either hit an obstruction, or will hit no obstructions.\nThe length of the ray vector is ignored, only the ray origin and direction is taken into account.\nEach particle shot out from a ray will travel a certain distance.\nThe minimum and maximum distance that the particle will travel is defined by the 'dist' argument.\n\\n\nIf a ray particle hits an obstruction, then the 'distance' for that ray is the distance from the * ray origin to the point of intersection.\nIf the ray particle does not hit an obstruction, then the 'distance' for that ray is equal to\nthe max for the 'dist' argument.\n\\n\nReturns a dictionary containing the following data.\n\\n\nIf 'stats' is selected, the dictionary will contain the following numbers:\n1. 'hit\\_count': the total number of rays that hit an obstruction.\n2. 'miss\\_count': the total number of rays that did not hit any obstruction.\n3. 'total\\_dist': the total of all the ray distances.\n4. 'min\\_dist': the minimum distance for all the rays.\n5. 'max\\_dist': the maximum distance for all the rays.\n6. 'avg\\_dist': the average dist for all the rays.\n7. 'dist\\_ratio': the ratio of 'total\\_dist' to the maximum distance if not rays hit any\nobstructions.\n\\n\nIf 'distances' is selected, the dictionary will contain the following list:\n1. 'distances': A list of numbers, the distance travelled for each ray.\n\\n\nIf 'hit_pgons' is selected, the dictionary will contain the following list:\n1. 'hit_pgons': A list of polygon IDs, the polygons hit for each ray, or 'null' if no polygon\nwas hit.\n\\n\nIf 'intersections' is selected, the dictionary will contain the following list:\n1. 'intersections': A list of XYZ coords, the point of intersection where the ray hit a polygon,\nor 'null' if no polygon was hit.\n\\n\nIf 'all' is selected, the dictionary will contain all of the above.\n\\n\nIf the input is a list of rays, the output will be a single dictionary.\nIf the list is empty (i.e. contains no rays), then 'null' is returned.\nIf the input is a list of lists of rays, then the output will be a list of dictionaries.\n\\n",
+								"returns": "A dictionary, a list of dictionaries, or null.\n"
 							},
 							"parameters": [
 								{
@@ -2806,7 +2808,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum; values to return.\n"
+										"shortText": "Enum; values to return."
 									},
 									"type": {
 										"type": "reference",
@@ -2854,7 +2856,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Calculates the shortest path from every source position to every target position.\n\\n\nPaths are calculated through a network of connected edges.\nFor edges to be connected, vertices must be welded.\nFor example, if the network consists of multiple polylines, then the vertcies of those polylines must be welded.\n\\n\nIf 'directed' is selected, then the edge direction is taken into account. Each edge will be one-way.\nIf 'undirected' is selected, the edge direction is ignored. Each edge will be two-way.\n\\n\nEach edge can be assigned a weight.\nThe shortest path is the path where the sum of the weights of the edges along the path is the minimum.\n\\n\nBy default, all edges are assigned a weight of 1.\nDefault weights can be overridden by creating a numeric attribute on edges call 'weight'.\n\\n\nReturns a dictionary containing the shortest paths.\n\\n\nIf 'distances' is selected, the dictionary will contain two list:\n1. 'source_posis': a list of start positions for eah path,\n2. 'distances': a list of distances, one list for each path starting at each source position.\n\\n\nIf 'counts' is selected, the dictionary will contain four lists:\n1. 'posis': a list of positions traversed by the paths,\n2. 'posis_count': a list of numbers that count how often each position was traversed,\n3. 'edges': a list of edges traversed by the paths,\n4. 'edges_count': a list of numbers that count how often each edge was traversed.\n\\n\nIf 'paths' is selected, the dictionary will contain two lists of lists:\n1. 'posi_paths': a list of lists of positions, one list for each path,\n2. 'edge_paths': a list of lists of edges, one list for each path.\n\\n\nIf 'all' is selected, the dictionary will contain all lists just described.\n\\n",
+								"shortText": "Calculates the shortest path from every source position to every target position.\n\\n\nPaths are calculated through a network of connected edges.\nFor edges to be connected, vertices must be welded.\nFor example, if the network consists of multiple polylines, then the vertcies of those polylines must be welded.\n\\n\nIf 'directed' is selected, then the edge direction is taken into account. Each edge will be one-way.\nIf 'undirected' is selected, the edge direction is ignored. Each edge will be two-way.\n\\n\nEach edge can be assigned a weight.\nThe shortest path is the path where the sum of the weights of the edges along the path is the minimum.\n\\n\nBy default, all edges are assigned a weight of 1.\nDefault weights can be overridden by creating a numeric attribute on edges call 'weight'.\n\\n\nReturns a dictionary containing the shortest paths.\n\\n\nIf 'distances' is selected, the dictionary will contain two list:\n1. 'source_posis': a list of start positions for each path,\n2. 'distances': a list of distances, one list for each path starting at each source position.\n\\n\nIf 'counts' is selected, the dictionary will contain four lists:\n1. 'posis': a list of positions traversed by the paths,\n2. 'posis_count': a list of numbers that count how often each position was traversed,\n3. 'edges': a list of edges traversed by the paths,\n4. 'edges_count': a list of numbers that count how often each edge was traversed.\n\\n\nIf 'paths' is selected, the dictionary will contain two lists of lists:\n1. 'posi_paths': a list of lists of positions, one list for each path,\n2. 'edge_paths': a list of lists of edges, one list for each path.\n\\n\nIf 'all' is selected, the dictionary will contain all lists just described.\n\\n",
 								"returns": "A dictionary containing the results.\n"
 							},
 							"parameters": [
@@ -3028,7 +3030,7 @@
 					"sources": [
 						{
 							"fileName": "functions/analyze/Sky.ts",
-							"line": 72,
+							"line": 73,
 							"character": 16
 						}
 					],
@@ -3040,7 +3042,8 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Calculate an approximation of the sky exposure factor, for a set sensors positioned at specified locations.\nThe sky exposure factor for each sensor is a value between 0 and 1, where 0 means that it has no exposure\nand 1 means that it has maximum exposure.\n\\n\nEach sensor has a location and direction, specified using either rays or planes.\nThe direction of the sensor specifies what is infront and what is behind the sensor.\nFor each sensor, only exposure infront of the sensor is calculated.\n\\n\nThe exposure is calculated by shooting rays in reverse.\nfrom the sensor origin to a set of points on the sky dome.\nIf the rays hits an obstruction, then the sky dome is obstructed..\nIf the ray hits no obstructions, then the sky dome is not obstructed.\n\\n\nThe exposure factor at each sensor point is calculated as follows:\n1. Shoot rays to all sky dome points.\n2. If the ray hits an obstruction, assign a weight of 0 to that ray.\n3. If a ray does not hit any obstructions, assign a weight between 0 and 1, depending on the incidence angle.\n4. Calculate the total solar expouse by adding up the weights for all rays.\n5. Divide by the maximum possible exposure for an unobstructed sensor with a direction pointing straight up.\n\\n\nIf 'weighted' is selected, then\nthe exposure calculation takes into account the angle of incidence of the ray to the sensor direction.\nRays parallel to the sensor direction are assigned a weight of 1.\nRays at an oblique angle are assigned a weight equal to the cosine of the angle\nbetweeen the sensor direction and the ray.\n\\n\nIf 'unweighted' is selected, then all rays are assigned a weight of 1, irresepctive of angle.\n\\n\nThe detail parameter spacifies the number of rays that get generated.\nThe higher the level of detail, the more accurate but also the slower the analysis will be.\n\\n\nThe number of rays are as follows:\n0 = 89 rays,\n1 = 337 rays,\n2 = 1313 rays,\n3 = 5185 rays.\n\\n\nReturns a dictionary containing exposure results.\n\\n\n1. 'exposure': A list of numbers, the exposure factors.\n\\n\n\\n"
+								"shortText": "Calculate an approximation of the sky exposure factor, for a set sensors positioned at specified locations.\nThe sky exposure factor for each sensor is a value between 0 and 1, where 0 means that it has no exposure\nand 1 means that it has maximum exposure.\n\\n\nEach sensor has a location and direction, specified using either rays or planes.\nThe direction of the sensor specifies what is infront and what is behind the sensor.\nFor each sensor, only exposure infront of the sensor is calculated.\n\\n\nThe exposure is calculated by shooting rays in reverse.\nfrom the sensor origin to a set of points on the sky dome.\nIf the rays hits an obstruction, then the sky dome is obstructed..\nIf the ray hits no obstructions, then the sky dome is not obstructed.\n\\n\nThe exposure factor at each sensor point is calculated as follows:\n1. Shoot rays to all sky dome points.\n2. If the ray hits an obstruction, assign a weight of 0 to that ray.\n3. If a ray does not hit any obstructions, assign a weight between 0 and 1, depending on the incidence angle.\n4. Calculate the total solar expouse by adding up the weights for all rays.\n5. Divide by the maximum possible exposure for an unobstructed sensor with a direction pointing straight up.\n\\n\nIf 'weighted' is selected, then\nthe exposure calculation takes into account the angle of incidence of the ray to the sensor direction.\nRays parallel to the sensor direction are assigned a weight of 1.\nRays at an oblique angle are assigned a weight equal to the cosine of the angle\nbetweeen the sensor direction and the ray.\n\\n\nIf 'unweighted' is selected, then all rays are assigned a weight of 1, irresepctive of angle.\n\\n\nThe detail parameter spacifies the number of rays that get generated.\nThe higher the level of detail, the more accurate but also the slower the analysis will be.\n\\n\nThe number of rays are as follows:\n0 = 89 rays,\n1 = 337 rays,\n2 = 1313 rays,\n3 = 5185 rays.\n\\n\nReturns a dictionary containing exposure results.\n\\n\n1. 'exposure': A list of numbers, the exposure factors.\n\\n\n\\n",
+								"returns": "A dictionary containing solar exposure results.\n"
 							},
 							"parameters": [
 								{
@@ -3188,7 +3191,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum; sky method.\n"
+										"shortText": "Enum; sky method."
 									},
 									"type": {
 										"type": "reference",
@@ -3212,7 +3215,7 @@
 					"sources": [
 						{
 							"fileName": "functions/analyze/SkyDome.ts",
-							"line": 41,
+							"line": 44,
 							"character": 16
 						}
 					],
@@ -3224,7 +3227,8 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Generates a sun path, oriented according to the geolocation and north direction.\nThe sun path is generated as an aid to visualize the orientation of the sun relative to the model.\nNote that the solar exposure calculations do not require the sub path to be visualized.\n\\n\nThe sun path takes into account the geolocation and the north direction of the model.\nGeolocation is specified by a model attributes as follows:\n- @geolocation={'longitude':123,'latitude':12}.\nNorth direction is specified by a model attribute as follows, using a vector:\n- @north==[1,2]\nIf no north direction is specified, then [0,1] is the default (i.e. north is in the direction of the y-axis);\n\\n"
+								"shortText": "Generates a sun path, oriented according to the geolocation and north direction.\nThe sun path is generated as an aid to visualize the orientation of the sun relative to the model.\nNote that the solar exposure calculations do not require the sub path to be visualized.\n\\n\nThe sun path takes into account the geolocation and the north direction of the model.\nGeolocation is specified by a model attributes as follows:\n- @geolocation={'longitude':123,'latitude':12}.\nNorth direction is specified by a model attribute as follows, using a vector:\n- @north==[1,2].\n  If no north direction is specified, then [0,1] is the default (i.e. north is in the direction\n  of the y-axis)\n\\n",
+								"returns": "Entities, a set of positions that are organized into sequences.\nA polyline can then be drawn from these positions.\n"
 							},
 							"parameters": [
 								{
@@ -3247,6 +3251,9 @@
 									"kind": 32768,
 									"kindString": "Parameter",
 									"flags": {},
+									"comment": {
+										"shortText": "The origins of the rays"
+									},
 									"type": {
 										"type": "union",
 										"types": [
@@ -3306,7 +3313,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, the type of sky to generate.\n"
+										"shortText": "Enum, the type of sky to generate."
 									},
 									"type": {
 										"type": "reference",
@@ -3352,7 +3359,7 @@
 					"sources": [
 						{
 							"fileName": "functions/analyze/Sun.ts",
-							"line": 101,
+							"line": 102,
 							"character": 16
 						}
 					],
@@ -3364,7 +3371,8 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Calculate an approximation of the solar exposure factor, for a set sensors positioned at specfied locations.\nThe solar exposure factor for each sensor is a value between 0 and 1, where 0 means that it has no exposure\nand 1 means that it has maximum exposure.\n\\n\nThe calculation takes into account the geolocation and the north direction of the model.\nGeolocation is specified by a model attributes as follows:\n - @geolocation={'longitude':123,'latitude':12}.\nNorth direction is specified by a model attribute as follows, using a vector:\n - @north==[1,2]\nIf no north direction is specified, then [0,1] is the default (i.e. north is in the direction of the y-axis);\n\\n\nEach sensor has a location and direction, specified using either rays or planes.\nThe direction of the sensor specifies what is infront and what is behind the sensor.\nFor each sensor, only exposure infront of the sensor is calculated.\n\\n\nThe exposure is calculated by shooting rays in reverse.\nfrom the sensor origin to a set of points on the sky dome.\nIf the rays hits an obstruction, then the sky dome is obstructed..\nIf the ray hits no obstructions, then the sky dome is not obstructed.\n\\n\nThe exposure factor at each sensor point is calculated as follows:\n1. Shoot rays to all sky dome points.\n2. If the ray hits an obstruction, assign a wight of 0 to that ray.\n3. If a ray does not hit any obstructions, assign a weight between 0 and 1, depending on the incidence angle.\n4. Calculate the total solar expouse by adding up the weights for all rays.\n5. Divide by the maximum possible solar exposure for an unobstructed sensor.\n\\n\nThe solar exposure calculation takes into account the angle of incidence of the sun ray to the sensor direction.\nSun rays that are hitting the sensor straight on are assigned a weight of 1.\nSun rays that are hitting the sensor at an oblique angle are assigned a weight equal to the cosine of the angle.\n\\n\nIf 'direct_exposure' is selected, then the points on the sky dome will follow the path of the sun throughout the year.\nIf 'indirect_exposure' is selected, then the points on the sky dome will consist of points excluded by\nthe path of the sun throughout the year.\n\\n\nThe direct sky dome points cover a strip of sky where the sun travels.\nThe inderect sky dome points cover the segments of sky either side of the direct sun strip.\n\\n\nThe detail parameter spacifies the number of rays that get generated.\nThe higher the level of detail, the more accurate but also the slower the analysis will be.\nThe number of rays differs depending on the latitde.\n\\n\nAt latitude 0, the number of rays for 'direct' are as follows:\n0 = 44 rays,\n1 = 105 rays,\n2 = 510 rays,\n3 = 1287 rays.\n\\n\nAt latitude 0, the number of rays for 'indirect' are as follows:\n0 = 58 rays,\n1 = 204 rays,\n2 = 798 rays,\n3 = 3122 rays.\n\\n\nThe number of rays for 'sky' are as follows:\n0 = 89 rays,\n1 = 337 rays,\n2 = 1313 rays,\n3 = 5185 rays.\n\\n\nReturns a dictionary containing solar exposure results.\n\\n\nIf one  of the 'direct' methods is selected, the dictionary will contain:\n1. 'direct': A list of numbers, the direct exposure factors.\n\\n\nIf one  of the 'indirect' methods is selected, the dictionary will contain:\n1. 'indirect': A list of numbers, the indirect exposure factors.\n\\n\n\\n"
+								"shortText": "Calculate an approximation of the solar exposure factor, for a set sensors positioned at specfied locations.\nThe solar exposure factor for each sensor is a value between 0 and 1, where 0 means that it has no exposure\nand 1 means that it has maximum exposure.\n\\n\nThe calculation takes into account the geolocation and the north direction of the model.\nGeolocation is specified by a model attributes as follows:\n - @geolocation={'longitude':123,'latitude':12}.\nNorth direction is specified by a model attribute as follows, using a vector:\n - @north==[1,2]\nIf no north direction is specified, then [0,1] is the default (i.e. north is in the direction of the y-axis);\n\\n\nEach sensor has a location and direction, specified using either rays or planes.\nThe direction of the sensor specifies what is infront and what is behind the sensor.\nFor each sensor, only exposure infront of the sensor is calculated.\n\\n\nThe exposure is calculated by shooting rays in reverse.\nfrom the sensor origin to a set of points on the sky dome.\nIf the rays hits an obstruction, then the sky dome is obstructed..\nIf the ray hits no obstructions, then the sky dome is not obstructed.\n\\n\nThe exposure factor at each sensor point is calculated as follows:\n1. Shoot rays to all sky dome points.\n2. If the ray hits an obstruction, assign a wight of 0 to that ray.\n3. If a ray does not hit any obstructions, assign a weight between 0 and 1, depending on the incidence angle.\n4. Calculate the total solar expouse by adding up the weights for all rays.\n5. Divide by the maximum possible solar exposure for an unobstructed sensor.\n\\n\nThe solar exposure calculation takes into account the angle of incidence of the sun ray to the sensor direction.\nSun rays that are hitting the sensor straight on are assigned a weight of 1.\nSun rays that are hitting the sensor at an oblique angle are assigned a weight equal to the cosine of the angle.\n\\n\nIf 'direct\\_exposure' is selected, then the points on the sky dome will follow the path of the sun throughout the year.\nIf 'indirect\\_exposure' is selected, then the points on the sky dome will consist of points excluded by\nthe path of the sun throughout the year.\n\\n\nThe direct sky dome points cover a strip of sky where the sun travels.\nThe inderect sky dome points cover the segments of sky either side of the direct sun strip.\n\\n\nThe detail parameter spacifies the number of rays that get generated.\nThe higher the level of detail, the more accurate but also the slower the analysis will be.\nThe number of rays differs depending on the latitde.\n\\n\nAt latitude 0, the number of rays for 'direct' are as follows:\n0 = 44 rays,\n1 = 105 rays,\n2 = 510 rays,\n3 = 1287 rays.\n\\n\nAt latitude 0, the number of rays for 'indirect' are as follows:\n0 = 58 rays,\n1 = 204 rays,\n2 = 798 rays,\n3 = 3122 rays.\n\\n\nThe number of rays for 'sky' are as follows:\n0 = 89 rays,\n1 = 337 rays,\n2 = 1313 rays,\n3 = 5185 rays.\n\\n\nReturns a dictionary containing solar exposure results.\n\\n\nIf one  of the 'direct' methods is selected, the dictionary will contain:\n1. 'direct': A list of numbers, the direct exposure factors.\n\\n\nIf one  of the 'indirect' methods is selected, the dictionary will contain:\n1. 'indirect': A list of numbers, the indirect exposure factors.\n\\n\n\\n",
+								"returns": "A dictionary containing solar exposure results.\n"
 							},
 							"parameters": [
 								{
@@ -3512,7 +3520,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum; solar method.\n"
+										"shortText": "Enum; solar method."
 									},
 									"type": {
 										"type": "reference",
@@ -3536,7 +3544,7 @@
 					"sources": [
 						{
 							"fileName": "functions/analyze/View.ts",
-							"line": 63,
+							"line": 66,
 							"character": 16
 						}
 					],
@@ -3548,7 +3556,8 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Calculates an approximation of the unobstructed view for a set of origins.\n\\n\nTypically, the origins are created as centroids of a set of windows.\n\\n\nThe unobstructed view is calculated by shooting rays out from the origins in a fan pattern.\nThe 'radius' argument defines the maximum radius of the unobstructed view.\n(The radius is used to define the maximum distance for shooting the rays.)\nThe 'num_rays' argument defines the number of rays that will be shot,\nin a fab pattern parallel to the XY plane, with equal angle between rays.\nMore rays will result in more accurate result, but will also be slower to execute.\n\\n\nReturns a dictionary containing different unobstructed view metrics.\n\\n\n\\n"
+								"shortText": "Calculates an approximation of the unobstructed view for a set of origins.\n\\n\nTypically, the origins are created as centroids of a set of windows.\n\\n\nThe unobstructed view is calculated by shooting rays out from the origins in a fan pattern.\n\\n\nThe 'radius' argument defines the maximum radius of the unobstructed view.\n(The radius is used to define the maximum distance for shooting the rays.)\n\\n\nThe 'num_rays' argument defines the number of rays that will be shot,\nin a fan pattern parallel to the XY plane, with equal angle between rays.\nMore rays will result in more accurate result, but will also be slower to execute.\n\\n\nReturns a dictionary containing different unobstructed view metrics.\n\\n\n\\n",
+								"returns": "A dictionary containing different unobstructed view metrics\n"
 							},
 							"parameters": [
 								{
@@ -3669,7 +3678,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "The angle of the unobstructed view, in radians.\n"
+										"shortText": "The angle of the unobstructed view, in radians."
 									},
 									"type": {
 										"type": "intrinsic",
@@ -3693,7 +3702,7 @@
 					"sources": [
 						{
 							"fileName": "functions/analyze/Visibility.ts",
-							"line": 60,
+							"line": 61,
 							"character": 16
 						}
 					],
@@ -3705,7 +3714,8 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Calculates the visibility of a set of target positions from a set of origins.\n\\n\nTypically, the origins are created as centroids of a set of windows. The targets are a set of positions\nwhose visibility is to be analysed.\n\\n\nThe visibility is calculated by shooting rays out from the origins towards the targets.\nThe 'radius' argument defines the maximum radius of the visibility.\n(The radius is used to define the maximum distance for shooting the rays.)\n\\n\nReturns a dictionary containing different visibility metrics.\n\\n\n\\n"
+								"shortText": "Calculates the visibility of a set of target positions from a set of origins.\n\\n\nTypically, the origins are created as centroids of a set of windows. The targets are a set of positions\nwhose visibility is to be analysed.\n\\n\nThe visibility is calculated by shooting rays out from the origins towards the targets.\nThe 'radius' argument defines the maximum radius of the visibility.\n(The radius is used to define the maximum distance for shooting the rays.)\n\\n\nReturns a dictionary containing different visibility metrics.\n\\n\n\\n",
+								"returns": "A dictionary containing different visibility metrics.\n"
 							},
 							"parameters": [
 								{
@@ -3821,7 +3831,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "The traget positions.\n"
+										"shortText": "The target positions."
 									},
 									"type": {
 										"type": "union",
@@ -3901,7 +3911,7 @@
 			"kindString": "Namespace",
 			"flags": {},
 			"comment": {
-				"shortText": "The `attrib` module has functions for working with attributes in teh model.\nNote that attributes can also be set and retrieved using the \"@\" symbol."
+				"shortText": "The `attrib` module has functions for working with attributes in the model.\nNote that attributes can also be set and retrieved using the \"@\" symbol."
 			},
 			"children": [
 				{
@@ -4611,7 +4621,7 @@
 					"sources": [
 						{
 							"fileName": "functions/attrib/Add.ts",
-							"line": 21,
+							"line": 22,
 							"character": 16
 						}
 					],
@@ -4623,7 +4633,8 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Add one or more attributes to the model.\nThe attribute will appear as a new column in the attribute table.\n(At least one entity must have a value for the column to be visible in the attribute table).\nAll attribute values will be set to null.\n\\n"
+								"shortText": "Add one or more attributes to the model.\nThe attribute will appear as a new column in the attribute table.\n(At least one entity must have a value for the column to be visible in the attribute table).\nAll attribute values will be set to null.\n\\n",
+								"returns": "void\n"
 							},
 							"parameters": [
 								{
@@ -4661,7 +4672,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, the data type for this attribute"
+										"shortText": "Enum, the data type for this attribute."
 									},
 									"type": {
 										"type": "reference",
@@ -4675,7 +4686,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "A single attribute name, or a list of attribute names.\n"
+										"shortText": "A single attribute name, or a list of attribute names."
 									},
 									"type": {
 										"type": "union",
@@ -4723,7 +4734,8 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Delete one or more attributes from the model.\nThe column in the attribute table will be deleted.\nAll values will also be deleted.\n\\n"
+								"shortText": "Delete one or more attributes from the model. The column in the attribute table will be deleted.\nAll values will also be deleted. \\n",
+								"returns": "void\n"
 							},
 							"parameters": [
 								{
@@ -4761,7 +4773,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "A single attribute name, or a list of attribute names. In 'null' all attributes will be deleted.\n"
+										"shortText": "A single attribute name, or a list of attribute names. If 'null', all attributes\nwill be deleted."
 									},
 									"type": {
 										"type": "union",
@@ -4946,7 +4958,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Get attribute values for one or more entities.\n\\n\nIf entities is null, then model level attributes will be returned.\n\\n",
+								"shortText": "Get attribute values for one or more entities.\n\\n\nIf `entities` is null, then model level attributes will be returned.\n\\n",
 								"returns": "One attribute value, or a list of attribute values.\n"
 							},
 							"parameters": [
@@ -5074,7 +5086,7 @@
 					"sources": [
 						{
 							"fileName": "functions/attrib/Push.ts",
-							"line": 22,
+							"line": 23,
 							"character": 16
 						}
 					],
@@ -5086,7 +5098,8 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Push attributes up or down the hierarchy. The original attribute is not changed.\n\\n"
+								"shortText": "Push attributes up or down the hierarchy. The original attribute is not changed.\n\\n",
+								"returns": "void\n"
 							},
 							"parameters": [
 								{
@@ -5256,7 +5269,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, the method for aggregating attribute values in cases where aggregation is necessary.\n"
+										"shortText": "Enum, the method for aggregating attribute values in cases where aggregation is necessary."
 									},
 									"type": {
 										"type": "reference",
@@ -5280,7 +5293,7 @@
 					"sources": [
 						{
 							"fileName": "functions/attrib/Rename.ts",
-							"line": 20,
+							"line": 21,
 							"character": 16
 						}
 					],
@@ -5292,7 +5305,8 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Rename an attribute in the model.\nThe header for column in the attribute table will be renamed.\nAll values will remain the same.\n\\n"
+								"shortText": "Rename an attribute in the model.\nThe header for the column in the attribute table will be renamed.\nAll values will remain the same.\n\\n",
+								"returns": "void\n"
 							},
 							"parameters": [
 								{
@@ -5344,7 +5358,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "The old attribute name.\n"
+										"shortText": "The new attribute name."
 									},
 									"type": {
 										"type": "intrinsic",
@@ -5368,7 +5382,7 @@
 					"sources": [
 						{
 							"fileName": "functions/attrib/Set.ts",
-							"line": 29,
+							"line": 30,
 							"character": 16
 						}
 					],
@@ -5380,7 +5394,8 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Set an attribute value for one or more entities.\n\\n\nIf entities is null, then model level attributes will be set.\n\\n"
+								"shortText": "Set an attribute value for one or more entities.\n\\n\nIf `entities` is null, then model level attributes will be set.\n\\n",
+								"returns": "void\n"
 							},
 							"parameters": [
 								{
@@ -5511,7 +5526,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum\n"
+										"shortText": "Enum"
 									},
 									"type": {
 										"type": "reference",
@@ -5535,7 +5550,7 @@
 					"sources": [
 						{
 							"fileName": "functions/attrib/Values.ts",
-							"line": 17,
+							"line": 18,
 							"character": 16
 						}
 					],
@@ -5547,16 +5562,16 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Get a list of unique attribute balues for an attribute.\n\\n",
-								"returns": "A list of dictionaries, defining the name and type of each attribute.",
+								"shortText": "Get a list of unique attribute values for an attribute.\n\\n",
+								"returns": "A list of values of the attribute.",
 								"tags": [
 									{
 										"tag": "example",
-										"text": "attribs = attrib.Discover(\"pg\")"
+										"text": "attribs = attrib.Values(\"pg\")"
 									},
 									{
 										"tag": "example_info",
-										"text": "An example of `attribs`: `[{name: \"description\", type: \"str\"}, {name: \"area\", type: \"number\"}]`.\n"
+										"text": "An example of `attribs`: `[\"True\", \"False\"]`.\n"
 									}
 								]
 							},
@@ -5595,6 +5610,9 @@
 									"kind": 32768,
 									"kindString": "Parameter",
 									"flags": {},
+									"comment": {
+										"shortText": "A single attribute name, or a list of attribute names."
+									},
 									"type": {
 										"type": "union",
 										"types": [
@@ -6320,13 +6338,12 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Calculates the area of en entity.",
-								"text": "The entity can be a polygon, a face, a closed polyline, a closed wire, or a collection.\n\nGiven a list of entities, a list of areas are returned.\n",
-								"returns": "Area.",
+								"shortText": "Calculates the area of en entity.\n\\n\nThe entity can be a polygon, a face, a closed polyline, a closed wire, or a collection.\n\\n\nGiven a list of entities, a list of areas are returned.",
+								"returns": "A number. Area or a list of areas.",
 								"tags": [
 									{
 										"tag": "example",
-										"text": "area1 = calc.Area (surface1)\n"
+										"text": "`area1 = calc.Area (surface1)`\n"
 									}
 								]
 							},
@@ -6400,7 +6417,7 @@
 					"sources": [
 						{
 							"fileName": "functions/calc/BBox.ts",
-							"line": 22,
+							"line": 25,
 							"character": 16
 						}
 					],
@@ -6412,9 +6429,8 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Returns the bounding box of the entities.\nThe bounding box is an imaginary box that completley contains all the geometry.\nThe box is always aligned with the global x, y, and z axes.\nThe bounding box consists of a list of lists, as follows [[x, y, z], [x, y, z], [x, y, z], [x, y, z]].",
-								"text": "- The first [x, y, z] is the coordinates of the centre of the bounding box.\n- The second [x, y, z] is the corner of the bounding box with the lowest x, y, z values.\n- The third [x, y, z] is the corner of the bounding box with the highest x, y, z values.\n- The fourth [x, y, z] is the dimensions of the bounding box.\n",
-								"returns": "The bounding box consisting of a list of four lists.\n"
+								"shortText": "Returns the bounding box of the entities.\n\\n\nThe bounding box is an imaginary box that completely contains all the geometry.\nThe box is always aligned with the global x, y, and z axes.\n\\n\nThe bounding box consists of a list of lists, as follows [[x, y, z], [x, y, z], [x, y, z], [x, y, z]].\n- The first [x, y, z] is the coordinates of the centre of the bounding box.\n- The second [x, y, z] is the corner of the bounding box with the lowest x, y, z values.\n- The third [x, y, z] is the corner of the bounding box with the highest x, y, z values.\n- The fourth [x, y, z] is the dimensions of the bounding box.\n\\n\nTo visualize the bounding box, see `Visualize.BBox`.",
+								"returns": "The bounding box, consisting of a list of four lists.\n"
 							},
 							"parameters": [
 								{
@@ -6438,7 +6454,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "The etities for which to calculate the bounding box."
+										"shortText": "The entities for which to calculate the bounding box."
 									},
 									"type": {
 										"type": "union",
@@ -6488,8 +6504,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Calculates the centroid of an entity.",
-								"text": "If 'ps_average' is selected, the centroid is the average of the positions that make up that entity.\n\nIf 'center_of_mass' is selected, the centroid is the centre of mass of the faces that make up that entity.\nNote that only faces are deemed to have mass.\n\nGiven a list of entities, a list of centroids will be returned.\n\nGiven a list of positions, a single centroid that is the average of all those positions will be returned.\n",
+								"shortText": "Calculates the centroid of an entity.\n\\n\nIf 'ps\\_average' is selected, the centroid is the average of the positions that make up that entity.\n\\n\nIf 'center\\_of\\_mass' is selected, the centroid is the centre of mass of the faces that make up that entity.\nNote that only faces are deemed to have mass.\n\\n\nGiven a list of entities, a list of centroids will be returned.\n\\n\nGiven a list of positions, a single centroid that is the average of all those positions will be returned.",
 								"returns": "A centroid [x, y, z] or a list of centroids.",
 								"tags": [
 									{
@@ -6603,11 +6618,11 @@
 								"tags": [
 									{
 										"tag": "example",
-										"text": "distance1 = calc.Distance (position1, position2, p_to_p_distance)"
+										"text": "`distance1 = calc.Distance(position1, position2, p_to_p_distance)`"
 									},
 									{
 										"tag": "example_info",
-										"text": "position1 = [0,0,0], position2 = [[0,0,10],[0,0,20]], Expected value of distance is 10.\n"
+										"text": "`position1 = [0,0,0]`, `position2 = [[0,0,10],[0,0,20]]`, Expected value of distance is `10`.\n"
 									}
 								]
 							},
@@ -6733,8 +6748,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Calculates the xyz coord along an edge, wire, or polyline given a t parameter.",
-								"text": "The 't' parameter varies between 0 and 1, where 0 indicates the start and 1 indicates the end.\nFor example, given a polyline,\nevaluating at t=0 gives that xyz at the start,\nevaluating at t=0.5 gives the xyz halfway along the polyline,\nevaluating at t=1 gives the xyz at the end of the polyline.\n\nGiven a single edge, wire, or polyline, a single xyz coord will be returned.\n\nGiven a list of edges, wires, or polylines, a list of xyz coords will be returned.\n\nGiven any entity that has wires (faces, polygons and collections),\na list of wires will be extracted, and a list of coords will be returned.\n",
+								"shortText": "Calculates the xyz coord along an edge, wire, or polyline given a t parameter.\n\\n\nThe 't' parameter varies between 0 and 1, where 0 indicates the start and 1 indicates the end.\nFor example, given a polyline,\n- evaluating at t=0 gives that xyz at the start,\n- evaluating at t=0.5 gives the xyz halfway along the polyline,\n- evaluating at t=1 gives the xyz at the end of the polyline.\n\\n\nGiven a single edge, wire, or polyline, a single xyz coord will be returned.\n\\n\nGiven a list of edges, wires, or polylines, a list of xyz coords will be returned.\n\\n\nGiven any entity that has wires (faces, polygons and collections),\na list of wires will be extracted, and a list of coords will be returned.",
 								"returns": "The coordinates [x, y, z], or a list of coordinates.",
 								"tags": [
 									{
@@ -6843,8 +6857,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Calculates the length of an entity.",
-								"text": "The entity can be an edge, a wire, a polyline, or anything from which wires can be extracted.\nThis includes polylines, polygons, faces, and collections.\n\nGiven a list of edges, wires, or polylines, a list of lengths are returned.\n\nGiven any types of entities from which wires can be extracted, a list of lengths are returned.\nFor example, given a single polygon, a list of lengths are returned (since a polygon may have multiple wires).\n",
+								"shortText": "Calculates the length of an entity.\n\\n\nThe entity can be an edge, a wire, a polyline, or anything from which wires can be extracted.\nThis includes polylines, polygons, faces, and collections.\n\\n\nGiven a list of edges, wires, or polylines, a list of lengths are returned.\n\\n\nGiven any types of entities from which wires can be extracted, a list of lengths are returned.\nFor example, given a single polygon, a list of lengths are returned (since a polygon may have multiple wires).",
 								"returns": "Lengths, a number or list of numbers.",
 								"tags": [
 									{
@@ -6935,13 +6948,12 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Calculates the normal vector of an entity or list of entities. The vector is normalised, and scaled\nby the specified scale factor.",
-								"text": "Given a single entity, a single normal will be returned. Given a list of entities, a list of normals will be returned.\n\nFor polygons, faces, and face wires the normal is calculated by taking the average of all the normals of the face triangles.\n\nFor polylines and polyline wires, the normal is calculated by triangulating the positions, and then\ntaking the average of all the normals of the triangles.\n\nFor edges, the normal is calculated by takingthe avery of the normals of the two vertices.\n\nFor vertices, the normal is calculated by creating a triangle out of the two adjacent edges,\nand then calculating the normal of the triangle.\n(If there is only one edge, or if the two adjacent edges are colinear, the the normal of the wire is returned.)\n\nFor positions, the normal is calculated by taking the average of the normals of all the vertices linked to the position.\n\nIf the normal cannot be calculated, [0, 0, 0] will be returned.\n",
+								"shortText": "Calculates the normal vector of an entity or list of entities. The vector is normalised, and scaled\nby the specified scale factor.\n\\n\nGiven a single entity, a single normal will be returned. Given a list of entities, a list of normals will be returned.\n\\n\nFor polygons, faces, and face wires the normal is calculated by taking the average of all the normals of the face triangles.\n\\n\nFor polylines and polyline wires, the normal is calculated by triangulating the positions, and then\ntaking the average of all the normals of the triangles.\n\\n\nFor edges, the normal is calculated by takingthe avery of the normals of the two vertices.\n\\n\nFor vertices, the normal is calculated by creating a triangle out of the two adjacent edges,\nand then calculating the normal of the triangle.\n(If there is only one edge, or if the two adjacent edges are colinear, the the normal of the wire is returned.)\n\\n\nFor positions, the normal is calculated by taking the average of the normals of all the vertices linked to the position.\n\\n\nIf the normal cannot be calculated, `[0, 0, 0]` will be returned.",
 								"returns": "The normal vector [x, y, z] or a list of normal vectors.",
 								"tags": [
 									{
 										"tag": "example",
-										"text": "normal1 = calc.Normal (polygon1, 1)"
+										"text": "`normal1 = calc.Normal(polygon1, 1)`"
 									},
 									{
 										"tag": "example_info",
@@ -7049,8 +7061,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Returns a plane from a polygon, a face, a polyline, or a wire.\nFor polylines or wires, there must be at least three non-colinear vertices.",
-								"text": "The winding order is counter-clockwise.\nThis means that if the vertices are ordered counter-clockwise relative to your point of view,\nthen the z axis of the plane will be pointing towards you.\n",
+								"shortText": "Returns a plane from a polygon, a face, a polyline, or a wire.\nFor polylines or wires, there must be at least three non-colinear vertices.\n\\n\nThe winding order is counter-clockwise.\nThis means that if the vertices are ordered counter-clockwise relative to your point of view,\nthen the z axis of the plane will be pointing towards you.",
 								"returns": "The plane.\n"
 							},
 							"parameters": [
@@ -7138,8 +7149,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Returns a ray for an edge or a polygons.",
-								"text": "For edges, it returns a ray along the edge, from the start vertex to the end vertex\n\nFor a polygon, it returns the ray that is the z-axis of the plane.\n\nFor an edge, the ray vector is not normalised. For a polygon, the ray vector is normalised.\n",
+								"shortText": "Returns a ray for an edge or a polygons.\n\\n\nFor edges, it returns a ray along the edge, from the start vertex to the end vertex\n\\n\nFor a polygon, it returns the ray that is the z-axis of the plane.\n\\n\nFor an edge, the ray vector is not normalised. For a polygon, the ray vector is normalised.",
 								"returns": "The ray.\n"
 							},
 							"parameters": [
@@ -7228,8 +7238,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Returns a vector along an edge, from the start position to the end position.\nThe vector is not normalized.",
-								"text": "Given a single edge, a single vector will be returned. Given a list of edges, a list of vectors will be returned.\n\nGiven any entity that has edges (collection, polygons, polylines, faces, and wires),\na list of edges will be extracted, and a list of vectors will be returned.\n",
+								"shortText": "Returns a vector along an edge, from the start position to the end position.\nThe vector is not normalized.\n\\n\nGiven a single edge, a single vector will be returned. Given a list of edges, a list of vectors will be returned.\n\\n\nGiven any entity that has edges (collection, polygons, polylines, faces, and wires),\na list of edges will be extracted, and a list of vectors will be returned.",
 								"returns": "The vector [x, y, z] or a list of vectors.\n"
 							},
 							"parameters": [
@@ -7701,7 +7710,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Addes entities to a collection.\n\\n",
+								"shortText": "Adds entities to a collection.\n\\n",
 								"returns": "void\n"
 							},
 							"parameters": [
@@ -7788,8 +7797,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Create a new collection.",
-								"text": "If the `entities` argument is null or an empty list, then an empty collection will be created.\n\nIf the `name` argument is null, then no name attribute will be created for the collection.\n\nIf the list of entities contains other collections, these other collections will then become\nchildren of the new collection.\n",
+								"shortText": "Create a new collection.\n\\n\nIf the `entities` argument is null or an empty list, then an empty collection will be created.\n\\n\nIf the `name` argument is null, then no name attribute will be created for the collection.\n\\n\nIf the list of entities contains other collections, these other collections will then become\nchildren of the new collection.",
 								"returns": "Entities, new collection, or a list of new collections.",
 								"tags": [
 									{
@@ -7973,7 +7981,7 @@
 					"sources": [
 						{
 							"fileName": "functions/collection/Get.ts",
-							"line": 32,
+							"line": 33,
 							"character": 16
 						}
 					],
@@ -7985,7 +7993,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Get one or more collections from the model, given a name or list of names.\nCollections with an attribute called 'name' and with a value that matches teh given vale will be returned.\n\\n\nThe value for name can include wildcards: '?' matches any single character and '*' matches any sequence of characters.\nFor example, 'coll?' will match 'coll1' and 'colla'. 'coll*' matches any name that starts with 'coll'.\n\\n\nIf a single collection is found, the collection will be returned as a single item (not a list).\nThis is a convenience so that there is no need to get the first item out of the returned list.\n\\n\nIf no collections are found, then an empty list is returned.\n\\n",
+								"shortText": "Get one or more collections from the model, given a name or list of names. Collections with an\nattribute called 'name' and with a value that matches the given value will be returned.\n\\n\nThe value for name can include wildcards: '?' matches any single character and '*' matches any\nsequence of characters. For example, 'coll?' will match 'coll1' and 'colla'. 'coll*' matches any\nname that starts with 'coll'.\n\\n\nIf a single collection is found, the collection will be returned as a single item (not a list).\nThis is a convenience so that there is no need to get the first item out of the returned list.\n\\n\nIf no collections are found, then an empty list is returned.\n\\n",
 								"returns": "The collection, or a list of collections.\n"
 							},
 							"parameters": [
@@ -8176,7 +8184,7 @@
 			"kindString": "Namespace",
 			"flags": {},
 			"comment": {
-				"shortText": "The `dict` module has functions for working with dictionaries.\nThese functions have no direct link with the model, the are generic functions for manipulating dictionaries.\nThese functions neither make nor modify anything in the model.\nIn addition to these functions, there are also inline functions available for working with dictionaries."
+				"shortText": "The `dict` module has functions for working with dictionaries.\nThese functions have no direct link with the model, they are generic functions for manipulating dictionaries.\nThese functions neither make nor modify anything in the model.\nIn addition to these functions, there are also inline functions available for working with dictionaries."
 			},
 			"children": [
 				{
@@ -9444,7 +9452,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Divides edges into a set of shorter edges.\n\\n\n- If the `by_number` method is selected, then each edge is divided into\na fixed number of equal length shorter edges.\n- If the `by_length` method is selected, then each edge is divided into\nshorter edges of the specified length.\n- The length of the last segment will be the remainder.\n- If the `by_min_length` method is selected,\nthen the edge is divided into the number of shorter edges\nwith lengths equal to or greater than the minimum length specified.\n- If the `by_max_length` method is selected,\nthen the edge is divided into the number of shorter edges\nwith lengths equal to or less than the maximum length specified.\n\\n",
+								"shortText": "Divides edges into a set of shorter edges.\n\\n\n- If the `by_number` method is selected, then each edge is divided into\na fixed number of equal length shorter edges.\n- If the `by_length` method is selected, then each edge is divided into\nshorter edges of the specified length.\nThe length of the last segment will be the remainder.\n- If the `by_min_length` method is selected,\nthen the edge is divided into the number of shorter edges\nwith lengths equal to or greater than the minimum length specified.\n- If the `by_max_length` method is selected,\nthen the edge is divided into the number of shorter edges\nwith lengths equal to or less than the maximum length specified.\n\\n",
 								"returns": "Entities, a list of new edges resulting from the divide operation.",
 								"tags": [
 									{
@@ -9569,7 +9577,7 @@
 							"flags": {},
 							"comment": {
 								"shortText": "Fuse positions that lie within a certain tolerance of one another.\nNew positions will be created.\n\\n\nThe existing positions are analysed and clustered into groups of positions that lie with the\ntolerance distance from one another. For each cluster, a new position is created at the centre\nof the cluster. The xyz coordinates of the new position will be calculated as the average of all\nthe existing positions in the cluster.\n\\n\nIf the positions that are fuse have vertices attached, then the vertices will become welded.\n(Note that when using the `edit.Weld()` function, there is no threshold tolerance. Even vertices\nthat are far apart can be welded together. Fusing allows only vertices that are close together\nto be welded.)\n\\n\nIn some cases, if edges are shorter than the tolerance, this can result in edges being deleted.\nThe deletion of edges may also result in polylines or polygons being deleted. (It is therefore\nadvisable to filter out deleted entities after applying the `edit.Fuse()` function. For example,\nif you have a list of polygons, after fusing, you can filter the list like this:\n`pgons = pgons#pg`.)\n\\n\nThe new positions that get generated are returned.\n\\n",
-								"returns": "void\n"
+								"returns": "Entities, a list of new positions.\n"
 							},
 							"parameters": [
 								{
@@ -9648,7 +9656,7 @@
 					"sources": [
 						{
 							"fileName": "functions/edit/Hole.ts",
-							"line": 27,
+							"line": 32,
 							"character": 16
 						}
 					],
@@ -9661,7 +9669,25 @@
 							"flags": {},
 							"comment": {
 								"shortText": "Makes one or more holes in a polygon.\n\\n\nThe holes are specified by lists of positions.\nThe positions must be on the polygon, i.e. they must be co-planar with the polygon and\nthey must be within the boundary of the polygon. (Even positions touching the edge of the polygon\ncan result in no hole being generated.)\n\\n\nMultiple holes can be created.\n- If the positions is a single list, then a single hole will be generated.\n- If the positions is a list of lists, then multiple holes will be generated.\n\\n",
-								"returns": "Entities, a list of wires resulting from the hole(s).\n"
+								"returns": "Entities, a list of wires resulting from the hole(s).",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "<a href=\"/editor?file=/assets/examples/Functions_edit.Hole_examples.mob&node=1\" target=\"_blank\"> Correct Example </a>"
+									},
+									{
+										"tag": "example_info",
+										"text": "A model showing proper usage of edit.Hole, such that a hole is created in the orignal polygons."
+									},
+									{
+										"tag": "example",
+										"text": "<a href=\"/editor?file=/assets/examples/Functions_edit.Hole_examples.mob&node=2\" target=\"_blank\"> Wrong Example </a>"
+									},
+									{
+										"tag": "example_info",
+										"text": "A model showing potential improper usage of edit.Hole, where the hole entities are outside of the original.\n"
+									}
+								]
 							},
 							"parameters": [
 								{
@@ -9685,7 +9711,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "A polygon to make holes in."
+										"shortText": "A polygon to make holes in. This polygon is modified by the function."
 									},
 									"type": {
 										"type": "intrinsic",
@@ -9699,7 +9725,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "List of positions, or nested lists of positions, or entities from which positions\ncan be extracted."
+										"shortText": "List of positions, or nested lists of positions, or entities from which positions\ncan be extracted to create the holes."
 									},
 									"type": {
 										"type": "union",
@@ -9959,7 +9985,7 @@
 									},
 									{
 										"tag": "example_info",
-										"text": "Shifts the edges in the polygon wire, so that the every edge moves back by one position\nin the ring. The first edge will become the last edge."
+										"text": "Shifts the edges in the polygon wire, so that every edge moves back by one position\nin the ring. The first edge will become the last edge."
 									},
 									{
 										"tag": "example",
@@ -10055,8 +10081,8 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Make or break welds between vertices.\nIf two vertices are welded, then they share the same position.\n\\n\n- When making a weld between vertices, a new position is created. The new position is calculate\nas the average of all the existing positions of the vertices. The vertices will then be linked\nto the new position. This means that if the position is later moved, then all vertices will be\naffected. The new position is returned. The positions that become shared are returned.\n- When breaking a weld between vetices, existing positions are duplicated. Each vertex is then\nlinked to one of these duplicate positions. If these positions are later moved, then only one\nvertex will be affected.  The new positions that get generated are returned.\n\\n",
-								"returns": "void\n"
+								"shortText": "Make or break welds between vertices.\nIf two vertices are welded, then they share the same position.\n\\n\n- When making a weld between vertices (`make_weld`), a new position is created. The new position is calculated\nas the average of all the existing positions of the vertices. The vertices will then be linked\nto the new position. This means that if the position is later moved, then all vertices will be\naffected. The new position is returned. The positions that become shared are returned.\n- When breaking a weld between vetices (`break_weld`), existing positions are duplicated. Each vertex is then\nlinked to one of these duplicate positions. If these positions are later moved, then only one\nvertex will be affected.  The new positions that get generated are returned.\n\\n",
+								"returns": "Entities, a list of new positions depending on type of weld.\n"
 							},
 							"parameters": [
 								{
@@ -10399,7 +10425,7 @@
 								"tags": [
 									{
 										"tag": "example",
-										"text": "coords = intersect.PlaneEdge(plane, polyline1)"
+										"text": "`coords = intersect.PlaneEdge(plane, polyline1)`"
 									},
 									{
 										"tag": "example_info",
@@ -10514,11 +10540,11 @@
 								"tags": [
 									{
 										"tag": "example",
-										"text": "coords = intersect.RayFace(ray, polygon1)"
+										"text": "`coords = intersect.RayFace(ray, polygon1)`"
 									},
 									{
 										"tag": "example_info",
-										"text": "Returns a list of coordinates where the ray  intersects with the polygon.\n"
+										"text": "Returns a list of coordinates where the ray intersects with the polygon.\n"
 									}
 								]
 							},
@@ -11398,16 +11424,16 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Export data from the model as a file.\n\\n\nIf you expore to your  hard disk,\nit will result in a popup in your browser, asking you to save the file.\n\\n\nIf you export to Local Storage, there will be no popup.\n\\n",
+								"shortText": "Export data from the model as a file.\n\\n\nIf you export to your hard disk,\nit will result in a popup in your browser, asking you to save the file.\n\\n\nIf you export to Local Storage, there will be no popup.\n\\n",
 								"returns": "void.",
 								"tags": [
 									{
 										"tag": "example",
-										"text": "io.Export (#pg, 'my_model.obj', obj)"
+										"text": "io.Export (#pg, 'my\\_model.obj', obj)"
 									},
 									{
 										"tag": "example_info",
-										"text": "Exports all the polgons in the model as an OBJ.\n"
+										"text": "Exports all the polygons in the model as an OBJ.\n"
 									}
 								]
 							},
@@ -11644,7 +11670,7 @@
 					"sources": [
 						{
 							"fileName": "functions/io/Geoalign.ts",
-							"line": 25,
+							"line": 26,
 							"character": 16
 						}
 					],
@@ -11656,7 +11682,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Set the geolocation of the Cartesian coordinate system.\n\\n\nThe Cartesian coordinate system is geolocated by defining two points:\n- The latitude-longitude of the Cartesian origin.\n- The latitude-longitude of a point on the positive Cartesian X-axis.\n\\n",
+								"shortText": "Set the geolocation of the Cartesian coordinate system.\nDoes the same as the Geolocate function, but with alternate parameters.\n\\n\nThe Cartesian coordinate system is geolocated by defining two points:\n- The latitude-longitude of the Cartesian origin.\n- The latitude-longitude of a point on the positive Cartesian X-axis.\n\\n",
 								"returns": "void\n"
 							},
 							"parameters": [
@@ -11737,7 +11763,7 @@
 					"sources": [
 						{
 							"fileName": "functions/io/Geolocate.ts",
-							"line": 19,
+							"line": 24,
 							"character": 16
 						}
 					],
@@ -11749,7 +11775,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Set the geolocation of the Cartesian coordinate system.",
+								"shortText": "Set the geolocation of the Cartesian coordinate system.\nDoes the same as the Geoalign function, but with alternate parameters.\n\\n\nThe Cartesian coordinate system is geolocated by defining two points:\n- The latitude-longitude of the Cartesian origin.\n- The counter-clockwise rotation around the Cartesian origin, in radians.\n\\n",
 								"returns": "void\n"
 							},
 							"parameters": [
@@ -11840,16 +11866,16 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Imports data into the model.\n\\n\nThere are two ways of specifying the file location to be imported:\n- A url, e.g. \"https://www.dropbox.com/xxxx/my_data.obj\"\n- A file name in the local storage, e.g. \"my_data.obj\".\n\\n\nTo place a file in local storage, go to the Mobius menu, and select 'Local Storage' from the dropdown.\nNote that a script using a file in local storage may fail when others try to open the file.\n\\n",
+								"shortText": "Imports data into the model.\n\\n\nThere are two ways of specifying the file location to be imported:\n- A url, e.g. \"https://www.dropbox.com/xxxx/my_data.obj\"\n- A file name in the local storage, e.g. \"my_data.obj\". (PUT A LINK TO THE LOCAL HELP)\n\\n\nTo place a file in local storage, go to the Mobius menu, and select 'Local Storage' from the dropdown.\nNote that a script using a file in local storage may fail when others try to open the file.\n\\n",
 								"returns": "A list of the positions, points, polylines, polygons and collections added to the model.",
 								"tags": [
 									{
 										"tag": "example",
-										"text": "io.Import (\"my_data.obj\", obj)"
+										"text": "io.Import (\"my\\_data.obj\", obj)"
 									},
 									{
 										"tag": "example_info",
-										"text": "Imports the data from my_data.obj, from local storage.\n"
+										"text": "Imports the data from my\\_data.obj, from local storage.\n"
 									}
 								]
 							},
@@ -11874,7 +11900,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "The url to retrieve the data from"
+										"shortText": "The url to retrieve the data from."
 									},
 									"type": {
 										"type": "intrinsic",
@@ -11953,7 +11979,7 @@
 					"sources": [
 						{
 							"fileName": "functions/io/ImportData.ts",
-							"line": 19,
+							"line": 20,
 							"character": 16
 						}
 					],
@@ -11965,16 +11991,16 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Imports a string of data into the model.\n\\n",
-								"returns": "A list of the positions, points, polylines, polygons and collections added to the model.",
+								"shortText": "Imports a string of geometry data into the model, in various formats.\nThe geometry will be added to the model.\n\\n",
+								"returns": "A a collection of entities added to the model.",
 								"tags": [
 									{
 										"tag": "example",
-										"text": "io.Import (\"my_data.obj\", obj)"
+										"text": "io.ImportData (data_str, \"obj\")"
 									},
 									{
 										"tag": "example_info",
-										"text": "Imports the data from my_data.obj, from local storage.\n"
+										"text": "Imports the data in obj format.\n"
 									}
 								]
 							},
@@ -11999,7 +12025,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "The model data"
+										"shortText": "The model data."
 									},
 									"type": {
 										"type": "intrinsic",
@@ -12050,7 +12076,7 @@
 											"sources": [
 												{
 													"fileName": "functions/io/ImportData.ts",
-													"line": 19,
+													"line": 20,
 													"character": 117
 												}
 											]
@@ -12083,7 +12109,7 @@
 							"flags": {},
 							"comment": {
 								"shortText": "Transform a coordinate from latitude-longitude Geodesic coordinate to a Cartesian XYZ coordinate,\nbased on the geolocation of the model.",
-								"returns": "XYZ coordinates\n"
+								"returns": "XYZ coordinates.\n"
 							},
 							"parameters": [
 								{
@@ -12149,7 +12175,7 @@
 					"sources": [
 						{
 							"fileName": "functions/io/Read.ts",
-							"line": 14,
+							"line": 16,
 							"character": 22
 						}
 					],
@@ -12162,7 +12188,8 @@
 							"flags": {},
 							"comment": {
 								"shortText": "Read data from a Url or from local storage.",
-								"returns": "the data.\n"
+								"text": "//TEST WITH A TEST FILE ? AND INSERT DIAGRAMS AND REFERENCE THE VR VIEWER\n",
+								"returns": "The data.\n"
 							},
 							"parameters": [
 								{
@@ -12214,7 +12241,7 @@
 													"sources": [
 														{
 															"fileName": "functions/io/Read.ts",
-															"line": 14,
+															"line": 16,
 															"character": 79
 														}
 													]
@@ -12239,7 +12266,7 @@
 					"sources": [
 						{
 							"fileName": "functions/io/Write.ts",
-							"line": 18,
+							"line": 20,
 							"character": 22
 						}
 					],
@@ -12251,8 +12278,8 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Write data to the hard disk or to the local storage.",
-								"returns": "whether the data is successfully saved.\n"
+								"shortText": "Write data to the hard disk or to the local storage.\nDepending on your browser's download settings,\na dialog box may pop up to manually confirm the action if writing to the hard disk.",
+								"returns": "Whether the data is successfully saved. (true/false)\n"
 							},
 							"parameters": [
 								{
@@ -12417,7 +12444,7 @@
 			"kindString": "Namespace",
 			"flags": {},
 			"comment": {
-				"shortText": "The `list` module has functions for working with lists of items.\nThese functions have no direct link with the model, the are generic functions for manipulating lists.\nThe functions are often used when manipulating lists of IDs of entities in the model.\nThese functions neither make nor modify anything in the model.\nIn addition to these functions, there are also various inline functions available for working with lists."
+				"shortText": "The `list` module has functions for working with lists of items.\nThese functions have no direct link with the model, they are generic functions for manipulating lists.\n/n\nThe functions are often used when manipulating lists of IDs of entities in the model.\nThese functions neither make nor modify anything in the model.\n/n\nIn addition to these functions, there are also various inline functions available for working with lists."
 			},
 			"children": [
 				{
@@ -12457,7 +12484,7 @@
 							"sources": [
 								{
 									"fileName": "functions/list/index.ts",
-									"line": 24,
+									"line": 26,
 									"character": 4
 								}
 							],
@@ -12552,7 +12579,7 @@
 							"sources": [
 								{
 									"fileName": "functions/list/index.ts",
-									"line": 28,
+									"line": 30,
 									"character": 4
 								}
 							],
@@ -12614,7 +12641,7 @@
 							"sources": [
 								{
 									"fileName": "functions/list/index.ts",
-									"line": 31,
+									"line": 33,
 									"character": 4
 								}
 							],
@@ -12676,7 +12703,7 @@
 							"sources": [
 								{
 									"fileName": "functions/list/index.ts",
-									"line": 34,
+									"line": 36,
 									"character": 4
 								}
 							],
@@ -12749,7 +12776,7 @@
 							"sources": [
 								{
 									"fileName": "functions/list/index.ts",
-									"line": 37,
+									"line": 39,
 									"character": 4
 								}
 							],
@@ -12800,7 +12827,7 @@
 							"sources": [
 								{
 									"fileName": "functions/list/index.ts",
-									"line": 40,
+									"line": 42,
 									"character": 4
 								}
 							],
@@ -12895,7 +12922,7 @@
 					"sources": [
 						{
 							"fileName": "functions/list/index.ts",
-							"line": 23,
+							"line": 25,
 							"character": 13
 						}
 					]
@@ -13021,7 +13048,7 @@
 					"sources": [
 						{
 							"fileName": "functions/list/Remove.ts",
-							"line": 20,
+							"line": 24,
 							"character": 16
 						}
 					],
@@ -13034,7 +13061,25 @@
 							"flags": {},
 							"comment": {
 								"shortText": "Removes items in a list.\n\\n\nIf method is set to 'index', then item should be the index of the item to be replaced.\nNegative indexes are allowed.\nIf method is not set to 'index', then item should be the value.",
-								"returns": "void\n"
+								"returns": "void",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "`list.Remove(list, 3, 'index')`"
+									},
+									{
+										"tag": "example_info",
+										"text": "where `list = [0, 1, 2, 3]`. Expected new value of list is [0, 1, 2]."
+									},
+									{
+										"tag": "example",
+										"text": "`list.Remove(list, 3, 'all_values')`"
+									},
+									{
+										"tag": "example_info",
+										"text": "where `list = [3, 1, 2, 3, 4]`. Expected new value of list is  [1, 2, 4].\n"
+									}
+								]
 							},
 							"parameters": [
 								{
@@ -13099,7 +13144,7 @@
 					"sources": [
 						{
 							"fileName": "functions/list/Replace.ts",
-							"line": 20,
+							"line": 26,
 							"character": 16
 						}
 					],
@@ -13111,8 +13156,26 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Replaces items in a list.\n\\n\nIf method is set to 'index', then old_item should be the index of the item to be replaced. Negative indexes are allowed.\nIf method is not set to 'index', then old_item should be the value.",
-								"returns": "void\n"
+								"shortText": "Replaces items in a list.\n\\n\nIf method is set to 'index', then old_item should be the index of the item to be replaced. Negative indexes are allowed.\nIf method is not set to 'index', then old_item should be the value to be replaced.",
+								"returns": "void",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "`list.Replace(list, 3, [6, 7, 8], 'last_value')"
+									},
+									{
+										"tag": "example_info",
+										"text": "where `list = [3, 1, 2, 3, 4]`.\nExpected new value of list is [3, 1, 2, [6, 7, 8], 4]`."
+									},
+									{
+										"tag": "example",
+										"text": "`list.Replace(list, 2, 0, 'index')"
+									},
+									{
+										"tag": "example_info",
+										"text": "where `list = [0,1,2,3,4,5]`.\nExpected new value of list is `[0,1,0,3,4,5]`.\n"
+									}
+								]
 							},
 							"parameters": [
 								{
@@ -13122,7 +13185,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "The list in which to replace items"
+										"shortText": "The list in which to replace items."
 									},
 									"type": {
 										"type": "array",
@@ -13203,24 +13266,24 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Sorts an list, based on the values of the items in the list.\n\\n\nFor alphabetical sort, values are sorted character by character,\nnumbers before upper case alphabets, upper case alphabets before lower case alphabets.",
+								"shortText": "Sorts a list, based on the values of the items in the list.\n\\n\nFor alphabetical sort, values are sorted character by character,\nnumbers before upper case alphabets, upper case alphabets before lower case alphabets.",
 								"returns": "void",
 								"tags": [
 									{
 										"tag": "example",
-										"text": "list.Sort(list, 'alpha')"
+										"text": "`list.Sort(list, 'alpha')`"
 									},
 									{
 										"tag": "example_info",
-										"text": "where list = [\"1\",\"2\",\"10\",\"Orange\",\"apple\"]\nExpected value of list is [\"1\",\"10\",\"2\",\"Orange\",\"apple\"]."
+										"text": "where `list = [\"1\",\"2\",\"10\",\"Orange\",\"apple\"]`.\nExpected value of list is `[\"1\",\"10\",\"2\",\"Orange\",\"apple\"]`."
 									},
 									{
 										"tag": "example",
-										"text": "list.Sort(list, 'numeric')"
+										"text": "`list.Sort(list, 'numeric')`"
 									},
 									{
 										"tag": "example_info",
-										"text": "where list = [56,6,48]\nExpected value of list is [6,48,56].\n"
+										"text": "where `list = [56,6,48]`.\nExpected value of list is `[6,48,56]`.\n"
 									}
 								]
 							},
@@ -13285,16 +13348,16 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Removes and inserts items in a list.\n\\n\nIf no items_to_add are specified, then items are only removed.\nIf num_to_remove is 0, then values are only inserted.",
+								"shortText": "Removes and inserts items in a list.\n\\n\nIf no `items_to_add` are specified, then items are only removed.\nIf `num_to_remove` is 0, then values are only inserted.",
 								"returns": "void",
 								"tags": [
 									{
 										"tag": "example",
-										"text": "result = list.Splice(list1, 1, 3, [2.2, 3.3])"
+										"text": "`result = list.Splice(list1, 1, 3, [2.2, 3.3])`"
 									},
 									{
 										"tag": "example_info",
-										"text": "where list1 = [10, 20, 30, 40, 50]\nExpected value of result is [10, 2.2, 3.3, 50]. New items were added where the items were removed.\n"
+										"text": "where list1 = `[10, 20, 30, 40, 50]`.\nExpected value of result is `[10, 2.2, 3.3, 50]`. New items were added where the items were removed.\n"
 									}
 								]
 							},
@@ -13323,7 +13386,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Zero-based index after which to starting removing or inserting items."
+										"shortText": "Zero-based index after which to start removing or inserting items."
 									},
 									"type": {
 										"type": "intrinsic",
@@ -13351,7 +13414,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Optional, list of items to add, or null."
+										"shortText": "Optional, list of items to add, or null/empty list."
 									},
 									"type": {
 										"type": "array",
@@ -13393,7 +13456,7 @@
 			"sources": [
 				{
 					"fileName": "functions/list/index.ts",
-					"line": 9,
+					"line": 11,
 					"character": 0
 				}
 			]
@@ -14214,11 +14277,11 @@
 								"tags": [
 									{
 										"tag": "example",
-										"text": "copies = make.Copy([position1,polyine1,polygon1])"
+										"text": "copies = make.Clone([position1,polyine1,polygon1])"
 									},
 									{
 										"tag": "example_info",
-										"text": "Creates a copy of position1, polyine1, and polygon1.\n"
+										"text": "Creates a copy of position1, polyline1, and polygon1 and deletes the originals.\n"
 									}
 								]
 							},
@@ -14330,7 +14393,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Creates a copy of one or more entities.\n\\n\nPositions, objects, and collections can be copied. Topological entities (vertices, edges, and\nwires) cannot be copied since they cannot exist without a parent entity.\n\\n\nWhen entities are copied, their positions are also copied. The original entities and the copied\nentities will not be welded (they will not share positions).\n\\n\nThe copy operation includes an option to also move entities, by a specified vector. If the vector\nis null, then the entities will not be moved.\n\\n\nThe vector argument is overloaded. If you supply a list of vectors, the function will try to find\na 1 -to-1 match between the list of entities and the list of vectors. In the overloaded case, if\nthe two lists do not have the same length, then an error will be thrown.\n\\n",
+								"shortText": "Creates a copy of one or more entities (without deleting the original entity).\n\\n\nPositions, objects, and collections can be copied. Sub-entities (vertices, edges, and\nwires) cannot be copied since they cannot exist without a parent entity.\n\\n\nWhen entities are copied, their positions are also copied. The original entities and the copied\nentities will not be welded (they will not share positions).\n\\n\nThe copy operation includes an option to also move entities, by a specified vector. If the vector\nis null, then the entities will not be moved.\n\\n\nThe vector argument is overloaded. If you supply a list of vectors, the function will try to find\na 1 -to-1 match between the list of entities and the list of vectors. In the overloaded case, if\nthe two lists do not have the same length, then an error will be thrown.\n\\n",
 								"returns": "Entities, the copied entity or a list of copied entities.",
 								"tags": [
 									{
@@ -14481,8 +14544,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Cuts polygons and polylines using a plane.",
-								"text": "If the 'keep_above' method is selected, then only the part of the cut entities above the plane are kept.\nIf the 'keep_below' method is selected, then only the part of the cut entities below the plane are kept.\nIf the 'keep_both' method is selected, then both the parts of the cut entities are kept.\n\nCurrently does not support cutting polygons with holes. TODO\n\nIf 'keep_both' is selected, returns a list of two lists.\n[[entities above the plane], [entities below the plane]].\n",
+								"shortText": "Cuts polygons and polylines using a plane.\n\\n\nIf the 'keep_above' method is selected, then only the part of the cut entities above the plane are kept.\nIf the 'keep_below' method is selected, then only the part of the cut entities below the plane are kept.\nIf the 'keep_both' method is selected, then both the parts of the cut entities are kept.\n\\n\nCurrently does not support cutting polygons with holes.\n\\n\nIf 'keep_both' is selected, returns a list of two lists.\n[[entities above the plane], [entities below the plane]].",
 								"returns": "Entities, a list of three lists of entities resulting from the cut.\n\n"
 							},
 							"parameters": [
@@ -14606,7 +14668,7 @@
 					"sources": [
 						{
 							"fileName": "functions/make/Extrude.ts",
-							"line": 46,
+							"line": 48,
 							"character": 16
 						}
 					],
@@ -14627,7 +14689,7 @@
 									},
 									{
 										"tag": "example_info",
-										"text": "Creates a polyline of total length 10 (with two edges of length 5 each) in the z-direction.\nIn this case, the 'quads' setting is ignored."
+										"text": "Creates a polyline of total length 10 (with two edges of length 5 each) in the\nz-direction.\nIn this case, the 'quads' setting is ignored."
 									},
 									{
 										"tag": "example",
@@ -14687,7 +14749,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Number or vector. If number, assumed to be [0,0,value] (i.e. extrusion distance in z-direction)."
+										"shortText": "Number or vector. If number, assumed to be [0,0,value] (i.e. extrusion distance in\nz-direction)."
 									},
 									"type": {
 										"type": "union",
@@ -14778,8 +14840,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Joins existing polyline or polygons to create new polyline or polygons.",
-								"text": "In order to be joined, the polylines or polygons must be fused (i.e. share the same positions)\n\nThe existing polygons are not affected.\n\nNote: Joining polylines currently not implemented.\n",
+								"shortText": "Joins existing polyline or polygons to create new polyline or polygons.\n\\n\nIn order to be joined, the polylines or polygons must be fused (i.e. share the same positions)\n\\n\nThe existing polygons are not affected.\n\\n\nNote: Joining polylines currently not implemented.",
 								"returns": "Entities, a list of new polylines or polygons resulting from the join.\n"
 							},
 							"parameters": [
@@ -14836,7 +14897,7 @@
 					"sources": [
 						{
 							"fileName": "functions/make/Loft.ts",
-							"line": 30,
+							"line": 31,
 							"character": 16
 						}
 					],
@@ -14848,8 +14909,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Lofts between entities.",
-								"text": "The geometry that is generated depends on the method that is selected.\n- The 'quads' methods will generate polygons.\n- The 'stringers' and 'ribs' methods will generate polylines.\n- The 'copies' method will generate copies of the input geometry type.\n",
+								"shortText": "Lofts between entities.\n\\n\nThe geometry that is generated depends on the method that is selected.\n- The 'quads' method will generate polygons.\n- The 'stringers' and 'ribs' methods will generate polylines.\n- The 'copies' method will generate copies of the input geometry type.",
 								"returns": "Entities, a list of new polygons or polylines resulting from the loft.",
 								"tags": [
 									{
@@ -14931,6 +14991,9 @@
 									"kind": 32768,
 									"kindString": "Parameter",
 									"flags": {},
+									"comment": {
+										"shortText": "The number of divisions in the resultant entities. Minimum is 1."
+									},
 									"type": {
 										"type": "intrinsic",
 										"name": "number"
@@ -14984,7 +15047,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Adds one or more new points to the model.",
+								"shortText": "Adds one or more new points to the model. Points are objects that can be added to collections.",
 								"returns": "Entities, new point or a list of new points.",
 								"tags": [
 									{
@@ -15222,7 +15285,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Adds one or more new polylines to the model.",
+								"shortText": "Adds one or more new polylines to the model. Polylines are objects.",
 								"returns": "Entities, new polyline, or a list of new polylines.",
 								"tags": [
 									{
@@ -15333,7 +15396,7 @@
 					"sources": [
 						{
 							"fileName": "functions/make/Position.ts",
-							"line": 20,
+							"line": 21,
 							"character": 16
 						}
 					],
@@ -15345,7 +15408,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Adds one or more new position to the model.",
+								"shortText": "Adds one or more new positions to the model. Positions are unique entities and cannot be added to\ncollections.",
 								"returns": "A new position, or nested list of new positions.",
 								"tags": [
 									{
@@ -15530,6 +15593,9 @@
 									"kind": 32768,
 									"kindString": "Parameter",
 									"flags": {},
+									"comment": {
+										"shortText": "Cross section wire to sweep, or entity from which a wire can be extracted."
+									},
 									"type": {
 										"type": "intrinsic",
 										"name": "string"
@@ -15618,7 +15684,7 @@
 			"kindString": "Namespace",
 			"flags": {},
 			"comment": {
-				"shortText": "The `material` module has functions for defining materials.\nThe material definitions are saved as attributes at the model level.\nFor more informtion, see the threejs docs: https://threejs.org/"
+				"shortText": "The `material` module has functions for defining materials.\nThe material definitions are saved as attributes at the model level.\nFor more informtion, see the <a href=\"https://threejs.org/\" target=\"_blank\">threejs docs.</a>"
 			},
 			"children": [
 				{
@@ -16461,7 +16527,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Creates a Lambert material and saves it in the model attributes.\nIf a material with the same name already exits, these settings will be added to the existing material.\n\\n\n[See the threejs docs](https://threejs.org/docs/#api/en/materials/MeshLambertMaterial)\n\\n\nIn order to assign a material to polygons in the model, a polygon attribute called 'material'\nneeds to be created. The value for each polygon must either be null, or must be a material name.\n\\n",
+								"shortText": "Creates a Lambert material and saves it in the model attributes.\nIf a material with the same name already exits, these settings will be added to the existing material.\n\\n\n[See the threejs docs on Lambert materials](https://threejs.org/docs/#api/en/materials/MeshLambertMaterial)\n\\n\nIn order to assign a material to polygons in the model, a polygon attribute called 'material'\nneeds to be created. The value for each polygon must either be null, or must be a material name.\n\\n",
 								"returns": "void\n"
 							},
 							"parameters": [
@@ -16537,7 +16603,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Creates a line material and saves it in the model attributes.\n\\n\n[See the threejs docs](https://threejs.org/docs/#api/en/materials/LineBasicMaterial)\n[See the threejs docs](https://threejs.org/docs/#api/en/materials/LineDashedMaterial)\n\\n\nThe color of the material can either ignore or apply the vertex rgb colors.\nIf 'apply' id selected, then the actual color will be a combination of the material color\nand the vertex colors, as specified by the a vertex attribute called 'rgb'.\nIn such a case, if material color is set to white, then it will\nhave no effect, and the color will be defined by the vertex [r,g,b] values.\n\\n\nIn order to assign a material to polylines in the model, a polyline attribute called 'material'.\nwill be created. The value for each polyline must either be null, or must be a material name.\n\\n\nFor dashed lines, the 'dash_gap_scale' parameter can be set.\n- If 'dash_gap_scale' is null will result in a continouse line.\n- If 'dash_gap_scale' is a single number: dash = gap = dash_gap_scale, scale = 1.\n- If 'dash_gap_scale' is a list of two numbers: dash = dash_gap_scale[0], gap = dash_gap_scale[1], scale = 1.\n- If 'dash_gap_scale' is a list of three numbers: dash = dash_gap_scale[0], gap = dash_gap_scale[1], scale = dash_gap_scale[2].\n\\n\nDue to limitations of the OpenGL Core Profile with the WebGL renderer on most platforms,\nline widths cannot be rendered. As a result, lines width will always be set to 1.\n\\n",
+								"shortText": "Creates a line material and saves it in the model attributes.\n\\n\n[See the threejs docs on LineBasicMaterials](https://threejs.org/docs/#api/en/materials/LineBasicMaterial)\n[See the threejs docs LineDashedMaterials](https://threejs.org/docs/#api/en/materials/LineDashedMaterial)\n\\n\nThe color of the material can either ignore or apply the vertex rgb colors.\nIf 'apply' is selected, then the actual color will be a combination of the material color\nand the vertex colors, as specified by the vertex attribute called 'rgb'.\nIn such a case, if material color is set to white, then it will\nhave no effect, and the color will be defined by the vertex [r,g,b] values.\n\\n\nIn order to assign a material to polylines in the model, a polyline attribute called 'material'\nwill be created. The value for each polyline must either be null, or must be a material name.\n\\n\nFor dashed lines, the 'dash_gap_scale' parameter can be set.\n- If 'dash_gap_scale' is null, it will result in a continuous line.\n- If 'dash_gap_scale' is a single number: dash = gap = dash_gap_scale, scale = 1.\n- If 'dash_gap_scale' is a list of two numbers: dash = dash_gap_scale[0], gap = dash_gap_scale[1], scale = 1.\n- If 'dash_gap_scale' is a list of three numbers: dash = dash_gap_scale[0], gap = dash_gap_scale[1], scale = dash_gap_scale[2].\n\\n\nDue to limitations of the OpenGL Core Profile with the WebGL renderer on most platforms,\nline widths cannot be rendered. As a result, lines width will always be set to 1.\n\\n",
 								"returns": "void\n"
 							},
 							"parameters": [
@@ -16653,7 +16719,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Creates a basic mesh material and saves it in the model attributes.\n\\n\n[See the threejs docs](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial)\n\\n\nThe color of the material can either ignore or apply the vertex rgb colors.\nIf 'apply' id selected, then the actual color will be a combination of the material color\nand the vertex colors, as specified by the a vertex attribute called 'rgb'.\nIn such a case, if material color is set to white, then it will\nhave no effect, and the color will be defined by the vertex [r,g,b] values.\n\\n\nAdditional material properties can be set by calling the functions for the more advanced materials.\nThese include LambertMaterial, PhongMaterial, StandardMaterial, and Physical Material.\nEach of these more advanced materials allows you to specify certain additional settings.\n\\n\nIn order to assign a material to polygons in the model, a polygon attribute called 'material'.\nneeds to be created. The value for each polygon must either be null, or must be a material name.\n\\n",
+								"shortText": "Creates a basic mesh material and saves it in the model attributes.\n\\n\n[See the threejs docs on basic mesh materials](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial)\n\\n\nThe color of the material can either ignore or apply the vertex rgb colors.\nIf 'apply' is selected, then the actual color will be a combination of the material color\nand the vertex colors, as specified by the a vertex attribute called 'rgb'.\nIn such a case, if material color is set to white, then it will\nhave no effect, and the color will be defined by the vertex [r,g,b] values.\n\\n\nAdditional material properties can be set by calling the functions for the more advanced materials.\nThese include LambertMaterial, PhongMaterial, StandardMaterial, and Physical Material.\nEach of these more advanced materials allows you to specify certain additional settings.\n\\n\nIn order to assign a material to polygons in the model, a polygon attribute called 'material'\nneeds to be created. The value for each polygon must either be null, or must be a material name.\n\\n",
 								"returns": "void\n"
 							},
 							"parameters": [
@@ -16691,7 +16757,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "The diffuse color, as [r, g, b] values between 0 and 1. White is [1, 1, 1]."
+										"shortText": "The diffuse colsor, as [r, g, b] values between 0 and 1. White is [1, 1, 1]."
 									},
 									"type": {
 										"type": "reference",
@@ -16771,7 +16837,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Creates a Phong material and saves it in the model attributes.\nIf a material with the same name already exits, these settings will be added to the existing material.\n\\n\n[See the threejs docs](https://threejs.org/docs/#api/en/materials/MeshPhongMaterial)\n\\n\nIn order to assign a material to polygons in the model, a polygon attribute called 'material'\nneeds to be created. The value for each polygon must either be null, or must be a material name.\n\\n",
+								"shortText": "Creates a Phong material and saves it in the model attributes.\nIf a material with the same name already exits, these settings will be added to the existing material.\n\\n\n[See the threejs docs on Phong materials](https://threejs.org/docs/#api/en/materials/MeshPhongMaterial)\n\\n\nIn order to assign a material to polygons in the model, a polygon attribute called 'material'\nneeds to be created. The value for each polygon must either be null, or must be a material name.\n\\n",
 								"returns": "void\n"
 							},
 							"parameters": [
@@ -16877,7 +16943,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Creates a Physical material and saves it in the model attributes.\nIf a material with the same name already exits, these settings will be added to the existing material.\n\\n\n[See the threejs docs](https://threejs.org/docs/#api/en/materials/MeshPhysicalMaterial)\n\\n\nIn order to assign a material to polygons in the model, a polygon attribute called 'material'\nneeds to be created. The value for each polygon must either be null, or must be a material name.\n\\n",
+								"shortText": "Creates a Physical material and saves it in the model attributes.\nIf a material with the same name already exits, these settings will be added to the existing material.\n\\n\n[See the threejs docs on Physical materials](https://threejs.org/docs/#api/en/materials/MeshPhysicalMaterial)\n\\n\nIn order to assign a material to polygons in the model, a polygon attribute called 'material'\nneeds to be created. The value for each polygon must either be null, or must be a material name.\n\\n",
 								"returns": "void\n"
 							},
 							"parameters": [
@@ -16995,7 +17061,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Assign a material to one or more polylines or polygons.\n\\n\nA material name is assigned to the polygons. The named material must be separately defined as a\nmaterial in the model attributes. See the `material.LineMat()` or `material.MeshMat()` functions.\n\\n\nThe material name is a sting.\n\\n\nFor polylines, the `material` argument must be a single name.\n\\n\nFor polygons, the `material` argument can accept either be a single name, or a\nlist of two names. If it is a single name, then the same material is assigned to both the\nfront and back of teh polygon. If it is a list of two names, then the first material is assigned\nto the front, and the second material is assigned to the back.\n\\n",
+								"shortText": "Assign a material to one or more polylines or polygons.\n\\n\nA material name is assigned to the polygons. The named material must be separately defined as a\nmaterial in the model attributes. See the `material.LineMat()` or `material.MeshMat()` functions.\n\\n\nThe material name is a string.\n\\n\nFor polylines, the `material` argument must be a single name.\n\\n\nFor polygons, the `material` argument can accept either a single name, or a\nlist of two names. If it is a single name, then the same material is assigned to both the\nfront and back of the polygon. If it is a list of two names, then the first material is assigned\nto the front, and the second material is assigned to the back.\n\\n",
 								"returns": "void\n"
 							},
 							"parameters": [
@@ -17093,7 +17159,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Creates a Standard material and saves it in the model attributes.\nIf a material with the same name already exits, these settings will be added to the existing material.\n\\n\n[See the threejs docs](https://threejs.org/docs/#api/en/materials/MeshStandardMaterial)\n\\n\nIn order to assign a material to polygons in the model, a polygon attribute called 'material'\nneeds to be created. The value for each polygon must either be null, or must be a material name.\n\\n",
+								"shortText": "Creates a Standard material and saves it in the model attributes.\nIf a material with the same name already exits, these settings will be added to the existing material.\n\\n\n[See the threejs docs on Standard materials](https://threejs.org/docs/#api/en/materials/MeshStandardMaterial)\n\\n\nIn order to assign a material to polygons in the model, a polygon attribute called 'material'\nneeds to be created. The value for each polygon must either be null, or must be a material name.\n\\n",
 								"returns": "void\n"
 							},
 							"parameters": [
@@ -17731,7 +17797,7 @@
 								"tags": [
 									{
 										"tag": "example",
-										"text": "modify.Mirror(polygon1, plane1)"
+										"text": "`modify.Mirror(polygon1, plane1)`"
 									},
 									{
 										"tag": "example_info",
@@ -17761,7 +17827,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "An entity or list of entities to mirros."
+										"shortText": "An entity or list of entities to mirror."
 									},
 									"type": {
 										"type": "union",
@@ -17787,7 +17853,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "A plane to scale around. \\n\nGiven a ray, a plane will be generated that is perpendicular to the ray. \\n\nGiven an `xyz` location, a plane will be generated with an origin at that location and with axes parallel to the global axes. \\n\nGiven any entities, the centroid will be extracted, \\n\nand a plane will be generated with an origin at the centroid, and with axes parallel to the global axes."
+										"shortText": "A plane to scale around. \\n\nGiven a ray, a plane will be generated that is perpendicular to the ray. \\n\nGiven an `xyz` location, a plane will be generated with an origin at that location and with axes parallel to the global axes. \\n\nGiven any entities, the centroid will be extracted,\nand a plane will be generated with an origin at the centroid, and with axes parallel to the global axes."
 									},
 									"type": {
 										"type": "union",
@@ -17853,12 +17919,12 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Moves entities. The directio and distance if movement is specified as a vector.\n\\n\nIf only one vector is given, then all entities are moved by the same vector.\nIf a list of vectors is given, the each entity will be moved by a different vector.\nIn this case, the number of vectors should be equal to the number of entities.\n\\n\nIf a position is shared between entites that are being moved by different vectors,\nthen the position will be moved by the average of the vectors.\n\\n",
+								"shortText": "Moves entities. The direction and distance of movement is specified as a vector.\n\\n\nIf only one vector is given, then all entities are moved by the same vector.\nIf a list of vectors is given, then each entity will be moved by a different vector.\nIn this case, the number of vectors should be equal to the number of entities.\n\\n\nIf a position is shared between entites that are being moved by different vectors,\nthen the position will be moved by the average of the vectors.\n\\n",
 								"returns": "void",
 								"tags": [
 									{
 										"tag": "example",
-										"text": "modify.Move(pline1, [1,2,3])"
+										"text": "`modify.Move(pline1, [1,2,3])`"
 									},
 									{
 										"tag": "example_info",
@@ -17866,7 +17932,7 @@
 									},
 									{
 										"tag": "example",
-										"text": "modify.Move([pos1, pos2, pos3], [[0,0,1], [0,0,1], [0,1,0]] )"
+										"text": "`modify.Move([pos1, pos2, pos3], [[0,0,1], [0,0,1], [0,1,0]] )`"
 									},
 									{
 										"tag": "example_info",
@@ -17874,7 +17940,7 @@
 									},
 									{
 										"tag": "example",
-										"text": "modify.Move([pgon1, pgon2], [1,2,3] )"
+										"text": "`modify.Move([pgon1, pgon2], [1,2,3] )`"
 									},
 									{
 										"tag": "example_info",
@@ -17929,6 +17995,9 @@
 									"kind": 32768,
 									"kindString": "Parameter",
 									"flags": {},
+									"comment": {
+										"shortText": "A vector or a list of vectors."
+									},
 									"type": {
 										"type": "union",
 										"types": [
@@ -17984,7 +18053,7 @@
 								"tags": [
 									{
 										"tag": "example",
-										"text": "modify.Offset(polygon1, 10)"
+										"text": "`modify.Offset(polygon1, 10)`"
 									},
 									{
 										"tag": "example_info",
@@ -18040,7 +18109,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "The distance to offset by, can be either positive or negative"
+										"shortText": "The distance to offset by, can be either positive or negative."
 									},
 									"type": {
 										"type": "intrinsic",
@@ -18081,11 +18150,11 @@
 								"tags": [
 									{
 										"tag": "example",
-										"text": "modify.Remesh(polygon1)"
+										"text": "`modify.Remesh(polygon1)`"
 									},
 									{
 										"tag": "example_info",
-										"text": "Remeshs the face of the polygon.\n"
+										"text": "Remeshes the face of the polygon.\n"
 									}
 								]
 							},
@@ -18150,12 +18219,12 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Rotates entities on plane by angle.\n\\n",
+								"shortText": "Rotates entities on a plane by an angle.\n\\n",
 								"returns": "void",
 								"tags": [
 									{
 										"tag": "example",
-										"text": "modify.Rotate(polyline1, plane1, PI)"
+										"text": "`modify.Rotate(polyline1, plane1, PI)`"
 									},
 									{
 										"tag": "example_info",
@@ -18211,7 +18280,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "A ray to rotate around. \\n\nGiven a plane, a ray will be created from the plane z axis. \\n\nGiven an `xyz` location, a ray will be generated with an origin at this location, and a direction `[0, 0, 1]`. \\n\nGiven any entities, the centroid will be extracted, \\n\nand a ray will be generated with an origin at this centroid, and a direction `[0, 0, 1]`."
+										"shortText": "A ray to rotate around. \\n\nGiven a plane, a ray will be created from the plane's z axis. \\n\nGiven an `xyz` location, a ray will be generated with an origin at this location, and a direction `[0, 0, 1]`. \\n\nGiven any entities, the centroid will be extracted,\nand a ray will be generated with an origin at this centroid, and a direction `[0, 0, 1]`."
 									},
 									"type": {
 										"type": "union",
@@ -18296,7 +18365,7 @@
 								"tags": [
 									{
 										"tag": "example",
-										"text": "modify.Scale(entities, plane1, 0.5)"
+										"text": "`modify.Scale(entities, plane1, 0.5)`"
 									},
 									{
 										"tag": "example_info",
@@ -18304,7 +18373,7 @@
 									},
 									{
 										"tag": "example",
-										"text": "modify.Scale(entities, plane1, [0.5, 1, 1])"
+										"text": "`modify.Scale(entities, plane1, [0.5, 1, 1])`"
 									},
 									{
 										"tag": "example_info",
@@ -18360,7 +18429,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "A plane to scale around. \\n\nGiven a ray, a plane will be generated that is perpendicular to the ray. \\n\nGiven an `xyz` location, a plane will be generated with an origin at that location and with axes parallel to the global axes. \\n\nGiven any entities, the centroid will be extracted, \\n\nand a plane will be generated with an origin at the centroid, and with axes parallel to the global axes."
+										"shortText": "A plane to scale around. \\n\nGiven a ray, a plane will be generated that is perpendicular to the ray. \\n\nGiven an `xyz` location, a plane will be generated with an origin at that location and with axes parallel to the global axes. \\n\nGiven any entities, the centroid will be extracted,\nand a plane will be generated with an origin at the centroid, and with axes parallel to the global axes."
 									},
 									"type": {
 										"type": "union",
@@ -18512,7 +18581,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Plane defining source plane for the transformation. \\n\nGiven a ray, a plane will be generated that is perpendicular to the ray. \\n\nGiven an `xyz` location, a plane will be generated with an origin at that location and with axes parallel to the global axes. \\n\nGiven any entities, the centroid will be extracted, \\n\nand a plane will be generated with an origin at the centroid, and with axes parallel to the global axes."
+										"shortText": "Plane defining source plane for the transformation. \\n\nGiven a ray, a plane will be generated that is perpendicular to the ray. \\n\nGiven an `xyz` location, a plane will be generated with an origin at that location and with axes parallel to the global axes. \\n\nGiven any entities, the centroid will be extracted,\nand a plane will be generated with an origin at the centroid, and with axes parallel to the global axes."
 									},
 									"type": {
 										"type": "union",
@@ -18556,7 +18625,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Plane defining target plane for the transformation. \\n\nGiven a ray, a plane will be generated that is perpendicular to the ray. \\n\nGiven an `xyz` location, a plane will be generated with an origin at that location and with axes parallel to the global axes. \\n\nGiven any entities, the centroid will be extracted, \\n\nand a plane will be generated with an origin at the centroid, and with axes parallel to the global axes."
+										"shortText": "Plane defining target plane for the transformation. \\n\nGiven a ray, a plane will be generated that is perpendicular to the ray. \\n\nGiven an `xyz` location, a plane will be generated with an origin at that location and with axes parallel to the global axes. \\n\nGiven any entities, the centroid will be extracted,\nand a plane will be generated with an origin at the centroid, and with axes parallel to the global axes."
 									},
 									"type": {
 										"type": "union",
@@ -18639,7 +18708,7 @@
 			"kindString": "Namespace",
 			"flags": {},
 			"comment": {
-				"shortText": "The `pattern` module has functions for creating patters of positions.\nThese functions all return lists of position IDs.\nThe list may be nested, depending on which function is selected."
+				"shortText": "The `pattern` module has functions for creating patterns of positions.\nThese functions all return lists of position IDs.\nThe list may be nested, depending on which function is selected."
 			},
 			"children": [
 				{
@@ -19560,7 +19629,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Creates positions in an arc or circle pattern.\n\\n\nThe `origin` parameter specifies the centre of the polyhedron for which positions will be\ngenerated. The origin can be specified as either a |coordinate| or a |plane|. If a coordinate\nis given, then a plane will be automatically generated, aligned with the global XY plane.\n\\n\nThe positions will be generated for an arc aligned with the origin XY plane.\nSo if the origin plane is rotated, then the rotated will also be rotated.\n\\n\nThe `radius` parameter specifies the size of the arc.\n\\n\nThe `num_positions` parameter specifies the total number of positions to be generated on the arc.\n\\n\nThe `arc_angle` specifies the angle of the arc, in radians. Angles start at thet X-axis of the\norigin plane and move in a counter-clockwise direction. Two angles are needed to define an arc,\na `start_angle` and `end_angle`. The angles may be positive or negative, and may be\ngreater than `2*PI` or smaller than `-2*PI`.\n\\n\nPositions will always be generated in sequence, from the start angle towards the end angle.\n- If the start angle is smaller than the end angle, then the positions will be generated in\ncounter-clockwise order.\n- If the start angle is greater than the end angle, then the positions will be generated in\nclockwise order.\n\\n\nThe angle may either be given as a single number, as a list of two numbers, or as `null`:\n- If the angle is given as a single number, then the arc angles will be ser to be\n`[0, end_angle]`. This means that the start of the arc will coincide with the X-axis\nof the origin plane.\n- If the angle is given as a list of two numbers, then they will be set to be\n`[start_angle, end_angle]`.\n- If the angle is set to `null`, then the arc angles will be set to be\n`[0, 2*PI]` In addition, duplicate positions at start and end of the arc are\nautomatically removed.\n\\n\nNote that setting the arc angle to null is not the same as setting it to `2*PI`\nWhen setting the arc angle to `2*PI`, you will get a duplicate positions at start and end\nof the arc.\n\\n",
+								"shortText": "Creates positions in an arc or circle pattern.\n\\n\nThe `origin` parameter specifies the centre of the polyhedron for which positions will be\ngenerated. The origin can be specified as either a |coordinate| or a |plane|. If a coordinate\nis given, then a plane will be automatically generated, aligned with the global XY plane.\n\\n\nThe positions will be generated for an arc aligned with the origin XY plane.\nSo if the origin plane is rotated, then the rotated will also be rotated.\n\\n\nThe `radius` parameter specifies the size of the arc.\n\\n\nThe `num_positions` parameter specifies the total number of positions to be generated on the arc.\n\\n\nThe `arc_angle` specifies the angle of the arc, in radians. Angles start at the X-axis of the\norigin plane and move in a counter-clockwise direction. Two angles are needed to define an arc,\na `start_angle` and `end_angle`. The angles may be positive or negative, and may be\ngreater than `2*PI` or smaller than `-2*PI`.\n\\n\nPositions will always be generated in sequence, from the start angle towards the end angle.\n- If the start angle is smaller than the end angle, then the positions will be generated in\ncounter-clockwise order.\n- If the start angle is greater than the end angle, then the positions will be generated in\nclockwise order.\n\\n\nThe angle may either be given as a single number, as a list of two numbers, or as `null`:\n- If the angle is given as a single number, then the arc angles will be ser to be\n`[0, end_angle]`. This means that the start of the arc will coincide with the X-axis\nof the origin plane.\n- If the angle is given as a list of two numbers, then they will be set to be\n`[start_angle, end_angle]`.\n- If the angle is set to `null`, then the arc angles will be set to be\n`[0, 2*PI]` In addition, duplicate positions at start and end of the arc are\nautomatically removed.\n\\n\nNote that setting the arc angle to null is not the same as setting it to `2*PI.\nWhen setting the arc angle to `2*PI`, you will get duplicate positions at the start and end\nof the arc.\n\\n",
 								"returns": "Entities, a list of positions.",
 								"tags": [
 									{
@@ -19709,7 +19778,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Creates positions in an Bezier curve pattern, defined by a list of coordinates.\n\\n\nThe Bezier is created as either a qadratic or cubic Bezier. It is always an open curve.\n\\n\nThe positions are created along the curve at equal parameter values.\nThis means that the euclidean distance between the positions will not necessarily be equal.\n\\n\nFor the quadratic Bezier, three coordinates are required.\nFor the cubic Bezier, four coordinates are required.\n\\n\nThe `coords` parameter gives the list of |coordinates|\n(three coords for quadratics, four coords for cubics).\nThe first and last coordinates in the list are the start and end positions of the curve.\nThe middle coordinates act as the control points for controlling the shape of the curve.\n\\n\nThe `num_positions` parameter specifies the total number of positions to be generated.\n\\n\nFor more information, see the wikipedia article:\n<a href=\"https://en.wikipedia.org/wiki/B%C3%A9zier_curve\">B%C3%A9zier_curve</a>.\n\\n",
+								"shortText": "Creates positions in a Bezier curve pattern, defined by a list of coordinates.\n\\n\nThe Bezier is created as either a qadratic or cubic Bezier. It is always an open curve.\n\\n\nThe positions are created along the curve at equal parameter values.\nThis means that the euclidean distance between the positions will not necessarily be equal.\n\\n\nFor the quadratic Bezier, three coordinates are required.\nFor the cubic Bezier, four coordinates are required.\n\\n\nThe `coords` parameter gives the list of |coordinates|\n(three coords for quadratics, four coords for cubics).\nThe first and last coordinates in the list are the start and end positions of the curve.\nThe middle coordinates act as the control points for controlling the shape of the curve.\n\\n\nThe `num_positions` parameter specifies the total number of positions to be generated.\n\\n\nFor more information, see the wikipedia article:\n<a href=\"https://en.wikipedia.org/wiki/B%C3%A9zier_curve\" target=\"_blank\">Bezier_curve</a>.\n\\n",
 								"returns": "Entities, a list of positions.",
 								"tags": [
 									{
@@ -19743,6 +19812,9 @@
 									"kind": 32768,
 									"kindString": "Parameter",
 									"flags": {},
+									"comment": {
+										"shortText": "A |coordinate| or a |plane| (three coords for quadratics, four coords for cubics).\nIf a coordinate is given, then the plane is assumed to be aligned with the global XY plane. ."
+									},
 									"type": {
 										"type": "array",
 										"elementType": {
@@ -20211,7 +20283,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Creates positions in an spline pattern. Returns a list of new positions.\nIt is a type of interpolating spline (a curve that goes through its control points).\n\\n\nThe input is a list of XYZ coordinates. These act as the control points for creating the Spline curve.\nThe positions that get generated will be divided equally between the control points.\nFor example, if you define 4 control points for a closed spline, and set 'num_positions' to be 40,\nthen you will get 8 positions between each pair of control points,\nirrespective of the distance between the control points.\n\\n\nThe spline curve can be created in three ways: 'centripetal', 'chordal', or 'catmullrom'.\n\\n\nFor more information, see the wikipedia article:\n<a href=\"https://en.wikipedia.org/wiki/Centripetal_Catmull%E2%80%93Rom_spline\">Catmull–Rom spline</a>.\n\\n\n<img src=\"https://upload.wikimedia.org/wikipedia/commons/2/2f/Catmull-Rom_examples_with_parameters..png\"\nalt=\"Curve types\" width=\"100\">\n\\n",
+								"shortText": "Creates positions in a spline pattern. Returns a list of new positions.\nIt is a type of interpolating spline (a curve that goes through its control points).\n\\n\nThe input is a list of XYZ coordinates. These act as the control points for creating the Spline curve.\nThe positions that get generated will be divided equally between the control points.\nFor example, if you define 4 control points for a closed spline, and set 'num_positions' to be 40,\nthen you will get 8 positions between each pair of control points,\nirrespective of the distance between the control points.\n\\n\nThe spline curve can be created in three ways: 'centripetal', 'chordal', or 'catmullrom'.\n\\n\nFor more information, see the wikipedia article:\n<a href=\"https://en.wikipedia.org/wiki/Centripetal_Catmull%E2%80%93Rom_spline\">Catmull–Rom spline</a>.\n\\n\n<img src=\"https://upload.wikimedia.org/wikipedia/commons/2/2f/Catmull-Rom_examples_with_parameters..png\"\nalt=\"Curve types\" width=\"100\">\n\\n",
 								"returns": "Entities, a list of positions.",
 								"tags": [
 									{
@@ -20348,7 +20420,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Creates a set of positions in a straight line pattern.\n\\n\nThe `origin` parameter specifies the centre of the straight line along which positions will be\ngenerated. The origin can be specified as either a |coordinate| or a |plane|. If a coordinate\nis given, then a plane will be automatically generated, aligned with the global XY plane.\n\\n\nThe positions will be generated along an straight line aligned with the X axis of the origin\nplane.\n\\n\nReturns the list of new positions.\n\\n",
+								"shortText": "Creates a set of positions in a straight line pattern.\n\\n\nThe `origin` parameter specifies the centre of the straight line along which positions will be\ngenerated. The origin can be specified as either a |coordinate| or a |plane|. If a coordinate\nis given, then a plane will be automatically generated, aligned with the global XY plane.\n\\n\nThe positions will be generated along a straight line aligned with the X axis of the origin\nplane.\n\\n\nReturns the list of new positions.\n\\ns",
 								"returns": "Entities, a list of new positions.\n"
 							},
 							"parameters": [
@@ -20440,7 +20512,7 @@
 					"sources": [
 						{
 							"fileName": "functions/pattern/Linear.ts",
-							"line": 50,
+							"line": 43,
 							"character": 16
 						}
 					],
@@ -20452,7 +20524,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Creates a set of positions by linear interpolation between the specified |coordinates|.\n\\n\nThe `num_positions` parameter specifies the number of positions to be generated between\neach pair of coordinates.\n\\n\nThe `method` parameter specifies whether to close the loop of coordinates. If set to `close`,\nthen positions are also generated between the last and first coordinates in the list.\n\\n\nFor the `num_positions` parameters:\n- `num_positions = 0`: No positions are generated.\n- `num_positions = 1`: No new coordinates are calculated.\nIf `close` is true, then positions are generate at all coordinates in the input list.\nIf `close` is false, then positions are generate at all coordinates in the input list\nexcept the last coordinate (which is ignored).\n- `num_positions = 2`: No new coordinates are calculated. Positions are generate at all\ncoordinates in the input list. (The `close` parameter has no effect.)\n- `num_positions = 3`: For each pair of coordinates, one additional coordinate\nis calculated by linear interpolation.\n- `num_positions = 4`: For each pair of coordinates, two additional coordinates\nare calculated by linear interpolation.\n- etc\n\\n\nFor example, lets consider a case where you specify three coordinates, set the method to `close`\nand set `num_positions` to 4. In this case, there will be 3 pairs of coordinates, `[0, 1]`,\n`[1, 2]` and `[2, 0]`. For each pair of coordinates, 2 new calculations are calculated.\nThis results in a total of 9 coordinates. So 9 positions will be generated.\n\\n\nReturns the list of new position IDs.\n\\n",
+								"shortText": "Creates a set of positions by linear interpolation between the specified |coordinates|. \\n The\n`num_positions` parameter specifies the number of positions to be generated between each pair of\ncoordinates. \\n The `method` parameter specifies whether to close the loop of coordinates. If set\nto `close`, then positions are also generated between the last and first coordinates in the list.\n\\n For the `num_positions` parameters:\n- `num_positions = 0`: No positions are generated.\n- `num_positions = 1`: No new coordinates are calculated. If `close` is true, then positions are\n  generated at all coordinates in the input list. If `close` is false, then positions are\n  generated at all coordinates in the input list except the last coordinate (which is ignored).\n- `num_positions = 2`: No new coordinates are calculated. Positions are generated at all\n  coordinates in the input list. (The `close` parameter has no effect.)\n- `num_positions = 3`: For each pair of coordinates, one additional coordinate is calculated by\n  linear interpolation.\n- `num_positions = 4`: For each pair of coordinates, two additional coordinates are calculated by\n  linear interpolation.\n- etc\n \\n\n For example, lets consider a case where you specify three coordinates, set the method to\n  `close` and set `num_positions` to 4. In this case, there will be 3 pairs of coordinates, `[0,\n  1]`, `[1, 2]` and `[2, 0]`. For each pair of coordinates, 2 new calculations are calculated.\n  This results in a total of 9 coordinates. So 9 positions will be generated. \\n Returns the list\n  of new position IDs. \\n",
 								"returns": "Entities, a list of new position IDs.",
 								"tags": [
 									{
@@ -20566,7 +20638,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Creates positions in an NURBS curve pattern, defined a list of coordinates.\n\\n\nThe positions are created along the curve according to the parametric equation of the curve.\nThis means that the euclidean distance between the positions will not necessarily be equal.\nFor open BSpline curves, the positions at the start and end tend to be closer together.\n\\n\nThe `coords` parameter gives the list of |coordinates| for generating the curve.\n- If the curve is open, then the first and last coordinates in the list are the start and end\npositions of the curve. The middle coordinates act as the control points for controlling the\nshape of the curve.\n- If the curve is closed, then all coordinates act as the control points for controlling the\nshape of the curve.\n\\n\nThe degree (between 2 and 5) of the curve defines how smooth the curve is.\nQuadratic: degree = 2\nCubic: degree = 3\nQuartic: degree = 4.\n\\n\nThe number of coordinates should be at least one greater than the degree of the curve.\n\\n\nThe `num_positions` parameter specifies the total number of positions to be generated.\n\\n",
+								"shortText": "Creates positions in a NURBS curve pattern, defined by a list of coordinates.\n\\n\nThe positions are created along the curve according to the parametric equation of the curve.\nThis means that the euclidean distance between the positions will not necessarily be equal.\nFor open BSpline curves, the positions at the start and end tend to be closer together.\n\\n\nThe `coords` parameter gives the list of |coordinates| for generating the curve.\n- If the curve is open, then the first and last coordinates in the list are the start and end\npositions of the curve. The middle coordinates act as the control points for controlling the\nshape of the curve.\n- If the curve is closed, then all coordinates act as the control points for controlling the\nshape of the curve.\n\\n\nThe degree (between 2 and 5) of the curve defines how smooth the curve is.\nQuadratic: degree = 2\nCubic: degree = 3\nQuartic: degree = 4.\n\\n\nThe number of coordinates should be at least one greater than the degree of the curve.\n\\n\nThe `num_positions` parameter specifies the total number of positions to be generated.\n\\n",
 								"returns": "Entities, a list of positions.",
 								"tags": [
 									{
@@ -20986,7 +21058,7 @@
 			"kindString": "Namespace",
 			"flags": {},
 			"comment": {
-				"shortText": "The `poly2D` module has a set of functions for working with 2D polygons, on the XY plane."
+				"shortText": "The `poly2D` module has a set of functions for working with 2D polygons, with the results\nprojected on the XY plane.\n\\n\nAll the functions create new entities and do not modify the original geometry."
 			},
 			"children": [
 				{
@@ -21005,7 +21077,7 @@
 							"sources": [
 								{
 									"fileName": "functions/poly2d/index.ts",
-									"line": 39,
+									"line": 43,
 									"character": 4
 								}
 							],
@@ -21048,7 +21120,7 @@
 							"sources": [
 								{
 									"fileName": "functions/poly2d/index.ts",
-									"line": 34,
+									"line": 38,
 									"character": 4
 								}
 							],
@@ -21173,7 +21245,7 @@
 							"sources": [
 								{
 									"fileName": "functions/poly2d/index.ts",
-									"line": 38,
+									"line": 42,
 									"character": 4
 								}
 							],
@@ -21193,7 +21265,7 @@
 							"sources": [
 								{
 									"fileName": "functions/poly2d/index.ts",
-									"line": 42,
+									"line": 46,
 									"character": 4
 								}
 							],
@@ -21244,7 +21316,7 @@
 							"sources": [
 								{
 									"fileName": "functions/poly2d/index.ts",
-									"line": 45,
+									"line": 49,
 									"character": 4
 								}
 							],
@@ -21306,7 +21378,7 @@
 							"sources": [
 								{
 									"fileName": "functions/poly2d/index.ts",
-									"line": 48,
+									"line": 52,
 									"character": 4
 								}
 							],
@@ -21357,7 +21429,7 @@
 							"sources": [
 								{
 									"fileName": "functions/poly2d/index.ts",
-									"line": 51,
+									"line": 55,
 									"character": 4
 								}
 							],
@@ -21397,7 +21469,7 @@
 							"sources": [
 								{
 									"fileName": "functions/poly2d/index.ts",
-									"line": 54,
+									"line": 58,
 									"character": 4
 								}
 							],
@@ -21437,7 +21509,7 @@
 							"sources": [
 								{
 									"fileName": "functions/poly2d/index.ts",
-									"line": 57,
+									"line": 61,
 									"character": 4
 								}
 							],
@@ -21499,7 +21571,7 @@
 							"sources": [
 								{
 									"fileName": "functions/poly2d/index.ts",
-									"line": 60,
+									"line": 64,
 									"character": 4
 								}
 							],
@@ -21572,7 +21644,7 @@
 							"sources": [
 								{
 									"fileName": "functions/poly2d/index.ts",
-									"line": 63,
+									"line": 67,
 									"character": 4
 								}
 							],
@@ -21645,7 +21717,7 @@
 							"sources": [
 								{
 									"fileName": "functions/poly2d/index.ts",
-									"line": 66,
+									"line": 70,
 									"character": 4
 								}
 							],
@@ -21696,7 +21768,7 @@
 							"sources": [
 								{
 									"fileName": "functions/poly2d/index.ts",
-									"line": 69,
+									"line": 73,
 									"character": 4
 								}
 							],
@@ -21736,7 +21808,7 @@
 							"sources": [
 								{
 									"fileName": "functions/poly2d/index.ts",
-									"line": 72,
+									"line": 76,
 									"character": 4
 								}
 							],
@@ -21816,7 +21888,7 @@
 					"sources": [
 						{
 							"fileName": "functions/poly2d/index.ts",
-							"line": 33,
+							"line": 37,
 							"character": 13
 						}
 					]
@@ -21919,7 +21991,7 @@
 					"sources": [
 						{
 							"fileName": "functions/poly2d/Boolean.ts",
-							"line": 46,
+							"line": 48,
 							"character": 16
 						}
 					],
@@ -21931,7 +22003,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Perform a boolean operation on polylines or polygons.\n\\n\nThe entities in A can be either polyline or polygons.\nThe entities in B must be polygons.\nThe polygons in B are first unioned before the operation is performed.\nThe boolean operation is then performed between each polyline or polygon in A, and the unioned B polygons.\n\\n\nIf A is an empty list, then an empty list is returned.\nIf B is an empty list, then the A list is returned.\n\\n",
+								"shortText": "Perform a boolean operation on polylines or polygons.\n\\n\nThe entities in A can be either polyline or polygons.\nThe entities in B must be polygons.\nThe polygons in B are first unioned before the operation is performed.\nThe boolean operation is then performed between each polyline or polygon in A, and the unioned B polygons.\n\\n\nIf A is an empty list, then an empty list is returned.\nIf B is an empty list, then the A list is returned.\n\\n\nThe input polygons or polylines are not deleted.",
 								"returns": "A list of new polylines and polygons.\n"
 							},
 							"parameters": [
@@ -22129,7 +22201,7 @@
 					"sources": [
 						{
 							"fileName": "functions/poly2d/ConvexHull.ts",
-							"line": 24,
+							"line": 26,
 							"character": 16
 						}
 					],
@@ -22141,7 +22213,8 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Create a voronoi subdivision of a polygon.",
+								"shortText": "Creates a convex hull from a list of positions.",
+								"text": "//TO INSERT AN IMAGE/DIAGRAM OF A CONVEX HULL\n",
 								"returns": "A new polygons, the convex hull of the positions.\n"
 							},
 							"parameters": [
@@ -22166,7 +22239,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "A list of positions, or entities from which positions can bet extracted."
+										"shortText": "A list of positions, or entities from which positions can be extracted."
 									},
 									"type": {
 										"type": "union",
@@ -22282,7 +22355,7 @@
 					"sources": [
 						{
 							"fileName": "functions/poly2d/OffsetChamfer.ts",
-							"line": 26,
+							"line": 27,
 							"character": 16
 						}
 					],
@@ -22319,7 +22392,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "A list of pollines or polygons, or entities from which polylines or polygons can be extracted."
+										"shortText": "A list of polyines or polygons, or entities from which polylines or polygons can\nbe extracted."
 									},
 									"type": {
 										"type": "union",
@@ -22359,7 +22432,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, the type of end shape for open polylines'."
+										"shortText": "Enum, the type of end shape for open polylines."
 									},
 									"type": {
 										"type": "reference",
@@ -22425,7 +22498,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "A list of pollines or polygons, or entities from which polylines or polygons can be extracted."
+										"shortText": "A list of polyines or polygons, or entities from which polylines or polygons can be extracted."
 									},
 									"type": {
 										"type": "union",
@@ -22479,7 +22552,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, the type of end shape for open polylines'."
+										"shortText": "Enum, the type of end shape for open polylines."
 									},
 									"type": {
 										"type": "reference",
@@ -22508,7 +22581,7 @@
 					"sources": [
 						{
 							"fileName": "functions/poly2d/OffsetRound.ts",
-							"line": 37,
+							"line": 38,
 							"character": 16
 						}
 					],
@@ -22545,7 +22618,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "A list of pollines or polygons, or entities from which polylines or polygons can be extracted."
+										"shortText": "A list of polyines or polygons, or entities from which polylines or polygons can\nbe extracted."
 									},
 									"type": {
 										"type": "union",
@@ -22599,7 +22672,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, the type of end shape for open polylines'."
+										"shortText": "Enum, the type of end shape for open polylines."
 									},
 									"type": {
 										"type": "reference",
@@ -22628,7 +22701,7 @@
 					"sources": [
 						{
 							"fileName": "functions/poly2d/Stitch.ts",
-							"line": 32,
+							"line": 33,
 							"character": 16
 						}
 					],
@@ -22641,7 +22714,7 @@
 							"flags": {},
 							"comment": {
 								"shortText": "Adds vertices to polyline and polygons at all locations where egdes intersect one another.\nThe vertices are welded.\nThis can be useful for creating networks that can be used for shortest path calculations.\n\\n\nThe input polyline and polygons are copied.\n\\n",
-								"returns": "Copies of the input polyline and polygons, stiched.\n"
+								"returns": "Copies of the input polyline and polygons, stitched.\n"
 							},
 							"parameters": [
 								{
@@ -22665,7 +22738,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "A list polylines or polygons, or entities from which polylines or polygons can be extracted."
+										"shortText": "A list polylines or polygons, or entities from which polylines or polygons can be\nextracted."
 									},
 									"type": {
 										"type": "union",
@@ -22798,7 +22871,7 @@
 					"sources": [
 						{
 							"fileName": "functions/poly2d/Voronoi.ts",
-							"line": 31,
+							"line": 32,
 							"character": 16
 						}
 					],
@@ -22810,7 +22883,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Create a voronoi subdivision of one or more polygons.\n\\n",
+								"shortText": "Create a voronoi subdivision of one or more polygons.\n\\n\n// MAKE A DIAGRAM/INSERT A REFERENCE ARTICLE",
 								"returns": "A list of new polygons.\n"
 							},
 							"parameters": [
@@ -22923,7 +22996,7 @@
 			"sources": [
 				{
 					"fileName": "functions/poly2d/index.ts",
-					"line": 5,
+					"line": 9,
 					"character": 0
 				}
 			]
@@ -23753,7 +23826,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Filter a list of entities based on an attribute value.\n\\n\nThe result will always be a list of entities, even if there is only one entity.\nIn a case where you want only one entity, remember to get the first item in the list.\n\\n",
+								"shortText": "Filter a list of entities based on an attribute value. \\n The result will always be a list of\nentities, even if there is only one entity. In a case where you want only one entity, remember to\nget the first item in the list. \\n",
 								"returns": "Entities, a list of entities that match the conditions specified in 'expr'.\n"
 							},
 							"parameters": [
@@ -23778,7 +23851,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "List of entities to filter. The entities must all be of the same type"
+										"shortText": "List of entities to filter. The entities must all be of the same type."
 									},
 									"type": {
 										"type": "union",
@@ -23804,7 +23877,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "The attribute to use for filtering. Can be `name`, `[name, index]`, or `[name, key]`."
+										"shortText": "The attribute to use for filtering. Can be `name`, `[name, index]`, or `[name,\nkey]`."
 									},
 									"type": {
 										"type": "union",
@@ -23845,7 +23918,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, the operator to use for filtering"
+										"shortText": "Enum, the operator to use for filtering."
 									},
 									"type": {
 										"type": "reference",
@@ -23859,7 +23932,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "The attribute value to use for filtering."
+										"shortText": "The attribute value to use for filtering. If the attribute value of a given entity\nis equal to this, it will be included in the result."
 									},
 									"type": {
 										"type": "reference",
@@ -24038,8 +24111,8 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Returns a list of entities that are not part of the specified entities.\nFor example, you can get the position entities that are not part of a list of polygon entities.\n\\n\nThis function does the opposite of query.Get().\nWhile query.Get() gets entities that are part of of the list of entities,\nthis function gets the entities that are not part of the list of entities.\n\\n",
-								"returns": "Entities, a list of entities that match the type specified in 'ent_type_enum', and that are not in entities.",
+								"shortText": "Returns a list of entities that are not part of the specified entities.\nFor example, you can get the position entities that are not part of a list of polygon entities.\n\\n\nThis function does the opposite of query.Get().\nWhile query.Get() gets entities that are part of the list of entities,\nthis function gets the entities that are not part of the list of entities.\n\\n",
+								"returns": "Entities, a list of entities that match the type specified in '`ent_type_enum`', and that are not in `entities`.",
 								"tags": [
 									{
 										"tag": "example",
@@ -24175,7 +24248,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, select the types of neighbors to return"
+										"shortText": "Enum, select the types of neighbors to return."
 									},
 									"type": {
 										"type": "reference",
@@ -24277,7 +24350,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, select the type of perimeter entities to return"
+										"shortText": "Enum, select the type of perimeter entities to return."
 									},
 									"type": {
 										"type": "reference",
@@ -24344,7 +24417,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Sorts entities based on an attribute.\n\\n\nIf the attribute is a list, and index can also be specified as follows: #@name1[index].\n\\n",
+								"shortText": "Sorts entities based on an attribute.\n\\n\nIf the attribute is a list, index can also be specified as follows: #@name1[index].\n\\n",
 								"returns": "Entities, a list of sorted entities.",
 								"tags": [
 									{
@@ -24466,7 +24539,7 @@
 					"sources": [
 						{
 							"fileName": "functions/query/Type.ts",
-							"line": 29,
+							"line": 31,
 							"character": 16
 						}
 					],
@@ -24478,7 +24551,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Checks the type of an entity.\n\\n\n- For is\\_used\\_posi, returns true if the entity is a posi, and it is used by at least one vertex.\n- For is\\_unused\\_posi, it returns the opposite of is\\_used\\_posi.\n- For is\\_object, returns true if the entity is a point, a polyline, or a polygon.\n- For is\\_topology, returns true if the entity is a vertex, an edge, a wire, or a face.\n- For is\\_point\\_topology, is\\_polyline\\_topology, and is\\_polygon\\_topology, returns true.\nif the entity is a topological entity, and it is part of an object of the specified type.\n- For is\\_open, returns true if the entity is a wire or polyline and is open. For is\\_closed, it returns the opposite of is\\_open.\n- For is\\_hole, returns true if the entity is a wire, and it defines a hole in a face.\n- For has\\_holes, returns true if the entity is a face or polygon, and it has holes.\n- For has\\_no\\_holes, it returns the opposite of has\\_holes.",
+								"shortText": "Checks the type of an entity. \\n\n- For is\\_used\\_posi, returns true if the entity is a posi, and it is used by at least one\n  vertex.\n- For is\\_unused\\_posi, it returns the opposite of is\\_used\\_posi.\n- For is\\_object, returns true if the entity is a point, a polyline, or a polygon.\n- For is\\_topology, returns true if the entity is a vertex, an edge, a wire, or a face.\n- For is\\_point\\_topology, is\\_polyline\\_topology, and is\\_polygon\\_topology, returns true if the\n  entity is a topological entity, and it is part of an object of the specified type.\n- For is\\_open, returns true if the entity is a wire or polyline and is open.\n- For is\\_closed, it returns the opposite of is\\_open.\n- For is\\_hole, returns true if the entity is a wire, and it defines a hole in a face.\n- For has\\_holes, returns true if the entity is a face or polygon, and it has holes.\n- For has\\_no\\_holes, it returns the opposite of has\\_holes.",
 								"returns": "Boolean or list of boolean in input sequence.",
 								"tags": [
 									{
@@ -24487,7 +24560,7 @@
 									},
 									{
 										"tag": "example_info",
-										"text": "Returns a list [true, true, false] if polyline1 and polyline2 are polylines but polygon1 is not a polyline.\n"
+										"text": "Returns a list [true, true, false] if polyline1 and polyline2 are polylines but\npolygon1 is not a polyline.\n"
 									}
 								]
 							},
@@ -25306,7 +25379,7 @@
 					"sources": [
 						{
 							"fileName": "functions/util/EntityInfo.ts",
-							"line": 15,
+							"line": 16,
 							"character": 16
 						}
 					],
@@ -25318,8 +25391,8 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Returns an html string representation of one or more entities in the model.\nThe string can be printed to the console for viewing.",
-								"returns": "void\n"
+								"shortText": "Returns a html string representation of one or more entities in the model.\nThe string can be printed to the console for viewing.",
+								"returns": "Text that summarises what is in the model, click print to see this text.\n\n"
 							},
 							"parameters": [
 								{
@@ -25343,7 +25416,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "One or more objects ot collections."
+										"shortText": "One or more objects or collections."
 									},
 									"type": {
 										"type": "union",
@@ -25379,7 +25452,7 @@
 					"sources": [
 						{
 							"fileName": "functions/util/httpRequest.ts",
-							"line": 16,
+							"line": 20,
 							"character": 23
 						}
 					],
@@ -25391,8 +25464,18 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "create a http request to a URL.",
-								"returns": "the request response\n"
+								"shortText": "Create a http request to a URL.\nTypically used with a server that runs simulations, or to download data.",
+								"returns": "The request response: JSON data in the form of a dictionary.",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "data = util.HTTPRequest(null, \"websiteurl.com\", \"GET\")"
+									},
+									{
+										"tag": "exampleinfo",
+										"text": "This will show the website in the console.\n"
+									}
+								]
 							},
 							"parameters": [
 								{
@@ -25522,7 +25605,7 @@
 					"sources": [
 						{
 							"fileName": "functions/util/ModelCompare.ts",
-							"line": 28,
+							"line": 29,
 							"character": 22
 						}
 					],
@@ -25534,8 +25617,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Compares two models. Used for grading models.",
-								"text": "Checks that every entity in this model also exists in the input_data.\n\nAdditional entitis in the input data will not affect the score.\n\nAttributes at the model level are ignored except for the `material` attributes.\n\nFor grading, this model is assumed to be the answer model, and the input model is assumed to be\nthe model submitted by the student.\n\nThe order or entities in this model may be modified in the comparison process.\n\nFor specifying the location of the GI Model, you can either specify a URL, or the name of a file in LocalStorage.\nIn the latter case, you do not specify a path, you just specify the file name, e.g. 'my_model.gi'\n",
+								"shortText": "Compares two models. Used for grading models.\n\\n\nChecks that every entity in this model also exists in the input_data.\n\\n\nAdditional entities in the input data will not affect the score.\n\\n\nAttributes at the model level are ignored except for the `material` attributes.\n\\n\nFor grading, this model is assumed to be the answer model, and the input model is assumed to be\nthe model submitted by the student.\n\\n\nThe order or entities in this model may be modified in the comparison process.\n\\n\nFor specifying the location of the GI Model, you can either specify a URL, or the name of a file\nin LocalStorage.\nIn the latter case, you do not specify a path, you just specify the file name, e.g. 'my_model.gi'",
 								"returns": "Text that summarises the comparison between the two models.\n"
 							},
 							"parameters": [
@@ -25604,7 +25686,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Returns an html string representation of the contents of this model.\nThe string can be printed to the console for viewing.",
+								"shortText": "Returns a html string representation of the contents of this model.\nThe string can be printed to the console for viewing.",
 								"returns": "Text that summarises what is in the model, click print to see this text.\n"
 							},
 							"parameters": [
@@ -25639,7 +25721,7 @@
 					"sources": [
 						{
 							"fileName": "functions/util/ModelMerge.ts",
-							"line": 18,
+							"line": 19,
 							"character": 22
 						}
 					],
@@ -25651,8 +25733,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Merges data from another model into this model.\nThis is the same as importing the model, except that no collection is created.",
-								"text": "For specifying the location of the GI Model, you can either specify a URL, or the name of a file in LocalStorage.\nIn the latter case, you do not specify a path, you just specify the file name, e.g. 'my_model.gi'\n",
+								"shortText": "Merges data from another model into this model.\nThis is the same as importing the model, except that no collection is created.\n\\n\nFor specifying the location of the GI Model, you can either specify a URL, or the name of a file\nin LocalStorage.\nIn the latter case, you do not specify a path, you just specify the file name, e.g. 'my_model.gi'",
 								"returns": "Text that summarises the comparison between the two models.\n"
 							},
 							"parameters": [
@@ -25677,7 +25758,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "The location of the GI Model to import into this model to."
+										"shortText": "The location of the GI Model to import into this model."
 									},
 									"type": {
 										"type": "intrinsic",
@@ -25726,8 +25807,8 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Returns am html string representation of the parameters in this model.\nThe string can be printed to the console for viewing.",
-								"returns": "Text that summarises what is in the model.\n"
+								"shortText": "Returns a html string representation of the parameters in the model.\nThe string can be printed to the console for viewing.",
+								"returns": "A dictionary that summarises what is in the model.\n"
 							},
 							"parameters": [
 								{
@@ -25815,7 +25896,9 @@
 									"kind": 32768,
 									"kindString": "Parameter",
 									"flags": {},
-									"comment": {},
+									"comment": {
+										"shortText": "The entities to be selected."
+									},
 									"type": {
 										"type": "union",
 										"types": [
@@ -25872,8 +25955,8 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Post a message to the parent window.",
-								"returns": "Text that summarises what is in the model, click print to see this text.\n"
+								"shortText": "Post a message to the parent window. Used when Mobius is embedded in an external website.",
+								"returns": "A message in the parent window.\n"
 							},
 							"parameters": [
 								{
@@ -25986,7 +26069,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "The rotation of the camera direction when you teleport yo the hotspot. The\nrotation is specified in degrees, in the counter-clockwise direction, starting from the Y axis.\nIf `null`, the camera rotation will default to 0."
+										"shortText": "The rotation of the camera direction when you teleport to the hotspot. The\nrotation is specified in degrees, in the counter-clockwise direction, starting from the Y axis.\nIf `null`, the camera rotation will default to 0."
 									},
 									"type": {
 										"type": "intrinsic",
@@ -26074,6 +26157,9 @@
 									"kind": 32768,
 									"kindString": "Parameter",
 									"flags": {},
+									"comment": {
+										"shortText": "The rotation of the background panorama image, in degrees, in the\ncounter-clockwise direction. If `null`, then rotation will be 0."
+									},
 									"type": {
 										"type": "intrinsic",
 										"name": "number"
@@ -26726,7 +26812,7 @@
 					"sources": [
 						{
 							"fileName": "functions/visualize/BBox.ts",
-							"line": 16,
+							"line": 27,
 							"character": 16
 						}
 					],
@@ -26738,16 +26824,16 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Visualises a bounding box by adding geometry to the model.",
+								"shortText": "Visualises a bounding box by adding geometry to the model.\n\\n\nSee `calc.BBox` for creating the bounding box.\n\\n\nThe bounding box is an imaginary box that completely contains all the geometry.\nThe box is always aligned with the global x, y, and z axes.\n\\n\nThe bounding box consists of a list of lists, as follows [[x, y, z], [x, y, z], [x, y, z], [x, y, z]].\n- The first [x, y, z] is the coordinates of the centre of the bounding box.\n- The second [x, y, z] is the corner of the bounding box with the lowest x, y, z values.\n- The third [x, y, z] is the corner of the bounding box with the highest x, y, z values.\n- The fourth [x, y, z] is the dimensions of the bounding box.",
 								"returns": "Entities, twelve polylines representing the box.",
 								"tags": [
 									{
 										"tag": "example",
-										"text": "bbox1 = virtual.viBBox(position1, vector1, [0,1,0])"
+										"text": "`bbox1 = calc.BBox(geometry)`, `bbox_vis = visualize.BBox(bbox1)`"
 									},
 									{
 										"tag": "example_info",
-										"text": "Creates a plane with position1 on it and normal = cross product of vector1 with y-axis.\n"
+										"text": "Creates a box around the inital geometry.\n"
 									}
 								]
 							},
@@ -26773,7 +26859,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "A list of lists."
+										"shortText": "A list of 4 lists (created from `calc.BBox`)."
 									},
 									"type": {
 										"type": "reference",
@@ -26804,7 +26890,7 @@
 					"sources": [
 						{
 							"fileName": "functions/visualize/Color.ts",
-							"line": 26,
+							"line": 29,
 							"character": 16
 						}
 					],
@@ -26816,7 +26902,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Sets color by creating a vertex attribute called 'rgb' and setting the value.\n\\n",
+								"shortText": "Sets color by creating a vertex attribute called 'rgb' and setting the value.\n\\n\nSee\n<a href=\"https://www.w3schools.com/colors/colors_rgb.asp?color=rgb(0,%200,%200)\" target=\"_blank\">w3schools</a>\nfor examples of RGB colors. To convert RGB(255, 255, 255) to RGB(1, 1, 1), enter vecDiv([`rgb_255_numbers`], 255).",
 								"returns": "void\n"
 							},
 							"parameters": [
@@ -26866,7 +26952,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "The color, [0,0,0] is black, [1,1,1] is white."
+										"shortText": "The color, [0,0,0] is black, [1,1,1] is white. vecDiv([255, 255, 255], 255) is also white."
 									},
 									"type": {
 										"type": "reference",
@@ -26978,7 +27064,7 @@
 					"sources": [
 						{
 							"fileName": "functions/visualize/Gradient.ts",
-							"line": 35,
+							"line": 38,
 							"character": 16
 						}
 					],
@@ -26990,7 +27076,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Generates a colour range based on a numeric attribute.\nSets the color by creating a vertex attribute called 'rgb' and setting the value.\n\\n",
+								"shortText": "Generates a colour range based on a numeric attribute.\nSets the color by creating a vertex attribute called 'rgb' and setting the value.\n\\n\nThe available gradients are from <a href=\"https://colorbrewer2.org/\">Color Brewer. </a>\nIf a custom gradient is desired, the inline expression `colScale()` can be used instead. Refer to its documentation for more information.",
 								"returns": "void\n"
 							},
 							"parameters": [
@@ -27040,7 +27126,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "The numeric attribute to be used to create the gradient.\nYou can spacify an attribute with an index. For example, ['xyz', 2] will create a gradient based on height."
+										"shortText": "The numeric attribute to be used to create the gradient.\nYou can specify an attribute with an index. For example, ['xyz', 2] will create a gradient based on height."
 									},
 									"type": {
 										"type": "union",
@@ -27085,7 +27171,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "The range of the attribute, [minimum, maximum].\nIf only one number, it defaults to [0, maximum]. If null, then the range will be auto-calculated."
+										"shortText": "The range of the attribute. If a list of 2 numbers is input, [minimum, maximum].\nIf only one number, it defaults to [0, maximum]. If null, then the range will be auto-calculated."
 									},
 									"type": {
 										"type": "union",
@@ -27227,7 +27313,7 @@
 					"sources": [
 						{
 							"fileName": "functions/visualize/Plane.ts",
-							"line": 30,
+							"line": 31,
 							"character": 16
 						}
 					],
@@ -27273,6 +27359,9 @@
 									"kind": 32768,
 									"kindString": "Parameter",
 									"flags": {},
+									"comment": {
+										"shortText": "A plane or a list of planes."
+									},
 									"type": {
 										"type": "union",
 										"types": [
@@ -27300,6 +27389,9 @@
 									"kind": 32768,
 									"kindString": "Parameter",
 									"flags": {},
+									"comment": {
+										"shortText": "Scales the size of the visualized plane."
+									},
 									"type": {
 										"type": "intrinsic",
 										"name": "number"

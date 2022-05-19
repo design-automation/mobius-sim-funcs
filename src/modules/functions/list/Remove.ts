@@ -16,6 +16,10 @@ import { _ERemoveMethod } from './_enum';
  * @param item The item to remove, either the index of the item or the value. Negative indexes are allowed.
  * @param method Enum, select the method for removing items from the list.
  * @returns void
+ * @example `list.Remove(list, 3, 'index')`
+ * @example_info where `list = [0, 1, 2, 3]`. Expected new value of list is [0, 1, 2].
+ * @example `list.Remove(list, 3, 'all_values')`
+ * @example_info where `list = [3, 1, 2, 3, 4]`. Expected new value of list is  [1, 2, 4].
  */
 export function Remove(list: any[], item: any, method: _ERemoveMethod): void {
     // --- Error Check ---

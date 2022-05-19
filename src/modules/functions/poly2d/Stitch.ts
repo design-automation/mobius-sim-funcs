@@ -25,9 +25,10 @@ import { checkIDs, ID } from '../../../_check_ids';
  * The input polyline and polygons are copied.
  * \n
  * @param __model__
- * @param entities A list polylines or polygons, or entities from which polylines or polygons can be extracted.
+ * @param entities A list polylines or polygons, or entities from which polylines or polygons can be
+ * extracted.
  * @param tolerance The tolerance for extending open plines if they are almost intersecting. 
- * @returns Copies of the input polyline and polygons, stiched.
+ * @returns Copies of the input polyline and polygons, stitched.
  */
 export function Stitch(__model__: GIModel, entities: TId | TId[], tolerance: number): TId[] {
     entities = arrMakeFlat(entities) as TId[];

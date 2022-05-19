@@ -55,7 +55,8 @@ interface TVisibilityResult {
  * @param origins A list of Rays or Planes, to be used as the origins for calculating the uobstructed views.
  * @param entities The obstructions: faces, polygons, or collections.
  * @param radius The maximum radius of the visibility analysis.
- * @param targets The traget positions.
+ * @param targets The target positions.
+ * @returns A dictionary containing different visibility metrics.
  */
 export function Visibility(
     __model__: GIModel,

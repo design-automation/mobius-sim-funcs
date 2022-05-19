@@ -19,7 +19,7 @@ import { checkIDs, ID } from '../../../_check_ids';
 /**
  * Get attribute values for one or more entities.
  * \n
- * If entities is null, then model level attributes will be returned.
+ * If `entities` is null, then model level attributes will be returned.
  * \n
  * @param __model__
  * @param entities Entities, the entities to get the attribute values for.

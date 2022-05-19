@@ -9,11 +9,11 @@ All these functions have no return value.
 ## Move  
   
   
-**Description:** Moves entities. The directio and distance if movement is specified as a vector.
+**Description:** Moves entities. The direction and distance of movement is specified as a vector.
 
 
 If only one vector is given, then all entities are moved by the same vector.
-If a list of vectors is given, the each entity will be moved by a different vector.
+If a list of vectors is given, then each entity will be moved by a different vector.
 In this case, the number of vectors should be equal to the number of entities.
 
 
@@ -24,15 +24,15 @@ then the position will be moved by the average of the vectors.
   
 **Parameters:**  
   * *entities:* An entity or list of entities to move.  
-  * *vectors:* undefined  
+  * *vectors:* A vector or a list of vectors.  
   
 **Returns:** void  
 **Examples:**  
-  * modify.Move(pline1, [1,2,3])  
+  * `modify.Move(pline1, [1,2,3])`  
     Moves pline1 by [1,2,3].  
-  * modify.Move([pos1, pos2, pos3], [[0,0,1], [0,0,1], [0,1,0]] )  
+  * `modify.Move([pos1, pos2, pos3], [[0,0,1], [0,0,1], [0,1,0]] )`  
     Moves pos1 by [0,0,1], pos2 by [0,0,1], and pos3 by [0,1,0].  
-  * modify.Move([pgon1, pgon2], [1,2,3] )  
+  * `modify.Move([pgon1, pgon2], [1,2,3] )`  
     Moves both pgon1 and pgon2 by [1,2,3].
   
   
@@ -40,7 +40,7 @@ then the position will be moved by the average of the vectors.
 ## Rotate  
   
   
-**Description:** Rotates entities on plane by angle.
+**Description:** Rotates entities on a plane by an angle.
 
   
   
@@ -48,18 +48,17 @@ then the position will be moved by the average of the vectors.
   * *entities:* An entity or list of entities to rotate.  
   * *ray:* A ray to rotate around. 
 
-Given a plane, a ray will be created from the plane z axis. 
+Given a plane, a ray will be created from the plane's z axis. 
 
 Given an `xyz` location, a ray will be generated with an origin at this location, and a direction `[0, 0, 1]`. 
 
-Given any entities, the centroid will be extracted, 
-
+Given any entities, the centroid will be extracted,
 and a ray will be generated with an origin at this centroid, and a direction `[0, 0, 1]`.  
   * *angle:* Angle (in radians).  
   
 **Returns:** void  
 **Examples:**  
-  * modify.Rotate(polyline1, plane1, PI)  
+  * `modify.Rotate(polyline1, plane1, PI)`  
     Rotates polyline1 around the z-axis of plane1 by PI (i.e. 180 degrees).
   
   
@@ -79,16 +78,15 @@ Given a ray, a plane will be generated that is perpendicular to the ray.
 
 Given an `xyz` location, a plane will be generated with an origin at that location and with axes parallel to the global axes. 
 
-Given any entities, the centroid will be extracted, 
-
+Given any entities, the centroid will be extracted,
 and a plane will be generated with an origin at the centroid, and with axes parallel to the global axes.  
   * *scale:* Scale factor, a single number to scale equally, or [scale_x, scale_y, scale_z] relative to the plane.  
   
 **Returns:** void  
 **Examples:**  
-  * modify.Scale(entities, plane1, 0.5)  
+  * `modify.Scale(entities, plane1, 0.5)`  
     Scales entities by 0.5 on plane1.  
-  * modify.Scale(entities, plane1, [0.5, 1, 1])  
+  * `modify.Scale(entities, plane1, [0.5, 1, 1])`  
     Scales entities by 0.5 along the x axis of plane1, with no scaling along the y and z axes.
   
   
@@ -101,20 +99,19 @@ and a plane will be generated with an origin at the centroid, and with axes para
   
   
 **Parameters:**  
-  * *entities:* An entity or list of entities to mirros.  
+  * *entities:* An entity or list of entities to mirror.  
   * *plane:* A plane to scale around. 
 
 Given a ray, a plane will be generated that is perpendicular to the ray. 
 
 Given an `xyz` location, a plane will be generated with an origin at that location and with axes parallel to the global axes. 
 
-Given any entities, the centroid will be extracted, 
-
+Given any entities, the centroid will be extracted,
 and a plane will be generated with an origin at the centroid, and with axes parallel to the global axes.  
   
 **Returns:** void  
 **Examples:**  
-  * modify.Mirror(polygon1, plane1)  
+  * `modify.Mirror(polygon1, plane1)`  
     Mirrors polygon1 across plane1.
   
   
@@ -134,8 +131,7 @@ Given a ray, a plane will be generated that is perpendicular to the ray.
 
 Given an `xyz` location, a plane will be generated with an origin at that location and with axes parallel to the global axes. 
 
-Given any entities, the centroid will be extracted, 
-
+Given any entities, the centroid will be extracted,
 and a plane will be generated with an origin at the centroid, and with axes parallel to the global axes.  
   * *to\_plane:* Plane defining target plane for the transformation. 
 
@@ -143,8 +139,7 @@ Given a ray, a plane will be generated that is perpendicular to the ray.
 
 Given an `xyz` location, a plane will be generated with an origin at that location and with axes parallel to the global axes. 
 
-Given any entities, the centroid will be extracted, 
-
+Given any entities, the centroid will be extracted,
 and a plane will be generated with an origin at the centroid, and with axes parallel to the global axes.  
   
 **Returns:** void  
@@ -163,11 +158,11 @@ and a plane will be generated with an origin at the centroid, and with axes para
   
 **Parameters:**  
   * *entities:* Edges, wires, faces, polylines, polygons, collections.  
-  * *dist:* The distance to offset by, can be either positive or negative  
+  * *dist:* The distance to offset by, can be either positive or negative.  
   
 **Returns:** void  
 **Examples:**  
-  * modify.Offset(polygon1, 10)  
+  * `modify.Offset(polygon1, 10)`  
     Offsets the wires inside polygon1 by 10 units. Holes will also be offset.
   
   
@@ -194,8 +189,8 @@ Instead, it is left up to the user to remesh only when it is actually required.
   
 **Returns:** void  
 **Examples:**  
-  * modify.Remesh(polygon1)  
-    Remeshs the face of the polygon.
+  * `modify.Remesh(polygon1)`  
+    Remeshes the face of the polygon.
   
   
   

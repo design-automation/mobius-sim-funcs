@@ -20,8 +20,8 @@ This ignores the intersections between rays and edges (including polyline edges)
   
 **Returns:** A list of xyz intersection coordinates.  
 **Examples:**  
-  * coords = intersect.RayFace(ray, polygon1)  
-    Returns a list of coordinates where the ray  intersects with the polygon.
+  * `coords = intersect.RayFace(ray, polygon1)`  
+    Returns a list of coordinates where the ray intersects with the polygon.
   
   
   
@@ -41,7 +41,7 @@ This ignores the intersections between planes and polygon face triangles.
   
 **Returns:** A list of xyz intersection coordinates.  
 **Examples:**  
-  * coords = intersect.PlaneEdge(plane, polyline1)  
+  * `coords = intersect.PlaneEdge(plane, polyline1)`  
     Returns a list of coordinates where the plane intersects with the edges of polyline1.
   
   

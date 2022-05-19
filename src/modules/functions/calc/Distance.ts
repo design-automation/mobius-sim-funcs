@@ -30,8 +30,8 @@ import { _EDistanceMethod } from './_enum';
  * @param entities2 List of entities to calculate distance to.
  * @param method Enum; distance method.
  * @returns Distance, or list of distances (if position2 is a list).
- * @example distance1 = calc.Distance (position1, position2, p_to_p_distance)
- * @example_info position1 = [0,0,0], position2 = [[0,0,10],[0,0,20]], Expected value of distance is 10.
+ * @example `distance1 = calc.Distance(position1, position2, p_to_p_distance)`
+ * @example_info `position1 = [0,0,0]`, `position2 = [[0,0,10],[0,0,20]]`, Expected value of distance is `10`.
  */
 export function Distance(__model__: GIModel, entities1: TId|TId[], entities2: TId|TId[], method: _EDistanceMethod): number|number[] {
     if (isEmptyArr(entities1)) { return []; }

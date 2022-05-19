@@ -22,7 +22,7 @@ import { _normal } from './Normal';
 /**
  * Returns a plane from a polygon, a face, a polyline, or a wire.
  * For polylines or wires, there must be at least three non-colinear vertices.
- *
+ * \n
  * The winding order is counter-clockwise.
  * This means that if the vertices are ordered counter-clockwise relative to your point of view,
  * then the z axis of the plane will be pointing towards you.

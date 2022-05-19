@@ -6,21 +6,22 @@ import { _getFile } from '../io';
 // ================================================================================================
 /**
  * Compares two models. Used for grading models.
- * 
+ * \n
  * Checks that every entity in this model also exists in the input_data.
- *
- * Additional entitis in the input data will not affect the score.
- *
+ * \n
+ * Additional entities in the input data will not affect the score.
+ * \n
  * Attributes at the model level are ignored except for the `material` attributes.
- *
+ * \n
  * For grading, this model is assumed to be the answer model, and the input model is assumed to be
  * the model submitted by the student.
- *
+ * \n
  * The order or entities in this model may be modified in the comparison process.
- *
- * For specifying the location of the GI Model, you can either specify a URL, or the name of a file in LocalStorage.
+ * \n
+ * For specifying the location of the GI Model, you can either specify a URL, or the name of a file
+ * in LocalStorage.
  * In the latter case, you do not specify a path, you just specify the file name, e.g. 'my_model.gi'
- *
+ * 
  * @param __model__
  * @param input_data The location of the GI Model to compare this model to.
  * @returns Text that summarises the comparison between the two models.

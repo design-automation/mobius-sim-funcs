@@ -9,7 +9,7 @@ import { _EClose, _ECurveCatRomType } from './_enum';
 // ================================================================================================
 // Enums for CurveCatRom()
 /**
- * Creates positions in an spline pattern. Returns a list of new positions.
+ * Creates positions in a spline pattern. Returns a list of new positions.
  * It is a type of interpolating spline (a curve that goes through its control points).
  * \n
  * The input is a list of XYZ coordinates. These act as the control points for creating the Spline curve.

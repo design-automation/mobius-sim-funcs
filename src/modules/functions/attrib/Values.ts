@@ -6,13 +6,14 @@ import { _getEntTypeFromStr } from './_shared';
 
 // ================================================================================================
 /**
- * Get a list of unique attribute balues for an attribute.
+ * Get a list of unique attribute values for an attribute.
  * \n
  * @param __model__
  * @param ent_type_sel Enum, the attribute entity type.
- * @returns A list of dictionaries, defining the name and type of each attribute.
- * @example attribs = attrib.Discover("pg")
- * @example_info An example of `attribs`: `[{name: "description", type: "str"}, {name: "area", type: "number"}]`.
+ * @param attribs A single attribute name, or a list of attribute names.
+ * @returns A list of values of the attribute.
+ * @example attribs = attrib.Values("pg")
+ * @example_info An example of `attribs`: `["True", "False"]`.
  */
 export function Values(__model__: GIModel, ent_type_sel: _EEntTypeAndMod, attribs: string|string[]): TAttribDataTypes[] {
 

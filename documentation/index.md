@@ -5,7 +5,7 @@ link: [analyze.md](analyze.md)
   
   
 # ATTRIB  
-The `attrib` module has functions for working with attributes in teh model.
+The `attrib` module has functions for working with attributes in the model.
 Note that attributes can also be set and retrieved using the "@" symbol.  
 link: [attrib.md](attrib.md)  
   
@@ -24,7 +24,7 @@ link: [collection.md](collection.md)
   
 # DICT  
 The `dict` module has functions for working with dictionaries.
-These functions have no direct link with the model, the are generic functions for manipulating dictionaries.
+These functions have no direct link with the model, they are generic functions for manipulating dictionaries.
 These functions neither make nor modify anything in the model.
 In addition to these functions, there are also inline functions available for working with dictionaries.  
 link: [dict.md](dict.md)  
@@ -49,9 +49,11 @@ link: [io.md](io.md)
   
 # LIST  
 The `list` module has functions for working with lists of items.
-These functions have no direct link with the model, the are generic functions for manipulating lists.
+These functions have no direct link with the model, they are generic functions for manipulating lists.
+/n
 The functions are often used when manipulating lists of IDs of entities in the model.
 These functions neither make nor modify anything in the model.
+/n
 In addition to these functions, there are also various inline functions available for working with lists.  
 link: [list.md](list.md)  
   
@@ -65,7 +67,7 @@ link: [make.md](make.md)
 # MATERIAL  
 The `material` module has functions for defining materials.
 The material definitions are saved as attributes at the model level.
-For more informtion, see the threejs docs: https://threejs.org/  
+For more informtion, see the <a href="https://threejs.org/" target="_blank">threejs docs.</a>  
 link: [material.md](material.md)  
   
   
@@ -78,14 +80,17 @@ link: [modify.md](modify.md)
   
   
 # PATTERN  
-The `pattern` module has functions for creating patters of positions.
+The `pattern` module has functions for creating patterns of positions.
 These functions all return lists of position IDs.
 The list may be nested, depending on which function is selected.  
 link: [pattern.md](pattern.md)  
   
   
 # POLY2D  
-The `poly2D` module has a set of functions for working with 2D polygons, on the XY plane.  
+The `poly2D` module has a set of functions for working with 2D polygons, with the results
+projected on the XY plane.
+\n
+All the functions create new entities and do not modify the original geometry.  
 link: [poly2d.md](poly2d.md)  
   
   

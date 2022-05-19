@@ -29,11 +29,11 @@ function rayFromPln(pln: TPlane|TPlane[]): TRay|TRay[] {
 // ================================================================================================
 /**
  * Returns a ray for an edge or a polygons.
- *
+ * \n
  * For edges, it returns a ray along the edge, from the start vertex to the end vertex
- *
+ * \n
  * For a polygon, it returns the ray that is the z-axis of the plane.
- *
+ * \n
  * For an edge, the ray vector is not normalised. For a polygon, the ray vector is normalised.
  *
  * @param __model__

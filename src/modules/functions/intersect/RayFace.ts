@@ -16,8 +16,8 @@ import * as chk from '../../../_check_types';
  * @param ray A ray.
  * @param entities A polygon or list of polygons.
  * @return A list of xyz intersection coordinates.
- * @example coords = intersect.RayFace(ray, polygon1)
- * @example_info Returns a list of coordinates where the ray  intersects with the polygon.
+ * @example `coords = intersect.RayFace(ray, polygon1)`
+ * @example_info Returns a list of coordinates where the ray intersects with the polygon.
  */
 export function RayFace(__model__: GIModel, ray: TRay, entities: TId|TId[]): Txyz[] {
     // --- Error Check ---

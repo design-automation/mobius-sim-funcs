@@ -10,7 +10,7 @@ import { _clampArr01, _setMaterialModelAttrib } from './_shared';
  * Creates a Lambert material and saves it in the model attributes.
  * If a material with the same name already exits, these settings will be added to the existing material.
  * \n
- * [See the threejs docs](https://threejs.org/docs/#api/en/materials/MeshLambertMaterial)
+ * [See the threejs docs on Lambert materials](https://threejs.org/docs/#api/en/materials/MeshLambertMaterial)
  * \n
  * In order to assign a material to polygons in the model, a polygon attribute called 'material'
  * needs to be created. The value for each polygon must either be null, or must be a material name.

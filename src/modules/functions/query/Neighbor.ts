@@ -20,7 +20,7 @@ import { _getEntTypeFromStr } from './_shared';
 * entities must not be part of the set of input entities, but must be welded to one or more entities in the input.
 * \n
 * @param __model__
-* @param ent_type_enum Enum, select the types of neighbors to return
+* @param ent_type_enum Enum, select the types of neighbors to return.
 * @param entities List of entities.
 * @returns Entities, a list of welded neighbors
 * @example query.neighbor('edges', [polyline1,polyline2,polyline3])

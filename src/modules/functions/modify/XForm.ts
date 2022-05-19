@@ -26,12 +26,12 @@ import { getPlane } from '../_common';
  * @param from_plane Plane defining source plane for the transformation. \n
  * Given a ray, a plane will be generated that is perpendicular to the ray. \n
  * Given an `xyz` location, a plane will be generated with an origin at that location and with axes parallel to the global axes. \n
- * Given any entities, the centroid will be extracted, \n
+ * Given any entities, the centroid will be extracted,
  * and a plane will be generated with an origin at the centroid, and with axes parallel to the global axes.
  * @param to_plane Plane defining target plane for the transformation. \n
  * Given a ray, a plane will be generated that is perpendicular to the ray. \n
  * Given an `xyz` location, a plane will be generated with an origin at that location and with axes parallel to the global axes. \n
- * Given any entities, the centroid will be extracted, \n
+ * Given any entities, the centroid will be extracted, 
  * and a plane will be generated with an origin at the centroid, and with axes parallel to the global axes.
  * @returns void
  * @example modify.XForm(polygon1, plane1, plane2)

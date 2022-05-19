@@ -3,12 +3,12 @@ import { GIModel } from '@design-automation/mobius-sim';
 
 // ================================================================================================
 /**
- * Returns am html string representation of the parameters in this model.
+ * Returns a html string representation of the parameters in the model.
  * The string can be printed to the console for viewing.
  *
  * @param __model__
  * @param __constList__
- * @returns Text that summarises what is in the model.
+ * @returns A dictionary that summarises what is in the model.
  */
 export function ParamInfo(__model__: GIModel, __constList__: {}): string {
     return JSON.stringify(__constList__);

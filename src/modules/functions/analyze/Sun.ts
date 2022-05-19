@@ -53,8 +53,8 @@ import { _calcExposure, _rayOrisDirsTjs, _solarRaysDirectTjs, _solarRaysIndirect
  * Sun rays that are hitting the sensor straight on are assigned a weight of 1.
  * Sun rays that are hitting the sensor at an oblique angle are assigned a weight equal to the cosine of the angle.
  * \n
- * If 'direct_exposure' is selected, then the points on the sky dome will follow the path of the sun throughout the year.
- * If 'indirect_exposure' is selected, then the points on the sky dome will consist of points excluded by
+ * If 'direct\_exposure' is selected, then the points on the sky dome will follow the path of the sun throughout the year.
+ * If 'indirect\_exposure' is selected, then the points on the sky dome will consist of points excluded by
  * the path of the sun throughout the year.
  * \n
  * The direct sky dome points cover a strip of sky where the sun travels.
@@ -97,6 +97,7 @@ import { _calcExposure, _rayOrisDirsTjs, _solarRaysDirectTjs, _solarRaysIndirect
  * @param entities The obstructions, faces, polygons, or collections of faces or polygons.
  * @param limits The max distance for raytracing.
  * @param method Enum; solar method.
+ * @returns A dictionary containing solar exposure results.
  */
 export function Sun(
     __model__: GIModel,

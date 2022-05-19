@@ -33,19 +33,19 @@ The resulting list of entities will not contain duplicate entities.
 ## Filter  
   
   
-**Description:** Filter a list of entities based on an attribute value.
-
-
-The result will always be a list of entities, even if there is only one entity.
-In a case where you want only one entity, remember to get the first item in the list.
-
+**Description:** Filter a list of entities based on an attribute value. 
+ The result will always be a list of
+entities, even if there is only one entity. In a case where you want only one entity, remember to
+get the first item in the list. 
   
   
 **Parameters:**  
-  * *entities:* List of entities to filter. The entities must all be of the same type  
-  * *attrib:* The attribute to use for filtering. Can be `name`, `[name, index]`, or `[name, key]`.  
-  * *operator\_enum:* Enum, the operator to use for filtering  
-  * *value:* The attribute value to use for filtering.  
+  * *entities:* List of entities to filter. The entities must all be of the same type.  
+  * *attrib:* The attribute to use for filtering. Can be `name`, `[name, index]`, or `[name,
+key]`.  
+  * *operator\_enum:* Enum, the operator to use for filtering.  
+  * *value:* The attribute value to use for filtering. If the attribute value of a given entity
+is equal to this, it will be included in the result.  
   
 **Returns:** Entities, a list of entities that match the conditions specified in 'expr'.  
   
@@ -58,7 +58,7 @@ For example, you can get the position entities that are not part of a list of po
 
 
 This function does the opposite of query.Get().
-While query.Get() gets entities that are part of of the list of entities,
+While query.Get() gets entities that are part of the list of entities,
 this function gets the entities that are not part of the list of entities.
 
   
@@ -67,7 +67,7 @@ this function gets the entities that are not part of the list of entities.
   * *ent\_type\_enum:* Enum, specifies what type of entities will be returned.  
   * *entities:* List of entities to be excluded.  
   
-**Returns:** Entities, a list of entities that match the type specified in 'ent_type_enum', and that are not in entities.  
+**Returns:** Entities, a list of entities that match the type specified in '`ent_type_enum`', and that are not in `entities`.  
 **Examples:**  
   * positions = query.Invert('positions', [polyline1, polyline2])  
     Returns a list of positions that are not part of polyline1 and polyline2.
@@ -80,7 +80,7 @@ this function gets the entities that are not part of the list of entities.
 **Description:** Sorts entities based on an attribute.
 
 
-If the attribute is a list, and index can also be specified as follows: #@name1[index].
+If the attribute is a list, index can also be specified as follows: #@name1[index].
 
   
   
@@ -105,7 +105,7 @@ entities must be part of the set of input entities and must have naked edges.
   
   
 **Parameters:**  
-  * *ent\_type:* Enum, select the type of perimeter entities to return  
+  * *ent\_type:* Enum, select the type of perimeter entities to return.  
   * *entities:* List of entities.  
   
 **Returns:** Entities, a list of perimeter entities.  
@@ -124,7 +124,7 @@ entities must not be part of the set of input entities, but must be welded to on
   
   
 **Parameters:**  
-  * *ent\_type\_enum:* Enum, select the types of neighbors to return  
+  * *ent\_type\_enum:* Enum, select the types of neighbors to return.  
   * *entities:* List of entities.  
   
 **Returns:** Entities, a list of welded neighbors  
@@ -153,16 +153,17 @@ entities must not be part of the set of input entities, but must be welded to on
 ## Type  
   
   
-**Description:** Checks the type of an entity.
+**Description:** Checks the type of an entity. 
 
-
-- For is\_used\_posi, returns true if the entity is a posi, and it is used by at least one vertex.
+- For is\_used\_posi, returns true if the entity is a posi, and it is used by at least one
+  vertex.
 - For is\_unused\_posi, it returns the opposite of is\_used\_posi.
 - For is\_object, returns true if the entity is a point, a polyline, or a polygon.
 - For is\_topology, returns true if the entity is a vertex, an edge, a wire, or a face.
-- For is\_point\_topology, is\_polyline\_topology, and is\_polygon\_topology, returns true.
-if the entity is a topological entity, and it is part of an object of the specified type.
-- For is\_open, returns true if the entity is a wire or polyline and is open. For is\_closed, it returns the opposite of is\_open.
+- For is\_point\_topology, is\_polyline\_topology, and is\_polygon\_topology, returns true if the
+  entity is a topological entity, and it is part of an object of the specified type.
+- For is\_open, returns true if the entity is a wire or polyline and is open.
+- For is\_closed, it returns the opposite of is\_open.
 - For is\_hole, returns true if the entity is a wire, and it defines a hole in a face.
 - For has\_holes, returns true if the entity is a face or polygon, and it has holes.
 - For has\_no\_holes, it returns the opposite of has\_holes.  
@@ -174,7 +175,8 @@ if the entity is a topological entity, and it is part of an object of the specif
 **Returns:** Boolean or list of boolean in input sequence.  
 **Examples:**  
   * query.Type([polyline1, polyline2, polygon1], is\_polyline )  
-    Returns a list [true, true, false] if polyline1 and polyline2 are polylines but polygon1 is not a polyline.
+    Returns a list [true, true, false] if polyline1 and polyline2 are polylines but
+polygon1 is not a polyline.
   
   
   

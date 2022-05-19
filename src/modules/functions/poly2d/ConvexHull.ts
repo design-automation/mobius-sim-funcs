@@ -15,10 +15,12 @@ import { _convexHull, _getPosis } from './_shared';
 
 // ================================================================================================
 /**
- * Create a voronoi subdivision of a polygon.
+ * Creates a convex hull from a list of positions. 
+ * 
+ * //TO INSERT AN IMAGE/DIAGRAM OF A CONVEX HULL 
  *
  * @param __model__
- * @param entities A list of positions, or entities from which positions can bet extracted.
+ * @param entities A list of positions, or entities from which positions can be extracted.
  * @returns A new polygons, the convex hull of the positions.
  */
 export function ConvexHull(__model__: GIModel, entities: TId|TId[]): TId {

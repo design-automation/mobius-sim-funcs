@@ -31,7 +31,7 @@ import { checkIDs, ID } from '../../../_check_ids';
  * @param __model__
  * @param entities Entities, a list of positions, or entities from which positions can be extracted.
  * @param tolerance The distance tolerance for fusing positions.
- * @returns void
+ * @returns Entities, a list of new positions.
  */
 export function Fuse(__model__: GIModel, entities: TId|TId[], tolerance: number): TId[] {
     entities = arrMakeFlat(entities) as TId[];

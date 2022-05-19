@@ -29,12 +29,12 @@ function rayFromPln(pln: TPlane|TPlane[]): TRay|TRay[] {
 // ================================================================================================
 /**
  * Calculates the length of an entity.
- *
+ * \n
  * The entity can be an edge, a wire, a polyline, or anything from which wires can be extracted.
  * This includes polylines, polygons, faces, and collections.
- *
+ * \n
  * Given a list of edges, wires, or polylines, a list of lengths are returned.
- *
+ * \n
  * Given any types of entities from which wires can be extracted, a list of lengths are returned.
  * For example, given a single polygon, a list of lengths are returned (since a polygon may have multiple wires).
  *

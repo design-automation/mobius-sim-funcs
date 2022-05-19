@@ -8,7 +8,8 @@ import { _createProjection, _xformFromLongLatToXYZ } from './LatLong2XYZ';
 
 // ================================================================================================
 /**
- * Set the geolocation of the Cartesian coordinate system.
+ * Set the geolocation of the Cartesian coordinate system. 
+ * Does the same as the Geolocate function, but with alternate parameters.
  * \n 
  * The Cartesian coordinate system is geolocated by defining two points:
  * - The latitude-longitude of the Cartesian origin.

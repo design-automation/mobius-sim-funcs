@@ -19,8 +19,11 @@ import * as chk from '../../../_check_types';
 /**
  * Sets color by creating a vertex attribute called 'rgb' and setting the value.
  * \n
+ * See 
+ * <a href="https://www.w3schools.com/colors/colors_rgb.asp?color=rgb(0,%200,%200)" target="_blank">w3schools</a>
+ * for examples of RGB colors. To convert RGB(255, 255, 255) to RGB(1, 1, 1), enter vecDiv([`rgb_255_numbers`], 255).
  * @param entities The entities for which to set the color.
- * @param color The color, [0,0,0] is black, [1,1,1] is white.
+ * @param color The color, [0,0,0] is black, [1,1,1] is white. vecDiv([255, 255, 255], 255) is also white.
  * @returns void
  */
 export function Color(__model__: GIModel, entities: TId|TId[], color: TColor): void {

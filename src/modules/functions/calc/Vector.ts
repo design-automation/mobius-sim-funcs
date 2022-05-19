@@ -17,9 +17,9 @@ import { checkIDs, ID } from '../../../_check_ids';
 /**
  * Returns a vector along an edge, from the start position to the end position.
  * The vector is not normalized.
- *
+ * \n
  * Given a single edge, a single vector will be returned. Given a list of edges, a list of vectors will be returned.
- *
+ * \n
  * Given any entity that has edges (collection, polygons, polylines, faces, and wires),
  * a list of edges will be extracted, and a list of vectors will be returned.
  *

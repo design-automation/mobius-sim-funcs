@@ -18,6 +18,7 @@ import { _getAttribPushTarget } from './_shared';
  * `[source_name, source_index_or_key, target_name]` or `[source_name, source_index_or_key, target_name, target_index_or_key]`.
  * @param ent_type_sel Enum, the target entity type where the attribute values should be pushed to.
  * @param method_sel Enum, the method for aggregating attribute values in cases where aggregation is necessary.
+ * @returns void 
  */
 export function Push(__model__: GIModel, entities: TId|TId[],
         attrib: string|[string, number|string]|[string, number|string, string]|[string, number|string, string, number|string],

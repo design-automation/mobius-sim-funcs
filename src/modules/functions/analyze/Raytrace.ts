@@ -52,13 +52,13 @@ interface TRaytraceResult {
  * Returns a dictionary containing the following data.
  * \n
  * If 'stats' is selected, the dictionary will contain the following numbers:
- * 1. 'hit_count': the total number of rays that hit an obstruction.
- * 2. 'miss_count': the total number of rays that did not hit any obstruction.
- * 3. 'total_dist': the total of all the ray distances.
- * 4. 'min_dist': the minimum distance for all the rays.
- * 5. 'max_dist': the maximum distance for all the rays.
- * 6. 'avg_dist': the average dist for all the rays.
- * 7. 'dist_ratio': the ratio of 'total_dist' to the maximum distance if not rays hit any
+ * 1. 'hit\_count': the total number of rays that hit an obstruction.
+ * 2. 'miss\_count': the total number of rays that did not hit any obstruction.
+ * 3. 'total\_dist': the total of all the ray distances.
+ * 4. 'min\_dist': the minimum distance for all the rays.
+ * 5. 'max\_dist': the maximum distance for all the rays.
+ * 6. 'avg\_dist': the average dist for all the rays.
+ * 7. 'dist\_ratio': the ratio of 'total\_dist' to the maximum distance if not rays hit any
  * obstructions.
  * \n
  * If 'distances' is selected, the dictionary will contain the following list:
@@ -83,6 +83,7 @@ interface TRaytraceResult {
  * @param entities The obstructions, faces, polygons, or collections of faces or polygons.
  * @param dist The ray limits, one or two numbers. Either max, or [min, max].
  * @param method Enum; values to return.
+ * @returns A dictionary, a list of dictionaries, or null.
  */
 export function Raytrace(
     __model__: GIModel,

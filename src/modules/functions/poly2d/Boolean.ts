@@ -37,6 +37,8 @@ import {
  * If A is an empty list, then an empty list is returned.
  * If B is an empty list, then the A list is returned.
  * \n
+ * The input polygons or polylines are not deleted. 
+ * 
  * @param __model__
  * @param a_entities A list of polyline or polygons, or entities from which polyline or polygons can be extracted.
  * @param b_entities A list of polygons, or entities from which polygons can be extracted.

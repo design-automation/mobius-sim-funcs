@@ -9,13 +9,14 @@ import { _getEntTypeFromStr } from './_shared';
 // ================================================================================================
 /**
  * Rename an attribute in the model.
- * The header for column in the attribute table will be renamed.
+ * The header for the column in the attribute table will be renamed.
  * All values will remain the same.
  * \n
  * @param __model__
  * @param ent_type_sel Enum, the attribute entity type.
  * @param old_attrib The old attribute name.
- * @param new_attrib The old attribute name.
+ * @param new_attrib The new attribute name.
+ * @returns void 
  */
 export function Rename(__model__: GIModel, ent_type_sel: _EEntTypeAndMod, old_attrib: string, new_attrib: string): void {
     if (ent_type_sel === "ps" && old_attrib === "xyz") {

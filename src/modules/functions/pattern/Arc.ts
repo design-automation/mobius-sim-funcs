@@ -32,7 +32,7 @@ import * as chk from '../../../_check_types';
  * \n
  * The `num_positions` parameter specifies the total number of positions to be generated on the arc.
  * \n
- * The `arc_angle` specifies the angle of the arc, in radians. Angles start at thet X-axis of the
+ * The `arc_angle` specifies the angle of the arc, in radians. Angles start at the X-axis of the
  * origin plane and move in a counter-clockwise direction. Two angles are needed to define an arc,
  * a `start_angle` and `end_angle`. The angles may be positive or negative, and may be
  * greater than `2*PI` or smaller than `-2*PI`.
@@ -53,8 +53,8 @@ import * as chk from '../../../_check_types';
  * `[0, 2*PI]` In addition, duplicate positions at start and end of the arc are
  * automatically removed.
  * \n
- * Note that setting the arc angle to null is not the same as setting it to `2*PI`
- * When setting the arc angle to `2*PI`, you will get a duplicate positions at start and end 
+ * Note that setting the arc angle to null is not the same as setting it to `2*PI.
+ * When setting the arc angle to `2*PI`, you will get duplicate positions at the start and end 
  * of the arc.
  * \n
  * @param __model__

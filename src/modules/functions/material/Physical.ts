@@ -10,7 +10,7 @@ import { _clamp01, _clampArr01, _setMaterialModelAttrib } from './_shared';
  * Creates a Physical material and saves it in the model attributes.
  * If a material with the same name already exits, these settings will be added to the existing material.
  * \n
- * [See the threejs docs](https://threejs.org/docs/#api/en/materials/MeshPhysicalMaterial)
+ * [See the threejs docs on Physical materials](https://threejs.org/docs/#api/en/materials/MeshPhysicalMaterial)
  * \n
  * In order to assign a material to polygons in the model, a polygon attribute called 'material'
  * needs to be created. The value for each polygon must either be null, or must be a material name.

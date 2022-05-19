@@ -6,7 +6,7 @@ import { checkIDs, ID } from '../../../_check_ids';
 
 // ================================================================================================
 /**
- * Addes entities to a collection.
+ * Adds entities to a collection.
  * \n
  * @param __model__
  * @param coll The collection to be updated.

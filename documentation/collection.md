@@ -6,7 +6,17 @@ The `collections` module has functions for creating and modifying collections.
 ## Create  
   
   
-**Description:** Create a new collection.  
+**Description:** Create a new collection.
+
+
+If the `entities` argument is null or an empty list, then an empty collection will be created.
+
+
+If the `name` argument is null, then no name attribute will be created for the collection.
+
+
+If the list of entities contains other collections, these other collections will then become
+children of the new collection.  
   
 **Parameters:**  
   * *entities:* List or nested lists of points, polylines, polygons, and other colletions, or null.  
@@ -22,12 +32,13 @@ The `collections` module has functions for creating and modifying collections.
 ## Get  
   
   
-**Description:** Get one or more collections from the model, given a name or list of names.
-Collections with an attribute called 'name' and with a value that matches teh given vale will be returned.
+**Description:** Get one or more collections from the model, given a name or list of names. Collections with an
+attribute called 'name' and with a value that matches the given value will be returned.
 
 
-The value for name can include wildcards: '?' matches any single character and '*' matches any sequence of characters.
-For example, 'coll?' will match 'coll1' and 'colla'. 'coll*' matches any name that starts with 'coll'.
+The value for name can include wildcards: '?' matches any single character and '*' matches any
+sequence of characters. For example, 'coll?' will match 'coll1' and 'colla'. 'coll*' matches any
+name that starts with 'coll'.
 
 
 If a single collection is found, the collection will be returned as a single item (not a list).
@@ -47,7 +58,7 @@ If no collections are found, then an empty list is returned.
 ## Add  
   
   
-**Description:** Addes entities to a collection.
+**Description:** Adds entities to a collection.
 
   
   

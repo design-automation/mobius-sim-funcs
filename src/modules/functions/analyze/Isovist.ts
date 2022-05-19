@@ -67,6 +67,7 @@ interface TIsovistResult {
  * @param entities The obstructions: faces, polygons, or collections.
  * @param radius The maximum radius of the isovist.
  * @param num_rays The number of rays to generate when calculating isovists.
+ * @returns A dictionary containing metrics.
  */
 export function Isovist(
     __model__: GIModel,

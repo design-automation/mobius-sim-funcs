@@ -9,7 +9,7 @@ The `util` module has some utility functions used for debugging.
 **Description:** Select entities in the model.  
   
 **Parameters:**  
-  * *entities:* undefined  
+  * *entities:* The entities to be selected.  
   
 **Returns:** void  
   
@@ -17,14 +17,17 @@ The `util` module has some utility functions used for debugging.
 ## HTTPRequest  
   
   
-**Description:** create a http request to a URL.  
+**Description:** Create a http request to a URL.
+Typically used with a server that runs simulations, or to download data.  
   
 **Parameters:**  
   * *request\_data:* request data  
   * *request\_url:* request url  
   * *method:* Enum; HTTP method  
   
-**Returns:** the request response  
+**Returns:** The request response: JSON data in the form of a dictionary.  
+**Examples:**  
+  * data = util.HTTPRequest(null, "websiteurl.com", "GET")  
   
   
 ## VrHotspot  
@@ -37,7 +40,7 @@ The `util` module has some utility functions used for debugging.
 **Parameters:**  
   * *point:* A point object to be used for creating hotspots.  
   * *name:* A name for the VR hotspots. If `null`, a default name will be created.  
-  * *camera\_rot:* The rotation of the camera direction when you teleport yo the hotspot. The
+  * *camera\_rot:* The rotation of the camera direction when you teleport to the hotspot. The
 rotation is specified in degrees, in the counter-clockwise direction, starting from the Y axis.
 If `null`, the camera rotation will default to 0.  
   
@@ -55,7 +58,8 @@ the hotspot, the panorama images will be loaded into the view.
   * *point:* The point object to be used for creating a panorama. If this point is already
 defined as a VR hotspot, then the panorama hotspot will inherit the name and camera angle.  
   * *back\_url:* The URL of the 360 degree panorama image to be used for the background.  
-  * *back\_rot:* undefined  
+  * *back\_rot:* The rotation of the background panorama image, in degrees, in the
+counter-clockwise direction. If `null`, then rotation will be 0.  
   * *fore\_url:* The URL of the 360 degree panorama image to be used for the foreground. If `null`
 then no foreground image will be used.  
   * *fore\_rot:* The rotation of the forground panorama image, in degrees, in the
@@ -67,30 +71,30 @@ counter-clockwise direction. If `null`, then the foreground rotation will be equ
 ## ParamInfo  
   
   
-**Description:** Returns am html string representation of the parameters in this model.
+**Description:** Returns a html string representation of the parameters in the model.
 The string can be printed to the console for viewing.  
   
 **Parameters:**  
   
-**Returns:** Text that summarises what is in the model.  
+**Returns:** A dictionary that summarises what is in the model.  
   
   
 ## EntityInfo  
   
   
-**Description:** Returns an html string representation of one or more entities in the model.
+**Description:** Returns a html string representation of one or more entities in the model.
 The string can be printed to the console for viewing.  
   
 **Parameters:**  
-  * *entities:* One or more objects ot collections.  
+  * *entities:* One or more objects or collections.  
   
-**Returns:** void  
+**Returns:** Text that summarises what is in the model, click print to see this text.  
   
   
 ## ModelInfo  
   
   
-**Description:** Returns an html string representation of the contents of this model.
+**Description:** Returns a html string representation of the contents of this model.
 The string can be printed to the console for viewing.  
   
 **Parameters:**  
@@ -111,7 +115,28 @@ The string can be printed to the console for viewing.
 ## ModelCompare  
   
   
-**Description:** Compares two models. Used for grading models.  
+**Description:** Compares two models. Used for grading models.
+
+
+Checks that every entity in this model also exists in the input_data.
+
+
+Additional entities in the input data will not affect the score.
+
+
+Attributes at the model level are ignored except for the `material` attributes.
+
+
+For grading, this model is assumed to be the answer model, and the input model is assumed to be
+the model submitted by the student.
+
+
+The order or entities in this model may be modified in the comparison process.
+
+
+For specifying the location of the GI Model, you can either specify a URL, or the name of a file
+in LocalStorage.
+In the latter case, you do not specify a path, you just specify the file name, e.g. 'my_model.gi'  
   
 **Parameters:**  
   * *input\_data:* The location of the GI Model to compare this model to.  
@@ -123,10 +148,15 @@ The string can be printed to the console for viewing.
   
   
 **Description:** Merges data from another model into this model.
-This is the same as importing the model, except that no collection is created.  
+This is the same as importing the model, except that no collection is created.
+
+
+For specifying the location of the GI Model, you can either specify a URL, or the name of a file
+in LocalStorage.
+In the latter case, you do not specify a path, you just specify the file name, e.g. 'my_model.gi'  
   
 **Parameters:**  
-  * *input\_data:* The location of the GI Model to import into this model to.  
+  * *input\_data:* The location of the GI Model to import into this model.  
   
 **Returns:** Text that summarises the comparison between the two models.  
   
@@ -134,11 +164,11 @@ This is the same as importing the model, except that no collection is created.
 ## SendData  
   
   
-**Description:** Post a message to the parent window.  
+**Description:** Post a message to the parent window. Used when Mobius is embedded in an external website.  
   
 **Parameters:**  
   * *data:* The data to send, a list or a dictionary.  
   
-**Returns:** Text that summarises what is in the model, click print to see this text.  
+**Returns:** A message in the parent window.  
   
   

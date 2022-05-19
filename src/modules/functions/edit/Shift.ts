@@ -24,7 +24,7 @@ import { checkIDs, ID } from '../../../_check_ids';
  * @param offset The offset, a positive or negative integer.
  * @returns void
  * @example `modify.Shift(polygon1, 1)`
- * @example_info Shifts the edges in the polygon wire, so that the every edge moves back by one position
+ * @example_info Shifts the edges in the polygon wire, so that every edge moves back by one position
  * in the ring. The first edge will become the last edge.
  * @example `edit.Shift(polyline1, -1)`
  * @example_info Shifts the edges in the closed polyline wire, so that every edge moves up by one position

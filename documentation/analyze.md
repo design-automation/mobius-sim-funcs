@@ -27,13 +27,13 @@ Returns a dictionary containing the following data.
 
 
 If 'stats' is selected, the dictionary will contain the following numbers:
-1. 'hit_count': the total number of rays that hit an obstruction.
-2. 'miss_count': the total number of rays that did not hit any obstruction.
-3. 'total_dist': the total of all the ray distances.
-4. 'min_dist': the minimum distance for all the rays.
-5. 'max_dist': the maximum distance for all the rays.
-6. 'avg_dist': the average dist for all the rays.
-7. 'dist_ratio': the ratio of 'total_dist' to the maximum distance if not rays hit any
+1. 'hit\_count': the total number of rays that hit an obstruction.
+2. 'miss\_count': the total number of rays that did not hit any obstruction.
+3. 'total\_dist': the total of all the ray distances.
+4. 'min\_dist': the minimum distance for all the rays.
+5. 'max\_dist': the maximum distance for all the rays.
+6. 'avg\_dist': the average dist for all the rays.
+7. 'dist\_ratio': the ratio of 'total\_dist' to the maximum distance if not rays hit any
 obstructions.
 
 
@@ -64,8 +64,9 @@ If the input is a list of lists of rays, then the output will be a list of dicti
   * *rays:* A ray, a list of rays, or a list of lists of rays.  
   * *entities:* The obstructions, faces, polygons, or collections of faces or polygons.  
   * *dist:* The ray limits, one or two numbers. Either max, or [min, max].  
-  * *method:* Enum; values to return.
+  * *method:* Enum; values to return.  
   
+**Returns:** A dictionary, a list of dictionaries, or null.  
   
   
 ## Isovist  
@@ -105,8 +106,9 @@ isovist to the radius of an idealized circle with the actual perimeter of the ci
   * *origins:* A list of Rays or a list of Planes, to be used as the origins for calculating the isovists.  
   * *entities:* The obstructions: faces, polygons, or collections.  
   * *radius:* The maximum radius of the isovist.  
-  * *num\_rays:* The number of rays to generate when calculating isovists.
+  * *num\_rays:* The number of rays to generate when calculating isovists.  
   
+**Returns:** A dictionary containing metrics.  
   
   
 ## Sky  
@@ -171,8 +173,9 @@ Returns a dictionary containing exposure results.
   * *detail:* An integer between 1 and 3 inclusive, specifying the level of detail for the analysis.  
   * *entities:* The obstructions, faces, polygons, or collections of faces or polygons.  
   * *limits:* The max distance for raytracing.  
-  * *method:* Enum; sky method.
+  * *method:* Enum; sky method.  
   
+**Returns:** A dictionary containing solar exposure results.  
   
   
 ## Sun  
@@ -215,8 +218,8 @@ Sun rays that are hitting the sensor straight on are assigned a weight of 1.
 Sun rays that are hitting the sensor at an oblique angle are assigned a weight equal to the cosine of the angle.
 
 
-If 'direct_exposure' is selected, then the points on the sky dome will follow the path of the sun throughout the year.
-If 'indirect_exposure' is selected, then the points on the sky dome will consist of points excluded by
+If 'direct\_exposure' is selected, then the points on the sky dome will follow the path of the sun throughout the year.
+If 'indirect\_exposure' is selected, then the points on the sky dome will consist of points excluded by
 the path of the sun throughout the year.
 
 
@@ -269,8 +272,9 @@ If one  of the 'indirect' methods is selected, the dictionary will contain:
   * *detail:* An integer between 1 and 3 inclusive, specifying the level of detail for the analysis.  
   * *entities:* The obstructions, faces, polygons, or collections of faces or polygons.  
   * *limits:* The max distance for raytracing.  
-  * *method:* Enum; solar method.
+  * *method:* Enum; solar method.  
   
+**Returns:** A dictionary containing solar exposure results.  
   
   
 ## SkyDome  
@@ -285,17 +289,20 @@ The sun path takes into account the geolocation and the north direction of the m
 Geolocation is specified by a model attributes as follows:
 - @geolocation={'longitude':123,'latitude':12}.
 North direction is specified by a model attribute as follows, using a vector:
-- @north==[1,2]
-If no north direction is specified, then [0,1] is the default (i.e. north is in the direction of the y-axis);
+- @north==[1,2].
+  If no north direction is specified, then [0,1] is the default (i.e. north is in the direction
+  of the y-axis)
 
   
   
 **Parameters:**  
-  * *origin:* undefined  
+  * *origin:* The origins of the rays  
   * *detail:* The level of detail for the analysis  
   * *radius:* The radius of the sun path  
-  * *method:* Enum, the type of sky to generate.
+  * *method:* Enum, the type of sky to generate.  
   
+**Returns:** Entities, a set of positions that are organized into sequences.
+A polyline can then be drawn from these positions.  
   
   
 ## Nearest  
@@ -307,8 +314,8 @@ If no north direction is specified, then [0,1] is the default (i.e. north is in 
 The neighbors to each source position is calculated as follows:
 1. Calculate the distance to all target positions.
 2. Creat the neighbors set by filtering out target positions that are further than the maximum radius.
-3. If the number of neighbors is greater than 'max_neighbors',
-then select the 'max_neighbors' closest target positions.
+3. If the number of neighbors is greater than 'max\_neighbors',
+then select the 'max\_neighbors' closest target positions.
 
 
 Returns a dictionary containing the nearest positions.
@@ -363,7 +370,7 @@ Returns a dictionary containing the shortest paths.
 
 
 If 'distances' is selected, the dictionary will contain two list:
-1. 'source_posis': a list of start positions for eah path,
+1. 'source_posis': a list of start positions for each path,
 2. 'distances': a list of distances, one list for each path starting at each source position.
 
 
@@ -522,7 +529,7 @@ For edges to be connected, vertices must be welded.
 For example, if the network consists of multiple polylines, then the vertcies of those polylines must be welded.
 
 
-Centralities are calculate based on distances between positions.
+Centralities are calculated based on distances between positions.
 The distance between two positions is the shortest path between those positions.
 The shortest path is the path where the sum of the weights of the edges along the path is the minimum.
 
@@ -536,7 +543,7 @@ Closeness centrality is calculated by inverting the sum of the distances to all 
 Harmonic centrality is calculated by summing up the inverted distances to all other positions.
 
 
-Betweenness centrality os calculated in two steps.
+Betweenness centrality is calculated in two steps.
 First, the shortest path between every pair of nodes is calculated.
 Second, the betweenness centrality of each node is then the total number of times the node is traversed
 by the shortest paths.
@@ -565,9 +572,9 @@ Returns a dictionary containing the results.
 These positions should be part of the network.  
   * *entities:* The network, edges, or entities from which edges can be extracted.  
   * *method:* Enum, the method to use, directed or undirected.  
-  * *cen\_type:* Enum, the data to return, positions, edges, or both.  
+  * *cen\_type:* Enum, the type of centrality (betweenness, closeness or harmonic).  
   
-**Returns:** A list of centrality values, between 0 and 1.  
+**Returns:** A dictionary containing the results (posis and centrality values, between 0 and 1.)  
   
   
 ## View  
@@ -580,10 +587,14 @@ Typically, the origins are created as centroids of a set of windows.
 
 
 The unobstructed view is calculated by shooting rays out from the origins in a fan pattern.
+
+
 The 'radius' argument defines the maximum radius of the unobstructed view.
 (The radius is used to define the maximum distance for shooting the rays.)
+
+
 The 'num_rays' argument defines the number of rays that will be shot,
-in a fab pattern parallel to the XY plane, with equal angle between rays.
+in a fan pattern parallel to the XY plane, with equal angle between rays.
 More rays will result in more accurate result, but will also be slower to execute.
 
 
@@ -598,8 +609,9 @@ Returns a dictionary containing different unobstructed view metrics.
   * *entities:* The obstructions: faces, polygons, or collections.  
   * *radius:* The maximum radius of the uobstructed views.  
   * *num\_rays:* The number of rays to generate when calculating uobstructed views.  
-  * *view\_ang:* The angle of the unobstructed view, in radians.
+  * *view\_ang:* The angle of the unobstructed view, in radians.  
   
+**Returns:** A dictionary containing different unobstructed view metrics  
   
   
 ## Visibility  
@@ -627,7 +639,8 @@ Returns a dictionary containing different visibility metrics.
   * *origins:* A list of Rays or Planes, to be used as the origins for calculating the uobstructed views.  
   * *entities:* The obstructions: faces, polygons, or collections.  
   * *radius:* The maximum radius of the visibility analysis.  
-  * *targets:* The traget positions.
+  * *targets:* The target positions.  
   
+**Returns:** A dictionary containing different visibility metrics.  
   
   

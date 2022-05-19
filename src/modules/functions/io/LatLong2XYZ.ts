@@ -24,7 +24,7 @@ const LONGLAT = [103.778329, 1.298759];
  * @param __model__
  * @param lat_long Latitude and longitude coordinates. 
  * @param elev Set the elevation of the Cartesian coordinate system above the ground plane.
- * @returns XYZ coordinates
+ * @returns XYZ coordinates.
  */
 export function LatLong2XYZ(
     __model__: GIModel,

@@ -24,7 +24,7 @@ const requestedBytes = 1024 * 1024 * 200; // 200 MB local storage quota
 /**
  * Export data from the model as a file.
  * \n
- * If you expore to your  hard disk,
+ * If you export to your hard disk,
  * it will result in a popup in your browser, asking you to save the file.
  * \n
  * If you export to Local Storage, there will be no popup.
@@ -35,8 +35,8 @@ const requestedBytes = 1024 * 1024 * 200; // 200 MB local storage quota
  * @param data_format Enum, the file format.
  * @param data_target Enum, where the data is to be exported to.
  * @returns void.
- * @example io.Export (#pg, 'my_model.obj', obj)
- * @example_info Exports all the polgons in the model as an OBJ.
+ * @example io.Export (#pg, 'my\_model.obj', obj)
+ * @example_info Exports all the polygons in the model as an OBJ.
  */
 export async function Export(__model__: GIModel, entities: TId | TId[] | TId[][],
     file_name: string, data_format: _EIOExportDataFormat, data_target: _EIODataTarget) {

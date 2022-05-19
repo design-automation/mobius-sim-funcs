@@ -15,8 +15,9 @@ import { _getEntTypeFromStr } from './_shared';
  * \n
  * @param __model__
  * @param ent_type_sel Enum, the attribute entity type.
- * @param data_type_sel Enum, the data type for this attribute
+ * @param data_type_sel Enum, the data type for this attribute.
  * @param attribs A single attribute name, or a list of attribute names.
+ * @returns void 
  */
 export function Add(__model__: GIModel, ent_type_sel: _EEntTypeAndMod, data_type_sel: _EDataType, attribs: string | string[]): void {
     // --- Error Check ---

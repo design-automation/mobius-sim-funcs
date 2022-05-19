@@ -12,7 +12,7 @@ import { checkArgs, isNull, isNum, isStr } from '../../../_check_types';
  * @param point The point object to be used for creating a panorama. If this point is already
  * defined as a VR hotspot, then the panorama hotspot will inherit the name and camera angle.
  * @param back_url The URL of the 360 degree panorama image to be used for the background.
- * @param Back_rot The rotation of the background panorama image, in degrees, in the
+ * @param back_rot The rotation of the background panorama image, in degrees, in the
  * counter-clockwise direction. If `null`, then rotation will be 0.
  * @param fore_url The URL of the 360 degree panorama image to be used for the foreground. If `null`
  * then no foreground image will be used.

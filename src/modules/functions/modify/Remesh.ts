@@ -19,8 +19,8 @@ import { checkIDs, ID } from '../../../_check_ids';
  * @param __model__
  * @param entities Single or list of faces, polygons, collections.
  * @returns void
- * @example modify.Remesh(polygon1)
- * @example_info Remeshs the face of the polygon.
+ * @example `modify.Remesh(polygon1)`
+ * @example_info Remeshes the face of the polygon.
  */
 export function Remesh(__model__: GIModel, entities: TId[]): void {
     entities = arrMakeFlat(entities) as TId[];

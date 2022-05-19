@@ -22,8 +22,8 @@ import { _EDivisorMethod } from './_enum';
  * - If the `by_number` method is selected, then each edge is divided into
  * a fixed number of equal length shorter edges.
  * - If the `by_length` method is selected, then each edge is divided into
- * shorter edges of the specified length.
- * - The length of the last segment will be the remainder.
+ * shorter edges of the specified length. 
+ * The length of the last segment will be the remainder.
  * - If the `by_min_length` method is selected,
  * then the edge is divided into the number of shorter edges
  * with lengths equal to or greater than the minimum length specified.

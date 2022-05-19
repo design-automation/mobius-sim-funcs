@@ -27,7 +27,7 @@ import * as chk from '../../../_check_types';
  * @param plane A plane.
  * @param entities An edge or list of edges, or entities from which edges can be extracted.
  * @return A list of xyz intersection coordinates.
- * @example coords = intersect.PlaneEdge(plane, polyline1)
+ * @example `coords = intersect.PlaneEdge(plane, polyline1)`
  * @example_info Returns a list of coordinates where the plane intersects with the edges of polyline1.
  */
 export function PlaneEdge(__model__: GIModel, plane: TRay|TPlane, entities: TId|TId[]): Txyz[] {

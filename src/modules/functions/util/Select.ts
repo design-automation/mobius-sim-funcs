@@ -6,7 +6,7 @@ import { EAttribDataTypeStrs, GIModel, idsBreak, TEntTypeIdx } from '@design-aut
  * Select entities in the model.
  *
  * @param __model__
- * @param entities
+ * @param entities The entities to be selected. 
  * @returns void
  */
 export function Select(__model__: GIModel, entities: string|string[]|string[][]): void {

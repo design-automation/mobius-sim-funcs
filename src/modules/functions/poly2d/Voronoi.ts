@@ -23,6 +23,7 @@ if (Shape.default) { ShapeClass = Shape.default; }
 /**
  * Create a voronoi subdivision of one or more polygons.
  * \n
+ * // MAKE A DIAGRAM/INSERT A REFERENCE ARTICLE 
  * @param __model__
  * @param pgons A list of polygons, or entities from which polygons can be extracted.
  * @param entities A list of positions, or entities from which positions can be extracted.

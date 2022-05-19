@@ -9,20 +9,20 @@ import { _clampArr01, _convertSelectEcolorsToNum, _setMaterialModelAttrib } from
 /**
  * Creates a line material and saves it in the model attributes.
  * \n
- * [See the threejs docs](https://threejs.org/docs/#api/en/materials/LineBasicMaterial)
- * [See the threejs docs](https://threejs.org/docs/#api/en/materials/LineDashedMaterial)
+ * [See the threejs docs on LineBasicMaterials](https://threejs.org/docs/#api/en/materials/LineBasicMaterial)
+ * [See the threejs docs LineDashedMaterials](https://threejs.org/docs/#api/en/materials/LineDashedMaterial)
  * \n
  * The color of the material can either ignore or apply the vertex rgb colors.
- * If 'apply' id selected, then the actual color will be a combination of the material color
- * and the vertex colors, as specified by the a vertex attribute called 'rgb'.
+ * If 'apply' is selected, then the actual color will be a combination of the material color
+ * and the vertex colors, as specified by the vertex attribute called 'rgb'.
  * In such a case, if material color is set to white, then it will
  * have no effect, and the color will be defined by the vertex [r,g,b] values.
  * \n
- * In order to assign a material to polylines in the model, a polyline attribute called 'material'.
+ * In order to assign a material to polylines in the model, a polyline attribute called 'material'
  * will be created. The value for each polyline must either be null, or must be a material name.
  * \n
  * For dashed lines, the 'dash_gap_scale' parameter can be set.
- * - If 'dash_gap_scale' is null will result in a continouse line.
+ * - If 'dash_gap_scale' is null, it will result in a continuous line.
  * - If 'dash_gap_scale' is a single number: dash = gap = dash_gap_scale, scale = 1.
  * - If 'dash_gap_scale' is a list of two numbers: dash = dash_gap_scale[0], gap = dash_gap_scale[1], scale = 1.
  * - If 'dash_gap_scale' is a list of three numbers: dash = dash_gap_scale[0], gap = dash_gap_scale[1], scale = dash_gap_scale[2].

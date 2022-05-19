@@ -8,7 +8,7 @@ import { _EClose } from './_enum';
 
 // ================================================================================================
 /**
- * Creates positions in an NURBS curve pattern, defined a list of coordinates.
+ * Creates positions in a NURBS curve pattern, defined by a list of coordinates.
  * \n
  * The positions are created along the curve according to the parametric equation of the curve.
  * This means that the euclidean distance between the positions will not necessarily be equal.

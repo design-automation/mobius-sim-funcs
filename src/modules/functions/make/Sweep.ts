@@ -23,7 +23,7 @@ import { _EExtrudeMethod } from './_enum';
  *
  * @param __model__
  * @param entities Wires, or entities from which wires can be extracted.
- * @param xsection Cross section wire to sweep, or entity from which a wire can be extracted.
+ * @param x_section Cross section wire to sweep, or entity from which a wire can be extracted.
  * @param divisions Segment length or number of segments.
  * @param method Enum, select the method for sweeping.
  * @returns Entities, a list of new polygons or polylines resulting from the sweep.

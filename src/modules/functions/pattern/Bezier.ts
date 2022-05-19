@@ -7,7 +7,7 @@ import * as chk from '../../../_check_types';
 
 // ================================================================================================
 /**
- * Creates positions in an Bezier curve pattern, defined by a list of coordinates.
+ * Creates positions in a Bezier curve pattern, defined by a list of coordinates.
  * \n
  * The Bezier is created as either a qadratic or cubic Bezier. It is always an open curve.
  * \n
@@ -25,10 +25,10 @@ import * as chk from '../../../_check_types';
  * The `num_positions` parameter specifies the total number of positions to be generated.
  * \n
  * For more information, see the wikipedia article: 
- * <a href="https://en.wikipedia.org/wiki/B%C3%A9zier_curve">B%C3%A9zier_curve</a>.
+ * <a href="https://en.wikipedia.org/wiki/B%C3%A9zier_curve" target="_blank">Bezier_curve</a>.
  * \n
  * @param __model__
- * @param origin A |coordinate| or a |plane| (three coords for quadratics, four coords for cubics).
+ * @param coords A |coordinate| or a |plane| (three coords for quadratics, four coords for cubics).
  * If a coordinate is given, then the plane is assumed to be aligned with the global XY plane. .
  * @param num_positions Number of positions to be distributed along the Bezier.
  * @returns Entities, a list of positions.

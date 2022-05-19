@@ -1,8 +1,10 @@
 /**
  * The `list` module has functions for working with lists of items.
- * These functions have no direct link with the model, the are generic functions for manipulating lists.
+ * These functions have no direct link with the model, they are generic functions for manipulating lists.
+ * /n
  * The functions are often used when manipulating lists of IDs of entities in the model.
  * These functions neither make nor modify anything in the model.
+ * /n
  * In addition to these functions, there are also various inline functions available for working with lists.
  * @module
  */

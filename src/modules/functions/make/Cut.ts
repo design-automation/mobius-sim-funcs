@@ -19,13 +19,13 @@ import { _ECutMethod } from './_enum';
 // ================================================================================================
 /**
  * Cuts polygons and polylines using a plane.
- *
+ * \n
  * If the 'keep_above' method is selected, then only the part of the cut entities above the plane are kept.
  * If the 'keep_below' method is selected, then only the part of the cut entities below the plane are kept.
  * If the 'keep_both' method is selected, then both the parts of the cut entities are kept.
- *
- * Currently does not support cutting polygons with holes. TODO
- *
+ * \n
+ * Currently does not support cutting polygons with holes. 
+ * \n
  * If 'keep_both' is selected, returns a list of two lists.
  * [[entities above the plane], [entities below the plane]].
  *

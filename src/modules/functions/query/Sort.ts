@@ -19,7 +19,7 @@ import { _ESortMethod } from './_enum';
 /**
  * Sorts entities based on an attribute.
  * \n
- * If the attribute is a list, and index can also be specified as follows: #@name1[index].
+ * If the attribute is a list, index can also be specified as follows: #@name1[index].
  * \n
  * @param __model__
  * @param entities List of two or more entities to be sorted, all of the same entity type.

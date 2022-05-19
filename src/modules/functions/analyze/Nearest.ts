@@ -22,8 +22,8 @@ import { _getUniquePosis } from './_shared';
  * The neighbors to each source position is calculated as follows:
  * 1. Calculate the distance to all target positions.
  * 2. Creat the neighbors set by filtering out target positions that are further than the maximum radius.
- * 3. If the number of neighbors is greater than 'max_neighbors',
- * then select the 'max_neighbors' closest target positions.
+ * 3. If the number of neighbors is greater than 'max\_neighbors',
+ * then select the 'max\_neighbors' closest target positions.
  * \n
  * Returns a dictionary containing the nearest positions.
  * \n

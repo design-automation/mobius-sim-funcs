@@ -9,11 +9,13 @@ import { _saveResource } from './Export';
 // ================================================================================================
 /**
  * Write data to the hard disk or to the local storage.
+ * Depending on your browser's download settings,
+ * a dialog box may pop up to manually confirm the action if writing to the hard disk.
  *
  * @param data The data to be saved (can be the url to the file).
  * @param file_name The name to be saved in the file system (file extension should be included).
  * @param data_target Enum, where the data is to be exported to.
- * @returns whether the data is successfully saved.
+ * @returns Whether the data is successfully saved. (true/false)
  */
 export async function Write(__model__: GIModel, data: string, file_name: string, data_target: _EIODataTarget): Promise<Boolean> {
     try {

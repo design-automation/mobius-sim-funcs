@@ -7,7 +7,8 @@ All these functions return the IDs of the entities that are created.
 ## Position  
   
   
-**Description:** Adds one or more new position to the model.  
+**Description:** Adds one or more new positions to the model. Positions are unique entities and cannot be added to
+collections.  
   
 **Parameters:**  
   * *coords:* A list of three numbers, or a list of lists of three numbers.  
@@ -24,7 +25,7 @@ All these functions return the IDs of the entities that are created.
 ## Point  
   
   
-**Description:** Adds one or more new points to the model.  
+**Description:** Adds one or more new points to the model. Points are objects that can be added to collections.  
   
 **Parameters:**  
   * *entities:* Position, or list of positions, or entities from which positions can be extracted.  
@@ -39,7 +40,7 @@ All these functions return the IDs of the entities that are created.
 ## Polyline  
   
   
-**Description:** Adds one or more new polylines to the model.  
+**Description:** Adds one or more new polylines to the model. Polylines are objects.  
   
 **Parameters:**  
   * *entities:* List or nested lists of positions, or entities from which positions can be extracted.  
@@ -72,11 +73,17 @@ All these functions return the IDs of the entities that are created.
 ## Loft  
   
   
-**Description:** Lofts between entities.  
+**Description:** Lofts between entities.
+
+
+The geometry that is generated depends on the method that is selected.
+- The 'quads' method will generate polygons.
+- The 'stringers' and 'ribs' methods will generate polylines.
+- The 'copies' method will generate copies of the input geometry type.  
   
 **Parameters:**  
   * *entities:* List of entities, or list of lists of entities.  
-  * *divisions:* undefined  
+  * *divisions:* The number of divisions in the resultant entities. Minimum is 1.  
   * *method:* Enum, if 'closed', then close the loft back to the first entity in the list.  
   
 **Returns:** Entities, a list of new polygons or polylines resulting from the loft.  
@@ -108,14 +115,16 @@ The geometry that is generated depends on the method that is selected.
   
 **Parameters:**  
   * *entities:* A list of entities, can be any type of entitiy.  
-  * *dist:* Number or vector. If number, assumed to be [0,0,value] (i.e. extrusion distance in z-direction).  
+  * *dist:* Number or vector. If number, assumed to be [0,0,value] (i.e. extrusion distance in
+z-direction).  
   * *divisions:* Number of divisions to divide extrusion by. Minimum is 1.  
   * *method:* Enum, when extruding edges, select quads, stringers, or ribs  
   
 **Returns:** Entities, a list of new polygons or polylines resulting from the extrude.  
 **Examples:**  
   * extrusion1 = make.Extrude(point1, 10, 2, 'quads')  
-    Creates a polyline of total length 10 (with two edges of length 5 each) in the z-direction.
+    Creates a polyline of total length 10 (with two edges of length 5 each) in the
+z-direction.
 In this case, the 'quads' setting is ignored.  
   * extrusion2 = make.Extrude(polygon1, [0,5,0], 1, 'quads')  
     Extrudes polygon1 by 5 in the y-direction, creating a list of quad surfaces.
@@ -129,7 +138,7 @@ In this case, the 'quads' setting is ignored.
   
 **Parameters:**  
   * *entities:* Wires, or entities from which wires can be extracted.  
-  * *x\_section:* undefined  
+  * *x\_section:* Cross section wire to sweep, or entity from which a wire can be extracted.  
   * *divisions:* Segment length or number of segments.  
   * *method:* Enum, select the method for sweeping.  
   
@@ -139,7 +148,16 @@ In this case, the 'quads' setting is ignored.
 ## Join  
   
   
-**Description:** Joins existing polyline or polygons to create new polyline or polygons.  
+**Description:** Joins existing polyline or polygons to create new polyline or polygons.
+
+
+In order to be joined, the polylines or polygons must be fused (i.e. share the same positions)
+
+
+The existing polygons are not affected.
+
+
+Note: Joining polylines currently not implemented.  
   
 **Parameters:**  
   * *entities:* Polylines or polygons, or entities from which polylines or polygons can be extracted.  
@@ -150,7 +168,19 @@ In this case, the 'quads' setting is ignored.
 ## Cut  
   
   
-**Description:** Cuts polygons and polylines using a plane.  
+**Description:** Cuts polygons and polylines using a plane.
+
+
+If the 'keep_above' method is selected, then only the part of the cut entities above the plane are kept.
+If the 'keep_below' method is selected, then only the part of the cut entities below the plane are kept.
+If the 'keep_both' method is selected, then both the parts of the cut entities are kept.
+
+
+Currently does not support cutting polygons with holes.
+
+
+If 'keep_both' is selected, returns a list of two lists.
+[[entities above the plane], [entities below the plane]].  
   
 **Parameters:**  
   * *entities:* Polylines or polygons, or entities from which polyline or polygons can be extracted.  
@@ -163,10 +193,10 @@ In this case, the 'quads' setting is ignored.
 ## Copy  
   
   
-**Description:** Creates a copy of one or more entities.
+**Description:** Creates a copy of one or more entities (without deleting the original entity).
 
 
-Positions, objects, and collections can be copied. Topological entities (vertices, edges, and
+Positions, objects, and collections can be copied. Sub-entities (vertices, edges, and
 wires) cannot be copied since they cannot exist without a parent entity.
 
 
@@ -207,8 +237,8 @@ units in the Z direction.
   
 **Returns:** Entities, the cloned entity or a list of cloned entities.  
 **Examples:**  
-  * copies = make.Copy([position1,polyine1,polygon1])  
-    Creates a copy of position1, polyine1, and polygon1.
+  * copies = make.Clone([position1,polyine1,polygon1])  
+    Creates a copy of position1, polyline1, and polygon1 and deletes the originals.
   
   
   

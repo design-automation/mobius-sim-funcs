@@ -1,6 +1,10 @@
 /**
- * The `poly2D` module has a set of functions for working with 2D polygons, on the XY plane.
- * @module
+ * The `poly2D` module has a set of functions for working with 2D polygons, with the results
+ * projected on the XY plane.
+ * \n
+ * All the functions create new entities and do not modify the original geometry. 
+ * 
+ *  @module
  */
 import { GIModel } from '@design-automation/mobius-sim';
 

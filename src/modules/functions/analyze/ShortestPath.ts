@@ -34,7 +34,7 @@ interface TShortestPathResult {
  * Returns a dictionary containing the shortest paths.
  * \n
  * If 'distances' is selected, the dictionary will contain two list:
- * 1. 'source_posis': a list of start positions for eah path,
+ * 1. 'source_posis': a list of start positions for each path,
  * 2. 'distances': a list of distances, one list for each path starting at each source position.
  * \n
  * If 'counts' is selected, the dictionary will contain four lists:

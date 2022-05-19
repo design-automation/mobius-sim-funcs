@@ -7,7 +7,7 @@ import { checkIDs, ID } from '../../../_check_ids';
 
 // ================================================================================================
 /**
- * Adds one or more new points to the model.
+ * Adds one or more new points to the model. Points are objects that can be added to collections.
  *
  * @param __model__
  * @param entities Position, or list of positions, or entities from which positions can be extracted.

@@ -10,14 +10,15 @@ import { _ELoftMethod } from './_enum';
 // ================================================================================================
 /**
  * Lofts between entities.
- *
+ * \n
  * The geometry that is generated depends on the method that is selected.
- * - The 'quads' methods will generate polygons.
+ * - The 'quads' method will generate polygons.
  * - The 'stringers' and 'ribs' methods will generate polylines.
  * - The 'copies' method will generate copies of the input geometry type.
  *
  * @param __model__
  * @param entities List of entities, or list of lists of entities.
+ * @param divisions The number of divisions in the resultant entities. Minimum is 1.
  * @param method Enum, if 'closed', then close the loft back to the first entity in the list.
  * @returns Entities, a list of new polygons or polylines resulting from the loft.
  * @example quads = make.Loft([polyline1,polyline2,polyline3], 1, 'open_quads')

@@ -28,10 +28,11 @@ import {
 * Offset a polyline or polygon, with round joints.
 *
 * @param __model__
-* @param entities A list of pollines or polygons, or entities from which polylines or polygons can be extracted.
+* @param entities A list of polyines or polygons, or entities from which polylines or polygons can
+* be extracted.
 * @param dist Offset distance
 * @param tolerance The tolerance for the rounded corners.
-* @param end_type Enum, the type of end shape for open polylines'.
+* @param end_type Enum, the type of end shape for open polylines.
 * @returns A list of new polygons.
 */
 export function OffsetRound(__model__: GIModel, entities: TId | TId[], dist: number,

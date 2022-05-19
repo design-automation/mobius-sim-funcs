@@ -17,11 +17,11 @@ import * as chk from '../../../_check_types';
 // ================================================================================================
 /**
  * Create a new collection.
- *
+ * \n
  * If the `entities` argument is null or an empty list, then an empty collection will be created.
- *
+ * \n
  * If the `name` argument is null, then no name attribute will be created for the collection.
- *
+ * \n
  * If the list of entities contains other collections, these other collections will then become
  * children of the new collection.
  *

@@ -7,13 +7,13 @@ import { _getEntTypeFromStr } from './_shared';
 
  // ================================================================================================
 /**
- * Delete one or more attributes from the model.
- * The column in the attribute table will be deleted.
- * All values will also be deleted.
- * \n
+ * Delete one or more attributes from the model. The column in the attribute table will be deleted.
+ * All values will also be deleted. \n
  * @param __model__
  * @param ent_type_sel Enum, the attribute entity type.
- * @param attribs A single attribute name, or a list of attribute names. In 'null' all attributes will be deleted.
+ * @param attribs A single attribute name, or a list of attribute names. If 'null', all attributes
+ * will be deleted.
+ * @returns void 
  */
  export function Delete(__model__: GIModel, ent_type_sel: _EEntTypeAndMod, attribs: string|string[]): void {
     // --- Error Check ---

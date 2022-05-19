@@ -14,7 +14,7 @@ import { _cyGetPosisAndElements, _cytoscapeWeightFn, _getUniquePosis } from './_
  * For edges to be connected, vertices must be welded.
  * For example, if the network consists of multiple polylines, then the vertcies of those polylines must be welded.
  * \n
- * Centralities are calculate based on distances between positions.
+ * Centralities are calculated based on distances between positions.
  * The distance between two positions is the shortest path between those positions.
  * The shortest path is the path where the sum of the weights of the edges along the path is the minimum.
  * \n
@@ -24,7 +24,7 @@ import { _cyGetPosisAndElements, _cytoscapeWeightFn, _getUniquePosis } from './_
  * \n
  * Harmonic centrality is calculated by summing up the inverted distances to all other positions.
  * \n
- * Betweenness centrality os calculated in two steps.
+ * Betweenness centrality is calculated in two steps.
  * First, the shortest path between every pair of nodes is calculated.
  * Second, the betweenness centrality of each node is then the total number of times the node is traversed
  * by the shortest paths.
@@ -47,8 +47,8 @@ import { _cyGetPosisAndElements, _cytoscapeWeightFn, _getUniquePosis } from './_
  * These positions should be part of the network.
  * @param entities The network, edges, or entities from which edges can be extracted.
  * @param method Enum, the method to use, directed or undirected.
- * @param cen_type Enum, the data to return, positions, edges, or both.
- * @returns A list of centrality values, between 0 and 1.
+ * @param cen_type Enum, the type of centrality (betweenness, closeness or harmonic).
+ * @returns A dictionary containing the results (posis and centrality values, between 0 and 1.)
  */
 export function Centrality(
     __model__: GIModel,

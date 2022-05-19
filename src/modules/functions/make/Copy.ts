@@ -18,9 +18,9 @@ import * as chk from '../../../_check_types';
 
 // ================================================================================================
 /**
- * Creates a copy of one or more entities.
+ * Creates a copy of one or more entities (without deleting the original entity).
  * \n
- * Positions, objects, and collections can be copied. Topological entities (vertices, edges, and
+ * Positions, objects, and collections can be copied. Sub-entities (vertices, edges, and
  * wires) cannot be copied since they cannot exist without a parent entity.
  * \n
  * When entities are copied, their positions are also copied. The original entities and the copied

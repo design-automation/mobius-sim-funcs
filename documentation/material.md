@@ -2,7 +2,7 @@
   
 The `material` module has functions for defining materials.
 The material definitions are saved as attributes at the model level.
-For more informtion, see the threejs docs: https://threejs.org/  
+For more informtion, see the <a href="https://threejs.org/" target="_blank">threejs docs.</a>  
   
   
 ## Set  
@@ -15,15 +15,15 @@ A material name is assigned to the polygons. The named material must be separate
 material in the model attributes. See the `material.LineMat()` or `material.MeshMat()` functions.
 
 
-The material name is a sting.
+The material name is a string.
 
 
 For polylines, the `material` argument must be a single name.
 
 
-For polygons, the `material` argument can accept either be a single name, or a
+For polygons, the `material` argument can accept either a single name, or a
 list of two names. If it is a single name, then the same material is assigned to both the
-front and back of teh polygon. If it is a list of two names, then the first material is assigned
+front and back of the polygon. If it is a list of two names, then the first material is assigned
 to the front, and the second material is assigned to the back.
 
   
@@ -41,23 +41,23 @@ to the front, and the second material is assigned to the back.
 **Description:** Creates a line material and saves it in the model attributes.
 
 
-[See the threejs docs](https://threejs.org/docs/#api/en/materials/LineBasicMaterial)
-[See the threejs docs](https://threejs.org/docs/#api/en/materials/LineDashedMaterial)
+[See the threejs docs on LineBasicMaterials](https://threejs.org/docs/#api/en/materials/LineBasicMaterial)
+[See the threejs docs LineDashedMaterials](https://threejs.org/docs/#api/en/materials/LineDashedMaterial)
 
 
 The color of the material can either ignore or apply the vertex rgb colors.
-If 'apply' id selected, then the actual color will be a combination of the material color
-and the vertex colors, as specified by the a vertex attribute called 'rgb'.
+If 'apply' is selected, then the actual color will be a combination of the material color
+and the vertex colors, as specified by the vertex attribute called 'rgb'.
 In such a case, if material color is set to white, then it will
 have no effect, and the color will be defined by the vertex [r,g,b] values.
 
 
-In order to assign a material to polylines in the model, a polyline attribute called 'material'.
+In order to assign a material to polylines in the model, a polyline attribute called 'material'
 will be created. The value for each polyline must either be null, or must be a material name.
 
 
 For dashed lines, the 'dash_gap_scale' parameter can be set.
-- If 'dash_gap_scale' is null will result in a continouse line.
+- If 'dash_gap_scale' is null, it will result in a continuous line.
 - If 'dash_gap_scale' is a single number: dash = gap = dash_gap_scale, scale = 1.
 - If 'dash_gap_scale' is a list of two numbers: dash = dash_gap_scale[0], gap = dash_gap_scale[1], scale = 1.
 - If 'dash_gap_scale' is a list of three numbers: dash = dash_gap_scale[0], gap = dash_gap_scale[1], scale = dash_gap_scale[2].
@@ -83,11 +83,11 @@ line widths cannot be rendered. As a result, lines width will always be set to 1
 **Description:** Creates a basic mesh material and saves it in the model attributes.
 
 
-[See the threejs docs](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial)
+[See the threejs docs on basic mesh materials](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial)
 
 
 The color of the material can either ignore or apply the vertex rgb colors.
-If 'apply' id selected, then the actual color will be a combination of the material color
+If 'apply' is selected, then the actual color will be a combination of the material color
 and the vertex colors, as specified by the a vertex attribute called 'rgb'.
 In such a case, if material color is set to white, then it will
 have no effect, and the color will be defined by the vertex [r,g,b] values.
@@ -98,14 +98,14 @@ These include LambertMaterial, PhongMaterial, StandardMaterial, and Physical Mat
 Each of these more advanced materials allows you to specify certain additional settings.
 
 
-In order to assign a material to polygons in the model, a polygon attribute called 'material'.
+In order to assign a material to polygons in the model, a polygon attribute called 'material'
 needs to be created. The value for each polygon must either be null, or must be a material name.
 
   
   
 **Parameters:**  
   * *name:* The name of the material.  
-  * *color:* The diffuse color, as [r, g, b] values between 0 and 1. White is [1, 1, 1].  
+  * *color:* The diffuse colsor, as [r, g, b] values between 0 and 1. White is [1, 1, 1].  
   * *opacity:* The opacity of the glass, between 0 (totally transparent) and 1 (totally opaque).  
   * *select\_side:* Enum, select front, back, or both.  
   * *select\_vert\_colors:* Enum, select whether to use vertex colors if they exist.  
@@ -138,7 +138,7 @@ needs to be created. The value for each polygon must either be null, or must be 
 If a material with the same name already exits, these settings will be added to the existing material.
 
 
-[See the threejs docs](https://threejs.org/docs/#api/en/materials/MeshLambertMaterial)
+[See the threejs docs on Lambert materials](https://threejs.org/docs/#api/en/materials/MeshLambertMaterial)
 
 
 In order to assign a material to polygons in the model, a polygon attribute called 'material'
@@ -160,7 +160,7 @@ needs to be created. The value for each polygon must either be null, or must be 
 If a material with the same name already exits, these settings will be added to the existing material.
 
 
-[See the threejs docs](https://threejs.org/docs/#api/en/materials/MeshPhongMaterial)
+[See the threejs docs on Phong materials](https://threejs.org/docs/#api/en/materials/MeshPhongMaterial)
 
 
 In order to assign a material to polygons in the model, a polygon attribute called 'material'
@@ -184,7 +184,7 @@ needs to be created. The value for each polygon must either be null, or must be 
 If a material with the same name already exits, these settings will be added to the existing material.
 
 
-[See the threejs docs](https://threejs.org/docs/#api/en/materials/MeshStandardMaterial)
+[See the threejs docs on Standard materials](https://threejs.org/docs/#api/en/materials/MeshStandardMaterial)
 
 
 In order to assign a material to polygons in the model, a polygon attribute called 'material'
@@ -208,7 +208,7 @@ needs to be created. The value for each polygon must either be null, or must be 
 If a material with the same name already exits, these settings will be added to the existing material.
 
 
-[See the threejs docs](https://threejs.org/docs/#api/en/materials/MeshPhysicalMaterial)
+[See the threejs docs on Physical materials](https://threejs.org/docs/#api/en/materials/MeshPhysicalMaterial)
 
 
 In order to assign a material to polygons in the model, a polygon attribute called 'material'

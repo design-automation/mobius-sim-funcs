@@ -7,7 +7,8 @@ import * as chk from '../../../_check_types';
 
 // ================================================================================================
 /**
- * Adds one or more new position to the model.
+ * Adds one or more new positions to the model. Positions are unique entities and cannot be added to
+ * collections.
  *
  * @param __model__
  * @param coords A list of three numbers, or a list of lists of three numbers.

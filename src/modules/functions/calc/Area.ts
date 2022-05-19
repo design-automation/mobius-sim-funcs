@@ -19,15 +19,15 @@ import { checkIDs, ID } from '../../../_check_ids';
 // ================================================================================================
 /**
  * Calculates the area of en entity.
- *
+ * \n
  * The entity can be a polygon, a face, a closed polyline, a closed wire, or a collection.
- *
+ * \n
  * Given a list of entities, a list of areas are returned.
  *
  * @param __model__
  * @param entities Single or list of polygons, closed polylines, closed wires, collections.
- * @returns Area.
- * @example area1 = calc.Area (surface1)
+ * @returns A number. Area or a list of areas.
+ * @example `area1 = calc.Area (surface1)`
  */
 export function Area(__model__: GIModel, entities: TId|TId[]): number|number[] {
     if (isEmptyArr(entities)) { return []; }

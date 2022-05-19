@@ -18,7 +18,7 @@ import { _EClose } from './_enum';
 
 // ================================================================================================
 /**
- * Adds one or more new polylines to the model.
+ * Adds one or more new polylines to the model. Polylines are objects.
  *
  * @param __model__
  * @param entities List or nested lists of positions, or entities from which positions can be extracted.

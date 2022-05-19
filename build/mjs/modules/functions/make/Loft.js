@@ -3,7 +3,7 @@ import { checkIDs, ID } from '../../../_check_ids';
 // ================================================================================================
 /**
  * Lofts between entities.
- *
+ * \n
  * The geometry that is generated depends on the method that is selected.
  * - The 'quads' methods will generate polygons.
  * - The 'stringers' and 'ribs' methods will generate polylines.

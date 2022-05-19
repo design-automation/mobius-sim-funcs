@@ -10,7 +10,7 @@ import { _clamp0100, _clampArr01, _setMaterialModelAttrib } from './_shared';
  * Creates a Phong material and saves it in the model attributes.
  * If a material with the same name already exits, these settings will be added to the existing material.
  * \n
- * [See the threejs docs](https://threejs.org/docs/#api/en/materials/MeshPhongMaterial)
+ * [See the threejs docs on Phong materials](https://threejs.org/docs/#api/en/materials/MeshPhongMaterial)
  * \n
  * In order to assign a material to polygons in the model, a polygon attribute called 'material'
  * needs to be created. The value for each polygon must either be null, or must be a material name.

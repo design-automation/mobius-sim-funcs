@@ -1,6 +1,6 @@
 # PATTERN  
   
-The `pattern` module has functions for creating patters of positions.
+The `pattern` module has functions for creating patterns of positions.
 These functions all return lists of position IDs.
 The list may be nested, depending on which function is selected.  
   
@@ -16,13 +16,13 @@ generated. The origin can be specified as either a <abbr title='A list of three 
 is given, then a plane will be automatically generated, aligned with the global XY plane.
 
 
-The positions will be generated along an straight line aligned with the X axis of the origin
+The positions will be generated along a straight line aligned with the X axis of the origin
 plane.
 
 
 Returns the list of new positions.
 
-  
+s  
   
 **Parameters:**  
   * *origin:* A <abbr title='A list of three numbers, [x, y, z]'>coordinate</abbr> or a <abbr title='Three lists of three numbers, [origin, x-axis, y-axis]'>plane</abbr>.
@@ -36,40 +36,33 @@ If a coordinate is given, then the plane is assumed to be aligned with the globa
 ## Linear  
   
   
-**Description:** Creates a set of positions by linear interpolation between the specified coordinates.
+**Description:** Creates a set of positions by linear interpolation between the specified coordinates. 
+ The
+`num_positions` parameter specifies the number of positions to be generated between each pair of
+coordinates. 
+ The `method` parameter specifies whether to close the loop of coordinates. If set
+to `close`, then positions are also generated between the last and first coordinates in the list.
 
-
-The `num_positions` parameter specifies the number of positions to be generated between
-each pair of coordinates.
-
-
-The `method` parameter specifies whether to close the loop of coordinates. If set to `close`,
-then positions are also generated between the last and first coordinates in the list.
-
-
-For the `num_positions` parameters:
+ For the `num_positions` parameters:
 - `num_positions = 0`: No positions are generated.
-- `num_positions = 1`: No new coordinates are calculated.
-If `close` is true, then positions are generate at all coordinates in the input list.
-If `close` is false, then positions are generate at all coordinates in the input list
-except the last coordinate (which is ignored).
-- `num_positions = 2`: No new coordinates are calculated. Positions are generate at all
-coordinates in the input list. (The `close` parameter has no effect.)
-- `num_positions = 3`: For each pair of coordinates, one additional coordinate
-is calculated by linear interpolation.
-- `num_positions = 4`: For each pair of coordinates, two additional coordinates
-are calculated by linear interpolation.
+- `num_positions = 1`: No new coordinates are calculated. If `close` is true, then positions are
+  generated at all coordinates in the input list. If `close` is false, then positions are
+  generated at all coordinates in the input list except the last coordinate (which is ignored).
+- `num_positions = 2`: No new coordinates are calculated. Positions are generated at all
+  coordinates in the input list. (The `close` parameter has no effect.)
+- `num_positions = 3`: For each pair of coordinates, one additional coordinate is calculated by
+  linear interpolation.
+- `num_positions = 4`: For each pair of coordinates, two additional coordinates are calculated by
+  linear interpolation.
 - etc
+ 
 
-
-For example, lets consider a case where you specify three coordinates, set the method to `close`
-and set `num_positions` to 4. In this case, there will be 3 pairs of coordinates, `[0, 1]`,
-`[1, 2]` and `[2, 0]`. For each pair of coordinates, 2 new calculations are calculated.
-This results in a total of 9 coordinates. So 9 positions will be generated.
-
-
-Returns the list of new position IDs.
-
+ For example, lets consider a case where you specify three coordinates, set the method to
+  `close` and set `num_positions` to 4. In this case, there will be 3 pairs of coordinates, `[0,
+  1]`, `[1, 2]` and `[2, 0]`. For each pair of coordinates, 2 new calculations are calculated.
+  This results in a total of 9 coordinates. So 9 positions will be generated. 
+ Returns the list
+  of new position IDs. 
   
   
 **Parameters:**  
@@ -519,7 +512,7 @@ The `radius` parameter specifies the size of the arc.
 The `num_positions` parameter specifies the total number of positions to be generated on the arc.
 
 
-The `arc_angle` specifies the angle of the arc, in radians. Angles start at thet X-axis of the
+The `arc_angle` specifies the angle of the arc, in radians. Angles start at the X-axis of the
 origin plane and move in a counter-clockwise direction. Two angles are needed to define an arc,
 a `start_angle` and `end_angle`. The angles may be positive or negative, and may be
 greater than `2*PI` or smaller than `-2*PI`.
@@ -543,8 +536,8 @@ of the origin plane.
 automatically removed.
 
 
-Note that setting the arc angle to null is not the same as setting it to `2*PI`
-When setting the arc angle to `2*PI`, you will get a duplicate positions at start and end
+Note that setting the arc angle to null is not the same as setting it to `2*PI.
+When setting the arc angle to `2*PI`, you will get duplicate positions at the start and end
 of the arc.
 
   
@@ -571,7 +564,7 @@ direction.
 ## Bezier  
   
   
-**Description:** Creates positions in an Bezier curve pattern, defined by a list of coordinates.
+**Description:** Creates positions in a Bezier curve pattern, defined by a list of coordinates.
 
 
 The Bezier is created as either a qadratic or cubic Bezier. It is always an open curve.
@@ -595,12 +588,13 @@ The `num_positions` parameter specifies the total number of positions to be gene
 
 
 For more information, see the wikipedia article:
-<a href="https://en.wikipedia.org/wiki/B%C3%A9zier_curve">B%C3%A9zier_curve</a>.
+<a href="https://en.wikipedia.org/wiki/B%C3%A9zier_curve" target="_blank">Bezier_curve</a>.
 
   
   
 **Parameters:**  
-  * *coords:* undefined  
+  * *coords:* A <abbr title='A list of three numbers, [x, y, z]'>coordinate</abbr> or a <abbr title='Three lists of three numbers, [origin, x-axis, y-axis]'>plane</abbr> (three coords for quadratics, four coords for cubics).
+If a coordinate is given, then the plane is assumed to be aligned with the global XY plane. .  
   * *num\_positions:* Number of positions to be distributed along the Bezier.  
   
 **Returns:** Entities, a list of positions.  
@@ -613,7 +607,7 @@ For more information, see the wikipedia article:
 ## Nurbs  
   
   
-**Description:** Creates positions in an NURBS curve pattern, defined a list of coordinates.
+**Description:** Creates positions in a NURBS curve pattern, defined by a list of coordinates.
 
 
 The positions are created along the curve according to the parametric equation of the curve.
@@ -658,7 +652,7 @@ The `num_positions` parameter specifies the total number of positions to be gene
 ## Interpolate  
   
   
-**Description:** Creates positions in an spline pattern. Returns a list of new positions.
+**Description:** Creates positions in a spline pattern. Returns a list of new positions.
 It is a type of interpolating spline (a curve that goes through its control points).
 
 

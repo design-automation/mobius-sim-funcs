@@ -29,14 +29,17 @@ import { _skyRayDirsTjs, _solarRaysDirectTjs, _solarRaysIndirectTjs } from './_s
  * Geolocation is specified by a model attributes as follows:
  * - @geolocation={'longitude':123,'latitude':12}.
  * North direction is specified by a model attribute as follows, using a vector:
- * - @north==[1,2]
- * If no north direction is specified, then [0,1] is the default (i.e. north is in the direction of the y-axis);
+ * - @north==[1,2].
+ *   If no north direction is specified, then [0,1] is the default (i.e. north is in the direction
+ *   of the y-axis)
  * \n
  * @param __model__
- * @param origins The origins of the rays
+ * @param origin The origins of the rays
  * @param detail The level of detail for the analysis
  * @param radius The radius of the sun path
  * @param method Enum, the type of sky to generate.
+ * @returns Entities, a set of positions that are organized into sequences. 
+ * A polyline can then be drawn from these positions.
  */
 export function SkyDome(__model__: GIModel, origin: Txyz | TRay | TPlane, detail: number, radius: number, method: _ESunPathMethod): TId[] | TId[][] {
     // --- Error Check ---

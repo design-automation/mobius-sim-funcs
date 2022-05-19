@@ -9,14 +9,14 @@ import { _ECentroidMethod } from './_enum';
 // ================================================================================================
 /**
  * Calculates the centroid of an entity.
- *
- * If 'ps_average' is selected, the centroid is the average of the positions that make up that entity.
- *
- * If 'center_of_mass' is selected, the centroid is the centre of mass of the faces that make up that entity.
+ * \n
+ * If 'ps\_average' is selected, the centroid is the average of the positions that make up that entity.
+ * \n
+ * If 'center\_of\_mass' is selected, the centroid is the centre of mass of the faces that make up that entity.
  * Note that only faces are deemed to have mass.
- *
+ * \n
  * Given a list of entities, a list of centroids will be returned.
- *
+ * \n
  * Given a list of positions, a single centroid that is the average of all those positions will be returned.
  *
  * @param __model__

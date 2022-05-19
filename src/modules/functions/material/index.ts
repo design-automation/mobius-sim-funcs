@@ -1,7 +1,7 @@
 /**
  * The `material` module has functions for defining materials.
  * The material definitions are saved as attributes at the model level.
- * For more informtion, see the threejs docs: https://threejs.org/
+ * For more informtion, see the <a href="https://threejs.org/" target="_blank">threejs docs.</a> 
  * @module
  */
 import { GIModel } from '@design-automation/mobius-sim';

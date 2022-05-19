@@ -3,7 +3,7 @@ import { EEntType, GIModel } from '@design-automation/mobius-sim';
 
 // ================================================================================================
 /**
- * Returns an html string representation of the contents of this model.
+ * Returns a html string representation of the contents of this model.
  * The string can be printed to the console for viewing.
  *
  * @param __model__

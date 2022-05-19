@@ -25,11 +25,11 @@ import * as chk from '../../../_check_types';
  * generated. The origin can be specified as either a |coordinate| or a |plane|. If a coordinate
  * is given, then a plane will be automatically generated, aligned with the global XY plane.
  * \n
- * The positions will be generated along an straight line aligned with the X axis of the origin 
+ * The positions will be generated along a straight line aligned with the X axis of the origin 
  * plane.
  * \n
  * Returns the list of new positions.
- * \n
+ * \ns
  * @param __model__
  * @param origin A |coordinate| or a |plane|.
  * If a coordinate is given, then the plane is assumed to be aligned with the global XY plane.

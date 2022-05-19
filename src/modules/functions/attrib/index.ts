@@ -1,5 +1,5 @@
 /**
- * The `attrib` module has functions for working with attributes in teh model.
+ * The `attrib` module has functions for working with attributes in the model.
  * Note that attributes can also be set and retrieved using the "@" symbol.
  * @module
  */

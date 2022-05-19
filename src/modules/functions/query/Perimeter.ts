@@ -20,7 +20,7 @@ import { _getEntTypeFromStr } from './_shared';
 * entities must be part of the set of input entities and must have naked edges.
 * \n
 * @param __model__
-* @param ent_type Enum, select the type of perimeter entities to return
+* @param ent_type Enum, select the type of perimeter entities to return.
 * @param entities List of entities.
 * @returns Entities, a list of perimeter entities.
 * @example query.Perimeter('edges', [polygon1,polygon2,polygon])

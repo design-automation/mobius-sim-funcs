@@ -9,7 +9,12 @@ const requestedBytes = 1024 * 1024 * 200; // 200 MB local storage quota
 // ================================================================================================
 /**
  * Set the geolocation of the Cartesian coordinate system.
- *
+ * Does the same as the Geoalign function, but with alternate parameters.
+ * \n
+ * The Cartesian coordinate system is geolocated by defining two points:
+ * - The latitude-longitude of the Cartesian origin.
+ * - The counter-clockwise rotation around the Cartesian origin, in radians.
+ * \n
  * @param __model__
  * @param lat_long Set the latitude and longitude of the origin of the Cartesian coordinate system. 
  * @param rot Set the counter-clockwise rotation of the Cartesian coordinate system, in radians.

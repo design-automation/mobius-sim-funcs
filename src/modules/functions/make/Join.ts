@@ -8,11 +8,11 @@ import { checkIDs, ID } from '../../../_check_ids';
 // ================================================================================================
 /**
  * Joins existing polyline or polygons to create new polyline or polygons.
- *
+ * \n
  * In order to be joined, the polylines or polygons must be fused (i.e. share the same positions)
- *
+ * \n
  * The existing polygons are not affected.
- *
+ * \n
  * Note: Joining polylines currently not implemented.
  *
  * @param __model__
