@@ -10,8 +10,8 @@ import {
     TId,
 } from '@design-automation/mobius-sim';
 
-import { checkAttribNameIdxKey, splitAttribNameIdxKey } from '../../../_check_attribs';
-import { checkIDs, ID } from '../../../_check_ids';
+import { checkAttribNameIdxKey, splitAttribNameIdxKey } from '../../_check_attribs';
+import { checkIDs, ID } from '../../_check_ids';
 import { _ESortMethod } from './_enum';
 
 

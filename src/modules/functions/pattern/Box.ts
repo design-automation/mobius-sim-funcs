@@ -15,7 +15,7 @@ import {
 } from '@design-automation/mobius-sim';
 import * as THREE from 'three';
 
-import * as chk from '../../../_check_types';
+import * as chk from '../../_check_types';
 import { _EBoxMethod } from './_enum';
 
 

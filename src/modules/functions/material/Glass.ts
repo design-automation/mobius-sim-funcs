@@ -1,7 +1,7 @@
 import { GIModel } from '@design-automation/mobius-sim';
 import * as THREE from 'three';
 
-import * as chk from '../../../_check_types';
+import * as chk from '../../_check_types';
 import { _EMeshMaterialType } from './_enum';
 import { _clamp01, _setMaterialModelAttrib } from './_shared';
 

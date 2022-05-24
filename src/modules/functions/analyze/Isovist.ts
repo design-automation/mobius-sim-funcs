@@ -20,8 +20,8 @@ import {
 import * as Mathjs from 'mathjs';
 import * as THREE from 'three';
 
-import { checkIDs, ID } from '../../../_check_ids';
-import * as chk from '../../../_check_types';
+import { checkIDs, ID } from '../../_check_ids';
+import * as chk from '../../_check_types';
 
 
 // ================================================================================================

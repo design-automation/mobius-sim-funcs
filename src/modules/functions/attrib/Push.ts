@@ -1,8 +1,8 @@
 import { EAttribPush, EEntType, getArrDepth, GIModel, idsBreak, TEntTypeIdx, TId } from '@design-automation/mobius-sim';
 import uscore from 'underscore';
 
-import { checkAttribName, checkAttribNameIdxKey, splitAttribNameIdxKey } from '../../../_check_attribs';
-import { checkIDs, ID } from '../../../_check_ids';
+import { checkAttribName, checkAttribNameIdxKey, splitAttribNameIdxKey } from '../../_check_attribs';
+import { checkIDs, ID } from '../../_check_ids';
 import { _EAttribPushTarget, _EPushMethodSel } from './_enum';
 import { _getAttribPushTarget } from './_shared';
 

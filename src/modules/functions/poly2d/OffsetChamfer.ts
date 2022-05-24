@@ -9,7 +9,7 @@ import {
     TId,
 } from '@design-automation/mobius-sim';
 
-import { checkIDs, ID } from '../../../_check_ids';
+import { checkIDs, ID } from '../../_check_ids';
 import { _EClipJointType, _EOffset } from './_enum';
 import { _getPgonsPlines, _offsetPgon, _offsetPline, IClipOffsetOptions, MClipOffsetEndType, TPosisMap } from './_shared';
 

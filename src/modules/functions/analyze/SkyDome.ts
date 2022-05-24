@@ -14,7 +14,7 @@ import {
 import * as THREE from 'three';
 import uscore from 'underscore';
 
-import * as chk from '../../../_check_types';
+import * as chk from '../../_check_types';
 import { _ESunPathMethod } from './_enum';
 import { _skyRayDirsTjs, _solarRaysDirectTjs, _solarRaysIndirectTjs } from './_shared';
 

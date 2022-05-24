@@ -1,6 +1,6 @@
 import { arrMakeFlat, EAttribNames, EEntType, GIModel, idsBreak, TEntTypeIdx, TId } from '@design-automation/mobius-sim';
 
-import { checkIDs, ID } from '../../../_check_ids';
+import { checkIDs, ID } from '../../_check_ids';
 
 
 // ================================================================================================

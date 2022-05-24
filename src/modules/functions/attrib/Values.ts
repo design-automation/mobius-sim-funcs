@@ -1,5 +1,5 @@
 import { EEntType, GIModel, TAttribDataTypes } from '@design-automation/mobius-sim';
-import { checkAttribName } from '../../../_check_attribs';
+import { checkAttribName } from '../../_check_attribs';
 
 import { _EDataType, _EEntTypeAndMod } from './_enum';
 import { _getEntTypeFromStr } from './_shared';

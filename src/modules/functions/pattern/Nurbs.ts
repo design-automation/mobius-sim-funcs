@@ -1,7 +1,7 @@
 import { EEntType, GIModel, idsMakeFromIdxs, TId, Txyz } from '@design-automation/mobius-sim';
 import * as VERB from '@design-automation/mobius-sim/libs/verb/verb';
 
-import * as chk from '../../../_check_types';
+import * as chk from '../../_check_types';
 import { _EClose } from './_enum';
 
 

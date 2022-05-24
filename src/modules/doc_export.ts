@@ -1,4 +1,4 @@
-import * as _model from './_model';
+import * as _model from '../model_api/_model';
 import * as _output from './_output';
 import * as analyze from './functions/analyze';
 import * as attrib from './functions/attrib';

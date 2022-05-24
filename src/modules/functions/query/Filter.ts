@@ -11,8 +11,8 @@ import {
     TId,
 } from '@design-automation/mobius-sim';
 
-import { checkAttribNameIdxKey, checkAttribValue, splitAttribNameIdxKey } from '../../../_check_attribs';
-import { checkIDs, ID } from '../../../_check_ids';
+import { checkAttribNameIdxKey, checkAttribValue, splitAttribNameIdxKey } from '../../_check_attribs';
+import { checkIDs, ID } from '../../_check_ids';
 import { _EFilterOperator } from './_enum';
 
 

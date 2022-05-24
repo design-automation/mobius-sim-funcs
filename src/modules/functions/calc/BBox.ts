@@ -1,6 +1,6 @@
 import { arrMakeFlat, GIModel, idsBreak, TBBox, TEntTypeIdx, TId, Txyz } from '@design-automation/mobius-sim';
 
-import { checkIDs, ID } from '../../../_check_ids';
+import { checkIDs, ID } from '../../_check_ids';
 
 
 // ================================================================================================

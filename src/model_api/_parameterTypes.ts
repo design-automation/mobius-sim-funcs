@@ -1,6 +1,6 @@
 import { GIMetaData, LONGLAT } from '@design-automation/mobius-sim';
 
-import { __clone__, __merge__, __new__ } from './modules/_model';
+import { __clone__, __merge__, __new__ } from './_model';
 
 export const _parameterTypes = {
     // classes

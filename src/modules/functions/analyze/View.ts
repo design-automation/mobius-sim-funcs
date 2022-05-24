@@ -22,8 +22,8 @@ import {
     vecSetLen,
     xformMatrix,
 } from '@design-automation/mobius-sim';
-import { checkIDs, ID } from '../../../_check_ids';
-import * as chk from '../../../_check_types';
+import { checkIDs, ID } from '../../_check_ids';
+import * as chk from '../../_check_types';
 // import { Ray } from '../visualize/Ray';
 // import { Plane } from '../visualize/Plane';
 

@@ -14,8 +14,8 @@ import {
 import { scale as chromaScale } from 'chroma-js';
 import * as Mathjs from 'mathjs';
 
-import { checkIDs, ID } from '../../../_check_ids';
-import * as chk from '../../../_check_types';
+import { checkIDs, ID } from '../../_check_ids';
+import * as chk from '../../_check_types';
 import { _EColorRampMethod } from './_enum';
 
 

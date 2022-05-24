@@ -20,7 +20,7 @@ import {
 } from '@design-automation/mobius-sim';
 import { Matrix4 } from 'three';
 
-import { checkIDs, ID } from '../../../_check_ids';
+import { checkIDs, ID } from '../../_check_ids';
 import { _EBBoxMethod } from './_enum';
 import { _convexHull, _getPosis } from './_shared';
 

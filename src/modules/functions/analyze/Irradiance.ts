@@ -22,13 +22,11 @@ import { _calcExposure, _rayOrisDirsTjs, _solarRaysDirectTjs, _solarRaysIndirect
 
 // ================================================================================================
 /**
- * Calculate an approximation of the solar exposure factor, for a set sensors positioned at specfied locations.
- * The solar exposure factor for each sensor is a value between 0 and 1, where 0 means that it has no exposure
- * and 1 means that it has maximum exposure.
+ * Calculate an approximation of the solar irradiance, in KWh/m2/year, for a set sensors positioned 
+ * at specfied locations.
  * \n
- * The calculation takes into account the geolocation and the north direction of the model.
- * Geolocation is specified by a model attributes as follows:
- *  - @geolocation={'longitude':123,'latitude':12}.
+ * The calculation uses a cumulative sky
+ *  - @cumulativesky={'longitude':123,'latitude':12}.
  * North direction is specified by a model attribute as follows, using a vector:
  *  - @north==[1,2]
  * If no north direction is specified, then [0,1] is the default (i.e. north is in the direction of the y-axis);

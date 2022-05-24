@@ -11,7 +11,7 @@ import {
 import proj4 from 'proj4';
 import { Matrix4 } from 'three';
 
-import { checkArgs, isNull, isNum, isXY } from '../../../_check_types';
+import { checkArgs, isNull, isNum, isXY } from '../../_check_types';
 
 
 const LONGLAT = [103.778329, 1.298759];

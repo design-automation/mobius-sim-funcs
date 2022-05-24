@@ -1,6 +1,6 @@
 import { GIModel, idsMake, TId, Txyz, vecAdd, vecDiv, vecFromTo } from '@design-automation/mobius-sim';
 
-import * as chk from '../../../_check_types';
+import * as chk from '../../_check_types';
 import { _EClose } from './_enum';
 
 

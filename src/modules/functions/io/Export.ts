@@ -12,8 +12,8 @@ import {
     TId,
 } from '@design-automation/mobius-sim';
 
-import { checkIDs, ID } from '../../../_check_ids';
-import { checkArgs, isStr, isStrL } from '../../../_check_types';
+import { checkIDs, ID } from '../../_check_ids';
+import { checkArgs, isStr, isStrL } from '../../_check_types';
 import { _EIODataTarget, _EIOExportDataFormat } from './_enum';
 
 

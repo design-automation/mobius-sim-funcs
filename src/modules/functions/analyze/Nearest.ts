@@ -11,7 +11,7 @@ import {
 } from '@design-automation/mobius-sim';
 import * as THREE from 'three';
 
-import { checkIDs, ID } from '../../../_check_ids';
+import { checkIDs, ID } from '../../_check_ids';
 import { _getUniquePosis } from './_shared';
 
 

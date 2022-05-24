@@ -1,7 +1,7 @@
 import { arrMakeFlat, GIModel, idsBreak, isEmptyArr, TEntTypeIdx, TId, Txyz } from '@design-automation/mobius-sim';
 
-import { checkIDs, ID } from '../../../_check_ids';
-import * as chk from '../../../_check_types';
+import { checkIDs, ID } from '../../_check_ids';
+import * as chk from '../../_check_types';
 
 
 

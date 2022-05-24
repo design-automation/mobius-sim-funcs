@@ -12,7 +12,7 @@ import {
 } from '@design-automation/mobius-sim';
 import uscore from 'underscore';
 
-import { checkIDs, ID } from '../../../_check_ids';
+import { checkIDs, ID } from '../../_check_ids';
 
 
 

@@ -1,6 +1,6 @@
 import { GIModel, idsBreak, isEmptyArr, TEntTypeIdx, TId, Txyz } from '@design-automation/mobius-sim';
 
-import { checkIDs, ID } from '../../../_check_ids';
+import { checkIDs, ID } from '../../_check_ids';
 import { getCenterOfMass, getCentroid } from '../_common';
 import { _ECentroidMethod } from './_enum';
 

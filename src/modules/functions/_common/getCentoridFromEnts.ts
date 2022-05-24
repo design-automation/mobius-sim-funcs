@@ -1,4 +1,4 @@
-import { checkIDs, ID } from '../../../_check_ids';
+import { checkIDs, ID } from '../../_check_ids';
 
 import { GIModel, TId, Txyz, EEntType, TEntTypeIdx, vecAvg } from '@design-automation/mobius-sim';
 import { getCentroid } from '.';

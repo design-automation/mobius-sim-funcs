@@ -12,7 +12,7 @@ import {
 import Shape from '@doodle3d/clipper-js';
 import * as d3vor from 'd3-voronoi';
 
-import { checkIDs, ID } from '../../../_check_ids';
+import { checkIDs, ID } from '../../_check_ids';
 import { _convertPgonToShape, _convertShapesToPgons, _getPgons, _getPosis, IClipCoord, SCALE, TPosisMap } from './_shared';
 
 let ShapeClass = Shape;

@@ -11,7 +11,7 @@ import {
 } from '@design-automation/mobius-sim';
 import * as d3del from 'd3-delaunay';
 
-import { checkIDs, ID } from '../../../_check_ids';
+import { checkIDs, ID } from '../../_check_ids';
 import { _getPosiFromMap, _getPosis, TPosisMap } from './_shared';
 
 

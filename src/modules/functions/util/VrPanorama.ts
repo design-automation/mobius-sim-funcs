@@ -1,7 +1,7 @@
 import { EAttribDataTypeStrs, EEntType, GIModel, idsBreak, TEntTypeIdx } from '@design-automation/mobius-sim';
 
-import { checkIDs, ID } from '../../../_check_ids';
-import { checkArgs, isNull, isNum, isStr } from '../../../_check_types';
+import { checkIDs, ID } from '../../_check_ids';
+import { checkArgs, isNull, isNum, isStr } from '../../_check_types';
 
 
 // ================================================================================================

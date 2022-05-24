@@ -10,8 +10,8 @@ import {
 } from '@design-automation/mobius-sim';
 import Shape from '@doodle3d/clipper-js';
 
-import { checkIDs, ID } from '../../../_check_ids';
-import * as chk from '../../../_check_types';
+import { checkIDs, ID } from '../../_check_ids';
+import * as chk from '../../_check_types';
 import {
     _convertPgonToShape,
     _convertShapesToPgons,

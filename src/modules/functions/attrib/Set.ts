@@ -8,8 +8,8 @@ import {
     checkAttribNameIdxKey,
     checkAttribValue,
     splitAttribNameIdxKey,
-} from '../../../_check_attribs';
-import { checkIDs, ID } from '../../../_check_ids';
+} from '../../_check_attribs';
+import { checkIDs, ID } from '../../_check_ids';
 import { _ESet } from './_enum';
 
 

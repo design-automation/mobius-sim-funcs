@@ -1,7 +1,7 @@
 import { EEntType, GIModel, idsMakeFromIdxs, TId, Txyz } from '@design-automation/mobius-sim';
 import * as THREE from 'three';
 
-import * as chk from '../../../_check_types';
+import * as chk from '../../_check_types';
 import { _EClose, _ECurveCatRomType } from './_enum';
 
 

@@ -1,6 +1,6 @@
 import { GIModel, Txy, Txyz, vecRot } from '@design-automation/mobius-sim';
 
-import { checkArgs, isNull, isNum, isXY } from '../../../_check_types';
+import { checkArgs, isNull, isNum, isXY } from '../../_check_types';
 
 
 

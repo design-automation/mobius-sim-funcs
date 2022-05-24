@@ -16,7 +16,7 @@ import {
     vecSetLen,
 } from '@design-automation/mobius-sim';
 
-import { checkIDs, ID } from '../../../_check_ids';
+import { checkIDs, ID } from '../../_check_ids';
 import { _EDistanceMethod } from './_enum';
 
 

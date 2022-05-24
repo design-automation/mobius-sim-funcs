@@ -11,7 +11,7 @@ import {
 } from '@design-automation/mobius-sim';
 import Shape from '@doodle3d/clipper-js';
 
-import { checkIDs, ID } from '../../../_check_ids';
+import { checkIDs, ID } from '../../_check_ids';
 import { _EBooleanMethod } from './_enum';
 import {
     _convertPgonsToShapeUnion,

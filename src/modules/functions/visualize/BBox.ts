@@ -1,6 +1,6 @@
 import { EEntType, getArrDepth, GIModel, idsMake, TBBox, TEntTypeIdx, TId, Txyz } from '@design-automation/mobius-sim';
 
-import * as chk from '../../../_check_types';
+import * as chk from '../../_check_types';
 
 
 // ================================================================================================

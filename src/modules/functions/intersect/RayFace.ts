@@ -1,8 +1,8 @@
 import { EEntType, getArrDepth, GIModel, idsBreak, TEntTypeIdx, TId, TRay, Txyz } from '@design-automation/mobius-sim';
 import * as THREE from 'three';
 
-import { checkIDs, ID } from '../../../_check_ids';
-import * as chk from '../../../_check_types';
+import { checkIDs, ID } from '../../_check_ids';
+import * as chk from '../../_check_types';
 
 
 // ================================================================================================

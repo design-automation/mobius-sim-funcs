@@ -1,7 +1,7 @@
 import { arrMakeFlat, EEntType, GIModel, idsBreak, idsMakeFromIdxs, TEntTypeIdx, TId } from '@design-automation/mobius-sim';
 import cytoscape from 'cytoscape';
 
-import { checkIDs, ID } from '../../../_check_ids';
+import { checkIDs, ID } from '../../_check_ids';
 import { _EShortestPathMethod, _EShortestPathResult } from './_enum';
 import { _cytoscapeGetElements, _cytoscapeWeightFn, _getUniquePosis } from './_shared';
 

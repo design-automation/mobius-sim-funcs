@@ -1,7 +1,7 @@
 import { GIModel, Txy, Txyz, vecAng2, vecFromTo, vecRot } from '@design-automation/mobius-sim';
 import proj4 from 'proj4';
 
-import { checkArgs, isNull, isNum, isXY } from '../../../_check_types';
+import { checkArgs, isNull, isNum, isXY } from '../../_check_types';
 import { _createProjection, _xformFromLongLatToXYZ } from './LatLong2XYZ';
 
 

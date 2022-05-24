@@ -1,4 +1,4 @@
-import * as chk from '../../../_check_types';
+import * as chk from '../../_check_types';
 import { _EReplaceMethod } from './_enum';
 
 

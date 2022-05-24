@@ -10,8 +10,8 @@ import {
 import { cloneDeep } from 'lodash';
 import uscore from 'underscore';
 
-import { checkAttribName, checkAttribNameIdxKey, splitAttribNameIdxKey } from '../../../_check_attribs';
-import { checkIDs, ID } from '../../../_check_ids';
+import { checkAttribName, checkAttribNameIdxKey, splitAttribNameIdxKey } from '../../_check_attribs';
+import { checkIDs, ID } from '../../_check_ids';
 
 
 

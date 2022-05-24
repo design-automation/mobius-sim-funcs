@@ -1,6 +1,6 @@
 import { GIModel, TColor } from '@design-automation/mobius-sim';
 
-import * as chk from '../../../_check_types';
+import * as chk from '../../_check_types';
 import { _Ecolors, _ELineMaterialType } from './_enum';
 import { _clampArr01, _convertSelectEcolorsToNum, _setMaterialModelAttrib } from './_shared';
 
