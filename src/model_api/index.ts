@@ -136,7 +136,7 @@ export class ModelApi {
             }
             return Array.from(set_ents_i);
         }
-        return this.__model__.modeldata.geom.nav.navAnyToAny(source_ent_type, target_ent_type, ents_i);
+        return this.__model__.modeldata.geom.nav.navAnyToAny(source_ent_type, target_ent_type, source_ents_i);
     }
     /**
      * query.numEnts
@@ -188,6 +188,15 @@ export class ModelApi {
     // }
     snapshotGetEnts(ssid: number, ent_type: EEntType): number[] {
         return this.__model__.modeldata.geom.snapshot.getEnts(ssid, ent_type);
+    }
+    /**
+     * 
+     * @param ssid
+     * @param ent_type 
+     * @returns 
+     */
+    snapshotNumEnts(ssid: number, ent_type: EEntType): number {
+        return this.__model__.modeldata.geom.snapshot.numEnts(ssid, ent_type);
     }
     /**
      * 
