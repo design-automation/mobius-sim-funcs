@@ -126,17 +126,53 @@ export class ModelApi {
         if (source_ent_type === undefined) {
             return this.__model__.modeldata.geom.query.getEnts(target_ent_type);
         }
-        if (Array.isArray(source_ents_i)) {
-            const set_ents_i: Set<number> = new Set();
+        if (!Array.isArray(source_ents_i)) {
+            source_ents_i = [source_ents_i];
+        }
+        const set_ents_i: Set<number> = new Set();
+        // target is triangles
+        if (target_ent_type === EEntType.TRI) {
             for (const source_ent_i of source_ents_i) {
-                const ents_i: number[] = this.__model__.modeldata.geom.nav.navAnyToAny(source_ent_type, target_ent_type, source_ent_i);
+                const pgons_i: number[] = this.__model__.modeldata.geom.nav.navAnyToAny(source_ent_type, EEntType.PGON, source_ent_i);
+                for (const pgon_i of pgons_i) {
+                    const tris_i: number[] = this.__model__.modeldata.geom.nav_tri.navPgonToTri(pgon_i);
+                    for (const tri_i of tris_i) {
+                        set_ents_i.add(tri_i);
+                    }
+                }
+            }
+            return Array.from(set_ents_i);
+        }
+        // source is triangles
+        if (source_ent_type === EEntType.TRI) {
+            for (const source_ent_i of source_ents_i) {
+                let ents_i: number[];
+                if (target_ent_type === EEntType.POSI) {
+                    ents_i = this.__model__.modeldata.geom.nav_tri.navTriToPosi(source_ent_i);
+                } else if (target_ent_type === EEntType.VERT) {
+                    ents_i = this.__model__.modeldata.geom.nav_tri.navTriToVert(source_ent_i);
+                } else if (target_ent_type === EEntType.PGON) {
+                    ents_i = [this.__model__.modeldata.geom.nav_tri.navTriToPgon(source_ent_i)];
+                } else if (target_ent_type === EEntType.COLL) {
+                    ents_i = this.__model__.modeldata.geom.nav_tri.navTriToColl(source_ent_i);
+                } else {
+                    const pgon_i: number = this.__model__.modeldata.geom.nav_tri.navTriToPgon(source_ent_i);
+                    ents_i = this.__model__.modeldata.geom.nav.navAnyToAny(EEntType.PGON, target_ent_type, pgon_i);
+                }
                 for (const ent_i of ents_i) {
                     set_ents_i.add(ent_i);
                 }
             }
             return Array.from(set_ents_i);
         }
-        return this.__model__.modeldata.geom.nav.navAnyToAny(source_ent_type, target_ent_type, source_ents_i);
+        // normal case
+        for (const source_ent_i of source_ents_i) {
+            const ents_i: number[] = this.__model__.modeldata.geom.nav.navAnyToAny(source_ent_type, target_ent_type, source_ent_i);
+            for (const ent_i of ents_i) {
+                set_ents_i.add(ent_i);
+            }
+        }
+        return Array.from(set_ents_i);
     }
     /**
      * query.numEnts
