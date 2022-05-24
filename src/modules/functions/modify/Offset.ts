@@ -8,12 +8,20 @@ import * as chk from '../../_check_types';
 
 // ================================================================================================
 /**
- * Offsets wires.
+ * Performs a simple geometrical offset on the wires, such that the wires are parallel to their
+ * original positions, modying the input entities. Works on 3D geometry. 
  * \n
- * @param __model__
+ * See `poly2d.OffsetChamfer, poly2d.OffsetMitre` and `poly2d.OffsetRound` for other offset
+ * functions that do not modify the input entities (but are limited to 2D).
+ * 
+ * @param __model__ 
  * @param entities Edges, wires, faces, polylines, polygons, collections.
  * @param dist The distance to offset by, can be either positive or negative.
  * @returns void
+ * @example <a href="/editor?file=/assets/examples/Functions_modify.Offset_3DExamples.mob&node=1" target="_blank"> 3D Example </a>
+ * @example_info A model showing offset used on 3D geometry. 
+ * @example <a href="/editor?file=/assets/examples/Functions_modify.Offset_Self-intersecting_Example.mob&node=1" target="_blank"> Wrong Example </a>
+ * @example_info A model showing self-intersecting geometries created by offset and how to fix it.
  * @example `modify.Offset(polygon1, 10)`
  * @example_info Offsets the wires inside polygon1 by 10 units. Holes will also be offset.
  */

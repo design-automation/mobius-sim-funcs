@@ -96,7 +96,7 @@ import { _calcExposure, _rayOrisDirsTjs, _solarRaysDirectTjs, _solarRaysIndirect
  * @param detail An integer between 1 and 3 inclusive, specifying the level of detail for the analysis.
  * @param entities The obstructions, faces, polygons, or collections of faces or polygons.
  * @param limits The max distance for raytracing.
- * @param method Enum; solar method.
+ * @param method Enum, solar method: `'direct_weighted', 'direct_unweighted', 'indirect_weighted'`, or `'indirect_unweighted'`.
  * @returns A dictionary containing solar exposure results.
  */
 export function Sun(

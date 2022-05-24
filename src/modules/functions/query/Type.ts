@@ -22,10 +22,14 @@ import { _ETypeQueryEnum } from './_enum';
  *
  * @param __model__
  * @param entities An entity, or a list of entities.
- * @param type_query_enum Enum, select the conditions to test agains.
- * @returns Boolean or list of boolean in input sequence.
- * @example query.Type([polyline1, polyline2, polygon1], is\_polyline )
- * @example_info Returns a list [true, true, false] if polyline1 and polyline2 are polylines but
+ * @param type_query_enum Enum, select the conditions to test against: `'exists', 'is_position',
+    'is_used_posi', 'is_unused_posi', 'is_vertex', 'is_edge', 'is_wire', 'is_point',
+    'is_polyline', 'is_polygon', 'is_collection', 'is_object', 'is_topology',
+    'is_point_topology', 'is_polyline_topology', 'is_polygon_topology', 'is_open',
+    'is_closed', 'is_hole', 'has_holes'` or `'has_no_holes'`.
+ * @returns Boolean or list of booleans in input sequence.
+ * @example `query.Type([polyline1, polyline2, polygon1], is_polyline)`
+ * @example_info Returns a list `[true, true, false]` if polyline1 and polyline2 are polylines but
  * polygon1 is not a polyline.
  */
 export function Type(__model__: GIModel, entities: TId|TId[], type_query_enum: _ETypeQueryEnum): boolean|boolean[] {

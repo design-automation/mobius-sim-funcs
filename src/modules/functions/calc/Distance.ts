@@ -28,7 +28,7 @@ import { _EDistanceMethod } from './_enum';
  * @param __model__
  * @param entities1 Position to calculate distance from.
  * @param entities2 List of entities to calculate distance to.
- * @param method Enum; distance method.
+ * @param method Enum, distance method: `'ps_to_ps_distance', 'ps_to_e_distance'` or `'ps_to_w_distance'`.
  * @returns Distance, or list of distances (if position2 is a list).
  * @example `distance1 = calc.Distance(position1, position2, p_to_p_distance)`
  * @example_info `position1 = [0,0,0]`, `position2 = [[0,0,10],[0,0,20]]`, Expected value of distance is `10`.

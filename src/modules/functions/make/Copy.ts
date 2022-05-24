@@ -38,7 +38,7 @@ import * as chk from '../../_check_types';
  * polylines, polygons and collections.
  * @param vector A vector to move the entities by after copying, can be `null`.
  * @returns Entities, the copied entity or a list of copied entities.
- * @example copies = make.Copy([position1, polyine1, polygon1], [0,0,10])
+ * @example `copies = make.Copy([position1, polyine1, polygon1], [0,0,10])`
  * @example_info Creates a copy of position1, polyine1, and polygon1 and moves all three entities 10
  * units in the Z direction.
  */

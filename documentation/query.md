@@ -20,12 +20,13 @@ The resulting list of entities will not contain duplicate entities.
   
   
 **Parameters:**  
-  * *ent\_type\_enum:* Enum, the type of entity to get.  
-  * *entities:* Optional, list of entities to get entities from, or null to get all entities in the model.  
+  * *ent\_type\_enum:* Enum, the type of entity to get: `'ps', '_v', '_e', '_w', 'pt', 'pl',
+'pg',` or `'co'`.  
+  * *entities:* (Optional) List of entities to get entities from, or null to get from all entities in the model.  
   
 **Returns:** Entities, a list of entities.  
 **Examples:**  
-  * positions = query.Get('positions', [polyline1, polyline2])  
+  * `positions = query.Get('positions', [polyline1, polyline2])`  
     Returns a list of positions that are part of polyline1 and polyline2.
   
   
@@ -33,21 +34,22 @@ The resulting list of entities will not contain duplicate entities.
 ## Filter  
   
   
-**Description:** Filter a list of entities based on an attribute value. 
- The result will always be a list of
-entities, even if there is only one entity. In a case where you want only one entity, remember to
-get the first item in the list. 
+**Description:** Filter a list of entities based on an attribute value.
+
+
+The result will always be a list of entities, even if there is only one entity.
+In a case where you want only one entity, remember to get the first item in the list.
+
   
   
 **Parameters:**  
   * *entities:* List of entities to filter. The entities must all be of the same type.  
   * *attrib:* The attribute to use for filtering. Can be `name`, `[name, index]`, or `[name,
 key]`.  
-  * *operator\_enum:* Enum, the operator to use for filtering.  
-  * *value:* The attribute value to use for filtering. If the attribute value of a given entity
-is equal to this, it will be included in the result.  
+  * *operator\_enum:* Enum, the operator to use for filtering: `'==', '!=', '>=', '<=', '>', '<'` or `'='`.  
+  * *value:* The attribute value to use for filtering.  
   
-**Returns:** Entities, a list of entities that match the conditions specified in 'expr'.  
+**Returns:** Entities, a list of entities that match the conditions specified in 'operater\_enum' and 'value'.  
   
   
 ## Invert  
@@ -57,19 +59,20 @@ is equal to this, it will be included in the result.
 For example, you can get the position entities that are not part of a list of polygon entities.
 
 
-This function does the opposite of query.Get().
-While query.Get() gets entities that are part of the list of entities,
+This function does the opposite of `query.Get()`.
+While `query.Get()` gets entities that are part of the list of entities,
 this function gets the entities that are not part of the list of entities.
 
   
   
 **Parameters:**  
-  * *ent\_type\_enum:* Enum, specifies what type of entities will be returned.  
+  * *ent\_type\_enum:* Enum, specifies what type of entities will be returned: `'ps', '_v', '_e',
+'_w', 'pt', 'pl', 'pg'`, or `'co'`.  
   * *entities:* List of entities to be excluded.  
   
 **Returns:** Entities, a list of entities that match the type specified in '`ent_type_enum`', and that are not in `entities`.  
 **Examples:**  
-  * positions = query.Invert('positions', [polyline1, polyline2])  
+  * `positions = query.Invert('positions', [polyline1, polyline2])`  
     Returns a list of positions that are not part of polyline1 and polyline2.
   
   
@@ -80,18 +83,18 @@ this function gets the entities that are not part of the list of entities.
 **Description:** Sorts entities based on an attribute.
 
 
-If the attribute is a list, index can also be specified as follows: #@name1[index].
+If the attribute is a list, index can also be specified as follows: `#@name1[index]`.
 
   
   
 **Parameters:**  
   * *entities:* List of two or more entities to be sorted, all of the same entity type.  
   * *attrib:* Attribute name to use for sorting. Can be `name`, `[name, index]`, or `[name, key]`.  
-  * *method\_enum:* Enum, sort descending or ascending.  
+  * *method\_enum:* Enum, sort: `'descending'` or `'ascending'`.  
   
 **Returns:** Entities, a list of sorted entities.  
 **Examples:**  
-  * sorted_list = query.Sort( [pos1, pos2, pos3], #@xyz[2], descending)  
+  * `sorted_list = query.Sort( [pos1, pos2, pos3], #@xyz[2], descending)`  
     Returns a list of three positions, sorted according to the descending z value.
   
   
@@ -105,12 +108,13 @@ entities must be part of the set of input entities and must have naked edges.
   
   
 **Parameters:**  
-  * *ent\_type:* Enum, select the type of perimeter entities to return.  
+  * *ent\_type:* Enum, select the type of perimeter entities to return: `'ps', '_v', '_e', '_w',
+'pt', 'pl', 'pg',` or `'co'`.  
   * *entities:* List of entities.  
   
 **Returns:** Entities, a list of perimeter entities.  
 **Examples:**  
-  * query.Perimeter('edges', [polygon1,polygon2,polygon])  
+  * `query.Perimeter('edges', [polygon1,polygon2,polygon])`  
     Returns list of edges that are at the perimeter of polygon1, polygon2, or polygon3.
   
   
@@ -124,12 +128,13 @@ entities must not be part of the set of input entities, but must be welded to on
   
   
 **Parameters:**  
-  * *ent\_type\_enum:* Enum, select the types of neighbors to return.  
+  * *ent\_type\_enum:* Enum, select the types of neighbors to return: `'ps', '_v', '_e', '_w', 'pt', 'pl',
+'pg',` or `'co'`.  
   * *entities:* List of entities.  
   
 **Returns:** Entities, a list of welded neighbors  
 **Examples:**  
-  * query.neighbor('edges', [polyline1,polyline2,polyline3])  
+  * `query.neighbor('edges', [polyline1,polyline2,polyline3])`  
     Returns list of edges that are welded to polyline1, polyline2, or polyline3.
   
   
@@ -145,9 +150,9 @@ entities must not be part of the set of input entities, but must be welded to on
   
 **Parameters:**  
   * *entities:* An edge or list of edges.  
-  * *edge\_query\_enum:* Enum, select the types of edges to return.  
+  * *edge\_query\_enum:* Enum, select the types of edges to return: `'previous', 'next', 'both'` or `'touching'`.  
   
-**Returns:** Entities, an edge or list of edges  
+**Returns:** Entities, an edge or list of edges, or null.  
   
   
 ## Type  
@@ -170,12 +175,16 @@ entities must not be part of the set of input entities, but must be welded to on
   
 **Parameters:**  
   * *entities:* An entity, or a list of entities.  
-  * *type\_query\_enum:* Enum, select the conditions to test agains.  
+  * *type\_query\_enum:* Enum, select the conditions to test against: `'exists', 'is_position',
+'is_used_posi', 'is_unused_posi', 'is_vertex', 'is_edge', 'is_wire', 'is_point',
+'is_polyline', 'is_polygon', 'is_collection', 'is_object', 'is_topology',
+'is_point_topology', 'is_polyline_topology', 'is_polygon_topology', 'is_open',
+'is_closed', 'is_hole', 'has_holes'` or `'has_no_holes'`.  
   
-**Returns:** Boolean or list of boolean in input sequence.  
+**Returns:** Boolean or list of booleans in input sequence.  
 **Examples:**  
-  * query.Type([polyline1, polyline2, polygon1], is\_polyline )  
-    Returns a list [true, true, false] if polyline1 and polyline2 are polylines but
+  * `query.Type([polyline1, polyline2, polygon1], is_polyline)`  
+    Returns a list `[true, true, false]` if polyline1 and polyline2 are polylines but
 polygon1 is not a polyline.
   
   

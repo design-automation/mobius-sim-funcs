@@ -31,10 +31,10 @@ import {
  * needs to be created. The value for each polygon must either be null, or must be a material name.
  * \n
  * @param name The name of the material.
- * @param color The diffuse colsor, as [r, g, b] values between 0 and 1. White is [1, 1, 1].
+ * @param color The diffuse color, as [r, g, b] values between 0 and 1. White is [1, 1, 1].
  * @param opacity The opacity of the glass, between 0 (totally transparent) and 1 (totally opaque).
- * @param select_side Enum, select front, back, or both.
- * @param select_vert_colors Enum, select whether to use vertex colors if they exist.
+ * @param select_side Enum, select where to apply colors: `'front', 'back'`, or `'both'`.
+ * @param select_vert_colors Enum, select whether to use vertex colors if they exist: `'none'` or `'apply_rgb'`.
  * @returns void
  */
 export function MeshMat(__model__: GIModel, name: string,

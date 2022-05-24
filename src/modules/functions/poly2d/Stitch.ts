@@ -18,15 +18,15 @@ import { checkIDs, ID } from '../../_check_ids';
 // Clipper types
 // ================================================================================================
 /**
- * Adds vertices to polyline and polygons at all locations where egdes intersect one another.
+ * Adds vertices to polyline and polygons at all locations where egdges intersect one another.
  * The vertices are welded.
  * This can be useful for creating networks that can be used for shortest path calculations.
  * \n
  * The input polyline and polygons are copied.
  * \n
  * @param __model__
- * @param entities A list polylines or polygons, or entities from which polylines or polygons can be
- * extracted.
+ * @param entities A list of polylines or polygons, or entities from which polylines or polygons can
+ * be extracted.
  * @param tolerance The tolerance for extending open plines if they are almost intersecting. 
  * @returns Copies of the input polyline and polygons, stitched.
  */

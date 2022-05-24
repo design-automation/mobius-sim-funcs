@@ -9,7 +9,7 @@ import * as chk from '../../_check_types';
 /**
  * Creates positions in a Bezier curve pattern, defined by a list of coordinates.
  * \n
- * The Bezier is created as either a qadratic or cubic Bezier. It is always an open curve.
+ * The Bezier is created as either a quadratic or cubic Bezier. It is always an open curve.
  * \n
  * The positions are created along the curve at equal parameter values.
  * This means that the euclidean distance between the positions will not necessarily be equal.
@@ -29,7 +29,7 @@ import * as chk from '../../_check_types';
  * \n
  * @param __model__
  * @param coords A |coordinate| or a |plane| (three coords for quadratics, four coords for cubics).
- * If a coordinate is given, then the plane is assumed to be aligned with the global XY plane. .
+ * If a coordinate is given, then the plane is assumed to be aligned with the global XY plane.
  * @param num_positions Number of positions to be distributed along the Bezier.
  * @returns Entities, a list of positions.
  * @example `posis = pattern.Bezier([[0,0,0], [10,0,50], [20,0,0]], 20)`

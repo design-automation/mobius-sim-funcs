@@ -30,13 +30,13 @@ const requestedBytes = 1024 * 1024 * 200; // 200 MB local storage quota
  * If you export to Local Storage, there will be no popup.
  * \n
  * @param __model__
- * @param entities Optional. Entities to be exported. If null, the whole model will be exported.
+ * @param entities (Optional) Entities to be exported. If null, the whole model will be exported.
  * @param file_name Name of the file as a string.
- * @param data_format Enum, the file format.
- * @param data_target Enum, where the data is to be exported to.
- * @returns void.
- * @example io.Export (#pg, 'my\_model.obj', obj)
- * @example_info Exports all the polygons in the model as an OBJ.
+ * @param data_format Enum, the export file format: `'gi', 'sim', 'obj_v', 'obj_ps', 'geojson'` or `'gltf'`.
+ * @param data_target Enum, where the data is to be exported to: `'Save to Hard Disk'` or `'Save to Local Storage'`.
+ * @returns void
+ * @example `io.Export (#pg, 'my\_model.obj', 'obj', 'Save to Hard Disk')`
+ * @example_info Exports all the polygons in the model as an OBJ, saved to the hard disk.
  */
 export async function Export(__model__: GIModel, entities: TId | TId[] | TId[][],
     file_name: string, data_format: _EIOExportDataFormat, data_target: _EIODataTarget) {

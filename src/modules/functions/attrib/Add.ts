@@ -14,8 +14,8 @@ import { _getEntTypeFromStr } from './_shared';
  * All attribute values will be set to null.
  * \n
  * @param __model__
- * @param ent_type_sel Enum, the attribute entity type.
- * @param data_type_sel Enum, the data type for this attribute.
+ * @param ent_type_sel Enum, the attribute entity type: `'ps', '_v', '_e', '_w', '_f', 'pt', 'pl', 'pg', 'co',` or `'mo'`.
+ * @param data_type_sel Enum, the data type for this attribute: `'number', 'string', 'boolean', 'list'` or `'dict'`.
  * @param attribs A single attribute name, or a list of attribute names.
  * @returns void 
  */

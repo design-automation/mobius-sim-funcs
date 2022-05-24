@@ -22,13 +22,13 @@ plane.
 
 Returns the list of new positions.
 
-s  
+  
   
 **Parameters:**  
   * *origin:* A <abbr title='A list of three numbers, [x, y, z]'>coordinate</abbr> or a <abbr title='Three lists of three numbers, [origin, x-axis, y-axis]'>plane</abbr>.
 If a coordinate is given, then the plane is assumed to be aligned with the global XY plane.  
-  * *length:* The length of the line along which positions will be generated.  
-  * *num\_positions:* undefined  
+  * *length:* A number. The length of the line along which positions will be generated.  
+  * *num\_positions:* An integer. The number of positions to be generated.  
   
 **Returns:** Entities, a list of new positions.  
   
@@ -67,12 +67,12 @@ to `close`, then positions are also generated between the last and first coordin
   
 **Parameters:**  
   * *coords:* A list of coordinates.  
-  * *close:* Enum, 'open' or 'close'.  
-  * *num\_positions:* undefined  
+  * *close:* Enum, `'open'` or `'close'`.  
+  * *num\_positions:* The number of positions to generate.  
   
 **Returns:** Entities, a list of new position IDs.  
 **Examples:**  
-  * posis = pattern.Linear([[0,0,0], [10,0,0]], false, 3)  
+  * `posis = pattern.Linear([[0,0,0], [10,0,0]], false, 3)`  
     Generates 3 positions, located at [0,0,0], [5,0,0], and [10,0,0].  
   * `posis = pattern.Linear([[0,0,0], [10,0,0], [10,10,0]], 'close', 4)`  
     Generates 9 positions. Two new coordinates are calculated between each pair of
@@ -113,7 +113,7 @@ if list of two numbers, x and y lengths respectively.
   
 **Returns:** Entities, a list of four positions.  
 **Examples:**  
-  * posis = pattern.Rectangle([0,0,0], 10)  
+  * `posis = pattern.Rectangle([0,0,0], 10)`  
     Creates a list of 4 coords, being the vertices of a 10 by 10 square.  
   * `posis = pattern.Rectangle(XY, [10,20])`  
     Creates a list of 4 positions in a rectangle pattern. The rectangle has a width of
@@ -230,12 +230,13 @@ If a list of two numbers is given, then they will be interpreted as `[width, len
   * *num\_positions:* Number of columns and rows of positions in the grid.
 If a single number is given, then the number of columns and rows are assumed to be equal.
 If a list of two numbers is given, then they will be interpreted as `[columns, rows]`.  
-  * *method:* Enum, define the way the coords will be return as lists.  
+  * *method:* Enum, define the way the coords will be return as lists: `'flat', 'rows',
+'columns'` or `'quads'`.  
   
 **Returns:** Entities, a list of positions, or a list of lists of positions
 (depending on the 'method' setting).  
 **Examples:**  
-  * posis = pattern.Grid([0,0,0], 10, 3, 'flat')  
+  * `posis = pattern.Grid([0,0,0], 10, 3, 'flat')`  
     Creates a list of 9 positions on a 3x3 square grid with a size of 10.  
   * `posis = pattern.Grid([0,0,0], [10,20], [3,4], 'flat')`  
     Creates a list of 12 positions on a 3x4 grid. The grid as a width of 10
@@ -373,7 +374,8 @@ If a single number is given, then the number of columns, rows, and layers are as
 If a list of two numbers is given, then they will be interpreted as `[columns, rows]`,
 and the number of layers is assumed to be equal to the number of rows.
 If a list of three numbers is given, then they will be interpreted as `[columns, rows, layers]`.  
-  * *method:* Enum, define the way the coords will be return as lists.  
+  * *method:* Enum, define the way the coords will be returned as lists: `'flat', 'rows',
+'columns', 'layers'` or `'quads'`.  
   
 **Returns:** Entities, a list of positions, or a list of lists of positions
 (depending on the 'method' setting).  
@@ -429,7 +431,7 @@ For tetrahedrons, octahedrons, and icosahedrons, the `detail` subdivides as foll
 Cubes and dodecahedrons do not have triangular faces. So in these cases, the first level of
 `detail` converts each non-triangular face into triangles by adding a position at the centre of
 the face. The `detail` subdivides as follows:
-- Detail= 0: No subdivision.
+- Detail = 0: No subdivision.
 - Detail = 1: Convert non-triangular faces into triangles.
 - Detail = 2: Each triangle edge is subdivided into two edges.
 - Detail = 3: Each triangle edge is subdivided into three edges.
@@ -481,7 +483,8 @@ pgons = make.Polygon(posis)
 If a coordinate is given, then the plane is assumed to be aligned with the global XY plane.  
   * *radius:* The radius of the polyhedron.  
   * *detail:* The level of detail for the polyhedron.  
-  * *method:* Enum: The Type of polyhedron to generate.  
+  * *method:* Enum, the Type of polyhedron to generate: `'flat_tetra', 'flat_cube', 'flat_octa',
+'flat_icosa', 'flat_dodeca', 'face_tetra', 'face_cube', 'face_octa', 'face_icosa'` or `'face_dodeca'`.  
   
 **Returns:** Entities, a list of positions.  
 **Examples:**  
@@ -526,17 +529,17 @@ clockwise order.
 
 
 The angle may either be given as a single number, as a list of two numbers, or as `null`:
-- If the angle is given as a single number, then the arc angles will be ser to be
+- If the angle is given as a single number, then the arc angles will be set to be
 `[0, end_angle]`. This means that the start of the arc will coincide with the X-axis
 of the origin plane.
 - If the angle is given as a list of two numbers, then they will be set to be
 `[start_angle, end_angle]`.
 - If the angle is set to `null`, then the arc angles will be set to be
-`[0, 2*PI]` In addition, duplicate positions at start and end of the arc are
+`[0, 2*PI]`. In addition, duplicate positions at start and end of the arc are
 automatically removed.
 
 
-Note that setting the arc angle to null is not the same as setting it to `2*PI.
+Note that setting the arc angle to null is not the same as setting it to `2*PI`.
 When setting the arc angle to `2*PI`, you will get duplicate positions at the start and end
 of the arc.
 
@@ -567,7 +570,7 @@ direction.
 **Description:** Creates positions in a Bezier curve pattern, defined by a list of coordinates.
 
 
-The Bezier is created as either a qadratic or cubic Bezier. It is always an open curve.
+The Bezier is created as either a quadratic or cubic Bezier. It is always an open curve.
 
 
 The positions are created along the curve at equal parameter values.
@@ -594,7 +597,7 @@ For more information, see the wikipedia article:
   
 **Parameters:**  
   * *coords:* A <abbr title='A list of three numbers, [x, y, z]'>coordinate</abbr> or a <abbr title='Three lists of three numbers, [origin, x-axis, y-axis]'>plane</abbr> (three coords for quadratics, four coords for cubics).
-If a coordinate is given, then the plane is assumed to be aligned with the global XY plane. .  
+If a coordinate is given, then the plane is assumed to be aligned with the global XY plane.  
   * *num\_positions:* Number of positions to be distributed along the Bezier.  
   
 **Returns:** Entities, a list of positions.  
@@ -638,8 +641,8 @@ The `num_positions` parameter specifies the total number of positions to be gene
   
 **Parameters:**  
   * *coords:* A list of coordinates (must be at least three).  
-  * *degree:* The degree of the curve, and integer between 2 and 5.  
-  * *close:* Enum, 'close' or 'open'  
+  * *degree:* The degree of the curve, an integer between 2 and 5.  
+  * *close:* Enum, `'close'` or `'open'`.  
   * *num\_positions:* Number of positions to be distributed along the Bezier.  
   
 **Returns:** Entities, a list of positions.  
@@ -671,16 +674,16 @@ For more information, see the wikipedia article:
 
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Catmull-Rom_examples_with_parameters..png"
-alt="Curve types" width="100">
+alt="Curve types" width="150">
 
   
   
 **Parameters:**  
   * *coords:* A list of coordinates.  
-  * *type:* Enum, the type of interpolation algorithm.  
+  * *type:* Enum, the type of interpolation algorithm: 'centripetal', 'chordal', or 'catmullrom'.  
   * *tension:* Curve tension, between 0 and 1. This only has an effect when the 'type' is set
 to 'catmullrom'.  
-  * *close:* Enum, 'open' or 'close'.  
+  * *close:* Enum, `'open'` or `'close'`.  
   * *num\_positions:* Number of positions to be distributed distributed along the spline.  
   
 **Returns:** Entities, a list of positions.  

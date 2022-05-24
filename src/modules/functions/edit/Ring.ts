@@ -18,7 +18,7 @@ import { _ERingMethod } from './_enum';
  * \n
  * @param __model__
  * @param entities Polyline(s).
- * @param method Enum; the method to use, either `open` or `close`.
+ * @param method Enum, the method to use: ``open`` or ``close``.
  * @returns void
  * @example `edit.Ring([polyline1,polyline2,...], method='close')`
  * @example_info If open, polylines are changed to closed; if already closed, nothing happens.

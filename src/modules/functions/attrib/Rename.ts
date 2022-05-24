@@ -13,7 +13,7 @@ import { _getEntTypeFromStr } from './_shared';
  * All values will remain the same.
  * \n
  * @param __model__
- * @param ent_type_sel Enum, the attribute entity type.
+ * @param ent_type_sel Enum, the attribute entity type: `'ps', '_v', '_e', '_w', '_f', 'pt', 'pl', 'pg', 'co',` or `'mo'`.
  * @param old_attrib The old attribute name.
  * @param new_attrib The new attribute name.
  * @returns void 

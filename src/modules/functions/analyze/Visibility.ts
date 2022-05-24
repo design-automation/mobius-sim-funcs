@@ -52,7 +52,7 @@ interface TVisibilityResult {
  * \n
  * \n
  * @param __model__
- * @param origins A list of Rays or Planes, to be used as the origins for calculating the uobstructed views.
+ * @param origins A list of Rays or Planes, to be used as the origins for calculating the unobstructed views.
  * @param entities The obstructions: faces, polygons, or collections.
  * @param radius The maximum radius of the visibility analysis.
  * @param targets The target positions.

@@ -31,10 +31,11 @@ import { _convexHull, _getPosis } from './_shared';
  * \n
  * For the method, 'aabb' generates an Axis Aligned Bounding Box, and 'obb' generates an Oriented Bounding Box.
  * \n
+ * See `calc.BBox` and `visualize.BBox` for more on bounding boxes. 
  *
  * @param __model__
- * @param entities A list of positions, or entities from which positions can bet extracted.
- * @param method Enum, the method for generating the bounding box.
+ * @param entities A list of positions, or entities from which positions can be extracted.
+ * @param method Enum, the method for generating the bounding box: `'aabb'` or `'obb'`.
  * @returns A new polygon, the bounding box of the positions.
  */
 export function BBoxPolygon(__model__: GIModel, entities: TId|TId[], method: _EBBoxMethod): TId {

@@ -43,7 +43,7 @@ import { _cyGetPosisAndElements, _cytoscapeWeightFn, _getUniquePosis } from './_
  * @param alpha The alpha value for the centrality calculation, ranging on [0, 1]. With value 0,
  * disregards edge weights and solely uses number of edges in the centrality calculation. With value 1,
  * disregards number of edges and solely uses the edge weights in the centrality calculation.
- * @param method Enum, the method to use, directed or undirected.
+ * @param method Enum, the method to use: `'directed'` or `'undirected'`.
  * @returns A dictionary containing the results.
  */
 export function Degree(

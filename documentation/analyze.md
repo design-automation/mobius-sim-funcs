@@ -41,8 +41,8 @@ If 'distances' is selected, the dictionary will contain the following list:
 1. 'distances': A list of numbers, the distance travelled for each ray.
 
 
-If 'hit_pgons' is selected, the dictionary will contain the following list:
-1. 'hit_pgons': A list of polygon IDs, the polygons hit for each ray, or 'null' if no polygon
+If 'hit\_pgons' is selected, the dictionary will contain the following list:
+1. 'hit\_pgons': A list of polygon IDs, the polygons hit for each ray, or 'null' if no polygon
 was hit.
 
 
@@ -64,7 +64,7 @@ If the input is a list of lists of rays, then the output will be a list of dicti
   * *rays:* A ray, a list of rays, or a list of lists of rays.  
   * *entities:* The obstructions, faces, polygons, or collections of faces or polygons.  
   * *dist:* The ray limits, one or two numbers. Either max, or [min, max].  
-  * *method:* Enum; values to return.  
+  * *method:* Enum, values to return: `'stats', 'distances', 'hit_pgons', 'intersections'` or `'all'`.  
   
 **Returns:** A dictionary, a list of dictionaries, or null.  
   
@@ -86,13 +86,13 @@ More rays will result in more accurate result, but will also be slower to execut
 Returns a dictionary containing different isovist metrics.
 
 
-1. 'avg_dist': The average distance from origin to the perimeter.
-2. 'min_dist': The minimum distance from the origin to the perimeter.
-3. 'max_dist': The minimum distance from the origin to the perimeter.
+1. 'avg\_dist': The average distance from origin to the perimeter.
+2. 'min\_dist': The minimum distance from the origin to the perimeter.
+3. 'max\_dist': The minimum distance from the origin to the perimeter.
 4. 'area': The area of the isovist.
 5. 'perimeter': The perimeter of the isovist.
-4. 'area_ratio': The ratio of the area of the isovist to the maximum area.
-5. 'perimeter_ratio': The ratio of the perimeter of the isovist to the maximum perimeter.
+4. 'area\_ratio': The ratio of the area of the isovist to the maximum area.
+5. 'perimeter\_ratio': The ratio of the perimeter of the isovist to the maximum perimeter.
 6. 'circularity': The ratio of the square of the perimeter to area (Davis and Benedikt, 1979).
 7. 'compactness': The ratio of average distance to the maximum distance (Michael Batty, 2001).
 8. 'cluster': The ratio of the radius of an idealized circle with the actual area of the
@@ -173,7 +173,7 @@ Returns a dictionary containing exposure results.
   * *detail:* An integer between 1 and 3 inclusive, specifying the level of detail for the analysis.  
   * *entities:* The obstructions, faces, polygons, or collections of faces or polygons.  
   * *limits:* The max distance for raytracing.  
-  * *method:* Enum; sky method.  
+  * *method:* Enum, the sky method: `'weighted', 'unweighted'` or `'all'`.  
   
 **Returns:** A dictionary containing solar exposure results.  
   
@@ -272,7 +272,7 @@ If one  of the 'indirect' methods is selected, the dictionary will contain:
   * *detail:* An integer between 1 and 3 inclusive, specifying the level of detail for the analysis.  
   * *entities:* The obstructions, faces, polygons, or collections of faces or polygons.  
   * *limits:* The max distance for raytracing.  
-  * *method:* Enum; solar method.  
+  * *method:* Enum, solar method: `'direct_weighted', 'direct_unweighted', 'indirect_weighted'`, or `'indirect_unweighted'`.  
   
 **Returns:** A dictionary containing solar exposure results.  
   
@@ -296,10 +296,10 @@ North direction is specified by a model attribute as follows, using a vector:
   
   
 **Parameters:**  
-  * *origin:* The origins of the rays  
-  * *detail:* The level of detail for the analysis  
-  * *radius:* The radius of the sun path  
-  * *method:* Enum, the type of sky to generate.  
+  * *origin:* The origins of the rays.  
+  * *detail:* The level of detail for the analysis.  
+  * *radius:* The radius of the sun path.  
+  * *method:* Enum, the type of sky to generate: `'direct', 'indirect'` or `'sky'`.  
   
 **Returns:** Entities, a set of positions that are organized into sequences.
 A polyline can then be drawn from these positions.  
@@ -321,12 +321,12 @@ then select the 'max\_neighbors' closest target positions.
 Returns a dictionary containing the nearest positions.
 
 
-If 'num_neighbors' is 1, the dictionary will contain two lists:
+If 'num\_neighbors' is 1, the dictionary will contain two lists:
 1. 'posis': a list of positions, a subset of positions from the source.
 2. 'neighbors': a list of neighbouring positions, a subset of positions from target.
 
 
-If 'num_neighbors' is greater than 1, the dictionary will contain two lists:
+If 'num\_neighbors' is greater than 1, the dictionary will contain two lists:
 1. 'posis': a list of positions, a subset of positions from the source.
 2. 'neighbors': a list of lists of neighbouring positions, a subset of positions from target.
 
@@ -370,20 +370,20 @@ Returns a dictionary containing the shortest paths.
 
 
 If 'distances' is selected, the dictionary will contain two list:
-1. 'source_posis': a list of start positions for each path,
+1. 'source\_posis': a list of start positions for each path,
 2. 'distances': a list of distances, one list for each path starting at each source position.
 
 
 If 'counts' is selected, the dictionary will contain four lists:
 1. 'posis': a list of positions traversed by the paths,
-2. 'posis_count': a list of numbers that count how often each position was traversed,
+2. 'posis\_count': a list of numbers that count how often each position was traversed,
 3. 'edges': a list of edges traversed by the paths,
-4. 'edges_count': a list of numbers that count how often each edge was traversed.
+4. 'edges\_count': a list of numbers that count how often each edge was traversed.
 
 
 If 'paths' is selected, the dictionary will contain two lists of lists:
-1. 'posi_paths': a list of lists of positions, one list for each path,
-2. 'edge_paths': a list of lists of edges, one list for each path.
+1. 'posi\_paths': a list of lists of positions, one list for each path,
+2. 'edge\_paths': a list of lists of edges, one list for each path.
 
 
 If 'all' is selected, the dictionary will contain all lists just described.
@@ -394,8 +394,8 @@ If 'all' is selected, the dictionary will contain all lists just described.
   * *source:* Path source, a list of positions, or entities from which positions can be extracted.  
   * *target:* Path target, a list of positions, or entities from which positions can be extracted.  
   * *entities:* The network, edges, or entities from which edges can be extracted.  
-  * *method:* Enum, the method to use, directed or undirected.  
-  * *result:* Enum, the data to return, positions, edges, or both.  
+  * *method:* Enum, the method to use: `'directed'` or `'undirected'`.  
+  * *result:* Enum, the data to return (positions, edges, both): `'distances', 'counts', 'paths'` or `'all'`.  
   
 **Returns:** A dictionary containing the results.  
   
@@ -440,14 +440,14 @@ If 'distances' is selected, the dictionary will contain one list:
 
 If 'counts' is selected, the dictionary will contain four lists:
 1. 'posis': a list of positions traversed by the paths,
-2. 'posis_count': a list of numbers that count how often each position was traversed.
+2. 'posis\_count': a list of numbers that count how often each position was traversed.
 3. 'edges': a list of edges traversed by the paths,
-4. 'edges_count': a list of numbers that count how often each edge was traversed.
+4. 'edges\_count': a list of numbers that count how often each edge was traversed.
 
 
 If 'paths' is selected, the dictionary will contain two lists of lists:
-1. 'posi_paths': a list of lists of positions, one list for each path.
-2. 'edge_paths': a list of lists of edges, one list for each path.
+1. 'posi\_paths': a list of lists of positions, one list for each path.
+2. 'edge\_paths': a list of lists of edges, one list for each path.
 
 
 If 'all' is selected, the dictionary will contain all lists just described.
@@ -458,8 +458,8 @@ If 'all' is selected, the dictionary will contain all lists just described.
   * *source:* Path source, a list of positions, or entities from which positions can be extracted.  
   * *target:* Path source, a list of positions, or entities from which positions can be extracted.  
   * *entities:* The network, edges, or entities from which edges can be extracted.  
-  * *method:* Enum, the method to use, directed or undirected.  
-  * *result:* Enum, the data to return, positions, edges, or both.  
+  * *method:* Enum, the method to use: `'directed'` or `'undirected'`.  
+  * *result:* Enum, the data to return (positions, edges, both): `'distances', 'counts', 'paths'` or `'all'`.  
   
 **Returns:** A dictionary containing the results.  
   
@@ -512,7 +512,7 @@ These positions should be part of the network.
   * *alpha:* The alpha value for the centrality calculation, ranging on [0, 1]. With value 0,
 disregards edge weights and solely uses number of edges in the centrality calculation. With value 1,
 disregards number of edges and solely uses the edge weights in the centrality calculation.  
-  * *method:* Enum, the method to use, directed or undirected.  
+  * *method:* Enum, the method to use: `'directed'` or `'undirected'`.  
   
 **Returns:** A dictionary containing the results.  
   
@@ -571,8 +571,8 @@ Returns a dictionary containing the results.
   * *source:* A list of positions, or entities from which positions can be extracted.
 These positions should be part of the network.  
   * *entities:* The network, edges, or entities from which edges can be extracted.  
-  * *method:* Enum, the method to use, directed or undirected.  
-  * *cen\_type:* Enum, the type of centrality (betweenness, closeness or harmonic).  
+  * *method:* Enum, the method to use: `'directed'` or `'undirected'`.  
+  * *cen\_type:* Enum, the type of centrality: `'betweenness', 'closeness'` or `'harmonic'`.  
   
 **Returns:** A dictionary containing the results (posis and centrality values, between 0 and 1.)  
   
@@ -593,7 +593,7 @@ The 'radius' argument defines the maximum radius of the unobstructed view.
 (The radius is used to define the maximum distance for shooting the rays.)
 
 
-The 'num_rays' argument defines the number of rays that will be shot,
+The 'num\_rays' argument defines the number of rays that will be shot,
 in a fan pattern parallel to the XY plane, with equal angle between rays.
 More rays will result in more accurate result, but will also be slower to execute.
 
@@ -605,13 +605,13 @@ Returns a dictionary containing different unobstructed view metrics.
   
   
 **Parameters:**  
-  * *origins:* A list of Rays or Planes, to be used as the origins for calculating the uobstructed views.  
+  * *origins:* A list of Rays or Planes, to be used as the origins for calculating the unobstructed views.  
   * *entities:* The obstructions: faces, polygons, or collections.  
   * *radius:* The maximum radius of the uobstructed views.  
   * *num\_rays:* The number of rays to generate when calculating uobstructed views.  
   * *view\_ang:* The angle of the unobstructed view, in radians.  
   
-**Returns:** A dictionary containing different unobstructed view metrics  
+**Returns:** A dictionary containing different unobstructed view metrics.  
   
   
 ## Visibility  
@@ -636,7 +636,7 @@ Returns a dictionary containing different visibility metrics.
   
   
 **Parameters:**  
-  * *origins:* A list of Rays or Planes, to be used as the origins for calculating the uobstructed views.  
+  * *origins:* A list of Rays or Planes, to be used as the origins for calculating the unobstructed views.  
   * *entities:* The obstructions: faces, polygons, or collections.  
   * *radius:* The maximum radius of the visibility analysis.  
   * *targets:* The target positions.  

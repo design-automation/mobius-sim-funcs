@@ -17,7 +17,7 @@ import { _convertPgonsToShapeUnion, _convertShapesToPgons, _getPgons } from './_
 type TPosisMap = Map<number, Map<number, number>>;
 // ================================================================================================
 /**
- * Create the union of a set of polygons.
+ * Create the union of a set of polygons. The original polygons are not edited.
  *
  * @param __model__
  * @param entities A list of polygons, or entities from which polygons can bet extracted.

@@ -12,16 +12,18 @@ import { _EAddMethod } from './_enum';
  *
  * @param list List to add the item to.
  * @param item Item to add.
- * @param method Enum, select the method.
+ * @param method Enum, select the method: `'to_start', 'to_end', 'extend_start', 'extend_end',
+    'alpha_descending', 'alpha_ascending', 'numeric_descending', 'numeric_ascending',
+    'ID_descending'` or `'ID_ascending'`.
  * @returns void
- * @example append = list.Add([1,2,3], 4, 'at_end')
- * @example_info Expected value of list is [1,2,3,4].
- * @example append = list.Add([1,2,3], [4, 5], 'at_end')
- * @example_info Expected value of list is [1,2,3,[4,5]].
- * @example append = list.Add([1,2,3], [4,5], 'extend_end')
- * @example_info Expected value of list is [1,2,3,4,5].
- * @example append = list.Add(["a", "c", "d"], "b", 'alpha_descending')
- * @example_info Expected value of list is ["a", "b", "c", "d"].
+ * @example `append = list.Add([1,2,3], 4, 'at_end')`
+ * @example_info Expected value of list is `[1,2,3,4]`.
+ * @example `append = list.Add([1,2,3], [4, 5], 'at_end')`
+ * @example_info Expected value of list is `[1,2,3,[4,5]]`.
+ * @example `append = list.Add([1,2,3], [4,5], 'extend_end')`
+ * @example_info Expected value of list is `[1,2,3,4,5]`.
+ * @example `append = list.Add(["a", "c", "d"], "b", 'alpha_descending')`
+ * @example_info Expected value of list is `["a", "b", "c", "d"]`.
  */
 export function Add(list: any[], item: any|any[], method: _EAddMethod): void {
     // --- Error Check ---

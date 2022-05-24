@@ -25,10 +25,11 @@ import { _getEntTypeFromStr } from './_shared';
  * The resulting list of entities will not contain duplicate entities.
  * \n
  * @param __model__
- * @param ent_type_enum Enum, the type of entity to get.
- * @param entities Optional, list of entities to get entities from, or null to get all entities in the model.
+ * @param ent_type_enum Enum, the type of entity to get: `'ps', '_v', '_e', '_w', 'pt', 'pl',
+ * 'pg',` or `'co'`.
+ * @param entities (Optional) List of entities to get entities from, or null to get from all entities in the model.
  * @returns Entities, a list of entities.
- * @example positions = query.Get('positions', [polyline1, polyline2])
+ * @example `positions = query.Get('positions', [polyline1, polyline2])`
  * @example_info Returns a list of positions that are part of polyline1 and polyline2.
  */
 export function Get(__model__: GIModel, ent_type_enum: _EEntType, entities: TId|TId[]): TId[]|TId[][] {

@@ -48,7 +48,7 @@ interface TViewResult {
  * The 'radius' argument defines the maximum radius of the unobstructed view.
  * (The radius is used to define the maximum distance for shooting the rays.)
  * \n
- * The 'num_rays' argument defines the number of rays that will be shot,
+ * The 'num\_rays' argument defines the number of rays that will be shot,
  * in a fan pattern parallel to the XY plane, with equal angle between rays.
  * More rays will result in more accurate result, but will also be slower to execute.
  * \n
@@ -56,12 +56,12 @@ interface TViewResult {
  * \n
  * \n
  * @param __model__
- * @param origins A list of Rays or Planes, to be used as the origins for calculating the uobstructed views.
+ * @param origins A list of Rays or Planes, to be used as the origins for calculating the unobstructed views.
  * @param entities The obstructions: faces, polygons, or collections.
  * @param radius The maximum radius of the uobstructed views.
  * @param num_rays The number of rays to generate when calculating uobstructed views.
  * @param view_ang The angle of the unobstructed view, in radians.
- * @returns A dictionary containing different unobstructed view metrics
+ * @returns A dictionary containing different unobstructed view metrics.
  */
 export function View(
     __model__: GIModel,

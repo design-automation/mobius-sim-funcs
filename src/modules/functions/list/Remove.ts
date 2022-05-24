@@ -12,9 +12,10 @@ import { _ERemoveMethod } from './_enum';
  * Negative indexes are allowed.
  * If method is not set to 'index', then item should be the value.
  *
- * @param list The list in which to remove items
+ * @param list The list in which to remove items.
  * @param item The item to remove, either the index of the item or the value. Negative indexes are allowed.
- * @param method Enum, select the method for removing items from the list.
+ * @param method Enum, select the method for removing items from the list: `'index', 'first_value',
+ * 'last_value'` or `'all_values'`.
  * @returns void
  * @example `list.Remove(list, 3, 'index')`
  * @example_info where `list = [0, 1, 2, 3]`. Expected new value of list is [0, 1, 2].

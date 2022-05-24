@@ -144,7 +144,7 @@ and a plane will be generated with an origin at the centroid, and with axes para
   
 **Returns:** void  
 **Examples:**  
-  * modify.XForm(polygon1, plane1, plane2)  
+  * `modify.XForm(polygon1, plane1, plane2)`  
     Transforms polygon1 from plane1 to plane2.
   
   
@@ -152,9 +152,12 @@ and a plane will be generated with an origin at the centroid, and with axes para
 ## Offset  
   
   
-**Description:** Offsets wires.
+**Description:** Performs a simple geometrical offset on the wires, such that the wires are parallel to their
+original positions, modying the input entities.
 
-  
+
+See `poly2d.OffsetChamfer, poly2d.OffsetMitre` and `poly2d.OffsetRound` for other offset
+functions that do not modify the input entities.  
   
 **Parameters:**  
   * *entities:* Edges, wires, faces, polylines, polygons, collections.  
@@ -162,6 +165,9 @@ and a plane will be generated with an origin at the centroid, and with axes para
   
 **Returns:** void  
 **Examples:**  
+  * <a href="/editor?file=/assets/examples/Functions_modify.Offset_examples.mob&node=1" target="_blank"> Example Model</a>  
+    A model showing how to offset polyline/polygons, and how potential twisting may
+occur when offset distance is too negative.  
   * `modify.Offset(polygon1, 10)`  
     Offsets the wires inside polygon1 by 10 units. Holes will also be offset.
   

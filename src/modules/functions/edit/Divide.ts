@@ -34,7 +34,7 @@ import { _EDivisorMethod } from './_enum';
  * @param __model__
  * @param entities Edges, or entities from which edges can be extracted.
  * @param divisor Segment length or number of segments.
- * @param method Enum, select the method for dividing edges.
+ * @param method Enum, select the method for dividing edge: `'by_number', 'by_length', 'by_min_length'` or `'by_max_length'`.
  * @returns Entities, a list of new edges resulting from the divide operation.
  * @example `segments1 = make.Divide(edge1, 5, by_number)`
  * @example_info Creates a list of 5 equal length edges from edge1.

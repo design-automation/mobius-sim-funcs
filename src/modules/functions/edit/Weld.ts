@@ -21,7 +21,7 @@ import { _EWeldMethod } from './_enum';
  * \n
  * @param __model__
  * @param entities Entities, a list of vertices, or entities from which vertices can be extracted.
- * @param method Enum; the method to use, either `make_weld` or `break_weld`.
+ * @param method Enum, the method to use: `'make_weld'` or `'break_weld'`.
  * @returns Entities, a list of new positions depending on type of weld.
  */
 export function Weld(__model__: GIModel, entities: TId|TId[], method: _EWeldMethod): TId[] {

@@ -8,9 +8,9 @@ import { _getEntTypeFromStr } from './_shared';
  * Get all attribute names and attribute types for an entity type.
  * \n
  * @param __model__
- * @param ent_type_sel Enum, the attribute entity type.
+ * @param ent_type_sel Enum, the attribute entity type: `'ps', '_v', '_e', '_w', '_f', 'pt', 'pl', 'pg', 'co',` or `'mo'`.
  * @returns A list of dictionaries, defining the name and type of each attribute.
- * @example attribs = attrib.Discover("pg")
+ * @example `attribs = attrib.Discover("pg")`
  * @example_info An example of `attribs`: `[{name: "description", type: "str"}, {name: "area", type: "number"}]`.
  */
 export function Discover(__model__: GIModel, ent_type_sel: _EEntTypeAndMod): Array<{name: string, type: EAttribDataTypeStrs}> {

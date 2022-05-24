@@ -10,7 +10,7 @@ import { _getEntTypeFromStr } from './_shared';
  * Delete one or more attributes from the model. The column in the attribute table will be deleted.
  * All values will also be deleted. \n
  * @param __model__
- * @param ent_type_sel Enum, the attribute entity type.
+ * @param ent_type_sel Enum, the attribute entity type: `'ps', '_v', '_e', '_w', '_f', 'pt', 'pl', 'pg', 'co',` or `'mo'`.
  * @param attribs A single attribute name, or a list of attribute names. If 'null', all attributes
  * will be deleted.
  * @returns void 

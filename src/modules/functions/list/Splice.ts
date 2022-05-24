@@ -13,7 +13,7 @@ import * as chk from '../../_check_types';
  * @param list List to splice.
  * @param index Zero-based index after which to start removing or inserting items.
  * @param num_to_remove Number of items to remove.
- * @param items_to_insert Optional, list of items to add, or null/empty list.
+ * @param items_to_insert (Optional) List of items to add, or null/empty list.
  * @returns void
  * @example `result = list.Splice(list1, 1, 3, [2.2, 3.3])`
  * @example_info where list1 = `[10, 20, 30, 40, 50]`. 

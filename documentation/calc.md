@@ -13,7 +13,7 @@ These functions all return either numbers or lists of numbers.
 **Parameters:**  
   * *entities1:* Position to calculate distance from.  
   * *entities2:* List of entities to calculate distance to.  
-  * *method:* Enum; distance method.  
+  * *method:* Enum, distance method: `'ps_to_ps_distance', 'ps_to_e_distance'` or `'ps_to_w_distance'`.  
   
 **Returns:** Distance, or list of distances (if position2 is a list).  
 **Examples:**  
@@ -43,7 +43,7 @@ For example, given a single polygon, a list of lengths are returned (since a pol
   
 **Returns:** Lengths, a number or list of numbers.  
 **Examples:**  
-  * length1 = calc.Length(line1)
+  * `length1 = calc.Length(line1)`
   
   
   
@@ -106,11 +106,11 @@ Given a list of positions, a single centroid that is the average of all those po
   
 **Parameters:**  
   * *entities:* Single or list of entities. (Can be any type of entities.)  
-  * *method:* Enum, the method for calculating the centroid.  
+  * *method:* Enum, the method for calculating the centroid: `'ps_average'` or `'center_of_mass'`.  
   
 **Returns:** A centroid [x, y, z] or a list of centroids.  
 **Examples:**  
-  * centroid1 = calc.Centroid (polygon1)
+  * `centroid1 = calc.Centroid (polygon1)`
   
   
   
@@ -183,7 +183,7 @@ a list of wires will be extracted, and a list of coords will be returned.
   
 **Returns:** The coordinates [x, y, z], or a list of coordinates.  
 **Examples:**  
-  * coord1 = calc.Eval (polyline1, 0.23)
+  * `coord1 = calc.Eval (polyline1, 0.23)`
   
   
   

@@ -12,7 +12,7 @@ import { checkIDs, ID } from '../../_check_ids';
  * @param __model__
  * @param entities Entity or lists of entities to be copied. Entities can be positions, points, polylines, polygons and collections.
  * @returns Entities, the cloned entity or a list of cloned entities.
- * @example copies = make.Clone([position1,polyine1,polygon1])
+ * @example `copies = make.Clone([position1,polyine1,polygon1])`
  * @example_info Creates a copy of position1, polyline1, and polygon1 and deletes the originals.
  */
 export function Clone(__model__: GIModel, entities: TId|TId[]|TId[][]): TId|TId[]|TId[][] {

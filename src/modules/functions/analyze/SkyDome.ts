@@ -34,10 +34,10 @@ import { _skyRayDirsTjs, _solarRaysDirectTjs, _solarRaysIndirectTjs } from './_s
  *   of the y-axis)
  * \n
  * @param __model__
- * @param origin The origins of the rays
- * @param detail The level of detail for the analysis
- * @param radius The radius of the sun path
- * @param method Enum, the type of sky to generate.
+ * @param origin The origins of the rays.
+ * @param detail The level of detail for the analysis.
+ * @param radius The radius of the sun path.
+ * @param method Enum, the type of sky to generate: `'direct', 'indirect'` or `'sky'`.
  * @returns Entities, a set of positions that are organized into sequences. 
  * A polyline can then be drawn from these positions.
  */

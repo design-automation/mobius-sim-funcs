@@ -16,13 +16,13 @@ import { _EDeleteMethod } from './_enum';
  * - When deleting objects (points, polylines, and polygons), topology is also deleted.
  * - When deleting collections, the objects and other collections in the collection are also deleted.
  * \n
- * Topological entities inside objects  (wires, edges, vertices) cannot be deleted.
+ * Topological entities inside objects (wires, edges, vertices) cannot be deleted.
  * If a topological entity needs to be deleted, then the current approach is create a new object 
  * with the desired topology, and then to delete the original object.
  * \n
  * @param __model__
  * @param entities Positions, points, polylines, polygons, collections.
- * @param method Enum, delete or keep unused positions.
+ * @param method Enum, delete or keep unused positions: `'delete_selected'` or `'keep_selected'`.
  * @returns void
  * @example `edit.Delete(polygon1, 'delete_selected')`
  * @example_info Deletes `polygon1` from the model. The topology for

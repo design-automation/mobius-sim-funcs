@@ -1891,7 +1891,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, the method to use, directed or undirected."
+										"shortText": "Enum, the method to use: `'directed'` or `'undirected'`."
 									},
 									"type": {
 										"type": "reference",
@@ -1905,7 +1905,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, the type of centrality (betweenness, closeness or harmonic)."
+										"shortText": "Enum, the type of centrality: `'betweenness', 'closeness'` or `'harmonic'`."
 									},
 									"type": {
 										"type": "reference",
@@ -1941,7 +1941,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Calculates the shortest path from every position in source, to the closest position in target.\n\\n\nThis differs from the 'analyze.ShortestPath()' function. If you specify multiple target positions,\nfor each cource position,\nthe 'analyze.ShortestPath()' function will calculate multiple shortest paths,\ni.e. the shortest path to all targets.\nThis function will caculate just one shortest path,\ni.e. the shortest path to the closest target.\n\\n\nPaths are calculated through a network of connected edges.\nFor edges to be connected, vertices must be welded.\nFor example, if the network consists of multiple polylines, then the vertcies of those polylines must be welded.\n\\n\nIf 'directed' is selected, then the edge direction is taken into account. Each edge will be one-way.\nIf 'undirected' is selected, the edge direction is ignored. Each edge will be two-way.\n\\n\nEach edge can be assigned a weight.\nThe shortest path is the path where the sum of the weights of the edges along the path is the minimum.\n\\n\nBy default, all edges are assigned a weight of 1.\nDefault weights can be overridden by creating a numeric attribute on edges call 'weight'.\n\\n\nReturns a dictionary containing the shortes paths.\n\\n\nIf 'distances' is selected, the dictionary will contain one list:\n1. 'distances': a list of distances.\n\\n\nIf 'counts' is selected, the dictionary will contain four lists:\n1. 'posis': a list of positions traversed by the paths,\n2. 'posis_count': a list of numbers that count how often each position was traversed.\n3. 'edges': a list of edges traversed by the paths,\n4. 'edges_count': a list of numbers that count how often each edge was traversed.\n\\n\nIf 'paths' is selected, the dictionary will contain two lists of lists:\n1. 'posi_paths': a list of lists of positions, one list for each path.\n2. 'edge_paths': a list of lists of edges, one list for each path.\n\\n\nIf 'all' is selected, the dictionary will contain all lists just described.\n\\n",
+								"shortText": "Calculates the shortest path from every position in source, to the closest position in target.\n\\n\nThis differs from the 'analyze.ShortestPath()' function. If you specify multiple target positions,\nfor each cource position,\nthe 'analyze.ShortestPath()' function will calculate multiple shortest paths,\ni.e. the shortest path to all targets.\nThis function will caculate just one shortest path,\ni.e. the shortest path to the closest target.\n\\n\nPaths are calculated through a network of connected edges.\nFor edges to be connected, vertices must be welded.\nFor example, if the network consists of multiple polylines, then the vertcies of those polylines must be welded.\n\\n\nIf 'directed' is selected, then the edge direction is taken into account. Each edge will be one-way.\nIf 'undirected' is selected, the edge direction is ignored. Each edge will be two-way.\n\\n\nEach edge can be assigned a weight.\nThe shortest path is the path where the sum of the weights of the edges along the path is the minimum.\n\\n\nBy default, all edges are assigned a weight of 1.\nDefault weights can be overridden by creating a numeric attribute on edges call 'weight'.\n\\n\nReturns a dictionary containing the shortes paths.\n\\n\nIf 'distances' is selected, the dictionary will contain one list:\n1. 'distances': a list of distances.\n\\n\nIf 'counts' is selected, the dictionary will contain four lists:\n1. 'posis': a list of positions traversed by the paths,\n2. 'posis\\_count': a list of numbers that count how often each position was traversed.\n3. 'edges': a list of edges traversed by the paths,\n4. 'edges\\_count': a list of numbers that count how often each edge was traversed.\n\\n\nIf 'paths' is selected, the dictionary will contain two lists of lists:\n1. 'posi\\_paths': a list of lists of positions, one list for each path.\n2. 'edge\\_paths': a list of lists of edges, one list for each path.\n\\n\nIf 'all' is selected, the dictionary will contain all lists just described.\n\\n",
 								"returns": "A dictionary containing the results.\n"
 							},
 							"parameters": [
@@ -2077,7 +2077,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, the method to use, directed or undirected."
+										"shortText": "Enum, the method to use: `'directed'` or `'undirected'`."
 									},
 									"type": {
 										"type": "reference",
@@ -2091,7 +2091,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, the data to return, positions, edges, or both."
+										"shortText": "Enum, the data to return (positions, edges, both): `'distances', 'counts', 'paths'` or `'all'`."
 									},
 									"type": {
 										"type": "reference",
@@ -2241,7 +2241,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, the method to use, directed or undirected."
+										"shortText": "Enum, the method to use: `'directed'` or `'undirected'`."
 									},
 									"type": {
 										"type": "reference",
@@ -2277,7 +2277,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Calculates an approximation of the isovist for a set of origins, defined by XYZ coords.\n\\n\nThe isovist is calculated by shooting rays out from the origins in a radial pattern.\nThe 'radius' argument defines the maximum radius of the isovist.\n(The radius is used to define the maximum distance for shooting the rays.)\nThe 'num_rays' argument defines the number of rays that will be shot,\nin a radial pattern parallel to the XY plane, with equal angle between rays.\nMore rays will result in more accurate result, but will also be slower to execute.\n\\n\nReturns a dictionary containing different isovist metrics.\n\\n\n1. 'avg_dist': The average distance from origin to the perimeter.\n2. 'min_dist': The minimum distance from the origin to the perimeter.\n3. 'max_dist': The minimum distance from the origin to the perimeter.\n4. 'area': The area of the isovist.\n5. 'perimeter': The perimeter of the isovist.\n4. 'area_ratio': The ratio of the area of the isovist to the maximum area.\n5. 'perimeter_ratio': The ratio of the perimeter of the isovist to the maximum perimeter.\n6. 'circularity': The ratio of the square of the perimeter to area (Davis and Benedikt, 1979).\n7. 'compactness': The ratio of average distance to the maximum distance (Michael Batty, 2001).\n8. 'cluster': The ratio of the radius of an idealized circle with the actual area of the\nisovist to the radius of an idealized circle with the actual perimeter of the circle (Michael Batty, 2001).\n\\n\n\\n",
+								"shortText": "Calculates an approximation of the isovist for a set of origins, defined by XYZ coords.\n\\n\nThe isovist is calculated by shooting rays out from the origins in a radial pattern.\nThe 'radius' argument defines the maximum radius of the isovist.\n(The radius is used to define the maximum distance for shooting the rays.)\nThe 'num_rays' argument defines the number of rays that will be shot,\nin a radial pattern parallel to the XY plane, with equal angle between rays.\nMore rays will result in more accurate result, but will also be slower to execute.\n\\n\nReturns a dictionary containing different isovist metrics.\n\\n\n1. 'avg\\_dist': The average distance from origin to the perimeter.\n2. 'min\\_dist': The minimum distance from the origin to the perimeter.\n3. 'max\\_dist': The minimum distance from the origin to the perimeter.\n4. 'area': The area of the isovist.\n5. 'perimeter': The perimeter of the isovist.\n4. 'area\\_ratio': The ratio of the area of the isovist to the maximum area.\n5. 'perimeter\\_ratio': The ratio of the perimeter of the isovist to the maximum perimeter.\n6. 'circularity': The ratio of the square of the perimeter to area (Davis and Benedikt, 1979).\n7. 'compactness': The ratio of average distance to the maximum distance (Michael Batty, 2001).\n8. 'cluster': The ratio of the radius of an idealized circle with the actual area of the\nisovist to the radius of an idealized circle with the actual perimeter of the circle (Michael Batty, 2001).\n\\n\n\\n",
 								"returns": "A dictionary containing metrics.\n"
 							},
 							"parameters": [
@@ -2421,7 +2421,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Finds the nearest positions within a certain maximum radius.\n\\n\nThe neighbors to each source position is calculated as follows:\n1. Calculate the distance to all target positions.\n2. Creat the neighbors set by filtering out target positions that are further than the maximum radius.\n3. If the number of neighbors is greater than 'max\\_neighbors',\nthen select the 'max\\_neighbors' closest target positions.\n\\n\nReturns a dictionary containing the nearest positions.\n\\n\nIf 'num_neighbors' is 1, the dictionary will contain two lists:\n1. 'posis': a list of positions, a subset of positions from the source.\n2. 'neighbors': a list of neighbouring positions, a subset of positions from target.\n\\n\nIf 'num_neighbors' is greater than 1, the dictionary will contain two lists:\n1. 'posis': a list of positions, a subset of positions from the source.\n2. 'neighbors': a list of lists of neighbouring positions, a subset of positions from target.\n\\n",
+								"shortText": "Finds the nearest positions within a certain maximum radius.\n\\n\nThe neighbors to each source position is calculated as follows:\n1. Calculate the distance to all target positions.\n2. Creat the neighbors set by filtering out target positions that are further than the maximum radius.\n3. If the number of neighbors is greater than 'max\\_neighbors',\nthen select the 'max\\_neighbors' closest target positions.\n\\n\nReturns a dictionary containing the nearest positions.\n\\n\nIf 'num\\_neighbors' is 1, the dictionary will contain two lists:\n1. 'posis': a list of positions, a subset of positions from the source.\n2. 'neighbors': a list of neighbouring positions, a subset of positions from target.\n\\n\nIf 'num\\_neighbors' is greater than 1, the dictionary will contain two lists:\n1. 'posis': a list of positions, a subset of positions from the source.\n2. 'neighbors': a list of lists of neighbouring positions, a subset of positions from target.\n\\n",
 								"returns": "A dictionary containing the results.\n"
 							},
 							"parameters": [
@@ -2673,7 +2673,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Shoot a set of rays into a set of obstructions, consisting of polygon faces.\nOne can imagine particles being shot from the ray origin in the ray direction, hitting the\nobstructions.\n\\n\nEach ray will either hit an obstruction, or will hit no obstructions.\nThe length of the ray vector is ignored, only the ray origin and direction is taken into account.\nEach particle shot out from a ray will travel a certain distance.\nThe minimum and maximum distance that the particle will travel is defined by the 'dist' argument.\n\\n\nIf a ray particle hits an obstruction, then the 'distance' for that ray is the distance from the * ray origin to the point of intersection.\nIf the ray particle does not hit an obstruction, then the 'distance' for that ray is equal to\nthe max for the 'dist' argument.\n\\n\nReturns a dictionary containing the following data.\n\\n\nIf 'stats' is selected, the dictionary will contain the following numbers:\n1. 'hit\\_count': the total number of rays that hit an obstruction.\n2. 'miss\\_count': the total number of rays that did not hit any obstruction.\n3. 'total\\_dist': the total of all the ray distances.\n4. 'min\\_dist': the minimum distance for all the rays.\n5. 'max\\_dist': the maximum distance for all the rays.\n6. 'avg\\_dist': the average dist for all the rays.\n7. 'dist\\_ratio': the ratio of 'total\\_dist' to the maximum distance if not rays hit any\nobstructions.\n\\n\nIf 'distances' is selected, the dictionary will contain the following list:\n1. 'distances': A list of numbers, the distance travelled for each ray.\n\\n\nIf 'hit_pgons' is selected, the dictionary will contain the following list:\n1. 'hit_pgons': A list of polygon IDs, the polygons hit for each ray, or 'null' if no polygon\nwas hit.\n\\n\nIf 'intersections' is selected, the dictionary will contain the following list:\n1. 'intersections': A list of XYZ coords, the point of intersection where the ray hit a polygon,\nor 'null' if no polygon was hit.\n\\n\nIf 'all' is selected, the dictionary will contain all of the above.\n\\n\nIf the input is a list of rays, the output will be a single dictionary.\nIf the list is empty (i.e. contains no rays), then 'null' is returned.\nIf the input is a list of lists of rays, then the output will be a list of dictionaries.\n\\n",
+								"shortText": "Shoot a set of rays into a set of obstructions, consisting of polygon faces.\nOne can imagine particles being shot from the ray origin in the ray direction, hitting the\nobstructions.\n\\n\nEach ray will either hit an obstruction, or will hit no obstructions.\nThe length of the ray vector is ignored, only the ray origin and direction is taken into account.\nEach particle shot out from a ray will travel a certain distance.\nThe minimum and maximum distance that the particle will travel is defined by the 'dist' argument.\n\\n\nIf a ray particle hits an obstruction, then the 'distance' for that ray is the distance from the * ray origin to the point of intersection.\nIf the ray particle does not hit an obstruction, then the 'distance' for that ray is equal to\nthe max for the 'dist' argument.\n\\n\nReturns a dictionary containing the following data.\n\\n\nIf 'stats' is selected, the dictionary will contain the following numbers:\n1. 'hit\\_count': the total number of rays that hit an obstruction.\n2. 'miss\\_count': the total number of rays that did not hit any obstruction.\n3. 'total\\_dist': the total of all the ray distances.\n4. 'min\\_dist': the minimum distance for all the rays.\n5. 'max\\_dist': the maximum distance for all the rays.\n6. 'avg\\_dist': the average dist for all the rays.\n7. 'dist\\_ratio': the ratio of 'total\\_dist' to the maximum distance if not rays hit any\nobstructions.\n\\n\nIf 'distances' is selected, the dictionary will contain the following list:\n1. 'distances': A list of numbers, the distance travelled for each ray.\n\\n\nIf 'hit\\_pgons' is selected, the dictionary will contain the following list:\n1. 'hit\\_pgons': A list of polygon IDs, the polygons hit for each ray, or 'null' if no polygon\nwas hit.\n\\n\nIf 'intersections' is selected, the dictionary will contain the following list:\n1. 'intersections': A list of XYZ coords, the point of intersection where the ray hit a polygon,\nor 'null' if no polygon was hit.\n\\n\nIf 'all' is selected, the dictionary will contain all of the above.\n\\n\nIf the input is a list of rays, the output will be a single dictionary.\nIf the list is empty (i.e. contains no rays), then 'null' is returned.\nIf the input is a list of lists of rays, then the output will be a list of dictionaries.\n\\n",
 								"returns": "A dictionary, a list of dictionaries, or null.\n"
 							},
 							"parameters": [
@@ -2808,7 +2808,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum; values to return."
+										"shortText": "Enum, values to return: `'stats', 'distances', 'hit_pgons', 'intersections'` or `'all'`."
 									},
 									"type": {
 										"type": "reference",
@@ -2856,7 +2856,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Calculates the shortest path from every source position to every target position.\n\\n\nPaths are calculated through a network of connected edges.\nFor edges to be connected, vertices must be welded.\nFor example, if the network consists of multiple polylines, then the vertcies of those polylines must be welded.\n\\n\nIf 'directed' is selected, then the edge direction is taken into account. Each edge will be one-way.\nIf 'undirected' is selected, the edge direction is ignored. Each edge will be two-way.\n\\n\nEach edge can be assigned a weight.\nThe shortest path is the path where the sum of the weights of the edges along the path is the minimum.\n\\n\nBy default, all edges are assigned a weight of 1.\nDefault weights can be overridden by creating a numeric attribute on edges call 'weight'.\n\\n\nReturns a dictionary containing the shortest paths.\n\\n\nIf 'distances' is selected, the dictionary will contain two list:\n1. 'source_posis': a list of start positions for each path,\n2. 'distances': a list of distances, one list for each path starting at each source position.\n\\n\nIf 'counts' is selected, the dictionary will contain four lists:\n1. 'posis': a list of positions traversed by the paths,\n2. 'posis_count': a list of numbers that count how often each position was traversed,\n3. 'edges': a list of edges traversed by the paths,\n4. 'edges_count': a list of numbers that count how often each edge was traversed.\n\\n\nIf 'paths' is selected, the dictionary will contain two lists of lists:\n1. 'posi_paths': a list of lists of positions, one list for each path,\n2. 'edge_paths': a list of lists of edges, one list for each path.\n\\n\nIf 'all' is selected, the dictionary will contain all lists just described.\n\\n",
+								"shortText": "Calculates the shortest path from every source position to every target position.\n\\n\nPaths are calculated through a network of connected edges.\nFor edges to be connected, vertices must be welded.\nFor example, if the network consists of multiple polylines, then the vertcies of those polylines must be welded.\n\\n\nIf 'directed' is selected, then the edge direction is taken into account. Each edge will be one-way.\nIf 'undirected' is selected, the edge direction is ignored. Each edge will be two-way.\n\\n\nEach edge can be assigned a weight.\nThe shortest path is the path where the sum of the weights of the edges along the path is the minimum.\n\\n\nBy default, all edges are assigned a weight of 1.\nDefault weights can be overridden by creating a numeric attribute on edges call 'weight'.\n\\n\nReturns a dictionary containing the shortest paths.\n\\n\nIf 'distances' is selected, the dictionary will contain two list:\n1. 'source\\_posis': a list of start positions for each path,\n2. 'distances': a list of distances, one list for each path starting at each source position.\n\\n\nIf 'counts' is selected, the dictionary will contain four lists:\n1. 'posis': a list of positions traversed by the paths,\n2. 'posis\\_count': a list of numbers that count how often each position was traversed,\n3. 'edges': a list of edges traversed by the paths,\n4. 'edges\\_count': a list of numbers that count how often each edge was traversed.\n\\n\nIf 'paths' is selected, the dictionary will contain two lists of lists:\n1. 'posi\\_paths': a list of lists of positions, one list for each path,\n2. 'edge\\_paths': a list of lists of edges, one list for each path.\n\\n\nIf 'all' is selected, the dictionary will contain all lists just described.\n\\n",
 								"returns": "A dictionary containing the results.\n"
 							},
 							"parameters": [
@@ -2992,7 +2992,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, the method to use, directed or undirected."
+										"shortText": "Enum, the method to use: `'directed'` or `'undirected'`."
 									},
 									"type": {
 										"type": "reference",
@@ -3006,7 +3006,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, the data to return, positions, edges, or both."
+										"shortText": "Enum, the data to return (positions, edges, both): `'distances', 'counts', 'paths'` or `'all'`."
 									},
 									"type": {
 										"type": "reference",
@@ -3191,7 +3191,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum; sky method."
+										"shortText": "Enum, the sky method: `'weighted', 'unweighted'` or `'all'`."
 									},
 									"type": {
 										"type": "reference",
@@ -3252,7 +3252,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "The origins of the rays"
+										"shortText": "The origins of the rays."
 									},
 									"type": {
 										"type": "union",
@@ -3285,7 +3285,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "The level of detail for the analysis"
+										"shortText": "The level of detail for the analysis."
 									},
 									"type": {
 										"type": "intrinsic",
@@ -3299,7 +3299,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "The radius of the sun path"
+										"shortText": "The radius of the sun path."
 									},
 									"type": {
 										"type": "intrinsic",
@@ -3313,7 +3313,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, the type of sky to generate."
+										"shortText": "Enum, the type of sky to generate: `'direct', 'indirect'` or `'sky'`."
 									},
 									"type": {
 										"type": "reference",
@@ -3520,7 +3520,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum; solar method."
+										"shortText": "Enum, solar method: `'direct_weighted', 'direct_unweighted', 'indirect_weighted'`, or `'indirect_unweighted'`."
 									},
 									"type": {
 										"type": "reference",
@@ -3556,8 +3556,8 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Calculates an approximation of the unobstructed view for a set of origins.\n\\n\nTypically, the origins are created as centroids of a set of windows.\n\\n\nThe unobstructed view is calculated by shooting rays out from the origins in a fan pattern.\n\\n\nThe 'radius' argument defines the maximum radius of the unobstructed view.\n(The radius is used to define the maximum distance for shooting the rays.)\n\\n\nThe 'num_rays' argument defines the number of rays that will be shot,\nin a fan pattern parallel to the XY plane, with equal angle between rays.\nMore rays will result in more accurate result, but will also be slower to execute.\n\\n\nReturns a dictionary containing different unobstructed view metrics.\n\\n\n\\n",
-								"returns": "A dictionary containing different unobstructed view metrics\n"
+								"shortText": "Calculates an approximation of the unobstructed view for a set of origins.\n\\n\nTypically, the origins are created as centroids of a set of windows.\n\\n\nThe unobstructed view is calculated by shooting rays out from the origins in a fan pattern.\n\\n\nThe 'radius' argument defines the maximum radius of the unobstructed view.\n(The radius is used to define the maximum distance for shooting the rays.)\n\\n\nThe 'num\\_rays' argument defines the number of rays that will be shot,\nin a fan pattern parallel to the XY plane, with equal angle between rays.\nMore rays will result in more accurate result, but will also be slower to execute.\n\\n\nReturns a dictionary containing different unobstructed view metrics.\n\\n\n\\n",
+								"returns": "A dictionary containing different unobstructed view metrics.\n"
 							},
 							"parameters": [
 								{
@@ -3581,7 +3581,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "A list of Rays or Planes, to be used as the origins for calculating the uobstructed views."
+										"shortText": "A list of Rays or Planes, to be used as the origins for calculating the unobstructed views."
 									},
 									"type": {
 										"type": "union",
@@ -3739,7 +3739,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "A list of Rays or Planes, to be used as the origins for calculating the uobstructed views."
+										"shortText": "A list of Rays or Planes, to be used as the origins for calculating the unobstructed views."
 									},
 									"type": {
 										"type": "union",
@@ -4658,7 +4658,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, the attribute entity type."
+										"shortText": "Enum, the attribute entity type: `'ps', '_v', '_e', '_w', '_f', 'pt', 'pl', 'pg', 'co',` or `'mo'`."
 									},
 									"type": {
 										"type": "reference",
@@ -4672,7 +4672,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, the data type for this attribute."
+										"shortText": "Enum, the data type for this attribute: `'number', 'string', 'boolean', 'list'` or `'dict'`."
 									},
 									"type": {
 										"type": "reference",
@@ -4759,7 +4759,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, the attribute entity type."
+										"shortText": "Enum, the attribute entity type: `'ps', '_v', '_e', '_w', '_f', 'pt', 'pl', 'pg', 'co',` or `'mo'`."
 									},
 									"type": {
 										"type": "reference",
@@ -4826,7 +4826,7 @@
 								"tags": [
 									{
 										"tag": "example",
-										"text": "attribs = attrib.Discover(\"pg\")"
+										"text": "`attribs = attrib.Discover(\"pg\")`"
 									},
 									{
 										"tag": "example_info",
@@ -4856,7 +4856,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, the attribute entity type."
+										"shortText": "Enum, the attribute entity type: `'ps', '_v', '_e', '_w', '_f', 'pt', 'pl', 'pg', 'co',` or `'mo'`."
 									},
 									"type": {
 										"type": "reference",
@@ -5086,7 +5086,7 @@
 					"sources": [
 						{
 							"fileName": "functions/attrib/Push.ts",
-							"line": 23,
+							"line": 31,
 							"character": 16
 						}
 					],
@@ -5098,7 +5098,8 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Push attributes up or down the hierarchy. The original attribute is not changed.\n\\n",
+								"shortText": "Push attributes up or down the hierarchy. The original attribute is not changed.\n\\n\nIn addition to the standard topologies, the `ent_type_sel` argument allows `attrib.Push` to\npush attributes to the following:\n- `cop`, short for \"Collection Parent\".\n- `coc`, short for \"Collection Child\".",
+								"text": "\\n",
 								"returns": "void\n"
 							},
 							"parameters": [
@@ -5255,7 +5256,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, the target entity type where the attribute values should be pushed to."
+										"shortText": "Enum, the target entity type where the attribute values should be pushed to:\n`'ps', '_v', '_e', '_w', '_f', 'pt', 'pl', 'pg', 'co', 'cop', 'coc'` or `'mo'`."
 									},
 									"type": {
 										"type": "reference",
@@ -5269,7 +5270,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, the method for aggregating attribute values in cases where aggregation is necessary."
+										"shortText": "Enum, the method for aggregating attribute values in cases where aggregation is necessary:\n`'first', 'last', 'average', 'median', 'sum', 'min'` or `'max'`."
 									},
 									"type": {
 										"type": "reference",
@@ -5330,7 +5331,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, the attribute entity type."
+										"shortText": "Enum, the attribute entity type: `'ps', '_v', '_e', '_w', '_f', 'pt', 'pl', 'pg', 'co',` or `'mo'`."
 									},
 									"type": {
 										"type": "reference",
@@ -5526,7 +5527,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum"
+										"shortText": "Enum: `'one_value'` or `'many_values'`."
 									},
 									"type": {
 										"type": "reference",
@@ -5567,7 +5568,7 @@
 								"tags": [
 									{
 										"tag": "example",
-										"text": "attribs = attrib.Values(\"pg\")"
+										"text": "`attribs = attrib.Values(\"pg\")`"
 									},
 									{
 										"tag": "example_info",
@@ -5597,7 +5598,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, the attribute entity type."
+										"shortText": "Enum, the attribute entity type: `'ps', '_v', '_e', '_w', '_f', 'pt', 'pl', 'pg', 'co',` or `'mo'`."
 									},
 									"type": {
 										"type": "reference",
@@ -6509,7 +6510,7 @@
 								"tags": [
 									{
 										"tag": "example",
-										"text": "centroid1 = calc.Centroid (polygon1)\n"
+										"text": "`centroid1 = calc.Centroid (polygon1)`\n"
 									}
 								]
 							},
@@ -6561,7 +6562,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, the method for calculating the centroid."
+										"shortText": "Enum, the method for calculating the centroid: `'ps_average'` or `'center_of_mass'`."
 									},
 									"type": {
 										"type": "reference",
@@ -6700,7 +6701,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum; distance method."
+										"shortText": "Enum, distance method: `'ps_to_ps_distance', 'ps_to_e_distance'` or `'ps_to_w_distance'`."
 									},
 									"type": {
 										"type": "reference",
@@ -6753,7 +6754,7 @@
 								"tags": [
 									{
 										"tag": "example",
-										"text": "coord1 = calc.Eval (polyline1, 0.23)\n"
+										"text": "`coord1 = calc.Eval (polyline1, 0.23)`\n"
 									}
 								]
 							},
@@ -6862,7 +6863,7 @@
 								"tags": [
 									{
 										"tag": "example",
-										"text": "length1 = calc.Length(line1)\n"
+										"text": "`length1 = calc.Length(line1)`\n"
 									}
 								]
 							},
@@ -7802,7 +7803,7 @@
 								"tags": [
 									{
 										"tag": "example",
-										"text": "collection1 = collection.Create([point1,polyine1,polygon1], 'my_coll')"
+										"text": "`collection1 = collection.Create([point1,polyine1,polygon1], 'my_coll')`"
 									},
 									{
 										"tag": "example_info",
@@ -7993,7 +7994,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Get one or more collections from the model, given a name or list of names. Collections with an\nattribute called 'name' and with a value that matches the given value will be returned.\n\\n\nThe value for name can include wildcards: '?' matches any single character and '*' matches any\nsequence of characters. For example, 'coll?' will match 'coll1' and 'colla'. 'coll*' matches any\nname that starts with 'coll'.\n\\n\nIf a single collection is found, the collection will be returned as a single item (not a list).\nThis is a convenience so that there is no need to get the first item out of the returned list.\n\\n\nIf no collections are found, then an empty list is returned.\n\\n",
+								"shortText": "Get one or more collections from the model, given a name or list of names. Collections with an\nattribute called 'name' and with a value that matches the given value will be returned.\n\\n\nThe value for name can include wildcards: '?' matches any single character and '\\*' matches any\nsequence of characters. For example, 'coll?' will match 'coll1' and 'colla'. 'coll\\*' matches any\nname that starts with 'coll'.\n\\n\nIf a single collection is found, the collection will be returned as a single item (not a list).\nThis is a convenience so that there is no need to get the first item out of the returned list.\n\\n\nIf no collections are found, then an empty list is returned.\n\\n",
 								"returns": "The collection, or a list of collections.\n"
 							},
 							"parameters": [
@@ -8018,7 +8019,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "A name or list of names. May include wildcards, '?' and '*'."
+										"shortText": "A name or list of names. May include wildcards, '?' and '\\*'."
 									},
 									"type": {
 										"type": "union",
@@ -9347,7 +9348,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Deletes geometric entities: positions, points, polylines, polygons, and collections.\n\\n\n- When deleting positions, any topology that requires those positions will also be deleted.\n(For example, any vertices linked to the deleted position will also be deleted,\nwhich may in turn result in some edges being deleted, and so forth.)\n- When deleting objects (points, polylines, and polygons), topology is also deleted.\n- When deleting collections, the objects and other collections in the collection are also deleted.\n\\n\nTopological entities inside objects  (wires, edges, vertices) cannot be deleted.\nIf a topological entity needs to be deleted, then the current approach is create a new object\nwith the desired topology, and then to delete the original object.\n\\n",
+								"shortText": "Deletes geometric entities: positions, points, polylines, polygons, and collections.\n\\n\n- When deleting positions, any topology that requires those positions will also be deleted.\n(For example, any vertices linked to the deleted position will also be deleted,\nwhich may in turn result in some edges being deleted, and so forth.)\n- When deleting objects (points, polylines, and polygons), topology is also deleted.\n- When deleting collections, the objects and other collections in the collection are also deleted.\n\\n\nTopological entities inside objects (wires, edges, vertices) cannot be deleted.\nIf a topological entity needs to be deleted, then the current approach is create a new object\nwith the desired topology, and then to delete the original object.\n\\n",
 								"returns": "void",
 								"tags": [
 									{
@@ -9416,7 +9417,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, delete or keep unused positions."
+										"shortText": "Enum, delete or keep unused positions: `'delete_selected'` or `'keep_selected'`."
 									},
 									"type": {
 										"type": "reference",
@@ -9535,7 +9536,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, select the method for dividing edges."
+										"shortText": "Enum, select the method for dividing edge: `'by_number', 'by_length', 'by_min_length'` or `'by_max_length'`."
 									},
 									"type": {
 										"type": "reference",
@@ -9940,7 +9941,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum; the method to use, either `open` or `close`."
+										"shortText": "Enum, the method to use: ``open`` or ``close``."
 									},
 									"type": {
 										"type": "reference",
@@ -10132,7 +10133,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum; the method to use, either `make_weld` or `break_weld`."
+										"shortText": "Enum, the method to use: `'make_weld'` or `'break_weld'`."
 									},
 									"type": {
 										"type": "reference",
@@ -11425,15 +11426,15 @@
 							"flags": {},
 							"comment": {
 								"shortText": "Export data from the model as a file.\n\\n\nIf you export to your hard disk,\nit will result in a popup in your browser, asking you to save the file.\n\\n\nIf you export to Local Storage, there will be no popup.\n\\n",
-								"returns": "void.",
+								"returns": "void",
 								"tags": [
 									{
 										"tag": "example",
-										"text": "io.Export (#pg, 'my\\_model.obj', obj)"
+										"text": "`io.Export (#pg, 'my\\_model.obj', 'obj', 'Save to Hard Disk')`"
 									},
 									{
 										"tag": "example_info",
-										"text": "Exports all the polygons in the model as an OBJ.\n"
+										"text": "Exports all the polygons in the model as an OBJ, saved to the hard disk.\n"
 									}
 								]
 							},
@@ -11459,7 +11460,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Optional. Entities to be exported. If null, the whole model will be exported."
+										"shortText": "(Optional) Entities to be exported. If null, the whole model will be exported."
 									},
 									"type": {
 										"type": "union",
@@ -11509,7 +11510,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, the file format."
+										"shortText": "Enum, the export file format: `'gi', 'sim', 'obj_v', 'obj_ps', 'geojson'` or `'gltf'`."
 									},
 									"type": {
 										"type": "reference",
@@ -11523,7 +11524,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, where the data is to be exported to."
+										"shortText": "Enum, where the data is to be exported to: `'Save to Hard Disk'` or `'Save to Local Storage'`."
 									},
 									"type": {
 										"type": "reference",
@@ -11568,15 +11569,15 @@
 							"flags": {},
 							"comment": {
 								"shortText": "Export data from the model as a string.\n\\n",
-								"returns": "the model data as a string.",
+								"returns": "The model data as a string.",
 								"tags": [
 									{
 										"tag": "example",
-										"text": "io.Export (#pg, 'my_model.obj', obj)"
+										"text": "`io.Export (#pg, 'my_model.obj', 'obj')`"
 									},
 									{
 										"tag": "example_info",
-										"text": "Exports all the polgons in the model as an OBJ.\n"
+										"text": "Exports all the polygons in the model as an OBJ.\n"
 									}
 								]
 							},
@@ -11602,7 +11603,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Optional. Entities to be exported. If null, the whole model will be exported."
+										"shortText": "(Optional) Entities to be exported. If null, the whole model will be exported."
 									},
 									"type": {
 										"type": "union",
@@ -11638,7 +11639,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, the file format."
+										"shortText": "Enum, the export file format: `'gi', 'sim', 'obj_v', 'obj_ps', 'geojson'` or `'gltf'`."
 									},
 									"type": {
 										"type": "reference",
@@ -11866,12 +11867,12 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Imports data into the model.\n\\n\nThere are two ways of specifying the file location to be imported:\n- A url, e.g. \"https://www.dropbox.com/xxxx/my_data.obj\"\n- A file name in the local storage, e.g. \"my_data.obj\". (PUT A LINK TO THE LOCAL HELP)\n\\n\nTo place a file in local storage, go to the Mobius menu, and select 'Local Storage' from the dropdown.\nNote that a script using a file in local storage may fail when others try to open the file.\n\\n",
+								"shortText": "Imports data into the model.\n\\n\nThere are two ways of specifying the file location to be imported:\n- A url, e.g. \"https://www.dropbox.com/xxxx/my_data.obj\"\n- A file name in the local storage, e.g. \"my\\_data.obj\". See documentation on local storage in the menu for more info.\n\\n\nTo place a file in local storage, go to the Mobius menu, and select 'Local Storage' from the dropdown.\nNote that a script using a file in local storage may fail when others try to open the file.\n\\n",
 								"returns": "A list of the positions, points, polylines, polygons and collections added to the model.",
 								"tags": [
 									{
 										"tag": "example",
-										"text": "io.Import (\"my\\_data.obj\", obj)"
+										"text": "`io.Import (\"my_data.obj\", obj)`"
 									},
 									{
 										"tag": "example_info",
@@ -11914,7 +11915,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, the file format."
+										"shortText": "Enum, the file format: `'gi', 'sim', 'obj', 'geojson'` or `'CityJSON'`."
 									},
 									"type": {
 										"type": "reference",
@@ -11992,11 +11993,11 @@
 							"flags": {},
 							"comment": {
 								"shortText": "Imports a string of geometry data into the model, in various formats.\nThe geometry will be added to the model.\n\\n",
-								"returns": "A a collection of entities added to the model.",
+								"returns": "A collection of entities added to the model.",
 								"tags": [
 									{
 										"tag": "example",
-										"text": "io.ImportData (data_str, \"obj\")"
+										"text": "`io.ImportData (data_str, \"obj\")`"
 									},
 									{
 										"tag": "example_info",
@@ -12039,7 +12040,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, the file format."
+										"shortText": "Enum, the file format: `'gi', 'sim', 'obj', 'geojson'` or `'CityJSON'`."
 									},
 									"type": {
 										"type": "reference",
@@ -12175,7 +12176,7 @@
 					"sources": [
 						{
 							"fileName": "functions/io/Read.ts",
-							"line": 16,
+							"line": 14,
 							"character": 22
 						}
 					],
@@ -12188,7 +12189,6 @@
 							"flags": {},
 							"comment": {
 								"shortText": "Read data from a Url or from local storage.",
-								"text": "//TEST WITH A TEST FILE ? AND INSERT DIAGRAMS AND REFERENCE THE VR VIEWER\n",
 								"returns": "The data.\n"
 							},
 							"parameters": [
@@ -12241,7 +12241,7 @@
 													"sources": [
 														{
 															"fileName": "functions/io/Read.ts",
-															"line": 16,
+															"line": 14,
 															"character": 79
 														}
 													]
@@ -12279,7 +12279,7 @@
 							"flags": {},
 							"comment": {
 								"shortText": "Write data to the hard disk or to the local storage.\nDepending on your browser's download settings,\na dialog box may pop up to manually confirm the action if writing to the hard disk.",
-								"returns": "Whether the data is successfully saved. (true/false)\n"
+								"returns": "Whether the data is successfully saved. (True/false)\n"
 							},
 							"parameters": [
 								{
@@ -12316,7 +12316,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "The name to be saved in the file system (file extension should be included)."
+										"shortText": "The name to be saved in the file system as a string (file extension should be included)."
 									},
 									"type": {
 										"type": "intrinsic",
@@ -12330,7 +12330,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, where the data is to be exported to."
+										"shortText": "Enum, where the data is to be exported to: `'Save to Hard Disk'` or `'Save to Local Storage'`."
 									},
 									"type": {
 										"type": "reference",
@@ -12936,7 +12936,7 @@
 					"sources": [
 						{
 							"fileName": "functions/list/Add.ts",
-							"line": 26,
+							"line": 28,
 							"character": 16
 						}
 					],
@@ -12953,35 +12953,35 @@
 								"tags": [
 									{
 										"tag": "example",
-										"text": "append = list.Add([1,2,3], 4, 'at_end')"
+										"text": "`append = list.Add([1,2,3], 4, 'at_end')`"
 									},
 									{
 										"tag": "example_info",
-										"text": "Expected value of list is [1,2,3,4]."
+										"text": "Expected value of list is `[1,2,3,4]`."
 									},
 									{
 										"tag": "example",
-										"text": "append = list.Add([1,2,3], [4, 5], 'at_end')"
+										"text": "`append = list.Add([1,2,3], [4, 5], 'at_end')`"
 									},
 									{
 										"tag": "example_info",
-										"text": "Expected value of list is [1,2,3,[4,5]]."
+										"text": "Expected value of list is `[1,2,3,[4,5]]`."
 									},
 									{
 										"tag": "example",
-										"text": "append = list.Add([1,2,3], [4,5], 'extend_end')"
+										"text": "`append = list.Add([1,2,3], [4,5], 'extend_end')`"
 									},
 									{
 										"tag": "example_info",
-										"text": "Expected value of list is [1,2,3,4,5]."
+										"text": "Expected value of list is `[1,2,3,4,5]`."
 									},
 									{
 										"tag": "example",
-										"text": "append = list.Add([\"a\", \"c\", \"d\"], \"b\", 'alpha_descending')"
+										"text": "`append = list.Add([\"a\", \"c\", \"d\"], \"b\", 'alpha_descending')`"
 									},
 									{
 										"tag": "example_info",
-										"text": "Expected value of list is [\"a\", \"b\", \"c\", \"d\"].\n"
+										"text": "Expected value of list is `[\"a\", \"b\", \"c\", \"d\"]`.\n"
 									}
 								]
 							},
@@ -13024,7 +13024,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, select the method."
+										"shortText": "Enum, select the method: `'to_start', 'to_end', 'extend_start', 'extend_end',\n'alpha_descending', 'alpha_ascending', 'numeric_descending', 'numeric_ascending',\n'ID_descending'` or `'ID_ascending'`."
 									},
 									"type": {
 										"type": "reference",
@@ -13048,7 +13048,7 @@
 					"sources": [
 						{
 							"fileName": "functions/list/Remove.ts",
-							"line": 24,
+							"line": 25,
 							"character": 16
 						}
 					],
@@ -13089,7 +13089,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "The list in which to remove items"
+										"shortText": "The list in which to remove items."
 									},
 									"type": {
 										"type": "array",
@@ -13120,7 +13120,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, select the method for removing items from the list."
+										"shortText": "Enum, select the method for removing items from the list: `'index', 'first_value',\n'last_value'` or `'all_values'`."
 									},
 									"type": {
 										"type": "reference",
@@ -13144,7 +13144,7 @@
 					"sources": [
 						{
 							"fileName": "functions/list/Replace.ts",
-							"line": 26,
+							"line": 27,
 							"character": 16
 						}
 					],
@@ -13156,20 +13156,20 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Replaces items in a list.\n\\n\nIf method is set to 'index', then old_item should be the index of the item to be replaced. Negative indexes are allowed.\nIf method is not set to 'index', then old_item should be the value to be replaced.",
+								"shortText": "Replaces items in a list.\n\\n\nIf method is set to 'index', then old\\_item should be the index of the item to be replaced. Negative indexes are allowed.\nIf method is not set to 'index', then old\\_item should be the value to be replaced.",
 								"returns": "void",
 								"tags": [
 									{
 										"tag": "example",
-										"text": "`list.Replace(list, 3, [6, 7, 8], 'last_value')"
+										"text": "`list.Replace(list, 3, [6, 7, 8], 'last_value')`"
 									},
 									{
 										"tag": "example_info",
-										"text": "where `list = [3, 1, 2, 3, 4]`.\nExpected new value of list is [3, 1, 2, [6, 7, 8], 4]`."
+										"text": "where `list = [3, 1, 2, 3, 4]`.\nExpected new value of list is `[3, 1, 2, [6, 7, 8], 4]`."
 									},
 									{
 										"tag": "example",
-										"text": "`list.Replace(list, 2, 0, 'index')"
+										"text": "`list.Replace(list, 2, 0, 'index')`"
 									},
 									{
 										"tag": "example_info",
@@ -13230,7 +13230,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, select the method for replacing items in the list."
+										"shortText": "Enum, select the method for replacing items in the list: `'index', 'first_value',\n'last_value'` or `'all_values'`."
 									},
 									"type": {
 										"type": "reference",
@@ -13266,7 +13266,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Sorts a list, based on the values of the items in the list.\n\\n\nFor alphabetical sort, values are sorted character by character,\nnumbers before upper case alphabets, upper case alphabets before lower case alphabets.",
+								"shortText": "Sorts a list, based on the values of the items in the list. \\n For alphabetical sort, values are\nsorted character by character, numbers before upper case alphabets, upper case alphabets before\nlower case alphabets.",
 								"returns": "void",
 								"tags": [
 									{
@@ -13275,7 +13275,7 @@
 									},
 									{
 										"tag": "example_info",
-										"text": "where `list = [\"1\",\"2\",\"10\",\"Orange\",\"apple\"]`.\nExpected value of list is `[\"1\",\"10\",\"2\",\"Orange\",\"apple\"]`."
+										"text": "where `list = [\"1\",\"2\",\"10\",\"Orange\",\"apple\"]`. Expected value of list is\n`[\"1\",\"10\",\"2\",\"Orange\",\"apple\"]`."
 									},
 									{
 										"tag": "example",
@@ -13283,7 +13283,7 @@
 									},
 									{
 										"tag": "example_info",
-										"text": "where `list = [56,6,48]`.\nExpected value of list is `[6,48,56]`.\n"
+										"text": "where `list = [56,6,48]`. Expected value of list is `[6,48,56]`.\n"
 									}
 								]
 							},
@@ -13312,7 +13312,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum; specifies the sort method to use."
+										"shortText": "Enum, specifies the sort method to use: `'reverse', 'alpha_descending',\n'alpha_ascending', 'numeric_descending', 'numeric_ascending', 'ID_descending', 'ID_ascending',\n'shift_1', 'reverse_shift_1'` or `'random'`."
 									},
 									"type": {
 										"type": "reference",
@@ -13414,7 +13414,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Optional, list of items to add, or null/empty list."
+										"shortText": "(Optional) List of items to add, or null/empty list."
 									},
 									"type": {
 										"type": "array",
@@ -14277,7 +14277,7 @@
 								"tags": [
 									{
 										"tag": "example",
-										"text": "copies = make.Clone([position1,polyine1,polygon1])"
+										"text": "`copies = make.Clone([position1,polyine1,polygon1])`"
 									},
 									{
 										"tag": "example_info",
@@ -14398,7 +14398,7 @@
 								"tags": [
 									{
 										"tag": "example",
-										"text": "copies = make.Copy([position1, polyine1, polygon1], [0,0,10])"
+										"text": "`copies = make.Copy([position1, polyine1, polygon1], [0,0,10])`"
 									},
 									{
 										"tag": "example_info",
@@ -14544,7 +14544,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Cuts polygons and polylines using a plane.\n\\n\nIf the 'keep_above' method is selected, then only the part of the cut entities above the plane are kept.\nIf the 'keep_below' method is selected, then only the part of the cut entities below the plane are kept.\nIf the 'keep_both' method is selected, then both the parts of the cut entities are kept.\n\\n\nCurrently does not support cutting polygons with holes.\n\\n\nIf 'keep_both' is selected, returns a list of two lists.\n[[entities above the plane], [entities below the plane]].",
+								"shortText": "Cuts polygons and polylines using a plane.\n\\n\n- If the 'keep\\_above' method is selected, then only the part of the cut entities above the plane are kept.\n- If the 'keep\\_below' method is selected, then only the part of the cut entities below the plane are kept.\n- If the 'keep\\_both' method is selected, then both the parts of the cut entities are kept.\n\\n\nCurrently does not support cutting polygons with holes.\n\\n\nIf 'keep\\_both' is selected, returns a list of two lists.\n`[[entities above the plane], [entities below the plane]]`.",
 								"returns": "Entities, a list of three lists of entities resulting from the cut.\n\n"
 							},
 							"parameters": [
@@ -14611,7 +14611,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, select the method for cutting."
+										"shortText": "Enum, the method for cutting: `'keep_above', 'keep_below'` or `'keep_both'`."
 									},
 									"type": {
 										"type": "reference",
@@ -14680,12 +14680,12 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Extrudes geometry by distance or by vector.\n- Extrusion of a position, vertex, or point produces polylines;\n- Extrusion of an edge, wire, or polyline produces polygons;\n- Extrusion of a face or polygon produces polygons, capped at the top.\n\\n\n\\n\nThe geometry that is generated depends on the method that is selected.\n- The 'quads' methods will generate polygons.\n- The 'stringers' and 'ribs' methods will generate polylines.\n- The 'copies' method will generate copies of the input geometry type.",
+								"shortText": "Extrudes geometry by distance or by vector.\n- Extrusion of a position, vertex, or point produces polylines;\n- Extrusion of an edge, wire, or polyline produces polygons;\n- Extrusion of a face or polygon produces polygons, capped at the top.\n\\n\n\\n\nThe geometry that is generated depends on the method that is selected.\n- The 'quads' method will generate polygons.\n- The 'stringers' and 'ribs' methods will generate polylines.\n- The 'copies' method will generate copies of the input geometry type.",
 								"returns": "Entities, a list of new polygons or polylines resulting from the extrude.",
 								"tags": [
 									{
 										"tag": "example",
-										"text": "extrusion1 = make.Extrude(point1, 10, 2, 'quads')"
+										"text": "`extrusion1 = make.Extrude(point1, 10, 2, 'quads')`"
 									},
 									{
 										"tag": "example_info",
@@ -14693,7 +14693,7 @@
 									},
 									{
 										"tag": "example",
-										"text": "extrusion2 = make.Extrude(polygon1, [0,5,0], 1, 'quads')"
+										"text": "`extrusion2 = make.Extrude(polygon1, [0,5,0], 1, 'quads')`"
 									},
 									{
 										"tag": "example_info",
@@ -14749,7 +14749,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Number or vector. If number, assumed to be [0,0,value] (i.e. extrusion distance in\nz-direction)."
+										"shortText": "Number or vector. If number, assumed to be `[0,0,value]` (i.e. extrusion distance in\nz-direction)."
 									},
 									"type": {
 										"type": "union",
@@ -14788,7 +14788,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, when extruding edges, select quads, stringers, or ribs"
+										"shortText": "Enum, choose what to select when extruding edges: `'quads', 'stringers', 'ribs'` or `'copies'`."
 									},
 									"type": {
 										"type": "reference",
@@ -14897,7 +14897,7 @@
 					"sources": [
 						{
 							"fileName": "functions/make/Loft.ts",
-							"line": 31,
+							"line": 33,
 							"character": 16
 						}
 					],
@@ -14914,7 +14914,11 @@
 								"tags": [
 									{
 										"tag": "example",
-										"text": "quads = make.Loft([polyline1,polyline2,polyline3], 1, 'open_quads')"
+										"text": "<a href=\"/editor?file=/assets/gallery/building_examples/Chapel_Wavy_roof.mob&node=3\" target=\"_blank\"> Example model from the gallery, showing polylines being lofted. </a>"
+									},
+									{
+										"tag": "example",
+										"text": "`quads = make.Loft([polyline1,polyline2,polyline3], 1, 'open_quads')`"
 									},
 									{
 										"tag": "example_info",
@@ -14922,7 +14926,7 @@
 									},
 									{
 										"tag": "example",
-										"text": "quads = make.Loft([polyline1,polyline2,polyline3], 1, 'closed_quads')"
+										"text": "`quads = make.Loft([polyline1,polyline2,polyline3], 1, 'closed_quads')`"
 									},
 									{
 										"tag": "example_info",
@@ -14930,7 +14934,7 @@
 									},
 									{
 										"tag": "example",
-										"text": "quads = make.Loft([ [polyline1,polyline2], [polyline3,polyline4] ] , 1, 'open_quads')"
+										"text": "`quads = make.Loft([ [polyline1,polyline2], [polyline3,polyline4] ] , 1, 'open_quads')`"
 									},
 									{
 										"tag": "example_info",
@@ -15006,7 +15010,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, if 'closed', then close the loft back to the first entity in the list."
+										"shortText": "Enum, if 'closed', then close the loft back to the first entity in the list:\n`'open_quads', 'closed_quads', 'open_stringers', 'closed_stringers', 'open_ribs', 'closed_ribs'` or `'copies'`."
 									},
 									"type": {
 										"type": "reference",
@@ -15052,7 +15056,7 @@
 								"tags": [
 									{
 										"tag": "example",
-										"text": "point1 = make.Point(position1)"
+										"text": "`point1 = make.Point(position1)`"
 									},
 									{
 										"tag": "example_info",
@@ -15156,7 +15160,7 @@
 					"sources": [
 						{
 							"fileName": "functions/make/Polygon.ts",
-							"line": 29,
+							"line": 30,
 							"character": 16
 						}
 					],
@@ -15173,7 +15177,7 @@
 								"tags": [
 									{
 										"tag": "example",
-										"text": "polygon1 = make.Polygon([pos1,pos2,pos3])"
+										"text": "`polygon1 = make.Polygon([pos1,pos2,pos3])`"
 									},
 									{
 										"tag": "example_info",
@@ -15181,11 +15185,11 @@
 									},
 									{
 										"tag": "example",
-										"text": "polygons = make.Polygon([[pos1,pos2,pos3], [pos3,pos4,pos5]])"
+										"text": "`polygons = make.Polygon([[pos1,pos2,pos3], [pos3,pos4,pos5]])`"
 									},
 									{
 										"tag": "example_info",
-										"text": "Creates two polygons, the first with vertices at [pos1,pos2,pos3], and the second with vertices at [pos3,pos4,pos5].\n"
+										"text": "Creates two polygons, the first with vertices at `[pos1,pos2,pos3]`, and the second\nwith vertices at `[pos3,pos4,pos5]`.\n"
 									}
 								]
 							},
@@ -15290,7 +15294,7 @@
 								"tags": [
 									{
 										"tag": "example",
-										"text": "polyline1 = make.Polyline([position1,position2,position3], close)"
+										"text": "`polyline1 = make.Polyline([position1,position2,position3], 'close')`"
 									},
 									{
 										"tag": "example_info",
@@ -15356,7 +15360,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, 'open' or 'close'."
+										"shortText": "Enum, `'open'` or `'close'`."
 									},
 									"type": {
 										"type": "reference",
@@ -15413,7 +15417,7 @@
 								"tags": [
 									{
 										"tag": "example",
-										"text": "position1 = make.Position([1,2,3])"
+										"text": "`position1 = make.Position([1,2,3])`"
 									},
 									{
 										"tag": "example_info",
@@ -15421,7 +15425,7 @@
 									},
 									{
 										"tag": "example",
-										"text": "positions = make.Position([[1,2,3],[3,4,5],[5,6,7]])"
+										"text": "`positions = make.Position([[1,2,3],[3,4,5],[5,6,7]])`"
 									},
 									{
 										"tag": "example_info",
@@ -15622,7 +15626,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, select the method for sweeping."
+										"shortText": "Enum, select the method for sweeping: `'quads', 'stringers', 'ribs'` or `'copies'`."
 									},
 									"type": {
 										"type": "reference",
@@ -16603,7 +16607,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Creates a line material and saves it in the model attributes.\n\\n\n[See the threejs docs on LineBasicMaterials](https://threejs.org/docs/#api/en/materials/LineBasicMaterial)\n[See the threejs docs LineDashedMaterials](https://threejs.org/docs/#api/en/materials/LineDashedMaterial)\n\\n\nThe color of the material can either ignore or apply the vertex rgb colors.\nIf 'apply' is selected, then the actual color will be a combination of the material color\nand the vertex colors, as specified by the vertex attribute called 'rgb'.\nIn such a case, if material color is set to white, then it will\nhave no effect, and the color will be defined by the vertex [r,g,b] values.\n\\n\nIn order to assign a material to polylines in the model, a polyline attribute called 'material'\nwill be created. The value for each polyline must either be null, or must be a material name.\n\\n\nFor dashed lines, the 'dash_gap_scale' parameter can be set.\n- If 'dash_gap_scale' is null, it will result in a continuous line.\n- If 'dash_gap_scale' is a single number: dash = gap = dash_gap_scale, scale = 1.\n- If 'dash_gap_scale' is a list of two numbers: dash = dash_gap_scale[0], gap = dash_gap_scale[1], scale = 1.\n- If 'dash_gap_scale' is a list of three numbers: dash = dash_gap_scale[0], gap = dash_gap_scale[1], scale = dash_gap_scale[2].\n\\n\nDue to limitations of the OpenGL Core Profile with the WebGL renderer on most platforms,\nline widths cannot be rendered. As a result, lines width will always be set to 1.\n\\n",
+								"shortText": "Creates a line material and saves it in the model attributes.\n\\n\n[See the threejs docs on LineBasicMaterials](https://threejs.org/docs/#api/en/materials/LineBasicMaterial)\n[See the threejs docs LineDashedMaterials](https://threejs.org/docs/#api/en/materials/LineDashedMaterial)\n\\n\nThe color of the material can either ignore or apply the vertex rgb colors.\nIf 'apply' is selected, then the actual color will be a combination of the material color\nand the vertex colors, as specified by the vertex attribute called 'rgb'.\nIn such a case, if material color is set to white, then it will\nhave no effect, and the color will be defined by the vertex [r,g,b] values.\n\\n\nIn order to assign a material to polylines in the model, a polyline attribute called 'material'\nwill be created. The value for each polyline must either be null, or must be a material name.\n\\n\nFor dashed lines, the 'dash\\_gap\\_scale' parameter can be set.\n- If 'dash\\_gap\\_scale' is null, it will result in a continuous line.\n- If 'dash\\_gap\\_scale' is a single number: dash = gap = dash\\_gap\\_scale, scale = 1.\n- If 'dash\\_gap\\_scale' is a list of two numbers: dash = dash\\_gap\\_scale[0], gap = dash\\_gap\\_scale[1], scale = 1.\n- If 'dash\\_gap\\_scale' is a list of three numbers: dash = dash\\_gap\\_scale[0], gap = dash\\_gap\\_scale[1], scale = dash\\_gap\\_scale[2].\n\\n\nDue to limitations of the OpenGL Core Profile with the WebGL renderer on most platforms,\nline widths cannot be rendered. As a result, lines width will always be set to 1.\n\\n",
 								"returns": "void\n"
 							},
 							"parameters": [
@@ -16683,7 +16687,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, select whether to use vertex colors if they exist."
+										"shortText": "Enum, select whether to use vertex colors if they exist: `'none'` or `'apply_rgb'`."
 									},
 									"type": {
 										"type": "reference",
@@ -16757,7 +16761,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "The diffuse colsor, as [r, g, b] values between 0 and 1. White is [1, 1, 1]."
+										"shortText": "The diffuse color, as [r, g, b] values between 0 and 1. White is [1, 1, 1]."
 									},
 									"type": {
 										"type": "reference",
@@ -16787,7 +16791,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, select front, back, or both."
+										"shortText": "Enum, select where to apply colors: `'front', 'back'`, or `'both'`."
 									},
 									"type": {
 										"type": "reference",
@@ -16801,7 +16805,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, select whether to use vertex colors if they exist."
+										"shortText": "Enum, select whether to use vertex colors if they exist: `'none'` or `'apply_rgb'`."
 									},
 									"type": {
 										"type": "reference",
@@ -18036,7 +18040,7 @@
 					"sources": [
 						{
 							"fileName": "functions/modify/Offset.ts",
-							"line": 20,
+							"line": 27,
 							"character": 16
 						}
 					],
@@ -18048,9 +18052,17 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Offsets wires.\n\\n",
+								"shortText": "Performs a simple geometrical offset on the wires, such that the wires are parallel to their\noriginal positions, modying the input entities.\n\\n\nSee `poly2d.OffsetChamfer, poly2d.OffsetMitre` and `poly2d.OffsetRound` for other offset\nfunctions that do not modify the input entities.",
 								"returns": "void",
 								"tags": [
+									{
+										"tag": "example",
+										"text": "<a href=\"/editor?file=/assets/examples/Functions_modify.Offset_examples.mob&node=1\" target=\"_blank\"> Example Model</a>"
+									},
+									{
+										"tag": "example_info",
+										"text": "A model showing how to offset polyline/polygons, and how potential twisting may\noccur when offset distance is too negative."
+									},
 									{
 										"tag": "example",
 										"text": "`modify.Offset(polygon1, 10)`"
@@ -18525,7 +18537,7 @@
 								"tags": [
 									{
 										"tag": "example",
-										"text": "modify.XForm(polygon1, plane1, plane2)"
+										"text": "`modify.XForm(polygon1, plane1, plane2)`"
 									},
 									{
 										"tag": "example_info",
@@ -19629,7 +19641,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Creates positions in an arc or circle pattern.\n\\n\nThe `origin` parameter specifies the centre of the polyhedron for which positions will be\ngenerated. The origin can be specified as either a |coordinate| or a |plane|. If a coordinate\nis given, then a plane will be automatically generated, aligned with the global XY plane.\n\\n\nThe positions will be generated for an arc aligned with the origin XY plane.\nSo if the origin plane is rotated, then the rotated will also be rotated.\n\\n\nThe `radius` parameter specifies the size of the arc.\n\\n\nThe `num_positions` parameter specifies the total number of positions to be generated on the arc.\n\\n\nThe `arc_angle` specifies the angle of the arc, in radians. Angles start at the X-axis of the\norigin plane and move in a counter-clockwise direction. Two angles are needed to define an arc,\na `start_angle` and `end_angle`. The angles may be positive or negative, and may be\ngreater than `2*PI` or smaller than `-2*PI`.\n\\n\nPositions will always be generated in sequence, from the start angle towards the end angle.\n- If the start angle is smaller than the end angle, then the positions will be generated in\ncounter-clockwise order.\n- If the start angle is greater than the end angle, then the positions will be generated in\nclockwise order.\n\\n\nThe angle may either be given as a single number, as a list of two numbers, or as `null`:\n- If the angle is given as a single number, then the arc angles will be ser to be\n`[0, end_angle]`. This means that the start of the arc will coincide with the X-axis\nof the origin plane.\n- If the angle is given as a list of two numbers, then they will be set to be\n`[start_angle, end_angle]`.\n- If the angle is set to `null`, then the arc angles will be set to be\n`[0, 2*PI]` In addition, duplicate positions at start and end of the arc are\nautomatically removed.\n\\n\nNote that setting the arc angle to null is not the same as setting it to `2*PI.\nWhen setting the arc angle to `2*PI`, you will get duplicate positions at the start and end\nof the arc.\n\\n",
+								"shortText": "Creates positions in an arc or circle pattern.\n\\n\nThe `origin` parameter specifies the centre of the polyhedron for which positions will be\ngenerated. The origin can be specified as either a |coordinate| or a |plane|. If a coordinate\nis given, then a plane will be automatically generated, aligned with the global XY plane.\n\\n\nThe positions will be generated for an arc aligned with the origin XY plane.\nSo if the origin plane is rotated, then the rotated will also be rotated.\n\\n\nThe `radius` parameter specifies the size of the arc.\n\\n\nThe `num_positions` parameter specifies the total number of positions to be generated on the arc.\n\\n\nThe `arc_angle` specifies the angle of the arc, in radians. Angles start at the X-axis of the\norigin plane and move in a counter-clockwise direction. Two angles are needed to define an arc,\na `start_angle` and `end_angle`. The angles may be positive or negative, and may be\ngreater than `2*PI` or smaller than `-2*PI`.\n\\n\nPositions will always be generated in sequence, from the start angle towards the end angle.\n- If the start angle is smaller than the end angle, then the positions will be generated in\ncounter-clockwise order.\n- If the start angle is greater than the end angle, then the positions will be generated in\nclockwise order.\n\\n\nThe angle may either be given as a single number, as a list of two numbers, or as `null`:\n- If the angle is given as a single number, then the arc angles will be set to be\n`[0, end_angle]`. This means that the start of the arc will coincide with the X-axis\nof the origin plane.\n- If the angle is given as a list of two numbers, then they will be set to be\n`[start_angle, end_angle]`.\n- If the angle is set to `null`, then the arc angles will be set to be\n`[0, 2*PI]`. In addition, duplicate positions at start and end of the arc are\nautomatically removed.\n\\n\nNote that setting the arc angle to null is not the same as setting it to `2*PI`.\nWhen setting the arc angle to `2*PI`, you will get duplicate positions at the start and end\nof the arc.\n\\n",
 								"returns": "Entities, a list of positions.",
 								"tags": [
 									{
@@ -19778,7 +19790,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Creates positions in a Bezier curve pattern, defined by a list of coordinates.\n\\n\nThe Bezier is created as either a qadratic or cubic Bezier. It is always an open curve.\n\\n\nThe positions are created along the curve at equal parameter values.\nThis means that the euclidean distance between the positions will not necessarily be equal.\n\\n\nFor the quadratic Bezier, three coordinates are required.\nFor the cubic Bezier, four coordinates are required.\n\\n\nThe `coords` parameter gives the list of |coordinates|\n(three coords for quadratics, four coords for cubics).\nThe first and last coordinates in the list are the start and end positions of the curve.\nThe middle coordinates act as the control points for controlling the shape of the curve.\n\\n\nThe `num_positions` parameter specifies the total number of positions to be generated.\n\\n\nFor more information, see the wikipedia article:\n<a href=\"https://en.wikipedia.org/wiki/B%C3%A9zier_curve\" target=\"_blank\">Bezier_curve</a>.\n\\n",
+								"shortText": "Creates positions in a Bezier curve pattern, defined by a list of coordinates.\n\\n\nThe Bezier is created as either a quadratic or cubic Bezier. It is always an open curve.\n\\n\nThe positions are created along the curve at equal parameter values.\nThis means that the euclidean distance between the positions will not necessarily be equal.\n\\n\nFor the quadratic Bezier, three coordinates are required.\nFor the cubic Bezier, four coordinates are required.\n\\n\nThe `coords` parameter gives the list of |coordinates|\n(three coords for quadratics, four coords for cubics).\nThe first and last coordinates in the list are the start and end positions of the curve.\nThe middle coordinates act as the control points for controlling the shape of the curve.\n\\n\nThe `num_positions` parameter specifies the total number of positions to be generated.\n\\n\nFor more information, see the wikipedia article:\n<a href=\"https://en.wikipedia.org/wiki/B%C3%A9zier_curve\" target=\"_blank\">Bezier_curve</a>.\n\\n",
 								"returns": "Entities, a list of positions.",
 								"tags": [
 									{
@@ -19813,7 +19825,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "A |coordinate| or a |plane| (three coords for quadratics, four coords for cubics).\nIf a coordinate is given, then the plane is assumed to be aligned with the global XY plane. ."
+										"shortText": "A |coordinate| or a |plane| (three coords for quadratics, four coords for cubics).\nIf a coordinate is given, then the plane is assumed to be aligned with the global XY plane."
 									},
 									"type": {
 										"type": "array",
@@ -19861,7 +19873,7 @@
 					"sources": [
 						{
 							"fileName": "functions/pattern/Box.ts",
-							"line": 145,
+							"line": 146,
 							"character": 16
 						}
 					],
@@ -20033,7 +20045,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, define the way the coords will be return as lists."
+										"shortText": "Enum, define the way the coords will be returned as lists: `'flat', 'rows',\n'columns', 'layers'` or `'quads'`."
 									},
 									"type": {
 										"type": "reference",
@@ -20079,7 +20091,7 @@
 					"sources": [
 						{
 							"fileName": "functions/pattern/Grid.ts",
-							"line": 121,
+							"line": 122,
 							"character": 16
 						}
 					],
@@ -20096,7 +20108,7 @@
 								"tags": [
 									{
 										"tag": "example",
-										"text": "posis = pattern.Grid([0,0,0], 10, 3, 'flat')"
+										"text": "`posis = pattern.Grid([0,0,0], 10, 3, 'flat')`"
 									},
 									{
 										"tag": "example_info",
@@ -20225,7 +20237,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, define the way the coords will be return as lists."
+										"shortText": "Enum, define the way the coords will be return as lists: `'flat', 'rows',\n'columns'` or `'quads'`."
 									},
 									"type": {
 										"type": "reference",
@@ -20283,7 +20295,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Creates positions in a spline pattern. Returns a list of new positions.\nIt is a type of interpolating spline (a curve that goes through its control points).\n\\n\nThe input is a list of XYZ coordinates. These act as the control points for creating the Spline curve.\nThe positions that get generated will be divided equally between the control points.\nFor example, if you define 4 control points for a closed spline, and set 'num_positions' to be 40,\nthen you will get 8 positions between each pair of control points,\nirrespective of the distance between the control points.\n\\n\nThe spline curve can be created in three ways: 'centripetal', 'chordal', or 'catmullrom'.\n\\n\nFor more information, see the wikipedia article:\n<a href=\"https://en.wikipedia.org/wiki/Centripetal_Catmull%E2%80%93Rom_spline\">Catmull–Rom spline</a>.\n\\n\n<img src=\"https://upload.wikimedia.org/wikipedia/commons/2/2f/Catmull-Rom_examples_with_parameters..png\"\nalt=\"Curve types\" width=\"100\">\n\\n",
+								"shortText": "Creates positions in a spline pattern. Returns a list of new positions.\nIt is a type of interpolating spline (a curve that goes through its control points).\n\\n\nThe input is a list of XYZ coordinates. These act as the control points for creating the Spline curve.\nThe positions that get generated will be divided equally between the control points.\nFor example, if you define 4 control points for a closed spline, and set 'num_positions' to be 40,\nthen you will get 8 positions between each pair of control points,\nirrespective of the distance between the control points.\n\\n\nThe spline curve can be created in three ways: 'centripetal', 'chordal', or 'catmullrom'.\n\\n\nFor more information, see the wikipedia article:\n<a href=\"https://en.wikipedia.org/wiki/Centripetal_Catmull%E2%80%93Rom_spline\">Catmull–Rom spline</a>.\n\\n\n<img src=\"https://upload.wikimedia.org/wikipedia/commons/2/2f/Catmull-Rom_examples_with_parameters..png\"\nalt=\"Curve types\" width=\"150\">\n\\n",
 								"returns": "Entities, a list of positions.",
 								"tags": [
 									{
@@ -20337,7 +20349,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, the type of interpolation algorithm."
+										"shortText": "Enum, the type of interpolation algorithm: 'centripetal', 'chordal', or 'catmullrom'."
 									},
 									"type": {
 										"type": "reference",
@@ -20365,7 +20377,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, 'open' or 'close'."
+										"shortText": "Enum, `'open'` or `'close'`."
 									},
 									"type": {
 										"type": "reference",
@@ -20408,7 +20420,7 @@
 					"sources": [
 						{
 							"fileName": "functions/pattern/Line.ts",
-							"line": 39,
+							"line": 40,
 							"character": 16
 						}
 					],
@@ -20420,7 +20432,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Creates a set of positions in a straight line pattern.\n\\n\nThe `origin` parameter specifies the centre of the straight line along which positions will be\ngenerated. The origin can be specified as either a |coordinate| or a |plane|. If a coordinate\nis given, then a plane will be automatically generated, aligned with the global XY plane.\n\\n\nThe positions will be generated along a straight line aligned with the X axis of the origin\nplane.\n\\n\nReturns the list of new positions.\n\\ns",
+								"shortText": "Creates a set of positions in a straight line pattern.\n\\n\nThe `origin` parameter specifies the centre of the straight line along which positions will be\ngenerated. The origin can be specified as either a |coordinate| or a |plane|. If a coordinate\nis given, then a plane will be automatically generated, aligned with the global XY plane.\n\\n\nThe positions will be generated along a straight line aligned with the X axis of the origin\nplane.\n\\n\nReturns the list of new positions.\n\\n",
 								"returns": "Entities, a list of new positions.\n"
 							},
 							"parameters": [
@@ -20472,7 +20484,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "The length of the line along which positions will be generated."
+										"shortText": "A number. The length of the line along which positions will be generated."
 									},
 									"type": {
 										"type": "intrinsic",
@@ -20485,6 +20497,9 @@
 									"kind": 32768,
 									"kindString": "Parameter",
 									"flags": {},
+									"comment": {
+										"shortText": "An integer. The number of positions to be generated."
+									},
 									"type": {
 										"type": "intrinsic",
 										"name": "number"
@@ -20529,7 +20544,7 @@
 								"tags": [
 									{
 										"tag": "example",
-										"text": "posis = pattern.Linear([[0,0,0], [10,0,0]], false, 3)"
+										"text": "`posis = pattern.Linear([[0,0,0], [10,0,0]], false, 3)`"
 									},
 									{
 										"tag": "example_info",
@@ -20586,7 +20601,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, 'open' or 'close'."
+										"shortText": "Enum, `'open'` or `'close'`."
 									},
 									"type": {
 										"type": "reference",
@@ -20599,6 +20614,9 @@
 									"kind": 32768,
 									"kindString": "Parameter",
 									"flags": {},
+									"comment": {
+										"shortText": "The number of positions to generate."
+									},
 									"type": {
 										"type": "intrinsic",
 										"name": "number"
@@ -20692,7 +20710,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "The degree of the curve, and integer between 2 and 5."
+										"shortText": "The degree of the curve, an integer between 2 and 5."
 									},
 									"type": {
 										"type": "intrinsic",
@@ -20706,7 +20724,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, 'close' or 'open'"
+										"shortText": "Enum, `'close'` or `'open'`."
 									},
 									"type": {
 										"type": "reference",
@@ -20749,7 +20767,7 @@
 					"sources": [
 						{
 							"fileName": "functions/pattern/Polyhedron.ts",
-							"line": 105,
+							"line": 106,
 							"character": 16
 						}
 					],
@@ -20761,7 +20779,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Creates positions in a polyhedron pattern.\n\\n\nThe five regular polyhedrons can be generated:\n- Tetrahedron (4 triangular faces)\n- Cube (4 square faces)\n- Octahedron (8 triangular faces)\n- Icosahedron (20 triangular faces)\n- Dodecahedron (12 pentagon faces)\n\\n\nThe `origin` parameter specifies the centre of the polyhedron for which positions will be\ngenerated. The origin can be specified as either a |coordinate| or a |plane|. If a coordinate\nis given, then a plane will be automatically generated, aligned with the global XY plane.\n\\n\nThe positions will be generated for a polyhedron aligned with the origin XY plane.\nSo if the origin plane is rotated, then the polyhedron will also be rotated.\n\\n\nThe `radius` parameter specifies the size of the polyhedron.\nAll positions that are generated are projected onto the surface of a sphere,\nwith the specified `radius`.\n\\n\nThe faces of the regular polyhedron can be further subdivided by specifying the level of\n`detail`. (When subdivided, it will no longer be regular polyhedrons.)\n\\n\nFor tetrahedrons, octahedrons, and icosahedrons, the `detail` subdivides as follows:\n- Detail = 0: No subdivision\n- Detail = 1: Each triangle edge is subdivided into two edges.\n- Detail = 2: Each triangle edge is subdivided into three edges.\n- etc\n\\n\nCubes and dodecahedrons do not have triangular faces. So in these cases, the first level of\n`detail` converts each non-triangular face into triangles by adding a position at the centre of\nthe face. The `detail` subdivides as follows:\n- Detail= 0: No subdivision.\n- Detail = 1: Convert non-triangular faces into triangles.\n- Detail = 2: Each triangle edge is subdivided into two edges.\n- Detail = 3: Each triangle edge is subdivided into three edges.\n- etc\n\\n\nThe positions can either be returned as a flat list or as nested lists.\nThe nested lists represent the faces of the polyhedron.\nHowever, note that only the positions are returned.\nIf you want to have polygon faces, you need to generate polygons from the positions.\n\\n\nFor example, calling the function with `detail = 0` and `method = 'flat_tetra'`,\nwill result in the following positions:\n```\nposis = [\"ps0\", \"ps1\", \"ps2\", \"ps3\"]\n```\nIf you change the method to `method = 'face_tetra'`, then you will get the following nested lists.\n```\nposis = [\n    [\"ps2\", \"ps1\", \"ps0\"],\n    [\"ps0\", \"ps3\", \"ps2\"],\n    [\"ps1\", \"ps3\", \"ps0\"],\n    [\"ps2\", \"ps3\", \"ps1\"]\n]\n```\nNotice that the number of positions is the same in both cases\n(i.e. in both cases there are 4 positions: 'ps0', 'ps1', 'ps2', 'ps3').\nWhen `face_tetra` is selected selected, the positions are organised into 4 lists,\nrepresenting the 4 faces of the tetrahedron.\n\\n\nThe nested lists can be passed to the `make.Polygon` function in order to generated polygonal faces.\nHere is an example:\n\\n\n```\nposis = pattern.Polyhedron(XY, 10, 0, 'face_tetra')\npgons = make.Polygon(posis)\n```\n\\n\n![Tetrahedron with triangular faces](assets/typedoc-json/docMDimgs/polyhedron_tetra.png)\n\\n",
+								"shortText": "Creates positions in a polyhedron pattern.\n\\n\nThe five regular polyhedrons can be generated:\n- Tetrahedron (4 triangular faces)\n- Cube (4 square faces)\n- Octahedron (8 triangular faces)\n- Icosahedron (20 triangular faces)\n- Dodecahedron (12 pentagon faces)\n\\n\nThe `origin` parameter specifies the centre of the polyhedron for which positions will be\ngenerated. The origin can be specified as either a |coordinate| or a |plane|. If a coordinate\nis given, then a plane will be automatically generated, aligned with the global XY plane.\n\\n\nThe positions will be generated for a polyhedron aligned with the origin XY plane.\nSo if the origin plane is rotated, then the polyhedron will also be rotated.\n\\n\nThe `radius` parameter specifies the size of the polyhedron.\nAll positions that are generated are projected onto the surface of a sphere,\nwith the specified `radius`.\n\\n\nThe faces of the regular polyhedron can be further subdivided by specifying the level of\n`detail`. (When subdivided, it will no longer be regular polyhedrons.)\n\\n\nFor tetrahedrons, octahedrons, and icosahedrons, the `detail` subdivides as follows:\n- Detail = 0: No subdivision\n- Detail = 1: Each triangle edge is subdivided into two edges.\n- Detail = 2: Each triangle edge is subdivided into three edges.\n- etc\n\\n\nCubes and dodecahedrons do not have triangular faces. So in these cases, the first level of\n`detail` converts each non-triangular face into triangles by adding a position at the centre of\nthe face. The `detail` subdivides as follows:\n- Detail = 0: No subdivision.\n- Detail = 1: Convert non-triangular faces into triangles.\n- Detail = 2: Each triangle edge is subdivided into two edges.\n- Detail = 3: Each triangle edge is subdivided into three edges.\n- etc\n\\n\nThe positions can either be returned as a flat list or as nested lists.\nThe nested lists represent the faces of the polyhedron.\nHowever, note that only the positions are returned.\nIf you want to have polygon faces, you need to generate polygons from the positions.\n\\n\nFor example, calling the function with `detail = 0` and `method = 'flat_tetra'`,\nwill result in the following positions:\n```\nposis = [\"ps0\", \"ps1\", \"ps2\", \"ps3\"]\n```\nIf you change the method to `method = 'face_tetra'`, then you will get the following nested lists.\n```\nposis = [\n    [\"ps2\", \"ps1\", \"ps0\"],\n    [\"ps0\", \"ps3\", \"ps2\"],\n    [\"ps1\", \"ps3\", \"ps0\"],\n    [\"ps2\", \"ps3\", \"ps1\"]\n]\n```\nNotice that the number of positions is the same in both cases\n(i.e. in both cases there are 4 positions: 'ps0', 'ps1', 'ps2', 'ps3').\nWhen `face_tetra` is selected selected, the positions are organised into 4 lists,\nrepresenting the 4 faces of the tetrahedron.\n\\n\nThe nested lists can be passed to the `make.Polygon` function in order to generated polygonal faces.\nHere is an example:\n\\n\n```\nposis = pattern.Polyhedron(XY, 10, 0, 'face_tetra')\npgons = make.Polygon(posis)\n```\n\\n\n![Tetrahedron with triangular faces](assets/typedoc-json/docMDimgs/polyhedron_tetra.png)\n\\n",
 								"returns": "Entities, a list of positions.",
 								"tags": [
 									{
@@ -20851,7 +20869,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum: The Type of polyhedron to generate."
+										"shortText": "Enum, the Type of polyhedron to generate: `'flat_tetra', 'flat_cube', 'flat_octa',\n'flat_icosa', 'flat_dodeca', 'face_tetra', 'face_cube', 'face_octa', 'face_icosa'` or `'face_dodeca'`."
 									},
 									"type": {
 										"type": "reference",
@@ -20914,7 +20932,7 @@
 								"tags": [
 									{
 										"tag": "example",
-										"text": "posis = pattern.Rectangle([0,0,0], 10)"
+										"text": "`posis = pattern.Rectangle([0,0,0], 10)`"
 									},
 									{
 										"tag": "example_info",
@@ -21902,7 +21920,7 @@
 					"sources": [
 						{
 							"fileName": "functions/poly2d/BBoxPolygon.ts",
-							"line": 40,
+							"line": 41,
 							"character": 16
 						}
 					],
@@ -21914,7 +21932,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Create a polygon that is a 2D bounding box of the entities.\n\\n\nFor the method, 'aabb' generates an Axis Aligned Bounding Box, and 'obb' generates an Oriented Bounding Box.\n\\n",
+								"shortText": "Create a polygon that is a 2D bounding box of the entities.\n\\n\nFor the method, 'aabb' generates an Axis Aligned Bounding Box, and 'obb' generates an Oriented Bounding Box.\n\\n\nSee `calc.BBox` and `visualize.BBox` for more on bounding boxes.",
 								"returns": "A new polygon, the bounding box of the positions.\n"
 							},
 							"parameters": [
@@ -21939,7 +21957,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "A list of positions, or entities from which positions can bet extracted."
+										"shortText": "A list of positions, or entities from which positions can be extracted."
 									},
 									"type": {
 										"type": "union",
@@ -21965,7 +21983,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, the method for generating the bounding box."
+										"shortText": "Enum, the method for generating the bounding box: `'aabb'` or `'obb'`."
 									},
 									"type": {
 										"type": "reference",
@@ -22080,7 +22098,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, the boolean operator to apply."
+										"shortText": "Enum, the boolean operator to apply: `'intersect', 'difference'` or `'symmetric'`."
 									},
 									"type": {
 										"type": "reference",
@@ -22201,7 +22219,7 @@
 					"sources": [
 						{
 							"fileName": "functions/poly2d/ConvexHull.ts",
-							"line": 26,
+							"line": 33,
 							"character": 16
 						}
 					],
@@ -22213,8 +22231,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Creates a convex hull from a list of positions.",
-								"text": "//TO INSERT AN IMAGE/DIAGRAM OF A CONVEX HULL\n",
+								"shortText": "Creates a convex hull from a list of positions.\n\\n\nFor more information, see the wikipedia article:\n<a href=\"https://en.wikipedia.org/wiki/Convex_hull\" target=\"_blank\">Convex_Hull</a>\n\\n\n<img\nsrc=\"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Extreme_points.svg/330px-Extreme_points.svg.png\"\nalt=\"Convex hull example\" width=\"150\">\n\\n\nIn the image above, the convex hull of the red set is the blue and red convex set.",
 								"returns": "A new polygons, the convex hull of the positions.\n"
 							},
 							"parameters": [
@@ -22277,7 +22294,7 @@
 					"sources": [
 						{
 							"fileName": "functions/poly2d/Delaunay.ts",
-							"line": 26,
+							"line": 33,
 							"character": 16
 						}
 					],
@@ -22289,7 +22306,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Create a delaunay triangulation of set of positions.\n\\n",
+								"shortText": "Create a delaunay triangulation of a set of positions.\n\\n\nA Delaunay triangulation for a given set of positions (`entities`) is a triangulation, DT(P), such\nthat no position in `entities` is inside the circumcircle of any triangle in DT(P).\nSee the wikipedia page for more info: <a href=\"https://en.wikipedia.org/wiki/Delaunay_triangulation\" target=\"_blank\">\nDelanuay triangulation</a>.\n\\n\n<img src=\"https://upload.wikimedia.org/wikipedia/commons/d/db/Delaunay_circumcircles_vectorial.svg\">\n\\n",
 								"returns": "A list of new polygons.\n"
 							},
 							"parameters": [
@@ -22355,7 +22372,7 @@
 					"sources": [
 						{
 							"fileName": "functions/poly2d/OffsetChamfer.ts",
-							"line": 27,
+							"line": 40,
 							"character": 16
 						}
 					],
@@ -22367,7 +22384,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Offset a polyline or polygon, with chamfered joints.",
+								"shortText": "Offset a polyline or polygon, with chamfered/squared joints. The original entities are unmodified.\n\\n\nThe types of joints of the generated offset polygon are shown below.\nThe red border indicates the generated offset polygon, whereas the black polygon\nis the original/input polygon.\n\\n\n![Examples of offset joints](/assets/typedoc-json/docMDimgs/funcs_poly2d_offsets_joints_examples.png)\n\\n\nSee `poly2d.OffsetMitre` and `poly2d.OffsetRound` to use different joints while offsetting.\nAlternatively, try `modify.Offset` for a different offset operation that modifies the original entities.\n\\n\nFor open polylines, the type of ends can be changed with `end\\_type`, shown below.\n\\n\n![Examples of offset ends](/assets/typedoc-json/docMDimgs/funcs_poly2d_offsets_examples.png)\n\\n",
 								"returns": "A list of new polygons.\n"
 							},
 							"parameters": [
@@ -22418,7 +22435,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Offset distance"
+										"shortText": "Offset distance, a number."
 									},
 									"type": {
 										"type": "intrinsic",
@@ -22432,7 +22449,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, the type of end shape for open polylines."
+										"shortText": "Enum, the type of end shape for open polylines: `'square_end'` or `'butt_end'`."
 									},
 									"type": {
 										"type": "reference",
@@ -22461,7 +22478,7 @@
 					"sources": [
 						{
 							"fileName": "functions/poly2d/OffsetMitre.ts",
-							"line": 29,
+							"line": 45,
 							"character": 16
 						}
 					],
@@ -22473,7 +22490,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Offset a polyline or polygon, with mitered joints.",
+								"shortText": "Offset a polyline or polygon, with mitered joints. The original entities are unmodified.\n\\n\nThe types of joints of the generated offset polygon are shown below.\nThe red border indicates the generated offset polygon, whereas the black polygon\nis the original/input polygon.\n\\n\n![Examples of offset joints](/assets/typedoc-json/docMDimgs/funcs_poly2d_offsets_joints_examples.png)\n\\n\nSee `poly2d.OffsetChamfer` and `poly2d.OffsetRound` to use different joints while offsetting.\nAlternatively, try `modify.Offset` for a different offset operation that modifies the original entities.\n\\n\nFor open polylines, the type of ends can be changed with `end\\_type`, shown below.\n\\n\n![Examples of offset ends](/assets/typedoc-json/docMDimgs/funcs_poly2d_offsets_examples.png)\n\\n\n`limit` determines how far a mitered joint can be offset if it is at a sharp angle (see above image).\nIf the mitered joint's length exceeds the `limit`, a \"squared\" offsetting is created at the joint.",
 								"returns": "A list of new polygons.\n"
 							},
 							"parameters": [
@@ -22498,7 +22515,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "A list of polyines or polygons, or entities from which polylines or polygons can be extracted."
+										"shortText": "A list of polylines or polygons, or entities from which polylines or polygons can be extracted."
 									},
 									"type": {
 										"type": "union",
@@ -22524,7 +22541,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Offset distance"
+										"shortText": "Offset distance, a number."
 									},
 									"type": {
 										"type": "intrinsic",
@@ -22538,7 +22555,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Mitre limit"
+										"shortText": "Mitre limit, a number."
 									},
 									"type": {
 										"type": "intrinsic",
@@ -22552,7 +22569,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, the type of end shape for open polylines."
+										"shortText": "Enum, the type of end shape for open polylines: `'square_end'` or `'butt_end'`."
 									},
 									"type": {
 										"type": "reference",
@@ -22581,7 +22598,7 @@
 					"sources": [
 						{
 							"fileName": "functions/poly2d/OffsetRound.ts",
-							"line": 38,
+							"line": 52,
 							"character": 16
 						}
 					],
@@ -22593,7 +22610,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Offset a polyline or polygon, with round joints.",
+								"shortText": "Offset a polyline or polygon, with round joints. The original entities are unmodified.\n\\n\nThe types of joints of the generated offset polygon are shown below.\nThe red border indicates the generated offset polygon, whereas the black polygon\nis the original/input polygon.\n\\n\n![Examples of offset joints](/assets/typedoc-json/docMDimgs/funcs_poly2d_offsets_joints_examples.png)\n\\n\nSee `poly2d.OffsetMitre` and `poly2d.OffsetChamfer` to use different joints while offsetting.\nAlternatively, try `modify.Offset` for a different offset operation that modifies the original entities.\n\\n\nFor open polylines, the type of ends can be changed with `end\\_type`, shown below.\n\\n\n![Examples of offset ends](/assets/typedoc-json/docMDimgs/funcs_poly2d_offsetRound_examples.png)\n\\n",
 								"returns": "A list of new polygons.\n"
 							},
 							"parameters": [
@@ -22618,7 +22635,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "A list of polyines or polygons, or entities from which polylines or polygons can\nbe extracted."
+										"shortText": "A list of polylines or polygons, or entities from which polylines or polygons can\nbe extracted."
 									},
 									"type": {
 										"type": "union",
@@ -22644,7 +22661,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Offset distance"
+										"shortText": "Offset distance, a number."
 									},
 									"type": {
 										"type": "intrinsic",
@@ -22658,7 +22675,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "The tolerance for the rounded corners."
+										"shortText": "The tolerance for the rounded corners, a number that is more than 0. In general,\nthe smaller the number, the rounder the joints. Will also apply to `round_end` if selected."
 									},
 									"type": {
 										"type": "intrinsic",
@@ -22672,7 +22689,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, the type of end shape for open polylines."
+										"shortText": "Enum, the type of end shape for open polylines: `'square_end', 'butt_end'` or `'round_end'`."
 									},
 									"type": {
 										"type": "reference",
@@ -22713,7 +22730,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Adds vertices to polyline and polygons at all locations where egdes intersect one another.\nThe vertices are welded.\nThis can be useful for creating networks that can be used for shortest path calculations.\n\\n\nThe input polyline and polygons are copied.\n\\n",
+								"shortText": "Adds vertices to polyline and polygons at all locations where egdges intersect one another.\nThe vertices are welded.\nThis can be useful for creating networks that can be used for shortest path calculations.\n\\n\nThe input polyline and polygons are copied.\n\\n",
 								"returns": "Copies of the input polyline and polygons, stitched.\n"
 							},
 							"parameters": [
@@ -22738,7 +22755,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "A list polylines or polygons, or entities from which polylines or polygons can be\nextracted."
+										"shortText": "A list of polylines or polygons, or entities from which polylines or polygons can\nbe extracted."
 									},
 									"type": {
 										"type": "union",
@@ -22805,7 +22822,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Create the union of a set of polygons.",
+								"shortText": "Create the union of a set of polygons. The original polygons are not edited.",
 								"returns": "A list of new polygons.\n"
 							},
 							"parameters": [
@@ -22871,7 +22888,7 @@
 					"sources": [
 						{
 							"fileName": "functions/poly2d/Voronoi.ts",
-							"line": 32,
+							"line": 40,
 							"character": 16
 						}
 					],
@@ -22883,7 +22900,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Create a voronoi subdivision of one or more polygons.\n\\n\n// MAKE A DIAGRAM/INSERT A REFERENCE ARTICLE",
+								"shortText": "Create a voronoi subdivision of one or more polygons.\n\\n\nA Voronoi diagram is a partition of a plane into regions close to each of a given set of positions.\nSee the wikipedia page for more info: <a href=\"https://en.wikipedia.org/wiki/Voronoi_diagram\" target=\"_blank\">\nVoronoi Diagrams</a>.\n<a href=\"https://github.com/d3/d3-voronoi#readme\" target=\"_blank\">See the source github for\ninteractive examples and more information on calculating voronoi subdivisions.</a>\n\\n\n![Examples of voronoi outputs](/assets/typedoc-json/docMDimgs/funcs_poly2d_voronoi_examples.png)",
 								"returns": "A list of new polygons.\n"
 							},
 							"parameters": [
@@ -22908,7 +22925,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "A list of polygons, or entities from which polygons can be extracted."
+										"shortText": "A polygon, list of polygons, or entities from which polygons can be extracted. (This/these will be subdivided.)"
 									},
 									"type": {
 										"type": "union",
@@ -22934,7 +22951,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "A list of positions, or entities from which positions can be extracted."
+										"shortText": "A list of positions, or entities from which positions can be extracted.\n(Each of these will be within a generated polygon.)"
 									},
 									"type": {
 										"type": "union",
@@ -23724,7 +23741,7 @@
 							"flags": {},
 							"comment": {
 								"shortText": "Given an edge, returns other edges.\n- If \"previous\" is selected, it returns the previous edge in the wire or null if there is no previous edge.\n- If \"next\" is selected, it returns the next edge in the wire or null if there is no next edge.\n- If \"both\" is selected, it returns a list of two edges, [previous, next]. Either can be null.\n- If \"touching\" is selected, it returns a list of edges from other wires that share the same start and end positions (in any order).",
-								"returns": "Entities, an edge or list of edges\n"
+								"returns": "Entities, an edge or list of edges, or null.\n"
 							},
 							"parameters": [
 								{
@@ -23774,7 +23791,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, select the types of edges to return."
+										"shortText": "Enum, select the types of edges to return: `'previous', 'next', 'both'` or `'touching'`."
 									},
 									"type": {
 										"type": "reference",
@@ -23814,7 +23831,7 @@
 					"sources": [
 						{
 							"fileName": "functions/query/Filter.ts",
-							"line": 33,
+							"line": 34,
 							"character": 16
 						}
 					],
@@ -23826,8 +23843,8 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Filter a list of entities based on an attribute value. \\n The result will always be a list of\nentities, even if there is only one entity. In a case where you want only one entity, remember to\nget the first item in the list. \\n",
-								"returns": "Entities, a list of entities that match the conditions specified in 'expr'.\n"
+								"shortText": "Filter a list of entities based on an attribute value.\n\\n\nThe result will always be a list of entities, even if there is only one entity.\nIn a case where you want only one entity, remember to get the first item in the list.\n\\n",
+								"returns": "Entities, a list of entities that match the conditions specified in 'operater\\_enum' and 'value'.\n"
 							},
 							"parameters": [
 								{
@@ -23918,7 +23935,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, the operator to use for filtering."
+										"shortText": "Enum, the operator to use for filtering: `'==', '!=', '>=', '<=', '>', '<'` or `'='`."
 									},
 									"type": {
 										"type": "reference",
@@ -23932,7 +23949,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "The attribute value to use for filtering. If the attribute value of a given entity\nis equal to this, it will be included in the result."
+										"shortText": "The attribute value to use for filtering."
 									},
 									"type": {
 										"type": "reference",
@@ -23980,7 +23997,7 @@
 					"sources": [
 						{
 							"fileName": "functions/query/Get.ts",
-							"line": 34,
+							"line": 35,
 							"character": 16
 						}
 					],
@@ -23997,7 +24014,7 @@
 								"tags": [
 									{
 										"tag": "example",
-										"text": "positions = query.Get('positions', [polyline1, polyline2])"
+										"text": "`positions = query.Get('positions', [polyline1, polyline2])`"
 									},
 									{
 										"tag": "example_info",
@@ -24027,7 +24044,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, the type of entity to get."
+										"shortText": "Enum, the type of entity to get: `'ps', '_v', '_e', '_w', 'pt', 'pl',\n'pg',` or `'co'`."
 									},
 									"type": {
 										"type": "reference",
@@ -24041,7 +24058,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Optional, list of entities to get entities from, or null to get all entities in the model."
+										"shortText": "(Optional) List of entities to get entities from, or null to get from all entities in the model."
 									},
 									"type": {
 										"type": "union",
@@ -24099,7 +24116,7 @@
 					"sources": [
 						{
 							"fileName": "functions/query/Invert.ts",
-							"line": 33,
+							"line": 34,
 							"character": 16
 						}
 					],
@@ -24111,12 +24128,12 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Returns a list of entities that are not part of the specified entities.\nFor example, you can get the position entities that are not part of a list of polygon entities.\n\\n\nThis function does the opposite of query.Get().\nWhile query.Get() gets entities that are part of the list of entities,\nthis function gets the entities that are not part of the list of entities.\n\\n",
+								"shortText": "Returns a list of entities that are not part of the specified entities.\nFor example, you can get the position entities that are not part of a list of polygon entities.\n\\n\nThis function does the opposite of `query.Get()`.\nWhile `query.Get()` gets entities that are part of the list of entities,\nthis function gets the entities that are not part of the list of entities.\n\\n",
 								"returns": "Entities, a list of entities that match the type specified in '`ent_type_enum`', and that are not in `entities`.",
 								"tags": [
 									{
 										"tag": "example",
-										"text": "positions = query.Invert('positions', [polyline1, polyline2])"
+										"text": "`positions = query.Invert('positions', [polyline1, polyline2])`"
 									},
 									{
 										"tag": "example_info",
@@ -24146,7 +24163,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, specifies what type of entities will be returned."
+										"shortText": "Enum, specifies what type of entities will be returned: `'ps', '_v', '_e',\n'_w', 'pt', 'pl', 'pg'`, or `'co'`."
 									},
 									"type": {
 										"type": "reference",
@@ -24201,7 +24218,7 @@
 					"sources": [
 						{
 							"fileName": "functions/query/Neighbor.ts",
-							"line": 29,
+							"line": 30,
 							"character": 16
 						}
 					],
@@ -24218,7 +24235,7 @@
 								"tags": [
 									{
 										"tag": "example",
-										"text": "query.neighbor('edges', [polyline1,polyline2,polyline3])"
+										"text": "`query.neighbor('edges', [polyline1,polyline2,polyline3])`"
 									},
 									{
 										"tag": "example_info",
@@ -24248,7 +24265,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, select the types of neighbors to return."
+										"shortText": "Enum, select the types of neighbors to return: `'ps', '_v', '_e', '_w', 'pt', 'pl',\n'pg',` or `'co'`."
 									},
 									"type": {
 										"type": "reference",
@@ -24303,7 +24320,7 @@
 					"sources": [
 						{
 							"fileName": "functions/query/Perimeter.ts",
-							"line": 29,
+							"line": 30,
 							"character": 16
 						}
 					],
@@ -24320,7 +24337,7 @@
 								"tags": [
 									{
 										"tag": "example",
-										"text": "query.Perimeter('edges', [polygon1,polygon2,polygon])"
+										"text": "`query.Perimeter('edges', [polygon1,polygon2,polygon])`"
 									},
 									{
 										"tag": "example_info",
@@ -24350,7 +24367,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, select the type of perimeter entities to return."
+										"shortText": "Enum, select the type of perimeter entities to return: `'ps', '_v', '_e', '_w',\n'pt', 'pl', 'pg',` or `'co'`."
 									},
 									"type": {
 										"type": "reference",
@@ -24417,12 +24434,12 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Sorts entities based on an attribute.\n\\n\nIf the attribute is a list, index can also be specified as follows: #@name1[index].\n\\n",
+								"shortText": "Sorts entities based on an attribute.\n\\n\nIf the attribute is a list, index can also be specified as follows: `#@name1[index]`.\n\\n",
 								"returns": "Entities, a list of sorted entities.",
 								"tags": [
 									{
 										"tag": "example",
-										"text": "sorted_list = query.Sort( [pos1, pos2, pos3], #@xyz[2], descending)"
+										"text": "`sorted_list = query.Sort( [pos1, pos2, pos3], #@xyz[2], descending)`"
 									},
 									{
 										"tag": "example_info",
@@ -24510,7 +24527,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, sort descending or ascending."
+										"shortText": "Enum, sort: `'descending'` or `'ascending'`."
 									},
 									"type": {
 										"type": "reference",
@@ -24539,7 +24556,7 @@
 					"sources": [
 						{
 							"fileName": "functions/query/Type.ts",
-							"line": 31,
+							"line": 35,
 							"character": 16
 						}
 					],
@@ -24552,15 +24569,15 @@
 							"flags": {},
 							"comment": {
 								"shortText": "Checks the type of an entity. \\n\n- For is\\_used\\_posi, returns true if the entity is a posi, and it is used by at least one\n  vertex.\n- For is\\_unused\\_posi, it returns the opposite of is\\_used\\_posi.\n- For is\\_object, returns true if the entity is a point, a polyline, or a polygon.\n- For is\\_topology, returns true if the entity is a vertex, an edge, a wire, or a face.\n- For is\\_point\\_topology, is\\_polyline\\_topology, and is\\_polygon\\_topology, returns true if the\n  entity is a topological entity, and it is part of an object of the specified type.\n- For is\\_open, returns true if the entity is a wire or polyline and is open.\n- For is\\_closed, it returns the opposite of is\\_open.\n- For is\\_hole, returns true if the entity is a wire, and it defines a hole in a face.\n- For has\\_holes, returns true if the entity is a face or polygon, and it has holes.\n- For has\\_no\\_holes, it returns the opposite of has\\_holes.",
-								"returns": "Boolean or list of boolean in input sequence.",
+								"returns": "Boolean or list of booleans in input sequence.",
 								"tags": [
 									{
 										"tag": "example",
-										"text": "query.Type([polyline1, polyline2, polygon1], is\\_polyline )"
+										"text": "`query.Type([polyline1, polyline2, polygon1], is_polyline)`"
 									},
 									{
 										"tag": "example_info",
-										"text": "Returns a list [true, true, false] if polyline1 and polyline2 are polylines but\npolygon1 is not a polyline.\n"
+										"text": "Returns a list `[true, true, false]` if polyline1 and polyline2 are polylines but\npolygon1 is not a polyline.\n"
 									}
 								]
 							},
@@ -24612,7 +24629,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, select the conditions to test agains."
+										"shortText": "Enum, select the conditions to test against: `'exists', 'is_position',\n'is_used_posi', 'is_unused_posi', 'is_vertex', 'is_edge', 'is_wire', 'is_point',\n'is_polyline', 'is_polygon', 'is_collection', 'is_object', 'is_topology',\n'is_point_topology', 'is_polyline_topology', 'is_polygon_topology', 'is_open',\n'is_closed', 'is_hole', 'has_holes'` or `'has_no_holes'`."
 									},
 									"type": {
 										"type": "reference",
@@ -25469,7 +25486,7 @@
 								"tags": [
 									{
 										"tag": "example",
-										"text": "data = util.HTTPRequest(null, \"websiteurl.com\", \"GET\")"
+										"text": "`data = util.HTTPRequest(null, \"websiteurl.com\", \"GET\")`"
 									},
 									{
 										"tag": "exampleinfo",
@@ -25498,7 +25515,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "request data"
+										"shortText": "Request data. Can be 'null' to request everything."
 									},
 									"type": {
 										"type": "intrinsic",
@@ -25512,7 +25529,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "request url"
+										"shortText": "Request url, as a string."
 									},
 									"type": {
 										"type": "intrinsic",
@@ -25526,7 +25543,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum; HTTP method"
+										"shortText": "Enum, HTTP method: `'GET', 'POST', 'PATCH', 'DELETE'` or `'PUT'`."
 									},
 									"type": {
 										"type": "reference",
@@ -26990,7 +27007,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Controls how edges are visualized by setting the visibility of the edge.\n\\n\nThe method can either be 'visible' or 'hidden'.\n'visible' means that an edge line will be visible.\n'hidden' means that no edge lines will be visible.\n\\n",
+								"shortText": "Controls how edges are visualized by setting the visibility of the edge.\n\\n\nThe method can either be 'visible' or 'hidden'.\n- 'visible' means that an edge line will be visible.\n- 'hidden' means that no edge lines will be visible.\n\\n",
 								"returns": "void\n"
 							},
 							"parameters": [
@@ -27040,7 +27057,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, visible or hidden."
+										"shortText": "Enum, `'visible'` or `'hidden'`."
 									},
 									"type": {
 										"type": "reference",
@@ -27064,7 +27081,7 @@
 					"sources": [
 						{
 							"fileName": "functions/visualize/Gradient.ts",
-							"line": 38,
+							"line": 44,
 							"character": 16
 						}
 					],
@@ -27076,7 +27093,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Generates a colour range based on a numeric attribute.\nSets the color by creating a vertex attribute called 'rgb' and setting the value.\n\\n\nThe available gradients are from <a href=\"https://colorbrewer2.org/\">Color Brewer. </a>\nIf a custom gradient is desired, the inline expression `colScale()` can be used instead. Refer to its documentation for more information.",
+								"shortText": "Generates a colour range based on a numeric attribute.\nSets the color by creating a vertex attribute called 'rgb' and setting the value.\n\\n\nThe available gradients are from <a href=\"https://colorbrewer2.org/\">Color Brewer. </a>\nIf a custom gradient is desired, the inline expression `colScale()` can be used instead.\nRefer to its documentation for more information.",
 								"returns": "void\n"
 							},
 							"parameters": [
@@ -27203,7 +27220,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, the colour gradient to use."
+										"shortText": "Enum, the colour gradient to use: `'false_color', 'black_body', 'white_red',\n'white_green', 'white_blue', 'blue_red', 'green_red', 'blue_green', 'grey_scale', 'OrRd', 'PuBu',\n'BuPu', 'Oranges', 'BuGn', 'YlOrBr', 'YlGn', 'Reds', 'RdPu', 'Greens', 'YlGnBu', 'Purples',\n'GnBu', 'Greys', 'YlOrRd', 'PuRd', 'Blues', 'PuBuGn', 'Viridis', 'Spectral', 'RdYlGn', 'RdBu',\n'PiYG', 'PRGn', 'RdYlBu', 'BrBG', 'RdGy', 'PuOr', 'Set2', 'Accent', 'Set1', 'Set3', 'Dark2',\n'Paired', 'Pastel2'` or `'Pastel1'`."
 									},
 									"type": {
 										"type": "reference",
@@ -27239,7 +27256,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Controls how polygon meshes are visualized by creating normals on vertices.\n\\n\nThe method can either be 'faceted' or 'smooth'.\n'faceted' means that the normal direction for each vertex will be perpendicular to the polygon to which it belongs.\n'smooth' means that the normal direction for each vertex will be the average of all polygons welded to this vertex.\n\\n",
+								"shortText": "Controls how polygon meshes are visualized by creating normals on vertices.\n\\n\nThe method can either be 'faceted' or 'smooth'.\n- 'faceted' means that the normal direction for each vertex will be perpendicular to the polygon to which it belongs.\n- 'smooth' means that the normal direction for each vertex will be the average of all polygons welded to this vertex.\n\\n",
 								"returns": "void\n"
 							},
 							"parameters": [
@@ -27289,7 +27306,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, the types of normals to create, faceted or smooth."
+										"shortText": "Enum, the types of normals to create: `'faceted'` or `'smooth'`."
 									},
 									"type": {
 										"type": "reference",
@@ -27330,7 +27347,7 @@
 								"tags": [
 									{
 										"tag": "example",
-										"text": "plane1 = visualize.Plane(position1, vector1, [0,1,0])"
+										"text": "`plane1 = visualize.Plane(position1, vector1, [0,1,0])`"
 									},
 									{
 										"tag": "example_info",
@@ -27390,7 +27407,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Scales the size of the visualized plane."
+										"shortText": "A number. Scales the size of the visualized plane."
 									},
 									"type": {
 										"type": "intrinsic",
@@ -27432,11 +27449,11 @@
 							"flags": {},
 							"comment": {
 								"shortText": "Visualises a ray or a list of rays by creating a polyline with an arrow head.",
-								"returns": "entities, a line with an arrow head representing the ray.",
+								"returns": "Entities, a line with an arrow head representing the ray.",
 								"tags": [
 									{
 										"tag": "example",
-										"text": "ray1 = visualize.Ray([[1,2,3],[0,0,1]])\n"
+										"text": "`ray1 = visualize.Ray([[1,2,3],[0,0,1]])`\n"
 									}
 								]
 							},
@@ -27492,7 +27509,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Scales the arrow head of the vector."
+										"shortText": "A number. Scales the arrow head of the vector."
 									},
 									"type": {
 										"type": "intrinsic",

@@ -15,13 +15,27 @@ import { _getPgonsPlines, _offsetPgon, _offsetPline, IClipOffsetOptions, MClipOf
 
 
 /**
- * Offset a polyline or polygon, with chamfered joints.
- *
+ * Offset a polyline or polygon, with chamfered/squared joints. The original entities are unmodified.
+ * \n
+ * The types of joints of the generated offset polygon are shown below. 
+ * The red border indicates the generated offset polygon, whereas the black polygon
+ * is the original/input polygon. 
+ * \n
+ * ![Examples of offset joints](/assets/typedoc-json/docMDimgs/funcs_poly2d_offsets_joints_examples.png)
+ * \n
+ * See `poly2d.OffsetMitre` and `poly2d.OffsetRound` to use different joints while offsetting.
+ * Alternatively, try `modify.Offset` for a different offset operation that works in 3D and modifies
+ * the original entities. 
+ * \n 
+ * For open polylines, the type of ends can be changed with `end\_type`, shown below. 
+ * \n
+ * ![Examples of offset ends](/assets/typedoc-json/docMDimgs/funcs_poly2d_offsets_examples.png)
+ * \n
  * @param __model__
  * @param entities A list of polyines or polygons, or entities from which polylines or polygons can
  * be extracted.
- * @param dist Offset distance
- * @param end_type Enum, the type of end shape for open polylines.
+ * @param dist Offset distance, a number. 
+ * @param end_type Enum, the type of end shape for open polylines: `'square_end'` or `'butt_end'`.
  * @returns A list of new polygons.
  */
 export function OffsetChamfer(__model__: GIModel, entities: TId | TId[], dist: number,

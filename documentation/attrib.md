@@ -18,7 +18,7 @@ If `entities` is null, then model level attributes will be set.
   * *entities:* Entities, the entities to set the attribute value for.  
   * *attrib:* The attribute. Can be `name`, `[name, index]`, or `[name, key]`.  
   * *value:* The attribute value, or list of values.  
-  * *method:* Enum  
+  * *method:* Enum: `'one_value'` or `'many_values'`.  
   
 **Returns:** void  
   
@@ -51,8 +51,8 @@ All attribute values will be set to null.
   
   
 **Parameters:**  
-  * *ent\_type\_sel:* Enum, the attribute entity type.  
-  * *data\_type\_sel:* Enum, the data type for this attribute.  
+  * *ent\_type\_sel:* Enum, the attribute entity type: `'ps', '_v', '_e', '_w', '_f', 'pt', 'pl', 'pg', 'co',` or `'mo'`.  
+  * *data\_type\_sel:* Enum, the data type for this attribute: `'number', 'string', 'boolean', 'list'` or `'dict'`.  
   * *attribs:* A single attribute name, or a list of attribute names.  
   
 **Returns:** void  
@@ -66,7 +66,7 @@ All values will also be deleted.
   
   
 **Parameters:**  
-  * *ent\_type\_sel:* Enum, the attribute entity type.  
+  * *ent\_type\_sel:* Enum, the attribute entity type: `'ps', '_v', '_e', '_w', '_f', 'pt', 'pl', 'pg', 'co',` or `'mo'`.  
   * *attribs:* A single attribute name, or a list of attribute names. If 'null', all attributes
 will be deleted.  
   
@@ -83,7 +83,7 @@ All values will remain the same.
   
   
 **Parameters:**  
-  * *ent\_type\_sel:* Enum, the attribute entity type.  
+  * *ent\_type\_sel:* Enum, the attribute entity type: `'ps', '_v', '_e', '_w', '_f', 'pt', 'pl', 'pg', 'co',` or `'mo'`.  
   * *old\_attrib:* The old attribute name.  
   * *new\_attrib:* The new attribute name.  
   
@@ -95,14 +95,20 @@ All values will remain the same.
   
 **Description:** Push attributes up or down the hierarchy. The original attribute is not changed.
 
-  
+
+In addition to the standard topologies, the `ent_type_sel` argument allows `attrib.Push` to
+push attributes to the following:
+- `cop`, short for "Collection Parent".
+- `coc`, short for "Collection Child".  
   
 **Parameters:**  
   * *entities:* Entities, the entities to push the attribute values for.  
   * *attrib:* The attribute. Can be `name`, `[name, index_or_key]`,
 `[source_name, source_index_or_key, target_name]` or `[source_name, source_index_or_key, target_name, target_index_or_key]`.  
-  * *ent\_type\_sel:* Enum, the target entity type where the attribute values should be pushed to.  
-  * *method\_sel:* Enum, the method for aggregating attribute values in cases where aggregation is necessary.  
+  * *ent\_type\_sel:* Enum, the target entity type where the attribute values should be pushed to:
+`'ps', '_v', '_e', '_w', '_f', 'pt', 'pl', 'pg', 'co', 'cop', 'coc'` or `'mo'`.  
+  * *method\_sel:* Enum, the method for aggregating attribute values in cases where aggregation is necessary:
+`'first', 'last', 'average', 'median', 'sum', 'min'` or `'max'`.  
   
 **Returns:** void  
   
@@ -115,12 +121,12 @@ All values will remain the same.
   
   
 **Parameters:**  
-  * *ent\_type\_sel:* Enum, the attribute entity type.  
+  * *ent\_type\_sel:* Enum, the attribute entity type: `'ps', '_v', '_e', '_w', '_f', 'pt', 'pl', 'pg', 'co',` or `'mo'`.  
   * *attribs:* A single attribute name, or a list of attribute names.  
   
 **Returns:** A list of values of the attribute.  
 **Examples:**  
-  * attribs = attrib.Values("pg")  
+  * `attribs = attrib.Values("pg")`  
     An example of `attribs`: `["True", "False"]`.
   
   
@@ -133,11 +139,11 @@ All values will remain the same.
   
   
 **Parameters:**  
-  * *ent\_type\_sel:* Enum, the attribute entity type.  
+  * *ent\_type\_sel:* Enum, the attribute entity type: `'ps', '_v', '_e', '_w', '_f', 'pt', 'pl', 'pg', 'co',` or `'mo'`.  
   
 **Returns:** A list of dictionaries, defining the name and type of each attribute.  
 **Examples:**  
-  * attribs = attrib.Discover("pg")  
+  * `attribs = attrib.Discover("pg")`  
     An example of `attribs`: `[{name: "description", type: "str"}, {name: "area", type: "number"}]`.
   
   

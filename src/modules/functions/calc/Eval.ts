@@ -39,7 +39,7 @@ import * as chk from '../../_check_types';
  * @param entities Single or list of edges, wires, polylines, or faces, polygons, or collections.
  * @param t_param A value between 0 to 1.
  * @returns The coordinates [x, y, z], or a list of coordinates.
- * @example coord1 = calc.Eval (polyline1, 0.23)
+ * @example `coord1 = calc.Eval (polyline1, 0.23)`
  */
 export function Eval(__model__: GIModel, entities: TId|TId[], t_param: number): Txyz|Txyz[] {
     if (isEmptyArr(entities)) { return []; }

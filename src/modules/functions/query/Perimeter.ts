@@ -20,10 +20,11 @@ import { _getEntTypeFromStr } from './_shared';
 * entities must be part of the set of input entities and must have naked edges.
 * \n
 * @param __model__
-* @param ent_type Enum, select the type of perimeter entities to return.
+* @param ent_type Enum, select the type of perimeter entities to return: `'ps', '_v', '_e', '_w',
+* 'pt', 'pl', 'pg',` or `'co'`.
 * @param entities List of entities.
 * @returns Entities, a list of perimeter entities.
-* @example query.Perimeter('edges', [polygon1,polygon2,polygon])
+* @example `query.Perimeter('edges', [polygon1,polygon2,polygon])`
 * @example_info Returns list of edges that are at the perimeter of polygon1, polygon2, or polygon3.
 */
 export function Perimeter(__model__: GIModel, ent_type: _EEntType, entities: TId|TId[]): TId[] {

@@ -12,9 +12,9 @@ import { _import } from './Import';
  * The geometry will be added to the model.
  * \n
  * @param model_data The model data.
- * @param data_format Enum, the file format.
- * @returns A a collection of entities added to the model.
- * @example io.ImportData (data_str, "obj")
+ * @param data_format Enum, the file format: `'gi', 'sim', 'obj', 'geojson'` or `'CityJSON'`.
+ * @returns A collection of entities added to the model.
+ * @example `io.ImportData (data_str, "obj")`
  * @example_info Imports the data in obj format.
  */
 export function ImportData(__model__: GIModel, model_data: string, data_format: _EIOImportDataFormat): TId | TId[] | {} {

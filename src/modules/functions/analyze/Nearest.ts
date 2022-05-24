@@ -27,11 +27,11 @@ import { _getUniquePosis } from './_shared';
  * \n
  * Returns a dictionary containing the nearest positions.
  * \n
- * If 'num_neighbors' is 1, the dictionary will contain two lists:
+ * If 'num\_neighbors' is 1, the dictionary will contain two lists:
  * 1. 'posis': a list of positions, a subset of positions from the source.
  * 2. 'neighbors': a list of neighbouring positions, a subset of positions from target.
  * \n
- * If 'num_neighbors' is greater than 1, the dictionary will contain two lists:
+ * If 'num\_neighbors' is greater than 1, the dictionary will contain two lists:
  * 1. 'posis': a list of positions, a subset of positions from the source.
  * 2. 'neighbors': a list of lists of neighbouring positions, a subset of positions from target.
  * \n

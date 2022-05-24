@@ -24,14 +24,14 @@ import { _EClose, _ECurveCatRomType } from './_enum';
  * <a href="https://en.wikipedia.org/wiki/Centripetal_Catmull%E2%80%93Rom_spline">Catmull–Rom spline</a>.
  * \n
  * <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Catmull-Rom_examples_with_parameters..png"
- * alt="Curve types" width="100">
+ * alt="Curve types" width="150">
  * \n
  * @param __model__
  * @param coords A list of |coordinates|.
- * @param type Enum, the type of interpolation algorithm.
+ * @param type Enum, the type of interpolation algorithm: 'centripetal', 'chordal', or 'catmullrom'.
  * @param tension Curve tension, between 0 and 1. This only has an effect when the 'type' is set
  * to 'catmullrom'.
- * @param close Enum, 'open' or 'close'.
+ * @param close Enum, `'open'` or `'close'`.
  * @param num_positions Number of positions to be distributed distributed along the spline.
  * @returns Entities, a list of positions.
  * @example `posis = pattern.Spline([[0,0,0], [10,0,50], [20,0,0], [30,0,20], [40,0,10]],

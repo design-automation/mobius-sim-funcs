@@ -7,8 +7,6 @@ import { _getFile } from './_getFile';
 // ================================================================================================
 /**
  * Read data from a Url or from local storage.
- * 
- * //TEST WITH A TEST FILE ? AND INSERT DIAGRAMS AND REFERENCE THE VR VIEWER
  *
  * @param data The data to be read (from URL or from Local Storage).
  * @returns The data.

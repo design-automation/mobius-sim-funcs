@@ -132,7 +132,8 @@ import { _EBoxMethod } from './_enum';
  * If a list of two numbers is given, then they will be interpreted as `[columns, rows]`,
  * and the number of layers is assumed to be equal to the number of rows.
  * If a list of three numbers is given, then they will be interpreted as `[columns, rows, layers]`.
- * @param method Enum, define the way the coords will be return as lists.
+ * @param method Enum, define the way the coords will be returned as lists: `'flat', 'rows',
+ * 'columns', 'layers'` or `'quads'`.
  * @returns Entities, a list of positions, or a list of lists of positions
  * (depending on the 'method' setting).
  * @example `posis = pattern.Box(XY, [10,20,30], [3,4,5], 'quads')`

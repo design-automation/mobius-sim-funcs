@@ -10,11 +10,11 @@ import { _HTTPRequestMethod } from './_enum';
  * Create a http request to a URL.
  * Typically used with a server that runs simulations, or to download data. 
  * 
- * @param request_data request data
- * @param request_url request url
- * @param method Enum; HTTP method
+ * @param request_data Request data. Can be 'null' to request everything. 
+ * @param request_url Request url, as a string.
+ * @param method Enum, HTTP method: `'GET', 'POST', 'PATCH', 'DELETE'` or `'PUT'`.
  * @returns The request response: JSON data in the form of a dictionary.
- * @example data = util.HTTPRequest(null, "websiteurl.com", "GET") 
+ * @example `data = util.HTTPRequest(null, "websiteurl.com", "GET")`
  * @exampleinfo This will show the website in the console. 
  */
  export async function HTTPRequest(__model__: GIModel, request_data: any, request_url: string, method: _HTTPRequestMethod): Promise<string> {

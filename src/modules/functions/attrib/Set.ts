@@ -24,7 +24,7 @@ import { _ESet } from './_enum';
  * @param entities Entities, the entities to set the attribute value for.
  * @param attrib The attribute. Can be `name`, `[name, index]`, or `[name, key]`.
  * @param value The attribute value, or list of values.
- * @param method Enum
+ * @param method Enum: `'one_value'` or `'many_values'`.
  * @returns void
  */
 export function Set(

@@ -41,7 +41,7 @@ import * as chk from '../../_check_types';
  * @param size Size of rectangle. If number, assume square of that length;
  * if list of two numbers, x and y lengths respectively.
  * @returns Entities, a list of four positions.
- * @example posis = pattern.Rectangle([0,0,0], 10)
+ * @example `posis = pattern.Rectangle([0,0,0], 10)`
  * @example_info Creates a list of 4 coords, being the vertices of a 10 by 10 square.
  * @example `posis = pattern.Rectangle(XY, [10,20])`
  * @example_info Creates a list of 4 positions in a rectangle pattern. The rectangle has a width of

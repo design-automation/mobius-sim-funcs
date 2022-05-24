@@ -23,9 +23,9 @@ import * as chk from '../../_check_types';
  *
  * @param __model__
  * @param planes A plane or a list of planes.
- * @param scale Scales the size of the visualized plane.
+ * @param scale A number. Scales the size of the visualized plane.
  * @returns Entities, a square plane polyline and three axis polyline.
- * @example plane1 = visualize.Plane(position1, vector1, [0,1,0])
+ * @example `plane1 = visualize.Plane(position1, vector1, [0,1,0])`
  * @example_info Creates a plane with position1 on it and normal = cross product of vector1 with y-axis.
  */
 export function Plane(__model__: GIModel, planes: TPlane|TPlane[], scale: number): TId[] {

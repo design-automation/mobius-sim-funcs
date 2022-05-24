@@ -64,8 +64,8 @@ interface TRaytraceResult {
  * If 'distances' is selected, the dictionary will contain the following list:
  * 1. 'distances': A list of numbers, the distance travelled for each ray.
  * \n
- * If 'hit_pgons' is selected, the dictionary will contain the following list:
- * 1. 'hit_pgons': A list of polygon IDs, the polygons hit for each ray, or 'null' if no polygon
+ * If 'hit\_pgons' is selected, the dictionary will contain the following list:
+ * 1. 'hit\_pgons': A list of polygon IDs, the polygons hit for each ray, or 'null' if no polygon
  * was hit.
  * \n
  * If 'intersections' is selected, the dictionary will contain the following list:
@@ -82,7 +82,7 @@ interface TRaytraceResult {
  * @param rays A ray, a list of rays, or a list of lists of rays.
  * @param entities The obstructions, faces, polygons, or collections of faces or polygons.
  * @param dist The ray limits, one or two numbers. Either max, or [min, max].
- * @param method Enum; values to return.
+ * @param method Enum, values to return: `'stats', 'distances', 'hit_pgons', 'intersections'` or `'all'`.
  * @returns A dictionary, a list of dictionaries, or null.
  */
 export function Raytrace(

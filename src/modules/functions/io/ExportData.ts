@@ -19,12 +19,12 @@ import { _EIOExportDataFormat } from './_enum';
  * Export data from the model as a string.
  * \n
  * @param __model__
- * @param entities Optional. Entities to be exported. If null, the whole model will be exported.
+ * @param entities (Optional) Entities to be exported. If null, the whole model will be exported.
  * @param file_name Name of the file as a string.
- * @param data_format Enum, the file format.
- * @returns the model data as a string.
- * @example io.Export (#pg, 'my_model.obj', obj)
- * @example_info Exports all the polgons in the model as an OBJ.
+ * @param data_format Enum, the export file format: `'gi', 'sim', 'obj_v', 'obj_ps', 'geojson'` or `'gltf'`.
+ * @returns The model data as a string.
+ * @example `io.Export (#pg, 'my_model.obj', 'obj')`
+ * @example_info Exports all the polygons in the model as an OBJ.
  */
  export async function ExportData(__model__: GIModel, entities: TId | TId[] | TId[][], data_format: _EIOExportDataFormat): Promise<string> {
     // if (typeof localStorage === 'undefined') { return; }

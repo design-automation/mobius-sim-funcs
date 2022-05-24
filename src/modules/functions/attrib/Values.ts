@@ -9,10 +9,10 @@ import { _getEntTypeFromStr } from './_shared';
  * Get a list of unique attribute values for an attribute.
  * \n
  * @param __model__
- * @param ent_type_sel Enum, the attribute entity type.
+ * @param ent_type_sel Enum, the attribute entity type: `'ps', '_v', '_e', '_w', '_f', 'pt', 'pl', 'pg', 'co',` or `'mo'`.
  * @param attribs A single attribute name, or a list of attribute names.
  * @returns A list of values of the attribute.
- * @example attribs = attrib.Values("pg")
+ * @example `attribs = attrib.Values("pg")`
  * @example_info An example of `attribs`: `["True", "False"]`.
  */
 export function Values(__model__: GIModel, ent_type_sel: _EEntTypeAndMod, attribs: string|string[]): TAttribDataTypes[] {

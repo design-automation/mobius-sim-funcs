@@ -29,7 +29,8 @@ Sets the color by creating a vertex attribute called 'rgb' and setting the value
 
 
 The available gradients are from <a href="https://colorbrewer2.org/">Color Brewer. </a>
-If a custom gradient is desired, the inline expression `colScale()` can be used instead. Refer to its documentation for more information.  
+If a custom gradient is desired, the inline expression `colScale()` can be used instead.
+Refer to its documentation for more information.  
   
 **Parameters:**  
   * *entities:* The entities for which to set the color.  
@@ -37,7 +38,12 @@ If a custom gradient is desired, the inline expression `colScale()` can be used 
 You can specify an attribute with an index. For example, ['xyz', 2] will create a gradient based on height.  
   * *range:* The range of the attribute. If a list of 2 numbers is input, [minimum, maximum].
 If only one number, it defaults to [0, maximum]. If null, then the range will be auto-calculated.  
-  * *method:* Enum, the colour gradient to use.  
+  * *method:* Enum, the colour gradient to use: `'false_color', 'black_body', 'white_red',
+'white_green', 'white_blue', 'blue_red', 'green_red', 'blue_green', 'grey_scale', 'OrRd', 'PuBu',
+'BuPu', 'Oranges', 'BuGn', 'YlOrBr', 'YlGn', 'Reds', 'RdPu', 'Greens', 'YlGnBu', 'Purples',
+'GnBu', 'Greys', 'YlOrRd', 'PuRd', 'Blues', 'PuBuGn', 'Viridis', 'Spectral', 'RdYlGn', 'RdBu',
+'PiYG', 'PRGn', 'RdYlBu', 'BrBG', 'RdGy', 'PuOr', 'Set2', 'Accent', 'Set1', 'Set3', 'Dark2',
+'Paired', 'Pastel2'` or `'Pastel1'`.  
   
 **Returns:** void  
   
@@ -49,14 +55,14 @@ If only one number, it defaults to [0, maximum]. If null, then the range will be
 
 
 The method can either be 'visible' or 'hidden'.
-'visible' means that an edge line will be visible.
-'hidden' means that no edge lines will be visible.
+- 'visible' means that an edge line will be visible.
+- 'hidden' means that no edge lines will be visible.
 
   
   
 **Parameters:**  
   * *entities:* A list of edges, or other entities from which edges can be extracted.  
-  * *method:* Enum, visible or hidden.  
+  * *method:* Enum, `'visible'` or `'hidden'`.  
   
 **Returns:** void  
   
@@ -68,14 +74,14 @@ The method can either be 'visible' or 'hidden'.
 
 
 The method can either be 'faceted' or 'smooth'.
-'faceted' means that the normal direction for each vertex will be perpendicular to the polygon to which it belongs.
-'smooth' means that the normal direction for each vertex will be the average of all polygons welded to this vertex.
+- 'faceted' means that the normal direction for each vertex will be perpendicular to the polygon to which it belongs.
+- 'smooth' means that the normal direction for each vertex will be the average of all polygons welded to this vertex.
 
   
   
 **Parameters:**  
   * *entities:* Vertices belonging to polygons, or entities from which polygon vertices can be extracted.  
-  * *method:* Enum, the types of normals to create, faceted or smooth.  
+  * *method:* Enum, the types of normals to create: `'faceted'` or `'smooth'`.  
   
 **Returns:** void  
   
@@ -87,11 +93,11 @@ The method can either be 'faceted' or 'smooth'.
   
 **Parameters:**  
   * *rays:* Polylines representing the ray or rays.  
-  * *scale:* Scales the arrow head of the vector.  
+  * *scale:* A number. Scales the arrow head of the vector.  
   
-**Returns:** entities, a line with an arrow head representing the ray.  
+**Returns:** Entities, a line with an arrow head representing the ray.  
 **Examples:**  
-  * ray1 = visualize.Ray([[1,2,3],[0,0,1]])
+  * `ray1 = visualize.Ray([[1,2,3],[0,0,1]])`
   
   
   
@@ -102,11 +108,11 @@ The method can either be 'faceted' or 'smooth'.
   
 **Parameters:**  
   * *planes:* A plane or a list of planes.  
-  * *scale:* Scales the size of the visualized plane.  
+  * *scale:* A number. Scales the size of the visualized plane.  
   
 **Returns:** Entities, a square plane polyline and three axis polyline.  
 **Examples:**  
-  * plane1 = visualize.Plane(position1, vector1, [0,1,0])  
+  * `plane1 = visualize.Plane(position1, vector1, [0,1,0])`  
     Creates a plane with position1 on it and normal = cross product of vector1 with y-axis.
   
   

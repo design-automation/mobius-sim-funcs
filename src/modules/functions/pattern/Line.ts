@@ -29,11 +29,12 @@ import * as chk from '../../_check_types';
  * plane.
  * \n
  * Returns the list of new positions.
- * \ns
+ * \n
  * @param __model__
  * @param origin A |coordinate| or a |plane|.
  * If a coordinate is given, then the plane is assumed to be aligned with the global XY plane.
- * @param length The length of the line along which positions will be generated.
+ * @param length A number. The length of the line along which positions will be generated.
+ * @param num_positions An integer. The number of positions to be generated. 
  * @returns Entities, a list of new positions.
  */
 export function Line(__model__: GIModel, origin: Txyz|TPlane, length: number, num_positions: number): TId[] {

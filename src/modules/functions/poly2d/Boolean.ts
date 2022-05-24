@@ -42,7 +42,7 @@ import {
  * @param __model__
  * @param a_entities A list of polyline or polygons, or entities from which polyline or polygons can be extracted.
  * @param b_entities A list of polygons, or entities from which polygons can be extracted.
- * @param method Enum, the boolean operator to apply.
+ * @param method Enum, the boolean operator to apply: `'intersect', 'difference'` or `'symmetric'`.
  * @returns A list of new polylines and polygons.
  */
 export function Boolean(__model__: GIModel, a_entities: TId|TId[], b_entities: TId|TId[], method: _EBooleanMethod): TId[] {

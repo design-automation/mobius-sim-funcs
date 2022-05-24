@@ -34,7 +34,7 @@ import { getPlane } from '../_common';
  * Given any entities, the centroid will be extracted, 
  * and a plane will be generated with an origin at the centroid, and with axes parallel to the global axes.
  * @returns void
- * @example modify.XForm(polygon1, plane1, plane2)
+ * @example `modify.XForm(polygon1, plane1, plane2)`
  * @example_info Transforms polygon1 from plane1 to plane2.
  */
 export function XForm(__model__: GIModel, entities: TId|TId[],

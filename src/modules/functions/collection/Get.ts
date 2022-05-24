@@ -17,8 +17,8 @@ import * as chk from '../../_check_types';
  * Get one or more collections from the model, given a name or list of names. Collections with an
  * attribute called 'name' and with a value that matches the given value will be returned.
  * \n
- * The value for name can include wildcards: '?' matches any single character and '*' matches any
- * sequence of characters. For example, 'coll?' will match 'coll1' and 'colla'. 'coll*' matches any
+ * The value for name can include wildcards: '?' matches any single character and '\*' matches any
+ * sequence of characters. For example, 'coll?' will match 'coll1' and 'colla'. 'coll\*' matches any
  * name that starts with 'coll'.
  * \n
  * If a single collection is found, the collection will be returned as a single item (not a list).
@@ -27,7 +27,7 @@ import * as chk from '../../_check_types';
  * If no collections are found, then an empty list is returned.
  * \n
  * @param __model__
- * @param names A name or list of names. May include wildcards, '?' and '*'.
+ * @param names A name or list of names. May include wildcards, '?' and '\*'.
  * @returns The collection, or a list of collections.
  */
 export function Get(__model__: GIModel, names: string|string[]): TId|TId[] {

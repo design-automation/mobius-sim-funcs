@@ -17,7 +17,14 @@ import { _getPosiFromMap, _getPosis, TPosisMap } from './_shared';
 
 // ================================================================================================
 /**
- * Create a delaunay triangulation of set of positions.
+ * Create a delaunay triangulation of a set of positions.
+ * \n
+ * A Delaunay triangulation for a given set of positions (`entities`) is a triangulation, DT(P), such
+ * that no position in `entities` is inside the circumcircle of any triangle in DT(P).
+ * See the wikipedia page for more info: <a href="https://en.wikipedia.org/wiki/Delaunay_triangulation" target="_blank"> 
+ * Delanuay triangulation</a>.
+ * \n
+ * <img src="https://upload.wikimedia.org/wikipedia/commons/d/db/Delaunay_circumcircles_vectorial.svg">
  * \n
  * @param __model__
  * @param entities A list of positions, or entities from which positions can be extracted.

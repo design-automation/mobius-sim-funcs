@@ -22,8 +22,8 @@ import { _EEdgeMethod } from './_enum';
 * - If "touching" is selected, it returns a list of edges from other wires that share the same start and end positions (in any order).
 * @param __model__
 * @param entities An edge or list of edges.
-* @param edge_query_enum Enum, select the types of edges to return.
-* @returns Entities, an edge or list of edges
+* @param edge_query_enum Enum, select the types of edges to return: `'previous', 'next', 'both'` or `'touching'`.
+* @returns Entities, an edge or list of edges, or null. 
 */
 export function Edge(__model__: GIModel, entities: TId | TId[], edge_query_enum: _EEdgeMethod): TId | TId[] {
     if (isEmptyArr(entities)) { return []; }

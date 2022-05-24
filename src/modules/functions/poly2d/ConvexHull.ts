@@ -16,9 +16,16 @@ import { _convexHull, _getPosis } from './_shared';
 // ================================================================================================
 /**
  * Creates a convex hull from a list of positions. 
+ * \n
+ * For more information, see the wikipedia article: 
+ * <a href="https://en.wikipedia.org/wiki/Convex_hull" target="_blank">Convex_Hull</a>
+ * \n
+ * <img
+ * src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Extreme_points.svg/330px-Extreme_points.svg.png"
+ * alt="Convex hull example" width="150">
+ * \n
+ * In the image above, the convex hull of the red set is the blue and red convex set.
  * 
- * //TO INSERT AN IMAGE/DIAGRAM OF A CONVEX HULL 
- *
  * @param __model__
  * @param entities A list of positions, or entities from which positions can be extracted.
  * @returns A new polygons, the convex hull of the positions.

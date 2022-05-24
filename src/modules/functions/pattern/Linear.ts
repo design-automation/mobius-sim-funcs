@@ -31,10 +31,10 @@ import { _EClose } from './_enum';
  *   of new position IDs. \n
  * @param __model__
  * @param coords A list of |coordinates|.
- * @param close Enum, 'open' or 'close'.
- * @param The number of positions to generate.
+ * @param close Enum, `'open'` or `'close'`.
+ * @param num_positions The number of positions to generate.
  * @returns Entities, a list of new position IDs.
- * @example posis = pattern.Linear([[0,0,0], [10,0,0]], false, 3)
+ * @example `posis = pattern.Linear([[0,0,0], [10,0,0]], false, 3)`
  * @example_info Generates 3 positions, located at [0,0,0], [5,0,0], and [10,0,0].
  * @example `posis = pattern.Linear([[0,0,0], [10,0,0], [10,10,0]], 'close', 4)`
  * @example_info Generates 9 positions. Two new coordinates are calculated between each pair of

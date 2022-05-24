@@ -49,13 +49,13 @@ interface TIsovistResult {
  * \n
  * Returns a dictionary containing different isovist metrics.
  * \n
- * 1. 'avg_dist': The average distance from origin to the perimeter.
- * 2. 'min_dist': The minimum distance from the origin to the perimeter.
- * 3. 'max_dist': The minimum distance from the origin to the perimeter.
+ * 1. 'avg\_dist': The average distance from origin to the perimeter.
+ * 2. 'min\_dist': The minimum distance from the origin to the perimeter.
+ * 3. 'max\_dist': The minimum distance from the origin to the perimeter.
  * 4. 'area': The area of the isovist.
  * 5. 'perimeter': The perimeter of the isovist.
- * 4. 'area_ratio': The ratio of the area of the isovist to the maximum area.
- * 5. 'perimeter_ratio': The ratio of the perimeter of the isovist to the maximum perimeter.
+ * 4. 'area\_ratio': The ratio of the area of the isovist to the maximum area.
+ * 5. 'perimeter\_ratio': The ratio of the perimeter of the isovist to the maximum perimeter.
  * 6. 'circularity': The ratio of the square of the perimeter to area (Davis and Benedikt, 1979).
  * 7. 'compactness': The ratio of average distance to the maximum distance (Michael Batty, 2001).
  * 8. 'cluster': The ratio of the radius of an idealized circle with the actual area of the

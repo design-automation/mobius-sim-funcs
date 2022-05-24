@@ -12,12 +12,20 @@ import { _getAttribPushTarget } from './_shared';
 /**
  * Push attributes up or down the hierarchy. The original attribute is not changed.
  * \n
+ * In addition to the standard topologies, the `ent_type_sel` argument allows `attrib.Push` to
+ * push attributes to the following:
+ * - `cop`, short for "Collection Parent".
+ * - `coc`, short for "Collection Child".
+ * 
+ * \n
  * @param __model__
  * @param entities Entities, the entities to push the attribute values for.
  * @param attrib The attribute. Can be `name`, `[name, index_or_key]`,
  * `[source_name, source_index_or_key, target_name]` or `[source_name, source_index_or_key, target_name, target_index_or_key]`.
- * @param ent_type_sel Enum, the target entity type where the attribute values should be pushed to.
- * @param method_sel Enum, the method for aggregating attribute values in cases where aggregation is necessary.
+ * @param ent_type_sel Enum, the target entity type where the attribute values should be pushed to:
+ * `'ps', '_v', '_e', '_w', '_f', 'pt', 'pl', 'pg', 'co', 'cop', 'coc'` or `'mo'`.
+ * @param method_sel Enum, the method for aggregating attribute values in cases where aggregation is necessary: 
+ * `'first', 'last', 'average', 'median', 'sum', 'min'` or `'max'`.
  * @returns void 
  */
 export function Push(__model__: GIModel, entities: TId|TId[],

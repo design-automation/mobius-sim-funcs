@@ -46,13 +46,13 @@ interface TClosestPathResult {
  * \n
  * If 'counts' is selected, the dictionary will contain four lists:
  * 1. 'posis': a list of positions traversed by the paths,
- * 2. 'posis_count': a list of numbers that count how often each position was traversed.
+ * 2. 'posis\_count': a list of numbers that count how often each position was traversed.
  * 3. 'edges': a list of edges traversed by the paths,
- * 4. 'edges_count': a list of numbers that count how often each edge was traversed.
+ * 4. 'edges\_count': a list of numbers that count how often each edge was traversed.
  * \n
  * If 'paths' is selected, the dictionary will contain two lists of lists:
- * 1. 'posi_paths': a list of lists of positions, one list for each path.
- * 2. 'edge_paths': a list of lists of edges, one list for each path.
+ * 1. 'posi\_paths': a list of lists of positions, one list for each path.
+ * 2. 'edge\_paths': a list of lists of edges, one list for each path.
  * \n
  * If 'all' is selected, the dictionary will contain all lists just described.
  * \n
@@ -60,8 +60,8 @@ interface TClosestPathResult {
  * @param source Path source, a list of positions, or entities from which positions can be extracted.
  * @param target Path source, a list of positions, or entities from which positions can be extracted.
  * @param entities The network, edges, or entities from which edges can be extracted.
- * @param method Enum, the method to use, directed or undirected.
- * @param result Enum, the data to return, positions, edges, or both.
+ * @param method Enum, the method to use: `'directed'` or `'undirected'`.
+ * @param result Enum, the data to return (positions, edges, both): `'distances', 'counts', 'paths'` or `'all'`.
  * @returns A dictionary containing the results.
  */
 export function ClosestPath(

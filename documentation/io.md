@@ -23,10 +23,10 @@ a dialog box may pop up to manually confirm the action if writing to the hard di
   
 **Parameters:**  
   * *data:* The data to be saved (can be the url to the file).  
-  * *file\_name:* The name to be saved in the file system (file extension should be included).  
-  * *data\_target:* Enum, where the data is to be exported to.  
+  * *file\_name:* The name to be saved in the file system as a string (file extension should be included).  
+  * *data\_target:* Enum, where the data is to be exported to: `'Save to Hard Disk'` or `'Save to Local Storage'`.  
   
-**Returns:** Whether the data is successfully saved. (true/false)  
+**Returns:** Whether the data is successfully saved. (True/false)  
   
   
 ## ImportData  
@@ -39,11 +39,11 @@ The geometry will be added to the model.
   
 **Parameters:**  
   * *model\_data:* The model data.  
-  * *data\_format:* Enum, the file format.  
+  * *data\_format:* Enum, the file format: `'gi', 'sim', 'obj', 'geojson'` or `'CityJSON'`.  
   
-**Returns:** A a collection of entities added to the model.  
+**Returns:** A collection of entities added to the model.  
 **Examples:**  
-  * io.ImportData (data_str, "obj")  
+  * `io.ImportData (data_str, "obj")`  
     Imports the data in obj format.
   
   
@@ -56,7 +56,7 @@ The geometry will be added to the model.
 
 There are two ways of specifying the file location to be imported:
 - A url, e.g. "https://www.dropbox.com/xxxx/my_data.obj"
-- A file name in the local storage, e.g. "my_data.obj". (PUT A LINK TO THE LOCAL HELP)
+- A file name in the local storage, e.g. "my\_data.obj". See documentation on local storage in the menu for more info.
 
 
 To place a file in local storage, go to the Mobius menu, and select 'Local Storage' from the dropdown.
@@ -66,11 +66,11 @@ Note that a script using a file in local storage may fail when others try to ope
   
 **Parameters:**  
   * *data\_url:* The url to retrieve the data from.  
-  * *data\_format:* Enum, the file format.  
+  * *data\_format:* Enum, the file format: `'gi', 'sim', 'obj', 'geojson'` or `'CityJSON'`.  
   
 **Returns:** A list of the positions, points, polylines, polygons and collections added to the model.  
 **Examples:**  
-  * io.Import ("my\_data.obj", obj)  
+  * `io.Import ("my_data.obj", obj)`  
     Imports the data from my\_data.obj, from local storage.
   
   
@@ -90,15 +90,15 @@ If you export to Local Storage, there will be no popup.
   
   
 **Parameters:**  
-  * *entities:* Optional. Entities to be exported. If null, the whole model will be exported.  
+  * *entities:* (Optional) Entities to be exported. If null, the whole model will be exported.  
   * *file\_name:* Name of the file as a string.  
-  * *data\_format:* Enum, the file format.  
-  * *data\_target:* Enum, where the data is to be exported to.  
+  * *data\_format:* Enum, the export file format: `'gi', 'sim', 'obj_v', 'obj_ps', 'geojson'` or `'gltf'`.  
+  * *data\_target:* Enum, where the data is to be exported to: `'Save to Hard Disk'` or `'Save to Local Storage'`.  
   
-**Returns:** void.  
+**Returns:** void  
 **Examples:**  
-  * io.Export (#pg, 'my\_model.obj', obj)  
-    Exports all the polygons in the model as an OBJ.
+  * `io.Export (#pg, 'my\_model.obj', 'obj', 'Save to Hard Disk')`  
+    Exports all the polygons in the model as an OBJ, saved to the hard disk.
   
   
   
@@ -110,13 +110,13 @@ If you export to Local Storage, there will be no popup.
   
   
 **Parameters:**  
-  * *entities:* Optional. Entities to be exported. If null, the whole model will be exported.  
-  * *data\_format:* Enum, the file format.  
+  * *entities:* (Optional) Entities to be exported. If null, the whole model will be exported.  
+  * *data\_format:* Enum, the export file format: `'gi', 'sim', 'obj_v', 'obj_ps', 'geojson'` or `'gltf'`.  
   
-**Returns:** the model data as a string.  
+**Returns:** The model data as a string.  
 **Examples:**  
-  * io.Export (#pg, 'my_model.obj', obj)  
-    Exports all the polgons in the model as an OBJ.
+  * `io.Export (#pg, 'my_model.obj', 'obj')`  
+    Exports all the polygons in the model as an OBJ.
   
   
   

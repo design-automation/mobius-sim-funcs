@@ -44,16 +44,16 @@ import * as chk from '../../_check_types';
  * clockwise order.
  * \n
  * The angle may either be given as a single number, as a list of two numbers, or as `null`:
- * - If the angle is given as a single number, then the arc angles will be ser to be
+ * - If the angle is given as a single number, then the arc angles will be set to be
  * `[0, end_angle]`. This means that the start of the arc will coincide with the X-axis
  * of the origin plane.
  * - If the angle is given as a list of two numbers, then they will be set to be
  * `[start_angle, end_angle]`.
  * - If the angle is set to `null`, then the arc angles will be set to be
- * `[0, 2*PI]` In addition, duplicate positions at start and end of the arc are
+ * `[0, 2*PI]`. In addition, duplicate positions at start and end of the arc are
  * automatically removed.
  * \n
- * Note that setting the arc angle to null is not the same as setting it to `2*PI.
+ * Note that setting the arc angle to null is not the same as setting it to `2*PI`.
  * When setting the arc angle to `2*PI`, you will get duplicate positions at the start and end 
  * of the arc.
  * \n

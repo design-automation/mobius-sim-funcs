@@ -67,7 +67,7 @@ import { _calcExposure, _rayOrisDirsTjs } from './_shared';
  * @param detail An integer between 1 and 3 inclusive, specifying the level of detail for the analysis.
  * @param entities The obstructions, faces, polygons, or collections of faces or polygons.
  * @param limits The max distance for raytracing.
- * @param method Enum; sky method.
+ * @param method Enum, the sky method: `'weighted', 'unweighted'` or `'all'`.
  * @returns A dictionary containing solar exposure results.
  */
 export function Sky(

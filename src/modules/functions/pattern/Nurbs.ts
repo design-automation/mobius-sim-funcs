@@ -32,8 +32,8 @@ import { _EClose } from './_enum';
  * \n
  * @param __model__
  * @param coords A list of |coordinates| (must be at least three).
- * @param degree The degree of the curve, and integer between 2 and 5.
- * @param close Enum, 'close' or 'open'
+ * @param degree The degree of the curve, an integer between 2 and 5.
+ * @param close Enum, `'close'` or `'open'`.
  * @param num_positions Number of positions to be distributed along the Bezier.
  * @returns Entities, a list of positions.
  * @example `posis = pattern.Nurbs([[0,0,0], [10,0,50], [20,0,50], [30,0,0]], 3, 'open', 20)`

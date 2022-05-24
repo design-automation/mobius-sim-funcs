@@ -41,7 +41,7 @@ function rayFromPln(pln: TPlane|TPlane[]): TRay|TRay[] {
  * @param __model__
  * @param entities Single or list of edges or wires or other entities from which wires can be extracted.
  * @returns Lengths, a number or list of numbers.
- * @example length1 = calc.Length(line1)
+ * @example `length1 = calc.Length(line1)`
  */
 export function Length(__model__: GIModel, entities: TId|TId[]): number|number[] {
     if (isEmptyArr(entities)) { return []; }

@@ -56,11 +56,11 @@ In order to assign a material to polylines in the model, a polyline attribute ca
 will be created. The value for each polyline must either be null, or must be a material name.
 
 
-For dashed lines, the 'dash_gap_scale' parameter can be set.
-- If 'dash_gap_scale' is null, it will result in a continuous line.
-- If 'dash_gap_scale' is a single number: dash = gap = dash_gap_scale, scale = 1.
-- If 'dash_gap_scale' is a list of two numbers: dash = dash_gap_scale[0], gap = dash_gap_scale[1], scale = 1.
-- If 'dash_gap_scale' is a list of three numbers: dash = dash_gap_scale[0], gap = dash_gap_scale[1], scale = dash_gap_scale[2].
+For dashed lines, the 'dash\_gap\_scale' parameter can be set.
+- If 'dash\_gap\_scale' is null, it will result in a continuous line.
+- If 'dash\_gap\_scale' is a single number: dash = gap = dash\_gap\_scale, scale = 1.
+- If 'dash\_gap\_scale' is a list of two numbers: dash = dash\_gap\_scale[0], gap = dash\_gap\_scale[1], scale = 1.
+- If 'dash\_gap\_scale' is a list of three numbers: dash = dash\_gap\_scale[0], gap = dash\_gap\_scale[1], scale = dash\_gap\_scale[2].
 
 
 Due to limitations of the OpenGL Core Profile with the WebGL renderer on most platforms,
@@ -72,7 +72,7 @@ line widths cannot be rendered. As a result, lines width will always be set to 1
   * *name:* The name of the material.  
   * *color:* The diffuse color, as [r, g, b] values between 0 and 1. White is [1, 1, 1].  
   * *dash\_gap\_scale:* Size of the dash and gap, and a scale factor. (The gap and scale are optional.)  
-  * *select\_vert\_colors:* Enum, select whether to use vertex colors if they exist.  
+  * *select\_vert\_colors:* Enum, select whether to use vertex colors if they exist: `'none'` or `'apply_rgb'`.  
   
 **Returns:** void  
   
@@ -105,10 +105,10 @@ needs to be created. The value for each polygon must either be null, or must be 
   
 **Parameters:**  
   * *name:* The name of the material.  
-  * *color:* The diffuse colsor, as [r, g, b] values between 0 and 1. White is [1, 1, 1].  
+  * *color:* The diffuse color, as [r, g, b] values between 0 and 1. White is [1, 1, 1].  
   * *opacity:* The opacity of the glass, between 0 (totally transparent) and 1 (totally opaque).  
-  * *select\_side:* Enum, select front, back, or both.  
-  * *select\_vert\_colors:* Enum, select whether to use vertex colors if they exist.  
+  * *select\_side:* Enum, select where to apply colors: `'front', 'back'`, or `'both'`.  
+  * *select\_vert\_colors:* Enum, select whether to use vertex colors if they exist: `'none'` or `'apply_rgb'`.  
   
 **Returns:** void  
   

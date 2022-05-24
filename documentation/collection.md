@@ -24,7 +24,7 @@ children of the new collection.
   
 **Returns:** Entities, new collection, or a list of new collections.  
 **Examples:**  
-  * collection1 = collection.Create([point1,polyine1,polygon1], 'my_coll')  
+  * `collection1 = collection.Create([point1,polyine1,polygon1], 'my_coll')`  
     Creates a collection containing point1, polyline1, polygon1, with an attribute `name = 'my_coll'`.
   
   
@@ -36,8 +36,8 @@ children of the new collection.
 attribute called 'name' and with a value that matches the given value will be returned.
 
 
-The value for name can include wildcards: '?' matches any single character and '*' matches any
-sequence of characters. For example, 'coll?' will match 'coll1' and 'colla'. 'coll*' matches any
+The value for name can include wildcards: '?' matches any single character and '\*' matches any
+sequence of characters. For example, 'coll?' will match 'coll1' and 'colla'. 'coll\*' matches any
 name that starts with 'coll'.
 
 
@@ -50,7 +50,7 @@ If no collections are found, then an empty list is returned.
   
   
 **Parameters:**  
-  * *names:* A name or list of names. May include wildcards, '?' and '*'.  
+  * *names:* A name or list of names. May include wildcards, '?' and '\*'.  
   
 **Returns:** The collection, or a list of collections.  
   

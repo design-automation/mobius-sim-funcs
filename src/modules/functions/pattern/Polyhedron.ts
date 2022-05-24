@@ -51,7 +51,7 @@ import { _EPolyhedronMethod } from './_enum';
  * Cubes and dodecahedrons do not have triangular faces. So in these cases, the first level of 
  * `detail` converts each non-triangular face into triangles by adding a position at the centre of 
  * the face. The `detail` subdivides as follows:
- * - Detail= 0: No subdivision.
+ * - Detail = 0: No subdivision.
  * - Detail = 1: Convert non-triangular faces into triangles.
  * - Detail = 2: Each triangle edge is subdivided into two edges.
  * - Detail = 3: Each triangle edge is subdivided into three edges.
@@ -96,7 +96,8 @@ import { _EPolyhedronMethod } from './_enum';
  * If a coordinate is given, then the plane is assumed to be aligned with the global XY plane.
  * @param radius The radius of the polyhedron.
  * @param detail The level of detail for the polyhedron.
- * @param method Enum: The Type of polyhedron to generate.
+ * @param method Enum, the Type of polyhedron to generate: `'flat_tetra', 'flat_cube', 'flat_octa',
+    'flat_icosa', 'flat_dodeca', 'face_tetra', 'face_cube', 'face_octa', 'face_icosa'` or `'face_dodeca'`.
  * @returns Entities, a list of positions.
  * @example `posis = pattern.Polyhedron(XY, 20, 0, 'face_tetra')`
  * @example_info Creates positions in a regular tetrahedron pattern, with a radius of 20. The 

@@ -109,10 +109,11 @@ import { _EGridMethod } from './_enum';
  * @param num_positions Number of columns and rows of positions in the grid.
  * If a single number is given, then the number of columns and rows are assumed to be equal.
  * If a list of two numbers is given, then they will be interpreted as `[columns, rows]`.
- * @param method Enum, define the way the coords will be return as lists.
+ * @param method Enum, define the way the coords will be return as lists: `'flat', 'rows',
+ * 'columns'` or `'quads'`.
  * @returns Entities, a list of positions, or a list of lists of positions
  * (depending on the 'method' setting).
- * @example posis = pattern.Grid([0,0,0], 10, 3, 'flat')
+ * @example `posis = pattern.Grid([0,0,0], 10, 3, 'flat')`
  * @example_info Creates a list of 9 positions on a 3x3 square grid with a size of 10.
  * @example `posis = pattern.Grid([0,0,0], [10,20], [3,4], 'flat')`
  * @example_info Creates a list of 12 positions on a 3x4 grid. The grid as a width of 10

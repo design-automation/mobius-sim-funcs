@@ -41,13 +41,14 @@ import { _cyGetPosisAndElements, _cytoscapeWeightFn, _getUniquePosis } from './_
  * \n
  * 1. 'posis': a list of position IDs.
  * 2. 'centrality': a list of numbers, the values for centrality, either betweenness, closeness, or harmonic.
- * \n
+ * \n 
  * @param __model__
  * @param source A list of positions, or entities from which positions can be extracted.
  * These positions should be part of the network.
+ * If null, all positions in the model will be used. 
  * @param entities The network, edges, or entities from which edges can be extracted.
- * @param method Enum, the method to use, directed or undirected.
- * @param cen_type Enum, the type of centrality (betweenness, closeness or harmonic).
+ * @param method Enum, the method to use: `'directed'` or `'undirected'`.
+ * @param cen_type Enum, the type of centrality: `'betweenness', 'closeness'` or `'harmonic'`.
  * @returns A dictionary containing the results (posis and centrality values, between 0 and 1.)
  */
 export function Centrality(

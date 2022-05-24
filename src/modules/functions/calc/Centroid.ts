@@ -21,9 +21,9 @@ import { _ECentroidMethod } from './_enum';
  *
  * @param __model__
  * @param entities Single or list of entities. (Can be any type of entities.)
- * @param method Enum, the method for calculating the centroid.
+ * @param method Enum, the method for calculating the centroid: `'ps_average'` or `'center_of_mass'`.
  * @returns A centroid [x, y, z] or a list of centroids.
- * @example centroid1 = calc.Centroid (polygon1)
+ * @example `centroid1 = calc.Centroid (polygon1)`
  */
 export function Centroid(__model__: GIModel, entities: TId|TId[], method: _ECentroidMethod): Txyz|Txyz[] {
     if (isEmptyArr(entities)) { return []; }

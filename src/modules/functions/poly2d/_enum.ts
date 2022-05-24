@@ -29,3 +29,4 @@ export enum _EBooleanMethod {
     DIFFERENCE = 'difference',
     SYMMETRIC = 'symmetric'
 }
+ 

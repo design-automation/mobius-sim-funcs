@@ -28,7 +28,7 @@ with lengths equal to or less than the maximum length specified.
 **Parameters:**  
   * *entities:* Edges, or entities from which edges can be extracted.  
   * *divisor:* Segment length or number of segments.  
-  * *method:* Enum, select the method for dividing edges.  
+  * *method:* Enum, select the method for dividing edge: `'by_number', 'by_length', 'by_min_length'` or `'by_max_length'`.  
   
 **Returns:** Entities, a list of new edges resulting from the divide operation.  
 **Examples:**  
@@ -90,7 +90,7 @@ vertex will be affected.  The new positions that get generated are returned.
   
 **Parameters:**  
   * *entities:* Entities, a list of vertices, or entities from which vertices can be extracted.  
-  * *method:* Enum; the method to use, either `make_weld` or `break_weld`.  
+  * *method:* Enum, the method to use: `'make_weld'` or `'break_weld'`.  
   
 **Returns:** Entities, a list of new positions depending on type of weld.  
   
@@ -149,7 +149,7 @@ deletes this edge.
   
 **Parameters:**  
   * *entities:* Polyline(s).  
-  * *method:* Enum; the method to use, either `open` or `close`.  
+  * *method:* Enum, the method to use: ``open`` or ``close``.  
   
 **Returns:** void  
 **Examples:**  
@@ -231,7 +231,7 @@ which may in turn result in some edges being deleted, and so forth.)
 - When deleting collections, the objects and other collections in the collection are also deleted.
 
 
-Topological entities inside objects  (wires, edges, vertices) cannot be deleted.
+Topological entities inside objects (wires, edges, vertices) cannot be deleted.
 If a topological entity needs to be deleted, then the current approach is create a new object
 with the desired topology, and then to delete the original object.
 
@@ -239,7 +239,7 @@ with the desired topology, and then to delete the original object.
   
 **Parameters:**  
   * *entities:* Positions, points, polylines, polygons, collections.  
-  * *method:* Enum, delete or keep unused positions.  
+  * *method:* Enum, delete or keep unused positions: `'delete_selected'` or `'keep_selected'`.  
   
 **Returns:** void  
 **Examples:**  
