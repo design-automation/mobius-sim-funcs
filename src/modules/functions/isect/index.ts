@@ -4,7 +4,7 @@
  * If new entities are created, then the function will return the IDs of those entities.
  * @module
  */
-import { GIModel } from '@design-automation/mobius-sim';
+import { GIModel, TPlane } from '@design-automation/mobius-sim';
 
 import * as Enum from './_enum';
 import { Intersect } from './Intersect';
@@ -25,13 +25,13 @@ export class IsectFunc {
     constructor(model: GIModel) {
         this.__model__ = model;
     }
-    Intersect(entities1, entities2): any {
+    Intersect(entities1: string, entities2: string): any {
         return Intersect(this.__model__, entities1, entities2);
     }
-    Knife(geometry, plane, keep): any {
+    Knife(geometry: string[], plane: TPlane, keep: Enum._EKnifeKeep): any {
         return Knife(this.__model__, geometry, plane, keep);
     }
-    Split(geometry, polyline): any {
+    Split(geometry: string[], polyline: string): any {
         return Split(this.__model__, geometry, polyline);
     }
 

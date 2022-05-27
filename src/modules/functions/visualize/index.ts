@@ -3,7 +3,7 @@
  * Color is saved as vertex attributes.
  * @module
  */
-import { GIModel } from '@design-automation/mobius-sim';
+import { GIModel, TBBox, TColor, TPlane, TRay } from '@design-automation/mobius-sim';
 
 import * as Enum from './_enum';
 import { BBox } from './BBox';
@@ -32,25 +32,25 @@ export class VisualizeFunc {
     constructor(model: GIModel) {
         this.__model__ = model;
     }
-    BBox(bboxes): any {
+    BBox(bboxes: TBBox): any {
         return BBox(this.__model__, bboxes);
     }
-    Color(entities, color): void {
+    Color(entities: string | string[], color: TColor): void {
         Color(this.__model__, entities, color);
     }
-    Edge(entities, method): void {
+    Edge(entities: string | string[], method: Enum._EEdgeMethod): void {
         Edge(this.__model__, entities, method);
     }
-    Gradient(entities, attrib, range, method): void {
+    Gradient(entities: string | string[], attrib: string | [string, number] | [string, string], range: number | [number, number], method: Enum._EColorRampMethod): void {
         Gradient(this.__model__, entities, attrib, range, method);
     }
-    Mesh(entities, method): void {
+    Mesh(entities: string | string[], method: Enum._EMeshMethod): void {
         Mesh(this.__model__, entities, method);
     }
-    Plane(planes, scale): any {
+    Plane(planes: TPlane | TPlane[], scale: number): any {
         return Plane(this.__model__, planes, scale);
     }
-    Ray(rays, scale): any {
+    Ray(rays: TRay | TRay[], scale: number): any {
         return Ray(this.__model__, rays, scale);
     }
 

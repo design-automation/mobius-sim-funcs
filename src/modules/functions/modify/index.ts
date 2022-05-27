@@ -5,7 +5,7 @@
  * All these functions have no return value.
  * @module
  */
-import { GIModel } from '@design-automation/mobius-sim';
+import { GIModel, TPlane, TRay, Txyz } from '@design-automation/mobius-sim';
 
 import { Mirror } from './Mirror';
 import { Move } from './Move';
@@ -30,25 +30,25 @@ export class ModifyFunc {
     constructor(model: GIModel) {
         this.__model__ = model;
     }
-    Mirror(entities, plane): void {
+    Mirror(entities: string | string[], plane: string | Txyz | TRay | TPlane | string[]): void {
         Mirror(this.__model__, entities, plane);
     }
-    Move(entities, vectors): void {
+    Move(entities: string | string[], vectors: Txyz | Txyz[]): void {
         Move(this.__model__, entities, vectors);
     }
-    Offset(entities, dist): void {
+    Offset(entities: string | string[], dist: number): void {
         Offset(this.__model__, entities, dist);
     }
-    Remesh(entities): void {
+    Remesh(entities: string[]): void {
         Remesh(this.__model__, entities);
     }
-    Rotate(entities, ray, angle): void {
+    Rotate(entities: string | string[], ray: string | string[] | Txyz | TRay | TPlane, angle: number): void {
         Rotate(this.__model__, entities, ray, angle);
     }
-    Scale(entities, plane, scale): void {
+    Scale(entities: string | string[], plane: string | string[] | Txyz | TRay | TPlane, scale: number | Txyz): void {
         Scale(this.__model__, entities, plane, scale);
     }
-    XForm(entities, from_plane, to_plane): void {
+    XForm(entities: string | string[], from_plane: string | string[] | Txyz | TRay | TPlane, to_plane: string | string[] | Txyz | TRay | TPlane): void {
         XForm(this.__model__, entities, from_plane, to_plane);
     }
 

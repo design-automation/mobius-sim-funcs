@@ -27,19 +27,19 @@ export class ListFunc {
         ...Enum
     }
 
-    Add(list, item, method): void {
+    Add(list: any[], item: any, method: Enum._EAddMethod): void {
         Add(list, item, method);
     }
-    Remove(list, item, method): void {
+    Remove(list: any[], item: any, method: Enum._ERemoveMethod): void {
         Remove(list, item, method);
     }
-    Replace(list, old_item, new_item, method): void {
+    Replace(list: any[], old_item: any, new_item: any, method: Enum._EReplaceMethod): void {
         Replace(list, old_item, new_item, method);
     }
-    Sort(list, method): void {
+    Sort(list: any[], method: Enum._ESortMethod): void {
         Sort(list, method);
     }
-    Splice(list, index, num_to_remove, items_to_insert): void {
+    Splice(list: any[], index: number, num_to_remove: number, items_to_insert: any[]): void {
         Splice(list, index, num_to_remove, items_to_insert);
     }
 

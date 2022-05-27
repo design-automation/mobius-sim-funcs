@@ -4,7 +4,7 @@
  * The list may be nested, depending on which function is selected.
  * @module
  */
-import { GIModel } from '@design-automation/mobius-sim';
+import { GIModel, TPlane, Txyz } from '@design-automation/mobius-sim';
 
 import * as Enum from './_enum';
 import { Arc } from './Arc';
@@ -39,34 +39,34 @@ export class PatternFunc {
     constructor(model: GIModel) {
         this.__model__ = model;
     }
-    Arc(origin, radius, num_positions, arc_angle): any {
+    Arc(origin: Txyz | TPlane, radius: number, num_positions: number, arc_angle: number | [number, number]): any {
         return Arc(this.__model__, origin, radius, num_positions, arc_angle);
     }
-    Bezier(coords, num_positions): any {
+    Bezier(coords: Txyz[], num_positions: number): any {
         return Bezier(this.__model__, coords, num_positions);
     }
-    Box(origin, size, num_positions, method): any {
+    Box(origin: Txyz | TPlane, size: number | [number, number] | [number, number, number], num_positions: number | [number, number] | [number, number, number], method: Enum._EBoxMethod): any {
         return Box(this.__model__, origin, size, num_positions, method);
     }
-    Grid(origin, size, num_positions, method): any {
+    Grid(origin: Txyz | TPlane, size: number | [number, number], num_positions: number | [number, number], method: Enum._EGridMethod): any {
         return Grid(this.__model__, origin, size, num_positions, method);
     }
-    Interpolate(coords, type, tension, close, num_positions): any {
+    Interpolate(coords: Txyz[], type: Enum._ECurveCatRomType, tension: number, close: Enum._EClose, num_positions: number): any {
         return Interpolate(this.__model__, coords, type, tension, close, num_positions);
     }
-    Line(origin, length, num_positions): any {
+    Line(origin: Txyz | TPlane, length: number, num_positions: number): any {
         return Line(this.__model__, origin, length, num_positions);
     }
-    Linear(coords, close, num_positions): any {
+    Linear(coords: Txyz[], close: Enum._EClose, num_positions: number): any {
         return Linear(this.__model__, coords, close, num_positions);
     }
-    Nurbs(coords, degree, close, num_positions): any {
+    Nurbs(coords: Txyz[], degree: number, close: Enum._EClose, num_positions: number): any {
         return Nurbs(this.__model__, coords, degree, close, num_positions);
     }
-    Polyhedron(origin, radius, detail, method): any {
+    Polyhedron(origin: Txyz | TPlane, radius: number, detail: number, method: Enum._EPolyhedronMethod): any {
         return Polyhedron(this.__model__, origin, radius, detail, method);
     }
-    Rectangle(origin, size): any {
+    Rectangle(origin: Txyz | TPlane, size: number | [number, number]): any {
         return Rectangle(this.__model__, origin, size);
     }
 

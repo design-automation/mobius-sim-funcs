@@ -49,34 +49,34 @@ export class CalcFunc {
     constructor(model: GIModel) {
         this.__model__ = model;
     }
-    Area(entities): any {
+    Area(entities: string | string[]): any {
         return Area(this.__model__, entities);
     }
-    BBox(entities): any {
+    BBox(entities: string | string[]): any {
         return BBox(this.__model__, entities);
     }
-    Centroid(entities, method): any {
+    Centroid(entities: string | string[], method: Enum._ECentroidMethod): any {
         return Centroid(this.__model__, entities, method);
     }
-    Distance(entities1, entities2, method): any {
+    Distance(entities1: string | string[], entities2: string | string[], method: Enum._EDistanceMethod): any {
         return Distance(this.__model__, entities1, entities2, method);
     }
-    Eval(entities, t_param): any {
+    Eval(entities: string | string[], t_param: number): any {
         return Eval(this.__model__, entities, t_param);
     }
-    Length(entities): any {
+    Length(entities: string | string[]): any {
         return Length(this.__model__, entities);
     }
-    Normal(entities, scale): any {
+    Normal(entities: string | string[], scale: number): any {
         return Normal(this.__model__, entities, scale);
     }
-    Plane(entities): any {
+    Plane(entities: string | string[]): any {
         return Plane(this.__model__, entities);
     }
-    Ray(entities): any {
+    Ray(entities: string | string[]): any {
         return Ray(this.__model__, entities);
     }
-    Vector(entities): any {
+    Vector(entities: string | string[]): any {
         return Vector(this.__model__, entities);
     }
 

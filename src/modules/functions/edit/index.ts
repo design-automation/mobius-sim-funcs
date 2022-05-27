@@ -35,28 +35,28 @@ export class EditFunc {
     constructor(model: GIModel) {
         this.__model__ = model;
     }
-    Delete(entities, method): void {
+    Delete(entities: string | string[], method: Enum._EDeleteMethod): void {
         Delete(this.__model__, entities, method);
     }
-    Divide(entities, divisor, method): any {
+    Divide(entities: string | string[], divisor: number, method: Enum._EDivisorMethod): any {
         return Divide(this.__model__, entities, divisor, method);
     }
-    Fuse(entities, tolerance): any {
+    Fuse(entities: string | string[], tolerance: number): any {
         return Fuse(this.__model__, entities, tolerance);
     }
-    Hole(pgon, entities): any {
+    Hole(pgon: string, entities: string | string[] | string[][]): any {
         return Hole(this.__model__, pgon, entities);
     }
-    Reverse(entities): void {
+    Reverse(entities: string | string[]): void {
         Reverse(this.__model__, entities);
     }
-    Ring(entities, method): void {
+    Ring(entities: string | string[], method: Enum._ERingMethod): void {
         Ring(this.__model__, entities, method);
     }
-    Shift(entities, offset): void {
+    Shift(entities: string | string[], offset: number): void {
         Shift(this.__model__, entities, offset);
     }
-    Weld(entities, method): any {
+    Weld(entities: string | string[], method: Enum._EWeldMethod): any {
         return Weld(this.__model__, entities, method);
     }
 

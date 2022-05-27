@@ -3,7 +3,7 @@
  * All these functions return the IDs of the entities that are created.
  * @module
  */
-import { GIModel } from '@design-automation/mobius-sim';
+import { GIModel, Txyz, TPlane } from '@design-automation/mobius-sim';
 
 import * as Enum from './_enum';
 import { Clone } from './Clone';
@@ -41,37 +41,37 @@ export class MakeFunc {
     constructor(model: GIModel) {
         this.__model__ = model;
     }
-    Clone(entities): any {
+    Clone(entities: string | string[] | string[][]): any {
         return Clone(this.__model__, entities);
     }
-    Copy(entities, vector): any {
+    Copy(entities: string | string[] | string[][], vector: Txyz | Txyz[]): any {
         return Copy(this.__model__, entities, vector);
     }
-    Cut(entities, plane, method): any {
+    Cut(entities: string | string[], plane: TPlane, method: Enum._ECutMethod): any {
         return Cut(this.__model__, entities, plane, method);
     }
-    Extrude(entities, dist, divisions, method): any {
+    Extrude(entities: string | string[], dist: number | Txyz, divisions: number, method: Enum._EExtrudeMethod): any {
         return Extrude(this.__model__, entities, dist, divisions, method);
     }
-    Join(entities): any {
+    Join(entities: string[]): any {
         return Join(this.__model__, entities);
     }
-    Loft(entities, divisions, method): any {
+    Loft(entities: string[] | string[][], divisions: number, method: Enum._ELoftMethod): any {
         return Loft(this.__model__, entities, divisions, method);
     }
-    Point(entities): any {
+    Point(entities: string | string[] | string[][]): any {
         return Point(this.__model__, entities);
     }
-    Polygon(entities): any {
+    Polygon(entities: string | string[] | string[][]): any {
         return Polygon(this.__model__, entities);
     }
-    Polyline(entities, close): any {
+    Polyline(entities: string | string[] | string[][], close: Enum._EClose): any {
         return Polyline(this.__model__, entities, close);
     }
-    Position(coords): any {
+    Position(coords: Txyz | Txyz[] | Txyz[][]): any {
         return Position(this.__model__, coords);
     }
-    Sweep(entities, x_section, divisions, method): any {
+    Sweep(entities: string | string[], x_section: string, divisions: number, method: Enum._EExtrudeMethod): any {
         return Sweep(this.__model__, entities, x_section, divisions, method);
     }
 

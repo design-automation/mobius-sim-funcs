@@ -1,5 +1,4 @@
 import * as _model from '../model_api/_model';
-import * as _output from './_output';
 import * as analyze from './functions/analyze';
 import * as attrib from './functions/attrib';
 import * as calc from './functions/calc';
@@ -21,5 +20,5 @@ import * as visualize from './functions/visualize';
 export {
     analyze, attrib, calc, collection, dict, edit, intersect, io, list,
     make, material, modify, pattern, poly2d, query, util, visualize,
-    _model, _output
+    _model
 };

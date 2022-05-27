@@ -2,7 +2,7 @@
  * The `io` module has functions for importing and exporting.
  * @module
  */
-import { GIModel } from '@design-automation/mobius-sim';
+import { GIModel, Txy } from '@design-automation/mobius-sim';
 
 import * as Enum from './_enum';
 import { _getFile } from './_getFile';
@@ -37,31 +37,31 @@ export class IoFunc {
     constructor(model: GIModel) {
         this.__model__ = model;
     }
-    async Export(entities, file_name, data_format, data_target) {
+    async Export(entities: string | string[] | string[][], file_name: string, data_format: Enum._EIOExportDataFormat, data_target: Enum._EIODataTarget) {
         await Export(this.__model__, entities, file_name, data_format, data_target);
     }
-    async ExportData(entities, data_format): Promise<any> {
+    async ExportData(entities: string | string[] | string[][], data_format: Enum._EIOExportDataFormat): Promise<any> {
         return await ExportData(this.__model__, entities, data_format);
     }
-    Geoalign(lat_long_o, lat_long_x, elev): void {
+    Geoalign(lat_long_o: Txy, lat_long_x: Txy, elev: number): void {
         Geoalign(this.__model__, lat_long_o, lat_long_x, elev);
     }
-    Geolocate(lat_long, rot, elev): void {
+    Geolocate(lat_long: Txy, rot: number, elev: number): void {
         Geolocate(this.__model__, lat_long, rot, elev);
     }
-    async Import(data_url, data_format): Promise<any> {
+    async Import(data_url: string, data_format: Enum._EIOImportDataFormat): Promise<any> {
         return await Import(this.__model__, data_url, data_format);
     }
-    ImportData(model_data, data_format): any {
+    ImportData(model_data: string, data_format: Enum._EIOImportDataFormat): any {
         return ImportData(this.__model__, model_data, data_format);
     }
-    LatLong2XYZ(lat_long, elev): any {
+    LatLong2XYZ(lat_long: Txy, elev: number): any {
         return LatLong2XYZ(this.__model__, lat_long, elev);
     }
-    async Read(data): Promise<any> {
+    async Read(data: string): Promise<any> {
         return await Read(this.__model__, data);
     }
-    async Write(data, file_name, data_target): Promise<any> {
+    async Write(data: string, file_name: string, data_target: Enum._EIODataTarget): Promise<any> {
         return await Write(this.__model__, data, file_name, data_target);
     }
 

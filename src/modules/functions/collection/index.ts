@@ -29,19 +29,19 @@ export class CollectionFunc {
     constructor(model: GIModel) {
         this.__model__ = model;
     }
-    Add(coll, entities): void {
+    Add(coll: string, entities: string | string[]): void {
         Add(this.__model__, coll, entities);
     }
-    Create(entities, name): any {
+    Create(entities: string | string[] | string[][], name: string): any {
         return Create(this.__model__, entities, name);
     }
-    Delete(coll): void {
+    Delete(coll: string | string[]): void {
         Delete(this.__model__, coll);
     }
-    Get(names): any {
+    Get(names: string | string[]): any {
         return Get(this.__model__, names);
     }
-    Remove(coll, entities): void {
+    Remove(coll: string, entities: string | string[]): void {
         Remove(this.__model__, coll, entities);
     }
 

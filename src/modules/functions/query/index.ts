@@ -34,28 +34,28 @@ export class QueryFunc {
     constructor(model: GIModel) {
         this.__model__ = model;
     }
-    Edge(entities, edge_query_enum): any {
+    Edge(entities: string | string[], edge_query_enum: Enum._EEdgeMethod): any {
         return Edge(this.__model__, entities, edge_query_enum);
     }
-    Filter(entities, attrib, operator_enum, value): any {
+    Filter(entities: string | string[], attrib: string | [string, string | number], operator_enum: Enum._EFilterOperator, value: string | number | boolean | object | any[]): any {
         return Filter(this.__model__, entities, attrib, operator_enum, value);
     }
-    Get(ent_type_enum, entities): any {
+    Get(ent_type_enum: Enum._EEntType, entities: string | string[]): any {
         return Get(this.__model__, ent_type_enum, entities);
     }
-    Invert(ent_type_enum, entities): any {
+    Invert(ent_type_enum: Enum._EEntType, entities: string | string[]): any {
         return Invert(this.__model__, ent_type_enum, entities);
     }
-    Neighbor(ent_type_enum, entities): any {
+    Neighbor(ent_type_enum: Enum._EEntType, entities: string | string[]): any {
         return Neighbor(this.__model__, ent_type_enum, entities);
     }
-    Perimeter(ent_type, entities): any {
+    Perimeter(ent_type: Enum._EEntType, entities: string | string[]): any {
         return Perimeter(this.__model__, ent_type, entities);
     }
-    Sort(entities, attrib, method_enum): any {
+    Sort(entities: string[], attrib: string | [string, string | number], method_enum: Enum._ESortMethod): any {
         return Sort(this.__model__, entities, attrib, method_enum);
     }
-    Type(entities, type_query_enum): any {
+    Type(entities: string | string[], type_query_enum: Enum._ETypeQueryEnum): any {
         return Type(this.__model__, entities, type_query_enum);
     }
 

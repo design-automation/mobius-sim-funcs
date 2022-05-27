@@ -17,13 +17,13 @@ export { Replace };
 // CLASS DEFINITION
 export class DictFunc {
 
-    Add(dict, keys, values): void {
+    Add(dict: object, keys: string | string[], values: any): void {
         Add(dict, keys, values);
     }
-    Remove(dict, keys): void {
+    Remove(dict: object, keys: string | string[]): void {
         Remove(dict, keys);
     }
-    Replace(dict, old_keys, new_keys): void {
+    Replace(dict: object, old_keys: string | string[], new_keys: string | string[]): void {
         Replace(dict, old_keys, new_keys);
     }
 

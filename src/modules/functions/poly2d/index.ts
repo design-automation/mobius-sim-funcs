@@ -43,37 +43,37 @@ export class Poly2dFunc {
     constructor(model: GIModel) {
         this.__model__ = model;
     }
-    BBoxPolygon(entities, method): any {
+    BBoxPolygon(entities: string | string[], method: Enum._EBBoxMethod): any {
         return BBoxPolygon(this.__model__, entities, method);
     }
-    Boolean(a_entities, b_entities, method): any {
+    Boolean(a_entities: string | string[], b_entities: string | string[], method: Enum._EBooleanMethod): any {
         return Boolean(this.__model__, a_entities, b_entities, method);
     }
-    Clean(entities, tolerance): any {
+    Clean(entities: string | string[], tolerance: number): any {
         return Clean(this.__model__, entities, tolerance);
     }
-    ConvexHull(entities): any {
+    ConvexHull(entities: string | string[]): any {
         return ConvexHull(this.__model__, entities);
     }
-    Delaunay(entities): any {
+    Delaunay(entities: string | string[]): any {
         return Delaunay(this.__model__, entities);
     }
-    OffsetChamfer(entities, dist, end_type): any {
+    OffsetChamfer(entities: string | string[], dist: number, end_type: Enum._EOffset): any {
         return OffsetChamfer(this.__model__, entities, dist, end_type);
     }
-    OffsetMitre(entities, dist, limit, end_type): any {
+    OffsetMitre(entities: string | string[], dist: number, limit: number, end_type: Enum._EOffset): any {
         return OffsetMitre(this.__model__, entities, dist, limit, end_type);
     }
-    OffsetRound(entities, dist, tolerance, end_type): any {
+    OffsetRound(entities: string | string[], dist: number, tolerance: number, end_type: Enum._EOffsetRound): any {
         return OffsetRound(this.__model__, entities, dist, tolerance, end_type);
     }
-    Stitch(entities, tolerance): any {
+    Stitch(entities: string | string[], tolerance: number): any {
         return Stitch(this.__model__, entities, tolerance);
     }
-    Union(entities): any {
+    Union(entities: string | string[]): any {
         return Union(this.__model__, entities);
     }
-    Voronoi(pgons, entities): any {
+    Voronoi(pgons: string | string[], entities: string | string[]): any {
         return Voronoi(this.__model__, pgons, entities);
     }
 

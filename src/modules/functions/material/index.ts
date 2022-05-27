@@ -4,7 +4,7 @@
  * For more informtion, see the <a href="https://threejs.org/" target="_blank">threejs docs.</a> 
  * @module
  */
-import { GIModel } from '@design-automation/mobius-sim';
+import { GIModel, TColor } from '@design-automation/mobius-sim';
 
 import * as Enum from './_enum';
 import { Glass } from './Glass';
@@ -35,28 +35,28 @@ export class MaterialFunc {
     constructor(model: GIModel) {
         this.__model__ = model;
     }
-    Glass(name, opacity): void {
+    Glass(name: string, opacity: number): void {
         Glass(this.__model__, name, opacity);
     }
-    Lambert(name, emissive): void {
+    Lambert(name: string, emissive: TColor): void {
         Lambert(this.__model__, name, emissive);
     }
-    LineMat(name, color, dash_gap_scale, select_vert_colors): void {
+    LineMat(name: string, color: TColor, dash_gap_scale: number | number[], select_vert_colors: Enum._Ecolors): void {
         LineMat(this.__model__, name, color, dash_gap_scale, select_vert_colors);
     }
-    MeshMat(name, color, opacity, select_side, select_vert_colors): void {
+    MeshMat(name: string, color: TColor, opacity: number, select_side: Enum._ESide, select_vert_colors: Enum._Ecolors): void {
         MeshMat(this.__model__, name, color, opacity, select_side, select_vert_colors);
     }
-    Phong(name, emissive, specular, shininess): void {
+    Phong(name: string, emissive: TColor, specular: TColor, shininess: number): void {
         Phong(this.__model__, name, emissive, specular, shininess);
     }
-    Physical(name, emissive, roughness, metalness, reflectivity): void {
+    Physical(name: string, emissive: TColor, roughness: number, metalness: number, reflectivity: number): void {
         Physical(this.__model__, name, emissive, roughness, metalness, reflectivity);
     }
-    Set(entities, material): void {
+    Set(entities: string | string[], material: string | string[]): void {
         Set(this.__model__, entities, material);
     }
-    Standard(name, emissive, roughness, metalness): void {
+    Standard(name: string, emissive: TColor, roughness: number, metalness: number): void {
         Standard(this.__model__, name, emissive, roughness, metalness);
     }
 

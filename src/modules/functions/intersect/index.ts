@@ -2,7 +2,7 @@
  * The `intersect` module has functions for calculating intersections between different types of entities.
  * @module
 */
-import { GIModel } from '@design-automation/mobius-sim';
+import { GIModel, TPlane, TRay } from '@design-automation/mobius-sim';
 
 import { PlaneEdge } from './PlaneEdge';
 import { RayFace } from './RayFace';
@@ -17,10 +17,10 @@ export class IntersectFunc {
     constructor(model: GIModel) {
         this.__model__ = model;
     }
-    PlaneEdge(plane, entities): any {
+    PlaneEdge(plane: TRay | TPlane, entities: string | string[]): any {
         return PlaneEdge(this.__model__, plane, entities);
     }
-    RayFace(ray, entities): any {
+    RayFace(ray: TRay, entities: string | string[]): any {
         return RayFace(this.__model__, ray, entities);
     }
 

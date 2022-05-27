@@ -39,37 +39,37 @@ export class UtilFunc {
     constructor(model: GIModel) {
         this.__model__ = model;
     }
-    EntityInfo(entities): any {
+    EntityInfo(entities: string | string[]): any {
         return EntityInfo(this.__model__, entities);
     }
     ModelCheck(): any {
         return ModelCheck(this.__model__);
     }
-    async ModelCompare(input_data): Promise<any> {
+    async ModelCompare(input_data: string): Promise<any> {
         return await ModelCompare(this.__model__, input_data);
     }
     ModelInfo(): any {
         return ModelInfo(this.__model__);
     }
-    async ModelMerge(input_data): Promise<any> {
+    async ModelMerge(input_data: string): Promise<any> {
         return await ModelMerge(this.__model__, input_data);
     }
-    ParamInfo(__constList__): any {
+    ParamInfo(__constList__: {}): any {
         return ParamInfo(this.__model__, __constList__);
     }
-    Select(entities): void {
+    Select(entities: string | string[] | string[][]): void {
         Select(this.__model__, entities);
     }
-    SendData(data): void {
+    SendData(data: any): void {
         SendData(this.__model__, data);
     }
-    VrHotspot(point, name, camera_rot): void {
+    VrHotspot(point: string, name: string, camera_rot: number): void {
         VrHotspot(this.__model__, point, name, camera_rot);
     }
-    VrPanorama(point, back_url, back_rot, fore_url, fore_rot): void {
+    VrPanorama(point: string, back_url: number, back_rot: number, fore_url: number, fore_rot: number): void {
         VrPanorama(this.__model__, point, back_url, back_rot, fore_url, fore_rot);
     }
-    async HTTPRequest(request_data, request_url, method) {
+    async HTTPRequest(request_data: any, request_url: string, method: Enum._HTTPRequestMethod) {
         return await HTTPRequest(this.__model__, request_data, request_url, method);
     }
 
