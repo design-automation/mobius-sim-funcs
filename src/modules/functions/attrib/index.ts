@@ -34,9 +34,32 @@ export { Discover }
 
 // CLASS DEFINITION
 export class AttribFunc {
+
+
+    // Document Enums here
     __enum__ = {
-        ...Enum
-    }
+        Add: {
+            ent_type_sel: Enum._EEntTypeAndMod, data_type_sel: Enum._EDataType
+        },
+        Delete: {
+            ent_type_sel: Enum._EEntTypeAndMod
+        },
+        Rename: {
+            ent_type_sel: Enum._EEntTypeAndMod
+        },
+        Set: {
+            method: Enum._ESet
+        },
+        Push: {
+            ent_type_sel: Enum._EAttribPushTarget, method_sel: Enum._EPushMethodSel
+        },
+        Values: {
+            ent_type_sel: Enum._EEntTypeAndMod
+        },
+        Discover: {
+            ent_type_sel: Enum._EEntTypeAndMod
+        },
+    };
 
     __model__: GIModel;
     constructor(model: GIModel) {

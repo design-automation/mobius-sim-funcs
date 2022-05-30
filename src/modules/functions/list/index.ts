@@ -23,9 +23,23 @@ export { Splice };
 
 // CLASS DEFINITION
 export class ListFunc {
+
+    // Document Enums here
     __enum__ = {
-        ...Enum
-    }
+        Add: {
+            method: Enum._EAddMethod
+        },
+        Remove: {
+            method: Enum._ERemoveMethod
+        },
+        Replace: {
+            method: Enum._EReplaceMethod
+        },
+        Sort: {
+            method: Enum._ESortMethod
+        },
+    };
+
 
     Add(list: any[], item: any, method: Enum._EAddMethod): void {
         Add(list, item, method);

@@ -46,12 +46,10 @@ export { Visibility }
 // CLASS DEFINITION
 export class AnalyzeFunc {
     // to be removed
-    __enum__ = {
-        ...Enum
-    }
+
 
     // Document Enums here
-    __enum_args__ = {
+    __enum__ = {
         Centrality: {
             method: Enum._ECentralityMethod, cen_type: Enum._ECentralityType
         },

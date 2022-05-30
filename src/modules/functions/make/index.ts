@@ -33,9 +33,25 @@ export { Clone };
 
 // CLASS DEFINITION
 export class MakeFunc {
+
+    // Document Enums here
     __enum__ = {
-        ...Enum
-    }
+        Cut: {
+            method: Enum._ECutMethod
+        },
+        Extrude: {
+            method: Enum._EExtrudeMethod
+        },
+        Loft: {
+            method: Enum._ELoftMethod
+        },
+        Polyline: {
+            close: Enum._EClose
+        },
+        Sweep: {
+            method: Enum._EExtrudeMethod
+        },
+    };
 
     __model__: GIModel;
     constructor(model: GIModel) {

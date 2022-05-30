@@ -24,9 +24,16 @@ export { BBox };
 
 // CLASS DEFINITION
 export class VisualizeFunc {
+
+    // Document Enums here
     __enum__ = {
-        ...Enum
-    }
+        Edge: {
+            method: Enum._EEdgeMethod
+        },
+        Mesh: {
+            method: Enum._EMeshMethod
+        },
+    };
 
     __model__: GIModel;
     constructor(model: GIModel) {

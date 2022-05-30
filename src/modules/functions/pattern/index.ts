@@ -31,9 +31,26 @@ export { Interpolate };
 
 // CLASS DEFINITION
 export class PatternFunc {
+
+    // Document Enums here
     __enum__ = {
-        ...Enum
-    }
+        Grid: {
+            method: Enum._EGridMethod
+        },
+        Interpolate: {
+            type: Enum._ECurveCatRomType, close: Enum._EClose
+        },
+        Linear: {
+            close: Enum._EClose
+        },
+        Nurbs: {
+            close: Enum._EClose
+        },
+        Polyhedron: {
+            method: Enum._EPolyhedronMethod
+        },
+    };
+
 
     __model__: GIModel;
     constructor(model: GIModel) {

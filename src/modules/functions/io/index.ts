@@ -29,9 +29,26 @@ export { _getFile };
 
 // CLASS DEFINITION
 export class IoFunc {
+
+    // Document Enums here
     __enum__ = {
-        ...Enum
-    }
+        Export: {
+            data_format: Enum._EIOExportDataFormat, data_target: Enum._EIODataTarget
+        },
+        ExportData: {
+            data_format: Enum._EIOExportDataFormat
+        },
+        Import: {
+            data_format: Enum._EIOImportDataFormat
+        },
+        ImportData: {
+            data_format: Enum._EIOImportDataFormat
+        },
+        Write: {
+            data_target: Enum._EIODataTarget
+        },
+    };
+
 
     __model__: GIModel;
     constructor(model: GIModel) {

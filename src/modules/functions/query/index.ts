@@ -26,9 +26,35 @@ export { Type };
 
 // CLASS DEFINITION
 export class QueryFunc {
+
+    // Document Enums here
     __enum__ = {
-        ...Enum
-    }
+        Edge: {
+            edge_query_enum: Enum._EEdgeMethod
+        },
+        Filter: {
+            operator_enum: Enum._EFilterOperator
+        },
+        Get: {
+            ent_type_enum: Enum._EEntType
+        },
+        Invert: {
+            ent_type_enum: Enum._EEntType
+        },
+        Neighbor: {
+            ent_type_enum: Enum._EEntType
+        },
+        Perimeter: {
+            ent_type: Enum._EEntType
+        },
+        Sort: {
+            method_enum: Enum._ESortMethod
+        },
+        Type: {
+            type_query_enum: Enum._ETypeQueryEnum
+        },
+    };
+
 
     __model__: GIModel;
     constructor(model: GIModel) {

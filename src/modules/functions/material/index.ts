@@ -27,9 +27,16 @@ export { Physical };
 
 // CLASS DEFINITION
 export class MaterialFunc {
+
+    // Document Enums here
     __enum__ = {
-        ...Enum
-    }
+        LineMat: {
+            select_vert_colors: Enum._Ecolors
+        },
+        MeshMat: {
+            select_side: Enum._ESide, select_vert_colors: Enum._Ecolors
+        },
+    };
 
     __model__: GIModel;
     constructor(model: GIModel) {

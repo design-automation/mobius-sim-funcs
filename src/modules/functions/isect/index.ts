@@ -17,9 +17,14 @@ export { Split };
 
 // CLASS DEFINITION
 export class IsectFunc {
+
+    // Document Enums here
     __enum__ = {
-        ...Enum
-    }
+        Knife: {
+            keep: Enum._EKnifeKeep
+        },
+    };
+
 
     __model__: GIModel;
     constructor(model: GIModel) {

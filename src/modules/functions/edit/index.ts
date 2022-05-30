@@ -27,9 +27,22 @@ export { Delete };
 
 // CLASS DEFINITION
 export class EditFunc {
+
+    // Document Enums here
     __enum__ = {
-        ...Enum
-    }
+        Delete: {
+            method: Enum._EDeleteMethod
+        },
+        Divide: {
+            method: Enum._EDivisorMethod
+        },
+        Ring: {
+            method: Enum._ERingMethod
+        },
+        Weld: {
+            method: Enum._EWeldMethod
+        },
+    };
 
     __model__: GIModel;
     constructor(model: GIModel) {

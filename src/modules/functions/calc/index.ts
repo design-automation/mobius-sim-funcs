@@ -41,9 +41,16 @@ export { BBox }
 
 // CLASS DEFINITION
 export class CalcFunc {
+
+    // Document Enums here
     __enum__ = {
-        ...Enum
-    }
+        Centroid: {
+            method: Enum._ECentroidMethod
+        },
+        Distance: {
+            method: Enum._EDistanceMethod
+        },
+    };
 
     __model__: GIModel;
     constructor(model: GIModel) {

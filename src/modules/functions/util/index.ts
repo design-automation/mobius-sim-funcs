@@ -31,8 +31,12 @@ export { SendData };
 
 // CLASS DEFINITION
 export class UtilFunc {
+;
+    // Document Enums here
     __enum__ = {
-        ...Enum
+        HTTPRequest: {
+            method: Enum._HTTPRequestMethod
+        },
     };
 
     __model__: GIModel;

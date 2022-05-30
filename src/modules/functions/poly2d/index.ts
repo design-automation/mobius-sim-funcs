@@ -35,9 +35,26 @@ export { Clean };
 
 // CLASS DEFINITION
 export class Poly2dFunc {
+
+    // Document Enums here
     __enum__ = {
-        ...Enum
-    }
+        BBoxPolygon: {
+            method: Enum._EBBoxMethod
+        },
+        Boolean: {
+            method: Enum._EBooleanMethod
+        },
+        OffsetChamfer: {
+            end_type: Enum._EOffset
+        },
+        OffsetMitre: {
+            end_type: Enum._EOffset
+        },
+        OffsetRound: {
+            end_type: Enum._EOffsetRound
+        },
+    };
+
 
     __model__: GIModel;
     constructor(model: GIModel) {
