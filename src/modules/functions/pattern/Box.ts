@@ -67,7 +67,15 @@ import { _EBoxMethod } from './_enum';
  * posis = ["ps0", "ps1", "ps2", "ps3", "ps4", "ps5", "ps6", "ps7", "ps8", "ps9", "ps10", "ps11"]
  * ```
  * \n
- * `posis = pattern.Grid(XY, [10,20,30], [2,3,2], 'columns')`
+ * `posis = pattern.Box(XY, [10,20,30], [2,3,2], 'columns')`
+ * ```
+ * posis = [
+ *     ["ps0", "ps2", "ps4", "ps6", "ps8", "ps10"],
+ *     ["ps1", "ps3", "ps5", "ps7", "ps9", "ps11"]
+ * ]
+ * ```
+ * \n
+ * `posis = pattern.Box(XY, [10,20,30], [2,3,2], 'rows')`
  * ```
  * posis = [
  *     ["ps0", "ps1", "ps6", "ps7"],
@@ -76,15 +84,7 @@ import { _EBoxMethod } from './_enum';
  * ]
  * ```
  * \n
- * `posis = pattern.Grid(XY, [10,20,30], [2,3,2], 'rows')`
- * ```
- * posis = [
- *     ["ps0", "ps2", "ps4", "ps6", "ps8", "ps10"],
- *     ["ps1", "ps3", "ps5", "ps7", "ps9", "ps11"]
- * ]
- * ```
- * \n
- * `posis = pattern.Grid(XY, [10,20,30], [2,3,2], 'layers')`
+ * `posis = pattern.Box(XY, [10,20,30], [2,3,2], 'layers')`
  * ```
  * posis = [
  *     ["ps0", "ps1", "ps2", "ps3", "ps4", "ps5"],
@@ -92,7 +92,7 @@ import { _EBoxMethod } from './_enum';
  * ]
  * ```
  * \n
-* `posis = pattern.Grid(XY, [10,20,30], [2,3,2], 'quads')`
+* `posis = pattern.Box(XY, [10,20,30], [2,3,2], 'quads')`
  * ```
  * posis = [
  *     ["ps0", "ps2", "ps3", "ps1"],
@@ -115,7 +115,7 @@ import { _EBoxMethod } from './_enum';
  * ```
  * When the method is set to quads, polygons on the box surface can be generated as follows:
  * ```
- * posis = pattern.Grid(XY, [10,20,30], [2,3,2], 'quads')
+ * posis = pattern.Box(XY, [10,20,30], [2,3,2], 'quads')
  * pgons = make.Polygon(posis)
  * ```
  * \n

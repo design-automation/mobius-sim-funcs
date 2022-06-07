@@ -13,7 +13,8 @@ collections.
 **Parameters:**  
   * *coords:* A list of three numbers, or a list of lists of three numbers.  
   
-**Returns:** A new position, or nested list of new positions.  
+**Returns:** A new position, or nested list of new positions.
+Each position is an entity with an xyz attribute, that can be called with `posi@xyz`.  
 **Examples:**  
   * `position1 = make.Position([1,2,3])`  
     Creates a position with coordinates x=1, y=2, z=3.  
@@ -107,7 +108,7 @@ The geometry that is generated depends on the method that is selected.
 **Description:** Extrudes geometry by distance or by vector.
 - Extrusion of a position, vertex, or point produces polylines;
 - Extrusion of an edge, wire, or polyline produces polygons;
-- Extrusion of a face or polygon produces polygons, capped at the top.
+- Extrusion of a polygon produces new polygons, capped at the top.
 
 
 

@@ -569,7 +569,8 @@ Returns a dictionary containing the results.
   
 **Parameters:**  
   * *source:* A list of positions, or entities from which positions can be extracted.
-These positions should be part of the network.  
+These positions should be part of the network.
+If null, all positions in the model will be used.  
   * *entities:* The network, edges, or entities from which edges can be extracted.  
   * *method:* Enum, the method to use: `'directed'` or `'undirected'`.  
   * *cen\_type:* Enum, the type of centrality: `'betweenness', 'closeness'` or `'harmonic'`.  

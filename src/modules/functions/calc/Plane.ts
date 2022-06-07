@@ -27,7 +27,7 @@ import { _normal } from './Normal';
  * This means that if the vertices are ordered counter-clockwise relative to your point of view,
  * then the z axis of the plane will be pointing towards you.
  *
- * @param entities Any entities
+ * @param entities Any entities.
  * @returns The plane.
  */
 export function Plane(__model__: GIModel, entities: TId|TId[]): TPlane|TPlane[] {

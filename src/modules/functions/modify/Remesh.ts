@@ -19,8 +19,11 @@ import { checkIDs, ID } from '../../_check_ids';
  * @param __model__
  * @param entities Single or list of faces, polygons, collections.
  * @returns void
+ * @example <a href="/editor?file=/assets/examples/Functions_modify.Remesh_example.mob&node=1" target="_blank"> Example of Usage </a>
+ * @example_info A model showing proper usage of make.Remesh, to remove extra polygons created when modifying the model.
  * @example `modify.Remesh(polygon1)`
  * @example_info Remeshes the face of the polygon.
+ * 
  */
 export function Remesh(__model__: GIModel, entities: TId[]): void {
     entities = arrMakeFlat(entities) as TId[];

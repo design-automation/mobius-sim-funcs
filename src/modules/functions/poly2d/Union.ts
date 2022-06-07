@@ -20,7 +20,7 @@ type TPosisMap = Map<number, Map<number, number>>;
  * Create the union of a set of polygons. The original polygons are not edited.
  *
  * @param __model__
- * @param entities A list of polygons, or entities from which polygons can bet extracted.
+ * @param entities A list of polygons, or entities from which polygons can be extracted.
  * @returns A list of new polygons.
  */
 export function Union(__model__: GIModel, entities: TId|TId[]): TId[] {

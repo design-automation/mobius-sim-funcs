@@ -12,7 +12,8 @@ import * as chk from '../../_check_types';
  *
  * @param __model__
  * @param coords A list of three numbers, or a list of lists of three numbers.
- * @returns A new position, or nested list of new positions.
+ * @returns A new position, or nested list of new positions. 
+ * Each position is an entity with an xyz attribute, that can be called with `posi@xyz`.
  * @example `position1 = make.Position([1,2,3])`
  * @example_info Creates a position with coordinates x=1, y=2, z=3.
  * @example `positions = make.Position([[1,2,3],[3,4,5],[5,6,7]])`

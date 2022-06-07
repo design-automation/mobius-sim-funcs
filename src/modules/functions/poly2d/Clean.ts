@@ -37,8 +37,10 @@ if (Shape.default) { ShapeClass = Shape.default; }
  * \n
  * @param __model__
  * @param entities A list of polylines or polygons, or entities from which polylines or polygons can be extracted.
- * @param tolerance The tolerance for deleting vertices from the polyline.
- * @returns A list of new polygons.
+ * @param tolerance The tolerance for deleting vertices from the polyline. 
+ * (If nothing happens, try using a smaller tolerance number from 0-2. 
+ * Results of tolerance can be checked with query.Get vertices.)
+ * @returns A list of new polylines or polygons.
  */
 export function Clean(__model__: GIModel, entities: TId|TId[], tolerance: number): TId[] {
     entities = arrMakeFlat(entities) as TId[];

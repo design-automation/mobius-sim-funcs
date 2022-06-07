@@ -18,13 +18,14 @@ import { checkIDs, ID } from '../../_check_ids';
  * Returns a vector along an edge, from the start position to the end position.
  * The vector is not normalized.
  * \n
- * Given a single edge, a single vector will be returned. Given a list of edges, a list of vectors will be returned.
+ * Given a single edge, a single vector will be returned. 
+ * Given a list of edges, a list of vectors will be returned.
  * \n
- * Given any entity that has edges (collection, polygons, polylines, faces, and wires),
+ * Given any entity that has edges (collection, polygons, polylines and wires),
  * a list of edges will be extracted, and a list of vectors will be returned.
  *
  * @param __model__
- * @param entities Single or list of edges, or any entity from which edges can be extracted.
+ * @param entities Single edge or list of edges, or any entity from which edges can be extracted.
  * @returns The vector [x, y, z] or a list of vectors.
  */
 export function Vector(__model__: GIModel, entities: TId|TId[]): Txyz|Txyz[] {

@@ -31,7 +31,7 @@ import { _convexHull, _getPosis } from './_shared';
  * \n
  * For the method, 'aabb' generates an Axis Aligned Bounding Box, and 'obb' generates an Oriented Bounding Box.
  * \n
- * See `calc.BBox` and `visualize.BBox` for more on bounding boxes. 
+ * See `calc.BBox` and `visualize.BBox` for calculating and visualizng 3D BBox polylines instead. 
  *
  * @param __model__
  * @param entities A list of positions, or entities from which positions can be extracted.

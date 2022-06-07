@@ -14,10 +14,11 @@ test('Make one position', () => {
     'attributes":{"posis":[{"name":"xyz","data_type":"list","data":[[[0,' +
     '0,0],[0]]]}],"verts":[],"edges":[],"wires":[],"points":[],"plines":' +
     '[],"pgons":[],"colls":[],"model":[]}}');
-});
+}); 
 
 test('Make 3 positions in an array', () => {
-    expect(Position(model, [[2, 3, 4], [1, 1, 1], [10, 20, 50]])).toStrictEqual(['ps1', 'ps2', 'ps3']);
+    //@ts-ignore
+    expect( Position(model, [[2, 3, 4], [1, 1, 1], [10, 20, 50]]) ).toStrictEqual(['ps1', 'ps2', 'ps3']);
     expect(model.exportGI(null)).toBe('{"type":"GIJson","version":"0.7",' +
     '"geometry":{"num_posis":4,"verts":[],"tris":[],"edges":[],"wires":[' +
     '],"points":[],"plines":[],"pgons":[],"pgontris":[],"coll_pgons":[],' +
@@ -29,6 +30,7 @@ test('Make 3 positions in an array', () => {
 });
 
 test('Make 3 positions in a nested array', () => {
+    //@ts-ignore
     expect(Position(model, [[[2, 3, 5]], [[1, 5, 6], [2, 2, 2]]])).toStrictEqual([['ps4'], ['ps5', 'ps6']]);
     expect(model.exportGI(null)).toBe('{"type":"GIJson","version":"0.7",' +
     '"geometry":{"num_posis":7,"verts":[],"tris":[],"edges":[],"wires":[' +
@@ -41,7 +43,7 @@ test('Make 3 positions in a nested array', () => {
 });
 
 test('Make an existing position', () => {
-    expect(Position(model, [0, 0, 0])).toStrictEqual('ps7');
+    expect(Position(model, [0, 0, 0])).toBe('ps7');
     expect(model.exportGI(null)).toBe('{"type":"GIJson","version":"0.7",' +
     '"geometry":{"num_posis":8,"verts":[],"tris":[],"edges":[],"wires":[' +
     '],"points":[],"plines":[],"pgons":[],"pgontris":[],"coll_pgons":[],' +

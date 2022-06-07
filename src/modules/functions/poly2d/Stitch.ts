@@ -13,12 +13,13 @@ import {
 } from '@design-automation/mobius-sim';
 
 import { checkIDs, ID } from '../../_check_ids';
+import * as chk from '../../_check_types';
 
 
 // Clipper types
 // ================================================================================================
 /**
- * Adds vertices to polyline and polygons at all locations where egdges intersect one another.
+ * Adds vertices to polyline and polygons at all locations where edges intersect one another.
  * The vertices are welded.
  * This can be useful for creating networks that can be used for shortest path calculations.
  * \n
@@ -41,6 +42,7 @@ export function Stitch(__model__: GIModel, entities: TId | TId[], tolerance: num
     if (__model__.debug) {
         ents_arr = checkIDs(__model__, fn_name, 'entities', entities,
             [ID.isIDL1, ID.isIDL2], [EEntType.PLINE, EEntType.PGON]) as TEntTypeIdx[];
+        chk.checkArgs(fn_name, 'tolerance', tolerance, [chk.isNum]);
     } else {
         ents_arr = idsBreak(entities) as TEntTypeIdx[];
     }

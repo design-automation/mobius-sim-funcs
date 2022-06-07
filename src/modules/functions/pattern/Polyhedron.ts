@@ -94,8 +94,8 @@ import { _EPolyhedronMethod } from './_enum';
  * @param __model__
  * @param origin A |coordinate| or a |plane|, specifying the origin of the polyhedron.
  * If a coordinate is given, then the plane is assumed to be aligned with the global XY plane.
- * @param radius The radius of the polyhedron.
- * @param detail The level of detail for the polyhedron.
+ * @param radius A number. The radius of the polyhedron.
+ * @param detail An integer. The level of detail for the polyhedron.
  * @param method Enum, the Type of polyhedron to generate: `'flat_tetra', 'flat_cube', 'flat_octa',
     'flat_icosa', 'flat_dodeca', 'face_tetra', 'face_cube', 'face_octa', 'face_icosa'` or `'face_dodeca'`.
  * @returns Entities, a list of positions.

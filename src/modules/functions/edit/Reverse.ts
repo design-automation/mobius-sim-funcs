@@ -16,7 +16,7 @@ import { checkIDs, ID } from '../../_check_ids';
  * @param __model__
  * @param entities Wire,polyline, polygon.
  * @returns void
- * @example `modify.Reverse(polygon1)`
+ * @example `edit.Reverse(polygon1)`
  * @example_info Flips polygon and reverses its normal.
  * @example `edit.Reverse(polyline1)`
  * @example_info Reverses the order of vertices and edges in the polyline.

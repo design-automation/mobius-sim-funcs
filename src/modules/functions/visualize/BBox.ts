@@ -8,6 +8,7 @@ import * as chk from '../../_check_types';
  * Visualises a bounding box by adding geometry to the model.
  * \n
  * See `calc.BBox` for creating the bounding box.
+ * To create polygons of the bounding box instead, see `poly2d.BBoxPolygon`.
  * \n
  * The bounding box is an imaginary box that completely contains all the geometry.
  * The box is always aligned with the global x, y, and z axes.

@@ -49,6 +49,9 @@ export class PatternFunc {
         Polyhedron: {
             method: Enum._EPolyhedronMethod
         },
+        Box: {
+            method: Enum._EBoxMethod
+        },
     };
 
 

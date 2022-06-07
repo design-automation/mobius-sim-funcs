@@ -24,7 +24,9 @@ import { _ERingMethod } from './_enum';
  * @example_info If open, polylines are changed to closed; if already closed, nothing happens.
  */
 export function Ring(__model__: GIModel, entities: TId|TId[], method: _ERingMethod): void {
+    console.log('start')
     entities = arrMakeFlat(entities) as TId[];
+    console.log('after arrMakeFlat')
     if (!isEmptyArr(entities)) {
         // --- Error Check ---
         const fn_name = 'edit.Ring';

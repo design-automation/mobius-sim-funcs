@@ -16,7 +16,8 @@ import { checkIDs, ID } from '../../_check_ids';
  * - The third [x, y, z] is the corner of the bounding box with the highest x, y, z values.
  * - The fourth [x, y, z] is the dimensions of the bounding box.
  * \n
- * To visualize the bounding box, see `Visualize.BBox`.
+ * To visualize the bounding box, see `Visualize.BBox`. 
+ * To create polygons of the bounding box, see `poly2d.BBoxPolygon`.
  *
  * @param __model__
  * @param entities The entities for which to calculate the bounding box.

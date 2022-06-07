@@ -23,7 +23,7 @@ import { _EExtrudeMethod } from './_enum';
  * Extrudes geometry by distance or by vector.
  * - Extrusion of a position, vertex, or point produces polylines;
  * - Extrusion of an edge, wire, or polyline produces polygons;
- * - Extrusion of a face or polygon produces polygons, capped at the top.
+ * - Extrusion of a polygon produces new polygons, capped at the top.
  * \n
  * \n
  * The geometry that is generated depends on the method that is selected.

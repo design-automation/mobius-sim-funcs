@@ -303,7 +303,16 @@ posis = ["ps0", "ps1", "ps2", "ps3", "ps4", "ps5", "ps6", "ps7", "ps8", "ps9", "
 ```
 
 
-`posis = pattern.Grid(XY, [10,20,30], [2,3,2], 'columns')`
+`posis = pattern.Box(XY, [10,20,30], [2,3,2], 'columns')`
+```
+posis = [
+    ["ps0", "ps2", "ps4", "ps6", "ps8", "ps10"],
+    ["ps1", "ps3", "ps5", "ps7", "ps9", "ps11"]
+]
+```
+
+
+`posis = pattern.Box(XY, [10,20,30], [2,3,2], 'rows')`
 ```
 posis = [
     ["ps0", "ps1", "ps6", "ps7"],
@@ -313,16 +322,7 @@ posis = [
 ```
 
 
-`posis = pattern.Grid(XY, [10,20,30], [2,3,2], 'rows')`
-```
-posis = [
-    ["ps0", "ps2", "ps4", "ps6", "ps8", "ps10"],
-    ["ps1", "ps3", "ps5", "ps7", "ps9", "ps11"]
-]
-```
-
-
-`posis = pattern.Grid(XY, [10,20,30], [2,3,2], 'layers')`
+`posis = pattern.Box(XY, [10,20,30], [2,3,2], 'layers')`
 ```
 posis = [
     ["ps0", "ps1", "ps2", "ps3", "ps4", "ps5"],
@@ -331,7 +331,7 @@ posis = [
 ```
 
 
-`posis = pattern.Grid(XY, [10,20,30], [2,3,2], 'quads')`
+`posis = pattern.Box(XY, [10,20,30], [2,3,2], 'quads')`
 ```
 posis = [
     ["ps0", "ps2", "ps3", "ps1"],
@@ -355,7 +355,7 @@ plines = make.Polyline(posis, 'open')
 ```
 When the method is set to quads, polygons on the box surface can be generated as follows:
 ```
-posis = pattern.Grid(XY, [10,20,30], [2,3,2], 'quads')
+posis = pattern.Box(XY, [10,20,30], [2,3,2], 'quads')
 pgons = make.Polygon(posis)
 ```
 
@@ -481,8 +481,8 @@ pgons = make.Polygon(posis)
 **Parameters:**  
   * *origin:* A <abbr title='A list of three numbers, [x, y, z]'>coordinate</abbr> or a <abbr title='Three lists of three numbers, [origin, x-axis, y-axis]'>plane</abbr>, specifying the origin of the polyhedron.
 If a coordinate is given, then the plane is assumed to be aligned with the global XY plane.  
-  * *radius:* The radius of the polyhedron.  
-  * *detail:* The level of detail for the polyhedron.  
+  * *radius:* A number. The radius of the polyhedron.  
+  * *detail:* An integer. The level of detail for the polyhedron.  
   * *method:* Enum, the Type of polyhedron to generate: `'flat_tetra', 'flat_cube', 'flat_octa',
 'flat_icosa', 'flat_dodeca', 'face_tetra', 'face_cube', 'face_octa', 'face_icosa'` or `'face_dodeca'`.  
   

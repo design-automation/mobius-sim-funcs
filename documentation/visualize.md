@@ -124,6 +124,7 @@ The method can either be 'faceted' or 'smooth'.
 
 
 See `calc.BBox` for creating the bounding box.
+To create polygons of the bounding box instead, see `poly2d.BBoxPolygon`.
 
 
 The bounding box is an imaginary box that completely contains all the geometry.

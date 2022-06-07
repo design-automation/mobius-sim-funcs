@@ -28,7 +28,7 @@ import { _convexHull, _getPosis } from './_shared';
  * 
  * @param __model__
  * @param entities A list of positions, or entities from which positions can be extracted.
- * @returns A new polygons, the convex hull of the positions.
+ * @returns A list of new polygons, the convex hull of the positions.
  */
 export function ConvexHull(__model__: GIModel, entities: TId|TId[]): TId {
     entities = arrMakeFlat(entities) as TId[];

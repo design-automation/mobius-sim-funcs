@@ -72,7 +72,7 @@ In the image above, the convex hull of the red set is the blue and red convex se
 **Parameters:**  
   * *entities:* A list of positions, or entities from which positions can be extracted.  
   
-**Returns:** A new polygons, the convex hull of the positions.  
+**Returns:** A list of new polygons, the convex hull of the positions.  
   
   
 ## BBoxPolygon  
@@ -84,7 +84,7 @@ In the image above, the convex hull of the red set is the blue and red convex se
 For the method, 'aabb' generates an Axis Aligned Bounding Box, and 'obb' generates an Oriented Bounding Box.
 
 
-See `calc.BBox` and `visualize.BBox` for more on bounding boxes.  
+See `calc.BBox` and `visualize.BBox` for calculating and visualizng 3D BBox polylines instead.  
   
 **Parameters:**  
   * *entities:* A list of positions, or entities from which positions can be extracted.  
@@ -99,7 +99,7 @@ See `calc.BBox` and `visualize.BBox` for more on bounding boxes.
 **Description:** Create the union of a set of polygons. The original polygons are not edited.  
   
 **Parameters:**  
-  * *entities:* A list of polygons, or entities from which polygons can bet extracted.  
+  * *entities:* A list of polygons, or entities from which polygons can be extracted.  
   
 **Returns:** A list of new polygons.  
   
@@ -145,7 +145,8 @@ is the original/input polygon.
 
 
 See `poly2d.OffsetChamfer` and `poly2d.OffsetRound` to use different joints while offsetting.
-Alternatively, try `modify.Offset` for a different offset operation that modifies the original entities.
+Alternatively, try `modify.Offset` for a different offset operation that works in 3D and modifies
+the original entities.
 
 
 For open polylines, the type of ends can be changed with `end\_type`, shown below.
@@ -181,7 +182,8 @@ is the original/input polygon.
 
 
 See `poly2d.OffsetMitre` and `poly2d.OffsetRound` to use different joints while offsetting.
-Alternatively, try `modify.Offset` for a different offset operation that modifies the original entities.
+Alternatively, try `modify.Offset` for a different offset operation that works in 3D and modifies
+the original entities.
 
 
 For open polylines, the type of ends can be changed with `end\_type`, shown below.
@@ -215,7 +217,8 @@ is the original/input polygon.
 
 
 See `poly2d.OffsetMitre` and `poly2d.OffsetChamfer` to use different joints while offsetting.
-Alternatively, try `modify.Offset` for a different offset operation that modifies the original entities.
+Alternatively, try `modify.Offset` for a different offset operation that works in 3D and modifies
+the original entities.
 
 
 For open polylines, the type of ends can be changed with `end\_type`, shown below.
@@ -239,7 +242,7 @@ the smaller the number, the rounder the joints. Will also apply to `round_end` i
 ## Stitch  
   
   
-**Description:** Adds vertices to polyline and polygons at all locations where egdges intersect one another.
+**Description:** Adds vertices to polyline and polygons at all locations where edges intersect one another.
 The vertices are welded.
 This can be useful for creating networks that can be used for shortest path calculations.
 
@@ -269,8 +272,10 @@ Vertices that are colinear within the tolerance distance will be deleted.
   
 **Parameters:**  
   * *entities:* A list of polylines or polygons, or entities from which polylines or polygons can be extracted.  
-  * *tolerance:* The tolerance for deleting vertices from the polyline.  
+  * *tolerance:* The tolerance for deleting vertices from the polyline.
+(If nothing happens, try using a smaller tolerance number from 0-2.
+Results of tolerance can be checked with query.Get vertices.)  
   
-**Returns:** A list of new polygons.  
+**Returns:** A list of new polylines or polygons.  
   
   

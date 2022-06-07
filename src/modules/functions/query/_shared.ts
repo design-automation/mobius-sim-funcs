@@ -5,7 +5,7 @@ import { _EEntType, _EEntTypeAndMod } from './_enum';
 
 // ================================================================================================
 
-export function _getEntTypeFromStr(ent_type_str: _EEntType|_EEntTypeAndMod): EEntType {
+export function _getEntTypeFromStr(ent_type_str: _EEntType|_EEntTypeAndMod|EEntType): EEntType {
     switch (ent_type_str) {
         case _EEntTypeAndMod.POSI:
             return EEntType.POSI;

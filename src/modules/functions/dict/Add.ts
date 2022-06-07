@@ -24,6 +24,6 @@ export function Add(dict: object, keys: string|string[], values: any|any[]): voi
     for (let i = 0; i < keys.length; i++) {
         const key = keys[i];
         const value = values[i];
-        dict[key] = dict[value];
+        dict[key] = value;
     }
 }

@@ -304,6 +304,8 @@ function _getDataTypeStrFromFunc(check_fn: any): string {
             return 'a number';
         case isNumL:
             return 'a list of numbers';
+        case isNum01:
+            return 'a number between 0 and 1';
         case isInt:
             return 'an integer';
         case isXY:

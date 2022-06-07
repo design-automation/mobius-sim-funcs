@@ -78,13 +78,14 @@ can be extracted to create the holes.
 If two vertices are welded, then they share the same position.
 
 
-- When making a weld between vertices (`make_weld`), a new position is created. The new position is calculated
-as the average of all the existing positions of the vertices. The vertices will then be linked
-to the new position. This means that if the position is later moved, then all vertices will be
-affected. The new position is returned. The positions that become shared are returned.
-- When breaking a weld between vetices (`break_weld`), existing positions are duplicated. Each vertex is then
-linked to one of these duplicate positions. If these positions are later moved, then only one
-vertex will be affected.  The new positions that get generated are returned.
+- When making a weld between vertices (`make_weld`), a new position is created and the old
+  positions are removed. The new position is calculated as the average of all the existing
+  positions of the vertices. The vertices will then be linked to the new position. This means
+  that if the position is later moved, then all vertices will be affected. The new position is
+  returned. The positions that become shared are returned.
+- When breaking a weld between vetices (`break_weld`), existing positions are duplicated. Each
+  vertex is then linked to one of these duplicate positions. If these positions are later moved,
+  then only one vertex will be affected.  The new positions that get generated are returned.
 
   
   
@@ -93,6 +94,11 @@ vertex will be affected.  The new positions that get generated are returned.
   * *method:* Enum, the method to use: `'make_weld'` or `'break_weld'`.  
   
 **Returns:** Entities, a list of new positions depending on type of weld.  
+**Examples:**  
+  * <a href="/editor?file=/assets/examples/Functions_edit.Weld_example.mob&node=1" target="_blank">
+Example model </a>  
+    A simple model with polylines, showing how to weld and break vertices.
+  
   
   
 ## Fuse  
@@ -183,7 +189,7 @@ backwards around the ring. The order of the edges in the ring will remain unchan
   
 **Returns:** void  
 **Examples:**  
-  * `modify.Shift(polygon1, 1)`  
+  * `edit.Shift(polygon1, 1)`  
     Shifts the edges in the polygon wire, so that every edge moves back by one position
 in the ring. The first edge will become the last edge.  
   * `edit.Shift(polyline1, -1)`  
@@ -211,7 +217,7 @@ front face will be flipped. If the normal is calculated, it will face in the opp
   
 **Returns:** void  
 **Examples:**  
-  * `modify.Reverse(polygon1)`  
+  * `edit.Reverse(polygon1)`  
     Flips polygon and reverses its normal.  
   * `edit.Reverse(polyline1)`  
     Reverses the order of vertices and edges in the polyline.

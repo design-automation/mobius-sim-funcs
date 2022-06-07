@@ -28,7 +28,7 @@ function rayFromPln(pln: TPlane|TPlane[]): TRay|TRay[] {
 
 // ================================================================================================
 /**
- * Returns a ray for an edge or a polygons.
+ * Returns a ray for edges or polygons. Rays have an origin and a direction. 
  * \n
  * For edges, it returns a ray along the edge, from the start vertex to the end vertex
  * \n
@@ -37,7 +37,7 @@ function rayFromPln(pln: TPlane|TPlane[]): TRay|TRay[] {
  * For an edge, the ray vector is not normalised. For a polygon, the ray vector is normalised.
  *
  * @param __model__
- * @param entities An edge, a wirea polygon, or a list.
+ * @param entities An edge, a wire, a polygon, or a list.
  * @returns The ray.
  */
 export function Ray(__model__: GIModel, entities: TId|TId[]): TRay|TRay[] {
