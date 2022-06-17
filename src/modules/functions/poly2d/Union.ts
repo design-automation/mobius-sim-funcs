@@ -31,7 +31,7 @@ export function Union(__model__: GIModel, entities: TId|TId[]): TId[] {
     let ents_arr: TEntTypeIdx[];
     if (__model__.debug) {
         ents_arr = checkIDs(__model__, fn_name, 'entities', entities,
-        [ID.isID, ID.isIDL1], null) as TEntTypeIdx[];
+        [ID.isID, ID.isIDL1], [EEntType.PGON]) as TEntTypeIdx[];
     } else {
         // ents_arr = splitIDs(fn_name, 'entities', entities,
         // [IDcheckObj.isID, IDcheckObj.isIDList], null) as TEntTypeIdx[];

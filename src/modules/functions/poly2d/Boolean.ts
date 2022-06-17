@@ -55,9 +55,9 @@ export function Boolean(__model__: GIModel, a_entities: TId|TId[], b_entities: T
     let b_ents_arr: TEntTypeIdx[];
     if (__model__.debug) {
         a_ents_arr = checkIDs(__model__, fn_name, 'a_entities', a_entities,
-        [ID.isID, ID.isIDL1], null) as TEntTypeIdx[];
+        [ID.isID, ID.isIDL1], [EEntType.PGON, EEntType.PLINE]) as TEntTypeIdx[];
         b_ents_arr = checkIDs(__model__, fn_name, 'b_entities', b_entities,
-        [ID.isID, ID.isIDL1], null) as TEntTypeIdx[];
+        [ID.isID, ID.isIDL1], [EEntType.PGON]) as TEntTypeIdx[];
     } else {
         // a_ents_arr = splitIDs(fn_name, 'a_entities', a_entities,
         // [IDcheckObj.isID, IDcheckObj.isIDList], null) as TEntTypeIdx[];
