@@ -4,7 +4,7 @@
  * Some functions return the IDs of the entities that are created or modified.
  * @module
  */
-import { Sim } from '../../mobius_sim';
+import { Sim, ENT_TYPE } from '../../mobius_sim';
 
 import { checkIDs, ID } from '../_common/_check_ids';
 import * as chk from '../_common/_check_types';
@@ -57,6 +57,14 @@ export class EditFunc {
         Delete(this.__model__, entities, method);
     }
     Divide(entities: string | string[], divisor: number, method: Enum._EDivisorMethod): any {
+        // --- Error Check ---
+        const fn_name = 'edit.Divide';
+        if (this.debug) {
+            checkIDs(this.__model__, fn_name, 'entities', entities,
+            [ID.isID, ID.isIDL1], [ENT_TYPE.EDGE, ENT_TYPE.WIRE, ENT_TYPE.PLINE, ENT_TYPE.PGON]) as string[];
+            chk.checkArgs(fn_name, 'divisor', divisor, [chk.isNum]);
+        }
+        // --- Error Check ---
         return Divide(this.__model__, entities, divisor, method);
     }
     Fuse(entities: string | string[], tolerance: number): any {

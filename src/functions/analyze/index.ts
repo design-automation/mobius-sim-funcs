@@ -3,7 +3,7 @@
  * the model. These functions all return dictionaries containing the results of the analysis.
  * @module
  */
-import { Sim } from '../../mobius_sim';
+import { Sim, ENT_TYPE } from '../../mobius_sim';
 import { Txyz, TPlane, TRay } from '../_common/consts';
 
 import { checkIDs, ID } from '../_common/_check_ids';
@@ -86,37 +86,66 @@ export class AnalyzeFunc {
 
     Centrality(source: string | string[] | string[][][], entities: string | string[] | string[][], method: Enum._ECentralityMethod, cen_type: Enum._ECentralityType): any {
         // --- Error Check ---
-        const fn_name = "analyze.Centrality";
-        let source_ents_arrs: string[] = [];
-        let ents_arrs: string[];
         if (this.debug) {
+            const fn_name = "analyze.Centrality";
             if (source.length > 0) {
-                source_ents_arrs = checkIDs(__model__, fn_name, "source", source, [ID.isID, ID.isIDL1], null) as string[];
+                checkIDs(this.__model__, fn_name, "source", source, [ID.isID, ID.isIDL1], null) as string[];
             }
-            ents_arrs = checkIDs(__model__, fn_name, "entities", entities, [ID.isID, ID.isIDL1], null) as string[];
-        } else {
-            // if (source.length > 0) {
-            //     source_ents_arrs = splitIDs(fn_name, 'source', source,
-            //         [IDcheckObj.isID, IDcheckObj.isIDList], null) as string[];
-            // }
-            // ents_arrs = splitIDs(fn_name, 'entities', entities,
-            //     [IDcheckObj.isID, IDcheckObj.isIDList], null) as string[];
-            source_ents_arrs = idsBreak(source) as string[];
-            ents_arrs = idsBreak(entities) as string[];
+            checkIDs(this.__model__, fn_name, "entities", entities, [ID.isID, ID.isIDL1], null) as string[];
         }
         // --- Error Check ---
         return Centrality(this.__model__, source, entities, method, cen_type);
     }
     ClosestPath(source: string | string[] | string[][][], target: string | string[] | string[][], entities: string | string[] | string[][], method: Enum._EShortestPathMethod, result: Enum._EShortestPathResult): any {
+        // --- Error Check ---
+        if (this.debug) {
+            const fn_name = "analyze.ClosestPath";
+            checkIDs(this.__model__, fn_name, "origins", source, [ID.isID, ID.isIDL1], null) as string[];
+            checkIDs(this.__model__, fn_name, "destinations", target, [ID.isID, ID.isIDL1], null) as string[];
+            checkIDs(this.__model__, fn_name, "entities", entities, [ID.isID, ID.isIDL1], null) as string[];
+        }
+        // --- Error Check ---
         return ClosestPath(this.__model__, source, target, entities, method, result);
     }
     Degree({ source, entities, alpha, method }: { source: any; entities: any; alpha: any; method: any; }): any {
+        // --- Error Check ---
+        if (this.debug) {
+            const fn_name = "analyze.Degree";
+            if (source.length > 0) {
+                checkIDs(this.__model__, fn_name, "source", source, [ID.isID, ID.isIDL1], null) as string[];
+            }
+            checkIDs(this.__model__, fn_name, "entities", entities, [ID.isID, ID.isIDL1], null) as string[];
+        }
+        // --- Error Check ---
         return Degree(this.__model__, source, entities, alpha, method);
     }
     Isovist(origins: TRay[] | TPlane[], entities: string | string[] | string[][], radius: number, num_rays: number): any {
+        // --- Error Check ---
+        if (this.debug) {
+            const fn_name = "analyze.Isovist";
+            chk.checkArgs(fn_name, "origins", origins, [chk.isRayL, chk.isPlnL]);
+            checkIDs(this.__model__, fn_name, "entities", entities, [ID.isIDL1], [ENT_TYPE.PGON, ENT_TYPE.COLL]) as string[];
+            chk.checkArgs(fn_name, "radius", radius, [chk.isNum, chk.isNumL]);
+            if (Array.isArray(radius)) {
+                if (radius.length !== 2) {
+                    throw new Error('If "radius" is a list, it must have a length of two: [min_dist, max_dist].');
+                }
+                if (radius[0] >= radius[1]) {
+                    throw new Error('If "radius" is a list, the "min_dist" must be less than the "max_dist": [min_dist, max_dist].');
+                }
+            }
+        }
+        // --- Error Check ---
         return Isovist(this.__model__, origins, entities, radius, num_rays);
     }
     Nearest(source: string | string[], target: string | string[], radius: number, max_neighbors: number): any {
+        // --- Error Check ---
+        if (this.debug) {
+            const fn_name = "analyze.Nearest";
+            checkIDs(this.__model__, fn_name, "origins", source, [ID.isID, ID.isIDL1], null) as string[];
+            checkIDs(this.__model__, fn_name, "destinations", target, [ID.isID, ID.isIDL1], null) as string[];
+        }
+        // --- Error Check ---
         return Nearest(this.__model__, source, target, radius, max_neighbors);
     }
     Raytrace(rays: TRay | TRay[] | TRay[][], entities: string | string[] | string[][], dist: number | [number, number], method: Enum._ERaytraceMethod): any {

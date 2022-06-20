@@ -46,22 +46,7 @@ export function Nearest(
     } // TODO optimise
     source = arrMakeFlat(source) as string[];
     target = arrMakeFlat(target) as string[];
-    // --- Error Check ---
-    const fn_name = "analyze.Nearest";
-    let source_ents_arrs: string[];
-    let target_ents_arrs: string[];
-    if (this.debug) {
-        source_ents_arrs = checkIDs(__model__, fn_name, "origins", source, [ID.isID, ID.isIDL1], null) as string[];
-        target_ents_arrs = checkIDs(__model__, fn_name, "destinations", target, [ID.isID, ID.isIDL1], null) as string[];
-    } else {
-        // source_ents_arrs = splitIDs(fn_name, 'origins', source,
-        //     [IDcheckObj.isID, IDcheckObj.isIDList], null) as string[];
-        // target_ents_arrs = splitIDs(fn_name, 'destinations', target,
-        //     [IDcheckObj.isID, IDcheckObj.isIDList], null) as string[];
-        source_ents_arrs = idsBreak(source) as string[];
-        target_ents_arrs = idsBreak(target) as string[];
-    }
-    // --- Error Check ---
+    // -----
     const source_posis_i: number[] = _getUniquePosis(__model__, source_ents_arrs);
     const target_posis_i: number[] = _getUniquePosis(__model__, target_ents_arrs);
     const result: [number[], number[] | number[][], number[] | number[][]] = _nearest(

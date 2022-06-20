@@ -39,25 +39,9 @@ export function Set(
     if (entities !== null && getArrDepth(entities) === 2) {
         entities = uscore.flatten(entities);
     }
-    // --- Error Check ---
-    const fn_name = "attrib.Set";
-    let ents_arr: string | string[] = null;
-    let attrib_name: string;
-    let attrib_idx_key: number | string;
-    if (this.debug) {
-        // if (value === undefined) {
-        //     throw new Error(fn_name + ': value is undefined');
-        // }
-        ents_arr = checkIDs(__model__, fn_name, "entities", entities, [ID.isNull, ID.isID, ID.isIDL1], null) as string | string[];
-        [attrib_name, attrib_idx_key] = checkAttribNameIdxKey(fn_name, attrib);
-        checkAttribName(fn_name, attrib_name);
-    } else {
-        if (entities !== null) {
-            ents_arr = idsBreak(entities) as string | string[];
-        }
-        [attrib_name, attrib_idx_key] = splitAttribNameIdxKey(fn_name, attrib);
-    }
-    // --- Error Check ---
+    // -----
+    const [attrib_name, attrib_idx_key] = splitAttribNameIdxKey('attrib.Get', attrib);
+    // -----
     _setAttrib(__model__, ents_arr, attrib_name, value, attrib_idx_key, method);
 }
 function _setAttrib(

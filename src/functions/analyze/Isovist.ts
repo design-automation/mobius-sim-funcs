@@ -58,27 +58,7 @@ export function Isovist(
     num_rays: number
 ): TIsovistResult {
     entities = arrMakeFlat(entities) as string[];
-    // --- Error Check ---
-    const fn_name = "analyze.Isovist";
-    // let origin_ents_arrs: string[];
-    let ents_arrs: string[];
-    if (this.debug) {
-        chk.checkArgs(fn_name, "origins", origins, [chk.isRayL, chk.isPlnL]);
-        ents_arrs = checkIDs(__model__, fn_name, "entities", entities, [ID.isIDL1], [ENT_TYPE.PGON, ENT_TYPE.COLL]) as string[];
-        chk.checkArgs(fn_name, "radius", radius, [chk.isNum, chk.isNumL]);
-        if (Array.isArray(radius)) {
-            if (radius.length !== 2) {
-                throw new Error('If "radius" is a list, it must have a length of two: [min_dist, max_dist].');
-            }
-            if (radius[0] >= radius[1]) {
-                throw new Error('If "radius" is a list, the "min_dist" must be less than the "max_dist": [min_dist, max_dist].');
-            }
-        }
-    } else {
-        // origin_ents_arrs = idsBreak(origins) as string[];
-        ents_arrs = idsBreak(entities) as string[];
-    }
-    // --- Error Check ---
+    // -----
     // create tjs origins for xyz, ray, or plane
     const origins_tjs: THREE.Vector3[] = _isovistOriginsTjs(__model__, origins, 0.1); // TODO Should we lift coords by 0.1 ???
     // create tjs directions

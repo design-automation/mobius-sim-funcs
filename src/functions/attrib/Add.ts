@@ -22,40 +22,7 @@ import { _getEntTypeFromStr } from './_shared';
  * @returns void 
  */
 export function Add(__model__: Sim, ent_type_sel: _ENT_TYPEAndMod, data_type_sel: _EDataType, attribs: string | string[]): void {
-    // --- Error Check ---
-
-    const fn_name = "attrib.Add";
-    const arg_name = "ent_type_sel";
-    let ent_type: ENT_TYPE;
-
-    if (this.debug) {
-        if (ent_type_sel === "ps" && attribs === "xyz") {
-            throw new Error(fn_name + ": " + arg_name + " The xyz attribute already exists.");
-        }
-        // convert the ent_type_str to an ent_type
-        ent_type = _getEntTypeFromStr(ent_type_sel);
-        if (ent_type === undefined) {
-            throw new Error(fn_name + ": " + arg_name + " is not one of the following valid types - " + "ps, _v, _e, _w, _f, pt, pl, pg, co, mo.");
-        }
-        // create an array of attrib names
-        if (!Array.isArray(attribs)) {
-            attribs = [attribs];
-        }
-        attribs = attribs as string[];
-        for (const attrib of attribs) {
-            checkAttribName(fn_name, attrib);
-        }
-    } else {
-        // convert the ent_type_str to an ent_type
-        ent_type = _getEntTypeFromStr(ent_type_sel);
-        // create an array of attrib names
-        if (!Array.isArray(attribs)) {
-            attribs = [attribs];
-        }
-        attribs = attribs as string[];
-    }
-
-    // --- Error Check ---
+    // -----
     // set the data type
     let data_type: EAttribDataTypeStrs = null;
     switch (data_type_sel) {

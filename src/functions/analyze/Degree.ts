@@ -59,26 +59,7 @@ export function Degree(
         source = arrMakeFlat(source) as string[];
     }
     entities = arrMakeFlat(entities) as string[];
-    // --- Error Check ---
-    const fn_name = "analyze.Degree";
-    let source_ents_arrs: string[] = [];
-    let ents_arrs: string[];
-    if (this.debug) {
-        if (source.length > 0) {
-            source_ents_arrs = checkIDs(__model__, fn_name, "source", source, [ID.isID, ID.isIDL1], null) as string[];
-        }
-        ents_arrs = checkIDs(__model__, fn_name, "entities", entities, [ID.isID, ID.isIDL1], null) as string[];
-    } else {
-        // if (source.length > 0) {
-        //     source_ents_arrs = splitIDs(fn_name, 'source', source,
-        //         [IDcheckObj.isID, IDcheckObj.isIDList], null) as string[];
-        // }
-        // ents_arrs = splitIDs(fn_name, 'entities', entities,
-        //     [IDcheckObj.isID, IDcheckObj.isIDList], null) as string[];
-        source_ents_arrs = idsBreak(source) as string[];
-        ents_arrs = idsBreak(entities) as string[];
-    }
-    // --- Error Check ---
+    // ----
     const directed: boolean = method === _ECentralityMethod.DIRECTED ? true : false;
     const source_posis_i: number[] = _getUniquePosis(__model__, source_ents_arrs);
 

@@ -44,17 +44,7 @@ import { _EDivisorMethod } from './_enum';
 export function Divide(__model__: Sim, entities: string|string[], divisor: number, method: _EDivisorMethod): string[] {
     entities = arrMakeFlat(entities) as string[];
     if (isEmptyArr(entities)) { return []; }
-    // --- Error Check ---
-    const fn_name = 'edit.Divide';
-    let ents_arr: string[];
-    if (this.debug) {
-        ents_arr = checkIDs(__model__, fn_name, 'entities', entities,
-        [ID.isID, ID.isIDL1], [ENT_TYPE.EDGE, ENT_TYPE.WIRE, ENT_TYPE.PLINE, ENT_TYPE.PGON]) as string[];
-        chk.checkArgs(fn_name, 'divisor', divisor, [chk.isNum]);
-    } else {
-        ents_arr = idsBreak(entities) as string[];
-    }
-    // --- Error Check ---
+    // -----
     const new_ents_arr: string[] = __model__.modeldata.funcs_edit.divide(ents_arr, divisor, method);
     // return the ids
     return idsMake(new_ents_arr) as string[];

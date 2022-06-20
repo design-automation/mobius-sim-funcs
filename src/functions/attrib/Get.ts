@@ -30,26 +30,9 @@ export function Get(__model__: Sim, entities: string | string[] | string[][],
     attrib: string | [string, number | string]): TAttribDataTypes | TAttribDataTypes[] {
     // @ts-ignore
     if (entities !== null && getArrDepth(entities) === 2) { entities = uscore.flatten(entities); }
-    // --- Error Check ---
-    let ents_arr: string | string[] = null;
-    let attrib_name: string;
-    let attrib_idx_key: number | string;
-    const fn_name = 'attrib.Get';
-    if (this.debug) {
-        if (entities !== null && entities !== undefined) {
-            ents_arr = checkIDs(__model__, fn_name, 'entities', entities, [ID.isID, ID.isIDL1], null) as string | string[];
-        }
-        [attrib_name, attrib_idx_key] = checkAttribNameIdxKey(fn_name, attrib);
-        checkAttribName(fn_name, attrib_name);
-    } else {
-        if (entities !== null && entities !== undefined) {
-            // ents_arr = splitIDs(fn_name, 'entities', entities,
-            // [IDcheckObj.isID, IDcheckObj.isIDList], null) as string|string[];
-            ents_arr = idsBreak(entities) as string | string[];
-        }
-        [attrib_name, attrib_idx_key] = splitAttribNameIdxKey(fn_name, attrib);
-    }
-    // --- Error Check ---
+    // -----
+    const [attrib_name, attrib_idx_key] = splitAttribNameIdxKey('attrib.Get', attrib);
+    // -----
     return _get(__model__, ents_arr, attrib_name, attrib_idx_key);
 }
 function _get(__model__: Sim, ents_arr: string | string[],
