@@ -47,7 +47,7 @@ export function checkArgs(fn_name: string, arg_name: string, arg: any, check_fns
         }
         err_msg = err_msg +
             '</ul>' +
-            ' Make sure that the agument passed to the "' + arg_name + '" parameter matches one of the above perimtted data types.';
+            ' Make sure that the argument passed to the "' + arg_name + '" parameter matches one of the above permitted data types.';
         throw new Error(err_msg);
     }
     return ret;
@@ -82,7 +82,7 @@ export function isList(arg: any): void {
         throw new Error ();
     }
 }
-// List
+// List of lists
 export function isLList(arg: any): void {
     if (!Array.isArray(arg) || !Array.isArray(arg[0])) {
         throw new Error ();
@@ -299,15 +299,19 @@ function _getDataTypeStrFromFunc(check_fn: any): string {
         case isStrStr:
             return 'a list containing two strings';
         case isStrNum:
-            return 'a list containg one string and one number';
+            return 'a list containing one string and one number';
         case isNum:
             return 'a number';
         case isNumL:
             return 'a list of numbers';
         case isNum01:
             return 'a number between 0 and 1';
+        case isNum01L:
+            return 'a list of numbers between 0 and 1';
         case isInt:
             return 'an integer';
+        case isIntL:
+            return 'a list of integers';
         case isXY:
             return 'a list containing two numbers';
         case isXYInt:
@@ -317,23 +321,23 @@ function _getDataTypeStrFromFunc(check_fn: any): string {
         case isXYZ:
             return 'a list containing three numbers';
         case isXYZL:
-            return 'a list of lists conatining three numbers';
+            return 'a list of lists containing three numbers';
         case isXYZLL:
-            return 'a nested list of lists conatining three numbers';
+            return 'a nested list of lists containing three numbers';
         case isPln:
-            return 'a plane, defined by a list of three lists, each conatining three numbers';
+            return 'a plane, defined by a list of three lists, each containing three numbers';
         case isPlnL:
-            return 'a list of planes, each defined by a list of three lists, each conatining three numbers';
+            return 'a list of planes, each defined by a list of three lists, each containing three numbers';
         case isBBox:
-            return 'a bounding box, defined by a list of four lists, each conatining three numbers';
+            return 'a bounding box, defined by a list of four lists, each containing three numbers';
         case isBBoxL:
-            return 'a list of bounding boxes, each defined by a list of four lists, each conatining three numbers';
+            return 'a list of bounding boxes, each defined by a list of four lists, each containing three numbers';
         case isRay:
-            return 'a ray, defined by a list of two lists, each conatining three numbers';
+            return 'a ray, defined by a list of two lists, each containing three numbers';
         case isRayL:
-            return 'a list of rays, each defined by a list of two lists, each conatining three numbers';
+            return 'a list of rays, each defined by a list of two lists, each containing three numbers';
         case isRayLL:
-            return 'a nested list of rays, each defined by a list of two lists, each conatining three numbers';
+            return 'a nested list of rays, each defined by a list of two lists, each containing three numbers';
         default:
             return 'sorry... arg type not found';
     }

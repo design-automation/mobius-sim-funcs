@@ -39,7 +39,7 @@ export function Bezier(__model__: GIModel, coords: Txyz[], num_positions: number
     // --- Error Check ---
     const fn_name = 'pattern.Bezier';
     if (__model__.debug) {
-        chk.checkArgs(fn_name, 'coords', coords, [chk.isXYZL]);
+        chk.checkArgs(fn_name, 'coords', coords, [chk.isXYZL, chk.isPln]);
         chk.checkArgs(fn_name, 'num_positions', num_positions, [chk.isInt]);
     }
     // --- Error Check ---
