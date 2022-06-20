@@ -233,3 +233,12 @@ test('Pgon tris', () => {
     expect(sim.getEnts(ENT_TYPE.TRI, 'pg0')).toEqual(['_t0', '_t1']);
     expect(sim.getEnts(ENT_TYPE.TRI, 'ps0')).toEqual(['_t0']);
 });
+
+test('Copy posi with attribs', () => {
+    const sim: Sim = new Sim();
+    const p0 = sim.addPosi([0,0,0]);
+    sim.addAttrib(ENT_TYPE.POSI, 'test', DATA_TYPE.STR);
+    sim.setAttribVal(p0, 'test', 'hello');
+    const p1 = sim.copyEnts([p0])[0];
+    expect(sim.getAttribVal(p1, 'test')).toBe('hello');
+});

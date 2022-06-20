@@ -1,4 +1,4 @@
-import {Sim, ENT_TYPE} from '../../mobius_sim';
+import {Sim, ENT_TYPE} from 'src/mobius_sim';
 import { Txyz } from '../_common/consts';
 import { getArrDepth, isEmptyArr } from '../_common/_arrs';
 
@@ -30,6 +30,41 @@ import { getArrDepth, isEmptyArr } from '../_common/_arrs';
  */
 export function Copy(__model__: Sim, entities: string | string[] | string[][], 
         vector: Txyz | Txyz[] = null): string|string[]|string[][] {
+    // // copy the list of entities
+    // const new_ents_arr: TEntTypeIdx|TEntTypeIdx[]|TEntTypeIdx[][] = __model__.modeldata.funcs_common.copyGeom(ents_arr, true);
+    // // copy the positions that belong to the list of entities
+    // if (vector === null) {
+    //     __model__.modeldata.funcs_common.clonePosisInEnts(new_ents_arr, true);
+    // } else {
+    //     const depth: number = getArrDepth(vector);
+    //     if (depth === 1) {
+    //         vector = vector  as Txyz;
+    //         __model__.modeldata.funcs_common.clonePosisInEntsAndMove(new_ents_arr, true, vector);
+    //     } else if (depth === 2) {
+    //         // handle the overloaded case
+    //         // the list of entities should be the same length as the list of vectors
+    //         // so we can match them 1 to 1
+    //         const depth2: number = getArrDepth(new_ents_arr);
+    //         if (depth2 > 1 && new_ents_arr.length === vector.length) {
+    //             vector = vector as Txyz[];
+    //             const new_ents_arr_oload = new_ents_arr as TEntTypeIdx[] | TEntTypeIdx[][];
+    //             for (let i = 0; i < vector.length; i++) {
+    //                 __model__.modeldata.funcs_common.clonePosisInEntsAndMove(new_ents_arr_oload[i], true, vector[i]);
+    //             }
+    //         } else {
+    //             throw new Error('Error in ' + fn_name + ": " +
+    //             'The value passed to the vector argument is invalid.' +
+    //             'If multiple vectors are given, then the number of vectors must be equal to the number of entities.');
+    //         }
+    //     } else {
+    //         throw new Error('Error in ' + fn_name + ": " +
+    //         'The value passed to the vector argument is invalid.' + 
+    //         'The argument value is: ' + vector);
+    //     }
+    // }
+    // // return only the new entities
+    // =============================================================================================
+    // return idsMake(new_ents_arr) as TId|TId[]|TId[][];
     if (isEmptyArr(entities)) { return []; }
     // copy ents
     if (vector === null) {

@@ -13,7 +13,7 @@ import {
 
 import { checkIDs, ID } from '../_common/_check_ids';
 import * as chk from '../../_check_types';
-import { getRay } from '../_common';
+import { getRay } from '../_common/___index_old';
 
 
 

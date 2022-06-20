@@ -1,4 +1,4 @@
-import { Sim, ENT_TYPE } from '../../mobius_sim';
+import { Sim, ENT_TYPE } from 'src/mobius_sim';
 import { isEmptyArr } from '../_common/_arrs';
 import { _ELoftMethod } from './_enum';
 

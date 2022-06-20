@@ -1,7 +1,7 @@
 import { Sim, idsBreak, isEmptyArr, string, string, Txyz } from '../../mobius_sim';
 
 import { checkIDs, ID } from '../_common/_check_ids';
-import { getCenterOfMass, getCentroid } from '../_common';
+import { getCenterOfMass, getCentroid } from '../_common/___index_old';
 import { _ECentroidMethod } from './_enum';
 
 

@@ -1,7 +1,7 @@
 import { getDataTypeStrFromValue } from './_check_types';
-import { Sim, ENT_TYPE } from '../mobius_sim';
+import { Sim, ENT_TYPE } from 'src/mobius_sim';
 import { getArrDepth } from './_arrs';
-
+// -------------------------------------------------------------------------------------------------
 export const ID = {
     isNull: -1,
     isID: 0,
@@ -10,6 +10,7 @@ export const ID = {
     isIDL3: 3,
     isIDL4: 4,
 };
+// -------------------------------------------------------------------------------------------------
 /**
  *
  * @param __model__
@@ -78,6 +79,7 @@ export function checkIDs(__model__: Sim, fn_name: string, arg_name: string, arg:
     // return the ents
     return ents; // returns string|string[]|string[][]; depends on which passes
 }
+// -------------------------------------------------------------------------------------------------
 /**
  *
  * @param __model__
@@ -118,6 +120,7 @@ function _checkIdsAreValid(__model__: Sim,
         return arg.map(a_arg => _checkIdsAreValid(__model__, a_arg, ent_types_set, check_exists, curr_depth + 1, req_depth)) as string[] | string[][];
     }
 }
+// -------------------------------------------------------------------------------------------------
 /**
  *
  * @param fn_name
@@ -158,6 +161,7 @@ function _errorMsg(
     err_msg += '</ul>';
     return err_msg;
 }
+// -------------------------------------------------------------------------------------------------
 /**
  *
  * @param check_fn
@@ -178,6 +182,7 @@ function _getDataTypeStrFromIDType(id_type: any): string {
             return 'sorry... arg type not found';
     }
 }
+// -------------------------------------------------------------------------------------------------
 /**
  *
  * @param ent_type
@@ -206,3 +211,4 @@ function _getIDTypeStr(ent_type: ENT_TYPE): string {
             return 'Internal error... entitiy type not found';
     }
 }
+// -------------------------------------------------------------------------------------------------

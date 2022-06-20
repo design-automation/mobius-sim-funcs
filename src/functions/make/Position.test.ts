@@ -1,4 +1,4 @@
-import * as MobiusSIM from '../../mobius_sim';
+import * as MobiusSIM from 'src/mobius_sim';
 
 import { Position } from './Position';
 

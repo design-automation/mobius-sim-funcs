@@ -1,8 +1,10 @@
 import * as chk from './_check_types';
-
-// =========================================================================================================================================
-// Attribute Checks
-// =========================================================================================================================================
+// -------------------------------------------------------------------------------------------------
+/**
+ * 
+ * @param fn_name 
+ * @param attrib_name 
+ */
 export function checkAttribName(fn_name: string, attrib_name: string): void {
     chk.isStr(attrib_name); // check arg is string
     if (attrib_name === undefined) {
@@ -22,6 +24,12 @@ export function checkAttribName(fn_name: string, attrib_name: string): void {
         throw new Error(fn_name + ': id is not modifiable!');
     }
 }
+// -------------------------------------------------------------------------------------------------
+/**
+ * 
+ * @param fn_name 
+ * @param idx_or_key 
+ */
 export function checkAttribIdxKey(fn_name: string, idx_or_key?: number|string): void {
     // -- check defined index
     if (typeof idx_or_key === 'number') {
@@ -36,7 +44,15 @@ export function checkAttribIdxKey(fn_name: string, idx_or_key?: number|string): 
         throw new Error(fn_name + ': index or key is not a valid type: ' + idx_or_key);
     }
 }
-export function checkAttribNameIdxKey(fn_name: string, attrib: string|[string, number|string]): [string, number|string] {
+// -------------------------------------------------------------------------------------------------
+/**
+ * 
+ * @param fn_name 
+ * @param attrib 
+ * @returns 
+ */
+export function checkAttribNameIdxKey(fn_name: string, 
+        attrib: string|[string, number|string]): [string, number|string] {
     let attrib_name: string = null;
     let attrib_idx_key: number|string = null;
     // deconstruct the attrib arg
@@ -58,7 +74,15 @@ export function checkAttribNameIdxKey(fn_name: string, attrib: string|[string, n
     // return the deconstructed attrib arg, attrib_idx_key may be null
     return [attrib_name, attrib_idx_key];
 }
-export function splitAttribNameIdxKey(fn_name: string, attrib: string|[string, number|string]): [string, number|string] {
+// -------------------------------------------------------------------------------------------------
+/**
+ * 
+ * @param fn_name 
+ * @param attrib 
+ * @returns 
+ */
+export function splitAttribNameIdxKey(fn_name: string, 
+        attrib: string|[string, number|string]): [string, number|string] {
     let attrib_name: string = null;
     let attrib_idx_key: number|string = null;
     // deconstruct the attrib arg
@@ -71,7 +95,13 @@ export function splitAttribNameIdxKey(fn_name: string, attrib: string|[string, n
     // return the deconstructed attrib arg, attrib_idx_key may be null
     return [attrib_name, attrib_idx_key];
 }
-
+// -------------------------------------------------------------------------------------------------
+/**
+ * 
+ * @param fn_name 
+ * @param attrib_value 
+ * @returns 
+ */
 export function checkAttribValue(fn_name: string, attrib_value: any): void {
     // if it is undefined, then we are deleting the attribute value
     if (attrib_value === undefined) { return; }
@@ -79,3 +109,4 @@ export function checkAttribValue(fn_name: string, attrib_value: any): void {
     chk.checkArgs(fn_name, 'attrib_value', attrib_value,
             [chk.isNull, chk.isStr, chk.isNum, chk.isBool, chk.isList, chk.isDict]);
 }
+// -------------------------------------------------------------------------------------------------

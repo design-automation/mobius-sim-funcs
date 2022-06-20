@@ -3,7 +3,7 @@
  * All these functions return the IDs of the entities that are created.
  * @module
  */
-import { Sim, ENT_TYPE } from '../../mobius_sim';
+import { Sim, ENT_TYPE } from 'src/mobius_sim';
 
 import { checkIDs, ID } from '../_common/_check_ids';
 import * as chk from '../_common/_check_types';

@@ -1,9 +1,5 @@
-// =====================================================================================================================
-// util - check type
-// =====================================================================================================================
-
-import { TBBox, TColor, string, TPlane, TRay, Txy, Txyz } from '../../mobius_sim';
-
+import { TBBox, TColor, TPlane, TRay, Txy, Txyz } from './consts';
+// -------------------------------------------------------------------------------------------------
 /**
  *
  * @param fn_name
@@ -52,6 +48,7 @@ export function checkArgs(fn_name: string, arg_name: string, arg: any, check_fns
     }
     return ret;
 }
+// -------------------------------------------------------------------------------------------------
 function _getSampleStr(arg: any): string {
     let str: string;
     if (Array.isArray(arg)) {
@@ -68,32 +65,35 @@ function _getSampleStr(arg: any): string {
     }
     return str;
 }
-
-
+// -------------------------------------------------------------------------------------------------
 // Dict
 export function isDict(arg: any): void {
     if (Array.isArray(arg) || typeof arg === 'string' || arg === null || typeof arg !== 'object') {
         throw new Error ();
     }
 }
+// -------------------------------------------------------------------------------------------------
 // List
 export function isList(arg: any): void {
     if (!Array.isArray(arg)) {
         throw new Error ();
     }
 }
+// -------------------------------------------------------------------------------------------------
 // List
 export function isLList(arg: any): void {
     if (!Array.isArray(arg) || !Array.isArray(arg[0])) {
         throw new Error ();
     }
 }
+// -------------------------------------------------------------------------------------------------
 // Any
 export function isAny(arg: any): void {
     if (arg === undefined) {
         throw new Error();
     }
 }
+// -------------------------------------------------------------------------------------------------
 // Any list
 export function isAnyL(arg: any): void {
     isList(arg);
@@ -101,12 +101,14 @@ export function isAnyL(arg: any): void {
         isAny(arg[i]);
     }
 }
+// -------------------------------------------------------------------------------------------------
 // Null
 export function isNull(arg: any): void {
     if (arg !== null) {
         throw new Error();
     }
 }
+// -------------------------------------------------------------------------------------------------
 // Null list
 export function isNullL(arg: any): void {
     isList(arg);
@@ -114,12 +116,14 @@ export function isNullL(arg: any): void {
         isNull(arg[i]);
     }
 }
+// -------------------------------------------------------------------------------------------------
 // Boolean
 export function isBool(arg: boolean): void {
     if (typeof arg !== 'boolean') {
         throw new Error();
     }
 }
+// -------------------------------------------------------------------------------------------------
 // Boolean list
 export function isBoolL(arg: boolean[]): void {
     isList(arg);
@@ -127,12 +131,14 @@ export function isBoolL(arg: boolean[]): void {
         isBool(arg[i]);
     }
 }
+// -------------------------------------------------------------------------------------------------
 // String
 export function isStr(arg: string): void {
     if (typeof arg !== 'string') {
         throw new Error();
     }
 }
+// -------------------------------------------------------------------------------------------------
 // String list
 export function isStrL(arg: string[]): void {
     isList(arg);
@@ -140,12 +146,14 @@ export function isStrL(arg: string[]): void {
         isStr(arg[i]);
     }
 }
+// -------------------------------------------------------------------------------------------------
 // Numbers
 export function isNum(arg: number): void {
     if (isNaN(arg)) { // } || isNaN(parseInt(arg, 10))) {
         throw new Error();
     }
 }
+// -------------------------------------------------------------------------------------------------
 // Number list
 export function isNumL(arg: number[]): void {
     isList(arg);
@@ -153,6 +161,7 @@ export function isNumL(arg: number[]): void {
         isNum(arg[i]);
     }
 }
+// -------------------------------------------------------------------------------------------------
 // Number between 0 and 1
 export function isNum01(arg: any): void {
     isNum(arg);
@@ -160,6 +169,7 @@ export function isNum01(arg: any): void {
         throw new Error();
     }
 }
+// -------------------------------------------------------------------------------------------------
 // Number list between 0 and 1
 export function isNum01L(arg: any): void {
     isNumL(arg);
@@ -167,12 +177,14 @@ export function isNum01L(arg: any): void {
         isNum01(arg[i]);
     }
 }
+// -------------------------------------------------------------------------------------------------
 // Integer
 export function isInt(arg: any): void {
     if (!Number.isInteger(arg)) {
         throw new Error();
     }
 }
+// -------------------------------------------------------------------------------------------------
 // List Integers
 export function isIntL(arg: any[]): void {
     isList(arg);
@@ -180,27 +192,32 @@ export function isIntL(arg: any[]): void {
         isInt(arg[i]);
     }
 }
+// -------------------------------------------------------------------------------------------------
 // List Two strings
 export function isStrStr(arg: [string, string]): void {
     isStrL(arg);
     isLLen(arg, 2);
 }
+// -------------------------------------------------------------------------------------------------
 // List String and number
 export function isStrNum(arg: [string, number]): void {
     isLLen(arg, 2);
     isStr(arg[0]);
     isNum(arg[1]);
 }
+// -------------------------------------------------------------------------------------------------
 // List Two numbers
 export function isXY(arg: Txy): void {
     isNumL(arg);
     isLLen(arg, 2);
 }
+// -------------------------------------------------------------------------------------------------
 // List Number and Int
 export function isXYInt(arg: Txy): void {
     isIntL(arg);
     isLLen(arg, 2);
 }
+// -------------------------------------------------------------------------------------------------
 // List Colour - three numbers between 0 and 1
 export function isColor(arg: TColor): void { // TColor = [number, number, number]
     isNumL(arg);
@@ -208,11 +225,13 @@ export function isColor(arg: TColor): void { // TColor = [number, number, number
     isNum01L(arg);
     return;
 }
+// -------------------------------------------------------------------------------------------------
 // List Three Numbers
 export function isXYZ(arg: Txyz): void { // Txyz = [number, number, number]
     isNumL(arg);
     isLLen(arg, 3);
 }
+// -------------------------------------------------------------------------------------------------
 // List of Lists Three numbers
 export function isXYZL(arg: Txyz[]): void {
     isList(arg);
@@ -220,56 +239,64 @@ export function isXYZL(arg: Txyz[]): void {
         isXYZ(arg[i]);
     }
 }
+// -------------------------------------------------------------------------------------------------
 export function isXYZLL(arg: Txyz[][]): void {
     isList(arg);
     for (let i = 0; i < arg.length; i++) {
         isXYZL(arg[i]);
-}
     }
+}
+// -------------------------------------------------------------------------------------------------
 export function isPln(arg: TPlane): void { // TPlane = [Txyz, Txyz, Txyz]
     isXYZL(arg);
     isLLen(arg, 3);
 }
+// -------------------------------------------------------------------------------------------------
 export function isPlnL(arg: TPlane[]): void {
     isList(arg);
     for (let i = 0; i < arg.length; i++) {
-    isPln(arg[i]);
-}
+        isPln(arg[i]);
     }
+}
+// -------------------------------------------------------------------------------------------------
 export function isBBox(arg: TBBox): void { // TBbox = [Txyz, Txyz, Txyz, Txyz]
     isXYZL(arg);
     isLLen(arg, 4);
 }
+// -------------------------------------------------------------------------------------------------
 export function isBBoxL(arg: TBBox[]): void {
     isList(arg);
     for (let i = 0; i < arg.length; i++) {
-    isBBox(arg[i]);
-}
+        isBBox(arg[i]);
     }
+}
+// -------------------------------------------------------------------------------------------------
 export function isRay(arg: TRay): void { // TRay = [Txyz, Txyz]
     isXYZL(arg);
     isLLen(arg, 2);
 }
+// -------------------------------------------------------------------------------------------------
 export function isRayL(arg: TRay[]): void {
     isList(arg);
     for (let i = 0; i < arg.length; i++) {
         isRay(arg[i]);
     }
 }
+// -------------------------------------------------------------------------------------------------
 export function isRayLL(arg: TRay[][]): void {
     isList(arg);
     for (let i = 0; i < arg.length; i++) {
         isRayL(arg[i]);
     }
 }
-
+// -------------------------------------------------------------------------------------------------
 // List of specified length
 export function isLLen(arg: any[], len: number): void {
     if (arg.length !== len) {
         throw new Error();
     }
 }
-
+// -------------------------------------------------------------------------------------------------
 /**
  *
  * @param check_fn
@@ -338,7 +365,7 @@ function _getDataTypeStrFromFunc(check_fn: any): string {
             return 'sorry... arg type not found';
     }
 }
-
+// -------------------------------------------------------------------------------------------------
 /**
  *
  * @param arg
@@ -371,6 +398,7 @@ export function getDataTypeStrFromValue(arg: any): string {
     }
     return _typeOf(arg);
 }
+// -------------------------------------------------------------------------------------------------
 function _typeOf(arg: any): string {
     if (arg === undefined) { return 'undefined'; }
     if (arg === null) { return 'null'; }
@@ -378,4 +406,4 @@ function _typeOf(arg: any): string {
     if (typeof arg === 'object') { return 'dict'; }
     return typeof arg;
 }
-
+// -------------------------------------------------------------------------------------------------

@@ -432,7 +432,7 @@ export class Sim {
         for (const old_ent of ents) {
             const ent_type: ENT_TYPE = this.graph.getNodeProp(old_ent, 'ent_type');
             if (ent_type === ENT_TYPE.POSI) {
-                copies.push(this._copyPosi(posis_map, old_ent, vec));
+                copies.push(this._copyPosi(posis_map, ents_map, old_ent, vec));
             } else if (ent_type === ENT_TYPE.POINT) {
                 copies.push(this._copyPoint(posis_map, ents_map, old_ent, vec));
             } else if (ent_type === ENT_TYPE.PLINE) {
@@ -447,31 +447,35 @@ export class Sim {
         this._copyTransferAttribs(ents_map);
         return copies;
     }
-    private _copyPosi(posis_map: Map<string, string>, posi: string, vec?: Txyz): string {
-        if (posis_map.has(posi)) { return posis_map.get(posi); }
+    private _copyPosi(posis_map: Map<string, string>, 
+            ents_map: Map<ENT_TYPE,{old: string[], new: string[]}>, 
+            old_posi: string, vec?: Txyz): string {
+        if (posis_map.has(old_posi)) { return posis_map.get(old_posi); }
         let new_posi: string;
         let att_val_node: string;
         if (vec === undefined) {
             // create posi
             new_posi = this.addPosi();
-            att_val_node = this.graph.successors(posi, _GR_XYZ_NODE)[0];
+            att_val_node = this.graph.successors(old_posi, _GR_XYZ_NODE)[0];
         } else {
             // create posi and move
-            const xyz: Txyz = this.getPosiCoords(posi);
+            const xyz: Txyz = this.getPosiCoords(old_posi);
             new_posi = this.addPosi( [ xyz[0] + vec[0], xyz[1] + vec[1], xyz[2] + vec[2] ] );
             console.log("moving posi", xyz, vec, [ xyz[0] + vec[0], xyz[1] + vec[1], xyz[2] + vec[2] ])
 
             att_val_node = this.graph.successors(new_posi, _GR_XYZ_NODE)[0];
         }
         this.graph.addEdge(new_posi, att_val_node, _GR_XYZ_NODE);
-        posis_map.set(posi, new_posi);
+        posis_map.set(old_posi, new_posi);
+        ents_map.get(ENT_TYPE.POSI).old.push(old_posi);
+        ents_map.get(ENT_TYPE.POSI).new.push(new_posi);
         return new_posi;
     }
     private _copyPoint(posis_map: Map<string, string>,
             ents_map: Map<ENT_TYPE, {old: string[], new: string[]}>, 
             old_point: string, vec?: Txyz): string {
         const old_posi: string = this.getEntPosis(old_point) as string;
-        const new_posi: string = this._copyPosi(posis_map, old_posi, vec);
+        const new_posi: string = this._copyPosi(posis_map, ents_map, old_posi, vec);
         const new_point: string = this.addPoint(new_posi);
         // this._copyAddEnts(ents_map.get(ENT_TYPE.POINT), [old_point], [new_point]);
         ents_map.get(ENT_TYPE.POINT).old.push(old_point);
@@ -545,7 +549,7 @@ export class Sim {
                     ents_map.get(ENT_TYPE.VERT).old.push(old_verts2[i]);
                     ents_map.get(ENT_TYPE.VERT).new.push(new_verts2[i]);
                     const old_posi: string = this.graph.successors(old_verts2[i], _GR_EDGE_TYPE.ENTITY)[0];
-                    const new_posi: string = this._copyPosi(posis_map, old_posi, vec);
+                    const new_posi: string = this._copyPosi(posis_map, ents_map, old_posi, vec);
                     this.graph.addEdge(new_verts2[i], new_posi, _GR_EDGE_TYPE.ENTITY);
                     // set in verts map
                     verts_map.set(old_verts2[i], new_verts2[i]);
@@ -636,6 +640,7 @@ export class Sim {
                 throw new Error('Error transferring attributes: Number of entities does not match.');
             }
             for (const att_name of this.getAttribs(ent_type)) {
+                if (att_name === 'xyz') { continue; }
                 const att: string = this._graphAttribNodeName(ent_type, att_name);
                 for (let i = 0; i < ents.old.length; i++) {
                     const att_val_node: string = this.graph.successors(ents.old[i], att)[0];
@@ -786,7 +791,7 @@ export class Sim {
         const att: string = this._graphAttribNodeName(ent_type, att_name);
         const att_vals: string[] = this.graph.successors(ent, att);
         if (att_vals.length === 0) {
-            return null; // TDOD should this be undefined?
+            return undefined;
         }
         return this.graph.getNodeProp(att_vals[0], 'value');
     }

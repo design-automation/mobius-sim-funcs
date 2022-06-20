@@ -1,4 +1,12 @@
-import { TPlane, Txyz, TRay, getArrDepth, vecCross, vecNorm, vecDot } from "../../../mobius_sim";
+import { vecCross, vecDot, vecNorm } from "./calcVectors";
+import { TPlane, TRay, Txyz } from "./consts";
+import { getArrDepth } from "./_arrs";
+// -------------------------------------------------------------------------------------------------
+/**
+ * 
+ * @param ray 
+ * @returns 
+ */
 export function plnFromRay(ray: TRay | TRay[]): TPlane | TPlane[] {
     // overloaded case
     const ray_dep: number = getArrDepth(ray);
@@ -16,3 +24,4 @@ export function plnFromRay(ray: TRay | TRay[]): TPlane | TPlane[] {
     const y_axis: Txyz = vecCross(x_axis, z_vec);
     return [ray[0].slice() as Txyz, x_axis, y_axis];
 }
+// -------------------------------------------------------------------------------------------------

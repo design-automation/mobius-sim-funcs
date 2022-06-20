@@ -1,13 +1,18 @@
-import { TPlane, Txyz, vecFromTo, vecLen, vecCross, vecNorm, vecAdd, vecSetLen, vecDot } from "../../../mobius_sim";
-const EPS = 1e-8;
-// ================================================================================================
-// used by sweep
-// TODO update offset code to use this as well
-/* Function to get a set of planes along the length of a wire.
- * The planes are orientated perpendicular to the wire.
- *
+import { vecAdd, vecCross, vecDot, vecFromTo, vecLen, vecNorm, vecSetLen } from "./calcVectors";
+import { TPlane, Txyz } from "./consts";
+const EPS = 1e-6;
+// -------------------------------------------------------------------------------------------------
+/**
+ * Used by sweep
+ * TODO update offset code to use this as well
+ * Function to get a set of planes along the length of a wire.
+ * The planes are orientated perpendicular to the edges.
+ * @param xyzs 
+ * @param normal 
+ * @param close 
+ * @returns 
  */
-export function getPlanesSeq(xyzs: Txyz[], normal: Txyz, close: boolean): TPlane[] {
+export function calcPlnSeq(xyzs: Txyz[], normal: Txyz, close: boolean): TPlane[] {
     normal = vecNorm(normal);
     // if closed, add a posi to the end
     if (close) {
@@ -53,7 +58,6 @@ export function getPlanesSeq(xyzs: Txyz[], normal: Txyz, close: boolean): TPlane
         const first2_perp_vec: Txyz = perp_vecs[1];
         let y_axis: Txyz = normal;
         if (vecDot(x_axis, first2_perp_vec) < EPS) {
-            // TODOD < what is a good value for this?
             y_axis = vecCross(x_axis, first2_perp_vec);
         }
         const first_plane: TPlane = [first_xyz, x_axis, y_axis];
@@ -69,7 +73,6 @@ export function getPlanesSeq(xyzs: Txyz[], normal: Txyz, close: boolean): TPlane
         // calc the local norm
         let y_axis: Txyz = normal;
         if (vecDot(this_perp_vec, next_perp_vec) < EPS) {
-            // TODOD < what is a good value for this?
             y_axis = vecCross(this_perp_vec, next_perp_vec);
         }
         // calc the offset vector
@@ -89,7 +92,6 @@ export function getPlanesSeq(xyzs: Txyz[], normal: Txyz, close: boolean): TPlane
         const last2_perp_vec: Txyz = perp_vecs[perp_vecs.length - 2];
         let y_axis: Txyz = normal;
         if (vecDot(last2_perp_vec, x_axis) < EPS) {
-            // TODOD < what is a good value for this?
             y_axis = vecCross(last2_perp_vec, x_axis);
         }
         const last_plane: TPlane = [last_xyz, x_axis, y_axis];
@@ -98,4 +100,4 @@ export function getPlanesSeq(xyzs: Txyz[], normal: Txyz, close: boolean): TPlane
     // return the planes
     return planes;
 }
-// ================================================================================================
+// -------------------------------------------------------------------------------------------------

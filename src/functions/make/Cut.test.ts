@@ -2,7 +2,7 @@ import { SIMFuncs } from '../../index'
 import { InlineClass } from '@design-automation/mobius-inline-funcs' 
 
 import * as Enum from './_enum'
-import { TPlane } from '../../mobius_sim';
+import { TPlane } from 'src/mobius_sim';
 
 const sf = new SIMFuncs();
 const inl = new InlineClass();

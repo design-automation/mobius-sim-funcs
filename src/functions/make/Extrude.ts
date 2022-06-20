@@ -1,4 +1,4 @@
-import {Sim, ENT_TYPE } from '../../mobius_sim';
+import {Sim, ENT_TYPE } from 'src/mobius_sim';
 import { Txyz } from '../_common/consts';
 import { arrMakeFlat, isEmptyArr } from '../_common/_arrs';
 import { _EExtrudeMethod } from './_enum';

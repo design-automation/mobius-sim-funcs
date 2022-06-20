@@ -1,4 +1,4 @@
-import { Sim } from '../../mobius_sim';
+import { Sim } from 'src/mobius_sim';
 
 // ================================================================================================
 /**
@@ -11,6 +11,25 @@ import { Sim } from '../../mobius_sim';
  * @example_info Creates a copy of position1, polyline1, and polygon1 and deletes the originals.
  */
 export function Clone(__model__: Sim, entities: string|string[]|string[][]): string|string[]|string[][] {
+    // // --- Error Check ---
+    // const fn_name = 'make.Clone';
+    // let ents_arr;
+    // if (__model__.debug) {
+    //     ents_arr = checkIDs(__model__, fn_name, 'entities', entities,
+    //     [ID.isID, ID.isIDL1, ID.isIDL2],
+    //     [EEntType.POSI, EEntType.POINT, EEntType.PLINE, EEntType.PGON, EEntType.COLL]) as TEntTypeIdx|TEntTypeIdx[]|TEntTypeIdx[][];
+    // } else {
+    //     ents_arr = idsBreak(entities) as TEntTypeIdx|TEntTypeIdx[]|TEntTypeIdx[][];
+    // }
+    // // --- Error Check ---
+    // // copy the list of entities
+    // const new_ents_arr: TEntTypeIdx|TEntTypeIdx[]|TEntTypeIdx[][] = __model__.modeldata.funcs_common.copyGeom(ents_arr, true);
+    // __model__.modeldata.funcs_common.clonePosisInEnts(new_ents_arr, true);
+    // // delete the existing entities
+    // __model__.modeldata.funcs_edit.delete(ents_arr, false);
+    // // return the new entities
+    // return idsMake(new_ents_arr) as TId|TId[]|TId[][];
+    // =============================================================================================
     return _clone(__model__, entities);
 }
 function _clone(__model__: Sim, ents: string|string[]|string[][]):string|string[]|string[][]  {
