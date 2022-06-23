@@ -30,30 +30,30 @@ export function degToRad(deg: number | number[]): number | number[] {
     }
     return deg * (Math.PI / 180);
 }
-export function _skyRayDirsTjs(detail: number): THREE.Vector3[] {
-    const hedron_tjs: THREE.IcosahedronGeometry = new THREE.IcosahedronGeometry(1, detail + 2);
-    // calc vectors
-    const vecs: THREE.Vector3[] = [];
-    // THREE JS UPDATE --> EDITED
-    // for (const vec of hedron_tjs.vertices) {
-    //     // vec.applyAxisAngle(YAXIS, Math.PI / 2);
-    //     if (vec.z > -1e-6) {
-    //         vecs.push(vec);
-    //     }
-    // }
+// export function _skyRayDirsTjs(detail: number): THREE.Vector3[] {
+//     const hedron_tjs: THREE.IcosahedronGeometry = new THREE.IcosahedronGeometry(1, detail + 2);
+//     // calc vectors
+//     const vecs: THREE.Vector3[] = [];
+//     // THREE JS UPDATE --> EDITED
+//     // for (const vec of hedron_tjs.vertices) {
+//     //     // vec.applyAxisAngle(YAXIS, Math.PI / 2);
+//     //     if (vec.z > -1e-6) {
+//     //         vecs.push(vec);
+//     //     }
+//     // }
 
-    let vec: number[] = [];
-    for (const coord of <Float32Array>hedron_tjs.getAttribute("position").array) {
-        vec.push(coord);
-        if (vec.length === 3) {
-            if (vec[2] > -1e-6) {
-                vecs.push(new THREE.Vector3(...vec));
-            }
-            vec = [];
-        }
-    }
-    return vecs;
-}
+//     let vec: number[] = [];
+//     for (const coord of <Float32Array>hedron_tjs.getAttribute("position").array) {
+//         vec.push(coord);
+//         if (vec.length === 3) {
+//             if (vec[2] > -1e-6) {
+//                 vecs.push(new THREE.Vector3(...vec));
+//             }
+//             vec = [];
+//         }
+//     }
+//     return vecs;
+// }
 export function _rayOrisDirsTjs(__model__: GIModel, origins: Txyz[] | TRay[] | TPlane[], offset: number): [THREE.Vector3, THREE.Vector3][] {
     const vectors_tjs: [THREE.Vector3, THREE.Vector3][] = [];
     const is_xyz: boolean = isXYZ(origins[0]);

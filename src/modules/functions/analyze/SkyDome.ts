@@ -16,7 +16,8 @@ import uscore from 'underscore';
 
 import * as chk from '../../_check_types';
 import { _ESunPathMethod } from './_enum';
-import { _skyRayDirsTjs, _solarRaysDirectTjs, _solarRaysIndirectTjs } from './_shared';
+import { _solarRaysDirectTjs, _solarRaysIndirectTjs } from './_shared';
+import { tregenzaSky } from './_tregenza_sky';
 
 
 // ================================================================================================
@@ -112,7 +113,8 @@ export function SkyDome(__model__: GIModel, origin: Txyz | TRay | TPlane, detail
             const rays_dirs_tjs2: THREE.Vector3[] = _solarRaysIndirectTjs(latitude, north, detail);
             return _sunPathGenPosis(__model__, rays_dirs_tjs2, radius, matrix);
         case _ESunPathMethod.SKY:
-            const rays_dirs_tjs3: THREE.Vector3[] = _skyRayDirsTjs(detail);
+            // const rays_dirs_tjs3: THREE.Vector3[] = _skyRayDirsTjs(detail);
+            const rays_dirs_tjs3: THREE.Vector3[] = tregenzaSky(detail).map( vec => new THREE.Vector3(... vec) );
             return _sunPathGenPosis(__model__, rays_dirs_tjs3, radius, matrix);
         default:
             throw new Error("Sunpath method not recognised.");

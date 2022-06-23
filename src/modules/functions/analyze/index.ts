@@ -18,6 +18,9 @@ import { SkyDome } from './SkyDome';
 import { Sun } from './Sun';
 import { View } from './View';
 import { Visibility } from './Visibility';
+import { Irradiance } from './Irradiance';
+import { Noise } from './Noise';
+import { Ventilation } from './Ventilation';
 
 export { Raytrace }
 
@@ -42,6 +45,12 @@ export { Centrality }
 export { View }
 
 export { Visibility }
+
+export { Irradiance }
+
+export { Noise }
+
+export { Ventilation }
 
 // CLASS DEFINITION
 export class AnalyzeFunc {
@@ -79,10 +88,12 @@ export class AnalyzeFunc {
         this.__model__ = model;
     }
 
-    Centrality(source: string | string[] | string[][][], entities: string | string[] | string[][], method: Enum._ECentralityMethod, cen_type: Enum._ECentralityType): any {
+    Centrality(source: string | string[] | string[][][], 
+        entities: string | string[] | string[][], method: Enum._ECentralityMethod, cen_type: Enum._ECentralityType): any {
         return Centrality(this.__model__, source, entities, method, cen_type);
     }
-    ClosestPath(source: string | string[] | string[][][], target: string | string[] | string[][], entities: string | string[] | string[][], method: Enum._EShortestPathMethod, result: Enum._EShortestPathResult): any {
+    ClosestPath(source: string | string[] | string[][][], target: string | string[] | string[][], 
+        entities: string | string[] | string[][], method: Enum._EShortestPathMethod, result: Enum._EShortestPathResult): any {
         return ClosestPath(this.__model__, source, target, entities, method, result);
     }
     Degree({ source, entities, alpha, method }: { source: any; entities: any; alpha: any; method: any; }): any {
@@ -97,22 +108,38 @@ export class AnalyzeFunc {
     Raytrace(rays: TRay | TRay[] | TRay[][], entities: string | string[] | string[][], dist: number | [number, number], method: Enum._ERaytraceMethod): any {
         return Raytrace(this.__model__, rays, entities, dist, method);
     }
-    ShortestPath(source: string | string[] | string[][][], target: string | string[] | string[][], entities: string | string[] | string[][], method: Enum._EShortestPathMethod, result: Enum._EShortestPathResult): any {
+    ShortestPath(source: string | string[] | string[][][], target: string | string[] | string[][], 
+        entities: string | string[] | string[][], method: Enum._EShortestPathMethod, result: Enum._EShortestPathResult): any {
         return ShortestPath(this.__model__, source, target, entities, method, result);
     }
-    Sky(origins: TRay[] | TPlane[] | Txyz[], detail: number, entities: string | string[] | string[][], limits: number | [number, number], method: Enum._ESkyMethod): any {
+    Sky(origins: TRay[] | TPlane[] | Txyz[], detail: number, 
+        entities: string | string[] | string[][], limits: number | [number, number], method: Enum._ESkyMethod): any {
         return Sky(this.__model__, origins, detail, entities, limits, method);
     }
     SkyDome(origin: TRay | TPlane | Txyz, detail: number, radius: number, method: Enum._ESunPathMethod): any {
         return SkyDome(this.__model__, origin, detail, radius, method);
     }
-    Sun(origins: TRay[] | TPlane[] | Txyz[], detail: number, entities: string | string[] | string[][], limits: number | [number, number], method: Enum._ESolarMethod): any {
+    Sun(origins: TRay[] | TPlane[] | Txyz[], detail: number, 
+            entities: string | string[] | string[][], limits: number | [number, number], method: Enum._ESolarMethod): any {
         return Sun(this.__model__, origins, detail, entities, limits, method);
     }
     View(origins: TRay[] | TPlane[], entities: string | string[] | string[][], radius: number, num_rays: number, view_ang: number): any {
         return View(this.__model__, origins, entities, radius, num_rays, view_ang);
     }
-    Visibility(origins: TRay[] | TPlane[] | Txyz[], entities: string | string[] | string[][], radius: number, targets: string | string[] | string[][]): any {
+    Visibility(origins: TRay[] | TPlane[] | Txyz[], 
+            entities: string | string[] | string[][], radius: number, targets: string | string[] | string[][]): any {
         return Visibility(this.__model__, origins, entities, radius, targets);
+    }
+    Irradiance(origins: TRay[] | TPlane[] | Txyz[], detail: number, 
+            entities: string | string[] | string[][], limits: number | [number, number], method: Enum._ESkyMethod): any {
+        return Irradiance(this.__model__, origins, detail, entities, limits, method);
+    }
+    Noise(origins: TRay[] | TPlane[] | Txyz[], 
+            entities: string | string[] | string[][], limits: number | [number, number], targets: string | string[] | string[][]): any {
+        return Noise(this.__model__, origins, entities, limits, targets);
+    }
+    Ventilation(sensors: TRay[] | TPlane[] | Txyz[], detail: number, layers: number | [number, number] | [number, number, number],
+        entities: string | string[] | string[][], limits: number | [number, number]): any {
+        return Ventilation(this.__model__, sensors, detail, layers, entities, limits);
     }
 }

@@ -11,13 +11,11 @@ import {
     Txyz,
 } from '@design-automation/mobius-sim';
 import * as THREE from 'three';
-
 import { checkIDs, ID } from '../../_check_ids';
 import * as chk from '../../_check_types';
 import { _ESkyMethod } from './_enum';
 import { _calcExposure, _rayOrisDirsTjs } from './_shared';
-
-
+import { tregenzaSky } from './_tregenza_sky';
 
 /**
  * Calculate an approximation of the sky exposure factor, for a set sensors positioned at specified locations.
@@ -52,10 +50,11 @@ import { _calcExposure, _rayOrisDirsTjs } from './_shared';
  * The higher the level of detail, the more accurate but also the slower the analysis will be.
  * \n
  * The number of rays are as follows:
- * 0 = 89 rays,
- * 1 = 337 rays,
- * 2 = 1313 rays,
- * 3 = 5185 rays.
+ * 0 = 145 rays,
+ * 1 = 580 rays,
+ * 2 = 1303 rays,
+ * 3 = 2302 rays.
+ * 4 = 5220 rays.
  * \n
  * Returns a dictionary containing exposure results.
  * \n
@@ -64,7 +63,7 @@ import { _calcExposure, _rayOrisDirsTjs } from './_shared';
  * \n
  * @param __model__
  * @param origins A list of coordinates, a list of Rays or a list of Planes, to be used as the origins for calculating exposure.
- * @param detail An integer between 1 and 3 inclusive, specifying the level of detail for the analysis.
+ * @param detail An integer between 1 and 4 inclusive, specifying the level of detail for the analysis.
  * @param entities The obstructions, faces, polygons, or collections of faces or polygons.
  * @param limits The max distance for raytracing.
  * @param method Enum, the sky method: `'weighted', 'unweighted'` or `'all'`.
@@ -107,7 +106,7 @@ export function Sky(
     const [mesh_tjs, idx_to_face_i]: [THREE.Mesh, number[]] = createSingleMeshBufTjs(__model__, ents_arrs);
     limits = Array.isArray(limits) ? limits : [0, limits];
     // get the direction vectors
-    const ray_dirs_tjs: THREE.Vector3[] = _skyRayDirsTjs(detail);
+    const ray_dirs_tjs: THREE.Vector3[] = tregenzaSky(detail).map( vec => new THREE.Vector3(... vec) );
     // run the simulation
     const weighted: boolean = method === _ESkyMethod.WEIGHTED;
     const results: number[] = _calcExposure(sensor_oris_dirs_tjs, ray_dirs_tjs, mesh_tjs, limits, weighted);
@@ -116,28 +115,4 @@ export function Sky(
     (mesh_tjs.material as THREE.Material).dispose();
     // return the result
     return { exposure: results };
-}
-function _skyRayDirsTjs(detail: number): THREE.Vector3[] {
-    const hedron_tjs: THREE.IcosahedronGeometry = new THREE.IcosahedronGeometry(1, detail + 2);
-    // calc vectors
-    const vecs: THREE.Vector3[] = [];
-    // THREE JS UPDATE --> EDITED
-    // for (const vec of hedron_tjs.vertices) {
-    //     // vec.applyAxisAngle(YAXIS, Math.PI / 2);
-    //     if (vec.z > -1e-6) {
-    //         vecs.push(vec);
-    //     }
-    // }
-
-    let vec: number[] = [];
-    for (const coord of <Float32Array>hedron_tjs.getAttribute("position").array) {
-        vec.push(coord);
-        if (vec.length === 3) {
-            if (vec[2] > -1e-6) {
-                vecs.push(new THREE.Vector3(...vec));
-            }
-            vec = [];
-        }
-    }
-    return vecs;
 }
