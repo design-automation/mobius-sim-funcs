@@ -10,8 +10,6 @@ import {
     string,
 } from '../../mobius_sim';
 
-import { checkIDs, ID } from '../_common/_check_ids';
-import * as chk from '../../_check_types';
 import { _ELineMaterialType } from './_enum';
 
 
@@ -39,17 +37,17 @@ import { _ELineMaterialType } from './_enum';
 export function Set(__model__: Sim, entities: string|string[], material: string|string[]): void {
     entities = arrMakeFlat(entities) as string[];
     if (!isEmptyArr(entities)) {
-        // --- Error Check ---
-        const fn_name = 'matrial.Set';
-        let ents_arr: string[];
-        if (this.debug) {
-            ents_arr = checkIDs(__model__, fn_name, 'entities', entities,
-                [ID.isID, ID.isIDL1, ID.isIDL2], null) as string[];
-            chk.checkArgs(fn_name, 'material', material, [chk.isStr, chk.isStrL]);
-        } else {
-            ents_arr = idsBreak(entities) as string[];
-        }
-        // --- Error Check ---
+        // // --- Error Check ---
+        // const fn_name = 'matrial.Set';
+        // let ents_arr: string[];
+        // if (this.debug) {
+        //     ents_arr = checkIDs(__model__, fn_name, 'entities', entities,
+        //         [ID.isID, ID.isIDL1, ID.isIDL2], null) as string[];
+        //     chk.checkArgs(fn_name, 'material', material, [chk.isStr, chk.isStrL]);
+        // } else {
+        //     ents_arr = idsBreak(entities) as string[];
+        // }
+        // // --- Error Check ---
         let material_dict: object;
         let is_list = false;
         if (Array.isArray(material)) {

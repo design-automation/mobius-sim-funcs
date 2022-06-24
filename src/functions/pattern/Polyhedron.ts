@@ -105,17 +105,17 @@ import { _EPolyhedronMethod } from './_enum';
  */
 export function Polyhedron(__model__: Sim, origin: Txyz | TPlane, radius: number, detail: number,
         method: _EPolyhedronMethod): string[]|string[][] {
-    // --- Error Check ---
-    if (this.debug) {
-        const fn_name = 'pattern.Polyhedron';
-        chk.checkArgs(fn_name, 'origin', origin, [chk.isXYZ, chk.isPln]);
-        chk.checkArgs(fn_name, 'radius', radius, [chk.isNum]);
-        chk.checkArgs(fn_name, 'detail', detail, [chk.isInt]);
-        if (detail > 6) {
-            throw new Error('pattern.Polyhedron: The "detail" argument is too high, the maximum is 6.');
-        }
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // if (this.debug) {
+    //     const fn_name = 'pattern.Polyhedron';
+    //     chk.checkArgs(fn_name, 'origin', origin, [chk.isXYZ, chk.isPln]);
+    //     chk.checkArgs(fn_name, 'radius', radius, [chk.isNum]);
+    //     chk.checkArgs(fn_name, 'detail', detail, [chk.isInt]);
+    //     if (detail > 6) {
+    //         throw new Error('pattern.Polyhedron: The "detail" argument is too high, the maximum is 6.');
+    //     }
+    // }
+    // // --- Error Check ---
     // create the matrix one time
     let matrix: THREE.Matrix4 = null;
     const origin_is_plane = getArrDepth(origin) === 2;

@@ -16,7 +16,7 @@ import {
 } from '../../mobius_sim';
 
 import { checkIDs, ID } from '../_common/_check_ids';
-import * as chk from '../../_check_types';
+import * as chk from '../_common/_check_types';
 
 
 
@@ -55,19 +55,20 @@ import * as chk from '../../_check_types';
  * vector of the polygon triangles.
  */
 export function Normal(__model__: Sim, entities: string|string[], scale: number): Txyz|Txyz[] {
-    if (isEmptyArr(entities)) { return []; }
-    // --- Error Check ---
-    const fn_name = 'calc.Normal';
-    let ents_arr: string|string[];
-    if (this.debug) {
-        ents_arr = checkIDs(__model__, fn_name, 'entities', entities,
-        [ID.isID, ID.isIDL1], null) as  string|string[];
-        chk.checkArgs(fn_name, 'scale', scale, [chk.isNum]);
-    } else {
-        ents_arr = idsBreak(entities) as string|string[];
-    }
-    // --- Error Check ---
-    return _normal(__model__, ents_arr, scale);
+    // if (isEmptyArr(entities)) { return []; }
+    // // // --- Error Check ---
+    // // const fn_name = 'calc.Normal';
+    // // let ents_arr: string|string[];
+    // // if (this.debug) {
+    // //     ents_arr = checkIDs(__model__, fn_name, 'entities', entities,
+    // //     [ID.isID, ID.isIDL1], null) as  string|string[];
+    // //     chk.checkArgs(fn_name, 'scale', scale, [chk.isNum]);
+    // // } else {
+    // //     ents_arr = idsBreak(entities) as string|string[];
+    // // }
+    // // // --- Error Check ---
+    // return _normal(__model__, ents_arr, scale);
+    throw new Error();
 }
 export function _normal(__model__: Sim, ents_arr: string|string[], scale: number): Txyz|Txyz[] {
     if (getArrDepth(ents_arr) === 1) {

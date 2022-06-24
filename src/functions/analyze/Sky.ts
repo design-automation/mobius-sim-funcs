@@ -1,4 +1,4 @@
-import { Sim, ENT_TYPE } from '../../mobius_sim';
+import { Sim, ENT_TYPE, Txyz } from '../../mobius_sim';
 // import createSingleMeshBufTjs
 import * as THREE from 'three';
 
@@ -67,29 +67,29 @@ export function Sky(
     method: _ESkyMethod
 ): any {
     entities = arrMakeFlat(entities) as string[];
-    // --- Error Check ---
-    const fn_name = "analyze.Sky";
-    let ents_arrs: string[];
-    // let latitude: number = null;
-    // let north: Txy = [0, 1];
-    if (this.debug) {
-        chk.checkArgs(fn_name, "origins", origins, [chk.isXYZL, chk.isRayL, chk.isPlnL]);
-        chk.checkArgs(fn_name, "detail", detail, [chk.isInt]);
-        if (detail < 0 || detail > 3) {
-            throw new Error(fn_name + ': "detail" must be an integer between 0 and 3 inclusive.');
-        }
-        ents_arrs = checkIDs(__model__, fn_name, "entities", entities, [ID.isID, ID.isIDL1], [ENT_TYPE.PGON, ENT_TYPE.COLL]) as string[];
-    } else {
-        ents_arrs = idsBreak(entities) as string[];
-        // const geolocation = __model__.modeldata.attribs.get.getModelAttribVal('geolocation');
-        // latitude = geolocation['latitude'];
-        // if (__model__.modeldata.attribs.query.hasModelAttrib('north')) {
-        //     north = __model__.modeldata.attribs.get.getModelAttribVal('north') as Txy;
-        // }
-    }
-    // TODO
-    // TODO
-    // --- Error Check ---
+    // // --- Error Check ---
+    // const fn_name = "analyze.Sky";
+    // let ents_arrs: string[];
+    // // let latitude: number = null;
+    // // let north: Txy = [0, 1];
+    // if (this.debug) {
+    //     chk.checkArgs(fn_name, "origins", origins, [chk.isXYZL, chk.isRayL, chk.isPlnL]);
+    //     chk.checkArgs(fn_name, "detail", detail, [chk.isInt]);
+    //     if (detail < 0 || detail > 3) {
+    //         throw new Error(fn_name + ': "detail" must be an integer between 0 and 3 inclusive.');
+    //     }
+    //     ents_arrs = checkIDs(__model__, fn_name, "entities", entities, [ID.isID, ID.isIDL1], [ENT_TYPE.PGON, ENT_TYPE.COLL]) as string[];
+    // } else {
+    //     ents_arrs = idsBreak(entities) as string[];
+    //     // const geolocation = __model__.modeldata.attribs.get.getModelAttribVal('geolocation');
+    //     // latitude = geolocation['latitude'];
+    //     // if (__model__.modeldata.attribs.query.hasModelAttrib('north')) {
+    //     //     north = __model__.modeldata.attribs.get.getModelAttribVal('north') as Txy;
+    //     // }
+    // }
+    // // TODO
+    // // TODO
+    // // --- Error Check ---
 
     const sensor_oris_dirs_tjs: [THREE.Vector3, THREE.Vector3][] = _rayOrisDirsTjs(__model__, origins, 0.01);
     const [mesh_tjs, idx_to_face_i]: [THREE.Mesh, number[]] = createSingleMeshBufTjs(__model__, ents_arrs);

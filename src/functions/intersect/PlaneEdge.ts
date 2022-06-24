@@ -31,18 +31,18 @@ import * as chk from '../../_check_types';
  * @example_info Returns a list of coordinates where the plane intersects with the edges of polyline1.
  */
 export function PlaneEdge(__model__: Sim, plane: TRay|TPlane, entities: string|string[]): Txyz[] {
-    // --- Error Check ---
-    const fn_name = 'intersect.PlaneEdge';
-    let ents_arr: string|string[];
-    if (this.debug) {
-        chk.checkArgs(fn_name, 'plane', plane, [chk.isPln]);
-        ents_arr = checkIDs(__model__, fn_name, 'entities', entities,
-            [ID.isID, ID.isIDL1],
-            [ENT_TYPE.EDGE, ENT_TYPE.WIRE, ENT_TYPE.PLINE, ENT_TYPE.PGON, ENT_TYPE.COLL]) as string|string[];
-    } else {
-        ents_arr = idsBreak(entities) as string|string[];
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // const fn_name = 'intersect.PlaneEdge';
+    // let ents_arr: string|string[];
+    // if (this.debug) {
+    //     chk.checkArgs(fn_name, 'plane', plane, [chk.isPln]);
+    //     ents_arr = checkIDs(__model__, fn_name, 'entities', entities,
+    //         [ID.isID, ID.isIDL1],
+    //         [ENT_TYPE.EDGE, ENT_TYPE.WIRE, ENT_TYPE.PLINE, ENT_TYPE.PGON, ENT_TYPE.COLL]) as string|string[];
+    // } else {
+    //     ents_arr = idsBreak(entities) as string|string[];
+    // }
+    // // --- Error Check ---
     // create the threejs entity and calc intersections
     const plane_normal: Txyz = vecCross(plane[1], plane[2]);
     const plane_tjs: THREE.Plane = new THREE.Plane();

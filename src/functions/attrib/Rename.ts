@@ -1,6 +1,6 @@
 import { ENT_TYPE, Sim } from '../../mobius_sim';
 
-import { checkAttribName } from '../../_check_attribs';
+import { checkAttribName } from '../_common/_check_attribs';
 import { _ENT_TYPEAndMod } from './_enum';
 import { _getEntTypeFromStr } from './_shared';
 

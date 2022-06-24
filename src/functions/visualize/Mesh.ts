@@ -31,22 +31,22 @@ import { _EMeshMethod } from './_enum';
 export function Mesh(__model__: Sim, entities: string|string[], method: _EMeshMethod): void {
     entities = arrMakeFlat(entities) as string[];
     if (isEmptyArr(entities)) { return; }
-    // --- Error Check ---
-    const fn_name = 'visualize.Mesh';
-    let ents_arr: string[] = null;
-    if (this.debug) {
-        if (entities !== null) {
-            ents_arr = checkIDs(__model__, fn_name, 'entities', entities,
-                [ID.isIDL1], null) as string[];
-        }
-    } else {
-        // if (entities !== null) {
-        //     ents_arr = splitIDs(fn_name, 'entities', entities,
-        //         [IDcheckObj.isIDList], null) as string[];
-        // }
-        ents_arr = idsBreak(entities) as string[];
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // const fn_name = 'visualize.Mesh';
+    // let ents_arr: string[] = null;
+    // if (this.debug) {
+    //     if (entities !== null) {
+    //         ents_arr = checkIDs(__model__, fn_name, 'entities', entities,
+    //             [ID.isIDL1], null) as string[];
+    //     }
+    // } else {
+    //     // if (entities !== null) {
+    //     //     ents_arr = splitIDs(fn_name, 'entities', entities,
+    //     //         [IDcheckObj.isIDList], null) as string[];
+    //     // }
+    //     ents_arr = idsBreak(entities) as string[];
+    // }
+    // // --- Error Check ---
     // Get the unique verts that belong to pgons
     let verts_i: number[] = [];
     if (ents_arr !== null) {

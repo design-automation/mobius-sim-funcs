@@ -27,14 +27,14 @@ export function Geolocate(
     rot: number,
     elev: number
 ): void {
-    // --- Error Check ---
-    const fn_name = 'io.Geolocate';
-    if (this.debug) {
-        checkArgs(fn_name, 'lat_long_o', lat_long, [isXY, isNull]);
-        checkArgs(fn_name, 'rot', elev, [isNum, isNull]);
-        checkArgs(fn_name, 'elev', elev, [isNum, isNull]);
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // const fn_name = 'io.Geolocate';
+    // if (this.debug) {
+    //     checkArgs(fn_name, 'lat_long_o', lat_long, [isXY, isNull]);
+    //     checkArgs(fn_name, 'rot', elev, [isNum, isNull]);
+    //     checkArgs(fn_name, 'elev', elev, [isNum, isNull]);
+    // }
+    // // --- Error Check ---
     const gl_dict = { "latitude": lat_long[0], "longitude": lat_long[1] };
     if (elev !== null) {
         gl_dict["elevation"] = elev;

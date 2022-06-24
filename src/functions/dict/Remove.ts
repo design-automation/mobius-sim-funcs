@@ -1,4 +1,4 @@
-import * as chk from '../../_check_types';
+
 
 
 // ================================================================================================
@@ -10,10 +10,10 @@ import * as chk from '../../_check_types';
  * @returns void
  */
 export function Remove(dict: object, keys: string|string[]): void {
-    // --- Error Check ---
-    const fn_name = 'dict.Remove';
-    chk.checkArgs(fn_name, 'key', keys, [chk.isStr, chk.isStrL]);
-    // --- Error Check ---
+    // // --- Error Check ---
+    // const fn_name = 'dict.Remove';
+    // chk.checkArgs(fn_name, 'key', keys, [chk.isStr, chk.isStrL]);
+    // // --- Error Check ---
     if (!Array.isArray(keys)) { keys = [keys] as string[]; }
     keys = keys as string[];
     for (const key of keys) {

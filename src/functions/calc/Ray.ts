@@ -41,18 +41,19 @@ function rayFromPln(pln: TPlane|TPlane[]): TRay|TRay[] {
  * @returns The ray.
  */
 export function Ray(__model__: Sim, entities: string|string[]): TRay|TRay[] {
-    if (isEmptyArr(entities)) { return []; }
-    // --- Error Check ---
-    const fn_name = 'calc.Ray';
-    let ents_arr: string|string[];
-    if (this.debug) {
-        ents_arr = checkIDs(__model__, fn_name, 'entities', entities,
-        [ID.isID, ID.isIDL1, ID.isIDL2], [ENT_TYPE.EDGE, ENT_TYPE.WIRE, ENT_TYPE.PLINE, ENT_TYPE.PGON]) as string|string[];
-    } else {
-        ents_arr = idsBreak(entities) as string|string[];
-    }
-    // --- Error Check ---
-    return _getRay(__model__, ents_arr);
+    // if (isEmptyArr(entities)) { return []; }
+    // // // --- Error Check ---
+    // // const fn_name = 'calc.Ray';
+    // // let ents_arr: string|string[];
+    // // if (this.debug) {
+    // //     ents_arr = checkIDs(__model__, fn_name, 'entities', entities,
+    // //     [ID.isID, ID.isIDL1, ID.isIDL2], [ENT_TYPE.EDGE, ENT_TYPE.WIRE, ENT_TYPE.PLINE, ENT_TYPE.PGON]) as string|string[];
+    // // } else {
+    // //     ents_arr = idsBreak(entities) as string|string[];
+    // // }
+    // // // --- Error Check ---
+    // return _getRay(__model__, ents_arr);
+    throw new Error();
 }
 function _getRayFromEdge(__model__: Sim, ent_arr: string): TRay {
     const posis_i: number[] = __model__.modeldata.geom.nav.navAnyToPosi(ent_arr[0], ent_arr[1]);

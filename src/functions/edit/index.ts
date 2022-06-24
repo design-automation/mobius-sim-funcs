@@ -54,12 +54,20 @@ export class EditFunc {
         this.debug = debug;
     }
     Delete(entities: string | string[], method: Enum._EDeleteMethod): void {
+        // --- Error Check ---
+        if (this.debug) {
+            const fn_name = 'edit.Delete';
+            checkIDs(this.__model__, fn_name, 'entities', entities,
+            [ID.isID, ID.isIDL1],
+            [ENT_TYPE.POSI, ENT_TYPE.POINT, ENT_TYPE.PLINE, ENT_TYPE.PGON, ENT_TYPE.COLL]) as string[];
+        } 
+        // --- Error Check ---    
         Delete(this.__model__, entities, method);
     }
     Divide(entities: string | string[], divisor: number, method: Enum._EDivisorMethod): any {
         // --- Error Check ---
-        const fn_name = 'edit.Divide';
         if (this.debug) {
+            const fn_name = 'edit.Divide';
             checkIDs(this.__model__, fn_name, 'entities', entities,
             [ID.isID, ID.isIDL1], [ENT_TYPE.EDGE, ENT_TYPE.WIRE, ENT_TYPE.PLINE, ENT_TYPE.PGON]) as string[];
             chk.checkArgs(fn_name, 'divisor', divisor, [chk.isNum]);
@@ -68,21 +76,66 @@ export class EditFunc {
         return Divide(this.__model__, entities, divisor, method);
     }
     Fuse(entities: string | string[], tolerance: number): any {
+        // --- Error Check ---
+        if (this.debug) {
+            const fn_name = 'edit.Fuse';
+            checkIDs(this.__model__, fn_name, 'entities', entities,
+            [ID.isID, ID.isIDL1], null) as string[];
+        } 
+        // --- Error Check ---
         return Fuse(this.__model__, entities, tolerance);
     }
     Hole(pgon: string, entities: string | string[] | string[][]): any {
+        // --- Error Check ---
+        if (this.debug) {
+            const fn_name = 'edit.Hole';
+            checkIDs(this.__model__, fn_name, 'pgon', pgon, [ID.isID], [ENT_TYPE.PGON]) as string;
+            checkIDs(this.__model__, fn_name, 'entities', entities,
+                [ID.isID, ID.isIDL1, ID.isIDL2],
+                [ENT_TYPE.POSI, ENT_TYPE.WIRE, ENT_TYPE.PLINE, ENT_TYPE.PGON]) as string[]|string[][];
+        }
+        // --- Error Check ---    
         return Hole(this.__model__, pgon, entities);
     }
     Reverse(entities: string | string[]): void {
+        // --- Error Check ---
+        if (this.debug) {
+            checkIDs(this.__model__, 'edit.Reverse', 'entities', entities,
+                [ID.isID, ID.isIDL1],
+                [ENT_TYPE.WIRE, ENT_TYPE.PLINE, ENT_TYPE.PGON])  as string[];
+        } 
+        // --- Error Check ---        
         Reverse(this.__model__, entities);
     }
     Ring(entities: string | string[], method: Enum._ERingMethod): void {
+        // --- Error Check ---
+        if (this.debug) {
+            const fn_name = 'edit.Ring';
+            checkIDs(this.__model__, fn_name, 'entities', entities,
+            [ID.isID, ID.isIDL1], [ENT_TYPE.PLINE]) as string[];
+        } 
+        // --- Error Check ---        
         Ring(this.__model__, entities, method);
     }
     Shift(entities: string | string[], offset: number): void {
+        // --- Error Check ---
+        if (this.debug) {
+            checkIDs(this.__model__, 'edit.Reverse', 'entities', entities,
+            [ID.isID, ID.isIDL1],
+            [ENT_TYPE.WIRE, ENT_TYPE.PLINE, ENT_TYPE.PGON])  as string[];
+        }
+        // --- Error Check ---        
         Shift(this.__model__, entities, offset);
     }
     Weld(entities: string | string[], method: Enum._EWeldMethod): any {
+    // --- Error Check ---
+    if (this.debug) {
+        const fn_name = 'edit.Weld';
+        checkIDs(this.__model__, fn_name, 'entities', entities, [ID.isID, ID.isIDL1],
+            [ENT_TYPE.VERT, ENT_TYPE.EDGE, ENT_TYPE.WIRE,
+            ENT_TYPE.POINT, ENT_TYPE.PLINE, ENT_TYPE.PGON, ENT_TYPE.COLL]) as string[];
+    } 
+    // --- Error Check ---        
         return Weld(this.__model__, entities, method);
     }
 

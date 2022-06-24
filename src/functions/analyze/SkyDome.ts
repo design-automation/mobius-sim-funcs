@@ -29,53 +29,53 @@ import { _skyRayDirsTjs, _solarRaysDirectTjs, _solarRaysIndirectTjs } from './_s
  * A polyline can then be drawn from these positions.
  */
 export function SkyDome(__model__: Sim, origin: Txyz | TRay | TPlane, detail: number, radius: number, method: _ESunPathMethod): string[] | string[][] {
-    // --- Error Check ---
-    const fn_name = "analyze.SkyDome";
-    let latitude: number = null;
-    let north: Txy = [0, 1];
-    if (this.debug) {
-        chk.checkArgs(fn_name, "origin", origin, [chk.isXYZ, chk.isRay, chk.isPln]);
-        chk.checkArgs(fn_name, "detail", detail, [chk.isInt]);
-        if (detail < 0 || detail > 6) {
-            throw new Error(fn_name + ': "detail" must be an integer between 0 and 6.');
-        }
-        chk.checkArgs(fn_name, "radius", radius, [chk.isNum]);
-        if (method !== _ESunPathMethod.SKY) {
-            if (!__model__.modeldata.attribs.query.hasModelAttrib("geolocation")) {
-                throw new Error(
-                    'analyze.Solar: model attribute "geolocation" is missing, \
-                    e.g. @geolocation = {"latitude":12, "longitude":34}'
-                );
-            } else {
-                const geolocation = __model__.modeldata.attribs.get.getModelAttribVal("geolocation");
-                if (uscore.isObject(geolocation) && uscore.has(geolocation, "latitude")) {
-                    latitude = geolocation["latitude"];
-                } else {
-                    throw new Error(
-                        'analyze.Solar: model attribute "geolocation" is missing the "latitude" key, \
-                        e.g. @geolocation = {"latitude":12, "longitude":34}'
-                    );
-                }
-            }
-            if (__model__.modeldata.attribs.query.hasModelAttrib("north")) {
-                north = __model__.modeldata.attribs.get.getModelAttribVal("north") as Txy;
-                if (!Array.isArray(north) || north.length !== 2) {
-                    throw new Error(
-                        'analyze.Solar: model has a "north" attribute with the wrong type, \
-                    it should be a vector with two values, \
-                    e.g. @north =  [1,2]'
-                    );
-                }
-            }
-        }
-    } else {
-        const geolocation = __model__.modeldata.attribs.get.getModelAttribVal("geolocation");
-        latitude = geolocation["latitude"];
-        if (__model__.modeldata.attribs.query.hasModelAttrib("north")) {
-            north = __model__.modeldata.attribs.get.getModelAttribVal("north") as Txy;
-        }
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // const fn_name = "analyze.SkyDome";
+    // let latitude: number = null;
+    // let north: Txy = [0, 1];
+    // if (this.debug) {
+    //     chk.checkArgs(fn_name, "origin", origin, [chk.isXYZ, chk.isRay, chk.isPln]);
+    //     chk.checkArgs(fn_name, "detail", detail, [chk.isInt]);
+    //     if (detail < 0 || detail > 6) {
+    //         throw new Error(fn_name + ': "detail" must be an integer between 0 and 6.');
+    //     }
+    //     chk.checkArgs(fn_name, "radius", radius, [chk.isNum]);
+    //     if (method !== _ESunPathMethod.SKY) {
+    //         if (!__model__.modeldata.attribs.query.hasModelAttrib("geolocation")) {
+    //             throw new Error(
+    //                 'analyze.Solar: model attribute "geolocation" is missing, \
+    //                 e.g. @geolocation = {"latitude":12, "longitude":34}'
+    //             );
+    //         } else {
+    //             const geolocation = __model__.modeldata.attribs.get.getModelAttribVal("geolocation");
+    //             if (uscore.isObject(geolocation) && uscore.has(geolocation, "latitude")) {
+    //                 latitude = geolocation["latitude"];
+    //             } else {
+    //                 throw new Error(
+    //                     'analyze.Solar: model attribute "geolocation" is missing the "latitude" key, \
+    //                     e.g. @geolocation = {"latitude":12, "longitude":34}'
+    //                 );
+    //             }
+    //         }
+    //         if (__model__.modeldata.attribs.query.hasModelAttrib("north")) {
+    //             north = __model__.modeldata.attribs.get.getModelAttribVal("north") as Txy;
+    //             if (!Array.isArray(north) || north.length !== 2) {
+    //                 throw new Error(
+    //                     'analyze.Solar: model has a "north" attribute with the wrong type, \
+    //                 it should be a vector with two values, \
+    //                 e.g. @north =  [1,2]'
+    //                 );
+    //             }
+    //         }
+    //     }
+    // } else {
+    //     const geolocation = __model__.modeldata.attribs.get.getModelAttribVal("geolocation");
+    //     latitude = geolocation["latitude"];
+    //     if (__model__.modeldata.attribs.query.hasModelAttrib("north")) {
+    //         north = __model__.modeldata.attribs.get.getModelAttribVal("north") as Txy;
+    //     }
+    // }
+    // // --- Error Check ---
     // create the matrix one time
     const matrix: THREE.Matrix4 = new THREE.Matrix4();
     const origin_depth: number = getArrDepth(origin);

@@ -38,14 +38,14 @@ import * as chk from '../../_check_types';
  * @returns Entities, a list of new positions.
  */
 export function Line(__model__: Sim, origin: Txyz|TPlane, length: number, num_positions: number): string[] {
-    // --- Error Check ---
-    if (this.debug) {
-        const fn_name = 'pattern.Line';
-        chk.checkArgs(fn_name, 'origin', origin, [chk.isXYZ, chk.isPln]);
-        chk.checkArgs(fn_name, 'length', length, [chk.isNum]);
-        chk.checkArgs(fn_name, 'num_positions', num_positions, [chk.isInt]);
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // if (this.debug) {
+    //     const fn_name = 'pattern.Line';
+    //     chk.checkArgs(fn_name, 'origin', origin, [chk.isXYZ, chk.isPln]);
+    //     chk.checkArgs(fn_name, 'length', length, [chk.isNum]);
+    //     chk.checkArgs(fn_name, 'num_positions', num_positions, [chk.isInt]);
+    // }
+    // // --- Error Check ---
     // create the matrix one time
     let matrix: THREE.Matrix4;
     const origin_is_plane = getArrDepth(origin) === 2;

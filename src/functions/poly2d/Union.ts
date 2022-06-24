@@ -26,18 +26,18 @@ type TPosisMap = Map<number, Map<number, number>>;
 export function Union(__model__: Sim, entities: string|string[]): string[] {
     entities = arrMakeFlat(entities) as string[];
     if (isEmptyArr(entities)) { return []; }
-    // --- Error Check ---
-    const fn_name = 'poly2d.Union';
-    let ents_arr: string[];
-    if (this.debug) {
-        ents_arr = checkIDs(__model__, fn_name, 'entities', entities,
-        [ID.isID, ID.isIDL1], [ENT_TYPE.PGON]) as string[];
-    } else {
-        // ents_arr = splitIDs(fn_name, 'entities', entities,
-        // [IDcheckObj.isID, IDcheckObj.isIDList], null) as string[];
-        ents_arr = idsBreak(entities) as string[];
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // const fn_name = 'poly2d.Union';
+    // let ents_arr: string[];
+    // if (this.debug) {
+    //     ents_arr = checkIDs(__model__, fn_name, 'entities', entities,
+    //     [ID.isID, ID.isIDL1], [ENT_TYPE.PGON]) as string[];
+    // } else {
+    //     // ents_arr = splitIDs(fn_name, 'entities', entities,
+    //     // [IDcheckObj.isID, IDcheckObj.isIDList], null) as string[];
+    //     ents_arr = idsBreak(entities) as string[];
+    // }
+    // // --- Error Check ---
     const posis_map: TPosisMap = new Map();
     const pgons_i: number[] = _getPgons(__model__, ents_arr);
     if (pgons_i.length === 0) { return []; }

@@ -28,18 +28,18 @@ import { _EEdgeMethod } from './_enum';
 export function Edge(__model__: Sim, entities: string | string[], edge_query_enum: _EEdgeMethod): string | string[] {
     if (isEmptyArr(entities)) { return []; }
     entities = arrMakeFlat(entities) as string[];
-    // --- Error Check ---
-    let ents_arr: string[] = null;
-    if (this.debug) {
-        if (entities !== null && entities !== undefined) {
-            ents_arr = checkIDs(__model__, 'query.Edge', 'entities', entities, [ID.isIDL1], [ENT_TYPE.EDGE]) as string[];
-        }
-    } else {
-        if (entities !== null && entities !== undefined) {
-            ents_arr = idsBreak(entities) as string[];
-        }
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // let ents_arr: string[] = null;
+    // if (this.debug) {
+    //     if (entities !== null && entities !== undefined) {
+    //         ents_arr = checkIDs(__model__, 'query.Edge', 'entities', entities, [ID.isIDL1], [ENT_TYPE.EDGE]) as string[];
+    //     }
+    // } else {
+    //     if (entities !== null && entities !== undefined) {
+    //         ents_arr = idsBreak(entities) as string[];
+    //     }
+    // }
+    // // --- Error Check ---
     let edges_i: number | number[] | number[][] = ents_arr.map(ent => ent[1]);
     switch (edge_query_enum) {
         case _EEdgeMethod.PREV:

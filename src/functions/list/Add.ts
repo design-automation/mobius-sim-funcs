@@ -1,6 +1,5 @@
 import { idsBreak, string } from '../../mobius_sim';
 
-import * as chk from '../../_check_types';
 import { _EAddMethod } from './_enum';
 
 
@@ -26,11 +25,11 @@ import { _EAddMethod } from './_enum';
  * @example_info Expected value of list is `["a", "b", "c", "d"]`.
  */
 export function Add(list: any[], item: any|any[], method: _EAddMethod): void {
-    // --- Error Check ---
-    const fn_name = 'list.Add';
-    chk.checkArgs(fn_name, 'list', list, [chk.isList]);
-    chk.checkArgs(fn_name, 'value', item, [chk.isAny]);
-    // --- Error Check ---
+    // // --- Error Check ---
+    // const fn_name = 'list.Add';
+    // chk.checkArgs(fn_name, 'list', list, [chk.isList]);
+    // chk.checkArgs(fn_name, 'value', item, [chk.isAny]);
+    // // --- Error Check ---
     let str_value: string;
     switch (method) {
         case _EAddMethod.TO_START:

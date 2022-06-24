@@ -1,4 +1,3 @@
-import * as chk from '../../_check_types';
 import { _EReplaceMethod } from './_enum';
 
 
@@ -25,12 +24,12 @@ import { _EReplaceMethod } from './_enum';
  * Expected new value of list is `[0,1,0,3,4,5]`.
  */
 export function Replace(list: any[], old_item: any, new_item: any, method: _EReplaceMethod): void {
-    // --- Error Check ---
-    const fn_name = 'list.Replace';
-    chk.checkArgs(fn_name, 'list', list, [chk.isList]);
-    chk.checkArgs(fn_name, 'item', old_item, [chk.isAny]);
-    chk.checkArgs(fn_name, 'new_value', new_item, [chk.isAny]);
-    // --- Error Check ---
+    // // --- Error Check ---
+    // const fn_name = 'list.Replace';
+    // chk.checkArgs(fn_name, 'list', list, [chk.isList]);
+    // chk.checkArgs(fn_name, 'item', old_item, [chk.isAny]);
+    // chk.checkArgs(fn_name, 'new_value', new_item, [chk.isAny]);
+    // // --- Error Check ---
     let index: number;
     switch (method) {
         case _EReplaceMethod.REPLACE_INDEX:

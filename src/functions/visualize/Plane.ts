@@ -29,14 +29,14 @@ import * as chk from '../../_check_types';
  * @example_info Creates a plane with position1 on it and normal = cross product of vector1 with y-axis.
  */
 export function Plane(__model__: Sim, planes: TPlane|TPlane[], scale: number): string[] {
-    // --- Error Check ---
-    const fn_name = 'visualize.Plane';
-    if (this.debug) {
-        chk.checkArgs(fn_name, 'planes', planes,
-            [chk.isPln, chk.isPlnL]);
-        chk.checkArgs(fn_name, 'scale', scale, [chk.isNum]);
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // const fn_name = 'visualize.Plane';
+    // if (this.debug) {
+    //     chk.checkArgs(fn_name, 'planes', planes,
+    //         [chk.isPln, chk.isPlnL]);
+    //     chk.checkArgs(fn_name, 'scale', scale, [chk.isNum]);
+    // }
+    // // --- Error Check ---
     return idsMake(_visPlane(__model__, planes, scale)) as string[];
 }
 function _visPlane(__model__: Sim, planes: TPlane|TPlane[], scale: number): string[] {

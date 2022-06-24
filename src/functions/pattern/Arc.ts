@@ -13,8 +13,6 @@ import {
 } from '../../mobius_sim';
 import * as THREE from 'three';
 
-import * as chk from '../../_check_types';
-
 
 
 // ================================================================================================
@@ -74,21 +72,21 @@ import * as chk from '../../_check_types';
  */
 export function Arc(__model__: Sim, origin: Txyz|TPlane, radius: number, num_positions: number, 
         arc_angle: number|[number, number]): string[] {
-    // --- Error Check ---
-    if (this.debug) {
-        const fn_name = 'pattern.Arc';
-        chk.checkArgs(fn_name, 'origin', origin, [chk.isXYZ, chk.isPln]);
-        chk.checkArgs(fn_name, 'radius', radius, [chk.isNum]);
-        chk.checkArgs(fn_name, 'num_positions', num_positions, [chk.isInt]);
-        chk.checkArgs(fn_name, 'arc_angle', arc_angle, [chk.isNum, chk.isNumL, chk.isNull]);
-        if (Array.isArray(arc_angle)) {
-            if (arc_angle.length !== 2) {
-                throw new Error('pattern.Arc: If the "arc_angle" is given as a list of numbers, \
-                then the list must contain exactly two angles (in radians).');
-            }
-        }
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // if (this.debug) {
+    //     const fn_name = 'pattern.Arc';
+    //     chk.checkArgs(fn_name, 'origin', origin, [chk.isXYZ, chk.isPln]);
+    //     chk.checkArgs(fn_name, 'radius', radius, [chk.isNum]);
+    //     chk.checkArgs(fn_name, 'num_positions', num_positions, [chk.isInt]);
+    //     chk.checkArgs(fn_name, 'arc_angle', arc_angle, [chk.isNum, chk.isNumL, chk.isNull]);
+    //     if (Array.isArray(arc_angle)) {
+    //         if (arc_angle.length !== 2) {
+    //             throw new Error('pattern.Arc: If the "arc_angle" is given as a list of numbers, \
+    //             then the list must contain exactly two angles (in radians).');
+    //         }
+    //     }
+    // }
+    // // --- Error Check ---
     // create the matrix one time
     let matrix: THREE.Matrix4;
     const origin_is_plane = getArrDepth(origin) === 2;

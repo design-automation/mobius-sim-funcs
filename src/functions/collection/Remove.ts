@@ -1,4 +1,8 @@
-import { arrMakeFlat, ENT_TYPE, Sim, idsBreak, string, string } from '../../mobius_sim';
+import { 
+    // arrMakeFlat, 
+    ENT_TYPE, Sim, 
+    // idsBreak, string, string 
+} from '../../mobius_sim';
 
 import { checkIDs, ID } from '../_common/_check_ids';
 
@@ -14,35 +18,36 @@ import { checkIDs, ID } from '../_common/_check_ids';
  * @returns void
  */
 export function Remove(__model__: Sim, coll: string, entities: string|string[]): void {
-    // --- Error Check ---
-    const fn_name = 'collection.Remove';
-    let ents_arr: string[] = null;
-    let coll_arr;
-    if (this.debug) {
-        if (entities !== null) {
-            entities = arrMakeFlat(entities) as string[];
-            ents_arr = checkIDs(__model__, fn_name, 'entities', entities,
-                [ID.isID, ID.isIDL1],
-                [ENT_TYPE.POINT, ENT_TYPE.PLINE, ENT_TYPE.PGON, ENT_TYPE.COLL]) as string[];
-        }
-        coll_arr = checkIDs(__model__, fn_name, 'coll', coll, [ID.isID], [ENT_TYPE.COLL]) as string;
-    } else {
-        if (entities !== null) {
-            entities = arrMakeFlat(entities) as string[];
-            // ents_arr = splitIDs(fn_name, 'entities', entities,
-            //     [IDcheckObj.isID, IDcheckObj.isIDList],
-            //     [ENT_TYPE.POINT, ENT_TYPE.PLINE, ENT_TYPE.PGON, ENT_TYPE.COLL]) as string[];
-            ents_arr = idsBreak(entities) as string[];
-        }
-        // coll_arr = splitIDs(fn_name, 'coll', coll, [IDcheckObj.isID], [ENT_TYPE.COLL]) as string;
-        coll_arr = idsBreak(coll) as string;
-    }
-    // --- Error Check ---
-    if (ents_arr === null) {
-        _collectionEmpty(__model__, coll_arr[1]);
-    } else {
-        _collectionRemove(__model__, coll_arr[1], ents_arr);
-    }
+    // // // --- Error Check ---
+    // // const fn_name = 'collection.Remove';
+    // // let ents_arr: string[] = null;
+    // // let coll_arr;
+    // // if (this.debug) {
+    // //     if (entities !== null) {
+    // //         entities = arrMakeFlat(entities) as string[];
+    // //         ents_arr = checkIDs(__model__, fn_name, 'entities', entities,
+    // //             [ID.isID, ID.isIDL1],
+    // //             [ENT_TYPE.POINT, ENT_TYPE.PLINE, ENT_TYPE.PGON, ENT_TYPE.COLL]) as string[];
+    // //     }
+    // //     coll_arr = checkIDs(__model__, fn_name, 'coll', coll, [ID.isID], [ENT_TYPE.COLL]) as string;
+    // // } else {
+    // //     if (entities !== null) {
+    // //         entities = arrMakeFlat(entities) as string[];
+    // //         // ents_arr = splitIDs(fn_name, 'entities', entities,
+    // //         //     [IDcheckObj.isID, IDcheckObj.isIDList],
+    // //         //     [ENT_TYPE.POINT, ENT_TYPE.PLINE, ENT_TYPE.PGON, ENT_TYPE.COLL]) as string[];
+    // //         ents_arr = idsBreak(entities) as string[];
+    // //     }
+    // //     // coll_arr = splitIDs(fn_name, 'coll', coll, [IDcheckObj.isID], [ENT_TYPE.COLL]) as string;
+    // //     coll_arr = idsBreak(coll) as string;
+    // // }
+    // // // --- Error Check ---
+    // if (ents_arr === null) {
+    //     _collectionEmpty(__model__, coll_arr[1]);
+    // } else {
+    //     _collectionRemove(__model__, coll_arr[1], ents_arr);
+    // }
+    throw new Error();
 }
 function _collectionRemove(__model__: Sim, coll_i: number, ents_arr: string[]): void {
     const ssid: number = __model__.modeldata.active_ssid;

@@ -28,17 +28,17 @@ import * as chk from '../../_check_types';
 export function Offset(__model__: Sim, entities: string|string[], dist: number): void {
     entities = arrMakeFlat(entities) as string[];
     if (!isEmptyArr(entities)) {
-        // --- Error Check ---
-        const fn_name = 'modify.Offset';
-        let ents_arr: string[];
-        if (this.debug) {
-            ents_arr = checkIDs(__model__, fn_name, 'entities', entities, [ID.isID, ID.isIDL1],
-                [ENT_TYPE.WIRE, ENT_TYPE.PLINE, ENT_TYPE.PGON, ENT_TYPE.COLL]) as string[];
-            chk.checkArgs(fn_name, 'dist', dist, [chk.isNum]);
-        } else {
-            ents_arr = idsBreak(entities) as string[];
-        }
-        // --- Error Check ---
+        // // --- Error Check ---
+        // const fn_name = 'modify.Offset';
+        // let ents_arr: string[];
+        // if (this.debug) {
+        //     ents_arr = checkIDs(__model__, fn_name, 'entities', entities, [ID.isID, ID.isIDL1],
+        //         [ENT_TYPE.WIRE, ENT_TYPE.PLINE, ENT_TYPE.PGON, ENT_TYPE.COLL]) as string[];
+        //     chk.checkArgs(fn_name, 'dist', dist, [chk.isNum]);
+        // } else {
+        //     ents_arr = idsBreak(entities) as string[];
+        // }
+        // // --- Error Check ---
         __model__.modeldata.funcs_modify.offset(ents_arr, dist);
     }
 }

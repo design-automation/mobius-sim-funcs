@@ -30,22 +30,22 @@ import { _EEdgeMethod } from './_enum';
 export function Edge(__model__: Sim, entities: string|string[], method: _EEdgeMethod): void {
     entities = arrMakeFlat(entities) as string[];
     if (isEmptyArr(entities)) { return; }
-    // --- Error Check ---
-    const fn_name = 'visualize.Edge';
-    let ents_arr: string[] = null;
-    if (this.debug) {
-        if (entities !== null) {
-            ents_arr = checkIDs(__model__, fn_name, 'entities', entities,
-                [ID.isIDL1], null) as string[];
-        }
-    } else {
-        // if (entities !== null) {
-        //     ents_arr = splitIDs(fn_name, 'entities', entities,
-        //         [IDcheckObj.isIDList], null) as string[];
-        // }
-        ents_arr = idsBreak(entities) as string[];
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // const fn_name = 'visualize.Edge';
+    // let ents_arr: string[] = null;
+    // if (this.debug) {
+    //     if (entities !== null) {
+    //         ents_arr = checkIDs(__model__, fn_name, 'entities', entities,
+    //             [ID.isIDL1], null) as string[];
+    //     }
+    // } else {
+    //     // if (entities !== null) {
+    //     //     ents_arr = splitIDs(fn_name, 'entities', entities,
+    //     //         [IDcheckObj.isIDList], null) as string[];
+    //     // }
+    //     ents_arr = idsBreak(entities) as string[];
+    // }
+    // // --- Error Check ---
     if (!__model__.modeldata.attribs.query.hasEntAttrib(ENT_TYPE.EDGE, EAttribNames.VISIBILITY)) {
         if (method === _EEdgeMethod.VISIBLE) {
             return;

@@ -49,13 +49,13 @@ import * as chk from '../../_check_types';
  */
 export function Rectangle(__model__: Sim, origin: Txyz|TPlane,
         size: number|[number, number]): string[] {
-    // --- Error Check ---
-    if (this.debug) {
-        const fn_name = 'pattern.Rectangle';
-        chk.checkArgs(fn_name, 'origin', origin, [chk.isXYZ, chk.isPln]);
-        chk.checkArgs(fn_name, 'size', size, [chk.isNum, chk.isXY]);
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // if (this.debug) {
+    //     const fn_name = 'pattern.Rectangle';
+    //     chk.checkArgs(fn_name, 'origin', origin, [chk.isXYZ, chk.isPln]);
+    //     chk.checkArgs(fn_name, 'size', size, [chk.isNum, chk.isXY]);
+    // }
+    // // --- Error Check ---
     // create the matrix one time
     let matrix: THREE.Matrix4;
     const origin_is_plane = getArrDepth(origin) === 2;

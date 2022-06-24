@@ -28,22 +28,22 @@ import { _EIOExportDataFormat } from './_enum';
  */
  export async function ExportData(__model__: Sim, entities: string | string[] | string[][], data_format: _EIOExportDataFormat): Promise<string> {
     // if (typeof localStorage === 'undefined') { return; }
-    // --- Error Check ---
-    const fn_name = 'io.Export';
-    let ents_arr = null;
-    if (this.debug) {
-        if (entities !== null) {
-            entities = arrMakeFlat(entities) as string[];
-            ents_arr = checkIDs(__model__, fn_name, 'entities', entities,
-                [ID.isIDL1], [ENT_TYPE.PLINE, ENT_TYPE.PGON, ENT_TYPE.COLL]) as string[];
-        }
-    } else {
-        if (entities !== null) {
-            entities = arrMakeFlat(entities) as string[];
-            ents_arr = idsBreak(entities) as string[];
-        }
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // const fn_name = 'io.Export';
+    // let ents_arr = null;
+    // if (this.debug) {
+    //     if (entities !== null) {
+    //         entities = arrMakeFlat(entities) as string[];
+    //         ents_arr = checkIDs(__model__, fn_name, 'entities', entities,
+    //             [ID.isIDL1], [ENT_TYPE.PLINE, ENT_TYPE.PGON, ENT_TYPE.COLL]) as string[];
+    //     }
+    // } else {
+    //     if (entities !== null) {
+    //         entities = arrMakeFlat(entities) as string[];
+    //         ents_arr = idsBreak(entities) as string[];
+    //     }
+    // }
+    // // --- Error Check ---
     const ssid: number = __model__.modeldata.active_ssid;
     switch (data_format) {
         case _EIOExportDataFormat.GI:

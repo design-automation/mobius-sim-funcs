@@ -42,13 +42,13 @@ import { _EClose } from './_enum';
  */
 export function Linear(__model__: Sim, coords: Txyz[], close: _EClose,
         num_positions: number): string[] {
-    // --- Error Check ---
-    if (this.debug) {
-        const fn_name = 'pattern.Linear';
-        chk.checkArgs(fn_name, 'coords', coords, [chk.isXYZL]);
-        chk.checkArgs(fn_name, 'num_positions', num_positions, [chk.isInt]);
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // if (this.debug) {
+    //     const fn_name = 'pattern.Linear';
+    //     chk.checkArgs(fn_name, 'coords', coords, [chk.isXYZL]);
+    //     chk.checkArgs(fn_name, 'num_positions', num_positions, [chk.isInt]);
+    // }
+    // // --- Error Check ---
     if (num_positions === 0) { return []; }
     const is_closed: boolean = close === _EClose.CLOSE;
     const num_pairs: number = is_closed ? coords.length : coords.length - 1;

@@ -1,6 +1,6 @@
-import { Sim, TColor } from '../../mobius_sim';
+import { Sim } from '../../mobius_sim';
+import { TColor } from '../_common/consts';
 
-import * as chk from '../../_check_types';
 import { _EMeshMaterialType } from './_enum';
 import { _clamp0100, _clampArr01, _setMaterialModelAttrib } from './_shared';
 
@@ -26,15 +26,15 @@ export function Phong(__model__: Sim, name: string,
             specular: TColor,
             shininess: number
         ): void {
-    // --- Error Check ---
-    if (this.debug) {
-        const fn_name = 'material.Phong';
-        chk.checkArgs(fn_name, 'name', name, [chk.isStr]);
-        chk.checkArgs(fn_name, 'emissive', emissive, [chk.isColor]);
-        chk.checkArgs(fn_name, 'specular', specular, [chk.isColor]);
-        chk.checkArgs(fn_name, 'shininess', shininess, [chk.isNum]);
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // if (this.debug) {
+    //     const fn_name = 'material.Phong';
+    //     chk.checkArgs(fn_name, 'name', name, [chk.isStr]);
+    //     chk.checkArgs(fn_name, 'emissive', emissive, [chk.isColor]);
+    //     chk.checkArgs(fn_name, 'specular', specular, [chk.isColor]);
+    //     chk.checkArgs(fn_name, 'shininess', shininess, [chk.isNum]);
+    // }
+    // // --- Error Check ---
     _clampArr01(emissive);
     _clampArr01(specular);
     shininess = Math.floor(_clamp0100(shininess));

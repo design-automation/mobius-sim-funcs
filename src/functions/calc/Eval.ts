@@ -1,20 +1,20 @@
 import {
-    distance,
+    // distance,
     ENT_TYPE,
-    getArrDepth,
+    // getArrDepth,
     Sim,
-    idsBreak,
-    isEmptyArr,
-    string,
-    string,
+    // idsBreak,
+    // isEmptyArr,
+    // string,
+    // string,
     Txyz,
-    vecAdd,
-    vecMult,
-    vecSub,
+    // vecAdd,
+    // vecMult,
+    // vecSub,
 } from '../../mobius_sim';
 
 import { checkIDs, ID } from '../_common/_check_ids';
-import * as chk from '../../_check_types';
+import * as chk from '../_common/_check_types';
 
 
 
@@ -43,20 +43,21 @@ import * as chk from '../../_check_types';
  * into polyline1.
  */
 export function Eval(__model__: Sim, entities: string|string[], t_param: number): Txyz|Txyz[] {
-    if (isEmptyArr(entities)) { return []; }
-    // --- Error Check ---
-    const fn_name = 'calc.Eval';
-    let ents_arrs: string|string[];
-    if (this.debug) {
-        ents_arrs = checkIDs(__model__, fn_name, 'entities', entities,
-            [ID.isID, ID.isIDL1 ],
-            [ENT_TYPE.EDGE, ENT_TYPE.WIRE, ENT_TYPE.PLINE, ENT_TYPE.PGON, ENT_TYPE.COLL]) as string|string[];
-        chk.checkArgs(fn_name, 'param', t_param, [chk.isNum01]);
-    } else {
-        ents_arrs = idsBreak(entities) as string|string[];
-    }
-    // --- Error Check ---
-    return _eval(__model__, ents_arrs, t_param);
+    // if (isEmptyArr(entities)) { return []; }
+    // // // --- Error Check ---
+    // // const fn_name = 'calc.Eval';
+    // // let ents_arrs: string|string[];
+    // // if (this.debug) {
+    // //     ents_arrs = checkIDs(__model__, fn_name, 'entities', entities,
+    // //         [ID.isID, ID.isIDL1 ],
+    // //         [ENT_TYPE.EDGE, ENT_TYPE.WIRE, ENT_TYPE.PLINE, ENT_TYPE.PGON, ENT_TYPE.COLL]) as string|string[];
+    // //     chk.checkArgs(fn_name, 'param', t_param, [chk.isNum01]);
+    // // } else {
+    // //     ents_arrs = idsBreak(entities) as string|string[];
+    // // }
+    // // // --- Error Check ---
+    // return _eval(__model__, ents_arrs, t_param);
+    throw new Error();
 }
 function _eval(__model__: Sim, ents_arr: string|string[], t_param: number): Txyz|Txyz[] {
     if (getArrDepth(ents_arr) === 1) {

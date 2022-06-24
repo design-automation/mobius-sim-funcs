@@ -2,6 +2,8 @@ import { Sim, ENT_TYPE } from '../../mobius_sim';
 // import createSingleMeshBufTjs
 import * as THREE from 'three';
 import uscore from 'underscore';
+import { TRay, TPlane } from '../_common/consts';
+import { Txyz } from '../../mobius_sim';
 
 import { _ESolarMethod } from './_enum';
 import { _calcExposure, _rayOrisDirsTjs, _solarRaysDirectTjs, _solarRaysIndirectTjs } from './_shared';
@@ -95,55 +97,55 @@ export function Sun(
     method: _ESolarMethod
 ): any {
     entities = arrMakeFlat(entities) as string[];
-    // --- Error Check ---
-    const fn_name = "analyze.Sun";
-    let ents_arrs: string[];
-    let latitude: number = null;
-    let north: Txy = [0, 1];
-    if (this.debug) {
-        chk.checkArgs(fn_name, "origins", origins, [chk.isXYZL, chk.isRayL, chk.isPlnL]);
-        chk.checkArgs(fn_name, "detail", detail, [chk.isInt]);
-        if (detail < 0 || detail > 3) {
-            throw new Error(fn_name + ': "detail" must be an integer between 0 and 3 inclusive.');
-        }
-        ents_arrs = checkIDs(__model__, fn_name, "entities", entities, [ID.isID, ID.isIDL1], [ENT_TYPE.PGON, ENT_TYPE.COLL]) as string[];
-        if (!__model__.modeldata.attribs.query.hasModelAttrib("geolocation")) {
-            throw new Error(
-                'analyze.Solar: model attribute "geolocation" is missing, \
-                e.g. @geolocation = {"latitude":12, "longitude":34}'
-            );
-        } else {
-            const geolocation = __model__.modeldata.attribs.get.getModelAttribVal("geolocation");
-            if (uscore.isObject(geolocation) && uscore.has(geolocation, "latitude")) {
-                latitude = geolocation["latitude"];
-            } else {
-                throw new Error(
-                    'analyze.Solar: model attribute "geolocation" is missing the "latitude" key, \
-                    e.g. @geolocation = {"latitude":12, "longitude":34}'
-                );
-            }
-        }
-        if (__model__.modeldata.attribs.query.hasModelAttrib("north")) {
-            north = __model__.modeldata.attribs.get.getModelAttribVal("north") as Txy;
-            if (!Array.isArray(north) || north.length !== 2) {
-                throw new Error(
-                    'analyze.Solar: model has a "north" attribute with the wrong type, \
-                it should be a vector with two values, \
-                e.g. @north =  [1,2]'
-                );
-            }
-        }
-    } else {
-        ents_arrs = idsBreak(entities) as string[];
-        const geolocation = __model__.modeldata.attribs.get.getModelAttribVal("geolocation");
-        latitude = geolocation["latitude"];
-        if (__model__.modeldata.attribs.query.hasModelAttrib("north")) {
-            north = __model__.modeldata.attribs.get.getModelAttribVal("north") as Txy;
-        }
-    }
-    // TODO
-    // TODO
-    // --- Error Check ---
+    // // --- Error Check ---
+    // const fn_name = "analyze.Sun";
+    // let ents_arrs: string[];
+    // let latitude: number = null;
+    // let north: Txy = [0, 1];
+    // if (this.debug) {
+    //     chk.checkArgs(fn_name, "origins", origins, [chk.isXYZL, chk.isRayL, chk.isPlnL]);
+    //     chk.checkArgs(fn_name, "detail", detail, [chk.isInt]);
+    //     if (detail < 0 || detail > 3) {
+    //         throw new Error(fn_name + ': "detail" must be an integer between 0 and 3 inclusive.');
+    //     }
+    //     ents_arrs = checkIDs(__model__, fn_name, "entities", entities, [ID.isID, ID.isIDL1], [ENT_TYPE.PGON, ENT_TYPE.COLL]) as string[];
+    //     if (!__model__.modeldata.attribs.query.hasModelAttrib("geolocation")) {
+    //         throw new Error(
+    //             'analyze.Solar: model attribute "geolocation" is missing, \
+    //             e.g. @geolocation = {"latitude":12, "longitude":34}'
+    //         );
+    //     } else {
+    //         const geolocation = __model__.modeldata.attribs.get.getModelAttribVal("geolocation");
+    //         if (uscore.isObject(geolocation) && uscore.has(geolocation, "latitude")) {
+    //             latitude = geolocation["latitude"];
+    //         } else {
+    //             throw new Error(
+    //                 'analyze.Solar: model attribute "geolocation" is missing the "latitude" key, \
+    //                 e.g. @geolocation = {"latitude":12, "longitude":34}'
+    //             );
+    //         }
+    //     }
+    //     if (__model__.modeldata.attribs.query.hasModelAttrib("north")) {
+    //         north = __model__.modeldata.attribs.get.getModelAttribVal("north") as Txy;
+    //         if (!Array.isArray(north) || north.length !== 2) {
+    //             throw new Error(
+    //                 'analyze.Solar: model has a "north" attribute with the wrong type, \
+    //             it should be a vector with two values, \
+    //             e.g. @north =  [1,2]'
+    //             );
+    //         }
+    //     }
+    // } else {
+    //     ents_arrs = idsBreak(entities) as string[];
+    //     const geolocation = __model__.modeldata.attribs.get.getModelAttribVal("geolocation");
+    //     latitude = geolocation["latitude"];
+    //     if (__model__.modeldata.attribs.query.hasModelAttrib("north")) {
+    //         north = __model__.modeldata.attribs.get.getModelAttribVal("north") as Txy;
+    //     }
+    // }
+    // // TODO
+    // // TODO
+    // // --- Error Check ---
 
     // TODO North direction
 

@@ -41,23 +41,23 @@ const requestedBytes = 1024 * 1024 * 200; // 200 MB local storage quota
 export async function Export(__model__: Sim, entities: string | string[] | string[][],
     file_name: string, data_format: _EIOExportDataFormat, data_target: _EIODataTarget) {
     if (typeof localStorage === 'undefined') { return; }
-    // --- Error Check ---
-    const fn_name = 'io.Export';
-    let ents_arr = null;
-    if (this.debug) {
-        if (entities !== null) {
-            entities = arrMakeFlat(entities) as string[];
-            ents_arr = checkIDs(__model__, fn_name, 'entities', entities,
-                [ID.isIDL1], [ENT_TYPE.PLINE, ENT_TYPE.PGON, ENT_TYPE.COLL]) as string[];
-        }
-        checkArgs(fn_name, 'file_name', file_name, [isStr, isStrL]);
-    } else {
-        if (entities !== null) {
-            entities = arrMakeFlat(entities) as string[];
-            ents_arr = idsBreak(entities) as string[];
-        }
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // const fn_name = 'io.Export';
+    // let ents_arr = null;
+    // if (this.debug) {
+    //     if (entities !== null) {
+    //         entities = arrMakeFlat(entities) as string[];
+    //         ents_arr = checkIDs(__model__, fn_name, 'entities', entities,
+    //             [ID.isIDL1], [ENT_TYPE.PLINE, ENT_TYPE.PGON, ENT_TYPE.COLL]) as string[];
+    //     }
+    //     checkArgs(fn_name, 'file_name', file_name, [isStr, isStrL]);
+    // } else {
+    //     if (entities !== null) {
+    //         entities = arrMakeFlat(entities) as string[];
+    //         ents_arr = idsBreak(entities) as string[];
+    //     }
+    // }
+    // // --- Error Check ---
     await _export(__model__, ents_arr, file_name, data_format, data_target);
 }
 export function _Async_Param_Export(__model__: Sim, entities: string | string[] | string[][],

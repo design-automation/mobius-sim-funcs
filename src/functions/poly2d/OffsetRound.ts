@@ -56,19 +56,19 @@ export function OffsetRound(__model__: Sim, entities: string | string[], dist: n
     if (isEmptyArr(entities)) {
         return [];
     }
-    // --- Error Check ---
-    const fn_name = 'poly2d.OffsetRound';
-    let ents_arr: string[];
-    if (this.debug) {
-        ents_arr = checkIDs(__model__, fn_name, 'entities', entities,
-            [ID.isID, ID.isIDL1], [ENT_TYPE.PLINE, ENT_TYPE.PGON]) as string[];
-        chk.checkArgs(fn_name, 'tolerance', tolerance, [chk.isNum]);
-    } else {
-        // ents_arr = splitIDs(fn_name, 'entities', entities,
-        // [IDcheckObj.isID, IDcheckObj.isIDList], [ENT_TYPE.PLINE, ENT_TYPE.PGON]) as string[];
-        ents_arr = idsBreak(entities) as string[];
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // const fn_name = 'poly2d.OffsetRound';
+    // let ents_arr: string[];
+    // if (this.debug) {
+    //     ents_arr = checkIDs(__model__, fn_name, 'entities', entities,
+    //         [ID.isID, ID.isIDL1], [ENT_TYPE.PLINE, ENT_TYPE.PGON]) as string[];
+    //     chk.checkArgs(fn_name, 'tolerance', tolerance, [chk.isNum]);
+    // } else {
+    //     // ents_arr = splitIDs(fn_name, 'entities', entities,
+    //     // [IDcheckObj.isID, IDcheckObj.isIDList], [ENT_TYPE.PLINE, ENT_TYPE.PGON]) as string[];
+    //     ents_arr = idsBreak(entities) as string[];
+    // }
+    // // --- Error Check ---
     const posis_map: TPosisMap = new Map();
     const all_new_pgons: string[] = [];
     const options: IClipOffsetOptions = {

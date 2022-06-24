@@ -36,17 +36,17 @@ export function Stitch(__model__: Sim, entities: string | string[], tolerance: n
     if (isEmptyArr(entities)) {
         return [];
     }
-    // --- Error Check ---
-    const fn_name = 'poly2d.Stitch';
-    let ents_arr: string[];
-    if (this.debug) {
-        ents_arr = checkIDs(__model__, fn_name, 'entities', entities,
-            [ID.isIDL1, ID.isIDL2], [ENT_TYPE.PLINE, ENT_TYPE.PGON]) as string[];
-        chk.checkArgs(fn_name, 'tolerance', tolerance, [chk.isNum]);
-    } else {
-        ents_arr = idsBreak(entities) as string[];
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // const fn_name = 'poly2d.Stitch';
+    // let ents_arr: string[];
+    // if (this.debug) {
+    //     ents_arr = checkIDs(__model__, fn_name, 'entities', entities,
+    //         [ID.isIDL1, ID.isIDL2], [ENT_TYPE.PLINE, ENT_TYPE.PGON]) as string[];
+    //     chk.checkArgs(fn_name, 'tolerance', tolerance, [chk.isNum]);
+    // } else {
+    //     ents_arr = idsBreak(entities) as string[];
+    // }
+    // // --- Error Check ---
     // copy the list of entities
     const new_ents_arr: string[] = __model__.modeldata.funcs_common.copyGeom(ents_arr, true) as string[];
     __model__.modeldata.funcs_common.clonePosisInEnts(new_ents_arr, true);

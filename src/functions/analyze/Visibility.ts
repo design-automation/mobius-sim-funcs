@@ -1,6 +1,6 @@
 import * as Mathjs from 'mathjs';
 import * as THREE from 'three';
-import { Sim, ENT_TYPE } from '../../mobius_sim';
+import { Sim, ENT_TYPE, Txyz } from '../../mobius_sim';
 // import createSingleMeshBufTjs
 // import distance
 // import xformMatrix, multMatrix
@@ -45,28 +45,28 @@ export function Visibility(
 ): TVisibilityResult {
     entities = arrMakeFlat(entities) as string[];
     targets = arrMakeFlat(targets) as string[];
-    // --- Error Check ---
-    const fn_name = "analyze.View";
-    let ents_arrs1: string[];
-    let ents_arrs2: string[];
-    if (this.debug) {
-        chk.checkArgs(fn_name, "origins", origins, [chk.isRayL, chk.isPlnL]);
-        ents_arrs1 = checkIDs(__model__, fn_name, "entities", entities, [ID.isIDL1], [ENT_TYPE.PGON, ENT_TYPE.COLL]) as string[];
-        chk.checkArgs(fn_name, "radius", radius, [chk.isNum, chk.isNumL]);
-        if (Array.isArray(radius)) {
-            if (radius.length !== 2) {
-                throw new Error('If "radius" is a list, it must have a length of two: [min_dist, max_dist].');
-            }
-            if (radius[0] >= radius[1]) {
-                throw new Error('If "radius" is a list, the "min_dist" must be less than the "max_dist": [min_dist, max_dist].');
-            }
-        }
-        ents_arrs2 = checkIDs(__model__, fn_name, "targets", targets, [ID.isIDL1], null) as string[];
-    } else {
-        ents_arrs1 = idsBreak(entities) as string[];
-        ents_arrs2 = idsBreak(targets) as string[];
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // const fn_name = "analyze.View";
+    // let ents_arrs1: string[];
+    // let ents_arrs2: string[];
+    // if (this.debug) {
+    //     chk.checkArgs(fn_name, "origins", origins, [chk.isRayL, chk.isPlnL]);
+    //     ents_arrs1 = checkIDs(__model__, fn_name, "entities", entities, [ID.isIDL1], [ENT_TYPE.PGON, ENT_TYPE.COLL]) as string[];
+    //     chk.checkArgs(fn_name, "radius", radius, [chk.isNum, chk.isNumL]);
+    //     if (Array.isArray(radius)) {
+    //         if (radius.length !== 2) {
+    //             throw new Error('If "radius" is a list, it must have a length of two: [min_dist, max_dist].');
+    //         }
+    //         if (radius[0] >= radius[1]) {
+    //             throw new Error('If "radius" is a list, the "min_dist" must be less than the "max_dist": [min_dist, max_dist].');
+    //         }
+    //     }
+    //     ents_arrs2 = checkIDs(__model__, fn_name, "targets", targets, [ID.isIDL1], null) as string[];
+    // } else {
+    //     ents_arrs1 = idsBreak(entities) as string[];
+    //     ents_arrs2 = idsBreak(targets) as string[];
+    // }
+    // // --- Error Check ---
     // get planes for each sensor point
     const sensors_xyz: Txyz[] = _getOriginXYZs(origins, 0.01); // Offset by 0.01
     // Plane(__model__, sensors, 0.4);

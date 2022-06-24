@@ -26,21 +26,21 @@ import { checkArgs, isNull, isNum, isStr } from '../../_check_types';
         back_url: number, back_rot: number,
         fore_url: number, fore_rot: number
     ): void {
-    // --- Error Check ---
-    const fn_name = 'util.vrPanorama';
-    let ent_arr: string;
-    if (this.debug) {
-        ent_arr = checkIDs(__model__, fn_name, 'point', point,
-            [ID.isID],
-            [ENT_TYPE.POINT]) as string;
-        checkArgs(fn_name, 'back_url', back_url, [isStr]);
-        checkArgs(fn_name, 'back_rot', back_rot, [isNum, isNull]);
-        checkArgs(fn_name, 'fore_url', fore_url, [isStr, isNull]);
-        checkArgs(fn_name, 'fore_rot', fore_rot, [isNum, isNull]);
-    } else {
-        ent_arr = idsBreak(point) as string;
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // const fn_name = 'util.vrPanorama';
+    // let ent_arr: string;
+    // if (this.debug) {
+    //     ent_arr = checkIDs(__model__, fn_name, 'point', point,
+    //         [ID.isID],
+    //         [ENT_TYPE.POINT]) as string;
+    //     checkArgs(fn_name, 'back_url', back_url, [isStr]);
+    //     checkArgs(fn_name, 'back_rot', back_rot, [isNum, isNull]);
+    //     checkArgs(fn_name, 'fore_url', fore_url, [isStr, isNull]);
+    //     checkArgs(fn_name, 'fore_rot', fore_rot, [isNum, isNull]);
+    // } else {
+    //     ent_arr = idsBreak(point) as string;
+    // }
+    // // --- Error Check ---
     const ent_i: number = ent_arr[1];
     if (!__model__.modeldata.attribs.query.hasEntAttrib(ENT_TYPE.POINT, "vr_hotspot")) {
         __model__.modeldata.attribs.add.addEntAttrib(ENT_TYPE.POINT, "vr_hotspot", EAttribDataTypeStrs.DICT);

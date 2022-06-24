@@ -1,7 +1,5 @@
 import { ENT_TYPE, getArrDepth, Sim, idsMake, TBBox, string, string, Txyz } from '../../mobius_sim';
 
-import * as chk from '../../_check_types';
-
 
 // ================================================================================================
 /**
@@ -26,12 +24,12 @@ import * as chk from '../../_check_types';
  * @example_info Creates a box around the inital geometry. 
  */
 export function BBox(__model__: Sim, bboxes: TBBox|TBBox): string[] {
-    // --- Error Check ---
-    const fn_name = 'visualize.BBox';
-    if (this.debug) {
-        chk.checkArgs(fn_name, 'bbox', bboxes, [chk.isBBox]); // TODO bboxs can be a list // add isBBoxList to enable check
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // const fn_name = 'visualize.BBox';
+    // if (this.debug) {
+    //     chk.checkArgs(fn_name, 'bbox', bboxes, [chk.isBBox]); // TODO bboxs can be a list // add isBBoxList to enable check
+    // }
+    // // --- Error Check ---
     return  idsMake(_visBBox(__model__, bboxes)) as string[];
 }
 function _visBBox(__model__: Sim, bboxs: TBBox|TBBox[]): string[] {

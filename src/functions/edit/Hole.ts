@@ -32,20 +32,20 @@ import { checkIDs, ID } from '../_common/_check_ids';
 export function Hole(__model__: Sim, pgon: string, entities: string|string[]|string[][]): string[] {
     if (isEmptyArr(entities)) { return []; }
     if (!Array.isArray(entities)) { entities = [entities]; }
-    // --- Error Check ---
-    const fn_name = 'edit.Hole';
-    let ent_arr: string;
-    let holes_ents_arr: string[]|string[][];
-    if (this.debug) {
-        ent_arr = checkIDs(__model__, fn_name, 'pgon', pgon, [ID.isID], [ENT_TYPE.PGON]) as string;
-        holes_ents_arr = checkIDs(__model__, fn_name, 'entities', entities,
-            [ID.isID, ID.isIDL1, ID.isIDL2],
-            [ENT_TYPE.POSI, ENT_TYPE.WIRE, ENT_TYPE.PLINE, ENT_TYPE.PGON]) as string[]|string[][];
-    } else {
-        ent_arr = idsBreak(pgon) as string;
-        holes_ents_arr = idsBreak(entities) as string[]|string[][];
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // const fn_name = 'edit.Hole';
+    // let ent_arr: string;
+    // let holes_ents_arr: string[]|string[][];
+    // if (this.debug) {
+    //     ent_arr = checkIDs(__model__, fn_name, 'pgon', pgon, [ID.isID], [ENT_TYPE.PGON]) as string;
+    //     holes_ents_arr = checkIDs(__model__, fn_name, 'entities', entities,
+    //         [ID.isID, ID.isIDL1, ID.isIDL2],
+    //         [ENT_TYPE.POSI, ENT_TYPE.WIRE, ENT_TYPE.PLINE, ENT_TYPE.PGON]) as string[]|string[][];
+    // } else {
+    //     ent_arr = idsBreak(pgon) as string;
+    //     holes_ents_arr = idsBreak(entities) as string[]|string[][];
+    // }
+    // // --- Error Check ---
     const new_ents_arr: string[] = __model__.modeldata.funcs_edit.hole(ent_arr, holes_ents_arr);
     // make and return the IDs of the hole wires
     return idsMake(new_ents_arr) as string[];

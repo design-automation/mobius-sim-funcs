@@ -37,19 +37,19 @@ import { getRay } from '../_common/___index_old';
 export function Rotate(__model__: Sim, entities: string|string[], ray: Txyz|TRay|TPlane|string|string[], angle: number): void {
     entities = arrMakeFlat(entities) as string[];
     if (!isEmptyArr(entities)) {
-        // --- Error Check ---
-        const fn_name = 'modify.Rotate';
-        let ents_arr: string[];
-        if (this.debug) {
-            ents_arr = checkIDs(__model__, fn_name, 'entities', entities, [ID.isID, ID.isIDL1],
-                [ENT_TYPE.POSI, ENT_TYPE.VERT, ENT_TYPE.EDGE, ENT_TYPE.WIRE,
-                ENT_TYPE.POINT, ENT_TYPE.PLINE, ENT_TYPE.PGON, ENT_TYPE.COLL]) as string[];
-            chk.checkArgs(fn_name, 'angle', angle, [chk.isNum]);
-        } else {
-            ents_arr = idsBreak(entities) as string[];
-        }
-        ray = getRay(__model__, ray, fn_name) as TRay;
-        // --- Error Check ---
+        // // --- Error Check ---
+        // const fn_name = 'modify.Rotate';
+        // let ents_arr: string[];
+        // if (this.debug) {
+        //     ents_arr = checkIDs(__model__, fn_name, 'entities', entities, [ID.isID, ID.isIDL1],
+        //         [ENT_TYPE.POSI, ENT_TYPE.VERT, ENT_TYPE.EDGE, ENT_TYPE.WIRE,
+        //         ENT_TYPE.POINT, ENT_TYPE.PLINE, ENT_TYPE.PGON, ENT_TYPE.COLL]) as string[];
+        //     chk.checkArgs(fn_name, 'angle', angle, [chk.isNum]);
+        // } else {
+        //     ents_arr = idsBreak(entities) as string[];
+        // }
+        // ray = getRay(__model__, ray, fn_name) as TRay;
+        // // --- Error Check ---
         __model__.modeldata.funcs_modify.rotate(ents_arr, ray, angle);
     }
 }

@@ -28,15 +28,15 @@ import { checkIDs, ID } from '../_common/_check_ids';
 export function Remesh(__model__: Sim, entities: string[]): void {
     entities = arrMakeFlat(entities) as string[];
     if (!isEmptyArr(entities)) {
-        // --- Error Check ---
-        let ents_arr: string[];
-        if (this.debug) {
-            ents_arr = checkIDs(__model__, 'modify.Remesh', 'entities', entities,
-            [ID.isID, ID.isIDL1], [ENT_TYPE.PGON, ENT_TYPE.COLL]) as string[];
-        } else {
-            ents_arr = idsBreak(entities) as string[];
-        }
-        // --- Error Check ---
+        // // --- Error Check ---
+        // let ents_arr: string[];
+        // if (this.debug) {
+        //     ents_arr = checkIDs(__model__, 'modify.Remesh', 'entities', entities,
+        //     [ID.isID, ID.isIDL1], [ENT_TYPE.PGON, ENT_TYPE.COLL]) as string[];
+        // } else {
+        //     ents_arr = idsBreak(entities) as string[];
+        // }
+        // // --- Error Check ---
         __model__.modeldata.funcs_modify.remesh(ents_arr);
     }
 }

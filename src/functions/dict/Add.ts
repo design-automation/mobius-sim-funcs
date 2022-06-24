@@ -1,4 +1,3 @@
-import * as chk from '../../_check_types';
 
 
 // ================================================================================================
@@ -11,16 +10,16 @@ import * as chk from '../../_check_types';
  * @returns void
  */
 export function Add(dict: object, keys: string|string[], values: any|any[]): void {
-    // --- Error Check ---
-    const fn_name = 'dict.Add';
-    chk.checkArgs(fn_name, 'keys', keys, [chk.isStr, chk.isStrL]);
-    chk.checkArgs(fn_name, 'values', keys, [chk.isAny, chk.isList]);
-    keys = Array.isArray(keys) ? keys : [keys];
-    values = Array.isArray(values) ? values : [values];
-    if (keys.length !== values.length) {
-        throw new Error(fn_name + ': The list of keys must be the same length as the list of values.');
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // const fn_name = 'dict.Add';
+    // chk.checkArgs(fn_name, 'keys', keys, [chk.isStr, chk.isStrL]);
+    // chk.checkArgs(fn_name, 'values', keys, [chk.isAny, chk.isList]);
+    // keys = Array.isArray(keys) ? keys : [keys];
+    // values = Array.isArray(values) ? values : [values];
+    // if (keys.length !== values.length) {
+    //     throw new Error(fn_name + ': The list of keys must be the same length as the list of values.');
+    // }
+    // // --- Error Check ---
     for (let i = 0; i < keys.length; i++) {
         const key = keys[i];
         const value = values[i];

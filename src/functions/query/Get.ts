@@ -34,16 +34,16 @@ import { _getEntTypeFromStr } from './_shared';
  */
 export function Get(__model__: Sim, ent_type_enum: _ENT_TYPE, entities: string|string[]): string[]|string[][] {
     if (isEmptyArr(entities)) { return []; }
-    // --- Error Check ---
-    const fn_name = 'query.Get';
-    let ents_arr: string|string[]|string[][];
-    if (this.debug) {
-        ents_arr = checkIDs(__model__, fn_name, 'entities', entities,
-            [ID.isNull, ID.isID, ID.isIDL1, ID.isIDL2], null, false) as string|string[];
-    } else {
-        ents_arr = idsBreak(entities) as string[];
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // const fn_name = 'query.Get';
+    // let ents_arr: string|string[]|string[][];
+    // if (this.debug) {
+    //     ents_arr = checkIDs(__model__, fn_name, 'entities', entities,
+    //         [ID.isNull, ID.isID, ID.isIDL1, ID.isIDL2], null, false) as string|string[];
+    // } else {
+    //     ents_arr = idsBreak(entities) as string[];
+    // }
+    // // --- Error Check ---
     // get the entity type // TODO deal with multiple ent types
     const ent_type: ENT_TYPE = _getEntTypeFromStr(ent_type_enum) as ENT_TYPE;
     // if ents_arr is null, then get all entities in the model of type ent_type

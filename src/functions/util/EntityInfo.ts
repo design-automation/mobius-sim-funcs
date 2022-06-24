@@ -15,17 +15,17 @@ import { checkIDs, ID } from '../_common/_check_ids';
  */
 export function EntityInfo(__model__: Sim, entities: string|string[]): string {
     entities = arrMakeFlat(entities) as string[];
-    // --- Error Check ---
-    const fn_name = 'util.EntityInfo';
-    let ents_arr: string[];
-    if (this.debug) {
-        ents_arr = checkIDs(__model__, fn_name, 'coll', entities,
-            [ID.isID, ID.isIDL1],
-            [ENT_TYPE.COLL, ENT_TYPE.PGON, ENT_TYPE.PLINE, ENT_TYPE.POINT]) as string[];
-    } else {
-        ents_arr = idsBreak(entities) as string[];
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // const fn_name = 'util.EntityInfo';
+    // let ents_arr: string[];
+    // if (this.debug) {
+    //     ents_arr = checkIDs(__model__, fn_name, 'coll', entities,
+    //         [ID.isID, ID.isIDL1],
+    //         [ENT_TYPE.COLL, ENT_TYPE.PGON, ENT_TYPE.PLINE, ENT_TYPE.POINT]) as string[];
+    // } else {
+    //     ents_arr = idsBreak(entities) as string[];
+    // }
+    // // --- Error Check ---
     let result = '<h4>Entity Information:</h4>';
     for (const ent_arr of ents_arr) {
         const [ent_type, ent_i] = ent_arr;

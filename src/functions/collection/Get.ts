@@ -1,14 +1,14 @@
 import {
-    EAttribNames,
+    // EAttribNames,
     ENT_TYPE,
-    EFilterOperatorTypes,
+    // EFilterOperatorTypes,
     Sim,
-    idMake,
-    idsMakeFromIdxs,
-    string,
+    // idMake,
+    // idsMakeFromIdxs,
+    // string,
 } from '../../mobius_sim';
 
-import * as chk from '../../_check_types';
+import * as chk from '../_common/_check_types';
 
 
 
@@ -31,12 +31,12 @@ import * as chk from '../../_check_types';
  * @returns The collection, or a list of collections.
  */
 export function Get(__model__: Sim, names: string|string[]): string|string[] {
-    // --- Error Check ---
-    if (this.debug) {
-        const fn_name = 'collection.Get';
-        chk.checkArgs(fn_name, 'names', names, [chk.isStr, chk.isStrL]);
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // if (this.debug) {
+    //     const fn_name = 'collection.Get';
+    //     chk.checkArgs(fn_name, 'names', names, [chk.isStr, chk.isStrL]);
+    // }
+    // // --- Error Check ---
     const colls_i: number[] = _get(__model__, names);
     if (colls_i.length === 0) {
         return []; // return an empty list

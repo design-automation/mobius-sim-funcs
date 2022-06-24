@@ -31,16 +31,16 @@ import * as chk from '../../_check_types';
 export function Move(__model__: Sim, entities: string|string[], vectors: Txyz|Txyz[]): void {
     entities = arrMakeFlat(entities) as string[];
     if (!isEmptyArr(entities)) {
-        // --- Error Check ---
-        const fn_name = 'modify.Move';
-        let ents_arr: string[];
-        if (this.debug) {
-            ents_arr = checkIDs(__model__, fn_name, 'entities', entities, [ID.isID, ID.isIDL1], null) as string[];
-            chk.checkArgs(fn_name, 'vectors', vectors, [chk.isXYZ, chk.isXYZL]);
-        } else {
-            ents_arr = idsBreak(entities) as string[];
-        }
-        // --- Error Check ---
+        // // --- Error Check ---
+        // const fn_name = 'modify.Move';
+        // let ents_arr: string[];
+        // if (this.debug) {
+        //     ents_arr = checkIDs(__model__, fn_name, 'entities', entities, [ID.isID, ID.isIDL1], null) as string[];
+        //     chk.checkArgs(fn_name, 'vectors', vectors, [chk.isXYZ, chk.isXYZL]);
+        // } else {
+        //     ents_arr = idsBreak(entities) as string[];
+        // }
+        // // --- Error Check ---
         __model__.modeldata.funcs_modify.move(ents_arr, vectors);
     }
 }

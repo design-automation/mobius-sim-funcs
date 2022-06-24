@@ -1,4 +1,11 @@
-import { arrMakeFlat, Sim, idsBreak, TBBox, string, string, Txyz } from '../../mobius_sim';
+import { 
+    // arrMakeFlat, 
+    Sim, 
+    // idsBreak, 
+    TBBox, 
+    // string, string, 
+    Txyz 
+} from '../../mobius_sim';
 
 import { checkIDs, ID } from '../_common/_check_ids';
 
@@ -24,42 +31,44 @@ import { checkIDs, ID } from '../_common/_check_ids';
  * @returns The bounding box, consisting of a list of four lists.
  */
 export function BBox(__model__: Sim, entities: string|string[]): TBBox {
-    entities = arrMakeFlat(entities);
-    // --- Error Check ---
-    const fn_name = 'calc.BBox';
-    let ents_arr: string[];
-    if (this.debug) {
-        ents_arr = checkIDs(__model__, fn_name, 'entities', entities, [ID.isIDL1], null) as string[]; // all
-    } else {
-        ents_arr = idsBreak(entities) as string[];
-    }
-    // --- Error Check ---
-    return _getBoundingBox(__model__, ents_arr);
-}
+    // entities = arrMakeFlat(entities);
+    // // // --- Error Check ---
+    // // const fn_name = 'calc.BBox';
+    // // let ents_arr: string[];
+    // // if (this.debug) {
+    // //     ents_arr = checkIDs(__model__, fn_name, 'entities', entities, [ID.isIDL1], null) as string[]; // all
+    // // } else {
+    // //     ents_arr = idsBreak(entities) as string[];
+    // // }
+    // // // --- Error Check ---
+    // return _getBoundingBox(__model__, ents_arr);
+    throw new Error();
+};
 function _getBoundingBox(__model__: Sim, ents_arr: string[]): TBBox {
-    const posis_set_i: Set<number> = new Set();
-    for (const ent_arr of ents_arr) {
-        const ent_posis_i: number[] = __model__.modeldata.geom.nav.navAnyToPosi(ent_arr[0], ent_arr[1]);
-        for (const ent_posi_i of ent_posis_i) {
-            posis_set_i.add(ent_posi_i);
-        }
-    }
-    const unique_posis_i = Array.from(posis_set_i);
-    const unique_xyzs: Txyz[] = unique_posis_i.map( posi_i => __model__.modeldata.attribs.posis.getPosiCoords(posi_i));
-    const corner_min: Txyz = [Infinity, Infinity, Infinity];
-    const corner_max: Txyz = [-Infinity, -Infinity, -Infinity];
-    for (const unique_xyz of unique_xyzs) {
-        if (unique_xyz[0] < corner_min[0]) { corner_min[0] = unique_xyz[0]; }
-        if (unique_xyz[1] < corner_min[1]) { corner_min[1] = unique_xyz[1]; }
-        if (unique_xyz[2] < corner_min[2]) { corner_min[2] = unique_xyz[2]; }
-        if (unique_xyz[0] > corner_max[0]) { corner_max[0] = unique_xyz[0]; }
-        if (unique_xyz[1] > corner_max[1]) { corner_max[1] = unique_xyz[1]; }
-        if (unique_xyz[2] > corner_max[2]) { corner_max[2] = unique_xyz[2]; }
-    }
-    return [
-        [(corner_min[0] + corner_max[0]) / 2, (corner_min[1] + corner_max[1]) / 2, (corner_min[2] + corner_max[2]) / 2],
-        corner_min,
-        corner_max,
-        [corner_max[0] - corner_min[0], corner_max[1] - corner_min[1], corner_max[2] - corner_min[2]]
-    ];
+    // const posis_set_i: Set<number> = new Set();
+    // for (const ent_arr of ents_arr) {
+    //     const ent_posis_i: number[] = __model__.modeldata.geom.nav.navAnyToPosi(ent_arr[0], ent_arr[1]);
+    //     for (const ent_posi_i of ent_posis_i) {
+    //         posis_set_i.add(ent_posi_i);
+    //     }
+    // }
+    // const unique_posis_i = Array.from(posis_set_i);
+    // const unique_xyzs: Txyz[] = unique_posis_i.map( posi_i => __model__.modeldata.attribs.posis.getPosiCoords(posi_i));
+    // const corner_min: Txyz = [Infinity, Infinity, Infinity];
+    // const corner_max: Txyz = [-Infinity, -Infinity, -Infinity];
+    // for (const unique_xyz of unique_xyzs) {
+    //     if (unique_xyz[0] < corner_min[0]) { corner_min[0] = unique_xyz[0]; }
+    //     if (unique_xyz[1] < corner_min[1]) { corner_min[1] = unique_xyz[1]; }
+    //     if (unique_xyz[2] < corner_min[2]) { corner_min[2] = unique_xyz[2]; }
+    //     if (unique_xyz[0] > corner_max[0]) { corner_max[0] = unique_xyz[0]; }
+    //     if (unique_xyz[1] > corner_max[1]) { corner_max[1] = unique_xyz[1]; }
+    //     if (unique_xyz[2] > corner_max[2]) { corner_max[2] = unique_xyz[2]; }
+    // }
+    // return [
+    //     [(corner_min[0] + corner_max[0]) / 2, (corner_min[1] + corner_max[1]) / 2, (corner_min[2] + corner_max[2]) / 2],
+    //     corner_min,
+    //     corner_max,
+    //     [corner_max[0] - corner_min[0], corner_max[1] - corner_min[1], corner_max[2] - corner_min[2]]
+    // ];
+    throw new Error();
 }

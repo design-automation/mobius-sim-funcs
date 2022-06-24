@@ -147,13 +147,13 @@ export function Box(__model__: Sim, origin: Txyz | TPlane,
     size: number | [number, number] | [number, number, number],
     num_positions: number | [number, number] | [number, number, number],
     method: _EBoxMethod): string[] | string[][] {
-    // --- Error Check ---
-    if (this.debug) {
-        const fn_name = 'pattern.Box';
-        chk.checkArgs(fn_name, 'origin', origin, [chk.isXYZ, chk.isPln]);
-        chk.checkArgs(fn_name, 'size', size, [chk.isNum, chk.isXY, chk.isXYZ]);
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // if (this.debug) {
+    //     const fn_name = 'pattern.Box';
+    //     chk.checkArgs(fn_name, 'origin', origin, [chk.isXYZ, chk.isPln]);
+    //     chk.checkArgs(fn_name, 'size', size, [chk.isNum, chk.isXY, chk.isXYZ]);
+    // }
+    // // --- Error Check ---
     // create the matrix one time
     let matrix: THREE.Matrix4;
     const origin_is_plane = getArrDepth(origin) === 2;

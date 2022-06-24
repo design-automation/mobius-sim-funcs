@@ -41,18 +41,18 @@ import { _convexHull, _getPosis } from './_shared';
 export function BBoxPolygon(__model__: Sim, entities: string|string[], method: _EBBoxMethod): string {
     entities = arrMakeFlat(entities) as string[];
     if (isEmptyArr(entities)) { return null; }
-    // --- Error Check ---
-    const fn_name = 'poly2d.BBoxPolygon';
-    let ents_arr: string[];
-    if (this.debug) {
-        ents_arr = checkIDs(__model__, fn_name, 'entities', entities,
-        [ID.isIDL1], null) as string[];
-    } else {
-        // ents_arr = splitIDs(fn_name, 'entities', entities,
-        // [IDcheckObj.isIDList], null) as string[];
-        ents_arr = idsBreak(entities) as string[];
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // const fn_name = 'poly2d.BBoxPolygon';
+    // let ents_arr: string[];
+    // if (this.debug) {
+    //     ents_arr = checkIDs(__model__, fn_name, 'entities', entities,
+    //     [ID.isIDL1], null) as string[];
+    // } else {
+    //     // ents_arr = splitIDs(fn_name, 'entities', entities,
+    //     // [IDcheckObj.isIDList], null) as string[];
+    //     ents_arr = idsBreak(entities) as string[];
+    // }
+    // // --- Error Check ---
     // posis
     const posis_i: number[] = _getPosis(__model__, ents_arr);
     if (posis_i.length === 0) { return null; }

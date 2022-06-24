@@ -1,19 +1,19 @@
 import {
-    arrMakeFlat,
-    arrMaxDepth,
+    // arrMakeFlat,
+    // arrMaxDepth,
     ENT_TYPE,
     Sim,
-    idsBreak,
-    isEmptyArr,
-    string,
-    string,
+    // idsBreak,
+    // isEmptyArr,
+    // string,
+    // string,
     Txyz,
-    vecAdd,
-    vecDiv,
-    vecDot,
-    vecFromTo,
-    vecLen,
-    vecSetLen,
+    // vecAdd,
+    // vecDiv,
+    // vecDot,
+    // vecFromTo,
+    // vecLen,
+    // vecSetLen,
 } from '../../mobius_sim';
 
 import { checkIDs, ID } from '../_common/_check_ids';
@@ -34,120 +34,122 @@ import { _EDistanceMethod } from './_enum';
  * @example_info `position1 = [0,0,0]`, `position2 = [[0,0,10],[0,0,20]]`, Expected value of distance is `10`.
  */
 export function Distance(__model__: Sim, entities1: string|string[], entities2: string|string[], method: _EDistanceMethod): number|number[] {
-    if (isEmptyArr(entities1)) { return []; }
-    if (isEmptyArr(entities2)) { return []; }
-    if (Array.isArray(entities1)) { entities1 = arrMakeFlat(entities1); }
-    entities2 = arrMakeFlat(entities2);
-    // --- Error Check ---
-    const fn_name = 'calc.Distance';
-    let ents_arr1: string|string[];
-    let ents_arr2: string|string[];
-    if (this.debug) {
-        ents_arr1 = checkIDs(__model__, fn_name, 'entities1', entities1, [ID.isID, ID.isIDL1],
-            null)  as string|string[];
-        ents_arr2 = checkIDs(__model__, fn_name, 'entities2', entities2, [ID.isIDL1],
-            null) as string[];
-    } else {
-        ents_arr1 = idsBreak(entities1)  as string|string[];
-        ents_arr2 = idsBreak(entities2) as string[];
-    }
-    // --- Error Check ---
-    // get the from posis
-    let from_posis_i: number|number[];
-    if (arrMaxDepth(ents_arr1) === 1 && ents_arr1[0] === ENT_TYPE.POSI) {
-        from_posis_i = ents_arr1[1];
-    } else {
-        from_posis_i = [];
-        for (const [ent_type, ent_i] of ents_arr1 as string[]) {
-            if (ent_type === ENT_TYPE.POSI) {
-                from_posis_i.push(ent_i);
-            } else {
-                const ent_posis_i: number[] = __model__.modeldata.geom.nav.navAnyToPosi(ent_type, ent_i);
-                for (const ent_posi_i of ent_posis_i) {
-                    from_posis_i.push(ent_posi_i);
-                }
-            }
-        }
-    }
-    // get the to ent_type
-    let to_ent_type: number;
-    switch (method) {
-        case _EDistanceMethod.PS_PS_DISTANCE:
-            to_ent_type = ENT_TYPE.POSI;
-            break;
-        case _EDistanceMethod.PS_W_DISTANCE:
-        case _EDistanceMethod.PS_E_DISTANCE:
-            to_ent_type = ENT_TYPE.EDGE;
-            break;
-        default:
-            break;
-    }
-    // get the ents and posis sets
-    const set_to_ents_i: Set<number> = new Set();
-    let set_to_posis_i: Set<number> = new Set();
-    for (const [ent_type, ent_i] of ents_arr2 as string[]) {
-        // ents
-        if (ent_type === to_ent_type) {
-            set_to_ents_i.add(ent_i);
-        } else {
-            const sub_ents_i: number[] = __model__.modeldata.geom.nav.navAnyToAny(ent_type, to_ent_type, ent_i);
-            for (const sub_ent_i of sub_ents_i) {
-                set_to_ents_i.add(sub_ent_i);
-            }
-        }
-        // posis
-        if (to_ent_type !== ENT_TYPE.POSI) {
-            const sub_posis_i: number[] = __model__.modeldata.geom.nav.navAnyToPosi(ent_type, ent_i);
-            for (const sub_posi_i of sub_posis_i) {
-                set_to_posis_i.add(sub_posi_i);
-            }
-        }
-    }
-    // create an array of to_ents
-    const to_ents_i: number[] = Array.from(set_to_ents_i);
-    // cerate a posis xyz map
-    const map_posi_i_xyz: Map<number, Txyz> = new Map();
-    if (to_ent_type === ENT_TYPE.POSI) { set_to_posis_i = set_to_ents_i; }
-    for (const posi_i of set_to_posis_i) {
-        const xyz: Txyz = __model__.modeldata.attribs.posis.getPosiCoords(posi_i);
-        map_posi_i_xyz.set(posi_i, xyz);
-    }
-    // calc the distance
-    switch (method) {
-        case _EDistanceMethod.PS_PS_DISTANCE:
-            return _distanceManyPosisToPosis(__model__, from_posis_i, to_ents_i, map_posi_i_xyz, method);
-        case _EDistanceMethod.PS_W_DISTANCE:
-        case _EDistanceMethod.PS_E_DISTANCE:
-            return _distanceManyPosisToEdges(__model__, from_posis_i, to_ents_i, map_posi_i_xyz, method);
-        default:
-            break;
-    }
-}
-function _distanceManyPosisToPosis(__model__: Sim, from_posi_i: number|number[], to_ents_i: number[],
-    map_posi_i_xyz: Map<number, Txyz>, method: _EDistanceMethod): number|number[] {
-    if (!Array.isArray(from_posi_i)) {
-        from_posi_i = from_posi_i as number;
-        return _distancePstoPs(__model__, from_posi_i, to_ents_i, map_posi_i_xyz) as number;
-    } else  {
-        from_posi_i = from_posi_i as number[];
-        // TODO This can be optimised
-        // From posis may have duplicates, only calc once
-        return from_posi_i.map( one_from => _distanceManyPosisToPosis(__model__, one_from, to_ents_i,
-            map_posi_i_xyz, method) ) as number[];
-    }
-}
-// function _distanceManyPosisToWires(__model__: Sim, from_posi_i: number|number[], to_ents_i: number[],
-//         method: _EDistanceMethod): number|number[] {
+//     if (isEmptyArr(entities1)) { return []; }
+//     if (isEmptyArr(entities2)) { return []; }
+//     if (Array.isArray(entities1)) { entities1 = arrMakeFlat(entities1); }
+//     entities2 = arrMakeFlat(entities2);
+//     // // --- Error Check ---
+//     // const fn_name = 'calc.Distance';
+//     // let ents_arr1: string|string[];
+//     // let ents_arr2: string|string[];
+//     // if (this.debug) {
+//     //     ents_arr1 = checkIDs(__model__, fn_name, 'entities1', entities1, [ID.isID, ID.isIDL1],
+//     //         null)  as string|string[];
+//     //     ents_arr2 = checkIDs(__model__, fn_name, 'entities2', entities2, [ID.isIDL1],
+//     //         null) as string[];
+//     // } else {
+//     //     ents_arr1 = idsBreak(entities1)  as string|string[];
+//     //     ents_arr2 = idsBreak(entities2) as string[];
+//     // }
+//     // // --- Error Check ---
+//     // get the from posis
+//     let from_posis_i: number|number[];
+//     if (arrMaxDepth(ents_arr1) === 1 && ents_arr1[0] === ENT_TYPE.POSI) {
+//         from_posis_i = ents_arr1[1];
+//     } else {
+//         from_posis_i = [];
+//         for (const [ent_type, ent_i] of ents_arr1 as string[]) {
+//             if (ent_type === ENT_TYPE.POSI) {
+//                 from_posis_i.push(ent_i);
+//             } else {
+//                 const ent_posis_i: number[] = __model__.modeldata.geom.nav.navAnyToPosi(ent_type, ent_i);
+//                 for (const ent_posi_i of ent_posis_i) {
+//                     from_posis_i.push(ent_posi_i);
+//                 }
+//             }
+//         }
+//     }
+//     // get the to ent_type
+//     let to_ent_type: number;
+//     switch (method) {
+//         case _EDistanceMethod.PS_PS_DISTANCE:
+//             to_ent_type = ENT_TYPE.POSI;
+//             break;
+//         case _EDistanceMethod.PS_W_DISTANCE:
+//         case _EDistanceMethod.PS_E_DISTANCE:
+//             to_ent_type = ENT_TYPE.EDGE;
+//             break;
+//         default:
+//             break;
+//     }
+//     // get the ents and posis sets
+//     const set_to_ents_i: Set<number> = new Set();
+//     let set_to_posis_i: Set<number> = new Set();
+//     for (const [ent_type, ent_i] of ents_arr2 as string[]) {
+//         // ents
+//         if (ent_type === to_ent_type) {
+//             set_to_ents_i.add(ent_i);
+//         } else {
+//             const sub_ents_i: number[] = __model__.modeldata.geom.nav.navAnyToAny(ent_type, to_ent_type, ent_i);
+//             for (const sub_ent_i of sub_ents_i) {
+//                 set_to_ents_i.add(sub_ent_i);
+//             }
+//         }
+//         // posis
+//         if (to_ent_type !== ENT_TYPE.POSI) {
+//             const sub_posis_i: number[] = __model__.modeldata.geom.nav.navAnyToPosi(ent_type, ent_i);
+//             for (const sub_posi_i of sub_posis_i) {
+//                 set_to_posis_i.add(sub_posi_i);
+//             }
+//         }
+//     }
+//     // create an array of to_ents
+//     const to_ents_i: number[] = Array.from(set_to_ents_i);
+//     // cerate a posis xyz map
+//     const map_posi_i_xyz: Map<number, Txyz> = new Map();
+//     if (to_ent_type === ENT_TYPE.POSI) { set_to_posis_i = set_to_ents_i; }
+//     for (const posi_i of set_to_posis_i) {
+//         const xyz: Txyz = __model__.modeldata.attribs.posis.getPosiCoords(posi_i);
+//         map_posi_i_xyz.set(posi_i, xyz);
+//     }
+//     // calc the distance
+//     switch (method) {
+//         case _EDistanceMethod.PS_PS_DISTANCE:
+//             return _distanceManyPosisToPosis(__model__, from_posis_i, to_ents_i, map_posi_i_xyz, method);
+//         case _EDistanceMethod.PS_W_DISTANCE:
+//         case _EDistanceMethod.PS_E_DISTANCE:
+//             return _distanceManyPosisToEdges(__model__, from_posis_i, to_ents_i, map_posi_i_xyz, method);
+//         default:
+//             break;
+//     }
+// }
+// function _distanceManyPosisToPosis(__model__: Sim, from_posi_i: number|number[], to_ents_i: number[],
+//     map_posi_i_xyz: Map<number, Txyz>, method: _EDistanceMethod): number|number[] {
 //     if (!Array.isArray(from_posi_i)) {
 //         from_posi_i = from_posi_i as number;
-//         return _distancePstoW(__model__, from_posi_i, to_ents_i) as number;
+//         return _distancePstoPs(__model__, from_posi_i, to_ents_i, map_posi_i_xyz) as number;
 //     } else  {
 //         from_posi_i = from_posi_i as number[];
 //         // TODO This can be optimised
-//         // There is some vector stuff that gets repeated for each posi to line dist calc
-//         return from_posi_i.map( one_from => _distanceManyPosisToWires(__model__, one_from, to_ents_i, method) ) as number[];
+//         // From posis may have duplicates, only calc once
+//         return from_posi_i.map( one_from => _distanceManyPosisToPosis(__model__, one_from, to_ents_i,
+//             map_posi_i_xyz, method) ) as number[];
 //     }
-// }
+    throw new Error();
+}
+function _distanceManyPosisToWires(__model__: Sim, from_posi_i: number|number[], to_ents_i: number[],
+        method: _EDistanceMethod): number|number[] {
+    if (!Array.isArray(from_posi_i)) {
+        from_posi_i = from_posi_i as number;
+        return _distancePstoW(__model__, from_posi_i, to_ents_i) as number;
+    } else  {
+        from_posi_i = from_posi_i as number[];
+        // TODO This can be optimised
+        // There is some vector stuff that gets repeated for each posi to line dist calc
+        return from_posi_i.map( one_from => _distanceManyPosisToWires(__model__, one_from, to_ents_i, method) ) as number[];
+    }
+    throw new Error();
+}
 function _distanceManyPosisToEdges(__model__: Sim, from_posi_i: number|number[], to_ents_i: number[],
         map_posi_i_xyz: Map<number, Txyz>, method: _EDistanceMethod): number|number[] {
     if (!Array.isArray(from_posi_i)) {

@@ -33,16 +33,16 @@ import { checkIDs, ID } from '../_common/_check_ids';
 export function Shift(__model__: Sim, entities: string|string[], offset: number): void {
     entities = arrMakeFlat(entities) as string[];
     if (!isEmptyArr(entities)) {
-        // --- Error Check ---
-        let ents_arr: string[];
-        if (this.debug) {
-            ents_arr = checkIDs(__model__, 'edit.Reverse', 'entities', entities,
-            [ID.isID, ID.isIDL1],
-            [ENT_TYPE.WIRE, ENT_TYPE.PLINE, ENT_TYPE.PGON])  as string[];
-        } else {
-            ents_arr = idsBreak(entities) as string[];
-        }
-        // --- Error Check ---
+        // // --- Error Check ---
+        // let ents_arr: string[];
+        // if (this.debug) {
+        //     ents_arr = checkIDs(__model__, 'edit.Reverse', 'entities', entities,
+        //     [ID.isID, ID.isIDL1],
+        //     [ENT_TYPE.WIRE, ENT_TYPE.PLINE, ENT_TYPE.PGON])  as string[];
+        // } else {
+        //     ents_arr = idsBreak(entities) as string[];
+        // }
+        // // --- Error Check ---
         __model__.modeldata.funcs_edit.shift(ents_arr, offset);
     }
 }

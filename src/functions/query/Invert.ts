@@ -34,18 +34,18 @@ import { _getEntTypeFromStr } from './_shared';
 export function Invert(__model__: Sim, ent_type_enum: _ENT_TYPE, entities: string|string[]): string[] {
     if (isEmptyArr(entities)) { return []; }
     entities = arrMakeFlat(entities) as string[];
-    // --- Error Check ---
-    let ents_arr: string[] = null;
-    if (this.debug) {
-        if (entities !== null && entities !== undefined) {
-            ents_arr = checkIDs(__model__, 'query.Invert', 'entities', entities, [ID.isIDL1], null, false) as string[];
-        }
-    } else {
-        if (entities !== null && entities !== undefined) {
-            ents_arr = idsBreak(entities) as string[];
-        }
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // let ents_arr: string[] = null;
+    // if (this.debug) {
+    //     if (entities !== null && entities !== undefined) {
+    //         ents_arr = checkIDs(__model__, 'query.Invert', 'entities', entities, [ID.isIDL1], null, false) as string[];
+    //     }
+    // } else {
+    //     if (entities !== null && entities !== undefined) {
+    //         ents_arr = idsBreak(entities) as string[];
+    //     }
+    // }
+    // // --- Error Check ---
     const select_ent_types: ENT_TYPE = _getEntTypeFromStr(ent_type_enum);
     const found_ents_arr: string[] = _invert(__model__, select_ent_types, ents_arr);
     return idsMake(found_ents_arr) as string[];

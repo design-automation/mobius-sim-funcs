@@ -1,6 +1,6 @@
-import { Sim, TColor } from '../../mobius_sim';
+import { Sim } from '../../mobius_sim';
+import { TColor } from '../_common/consts';
 
-import * as chk from '../../_check_types';
 import { _Ecolors, _ELineMaterialType } from './_enum';
 import { _clampArr01, _convertSelectEcolorsToNum, _setMaterialModelAttrib } from './_shared';
 
@@ -41,14 +41,14 @@ export function LineMat(__model__: Sim, name: string,
             dash_gap_scale: number|number[],
             select_vert_colors: _Ecolors
         ): void {
-    // --- Error Check ---
-    if (this.debug) {
-        const fn_name = 'material.LineMat';
-        chk.checkArgs(fn_name, 'name', name, [chk.isStr]);
-        chk.checkArgs(fn_name, 'color', color, [chk.isColor]);
-        chk.checkArgs(fn_name, 'dash_gap_scale', dash_gap_scale, [chk.isNull, chk.isNum, chk.isNumL]);
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // if (this.debug) {
+    //     const fn_name = 'material.LineMat';
+    //     chk.checkArgs(fn_name, 'name', name, [chk.isStr]);
+    //     chk.checkArgs(fn_name, 'color', color, [chk.isColor]);
+    //     chk.checkArgs(fn_name, 'dash_gap_scale', dash_gap_scale, [chk.isNull, chk.isNum, chk.isNumL]);
+    // }
+    // // --- Error Check ---
     const vert_colors: number = _convertSelectEcolorsToNum(select_vert_colors);
     _clampArr01(color);
 

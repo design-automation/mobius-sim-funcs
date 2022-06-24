@@ -24,9 +24,9 @@ import { _ESortMethod } from './_enum';
  * @example_info where `list = [56,6,48]`. Expected value of list is `[6,48,56]`.
  */
 export function Sort(list: any[], method: _ESortMethod): void {
-    // --- Error Check ---
-    chk.checkArgs('list.Sort', 'list', list, [chk.isList]);
-    // --- Error Check ---
+    // // --- Error Check ---
+    // chk.checkArgs('list.Sort', 'list', list, [chk.isList]);
+    // // --- Error Check ---
     _sort(list, method);
 }
 function _compareID(id1: string, id2: string): number {

@@ -1,4 +1,3 @@
-import * as chk from '../../_check_types';
 import { _ERemoveMethod } from './_enum';
 
 
@@ -23,11 +22,11 @@ import { _ERemoveMethod } from './_enum';
  * @example_info where `list = [3, 1, 2, 3, 4]`. Expected new value of list is  [1, 2, 4].
  */
 export function Remove(list: any[], item: any, method: _ERemoveMethod): void {
-    // --- Error Check ---
-    const fn_name = 'list.Remove';
-    chk.checkArgs(fn_name, 'list', list, [chk.isList]);
-    chk.checkArgs(fn_name, 'item', item, [chk.isAny]);
-    // --- Error Check ---
+    // // --- Error Check ---
+    // const fn_name = 'list.Remove';
+    // chk.checkArgs(fn_name, 'list', list, [chk.isList]);
+    // chk.checkArgs(fn_name, 'item', item, [chk.isAny]);
+    // // --- Error Check ---
     let index: number;
     switch (method) {
         case _ERemoveMethod.REMOVE_INDEX:

@@ -37,24 +37,24 @@ export function Filter(__model__: Sim,
         operator_enum: _EFilterOperator, value: TAttribDataTypes): string[]|string[][] {
     if (entities === null) { return []; }
     if (isEmptyArr(entities)) { return []; }
-    // --- Error Check ---
-    const fn_name = 'query.Filter';
-    let ents_arr: string|string[]|string[][] = null;
-    let attrib_name: string, attrib_idx_key: number|string;
-    if (this.debug) {
-        if (entities !== null && entities !== undefined) {
-            ents_arr = checkIDs(__model__, fn_name, 'entities', entities,
-                [ID.isID, ID.isIDL1, ID.isIDL2], null, false) as string|string[];
-        }
-        [attrib_name, attrib_idx_key] = checkAttribNameIdxKey(fn_name, attrib);
-        checkAttribValue(fn_name, value);
-    } else {
-        if (entities !== null && entities !== undefined) {
-            ents_arr = idsBreak(entities) as string[];
-        }
-        [attrib_name, attrib_idx_key] = splitAttribNameIdxKey(fn_name, attrib);
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // const fn_name = 'query.Filter';
+    // let ents_arr: string|string[]|string[][] = null;
+    // let attrib_name: string, attrib_idx_key: number|string;
+    // if (this.debug) {
+    //     if (entities !== null && entities !== undefined) {
+    //         ents_arr = checkIDs(__model__, fn_name, 'entities', entities,
+    //             [ID.isID, ID.isIDL1, ID.isIDL2], null, false) as string|string[];
+    //     }
+    //     [attrib_name, attrib_idx_key] = checkAttribNameIdxKey(fn_name, attrib);
+    //     checkAttribValue(fn_name, value);
+    // } else {
+    //     if (entities !== null && entities !== undefined) {
+    //         ents_arr = idsBreak(entities) as string[];
+    //     }
+    //     [attrib_name, attrib_idx_key] = splitAttribNameIdxKey(fn_name, attrib);
+    // }
+    // // --- Error Check ---
     // make sure that the ents_arr is at least depth 2
     const depth: number = getArrDepth(ents_arr);
     if (depth === 1) { ents_arr = [ents_arr] as string[]; }

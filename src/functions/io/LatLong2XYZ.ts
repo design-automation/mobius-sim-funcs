@@ -31,13 +31,13 @@ export function LatLong2XYZ(
     lat_long: Txy,
     elev: number
 ): Txyz {
-    // --- Error Check ---
-    const fn_name = 'util.LatLong2XYZ';
-    if (this.debug) {
-        checkArgs(fn_name, 'lat_long', lat_long, [isXY, isNull]);
-        checkArgs(fn_name, 'elev', elev, [isNum, isNull]);
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // const fn_name = 'util.LatLong2XYZ';
+    // if (this.debug) {
+    //     checkArgs(fn_name, 'lat_long', lat_long, [isXY, isNull]);
+    //     checkArgs(fn_name, 'elev', elev, [isNum, isNull]);
+    // }
+    // // --- Error Check ---
     const proj_obj: proj4.Converter = _createProjection(__model__);
     // calculate angle of rotation
     let rot_matrix: Matrix4 = null;

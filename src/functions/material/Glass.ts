@@ -1,7 +1,6 @@
 import { Sim } from '../../mobius_sim';
 import * as THREE from 'three';
 
-import * as chk from '../../_check_types';
 import { _EMeshMaterialType } from './_enum';
 import { _clamp01, _setMaterialModelAttrib } from './_shared';
 
@@ -18,13 +17,13 @@ import { _clamp01, _setMaterialModelAttrib } from './_shared';
  * @returns void
  */
 export function Glass(__model__: Sim, name: string, opacity: number): void {
-    // --- Error Check ---
-    const fn_name = 'material.Glass';
-    if (this.debug) {
-        chk.checkArgs(fn_name, 'name', name, [chk.isStr]);
-        chk.checkArgs(fn_name, 'opacity', opacity, [chk.isNum01]);
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // const fn_name = 'material.Glass';
+    // if (this.debug) {
+    //     chk.checkArgs(fn_name, 'name', name, [chk.isStr]);
+    //     chk.checkArgs(fn_name, 'opacity', opacity, [chk.isNum01]);
+    // }
+    // // --- Error Check ---
     opacity = _clamp01(opacity);
     const transparent: boolean = opacity < 1;
     const settings_obj = {

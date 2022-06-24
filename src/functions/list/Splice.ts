@@ -1,4 +1,3 @@
-import * as chk from '../../_check_types';
 
 
 
@@ -20,13 +19,13 @@ import * as chk from '../../_check_types';
  * Expected value of result is `[10, 2.2, 3.3, 50]`. New items were added where the items were removed.
  */
 export function Splice(list: any[], index: number, num_to_remove: number, items_to_insert: any[]): void {
-    // --- Error Check ---
-    const fn_name = 'list.Splice';
-    chk.checkArgs(fn_name, 'list', list, [chk.isList]);
-    chk.checkArgs(fn_name, 'index', index, [chk.isInt]);
-    chk.checkArgs(fn_name, 'num_to_remove', num_to_remove, [chk.isInt]);
-    chk.checkArgs(fn_name, 'values_to_add', items_to_insert, [chk.isList, chk.isNull]);
-    // --- Error Check ---
+    // // --- Error Check ---
+    // const fn_name = 'list.Splice';
+    // chk.checkArgs(fn_name, 'list', list, [chk.isList]);
+    // chk.checkArgs(fn_name, 'index', index, [chk.isInt]);
+    // chk.checkArgs(fn_name, 'num_to_remove', num_to_remove, [chk.isInt]);
+    // chk.checkArgs(fn_name, 'values_to_add', items_to_insert, [chk.isList, chk.isNull]);
+    // // --- Error Check ---
 
     // avoid the spread operator
     list.splice(index, num_to_remove);

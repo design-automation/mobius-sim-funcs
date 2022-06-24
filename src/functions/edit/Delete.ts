@@ -38,17 +38,17 @@ export function Delete(__model__: Sim, entities: string|string[], method: _EDele
         if (method === _EDeleteMethod.DELETE_SELECTED) { __model__.modeldata.funcs_edit.delete(null, false);  return; }
     }
     entities = arrMakeFlat(entities) as string[];
-    // --- Error Check ---
-    const fn_name = 'edit.Delete';
-    let ents_arr: string[];
-    if (this.debug) {
-        ents_arr = checkIDs(__model__, fn_name, 'entities', entities,
-        [ID.isID, ID.isIDL1],
-        [ENT_TYPE.POSI, ENT_TYPE.POINT, ENT_TYPE.PLINE, ENT_TYPE.PGON, ENT_TYPE.COLL]) as string[];
-    } else {
-        ents_arr = idsBreak(entities) as string[];
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // const fn_name = 'edit.Delete';
+    // let ents_arr: string[];
+    // if (this.debug) {
+    //     ents_arr = checkIDs(__model__, fn_name, 'entities', entities,
+    //     [ID.isID, ID.isIDL1],
+    //     [ENT_TYPE.POSI, ENT_TYPE.POINT, ENT_TYPE.PLINE, ENT_TYPE.PGON, ENT_TYPE.COLL]) as string[];
+    // } else {
+    //     ents_arr = idsBreak(entities) as string[];
+    // }
+    // // --- Error Check ---
     switch (method) {
         case _EDeleteMethod.DELETE_SELECTED:
             if (isEmptyArr(entities)) { return; }

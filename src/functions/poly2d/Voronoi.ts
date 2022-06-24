@@ -42,24 +42,24 @@ export function Voronoi(__model__: Sim, pgons: string|string[], entities: string
     entities = arrMakeFlat(entities) as string[];
     if (isEmptyArr(pgons)) { return []; }
     if (isEmptyArr(entities)) { return []; }
-    // --- Error Check ---
-    const fn_name = 'poly2d.Voronoi';
-    let pgons_ents_arr: string[];
-    let posis_ents_arr: string[];
-    if (this.debug) {
-        pgons_ents_arr = checkIDs(__model__, fn_name, 'pgons', pgons,
-            [ID.isIDL1], null) as string[];
-        posis_ents_arr = checkIDs(__model__, fn_name, 'entities', entities,
-            [ID.isIDL1], null) as string[];
-    } else {
-        // pgons_ents_arr = splitIDs(fn_name, 'pgons', pgons,
-        //     [IDcheckObj.isIDList], null) as string[];
-        // posis_ents_arr = splitIDs(fn_name, 'entities', entities,
-        //     [IDcheckObj.isIDList], null) as string[];
-        pgons_ents_arr = idsBreak(pgons) as string[];
-        posis_ents_arr = idsBreak(entities) as string[];
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // const fn_name = 'poly2d.Voronoi';
+    // let pgons_ents_arr: string[];
+    // let posis_ents_arr: string[];
+    // if (this.debug) {
+    //     pgons_ents_arr = checkIDs(__model__, fn_name, 'pgons', pgons,
+    //         [ID.isIDL1], null) as string[];
+    //     posis_ents_arr = checkIDs(__model__, fn_name, 'entities', entities,
+    //         [ID.isIDL1], null) as string[];
+    // } else {
+    //     // pgons_ents_arr = splitIDs(fn_name, 'pgons', pgons,
+    //     //     [IDcheckObj.isIDList], null) as string[];
+    //     // posis_ents_arr = splitIDs(fn_name, 'entities', entities,
+    //     //     [IDcheckObj.isIDList], null) as string[];
+    //     pgons_ents_arr = idsBreak(pgons) as string[];
+    //     posis_ents_arr = idsBreak(entities) as string[];
+    // }
+    // // --- Error Check ---
     const posis_map: TPosisMap = new Map();
     // pgons
     const pgons_i: number[] = _getPgons(__model__, pgons_ents_arr);

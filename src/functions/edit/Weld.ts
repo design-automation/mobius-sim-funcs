@@ -30,17 +30,17 @@ import { _EWeldMethod } from './_enum';
  */
 export function Weld(__model__: Sim, entities: string|string[], method: _EWeldMethod): string[] {
     entities = arrMakeFlat(entities) as string[];
-    // --- Error Check ---
-    const fn_name = 'edit.Weld';
-    let ents_arr: string[];
-    if (this.debug) {
-        ents_arr = checkIDs(__model__, fn_name, 'entities', entities, [ID.isID, ID.isIDL1],
-            [ENT_TYPE.VERT, ENT_TYPE.EDGE, ENT_TYPE.WIRE,
-            ENT_TYPE.POINT, ENT_TYPE.PLINE, ENT_TYPE.PGON, ENT_TYPE.COLL]) as string[];
-    } else {
-        ents_arr = idsBreak(entities) as string[];
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // const fn_name = 'edit.Weld';
+    // let ents_arr: string[];
+    // if (this.debug) {
+    //     ents_arr = checkIDs(__model__, fn_name, 'entities', entities, [ID.isID, ID.isIDL1],
+    //         [ENT_TYPE.VERT, ENT_TYPE.EDGE, ENT_TYPE.WIRE,
+    //         ENT_TYPE.POINT, ENT_TYPE.PLINE, ENT_TYPE.PGON, ENT_TYPE.COLL]) as string[];
+    // } else {
+    //     ents_arr = idsBreak(entities) as string[];
+    // }
+    // // --- Error Check ---
     const new_ents_arr: string[] = __model__.modeldata.funcs_edit.weld(ents_arr, method);
     // make and return the IDs of the new posis
     return idsMake(new_ents_arr) as string[];

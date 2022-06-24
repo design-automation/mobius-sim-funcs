@@ -34,15 +34,15 @@ import { _ETypeQueryEnum } from './_enum';
  */
 export function Type(__model__: Sim, entities: string|string[], type_query_enum: _ETypeQueryEnum): boolean|boolean[] {
     if (isEmptyArr(entities)) { return []; }
-    // --- Error Check ---
-    const fn_name = 'query.Type';
-    let ents_arr: string|string[] = null;
-    if (this.debug) {
-        ents_arr = checkIDs(__model__, fn_name, 'entities', entities, [ID.isID, ID.isIDL1], null, false) as string|string[];
-    } else {
-        ents_arr = idsBreak(entities) as string|string[];
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // const fn_name = 'query.Type';
+    // let ents_arr: string|string[] = null;
+    // if (this.debug) {
+    //     ents_arr = checkIDs(__model__, fn_name, 'entities', entities, [ID.isID, ID.isIDL1], null, false) as string|string[];
+    // } else {
+    //     ents_arr = idsBreak(entities) as string|string[];
+    // }
+    // // --- Error Check ---
     return _type(__model__, ents_arr, type_query_enum);
 }
 function _exists(__model__: Sim, ent_arr: string): boolean {

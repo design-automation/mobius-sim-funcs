@@ -44,18 +44,19 @@ function rayFromPln(pln: TPlane|TPlane[]): TRay|TRay[] {
  * @example `length1 = calc.Length(line1)`
  */
 export function Length(__model__: Sim, entities: string|string[]): number|number[] {
-    if (isEmptyArr(entities)) { return []; }
-    // --- Error Check ---
-    const fn_name = 'calc.Length';
-    let ents_arr: string|string[];
-    if (this.debug) {
-        ents_arr = checkIDs(__model__, fn_name, 'entities', entities, [ID.isID, ID.isIDL1],
-        [ENT_TYPE.EDGE, ENT_TYPE.WIRE, ENT_TYPE.PLINE, ENT_TYPE.PGON, ENT_TYPE.COLL]) as string|string[];
-    } else {
-        ents_arr = idsBreak(entities) as string|string[];
-    }
-    // --- Error Check ---
-    return _length(__model__, ents_arr);
+    // if (isEmptyArr(entities)) { return []; }
+    // // // --- Error Check ---
+    // // const fn_name = 'calc.Length';
+    // // let ents_arr: string|string[];
+    // // if (this.debug) {
+    // //     ents_arr = checkIDs(__model__, fn_name, 'entities', entities, [ID.isID, ID.isIDL1],
+    // //     [ENT_TYPE.EDGE, ENT_TYPE.WIRE, ENT_TYPE.PLINE, ENT_TYPE.PGON, ENT_TYPE.COLL]) as string|string[];
+    // // } else {
+    // //     ents_arr = idsBreak(entities) as string|string[];
+    // // }
+    // // // --- Error Check ---
+    // return _length(__model__, ents_arr);
+    throw new Error();
 }
 function _length(__model__: Sim, ents_arrs: string|string[]): number|number[] {
     if (getArrDepth(ents_arrs) === 1) {

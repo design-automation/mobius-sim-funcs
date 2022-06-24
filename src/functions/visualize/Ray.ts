@@ -30,13 +30,13 @@ import * as chk from '../../_check_types';
  * @example `ray1 = visualize.Ray([[1,2,3],[0,0,1]])`
  */
 export function Ray(__model__: Sim, rays: TRay|TRay[], scale: number): string[] {
-    // --- Error Check ---
-    const fn_name = 'visualize.Ray';
-    if (this.debug) {
-        chk.checkArgs(fn_name, 'ray', rays, [chk.isRay, chk.isRayL]);
-        chk.checkArgs(fn_name, 'scale', scale, [chk.isNum]);
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // const fn_name = 'visualize.Ray';
+    // if (this.debug) {
+    //     chk.checkArgs(fn_name, 'ray', rays, [chk.isRay, chk.isRayL]);
+    //     chk.checkArgs(fn_name, 'scale', scale, [chk.isNum]);
+    // }
+    // // --- Error Check ---
    return idsMake(_visRay(__model__, rays, scale)) as string[];
 }
 function _visRay(__model__: Sim, rays: TRay|TRay[], scale: number): string[] {

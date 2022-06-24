@@ -35,18 +35,18 @@ import { getPlane } from '../_common/___index_old';
 export function Mirror(__model__: Sim, entities: string|string[], plane: Txyz|TRay|TPlane|string|string[]): void {
     entities = arrMakeFlat(entities) as string[];
     if (!isEmptyArr(entities)) {
-        // --- Error Check ---
-        const fn_name = 'modify.Mirror';
-        let ents_arr: string[];
-        if (this.debug) {
-            ents_arr = checkIDs(__model__, fn_name, 'entities', entities, [ID.isID, ID.isIDL1],
-                [ENT_TYPE.POSI, ENT_TYPE.VERT, ENT_TYPE.EDGE, ENT_TYPE.WIRE,
-                ENT_TYPE.POINT, ENT_TYPE.PLINE, ENT_TYPE.PGON, ENT_TYPE.COLL]) as string[];
-        } else {
-            ents_arr = idsBreak(entities) as string[];
-        }
-        plane = getPlane(__model__, plane, fn_name) as TPlane;
-        // --- Error Check ---
+        // // --- Error Check ---
+        // const fn_name = 'modify.Mirror';
+        // let ents_arr: string[];
+        // if (this.debug) {
+        //     ents_arr = checkIDs(__model__, fn_name, 'entities', entities, [ID.isID, ID.isIDL1],
+        //         [ENT_TYPE.POSI, ENT_TYPE.VERT, ENT_TYPE.EDGE, ENT_TYPE.WIRE,
+        //         ENT_TYPE.POINT, ENT_TYPE.PLINE, ENT_TYPE.PGON, ENT_TYPE.COLL]) as string[];
+        // } else {
+        //     ents_arr = idsBreak(entities) as string[];
+        // }
+        // plane = getPlane(__model__, plane, fn_name) as TPlane;
+        // // --- Error Check ---
         __model__.modeldata.funcs_modify.mirror(ents_arr, plane);
     }
 }

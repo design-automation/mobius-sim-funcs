@@ -1,6 +1,6 @@
-import { Sim, TColor } from '../../mobius_sim';
+import { Sim } from '../../mobius_sim';
+import { TColor } from '../_common/consts';
 
-import * as chk from '../../_check_types';
 import { _Ecolors, _EMeshMaterialType, _ESide } from './_enum';
 import {
     _clamp01,
@@ -43,14 +43,14 @@ export function MeshMat(__model__: Sim, name: string,
             select_side: _ESide,
             select_vert_colors: _Ecolors
         ): void {
-    // --- Error Check ---
-    if (this.debug) {
-        const fn_name = 'material.MeshMat';
-        chk.checkArgs(fn_name, 'name', name, [chk.isStr]);
-        chk.checkArgs(fn_name, 'color', color, [chk.isColor]);
-        chk.checkArgs(fn_name, 'opacity', opacity, [chk.isNum01]);
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // if (this.debug) {
+    //     const fn_name = 'material.MeshMat';
+    //     chk.checkArgs(fn_name, 'name', name, [chk.isStr]);
+    //     chk.checkArgs(fn_name, 'color', color, [chk.isColor]);
+    //     chk.checkArgs(fn_name, 'opacity', opacity, [chk.isNum01]);
+    // }
+    // // --- Error Check ---
     const side: number = _convertSelectESideToNum(select_side);
     const vert_colors: number = _convertSelectEcolorsToNum(select_vert_colors);
     opacity = _clamp01(opacity);

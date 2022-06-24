@@ -1,6 +1,5 @@
-import { EAttribDataTypeStrs, ENT_TYPE, Sim } from '../../mobius_sim';
+import { ENT_TYPE, Sim } from '../../mobius_sim';
 
-import { checkAttribName } from '../../_check_attribs';
 import { _EDataType, _ENT_TYPEAndMod } from './_enum';
 import { _getEntTypeFromStr } from './_shared';
 
@@ -22,31 +21,32 @@ import { _getEntTypeFromStr } from './_shared';
  * @returns void 
  */
 export function Add(__model__: Sim, ent_type_sel: _ENT_TYPEAndMod, data_type_sel: _EDataType, attribs: string | string[]): void {
-    // -----
-    // set the data type
-    let data_type: EAttribDataTypeStrs = null;
-    switch (data_type_sel) {
-        case _EDataType.NUMBER:
-            data_type = EAttribDataTypeStrs.NUMBER;
-            break;
-        case _EDataType.STRING:
-            data_type = EAttribDataTypeStrs.STRING;
-            break;
-        case _EDataType.BOOLEAN:
-            data_type = EAttribDataTypeStrs.BOOLEAN;
-            break;
-        case _EDataType.LIST:
-            data_type = EAttribDataTypeStrs.LIST;
-            break;
-        case _EDataType.DICT:
-            data_type = EAttribDataTypeStrs.DICT;
-            break;
-        default:
-            throw new Error("Data type not recognised.");
-            break;
-    }
-    // create the attribute
-    for (const attrib of attribs) {
-        __model__.modeldata.attribs.add.addAttrib(ent_type, attrib, data_type);
-    }
+    // // -----
+    // // set the data type
+    // let data_type: EAttribDataTypeStrs = null;
+    // switch (data_type_sel) {
+    //     case _EDataType.NUMBER:
+    //         data_type = EAttribDataTypeStrs.NUMBER;
+    //         break;
+    //     case _EDataType.STRING:
+    //         data_type = EAttribDataTypeStrs.STRING;
+    //         break;
+    //     case _EDataType.BOOLEAN:
+    //         data_type = EAttribDataTypeStrs.BOOLEAN;
+    //         break;
+    //     case _EDataType.LIST:
+    //         data_type = EAttribDataTypeStrs.LIST;
+    //         break;
+    //     case _EDataType.DICT:
+    //         data_type = EAttribDataTypeStrs.DICT;
+    //         break;
+    //     default:
+    //         throw new Error("Data type not recognised.");
+    //         break;
+    // }
+    // // create the attribute
+    // for (const attrib of attribs) {
+    //     __model__.modeldata.attribs.add.addAttrib(ent_type, attrib, data_type);
+    // }
+    throw new Error();
 }

@@ -29,19 +29,19 @@ import * as chk from '../../_check_types';
 export function Color(__model__: Sim, entities: string|string[], color: TColor): void {
     entities = arrMakeFlat(entities) as string[];
     if (isEmptyArr(entities)) { return; }
-    // --- Error Check ---
-    const fn_name = 'visualize.Color';
-    let ents_arr: string[] = null;
-    if (this.debug) {
-        if (entities !== null) {
-            ents_arr = checkIDs(__model__, fn_name, 'entities', entities,
-                [ID.isID, ID.isIDL1, ID.isIDL2], null) as string[];
-        }
-        chk.checkArgs(fn_name, 'color', color, [chk.isColor]);
-    } else {
-        ents_arr = idsBreak(entities) as string[];
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // const fn_name = 'visualize.Color';
+    // let ents_arr: string[] = null;
+    // if (this.debug) {
+    //     if (entities !== null) {
+    //         ents_arr = checkIDs(__model__, fn_name, 'entities', entities,
+    //             [ID.isID, ID.isIDL1, ID.isIDL2], null) as string[];
+    //     }
+    //     chk.checkArgs(fn_name, 'color', color, [chk.isColor]);
+    // } else {
+    //     ents_arr = idsBreak(entities) as string[];
+    // }
+    // // --- Error Check ---
     _color(__model__, ents_arr, color);
 }
 function _color(__model__: Sim, ents_arr: string[], color: TColor): void {

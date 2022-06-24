@@ -40,17 +40,17 @@ import { _EClose, _ECurveCatRomType } from './_enum';
  */
 export function Interpolate(__model__: Sim, coords: Txyz[], type: _ECurveCatRomType, 
     tension: number, close: _EClose, num_positions: number): string[] {
-    // --- Error Check ---
-    if (this.debug) {
-        const fn_name = 'pattern.Interpolate';
-        chk.checkArgs(fn_name, 'coords', coords, [chk.isXYZL]);
-        chk.checkArgs(fn_name, 'tension', tension, [chk.isNum01]);
-        chk.checkArgs(fn_name, 'num_positions', num_positions, [chk.isInt]);
-        if (coords.length < 3) {
-            throw new Error(fn_name + ': "coords" should be a list of at least three XYZ coords.');
-        }
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // if (this.debug) {
+    //     const fn_name = 'pattern.Interpolate';
+    //     chk.checkArgs(fn_name, 'coords', coords, [chk.isXYZL]);
+    //     chk.checkArgs(fn_name, 'tension', tension, [chk.isNum01]);
+    //     chk.checkArgs(fn_name, 'num_positions', num_positions, [chk.isInt]);
+    //     if (coords.length < 3) {
+    //         throw new Error(fn_name + ': "coords" should be a list of at least three XYZ coords.');
+    //     }
+    // }
+    // // --- Error Check ---
     const closed_tjs: boolean = close === _EClose.CLOSE;
     const num_positions_tjs: number = closed_tjs ? num_positions : num_positions - 1;
     if (tension === 0) { tension = 1e-16; } // There seems to be a bug in threejs, so this is a fix

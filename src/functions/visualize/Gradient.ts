@@ -45,42 +45,42 @@ export function Gradient(__model__: Sim, entities: string|string[], attrib: stri
         range: number|[number, number], method: _EColorRampMethod): void {
     entities = arrMakeFlat(entities) as string[];
     if (!isEmptyArr(entities)) {
-        // --- Error Check ---
-        const fn_name = 'visualize.Gradient';
-        let ents_arr: string[] = null;
-        let attrib_name: string;
-        let attrib_idx_or_key: number|string;
-        if (this.debug) {
-            ents_arr = checkIDs(__model__, fn_name, 'entities', entities,
-                [ID.isID, ID.isIDL1, ID.isIDL2], null) as string[];
-            chk.checkArgs(fn_name, 'attrib', attrib,
-                [chk.isStr, chk.isStrStr, chk.isStrNum]);
-            chk.checkArgs(fn_name, 'range', range, [chk.isNull, chk.isNum, chk.isNumL]);
-            attrib_name = Array.isArray(attrib) ? attrib[0] : attrib;
-            attrib_idx_or_key = Array.isArray(attrib) ? attrib[1] : null;
-            if (!__model__.modeldata.attribs.query.hasEntAttrib(ents_arr[0][0], attrib_name)) {
-                throw new Error(fn_name + ': The attribute with name "' + attrib + '" does not exist on these entities.');
-            } else {
-                let data_type = null;
-                if (attrib_idx_or_key === null) {
-                    data_type = __model__.modeldata.attribs.query.getAttribDataType(ents_arr[0][0], attrib_name);
-                } else {
-                    const first_val = __model__.modeldata.attribs.get.getEntAttribValOrItem(
-                        ents_arr[0][0], ents_arr[0][1], attrib_name, attrib_idx_or_key);
-                }
-                if (data_type !== EAttribDataTypeStrs.NUMBER) {
-                    throw new Error(fn_name + ': The attribute with name "' + attrib_name + '" is not a number data type.' +
-                    'For generating a gradient, the attribute must be a number.');
-                }
-            }
-        } else {
-            // ents_arr = splitIDs(fn_name, 'entities', entities,
-            //     [IDcheckObj.isID, IDcheckObj.isIDList, IDcheckObj.isIDListOfLists], null) as string[];
-            ents_arr = idsBreak(entities) as string[];
-            attrib_name = Array.isArray(attrib) ? attrib[0] : attrib;
-            attrib_idx_or_key = Array.isArray(attrib) ? attrib[1] : null;
-        }
-        // --- Error Check ---
+        // // --- Error Check ---
+        // const fn_name = 'visualize.Gradient';
+        // let ents_arr: string[] = null;
+        // let attrib_name: string;
+        // let attrib_idx_or_key: number|string;
+        // if (this.debug) {
+        //     ents_arr = checkIDs(__model__, fn_name, 'entities', entities,
+        //         [ID.isID, ID.isIDL1, ID.isIDL2], null) as string[];
+        //     chk.checkArgs(fn_name, 'attrib', attrib,
+        //         [chk.isStr, chk.isStrStr, chk.isStrNum]);
+        //     chk.checkArgs(fn_name, 'range', range, [chk.isNull, chk.isNum, chk.isNumL]);
+        //     attrib_name = Array.isArray(attrib) ? attrib[0] : attrib;
+        //     attrib_idx_or_key = Array.isArray(attrib) ? attrib[1] : null;
+        //     if (!__model__.modeldata.attribs.query.hasEntAttrib(ents_arr[0][0], attrib_name)) {
+        //         throw new Error(fn_name + ': The attribute with name "' + attrib + '" does not exist on these entities.');
+        //     } else {
+        //         let data_type = null;
+        //         if (attrib_idx_or_key === null) {
+        //             data_type = __model__.modeldata.attribs.query.getAttribDataType(ents_arr[0][0], attrib_name);
+        //         } else {
+        //             const first_val = __model__.modeldata.attribs.get.getEntAttribValOrItem(
+        //                 ents_arr[0][0], ents_arr[0][1], attrib_name, attrib_idx_or_key);
+        //         }
+        //         if (data_type !== EAttribDataTypeStrs.NUMBER) {
+        //             throw new Error(fn_name + ': The attribute with name "' + attrib_name + '" is not a number data type.' +
+        //             'For generating a gradient, the attribute must be a number.');
+        //         }
+        //     }
+        // } else {
+        //     // ents_arr = splitIDs(fn_name, 'entities', entities,
+        //     //     [IDcheckObj.isID, IDcheckObj.isIDList, IDcheckObj.isIDListOfLists], null) as string[];
+        //     ents_arr = idsBreak(entities) as string[];
+        //     attrib_name = Array.isArray(attrib) ? attrib[0] : attrib;
+        //     attrib_idx_or_key = Array.isArray(attrib) ? attrib[1] : null;
+        // }
+        // // --- Error Check ---
         if (range === null) {
             range = [null, null];
         }

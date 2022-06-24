@@ -30,18 +30,18 @@ import { _getEntTypeFromStr } from './_shared';
 export function Perimeter(__model__: Sim, ent_type: _ENT_TYPE, entities: string|string[]): string[] {
     if (isEmptyArr(entities)) { return []; }
     entities = arrMakeFlat(entities) as string[];
-    // --- Error Check ---
-    let ents_arr: string[] = null;
-    if (this.debug) {
-        if (entities !== null && entities !== undefined) {
-            ents_arr = checkIDs(__model__, 'query.Perimeter', 'entities', entities, [ID.isIDL1], null) as string[];
-        }
-    } else {
-        if (entities !== null && entities !== undefined) {
-            ents_arr = idsBreak(entities) as string[];
-        }
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // let ents_arr: string[] = null;
+    // if (this.debug) {
+    //     if (entities !== null && entities !== undefined) {
+    //         ents_arr = checkIDs(__model__, 'query.Perimeter', 'entities', entities, [ID.isIDL1], null) as string[];
+    //     }
+    // } else {
+    //     if (entities !== null && entities !== undefined) {
+    //         ents_arr = idsBreak(entities) as string[];
+    //     }
+    // }
+    // // --- Error Check ---
     const select_ent_type: ENT_TYPE = _getEntTypeFromStr(ent_type);
     const found_ents_arr: string[] = _perimeter(__model__, select_ent_type, ents_arr);
     return idsMake(found_ents_arr) as string[];

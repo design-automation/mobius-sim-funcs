@@ -1,6 +1,6 @@
-import { Sim, TColor } from '../../mobius_sim';
+import { Sim } from '../../mobius_sim';
+import { TColor } from '../_common/consts';
 
-import * as chk from '../../_check_types';
 import { _EMeshMaterialType } from './_enum';
 import { _clamp01, _clampArr01, _setMaterialModelAttrib } from './_shared';
 
@@ -28,16 +28,16 @@ export function Physical(__model__: Sim, name: string,
             metalness: number,
             reflectivity: number
         ): void {
-    // --- Error Check ---
-    if (this.debug) {
-        const fn_name = 'material.Physical';
-        chk.checkArgs(fn_name, 'name', name, [chk.isStr]);
-        chk.checkArgs(fn_name, 'emissive', emissive, [chk.isColor]);
-        chk.checkArgs(fn_name, 'roughness', roughness, [chk.isNum]);
-        chk.checkArgs(fn_name, 'metalness', metalness, [chk.isNum]);
-        chk.checkArgs(fn_name, 'reflectivity', reflectivity, [chk.isNum]);
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // if (this.debug) {
+    //     const fn_name = 'material.Physical';
+    //     chk.checkArgs(fn_name, 'name', name, [chk.isStr]);
+    //     chk.checkArgs(fn_name, 'emissive', emissive, [chk.isColor]);
+    //     chk.checkArgs(fn_name, 'roughness', roughness, [chk.isNum]);
+    //     chk.checkArgs(fn_name, 'metalness', metalness, [chk.isNum]);
+    //     chk.checkArgs(fn_name, 'reflectivity', reflectivity, [chk.isNum]);
+    // }
+    // // --- Error Check ---
     _clampArr01(emissive);
     roughness = _clamp01(roughness);
     metalness = _clamp01(metalness);

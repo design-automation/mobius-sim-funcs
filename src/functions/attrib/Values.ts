@@ -1,5 +1,5 @@
 import { ENT_TYPE, Sim, TAttribDataTypes } from '../../mobius_sim';
-import { checkAttribName } from '../../_check_attribs';
+import { checkAttribName } from '../_common/_check_attribs';
 
 import { _EDataType, _ENT_TYPEAndMod } from './_enum';
 import { _getEntTypeFromStr } from './_shared';
@@ -16,38 +16,14 @@ import { _getEntTypeFromStr } from './_shared';
  * @example_info An example of `attribs`: `["True", "False"]`.
  */
 export function Values(__model__: Sim, ent_type_sel: _ENT_TYPEAndMod, attribs: string|string[]): TAttribDataTypes[] {
-
-    // --- Error Check ---
-
-    const fn_name = "attrib.Values";
-    const arg_name = "ent_type_sel";
-    let ent_type: ENT_TYPE;
-
-    if (this.debug) {
-
-        // convert the ent_type_str to an ent_type
-        ent_type = _getEntTypeFromStr(ent_type_sel);
-        if (ent_type === undefined) {
-            throw new Error(fn_name + ": " + arg_name + " is not one of the following valid types - " + "ps, _v, _e, _w, _f, pt, pl, pg, co, mo.");
-        }
-        // create an array of attrib names
-        if (attribs === null) { attribs = __model__.modeldata.attribs.getAttribNamesUser(ent_type); }
-        if (!Array.isArray(attribs)) { attribs = [attribs]; }
-        attribs = attribs as string[];
-        for (const attrib of attribs) { checkAttribName(fn_name , attrib); }
-    } else {
-        // convert the ent_type_str to an ent_type
-        ent_type = _getEntTypeFromStr(ent_type_sel);
-    }
-
-    // --- Error Check ---
-
-    const all_values: TAttribDataTypes[] = [];
-    for (const attrib of attribs) {
-        const vals: TAttribDataTypes[] = __model__.modeldata.attribs.get.getEntAttribVals(ent_type, attrib);
-        for (const val of vals) {
-            all_values.push(val);
-        }
-    }
-    return all_values;    
+    // //-----
+    // const all_values: TAttribDataTypes[] = [];
+    // for (const attrib of attribs) {
+    //     const vals: TAttribDataTypes[] = __model__.modeldata.attribs.get.getEntAttribVals(ent_type, attrib);
+    //     for (const val of vals) {
+    //         all_values.push(val);
+    //     }
+    // }
+    // return all_values;    
+    throw new Error();
 }

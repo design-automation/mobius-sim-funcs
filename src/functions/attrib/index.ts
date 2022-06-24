@@ -112,7 +112,7 @@ export class AttribFunc {
                 'ps, _v, _e, _w, pt, pl, pg, co, mo.');
             }
             // create an array of attrib names
-            if (attribs === null) { attribs = this.__model__.modeldata.attribs.getAttribNamesUser(ent_type); }
+            if (attribs === null) { attribs = this.__model__.getAttribNamesUser(ent_type); }
             if (!Array.isArray(attribs)) { attribs = [attribs]; }
             for (const attrib of attribs) { checkAttribName(fn_name , attrib); }
         }
@@ -124,7 +124,7 @@ export class AttribFunc {
         if (this.debug) {
             const fn_name = 'attrib.Get';
             if (entities !== null && entities !== undefined) {
-                checkIDs(__model__, fn_name, 'entities', entities, [ID.isID, ID.isIDL1], null) as string | string[];
+                checkIDs(this.__model__, fn_name, 'entities', entities, [ID.isID, ID.isIDL1], null) as string | string[];
             }
             const [attrib_name, _] = checkAttribNameIdxKey(fn_name, attrib); // TODO return name
             checkAttribName(fn_name, attrib_name);
@@ -160,12 +160,56 @@ export class AttribFunc {
         Set(this.__model__, entities, attrib, value, method);
     }
     Push(entities: string | string[], attrib: string | [string, string | number] | [string, string | number, string] | [string, string | number, string, string | number], ent_type_sel: Enum._EAttribPushTarget, method_sel: Enum._EPushMethodSel): void {
+        // --- Error Check ---
+        if (this.debug) {
+            const fn_name = 'attrib.Push';
+            if (entities !== null && entities !== undefined) {
+                checkIDs(this.__model__, fn_name, 'entities', entities, [ID.isID, ID.isIDL1], null) as string[];
+            }
+        // --- Error Check ---
         Push(this.__model__, entities, attrib, ent_type_sel, method_sel);
+        }
     }
     Values(ent_type_sel: Enum._ENT_TYPEAndMod, attribs: string | string[]): any {
+        // --- Error Check ---
+        let ent_type: ENT_TYPE;
+        if (this.debug) {
+            // convert the ent_type_str to an ent_type
+            ent_type = _getEntTypeFromStr(ent_type_sel);
+            if (ent_type === undefined) {
+                throw new Error("attrib.Values" + ": " + "ent_type_sel" + " is not one of the following valid types - " + "ps, _v, _e, _w, _f, pt, pl, pg, co, mo.");
+            }
+            // create an array of attrib names
+            if (attribs === null) { attribs = this.__model__.modeldata.attribs.getAttribNamesUser(ent_type); }
+            if (!Array.isArray(attribs)) { attribs = [attribs]; }
+            attribs = attribs as string[];
+            for (const attrib of attribs) { checkAttribName("attrib.Values" , attrib); }
+        } 
+        // --- Error Check ---
         return Values(this.__model__, ent_type_sel, attribs);
     }
     Discover(ent_type_sel: Enum._ENT_TYPEAndMod): any {
+        // --- Error Check ---
+
+        const fn_name = "attrib.Discover";
+        const arg_name = "ent_type_sel";
+        let ent_type: ENT_TYPE;
+
+        if (this.debug) {
+
+            // convert the ent_type_str to an ent_type
+            ent_type = _getEntTypeFromStr(ent_type_sel);
+            if (ent_type === undefined) {
+                throw new Error(fn_name + ": " + arg_name + " is not one of the following valid types - " + "ps, _v, _e, _w, _f, pt, pl, pg, co, mo.");
+            }
+        } 
+        // ----- TODO check if still needed -----
+        // else {
+        //     // convert the ent_type_str to an ent_type
+        //     ent_type = _getEntTypeFromStr(ent_type_sel);
+        // }
+
+        // --- Error Check ---
         return Discover(this.__model__, ent_type_sel);
     }
 }

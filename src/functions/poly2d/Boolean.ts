@@ -49,24 +49,24 @@ export function Boolean(__model__: Sim, a_entities: string|string[], b_entities:
     a_entities = arrMakeFlat(a_entities) as string[];
     if (isEmptyArr(a_entities)) { return []; }
     b_entities = arrMakeFlat(b_entities) as string[];
-    // --- Error Check ---
-    const fn_name = 'poly2d.Boolean';
-    let a_ents_arr: string[];
-    let b_ents_arr: string[];
-    if (this.debug) {
-        a_ents_arr = checkIDs(__model__, fn_name, 'a_entities', a_entities,
-        [ID.isID, ID.isIDL1], [ENT_TYPE.PGON, ENT_TYPE.PLINE]) as string[];
-        b_ents_arr = checkIDs(__model__, fn_name, 'b_entities', b_entities,
-        [ID.isID, ID.isIDL1], [ENT_TYPE.PGON]) as string[];
-    } else {
-        // a_ents_arr = splitIDs(fn_name, 'a_entities', a_entities,
-        // [IDcheckObj.isID, IDcheckObj.isIDList], null) as string[];
-        // b_ents_arr = splitIDs(fn_name, 'b_entities', b_entities,
-        // [IDcheckObj.isID, IDcheckObj.isIDList], null) as string[];
-        a_ents_arr = idsBreak(a_entities) as string[];
-        b_ents_arr = idsBreak(b_entities) as string[];
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // const fn_name = 'poly2d.Boolean';
+    // let a_ents_arr: string[];
+    // let b_ents_arr: string[];
+    // if (this.debug) {
+    //     a_ents_arr = checkIDs(__model__, fn_name, 'a_entities', a_entities,
+    //     [ID.isID, ID.isIDL1], [ENT_TYPE.PGON, ENT_TYPE.PLINE]) as string[];
+    //     b_ents_arr = checkIDs(__model__, fn_name, 'b_entities', b_entities,
+    //     [ID.isID, ID.isIDL1], [ENT_TYPE.PGON]) as string[];
+    // } else {
+    //     // a_ents_arr = splitIDs(fn_name, 'a_entities', a_entities,
+    //     // [IDcheckObj.isID, IDcheckObj.isIDList], null) as string[];
+    //     // b_ents_arr = splitIDs(fn_name, 'b_entities', b_entities,
+    //     // [IDcheckObj.isID, IDcheckObj.isIDList], null) as string[];
+    //     a_ents_arr = idsBreak(a_entities) as string[];
+    //     b_ents_arr = idsBreak(b_entities) as string[];
+    // }
+    // // --- Error Check ---
     const posis_map: TPosisMap = new Map();
     const [a_pgons_i, a_plines_i]: [number[], number[]] = _getPgonsPlines(__model__, a_ents_arr);
     const b_pgons_i: number[] = _getPgons(__model__, b_ents_arr);

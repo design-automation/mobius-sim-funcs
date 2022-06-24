@@ -22,19 +22,19 @@ import { checkArgs, isNull, isNum, isStr } from '../../_check_types';
         name: string,
         camera_rot: number
     ): void {
-    // --- Error Check ---
-    const fn_name = 'util.vrHotspot';
-    let ent_arr: string;
-    if (this.debug) {
-        ent_arr = checkIDs(__model__, fn_name, 'points', point,
-            [ID.isID],
-            [ENT_TYPE.POINT]) as string;
-        checkArgs(fn_name, 'name', name, [isStr, isNull]);
-        checkArgs(fn_name, 'camera_rot', camera_rot, [isNum, isNull]);
-    } else {
-        ent_arr = idsBreak(point) as string;
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // const fn_name = 'util.vrHotspot';
+    // let ent_arr: string;
+    // if (this.debug) {
+    //     ent_arr = checkIDs(__model__, fn_name, 'points', point,
+    //         [ID.isID],
+    //         [ENT_TYPE.POINT]) as string;
+    //     checkArgs(fn_name, 'name', name, [isStr, isNull]);
+    //     checkArgs(fn_name, 'camera_rot', camera_rot, [isNum, isNull]);
+    // } else {
+    //     ent_arr = idsBreak(point) as string;
+    // }
+    // // --- Error Check ---
     const ent_i: number = ent_arr[1];
     if (!__model__.modeldata.attribs.query.hasEntAttrib(ENT_TYPE.POINT, "vr_hotspot")) {
         __model__.modeldata.attribs.add.addEntAttrib(ENT_TYPE.POINT, "vr_hotspot", EAttribDataTypeStrs.DICT);

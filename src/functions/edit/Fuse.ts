@@ -35,16 +35,16 @@ import { checkIDs, ID } from '../_common/_check_ids';
  */
 export function Fuse(__model__: Sim, entities: string|string[], tolerance: number): string[] {
     entities = arrMakeFlat(entities) as string[];
-    // --- Error Check ---
-    const fn_name = 'edit.Fuse';
-    let ents_arr: string[];
-    if (this.debug) {
-        ents_arr = checkIDs(__model__, fn_name, 'entities', entities,
-        [ID.isID, ID.isIDL1], null) as string[];
-    } else {
-        ents_arr = idsBreak(entities) as string[];
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // const fn_name = 'edit.Fuse';
+    // let ents_arr: string[];
+    // if (this.debug) {
+    //     ents_arr = checkIDs(__model__, fn_name, 'entities', entities,
+    //     [ID.isID, ID.isIDL1], null) as string[];
+    // } else {
+    //     ents_arr = idsBreak(entities) as string[];
+    // }
+    // // --- Error Check ---
     const new_ents_arr: string[] = __model__.modeldata.funcs_edit.fuse(ents_arr, tolerance);
     // make and return the IDs of the new posis
     return idsMake(new_ents_arr) as string[];

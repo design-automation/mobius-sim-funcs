@@ -20,21 +20,21 @@ import * as chk from '../../_check_types';
  * @example_info Returns a list of coordinates where the ray intersects with the polygon.
  */
 export function RayFace(__model__: Sim, ray: TRay, entities: string|string[]): Txyz[] {
-    // --- Error Check ---
-    const fn_name = 'intersect.RayFace';
-    let ents_arr: string|string[];
-    if (this.debug) {
-        chk.checkArgs(fn_name, 'ray', ray, [chk.isRay]);
-        ents_arr = checkIDs(__model__, fn_name, 'entities', entities,
-            [ID.isID, ID.isIDL1],
-            [ENT_TYPE.PGON, ENT_TYPE.COLL]) as string|string[];
-    } else {
-        // ents_arr = splitIDs(fn_name, 'entities', entities,
-        //     [IDcheckObj.isID, IDcheckObj.isIDList],
-        //     [ENT_TYPE.FACE, ENT_TYPE.PGON, ENT_TYPE.COLL]) as string|string[];
-        ents_arr = idsBreak(entities) as string|string[];
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // const fn_name = 'intersect.RayFace';
+    // let ents_arr: string|string[];
+    // if (this.debug) {
+    //     chk.checkArgs(fn_name, 'ray', ray, [chk.isRay]);
+    //     ents_arr = checkIDs(__model__, fn_name, 'entities', entities,
+    //         [ID.isID, ID.isIDL1],
+    //         [ENT_TYPE.PGON, ENT_TYPE.COLL]) as string|string[];
+    // } else {
+    //     // ents_arr = splitIDs(fn_name, 'entities', entities,
+    //     //     [IDcheckObj.isID, IDcheckObj.isIDList],
+    //     //     [ENT_TYPE.FACE, ENT_TYPE.PGON, ENT_TYPE.COLL]) as string|string[];
+    //     ents_arr = idsBreak(entities) as string|string[];
+    // }
+    // // --- Error Check ---
     // create the threejs entity and calc intersections
     const ray_tjs: THREE.Ray = new THREE.Ray(new THREE.Vector3(...ray[0]), new THREE.Vector3(...ray[1]));
     return _intersectRay(__model__, ents_arr, ray_tjs);

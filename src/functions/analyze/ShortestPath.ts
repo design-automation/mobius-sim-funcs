@@ -68,27 +68,27 @@ export function ShortestPath(
     source = source === null ? [] : (arrMakeFlat(source) as string[]);
     target = target === null ? [] : (arrMakeFlat(target) as string[]);
     entities = arrMakeFlat(entities) as string[];
-    // --- Error Check ---
-    const fn_name = "analyze.ShortestPath";
-    let source_ents_arrs: string[];
-    let target_ents_arrs: string[];
-    let ents_arrs: string[];
-    if (this.debug) {
-        source_ents_arrs = checkIDs(__model__, fn_name, "origins", source, [ID.isID, ID.isIDL1], null) as string[];
-        target_ents_arrs = checkIDs(__model__, fn_name, "destinations", target, [ID.isID, ID.isIDL1], null) as string[];
-        ents_arrs = checkIDs(__model__, fn_name, "entities", entities, [ID.isID, ID.isIDL1], null) as string[];
-    } else {
-        // source_ents_arrs = splitIDs(fn_name, 'origins', source,
-        //     [IDcheckObj.isID, IDcheckObj.isIDList], null) as string[];
-        // target_ents_arrs = splitIDs(fn_name, 'destinations', target,
-        //     [IDcheckObj.isID, IDcheckObj.isIDList], null) as string[];
-        // ents_arrs = splitIDs(fn_name, 'entities', entities,
-        //     [IDcheckObj.isID, IDcheckObj.isIDList], null) as string[];
-        source_ents_arrs = idsBreak(source) as string[];
-        target_ents_arrs = idsBreak(target) as string[];
-        ents_arrs = idsBreak(entities) as string[];
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // const fn_name = "analyze.ShortestPath";
+    // let source_ents_arrs: string[];
+    // let target_ents_arrs: string[];
+    // let ents_arrs: string[];
+    // if (this.debug) {
+    //     source_ents_arrs = checkIDs(__model__, fn_name, "origins", source, [ID.isID, ID.isIDL1], null) as string[];
+    //     target_ents_arrs = checkIDs(__model__, fn_name, "destinations", target, [ID.isID, ID.isIDL1], null) as string[];
+    //     ents_arrs = checkIDs(__model__, fn_name, "entities", entities, [ID.isID, ID.isIDL1], null) as string[];
+    // } else {
+    //     // source_ents_arrs = splitIDs(fn_name, 'origins', source,
+    //     //     [IDcheckObj.isID, IDcheckObj.isIDList], null) as string[];
+    //     // target_ents_arrs = splitIDs(fn_name, 'destinations', target,
+    //     //     [IDcheckObj.isID, IDcheckObj.isIDList], null) as string[];
+    //     // ents_arrs = splitIDs(fn_name, 'entities', entities,
+    //     //     [IDcheckObj.isID, IDcheckObj.isIDList], null) as string[];
+    //     source_ents_arrs = idsBreak(source) as string[];
+    //     target_ents_arrs = idsBreak(target) as string[];
+    //     ents_arrs = idsBreak(entities) as string[];
+    // }
+    // // --- Error Check ---
     const directed: boolean = method === _EShortestPathMethod.DIRECTED ? true : false;
     let return_dists = true;
     let return_counts = true;

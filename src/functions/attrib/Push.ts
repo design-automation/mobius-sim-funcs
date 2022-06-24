@@ -1,7 +1,8 @@
-import { EAttribPush, ENT_TYPE, getArrDepth, Sim, idsBreak, string, string } from '../../mobius_sim';
+// import { EAttribPush, ENT_TYPE, getArrDepth, Sim, string } from '../../mobius_sim';
+import { Sim } from '../../mobius_sim';
 import uscore from 'underscore';
 
-import { checkAttribName, checkAttribNameIdxKey, splitAttribNameIdxKey } from '../../_check_attribs';
+import { checkAttribName, checkAttribNameIdxKey, splitAttribNameIdxKey } from '../_common/_check_attribs';
 import { checkIDs, ID } from '../_common/_check_ids';
 import { _EAttribPushTarget, _EPushMethodSel } from './_enum';
 import { _getAttribPushTarget } from './_shared';
@@ -31,105 +32,98 @@ import { _getAttribPushTarget } from './_shared';
 export function Push(__model__: Sim, entities: string|string[],
         attrib: string|[string, number|string]|[string, number|string, string]|[string, number|string, string, number|string],
         ent_type_sel: _EAttribPushTarget, method_sel: _EPushMethodSel): void {
-    if (entities !== null) {
-        const depth = getArrDepth(entities);
-        if (depth === 0) {
-            entities = [entities] as string[];
-        } else if (depth === 2) {
-            // @ts-ignore
-            entities = uscore.flatten(entities) as string[];
-        }
-    }
-    // --- Error Check ---
-    const fn_name = 'attrib.Push';
+    // if (entities !== null) {
+    //     const depth = getArrDepth(entities);
+    //     if (depth === 0) {
+    //         entities = [entities] as string[];
+    //     } else if (depth === 2) {
+    //         // @ts-ignore
+    //         entities = uscore.flatten(entities) as string[];
+    //     }
+    // }
+    // // -----
+    // const fn_name = 'attrib.Push';
+    // let ents_arr: string[] = null;
+    // let source_attrib_name: string;
+    // let source_attrib_idx_key: number|string;
+    // let target_attrib_name: string;
+    // let target_attrib_idx_key: number|string;
+    // const indices: number[] = [];
+    // let target: ENT_TYPE|string;
+    // let source_attrib: [string, number|string] = null;
+    // let target_attrib: [string, number|string] = null;
+    // if (Array.isArray(attrib)) {
+    //     // set source attrib
+    //     const source_attrib = [
+    //         attrib[0] as string,
+    //         (attrib.length > 1 ? attrib[1] : null) as number|string
+    //     ];
+    //     // set target attrib
+    //     const target_attrib = [
+    //         (attrib.length > 2 ? attrib[2] : attrib[0]) as string,
+    //         (attrib.length > 3 ? attrib[3] : null) as number|string
+    //     ];
+    // } else {
+    //     const source_attrib = [attrib, null];
+    //     const target_attrib = [attrib, null];
+    // }
+    //     [source_attrib_name, source_attrib_idx_key] = checkAttribNameIdxKey(fn_name, source_attrib);
+    //     [target_attrib_name, target_attrib_idx_key] = checkAttribNameIdxKey(fn_name, target_attrib);
+    // // -----
+    //     // get the source ent_type and indices
+    //     const source_ent_type = ents_arr[0][0];
+    //     for (const ent_arr of ents_arr) {
+    //         if (ent_arr[0] !== source_ent_type) {
+    //             throw new Error('The entities must all be of the same type.');
+    //         }
+    //         indices.push(ent_arr[1]);
+    //     }
+    //     // check the names
+    //     checkAttribName(fn_name, source_attrib_name);
+    //     checkAttribName(fn_name, target_attrib_name);
+    //     // get the target ent_type
+    //     target = _getAttribPushTarget(ent_type_sel);
+    // if (source_ent_type === target) {
+    //         throw new Error('The new attribute is at the same level as the existing attribute.');
+    // }
+    // else {
+    //     // ----- ids break removed
+    //     [source_attrib_name, source_attrib_idx_key] = splitAttribNameIdxKey(fn_name, source_attrib);
+    //     [target_attrib_name, target_attrib_idx_key] = splitAttribNameIdxKey(fn_name, target_attrib);
+    //     // get the source ent_type and indices
+    //     const source_ent_type = ents_arr[0][0];
+    //     for (const ent_arr of ents_arr) {
+    //         indices.push(ent_arr[1]);
+    //     }
+    //     // get the target ent_type
+    //     target = _getAttribPushTarget(ent_type_sel);
+    // }
+    // // get the method
+    // const method: EAttribPush = _convertPushMethod(method_sel);
+    // // do the push
+    // __model__.modeldata.attribs.push.pushAttribVals(source_ent_type, source_attrib_name, source_attrib_idx_key, indices,
+    //                                      target,          target_attrib_name, target_attrib_idx_key, method);
 
-    let ents_arr: string[] = null;
-    let source_attrib_name: string;
-    let source_attrib_idx_key: number|string;
-    let target_attrib_name: string;
-    let target_attrib_idx_key: number|string;
-    let source_ent_type: ENT_TYPE;
-    const indices: number[] = [];
-    let target: ENT_TYPE|string;
-    let source_attrib: [string, number|string] = null;
-    let target_attrib: [string, number|string] = null;
-    if (Array.isArray(attrib)) {
-        // set source attrib
-        source_attrib = [
-            attrib[0] as string,
-            (attrib.length > 1 ? attrib[1] : null) as number|string
-        ];
-        // set target attrib
-        target_attrib = [
-            (attrib.length > 2 ? attrib[2] : attrib[0]) as string,
-            (attrib.length > 3 ? attrib[3] : null) as number|string
-        ];
-    } else {
-        source_attrib = [attrib, null];
-        target_attrib = [attrib, null];
-    }
-
-    if (this.debug) {
-        if (entities !== null && entities !== undefined) {
-            ents_arr = checkIDs(__model__, fn_name, 'entities', entities, [ID.isID, ID.isIDL1], null) as string[];
-        }
-        [source_attrib_name, source_attrib_idx_key] = checkAttribNameIdxKey(fn_name, source_attrib);
-        [target_attrib_name, target_attrib_idx_key] = checkAttribNameIdxKey(fn_name, target_attrib);
-        // --- Error Check ---
-        // get the source ent_type and indices
-        source_ent_type = ents_arr[0][0];
-        for (const ent_arr of ents_arr) {
-            if (ent_arr[0] !== source_ent_type) {
-                throw new Error('The entities must all be of the same type.');
-            }
-            indices.push(ent_arr[1]);
-        }
-        // check the names
-        checkAttribName(fn_name, source_attrib_name);
-        checkAttribName(fn_name, target_attrib_name);
-        // get the target ent_type
-        target = _getAttribPushTarget(ent_type_sel);
-        if (source_ent_type === target) {
-            throw new Error('The new attribute is at the same level as the existing attribute.');
-        }
-    } else {
-        if (entities !== null && entities !== undefined) {
-            ents_arr = idsBreak(entities) as string[];
-        }
-        [source_attrib_name, source_attrib_idx_key] = splitAttribNameIdxKey(fn_name, source_attrib);
-        [target_attrib_name, target_attrib_idx_key] = splitAttribNameIdxKey(fn_name, target_attrib);
-        // get the source ent_type and indices
-        source_ent_type = ents_arr[0][0];
-        for (const ent_arr of ents_arr) {
-            indices.push(ent_arr[1]);
-        }
-        // get the target ent_type
-        target = _getAttribPushTarget(ent_type_sel);
-    }
-    // get the method
-    const method: EAttribPush = _convertPushMethod(method_sel);
-    // do the push
-    __model__.modeldata.attribs.push.pushAttribVals(source_ent_type, source_attrib_name, source_attrib_idx_key, indices,
-                                         target,          target_attrib_name, target_attrib_idx_key, method);
+    throw new Error();
 }
-function _convertPushMethod(select: _EPushMethodSel): EAttribPush {
-    switch (select) {
-        case _EPushMethodSel.AVERAGE:
-            return EAttribPush.AVERAGE;
-        case _EPushMethodSel.MEDIAN:
-            return EAttribPush.MEDIAN;
-        case _EPushMethodSel.SUM:
-            return EAttribPush.SUM;
-        case _EPushMethodSel.MIN:
-            return EAttribPush.MIN;
-        case _EPushMethodSel.MAX:
-            return EAttribPush.MAX;
-        case _EPushMethodSel.FIRST:
-            return EAttribPush.FIRST;
-        case _EPushMethodSel.LAST:
-            return EAttribPush.LAST;
-        default:
-            break;
-    }
-}
+// function _convertPushMethod(select: _EPushMethodSel): EAttribPush {
+//     switch (select) {
+//         case _EPushMethodSel.AVERAGE:
+//             return EAttribPush.AVERAGE;
+//         case _EPushMethodSel.MEDIAN:
+//             return EAttribPush.MEDIAN;
+//         case _EPushMethodSel.SUM:
+//             return EAttribPush.SUM;
+//         case _EPushMethodSel.MIN:
+//             return EAttribPush.MIN;
+//         case _EPushMethodSel.MAX:
+//             return EAttribPush.MAX;
+//         case _EPushMethodSel.FIRST:
+//             return EAttribPush.FIRST;
+//         case _EPushMethodSel.LAST:
+//             return EAttribPush.LAST;
+//         default:
+//             break;
+//     }
+// }
 // ================================================================================================

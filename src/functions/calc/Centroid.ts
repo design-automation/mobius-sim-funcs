@@ -1,7 +1,10 @@
-import { Sim, idsBreak, isEmptyArr, string, string, Txyz } from '../../mobius_sim';
+import { Sim, 
+    // idsBreak, isEmptyArr, string, string, 
+    Txyz } from '../../mobius_sim';
 
 import { checkIDs, ID } from '../_common/_check_ids';
-import { getCenterOfMass, getCentroid } from '../_common/___index_old';
+import { getCenterOfMass } from '../_common/getCenterOfMass';
+import { getCentroid } from '../_common/getCentroid';
 import { _ECentroidMethod } from './_enum';
 
 
@@ -26,24 +29,25 @@ import { _ECentroidMethod } from './_enum';
  * @example `centroid1 = calc.Centroid (polygon1)`
  */
 export function Centroid(__model__: Sim, entities: string|string[], method: _ECentroidMethod): Txyz|Txyz[] {
-    if (isEmptyArr(entities)) { return []; }
-    // --- Error Check ---
-    const fn_name = 'calc.Centroid';
-    let ents_arrs: string|string[];
-    if (this.debug) {
-        ents_arrs = checkIDs(__model__, fn_name, 'entities', entities,
-        [ID.isID, ID.isIDL1], null) as string|string[];
-    } else {
-        ents_arrs = idsBreak(entities) as string|string[];
-    }
-    // --- Error Check ---
-    switch (method) {
-        case _ECentroidMethod.PS_AVERAGE:
-            return getCentroid(__model__, ents_arrs);
-        case _ECentroidMethod.CENTER_OF_MASS:
-            return getCenterOfMass(__model__, ents_arrs);
-        default:
-            break;
-    }
+    // if (isEmptyArr(entities)) { return []; }
+    // // // --- Error Check ---
+    // // const fn_name = 'calc.Centroid';
+    // // let ents_arrs: string|string[];
+    // // if (this.debug) {
+    // //     ents_arrs = checkIDs(__model__, fn_name, 'entities', entities,
+    // //     [ID.isID, ID.isIDL1], null) as string|string[];
+    // // } else {
+    // //     ents_arrs = idsBreak(entities) as string|string[];
+    // // }
+    // // // --- Error Check ---
+    // switch (method) {
+    //     case _ECentroidMethod.PS_AVERAGE:
+    //         return getCentroid(__model__, ents_arrs);
+    //     case _ECentroidMethod.CENTER_OF_MASS:
+    //         return getCenterOfMass(__model__, ents_arrs);
+    //     default:
+    //         break;
+    // }
+    throw new Error();
 }
 

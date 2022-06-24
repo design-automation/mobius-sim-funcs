@@ -33,18 +33,18 @@ import { _getPosiFromMap, _getPosis, TPosisMap } from './_shared';
 export function Delaunay(__model__: Sim, entities: string|string[]): string[] {
     entities = arrMakeFlat(entities) as string[];
     if (isEmptyArr(entities)) { return []; }
-    // --- Error Check ---
-    const fn_name = 'poly2d.Delaunay';
-    let posis_ents_arr: string[];
-    if (this.debug) {
-        posis_ents_arr = checkIDs(__model__, fn_name, 'entities1', entities,
-            [ID.isIDL1], null) as string[];
-    } else {
-        // posis_ents_arr = splitIDs(fn_name, 'entities1', entities,
-        // [IDcheckObj.isIDList], null) as string[];
-        posis_ents_arr = idsBreak(entities) as string[];
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // const fn_name = 'poly2d.Delaunay';
+    // let posis_ents_arr: string[];
+    // if (this.debug) {
+    //     posis_ents_arr = checkIDs(__model__, fn_name, 'entities1', entities,
+    //         [ID.isIDL1], null) as string[];
+    // } else {
+    //     // posis_ents_arr = splitIDs(fn_name, 'entities1', entities,
+    //     // [IDcheckObj.isIDList], null) as string[];
+    //     posis_ents_arr = idsBreak(entities) as string[];
+    // }
+    // // --- Error Check ---
     const posis_map: TPosisMap = new Map();
     // posis
     const posis_i: number[] = _getPosis(__model__, posis_ents_arr);

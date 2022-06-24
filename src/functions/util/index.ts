@@ -2,7 +2,7 @@
  * The `util` module has some utility functions used for debugging.
  * @module
  */
-import { Sim } from '../../mobius_sim';
+import { ENT_TYPE, Sim } from '../../mobius_sim';
 
 import { checkIDs, ID } from '../_common/_check_ids';
 import * as chk from '../_common/_check_types';
@@ -49,6 +49,15 @@ export class UtilFunc {
         this.debug = debug;
     }
     EntityInfo(entities: string | string[]): any {
+        // --- Error Check ---
+        const fn_name = 'util.EntityInfo';
+        let ents_arr: string[];
+        if (this.debug) {
+            ents_arr = checkIDs(this.__model__, fn_name, 'coll', entities,
+                [ID.isID, ID.isIDL1],
+                [ENT_TYPE.COLL, ENT_TYPE.PGON, ENT_TYPE.PLINE, ENT_TYPE.POINT]) as string[];
+        } 
+        // --- Error Check ---    
         return EntityInfo(this.__model__, entities);
     }
     ModelCheck(): any {
@@ -73,9 +82,31 @@ export class UtilFunc {
         SendData(this.__model__, data);
     }
     VrHotspot(point: string, name: string, camera_rot: number): void {
+        // --- Error Check ---
+        if (this.debug) {
+            const fn_name = 'util.vrHotspot';
+            checkIDs(this.__model__, fn_name, 'points', point,
+                [ID.isID],
+                [ENT_TYPE.POINT]) as string;
+            chk.checkArgs(fn_name, 'name', name, [chk.isStr, chk.isNull]);
+            chk.checkArgs(fn_name, 'camera_rot', camera_rot, [chk.isNum, chk.isNull]);
+        } 
+        // --- Error Check ---    
         VrHotspot(this.__model__, point, name, camera_rot);
     }
     VrPanorama(point: string, back_url: number, back_rot: number, fore_url: number, fore_rot: number): void {
+        // --- Error Check ---
+        if (this.debug) {
+            const fn_name = 'util.vrPanorama';
+            checkIDs(this.__model__, fn_name, 'point', point,
+                [ID.isID],
+                [ENT_TYPE.POINT]) as string;
+            chk.checkArgs(fn_name, 'back_url', back_url, [chk.isStr]);
+            chk.checkArgs(fn_name, 'back_rot', back_rot, [chk.isNum, chk.isNull]);
+            chk.checkArgs(fn_name, 'fore_url', fore_url, [chk.isStr, chk.isNull]);
+            chk.checkArgs(fn_name, 'fore_rot', fore_rot, [chk.isNum, chk.isNull]);
+        }
+        // --- Error Check ---    
         VrPanorama(this.__model__, point, back_url, back_rot, fore_url, fore_rot);
     }
     async HTTPRequest(request_data: any, request_url: string, method: Enum._HTTPRequestMethod) {

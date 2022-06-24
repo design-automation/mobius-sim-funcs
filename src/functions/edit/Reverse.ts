@@ -1,4 +1,8 @@
-import { arrMakeFlat, ENT_TYPE, Sim, idsBreak, isEmptyArr, string, string } from '../../mobius_sim';
+import { 
+    // arrMakeFlat, 
+    ENT_TYPE, Sim, 
+    // idsBreak, isEmptyArr, string, string 
+} from '../../mobius_sim';
 
 import { checkIDs, ID } from '../_common/_check_ids';
 
@@ -22,18 +26,19 @@ import { checkIDs, ID } from '../_common/_check_ids';
  * @example_info Reverses the order of vertices and edges in the polyline.
  */
 export function Reverse(__model__: Sim, entities: string|string[]): void {
-    entities = arrMakeFlat(entities) as string[];
-    if (!isEmptyArr(entities)) {
-        // --- Error Check ---
-        let ents_arr: string[];
-        if (this.debug) {
-            ents_arr = checkIDs(__model__, 'edit.Reverse', 'entities', entities,
-                [ID.isID, ID.isIDL1],
-                [ENT_TYPE.WIRE, ENT_TYPE.PLINE, ENT_TYPE.PGON])  as string[];
-        } else {
-            ents_arr = idsBreak(entities) as string[];
-        }
-        // --- Error Check ---
-        __model__.modeldata.funcs_edit.reverse(ents_arr);
-    }
+    // entities = arrMakeFlat(entities) as string[];
+    // if (!isEmptyArr(entities)) {
+    //     // // --- Error Check ---
+    //     // let ents_arr: string[];
+    //     // if (this.debug) {
+    //     //     ents_arr = checkIDs(__model__, 'edit.Reverse', 'entities', entities,
+    //     //         [ID.isID, ID.isIDL1],
+    //     //         [ENT_TYPE.WIRE, ENT_TYPE.PLINE, ENT_TYPE.PGON])  as string[];
+    //     // } else {
+    //     //     ents_arr = idsBreak(entities) as string[];
+    //     // }
+    //     // // --- Error Check ---
+    //     __model__.modeldata.funcs_edit.reverse(ents_arr);
+    // }
+    throw new Error();
 }

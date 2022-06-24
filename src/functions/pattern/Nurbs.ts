@@ -41,23 +41,23 @@ import { _EClose } from './_enum';
  */
 export function Nurbs(__model__: Sim, coords: Txyz[], degree: number, close: _EClose,
         num_positions: number): string[] {
-    // --- Error Check ---
-    if (this.debug) {
-        const fn_name = 'pattern.Nurbs';
-        chk.checkArgs(fn_name, 'coords', coords, [chk.isXYZL]);
-        chk.checkArgs(fn_name, 'num_positions', num_positions, [chk.isInt]);
-        if (coords.length < 3) {
-            throw new Error (fn_name + ': "coords" should be a list of at least three XYZ coords.');
-        }
-        if (degree < 2  || degree > 5) {
-            throw new Error (fn_name + ': "degree" should be between 2 and 5.');
-        }
-        if (degree > (coords.length - 1)) {
-            throw new Error (fn_name + ': a curve of degree ' + degree + ' requires at least ' +
-                (degree + 1) + ' coords.' );
-        }
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // if (this.debug) {
+    //     const fn_name = 'pattern.Nurbs';
+    //     chk.checkArgs(fn_name, 'coords', coords, [chk.isXYZL]);
+    //     chk.checkArgs(fn_name, 'num_positions', num_positions, [chk.isInt]);
+    //     if (coords.length < 3) {
+    //         throw new Error (fn_name + ': "coords" should be a list of at least three XYZ coords.');
+    //     }
+    //     if (degree < 2  || degree > 5) {
+    //         throw new Error (fn_name + ': "degree" should be between 2 and 5.');
+    //     }
+    //     if (degree > (coords.length - 1)) {
+    //         throw new Error (fn_name + ': a curve of degree ' + degree + ' requires at least ' +
+    //             (degree + 1) + ' coords.' );
+    //     }
+    // }
+    // // --- Error Check ---
     const closed: boolean = close === _EClose.CLOSE;
     // create the curve using the VERBS library
     const offset = degree + 1;

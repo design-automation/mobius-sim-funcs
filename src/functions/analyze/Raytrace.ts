@@ -77,25 +77,25 @@ export function Raytrace(
     method: _ERaytraceMethod
 ): TRaytraceResult | TRaytraceResult[] {
     entities = arrMakeFlat(entities) as string[];
-    // --- Error Check ---
-    const fn_name = "analyze.Raytrace";
-    let ents_arrs: string[];
-    if (this.debug) {
-        chk.checkArgs(fn_name, "rays", rays, [chk.isRay, chk.isRayL, chk.isRayLL]);
-        ents_arrs = checkIDs(__model__, fn_name, "entities", entities, [ID.isID, ID.isIDL1], [ENT_TYPE.PGON, ENT_TYPE.COLL]) as string[];
-        chk.checkArgs(fn_name, "dist", dist, [chk.isNum, chk.isNumL]);
-        if (Array.isArray(dist)) {
-            if (dist.length !== 2) {
-                throw new Error('If "dist" is a list, it must have a length of two: [min_dist, max_dist].');
-            }
-            if (dist[0] >= dist[1]) {
-                throw new Error('If "dist" is a list, the "min_dist" must be less than the "max_dist": [min_dist, max_dist].');
-            }
-        }
-    } else {
-        ents_arrs = idsBreak(entities) as string[];
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // const fn_name = "analyze.Raytrace";
+    // let ents_arrs: string[];
+    // if (this.debug) {
+    //     chk.checkArgs(fn_name, "rays", rays, [chk.isRay, chk.isRayL, chk.isRayLL]);
+    //     ents_arrs = checkIDs(__model__, fn_name, "entities", entities, [ID.isID, ID.isIDL1], [ENT_TYPE.PGON, ENT_TYPE.COLL]) as string[];
+    //     chk.checkArgs(fn_name, "dist", dist, [chk.isNum, chk.isNumL]);
+    //     if (Array.isArray(dist)) {
+    //         if (dist.length !== 2) {
+    //             throw new Error('If "dist" is a list, it must have a length of two: [min_dist, max_dist].');
+    //         }
+    //         if (dist[0] >= dist[1]) {
+    //             throw new Error('If "dist" is a list, the "min_dist" must be less than the "max_dist": [min_dist, max_dist].');
+    //         }
+    //     }
+    // } else {
+    //     ents_arrs = idsBreak(entities) as string[];
+    // }
+    // // --- Error Check ---
     const mesh: [THREE.Mesh, number[]] = createSingleMeshBufTjs(__model__, ents_arrs);
     dist = Array.isArray(dist) ? dist : [0, dist];
     const result = _raytraceAll(__model__, rays, mesh, dist, method);

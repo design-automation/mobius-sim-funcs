@@ -1,6 +1,6 @@
-import { Sim, TColor } from '../../mobius_sim';
+import { Sim } from '../../mobius_sim';
+import { TColor } from '../_common/consts';
 
-import * as chk from '../../_check_types';
 import { _EMeshMaterialType } from './_enum';
 import { _clampArr01, _setMaterialModelAttrib } from './_shared';
 
@@ -20,13 +20,13 @@ import { _clampArr01, _setMaterialModelAttrib } from './_shared';
  * @returns void
  */
 export function Lambert(__model__: Sim, name: string, emissive: TColor): void {
-    // --- Error Check ---
-    if (this.debug) {
-        const fn_name = 'material.Lambert';
-        chk.checkArgs(fn_name, 'name', name, [chk.isStr]);
-        chk.checkArgs(fn_name, 'emissive', emissive, [chk.isColor]);
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // if (this.debug) {
+    //     const fn_name = 'material.Lambert';
+    //     chk.checkArgs(fn_name, 'name', name, [chk.isStr]);
+    //     chk.checkArgs(fn_name, 'emissive', emissive, [chk.isColor]);
+    // }
+    // // --- Error Check ---
     _clampArr01(emissive);
     const settings_obj = {
         type: _EMeshMaterialType.LAMBERT,

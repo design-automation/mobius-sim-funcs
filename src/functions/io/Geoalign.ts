@@ -29,14 +29,14 @@ export function Geoalign(
     lat_long_x: Txy,
     elev: number
 ): void {
-    // --- Error Check ---
-    const fn_name = 'io.Geoalign';
-    if (this.debug) {
-        checkArgs(fn_name, 'lat_long_o', lat_long_o, [isXY, isNull]);
-        checkArgs(fn_name, 'lat_long_x', lat_long_x, [isXY, isNull]);
-        checkArgs(fn_name, 'elev', elev, [isNum, isNull]);
-    }
-    // --- Error Check ---
+    // // --- Error Check ---
+    // const fn_name = 'io.Geoalign';
+    // if (this.debug) {
+    //     checkArgs(fn_name, 'lat_long_o', lat_long_o, [isXY, isNull]);
+    //     checkArgs(fn_name, 'lat_long_x', lat_long_x, [isXY, isNull]);
+    //     checkArgs(fn_name, 'elev', elev, [isNum, isNull]);
+    // }
+    // // --- Error Check ---
     const gl_dict = { "latitude": lat_long_o[0], "longitude": lat_long_o[1] };
     if (elev !== null) {
         gl_dict["elevation"] = elev;
