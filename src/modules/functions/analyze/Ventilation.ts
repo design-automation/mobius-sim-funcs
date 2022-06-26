@@ -23,19 +23,19 @@ const EPS = 1e-6;
  * \n
  * @param __model__
  * @param sensors A list of coordinates, a list of Rays or a list of Planes, to be used as the sensors for calculating exposure.
- * @param detail An integer specifying the number of rays to generate in each wind direction.
- * @param layers The layers of rays, specified as [start, stop, step] relative to the sensors.
  * @param entities The obstructions, faces, polygons, or collections of faces or polygons.
- * @param limits The max distance for raytracing.
+ * @param radius The max distance for raytracing.
+ * @param num_rays An integer specifying the number of rays to generate in each wind direction.
+ * @param layers The layers of rays, specified as [start, stop, step] relative to the sensors.
  * @returns A dictionary containing solar exposure results.
  */
 export function Ventilation(
     __model__: GIModel,
     sensors: Txyz[] | TRay[] | TPlane[],
-    detail: number,
-    layers: number | [number, number] | [number, number, number],
     entities: TId | TId[] | TId[][],
-    limits: number | [number, number]
+    radius: number | [number, number],
+    num_rays: number,
+    layers: number | [number, number] | [number, number, number],
 ): any {
     entities = arrMakeFlat(entities) as TId[];
     // --- Error Check ---
@@ -45,8 +45,8 @@ export function Ventilation(
     // let north: Txy = [0, 1];
     if (__model__.debug) {
         chk.checkArgs(fn_name, "sensors", sensors, [chk.isXYZL, chk.isRayL, chk.isPlnL]);
-        chk.checkArgs(fn_name, "detail", detail, [chk.isInt]);
-        chk.checkArgs(fn_name, "layers", detail, [chk.isInt, chk.isIntL]);
+        chk.checkArgs(fn_name, "detail", num_rays, [chk.isInt]);
+        chk.checkArgs(fn_name, "layers", num_rays, [chk.isInt, chk.isIntL]);
 
         ents_arrs = checkIDs(__model__, fn_name, "entities", entities, [ID.isID, ID.isIDL1], [EEntType.PGON, EEntType.COLL]) as TEntTypeIdx[];
     } else {
@@ -62,11 +62,11 @@ export function Ventilation(
     // get sensors and create mesh
     const sensor_oris_dirs_tjs: [THREE.Vector3, THREE.Vector3][] = _rayOrisDirsTjs(__model__, sensors, 0.01);
     const [mesh_tjs, idx_to_face_i]: [THREE.Mesh, number[]] = createSingleMeshBufTjs(__model__, ents_arrs);
-    limits = Array.isArray(limits) ? limits : [0, limits];
+    radius = Array.isArray(radius) ? radius : [1, radius];
     // get the direction vectors
     const wind_rose: number[] = __model__.modeldata.attribs.get.getModelAttribVal("wind") as number[];
     // get the direction vectorsnum_vecs
-    const vecs_tjs: THREE.Vector3[][] = _ventilationVecs(detail + 1, wind_rose);
+    const vecs_tjs: THREE.Vector3[][] = _ventilationVecs(num_rays + 1, wind_rose);
     // run the simulation
     const results: number[] = _calcVentilation(
         __model__,
@@ -74,7 +74,7 @@ export function Ventilation(
         vecs_tjs, 
         mesh_tjs, 
         layers as [number, number, number], 
-        limits, wind_rose);
+        radius, wind_rose);
     // cleanup
     mesh_tjs.geometry.dispose();
     (mesh_tjs.material as THREE.Material).dispose();

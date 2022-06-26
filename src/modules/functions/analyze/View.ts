@@ -24,6 +24,8 @@ import {
 } from '@design-automation/mobius-sim';
 import { checkIDs, ID } from '../../_check_ids';
 import * as chk from '../../_check_types';
+import { Ray } from '../visualize/Ray';
+import { Plane } from '../visualize/Plane';
 // import { Ray } from '../visualize/Ray';
 // import { Plane } from '../visualize/Plane';
 
@@ -56,7 +58,7 @@ interface TViewResult {
  * \n
  * \n
  * @param __model__
- * @param origins A list of Rays or Planes, to be used as the origins for calculating the unobstructed views.
+ * @param sensors A list of Rays or Planes, to be used as the origins for calculating the unobstructed views.
  * @param entities The obstructions: faces, polygons, or collections.
  * @param radius The maximum radius of the uobstructed views.
  * @param num_rays The number of rays to generate when calculating uobstructed views.
@@ -65,9 +67,9 @@ interface TViewResult {
  */
 export function View(
     __model__: GIModel,
-    origins: TRay[] | TPlane[],
+    sensors: TRay[] | TPlane[],
     entities: TId | TId[] | TId[][],
-    radius: number,
+    radius: number|number[],
     num_rays: number,
     view_ang: number
 ): TViewResult {
@@ -76,7 +78,7 @@ export function View(
     const fn_name = "analyze.View";
     let ents_arrs: TEntTypeIdx[];
     if (__model__.debug) {
-        chk.checkArgs(fn_name, "origins", origins, [chk.isRayL, chk.isPlnL]);
+        chk.checkArgs(fn_name, "origins", sensors, [chk.isRayL, chk.isPlnL]);
         ents_arrs = checkIDs(__model__, fn_name, "entities", entities, [ID.isIDL1], [EEntType.PGON, EEntType.COLL]) as TEntTypeIdx[];
         chk.checkArgs(fn_name, "radius", radius, [chk.isNum, chk.isNumL]);
         if (Array.isArray(radius)) {
@@ -93,16 +95,17 @@ export function View(
         ents_arrs = idsBreak(entities) as TEntTypeIdx[];
     }
     // --- Error Check ---
+    radius = Array.isArray(radius) ? radius : [1, radius];
     // get planes for each sensor point
-    const sensors: TPlane[] = _getPlanes(origins, 0.01); // Offset by 0.01
-    // Plane(__model__, sensors, 0.4);
+    const sensor_plns: TPlane[] = _getPlanes(sensors, 0.01); // Offset by 0.01
+    Plane(__model__, sensor_plns, 0.5);
     // get the ray direction vectors
     const dirs: Txyz[] = _getDirs(num_rays, view_ang);
     // Ray(__model__, dirs.map( dir => [[0,0,0], dir]) as TRay[], 1);
     // calc max perim and area
-    const tri_dist: number = distance([radius, 0, 0], vecRot([radius, 0, 0], [0,0,1], view_ang / (num_rays - 1)));
+    const tri_dist: number = distance([radius[1], 0, 0], vecRot([radius[1], 0, 0], [0,0,1], view_ang / (num_rays - 1)));
     const max_perim = tri_dist * (num_rays - 1);
-    const max_area = _triArea(radius, radius, tri_dist) * (num_rays - 1);
+    const max_area = _triArea(radius[1], radius[1], tri_dist) * (num_rays - 1);
     // create mesh
     const [mesh_tjs, idx_to_face_i]: [THREE.Mesh, number[]] = createSingleMeshBufTjs(__model__, ents_arrs);
     // create data structure
@@ -116,21 +119,21 @@ export function View(
     // create tjs objects (to be resued for each ray)
     const origin_tjs: THREE.Vector3 = new THREE.Vector3();
     const dir_tjs: THREE.Vector3 = new THREE.Vector3();
-    const ray_tjs: THREE.Raycaster = new THREE.Raycaster(origin_tjs, dir_tjs, 0, radius);
+    const ray_tjs: THREE.Raycaster = new THREE.Raycaster(origin_tjs, dir_tjs, radius[0], radius[1]);
     // shoot rays
-    for (const sensor of sensors) {
-        origin_tjs.x = sensor[0][0]; origin_tjs.y = sensor[0][1]; origin_tjs.z = sensor[0][2]; 
+    for (const sensor_pln of sensor_plns) {
+        origin_tjs.x = sensor_pln[0][0]; origin_tjs.y = sensor_pln[0][1]; origin_tjs.z = sensor_pln[0][2]; 
         const result_dists: number[] = [];
         const result_isects: Txyz[] = [];
-        const dirs2: Txyz[] = _vecXForm(dirs, sensor);
+        const dirs2: Txyz[] = _vecXForm(dirs, sensor_pln);
         for (const dir2 of dirs2) {
-            // Ray(__model__, [sensor[0], dir2], 1);
+            Ray(__model__, [sensor_pln[0], vecSetLen(dir2, 3)], 0.1);
             dir_tjs.x = dir2[0]; dir_tjs.y = dir2[1]; dir_tjs.z = dir2[2];
             const isects: THREE.Intersection[] = ray_tjs.intersectObject(mesh_tjs, false);
             // get the result
             if (isects.length === 0) {
-                result_dists.push(radius);
-                result_isects.push(vecAdd(sensor[0], vecMult(dir2, radius)));
+                result_dists.push(radius[1]);
+                result_isects.push(vecAdd(sensor_pln[0], vecMult(dir2, radius[1])));
             } else {
                 result_dists.push(isects[0]["distance"]);
                 const isect_tjs: THREE.Vector3 = isects[0].point;
@@ -157,7 +160,7 @@ export function View(
         result.max_dist.push(max_dist);
         result.area_ratio.push(area / max_area);
         result.perimeter_ratio.push(perim / max_perim);
-        result.distance_ratio.push(total_dist / (radius * num_rays));
+        result.distance_ratio.push(total_dist / (radius[1] * num_rays));
     }
     // cleanup
     mesh_tjs.geometry.dispose();
@@ -166,33 +169,35 @@ export function View(
     return result;
 }
 // ================================================================================================
-function _getPlanes(origins: TRay[] | TPlane[], offset: number): TPlane[] {
+function _getPlanes(sensors: TRay[] | TPlane[], offset: number): TPlane[] {
+    // assume the list of sensors is homogeneous
     const planes: TPlane[] = [];
-    const is_ray: boolean = isRay(origins[0]);
-    const is_pln: boolean = isPlane(origins[0]);
-    for (const origin of origins) {
+    const is_ray: boolean = isRay(sensors[0]);
+    const is_pln: boolean = isPlane(sensors[0]);
+    // plane must be vertical, with x axis horizontal and y axis [0, 0, 1]
+    for (const sensor of sensors) {
+        let pln: TPlane;
         if (is_ray) {
             // use the ray to create a plane where the y axis is [0, 0, 1]
-            const pln: TPlane = [
-                origin[0] as Txyz,
-                vecCross(origin[1] as Txyz, [0,0,1], true),
+            pln = [
+                sensor[0] as Txyz,
+                vecCross([0,0,1], sensor[1] as Txyz, true),
                 [0, 0, 1]
             ];
-            pln[0] = vecAdd(pln[0], vecSetLen(vecCross(pln[1], pln[2]), offset));
-            planes.push( pln );
         } else if (is_pln) {
             // use the plane to create a new plane where the y axis is [0, 0, 1]
-            const dir: Txyz = vecCross(origin[1] as Txyz, origin[2] as Txyz, true);
-            const pln: TPlane = [
-                origin[0] as Txyz,
+            const dir: Txyz = vecCross(sensor[1] as Txyz, sensor[2] as Txyz, true);
+            pln = [
+                sensor[0] as Txyz,
                 vecCross([0,0,1], dir, true),
                 [0, 0, 1]
             ];
-            pln[0] = vecAdd(pln[0], vecSetLen(vecCross(pln[1], pln[2]), offset));
-            planes.push( pln );
         } else {
-            throw new Error("analyze.View: origins arg contains an invalid value: " + origin);
+            throw new Error("analyze.View: origins arg contains an invalid value: " + sensor);
         }
+        // shift plane in z dir
+        pln[0] = vecAdd(pln[0], vecSetLen(vecCross(pln[1], pln[2]), offset));
+        planes.push( pln );
     }
     return planes;
 }

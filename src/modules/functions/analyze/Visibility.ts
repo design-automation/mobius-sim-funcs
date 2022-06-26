@@ -52,7 +52,7 @@ interface TVisibilityResult {
  * \n
  * \n
  * @param __model__
- * @param origins A list of Rays or Planes, to be used as the origins for calculating the unobstructed views.
+ * @param sensors A list of Rays or Planes, to be used as the origins for calculating the unobstructed views.
  * @param entities The obstructions: faces, polygons, or collections.
  * @param radius The maximum radius of the visibility analysis.
  * @param targets The target positions.
@@ -60,9 +60,9 @@ interface TVisibilityResult {
  */
 export function Visibility(
     __model__: GIModel,
-    origins: Txyz[] | TRay[] | TPlane[],
+    sensors: Txyz[] | TRay[] | TPlane[],
     entities: TId | TId[] | TId[][],
-    radius: number,
+    radius: number|[number,number],
     targets: TId | TId[] | TId[][],
 ): TVisibilityResult {
     entities = arrMakeFlat(entities) as TId[];
@@ -72,7 +72,7 @@ export function Visibility(
     let ents_arrs1: TEntTypeIdx[];
     let ents_arrs2: TEntTypeIdx[];
     if (__model__.debug) {
-        chk.checkArgs(fn_name, "origins", origins, [chk.isRayL, chk.isPlnL]);
+        chk.checkArgs(fn_name, "origins", sensors, [chk.isRayL, chk.isPlnL]);
         ents_arrs1 = checkIDs(__model__, fn_name, "entities", entities, [ID.isIDL1], [EEntType.PGON, EEntType.COLL]) as TEntTypeIdx[];
         chk.checkArgs(fn_name, "radius", radius, [chk.isNum, chk.isNumL]);
         if (Array.isArray(radius)) {
@@ -89,8 +89,9 @@ export function Visibility(
         ents_arrs2 = idsBreak(targets) as TEntTypeIdx[];
     }
     // --- Error Check ---
+    radius = Array.isArray(radius) ? radius : [1, radius];
     // get planes for each sensor point
-    const sensors_xyz: Txyz[] = _getOriginXYZs(origins, 0.01); // Offset by 0.01
+    const sensors_xyz: Txyz[] = _getOriginXYZs(sensors, 0.01); // Offset by 0.01
     // Plane(__model__, sensors, 0.4);
     // get the target positions
     const target_posis_i: Set<number> = new Set();
@@ -118,7 +119,7 @@ export function Visibility(
     // create tjs objects (to be resued for each ray)
     const origin_tjs: THREE.Vector3 = new THREE.Vector3();
     const dir_tjs: THREE.Vector3 = new THREE.Vector3();
-    const ray_tjs: THREE.Raycaster = new THREE.Raycaster(origin_tjs, dir_tjs, 0, radius);
+    const ray_tjs: THREE.Raycaster = new THREE.Raycaster(origin_tjs, dir_tjs, radius[0], radius[1]);
     // shoot rays
     for (const sensor_xyz of sensors_xyz) {
         origin_tjs.x = sensor_xyz[0]; origin_tjs.y = sensor_xyz[1]; origin_tjs.z = sensor_xyz[2]; 

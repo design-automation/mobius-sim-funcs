@@ -92,19 +92,19 @@ import { _calcExposure, _rayOrisDirsTjs, _solarRaysDirectTjs, _solarRaysIndirect
  * \n
  * \n
  * @param __model__
- * @param origins A list of coordinates, a list of Rays or a list of Planes, to be used as the origins for calculating exposure.
- * @param detail An integer between 1 and 3 inclusive, specifying the level of detail for the analysis.
+ * @param sensors A list of coordinates, a list of Rays or a list of Planes, to be used as the origins for calculating exposure.
  * @param entities The obstructions, faces, polygons, or collections of faces or polygons.
- * @param limits The max distance for raytracing.
+ * @param radius The max distance for raytracing.
+ * @param detail An integer between 1 and 3 inclusive, specifying the level of detail for the analysis.
  * @param method Enum, solar method: `'direct_weighted', 'direct_unweighted', 'indirect_weighted'`, or `'indirect_unweighted'`.
  * @returns A dictionary containing solar exposure results.
  */
 export function Sun(
     __model__: GIModel,
-    origins: Txyz[] | TRay[] | TPlane[],
-    detail: number,
+    sensors: Txyz[] | TRay[] | TPlane[],
     entities: TId | TId[] | TId[][],
-    limits: number | [number, number],
+    radius: number | [number, number],
+    detail: number,
     method: _ESolarMethod
 ): any {
     entities = arrMakeFlat(entities) as TId[];
@@ -114,7 +114,7 @@ export function Sun(
     let latitude: number = null;
     let north: Txy = [0, 1];
     if (__model__.debug) {
-        chk.checkArgs(fn_name, "origins", origins, [chk.isXYZL, chk.isRayL, chk.isPlnL]);
+        chk.checkArgs(fn_name, "origins", sensors, [chk.isXYZL, chk.isRayL, chk.isPlnL]);
         chk.checkArgs(fn_name, "detail", detail, [chk.isInt]);
         if (detail < 0 || detail > 3) {
             throw new Error(fn_name + ': "detail" must be an integer between 0 and 3 inclusive.');
@@ -160,9 +160,9 @@ export function Sun(
 
     // TODO North direction
 
-    const sensor_oris_dirs_tjs: [THREE.Vector3, THREE.Vector3][] = _rayOrisDirsTjs(__model__, origins, 0.01);
+    const sensor_oris_dirs_tjs: [THREE.Vector3, THREE.Vector3][] = _rayOrisDirsTjs(__model__, sensors, 0.01);
     const [mesh_tjs, idx_to_face_i]: [THREE.Mesh, number[]] = createSingleMeshBufTjs(__model__, ents_arrs);
-    limits = Array.isArray(limits) ? limits : [0, limits];
+    radius = Array.isArray(radius) ? radius : [1, radius];
 
     // return the result
     const results = {};
@@ -173,7 +173,7 @@ export function Sun(
             const ray_dirs_tjs1: THREE.Vector3[] = uscore.flatten(_solarDirsTjs(latitude, north, detail, method));
             // run the simulation
             const weighted1: boolean = method === _ESolarMethod.DIRECT_WEIGHTED;
-            results["direct"] = _calcExposure(sensor_oris_dirs_tjs, ray_dirs_tjs1, mesh_tjs, limits, weighted1) as number[];
+            results["direct"] = _calcExposure(sensor_oris_dirs_tjs, ray_dirs_tjs1, mesh_tjs, radius, weighted1) as number[];
             break;
         case _ESolarMethod.INDIRECT_WEIGHTED:
         case _ESolarMethod.INDIRECT_UNWEIGHTED:
@@ -181,7 +181,7 @@ export function Sun(
             const ray_dirs_tjs2: THREE.Vector3[] = uscore.flatten(_solarDirsTjs(latitude, north, detail, method));
             // run the simulation
             const weighted2: boolean = method === _ESolarMethod.INDIRECT_WEIGHTED;
-            results["indirect"] = _calcExposure(sensor_oris_dirs_tjs, ray_dirs_tjs2, mesh_tjs, limits, weighted2) as number[];
+            results["indirect"] = _calcExposure(sensor_oris_dirs_tjs, ray_dirs_tjs2, mesh_tjs, radius, weighted2) as number[];
             break;
         default:
             throw new Error("Solar method not recognised.");

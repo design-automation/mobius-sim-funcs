@@ -196,6 +196,13 @@ export function isXY(arg: Txy): void {
     isNumL(arg);
     isLLen(arg, 2);
 }
+// List of Lists Three numbers
+export function isXYL(arg: Txy[]): void {
+    isList(arg);
+    for (let i = 0; i < arg.length; i++) {
+        isXY(arg[i]);
+    }
+}
 // List Number and Int
 export function isXYInt(arg: Txy): void {
     isIntL(arg);

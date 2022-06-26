@@ -80,6 +80,9 @@ export class AnalyzeFunc {
         Sun: {
             method: Enum._ESolarMethod
         },
+        Irradiance: {
+            method: Enum._ESkyMethod
+        },
     };
 
 
@@ -99,47 +102,94 @@ export class AnalyzeFunc {
     Degree({ source, entities, alpha, method }: { source: any; entities: any; alpha: any; method: any; }): any {
         return Degree(this.__model__, source, entities, alpha, method);
     }
-    Isovist(origins: TRay[] | TPlane[], entities: string | string[] | string[][], radius: number, num_rays: number): any {
-        return Isovist(this.__model__, origins, entities, radius, num_rays);
-    }
     Nearest(source: string | string[], target: string | string[], radius: number, max_neighbors: number): any {
         return Nearest(this.__model__, source, target, radius, max_neighbors);
     }
-    Raytrace(rays: TRay | TRay[] | TRay[][], entities: string | string[] | string[][], dist: number | [number, number], method: Enum._ERaytraceMethod): any {
-        return Raytrace(this.__model__, rays, entities, dist, method);
-    }
+
     ShortestPath(source: string | string[] | string[][][], target: string | string[] | string[][], 
         entities: string | string[] | string[][], method: Enum._EShortestPathMethod, result: Enum._EShortestPathResult): any {
         return ShortestPath(this.__model__, source, target, entities, method, result);
     }
-    Sky(origins: TRay[] | TPlane[] | Txyz[], detail: number, 
-        entities: string | string[] | string[][], limits: number | [number, number], method: Enum._ESkyMethod): any {
-        return Sky(this.__model__, origins, detail, entities, limits, method);
-    }
     SkyDome(origin: TRay | TPlane | Txyz, detail: number, radius: number, method: Enum._ESunPathMethod): any {
         return SkyDome(this.__model__, origin, detail, radius, method);
     }
-    Sun(origins: TRay[] | TPlane[] | Txyz[], detail: number, 
-            entities: string | string[] | string[][], limits: number | [number, number], method: Enum._ESolarMethod): any {
-        return Sun(this.__model__, origins, detail, entities, limits, method);
+
+    Raytrace(
+            rays: TRay | TRay[] | TRay[][], 
+            entities: string | string[] | string[][], 
+            dist: number | [number, number], 
+            method: Enum._ERaytraceMethod
+        ): any {
+        return Raytrace(this.__model__, rays, entities, dist, method);
     }
-    View(origins: TRay[] | TPlane[], entities: string | string[] | string[][], radius: number, num_rays: number, view_ang: number): any {
-        return View(this.__model__, origins, entities, radius, num_rays, view_ang);
+    Isovist(
+            sensors: TRay[] | TPlane[], 
+            entities: string | string[] | string[][], 
+            radius: number | [number, number], 
+            num_rays: number
+        ): any {
+        return Isovist(this.__model__, sensors, entities, radius, num_rays);
     }
-    Visibility(origins: TRay[] | TPlane[] | Txyz[], 
-            entities: string | string[] | string[][], radius: number, targets: string | string[] | string[][]): any {
-        return Visibility(this.__model__, origins, entities, radius, targets);
+    Sky(
+            sensors: TRay[] | TPlane[] | Txyz[], 
+            entities: string | string[] | string[][], 
+            radius: number | [number, number], 
+            detail: number, 
+            method: Enum._ESkyMethod
+        ): any {
+        return Sky(this.__model__, sensors, entities, radius, detail, method);
     }
-    Irradiance(origins: TRay[] | TPlane[] | Txyz[], detail: number, 
-            entities: string | string[] | string[][], limits: number | [number, number], method: Enum._ESkyMethod): any {
-        return Irradiance(this.__model__, origins, detail, entities, limits, method);
+    Sun(
+            sensors: TRay[] | TPlane[] | Txyz[], 
+            entities: string | string[] | string[][], 
+            radius: number | [number, number], 
+            detail: number, 
+            method: Enum._ESolarMethod
+        ): any {
+        return Sun(this.__model__, sensors, entities, radius, detail, method);
     }
-    Noise(origins: TRay[] | TPlane[] | Txyz[], 
-            entities: string | string[] | string[][], limits: number | [number, number], targets: string | string[] | string[][]): any {
-        return Noise(this.__model__, origins, entities, limits, targets);
+    View(
+            sensors: TRay[] | TPlane[], 
+            entities: string | string[] | string[][], 
+            radius: number | [number, number], 
+            num_rays: number, 
+            view_ang: number
+        ): any {
+        return View(this.__model__, sensors, entities, radius, num_rays, view_ang);
     }
-    Ventilation(sensors: TRay[] | TPlane[] | Txyz[], detail: number, layers: number | [number, number] | [number, number, number],
-        entities: string | string[] | string[][], limits: number | [number, number]): any {
-        return Ventilation(this.__model__, sensors, detail, layers, entities, limits);
+    Visibility(
+            sensors: TRay[] | TPlane[] | Txyz[], 
+            entities: string | string[] | string[][], 
+            radius: number | [number, number], 
+            targets: string | string[] | string[][]
+        ): any {
+        return Visibility(this.__model__, sensors, entities, radius, targets);
+    }
+    Irradiance(
+            sensors: TRay[] | TPlane[] | Txyz[], 
+            entities: string | string[] | string[][], 
+            radius: number | [number, number], 
+            method: Enum._ESkyMethod
+        ): any {
+        return Irradiance(this.__model__, sensors, entities, radius, method);
+    }
+    Ventilation(
+            sensors: TRay[] | TPlane[] | Txyz[], 
+            entities: string | string[] | string[][], 
+            radius: number | [number, number],
+            num_rays: number, 
+            layers: number | [number, number] | [number, number, number]
+        ): any {
+        return Ventilation(this.__model__, sensors, entities, radius, num_rays, layers);
+    }
+    Noise(
+            sensors: TRay[] | TPlane[] | Txyz[], 
+            entities: string | string[] | string[][], 
+            radius: number | [number, number], 
+            roads: string | string[] | string[][],
+            noise_levels: number[],
+            length: number
+        ): any {
+        return Noise(this.__model__, sensors, entities, radius, roads, noise_levels, length);
     }
 }

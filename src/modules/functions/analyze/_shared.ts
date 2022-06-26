@@ -72,7 +72,7 @@ export function _rayOrisDirsTjs(__model__: GIModel, origins: Txyz[] | TRay[] | T
             origin_xyz = origin[0] as Txyz;
             normal_xyz = vecCross(origin[1] as Txyz, origin[2] as Txyz);
         } else {
-            throw new Error("analyze.Solar: origins arg has invalid values");
+            throw new Error("Sensor has invalid values");
         }
         const normal_tjs: THREE.Vector3 = new THREE.Vector3(...normal_xyz);
         const origin_offset_xyz: Txyz = vecAdd(origin_xyz, vecMult(normal_xyz, offset));
@@ -80,6 +80,32 @@ export function _rayOrisDirsTjs(__model__: GIModel, origins: Txyz[] | TRay[] | T
         vectors_tjs.push([origin_tjs, normal_tjs]);
     }
     return vectors_tjs;
+}
+export function _rayOrisDirs(__model__: GIModel, 
+        origins: Txyz[] | TRay[] | TPlane[], offset: number): [Txyz, Txyz][] {
+    const oris_dirs: [Txyz, Txyz][] = [];
+    const is_xyz: boolean = isXYZ(origins[0]);
+    const is_ray: boolean = isRay(origins[0]);
+    const is_pln: boolean = isPlane(origins[0]);
+    for (const origin of origins) {
+        let origin_xyz: Txyz = null;
+        let normal_xyz: Txyz = null;
+        if (is_xyz) {
+            origin_xyz = origin as Txyz;
+            normal_xyz = [0, 0, 1];
+        } else if (is_ray) {
+            origin_xyz = origin[0] as Txyz;
+            normal_xyz = vecNorm(origin[1] as Txyz);
+        } else if (is_pln) {
+            origin_xyz = origin[0] as Txyz;
+            normal_xyz = vecCross(origin[1] as Txyz, origin[2] as Txyz);
+        } else {
+            throw new Error("Sensor has invalid values");
+        }
+        const origin_offset_xyz: Txyz = vecAdd(origin_xyz, vecMult(normal_xyz, offset));
+        oris_dirs.push([origin_offset_xyz, normal_xyz]);
+    }
+    return oris_dirs;
 }
 function _solarRot(day_ang: number, day: number, hour_ang: number, hour: number, latitude: number, north: number): THREE.Vector3 {
     const vec: THREE.Vector3 = new THREE.Vector3(0, 0, -1);

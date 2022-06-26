@@ -62,19 +62,19 @@ import { tregenzaSky } from './_tregenza_sky';
  * \n
  * \n
  * @param __model__
- * @param origins A list of coordinates, a list of Rays or a list of Planes, to be used as the origins for calculating exposure.
- * @param detail An integer between 1 and 4 inclusive, specifying the level of detail for the analysis.
+ * @param sensors A list of coordinates, a list of Rays or a list of Planes, to be used as the origins for calculating exposure.
  * @param entities The obstructions, faces, polygons, or collections of faces or polygons.
- * @param limits The max distance for raytracing.
+ * @param radius The max distance for raytracing.
+ * @param detail An integer between 1 and 4 inclusive, specifying the level of detail for the analysis.
  * @param method Enum, the sky method: `'weighted', 'unweighted'` or `'all'`.
  * @returns A dictionary containing solar exposure results.
  */
 export function Sky(
     __model__: GIModel,
-    origins: Txyz[] | TRay[] | TPlane[],
-    detail: number,
+    sensors: Txyz[] | TRay[] | TPlane[],
     entities: TId | TId[] | TId[][],
-    limits: number | [number, number],
+    radius: number | [number, number],
+    detail: number,
     method: _ESkyMethod
 ): any {
     entities = arrMakeFlat(entities) as TId[];
@@ -84,7 +84,7 @@ export function Sky(
     // let latitude: number = null;
     // let north: Txy = [0, 1];
     if (__model__.debug) {
-        chk.checkArgs(fn_name, "origins", origins, [chk.isXYZL, chk.isRayL, chk.isPlnL]);
+        chk.checkArgs(fn_name, "origins", sensors, [chk.isXYZL, chk.isRayL, chk.isPlnL]);
         chk.checkArgs(fn_name, "detail", detail, [chk.isInt]);
         if (detail < 0 || detail > 3) {
             throw new Error(fn_name + ': "detail" must be an integer between 0 and 3 inclusive.');
@@ -102,14 +102,14 @@ export function Sky(
     // TODO
     // --- Error Check ---
 
-    const sensor_oris_dirs_tjs: [THREE.Vector3, THREE.Vector3][] = _rayOrisDirsTjs(__model__, origins, 0.01);
+    const sensor_oris_dirs_tjs: [THREE.Vector3, THREE.Vector3][] = _rayOrisDirsTjs(__model__, sensors, 0.01);
     const [mesh_tjs, idx_to_face_i]: [THREE.Mesh, number[]] = createSingleMeshBufTjs(__model__, ents_arrs);
-    limits = Array.isArray(limits) ? limits : [0, limits];
+    radius = Array.isArray(radius) ? radius : [1, radius];
     // get the direction vectors
     const ray_dirs_tjs: THREE.Vector3[] = tregenzaSky(detail).map( vec => new THREE.Vector3(... vec) );
     // run the simulation
     const weighted: boolean = method === _ESkyMethod.WEIGHTED;
-    const results: number[] = _calcExposure(sensor_oris_dirs_tjs, ray_dirs_tjs, mesh_tjs, limits, weighted);
+    const results: number[] = _calcExposure(sensor_oris_dirs_tjs, ray_dirs_tjs, mesh_tjs, radius, weighted);
     // cleanup
     mesh_tjs.geometry.dispose();
     (mesh_tjs.material as THREE.Material).dispose();

@@ -73,7 +73,7 @@ export function Isovist(
     __model__: GIModel,
     origins: TRay[] | TPlane[],
     entities: TId | TId[] | TId[][],
-    radius: number,
+    radius: number|number[],
     num_rays: number
 ): TIsovistResult {
     entities = arrMakeFlat(entities) as TId[];
@@ -98,6 +98,7 @@ export function Isovist(
         ents_arrs = idsBreak(entities) as TEntTypeIdx[];
     }
     // --- Error Check ---
+    radius = Array.isArray(radius) ? radius : [1, radius];
     // create tjs origins for xyz, ray, or plane
     const origins_tjs: THREE.Vector3[] = _isovistOriginsTjs(__model__, origins, 0.1); // TODO Should we lift coords by 0.1 ???
     // create tjs directions
@@ -106,15 +107,15 @@ export function Isovist(
     const vec: Txyz = [1, 0, 0];
     for (let i = 0; i < num_rays; i++) {
         const dir_xyz = vecRot(vec, [0, 0, 1], (i * (Math.PI * 2)) / num_rays);
-        dirs_xyzs.push(vecSetLen(dir_xyz, radius));
+        dirs_xyzs.push(vecSetLen(dir_xyz, radius[1]));
         const dir_tjs: THREE.Vector3 = new THREE.Vector3(dir_xyz[0], dir_xyz[1], dir_xyz[2]);
         dirs_tjs.push(dir_tjs);
     }
     // calc max perim and area
     const ang = (2 * Math.PI) / num_rays;
-    const opp = radius * Math.sin(ang / 2);
+    const opp = radius[1] * Math.sin(ang / 2);
     const max_perim = num_rays * 2 * opp;
-    const max_area = num_rays * radius * Math.cos(ang / 2) * opp;
+    const max_area = num_rays * radius[1] * Math.cos(ang / 2) * opp;
     // create mesh
     const mesh: [THREE.Mesh, number[]] = createSingleMeshBufTjs(__model__, ents_arrs);
     // create data structure
@@ -136,11 +137,11 @@ export function Isovist(
         const result_isects: Txyz[] = [];
         for (let j = 0; j < dirs_tjs.length; j++) {
             const dir_tjs: THREE.Vector3 = dirs_tjs[j];
-            const ray_tjs: THREE.Raycaster = new THREE.Raycaster(origin_tjs, dir_tjs, 0, radius);
+            const ray_tjs: THREE.Raycaster = new THREE.Raycaster(origin_tjs, dir_tjs, radius[0], radius[1]);
             const isects: THREE.Intersection[] = ray_tjs.intersectObject(mesh[0], false);
             // get the result
             if (isects.length === 0) {
-                result_dists.push(radius);
+                result_dists.push(radius[1]);
                 result_isects.push(vecAdd([origin_tjs.x, origin_tjs.y, origin_tjs.z], dirs_xyzs[j]));
             } else {
                 result_dists.push(isects[0]["distance"]);
