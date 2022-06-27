@@ -81,13 +81,32 @@ export function _rayOrisDirsTjs(__model__: GIModel, origins: Txyz[] | TRay[] | T
     }
     return vectors_tjs;
 }
-export function _rayOrisDirs(__model__: GIModel, 
-        origins: Txyz[] | TRay[] | TPlane[], offset: number): [Txyz, Txyz][] {
-    const oris_dirs: [Txyz, Txyz][] = [];
-    const is_xyz: boolean = isXYZ(origins[0]);
-    const is_ray: boolean = isRay(origins[0]);
-    const is_pln: boolean = isPlane(origins[0]);
-    for (const origin of origins) {
+export function _getSensorRays(
+        sensors: Txyz[] | TRay[] | TPlane[] | Txyz[][] | TRay[][] | TPlane[][],
+        offset: number): TRay[][] {
+    const is_xyz: boolean = isXYZ(sensors[0]);
+    const is_ray: boolean = isRay(sensors[0]);
+    const is_pln: boolean = isPlane(sensors[0]);
+    if (!is_xyz && !is_ray && !is_pln) {
+        const sensors_lists = sensors as Txyz[][] | TRay[][] | TPlane[][];
+        const rays_lists: TRay[][] = []; 
+        for (const sensors_list of sensors_lists) {
+            const rays: TRay[] = _getSensorRaysFromList(sensors_list, offset);
+            rays_lists.push(rays);
+        }
+        return rays_lists;
+    }
+    const sensors_list = sensors as Txyz[] | TRay[] | TPlane[];
+    return [_getSensorRaysFromList(sensors_list, offset), []];
+}
+function _getSensorRaysFromList( 
+        sensors: Txyz[] | TRay[] | TPlane[],
+        offset: number): TRay[] {
+    const rays: TRay[] = [];
+    const is_xyz: boolean = isXYZ(sensors[0]);
+    const is_ray: boolean = isRay(sensors[0]);
+    const is_pln: boolean = isPlane(sensors[0]);
+    for (const origin of sensors) {
         let origin_xyz: Txyz = null;
         let normal_xyz: Txyz = null;
         if (is_xyz) {
@@ -103,9 +122,9 @@ export function _rayOrisDirs(__model__: GIModel,
             throw new Error("Sensor has invalid values");
         }
         const origin_offset_xyz: Txyz = vecAdd(origin_xyz, vecMult(normal_xyz, offset));
-        oris_dirs.push([origin_offset_xyz, normal_xyz]);
+        rays.push([origin_offset_xyz, normal_xyz]);
     }
-    return oris_dirs;
+    return rays;
 }
 function _solarRot(day_ang: number, day: number, hour_ang: number, hour: number, latitude: number, north: number): THREE.Vector3 {
     const vec: THREE.Vector3 = new THREE.Vector3(0, 0, -1);

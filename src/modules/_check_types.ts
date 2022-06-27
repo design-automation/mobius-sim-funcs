@@ -241,8 +241,14 @@ export function isPlnL(arg: TPlane[]): void {
     isList(arg);
     for (let i = 0; i < arg.length; i++) {
     isPln(arg[i]);
-}
     }
+}
+export function isPlnLL(arg: TPlane[][]): void {
+    isList(arg);
+    for (let i = 0; i < arg.length; i++) {
+        isPlnL(arg[i]);
+    }
+}
 export function isBBox(arg: TBBox): void { // TBbox = [Txyz, Txyz, Txyz, Txyz]
     isXYZL(arg);
     isLLen(arg, 4);

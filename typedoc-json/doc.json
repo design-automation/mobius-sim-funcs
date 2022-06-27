@@ -1123,6 +1123,209 @@
 							}
 						},
 						{
+							"id": 245,
+							"name": "CRTN",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "modules/functions/analyze/index.ts",
+									"line": 185,
+									"character": 4
+								}
+							],
+							"signatures": [
+								{
+									"id": 246,
+									"name": "CRTN",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"parameters": [
+										{
+											"id": 247,
+											"name": "sensors",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "union",
+												"types": [
+													{
+														"type": "array",
+														"elementType": {
+															"type": "reference",
+															"qualifiedName": "TRay",
+															"package": "@design-automation/mobius-sim",
+															"name": "TRay"
+														}
+													},
+													{
+														"type": "array",
+														"elementType": {
+															"type": "array",
+															"elementType": {
+																"type": "reference",
+																"qualifiedName": "TRay",
+																"package": "@design-automation/mobius-sim",
+																"name": "TRay"
+															}
+														}
+													},
+													{
+														"type": "array",
+														"elementType": {
+															"type": "reference",
+															"qualifiedName": "TPlane",
+															"package": "@design-automation/mobius-sim",
+															"name": "TPlane"
+														}
+													},
+													{
+														"type": "array",
+														"elementType": {
+															"type": "array",
+															"elementType": {
+																"type": "reference",
+																"qualifiedName": "TPlane",
+																"package": "@design-automation/mobius-sim",
+																"name": "TPlane"
+															}
+														}
+													}
+												]
+											}
+										},
+										{
+											"id": 248,
+											"name": "entities",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "union",
+												"types": [
+													{
+														"type": "intrinsic",
+														"name": "string"
+													},
+													{
+														"type": "array",
+														"elementType": {
+															"type": "intrinsic",
+															"name": "string"
+														}
+													},
+													{
+														"type": "array",
+														"elementType": {
+															"type": "array",
+															"elementType": {
+																"type": "intrinsic",
+																"name": "string"
+															}
+														}
+													}
+												]
+											}
+										},
+										{
+											"id": 249,
+											"name": "radius",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "union",
+												"types": [
+													{
+														"type": "intrinsic",
+														"name": "number"
+													},
+													{
+														"type": "tuple",
+														"elements": [
+															{
+																"type": "intrinsic",
+																"name": "number"
+															},
+															{
+																"type": "intrinsic",
+																"name": "number"
+															}
+														]
+													}
+												]
+											}
+										},
+										{
+											"id": 250,
+											"name": "roads",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "union",
+												"types": [
+													{
+														"type": "intrinsic",
+														"name": "string"
+													},
+													{
+														"type": "array",
+														"elementType": {
+															"type": "intrinsic",
+															"name": "string"
+														}
+													},
+													{
+														"type": "array",
+														"elementType": {
+															"type": "array",
+															"elementType": {
+																"type": "intrinsic",
+																"name": "string"
+															}
+														}
+													}
+												]
+											}
+										},
+										{
+											"id": 251,
+											"name": "noise_levels",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "array",
+												"elementType": {
+													"type": "intrinsic",
+													"name": "number"
+												}
+											}
+										},
+										{
+											"id": 252,
+											"name": "length",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "intrinsic",
+												"name": "number"
+											}
+										}
+									],
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								}
+							]
+						},
+						{
 							"id": 153,
 							"name": "Centrality",
 							"kind": 2048,
@@ -1881,194 +2084,6 @@
 										{
 											"id": 179,
 											"name": "max_neighbors",
-											"kind": 32768,
-											"kindString": "Parameter",
-											"flags": {},
-											"type": {
-												"type": "intrinsic",
-												"name": "number"
-											}
-										}
-									],
-									"type": {
-										"type": "intrinsic",
-										"name": "any"
-									}
-								}
-							]
-						},
-						{
-							"id": 245,
-							"name": "Noise",
-							"kind": 2048,
-							"kindString": "Method",
-							"flags": {},
-							"sources": [
-								{
-									"fileName": "modules/functions/analyze/index.ts",
-									"line": 185,
-									"character": 4
-								}
-							],
-							"signatures": [
-								{
-									"id": 246,
-									"name": "Noise",
-									"kind": 4096,
-									"kindString": "Call signature",
-									"flags": {},
-									"parameters": [
-										{
-											"id": 247,
-											"name": "sensors",
-											"kind": 32768,
-											"kindString": "Parameter",
-											"flags": {},
-											"type": {
-												"type": "union",
-												"types": [
-													{
-														"type": "array",
-														"elementType": {
-															"type": "reference",
-															"qualifiedName": "TRay",
-															"package": "@design-automation/mobius-sim",
-															"name": "TRay"
-														}
-													},
-													{
-														"type": "array",
-														"elementType": {
-															"type": "reference",
-															"qualifiedName": "TPlane",
-															"package": "@design-automation/mobius-sim",
-															"name": "TPlane"
-														}
-													},
-													{
-														"type": "array",
-														"elementType": {
-															"type": "reference",
-															"qualifiedName": "Txyz",
-															"package": "@design-automation/mobius-sim",
-															"name": "Txyz"
-														}
-													}
-												]
-											}
-										},
-										{
-											"id": 248,
-											"name": "entities",
-											"kind": 32768,
-											"kindString": "Parameter",
-											"flags": {},
-											"type": {
-												"type": "union",
-												"types": [
-													{
-														"type": "intrinsic",
-														"name": "string"
-													},
-													{
-														"type": "array",
-														"elementType": {
-															"type": "intrinsic",
-															"name": "string"
-														}
-													},
-													{
-														"type": "array",
-														"elementType": {
-															"type": "array",
-															"elementType": {
-																"type": "intrinsic",
-																"name": "string"
-															}
-														}
-													}
-												]
-											}
-										},
-										{
-											"id": 249,
-											"name": "radius",
-											"kind": 32768,
-											"kindString": "Parameter",
-											"flags": {},
-											"type": {
-												"type": "union",
-												"types": [
-													{
-														"type": "intrinsic",
-														"name": "number"
-													},
-													{
-														"type": "tuple",
-														"elements": [
-															{
-																"type": "intrinsic",
-																"name": "number"
-															},
-															{
-																"type": "intrinsic",
-																"name": "number"
-															}
-														]
-													}
-												]
-											}
-										},
-										{
-											"id": 250,
-											"name": "roads",
-											"kind": 32768,
-											"kindString": "Parameter",
-											"flags": {},
-											"type": {
-												"type": "union",
-												"types": [
-													{
-														"type": "intrinsic",
-														"name": "string"
-													},
-													{
-														"type": "array",
-														"elementType": {
-															"type": "intrinsic",
-															"name": "string"
-														}
-													},
-													{
-														"type": "array",
-														"elementType": {
-															"type": "array",
-															"elementType": {
-																"type": "intrinsic",
-																"name": "string"
-															}
-														}
-													}
-												]
-											}
-										},
-										{
-											"id": 251,
-											"name": "noise_levels",
-											"kind": 32768,
-											"kindString": "Parameter",
-											"flags": {},
-											"type": {
-												"type": "array",
-												"elementType": {
-													"type": "intrinsic",
-													"name": "number"
-												}
-											}
-										},
-										{
-											"id": 252,
-											"name": "length",
 											"kind": 32768,
 											"kindString": "Parameter",
 											"flags": {},
@@ -3147,6 +3162,18 @@
 													{
 														"type": "array",
 														"elementType": {
+															"type": "array",
+															"elementType": {
+																"type": "reference",
+																"qualifiedName": "TRay",
+																"package": "@design-automation/mobius-sim",
+																"name": "TRay"
+															}
+														}
+													},
+													{
+														"type": "array",
+														"elementType": {
 															"type": "reference",
 															"qualifiedName": "TPlane",
 															"package": "@design-automation/mobius-sim",
@@ -3156,10 +3183,13 @@
 													{
 														"type": "array",
 														"elementType": {
-															"type": "reference",
-															"qualifiedName": "Txyz",
-															"package": "@design-automation/mobius-sim",
-															"name": "Txyz"
+															"type": "array",
+															"elementType": {
+																"type": "reference",
+																"qualifiedName": "TPlane",
+																"package": "@design-automation/mobius-sim",
+																"name": "TPlane"
+															}
 														}
 													}
 												]
@@ -3289,13 +3319,13 @@
 							"title": "Methods",
 							"kind": 2048,
 							"children": [
+								245,
 								153,
 								159,
 								166,
 								232,
 								199,
 								174,
-								245,
 								193,
 								180,
 								205,
@@ -3312,6 +3342,272 @@
 							"fileName": "modules/functions/analyze/index.ts",
 							"line": 56,
 							"character": 13
+						}
+					]
+				},
+				{
+					"id": 102,
+					"name": "CRTN",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "modules/functions/analyze/CRTN.ts",
+							"line": 63,
+							"character": 16
+						}
+					],
+					"signatures": [
+						{
+							"id": 103,
+							"name": "CRTN",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Calculates the noise impact on a set of sensors from a set of noise sources, using the CRTN\nmethod (Calculation of Road Traffic Noise, 1988).\n\\n\nTypically, the sensors are created as centroids of a set of windows. The noise sources are\ntypically polylines placed along road centrelines. The CRTN method psecified that the\ncentrelines should be inset 3.5 meters from the road kerb that is closest to the sensors.\n\\n\nThe noise impact is calculated by shooting rays out from the sensors towards the noise sources.\nThe 'radius' argument defines the maximum radius of the calculation.\n(The radius is used to define the maximum distance for shooting the rays.)\n\\n\nReturns a dictionary containing the noise level values, in decibels (dB).\n\\n",
+								"returns": "A dictionary containing different visibility metrics.\n"
+							},
+							"parameters": [
+								{
+									"id": 104,
+									"name": "__model__",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {},
+									"type": {
+										"type": "reference",
+										"qualifiedName": "GIModel",
+										"package": "@design-automation/mobius-sim",
+										"name": "GIModel"
+									}
+								},
+								{
+									"id": 105,
+									"name": "sensors",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "A list of Rays or Planes, to be used as the origins for calculating the unobstructed views."
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "array",
+												"elementType": {
+													"type": "reference",
+													"qualifiedName": "TRay",
+													"package": "@design-automation/mobius-sim",
+													"name": "TRay"
+												}
+											},
+											{
+												"type": "array",
+												"elementType": {
+													"type": "array",
+													"elementType": {
+														"type": "reference",
+														"qualifiedName": "TRay",
+														"package": "@design-automation/mobius-sim",
+														"name": "TRay"
+													}
+												}
+											},
+											{
+												"type": "array",
+												"elementType": {
+													"type": "reference",
+													"qualifiedName": "TPlane",
+													"package": "@design-automation/mobius-sim",
+													"name": "TPlane"
+												}
+											},
+											{
+												"type": "array",
+												"elementType": {
+													"type": "array",
+													"elementType": {
+														"type": "reference",
+														"qualifiedName": "TPlane",
+														"package": "@design-automation/mobius-sim",
+														"name": "TPlane"
+													}
+												}
+											}
+										]
+									}
+								},
+								{
+									"id": 106,
+									"name": "entities",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "The obstructions: faces, polygons, or collections."
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "string"
+											},
+											{
+												"type": "array",
+												"elementType": {
+													"type": "intrinsic",
+													"name": "string"
+												}
+											},
+											{
+												"type": "array",
+												"elementType": {
+													"type": "array",
+													"elementType": {
+														"type": "intrinsic",
+														"name": "string"
+													}
+												}
+											}
+										]
+									}
+								},
+								{
+									"id": 107,
+									"name": "radius",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "The maximum radius of the visibility analysis."
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "number"
+											},
+											{
+												"type": "tuple",
+												"elements": [
+													{
+														"type": "intrinsic",
+														"name": "number"
+													},
+													{
+														"type": "intrinsic",
+														"name": "number"
+													}
+												]
+											}
+										]
+									}
+								},
+								{
+									"id": 108,
+									"name": "roads",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "Polylines defining the road segments as noise sources."
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "string"
+											},
+											{
+												"type": "array",
+												"elementType": {
+													"type": "intrinsic",
+													"name": "string"
+												}
+											},
+											{
+												"type": "array",
+												"elementType": {
+													"type": "array",
+													"elementType": {
+														"type": "intrinsic",
+														"name": "string"
+													}
+												}
+											}
+										]
+									}
+								},
+								{
+									"id": 109,
+									"name": "noise_levels",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "The noise level for each road polyline, in dB. Either a single number for all\nroads, or a list of numbers matching the list of roads."
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "number"
+											},
+											{
+												"type": "array",
+												"elementType": {
+													"type": "intrinsic",
+													"name": "number"
+												}
+											}
+										]
+									}
+								},
+								{
+									"id": 110,
+									"name": "length",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "The length of each road segment, in meters."
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "union",
+								"types": [
+									{
+										"type": "reference",
+										"name": "TNoiseResult"
+									},
+									{
+										"type": "tuple",
+										"elements": [
+											{
+												"type": "reference",
+												"name": "TNoiseResult"
+											},
+											{
+												"type": "reference",
+												"name": "TNoiseResult"
+											}
+										]
+									}
+								]
+							}
 						}
 					]
 				},
@@ -4376,227 +4672,6 @@
 										}
 									]
 								}
-							}
-						}
-					]
-				},
-				{
-					"id": 102,
-					"name": "Noise",
-					"kind": 64,
-					"kindString": "Function",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "modules/functions/analyze/Noise.ts",
-							"line": 61,
-							"character": 16
-						}
-					],
-					"signatures": [
-						{
-							"id": 103,
-							"name": "Noise",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"comment": {
-								"shortText": "Calculates the noise impact on a set of sensors from a set of noise sources.\n\\n\nTypically, the sensors are created as centroids of a set of windows. The noise sources are\ntypically placed along road centrelines.\n\\n\nThe noise impact is calculated by shooting rays out from the sensors towards the noise sources.\nThe 'radius' argument defines the maximum radius of the calculation.\n(The radius is used to define the maximum distance for shooting the rays.)\n\\n\nReturns a dictionary containing different metrics.\n\\n",
-								"returns": "A dictionary containing different visibility metrics.\n"
-							},
-							"parameters": [
-								{
-									"id": 104,
-									"name": "__model__",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {},
-									"type": {
-										"type": "reference",
-										"qualifiedName": "GIModel",
-										"package": "@design-automation/mobius-sim",
-										"name": "GIModel"
-									}
-								},
-								{
-									"id": 105,
-									"name": "sensors",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"shortText": "A list of Rays or Planes, to be used as the origins for calculating the unobstructed views."
-									},
-									"type": {
-										"type": "union",
-										"types": [
-											{
-												"type": "array",
-												"elementType": {
-													"type": "reference",
-													"qualifiedName": "TRay",
-													"package": "@design-automation/mobius-sim",
-													"name": "TRay"
-												}
-											},
-											{
-												"type": "array",
-												"elementType": {
-													"type": "reference",
-													"qualifiedName": "TPlane",
-													"package": "@design-automation/mobius-sim",
-													"name": "TPlane"
-												}
-											},
-											{
-												"type": "array",
-												"elementType": {
-													"type": "reference",
-													"qualifiedName": "Txyz",
-													"package": "@design-automation/mobius-sim",
-													"name": "Txyz"
-												}
-											}
-										]
-									}
-								},
-								{
-									"id": 106,
-									"name": "entities",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"shortText": "The obstructions: faces, polygons, or collections."
-									},
-									"type": {
-										"type": "union",
-										"types": [
-											{
-												"type": "intrinsic",
-												"name": "string"
-											},
-											{
-												"type": "array",
-												"elementType": {
-													"type": "intrinsic",
-													"name": "string"
-												}
-											},
-											{
-												"type": "array",
-												"elementType": {
-													"type": "array",
-													"elementType": {
-														"type": "intrinsic",
-														"name": "string"
-													}
-												}
-											}
-										]
-									}
-								},
-								{
-									"id": 107,
-									"name": "radius",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"shortText": "The maximum radius of the visibility analysis."
-									},
-									"type": {
-										"type": "union",
-										"types": [
-											{
-												"type": "intrinsic",
-												"name": "number"
-											},
-											{
-												"type": "tuple",
-												"elements": [
-													{
-														"type": "intrinsic",
-														"name": "number"
-													},
-													{
-														"type": "intrinsic",
-														"name": "number"
-													}
-												]
-											}
-										]
-									}
-								},
-								{
-									"id": 108,
-									"name": "roads",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"shortText": "Polylines defining the road segments as noise sources."
-									},
-									"type": {
-										"type": "union",
-										"types": [
-											{
-												"type": "intrinsic",
-												"name": "string"
-											},
-											{
-												"type": "array",
-												"elementType": {
-													"type": "intrinsic",
-													"name": "string"
-												}
-											},
-											{
-												"type": "array",
-												"elementType": {
-													"type": "array",
-													"elementType": {
-														"type": "intrinsic",
-														"name": "string"
-													}
-												}
-											}
-										]
-									}
-								},
-								{
-									"id": 109,
-									"name": "noise_levels",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"type": {
-										"type": "array",
-										"elementType": {
-											"type": "intrinsic",
-											"name": "number"
-										}
-									}
-								},
-								{
-									"id": 110,
-									"name": "length",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"shortText": "The length of each road segment."
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								}
-							],
-							"type": {
-								"type": "reference",
-								"name": "TNoiseResult"
 							}
 						}
 					]
@@ -5883,7 +5958,7 @@
 					"sources": [
 						{
 							"fileName": "modules/functions/analyze/Visibility.ts",
-							"line": 61,
+							"line": 54,
 							"character": 16
 						}
 					],
@@ -5895,7 +5970,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Calculates the visibility of a set of target positions from a set of origins.\n\\n\nTypically, the origins are created as centroids of a set of windows. The targets are a set of positions\nwhose visibility is to be analysed.\n\\n\nThe visibility is calculated by shooting rays out from the origins towards the targets.\nThe 'radius' argument defines the maximum radius of the visibility.\n(The radius is used to define the maximum distance for shooting the rays.)\n\\n\nReturns a dictionary containing different visibility metrics.\n\\n\n\\n",
+								"shortText": "Calculates the visibility of a set of target positions from a set of origins.\n\\n\nTypically, the origins are created as centroids of a set of windows. The targets are a set of\npositions whose visibility is to be analysed.\n\\n\nThe visibility is calculated by shooting rays out from the origins towards the targets.\nThe 'radius' argument defines the maximum radius of the visibility.\n(The radius is used to define the maximum distance for shooting the rays.)\n\\n\nReturns a dictionary containing different visibility metrics.\n\\n\n\\n",
 								"returns": "A dictionary containing different visibility metrics.\n"
 							},
 							"parameters": [
@@ -5920,7 +5995,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "A list of Rays or Planes, to be used as the origins for calculating the unobstructed views."
+										"shortText": "A list of Rays or Planes, to be used as the origins for calculating the\nunobstructed views."
 									},
 									"type": {
 										"type": "union",
@@ -5937,6 +6012,18 @@
 											{
 												"type": "array",
 												"elementType": {
+													"type": "array",
+													"elementType": {
+														"type": "reference",
+														"qualifiedName": "TRay",
+														"package": "@design-automation/mobius-sim",
+														"name": "TRay"
+													}
+												}
+											},
+											{
+												"type": "array",
+												"elementType": {
 													"type": "reference",
 													"qualifiedName": "TPlane",
 													"package": "@design-automation/mobius-sim",
@@ -5946,10 +6033,13 @@
 											{
 												"type": "array",
 												"elementType": {
-													"type": "reference",
-													"qualifiedName": "Txyz",
-													"package": "@design-automation/mobius-sim",
-													"name": "Txyz"
+													"type": "array",
+													"elementType": {
+														"type": "reference",
+														"qualifiedName": "TPlane",
+														"package": "@design-automation/mobius-sim",
+														"name": "TPlane"
+													}
 												}
 											}
 										]
@@ -6061,8 +6151,26 @@
 								}
 							],
 							"type": {
-								"type": "reference",
-								"name": "TVisibilityResult"
+								"type": "union",
+								"types": [
+									{
+										"type": "reference",
+										"name": "TVisibilityResult"
+									},
+									{
+										"type": "tuple",
+										"elements": [
+											{
+												"type": "reference",
+												"name": "TVisibilityResult"
+											},
+											{
+												"type": "reference",
+												"name": "TVisibilityResult"
+											}
+										]
+									}
+								]
 							}
 						}
 					]
@@ -6080,13 +6188,13 @@
 					"title": "Functions",
 					"kind": 64,
 					"children": [
+						102,
 						73,
 						58,
 						66,
 						95,
 						9,
 						39,
-						102,
 						2,
 						50,
 						16,

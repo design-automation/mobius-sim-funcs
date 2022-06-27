@@ -19,7 +19,7 @@ import { Sun } from './Sun';
 import { View } from './View';
 import { Visibility } from './Visibility';
 import { Irradiance } from './Irradiance';
-import { Noise } from './Noise';
+import { CRTN } from './CRTN';
 import { Ventilation } from './Ventilation';
 
 export { Raytrace }
@@ -48,7 +48,7 @@ export { Visibility }
 
 export { Irradiance }
 
-export { Noise }
+export { CRTN }
 
 export { Ventilation }
 
@@ -158,7 +158,7 @@ export class AnalyzeFunc {
         return View(this.__model__, sensors, entities, radius, num_rays, view_ang);
     }
     Visibility(
-            sensors: TRay[] | TPlane[] | Txyz[], 
+            sensors: TRay[] | TPlane[] | TRay[][] | TPlane[][] , 
             entities: string | string[] | string[][], 
             radius: number | [number, number], 
             targets: string | string[] | string[][]
@@ -182,14 +182,14 @@ export class AnalyzeFunc {
         ): any {
         return Ventilation(this.__model__, sensors, entities, radius, num_rays, layers);
     }
-    Noise(
-            sensors: TRay[] | TPlane[] | Txyz[], 
+    CRTN(
+            sensors: TRay[] | TPlane[] | TRay[][] | TPlane[][], 
             entities: string | string[] | string[][], 
             radius: number | [number, number], 
             roads: string | string[] | string[][],
             noise_levels: number[],
             length: number
         ): any {
-        return Noise(this.__model__, sensors, entities, radius, roads, noise_levels, length);
+        return CRTN(this.__model__, sensors, entities, radius, roads, noise_levels, length);
     }
 }

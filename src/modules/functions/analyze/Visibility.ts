@@ -7,26 +7,18 @@ import {
     EEntType,
     GIModel,
     idsBreak,
-    isPlane,
-    isRay,
-    isXYZ,
-    multMatrix,
     TEntTypeIdx,
     TId,
     TPlane,
     TRay,
     Txyz,
-    vecAdd,
-    vecCross,
+    vecDot,
     vecFromTo,
     vecNorm,
-    vecRot,
-    vecSetLen,
-    xformMatrix,
 } from '@design-automation/mobius-sim';
 import { checkIDs, ID } from '../../_check_ids';
 import * as chk from '../../_check_types';
-import { Ray } from '../visualize/Ray';
+import { _getSensorRays } from './_shared';
 // import { Plane } from '../visualize/Plane';
 
 // ================================================================================================
@@ -41,8 +33,8 @@ interface TVisibilityResult {
 /**
  * Calculates the visibility of a set of target positions from a set of origins.
  * \n
- * Typically, the origins are created as centroids of a set of windows. The targets are a set of positions
- * whose visibility is to be analysed.
+ * Typically, the origins are created as centroids of a set of windows. The targets are a set of 
+ * positions whose visibility is to be analysed.
  * \n
  * The visibility is calculated by shooting rays out from the origins towards the targets.
  * The 'radius' argument defines the maximum radius of the visibility.
@@ -52,7 +44,8 @@ interface TVisibilityResult {
  * \n
  * \n
  * @param __model__
- * @param sensors A list of Rays or Planes, to be used as the origins for calculating the unobstructed views.
+ * @param sensors A list of Rays or Planes, to be used as the origins for calculating the 
+ * unobstructed views.
  * @param entities The obstructions: faces, polygons, or collections.
  * @param radius The maximum radius of the visibility analysis.
  * @param targets The target positions.
@@ -60,11 +53,11 @@ interface TVisibilityResult {
  */
 export function Visibility(
     __model__: GIModel,
-    sensors: Txyz[] | TRay[] | TPlane[],
+    sensors: TRay[] | TPlane[] | TRay[][] | TPlane[][],
     entities: TId | TId[] | TId[][],
     radius: number|[number,number],
     targets: TId | TId[] | TId[][],
-): TVisibilityResult {
+): TVisibilityResult | [TVisibilityResult, TVisibilityResult] {
     entities = arrMakeFlat(entities) as TId[];
     targets = arrMakeFlat(targets) as TId[];
     // --- Error Check ---
@@ -72,18 +65,25 @@ export function Visibility(
     let ents_arrs1: TEntTypeIdx[];
     let ents_arrs2: TEntTypeIdx[];
     if (__model__.debug) {
-        chk.checkArgs(fn_name, "origins", sensors, [chk.isRayL, chk.isPlnL]);
-        ents_arrs1 = checkIDs(__model__, fn_name, "entities", entities, [ID.isIDL1], [EEntType.PGON, EEntType.COLL]) as TEntTypeIdx[];
+        chk.checkArgs(fn_name, "origins", sensors, 
+            [chk.isRayL, chk.isPlnL, chk.isRayLL, chk.isPlnLL]);
+        ents_arrs1 = checkIDs(__model__, fn_name, "entities", entities, 
+            [ID.isIDL1], 
+            [EEntType.PGON, EEntType.COLL]) as TEntTypeIdx[];
         chk.checkArgs(fn_name, "radius", radius, [chk.isNum, chk.isNumL]);
         if (Array.isArray(radius)) {
             if (radius.length !== 2) {
-                throw new Error('If "radius" is a list, it must have a length of two: [min_dist, max_dist].');
+                throw new Error('If "radius" is a list, it must have a length of two: \
+                [min_dist, max_dist].');
             }
             if (radius[0] >= radius[1]) {
-                throw new Error('If "radius" is a list, the "min_dist" must be less than the "max_dist": [min_dist, max_dist].');
+                throw new Error('If "radius" is a list, the "min_dist" must be less than \
+                the "max_dist": [min_dist, max_dist].');
             }
         }
-        ents_arrs2 = checkIDs(__model__, fn_name, "targets", targets, [ID.isIDL1], null) as TEntTypeIdx[];
+        ents_arrs2 = checkIDs(__model__, fn_name, "targets", targets, 
+            [ID.isIDL1], 
+            null) as TEntTypeIdx[];
     } else {
         ents_arrs1 = idsBreak(entities) as TEntTypeIdx[];
         ents_arrs2 = idsBreak(targets) as TEntTypeIdx[];
@@ -91,8 +91,7 @@ export function Visibility(
     // --- Error Check ---
     radius = Array.isArray(radius) ? radius : [1, radius];
     // get planes for each sensor point
-    const sensors_xyz: Txyz[] = _getOriginXYZs(sensors, 0.01); // Offset by 0.01
-    // Plane(__model__, sensors, 0.4);
+    const sensor_rays: TRay[][] = _getSensorRays(sensors, 0.01); // offset by 0.01
     // get the target positions
     const target_posis_i: Set<number> = new Set();
     for (const [ent_type, ent_idx] of ents_arrs2) {
@@ -105,9 +104,34 @@ export function Visibility(
             }
         }
     }
-    const targets_xyz: Txyz[] = __model__.modeldata.attribs.get.getEntAttribVal(EEntType.POSI, Array.from(target_posis_i), 'xyz') as Txyz[];
+    const targets_xyz: Txyz[] = __model__.modeldata.attribs.get.getEntAttribVal(
+        EEntType.POSI, Array.from(target_posis_i), 'xyz') as Txyz[];
     // create mesh
-    const [mesh_tjs, idx_to_face_i]: [THREE.Mesh, number[]] = createSingleMeshBufTjs(__model__, ents_arrs1);
+    const [mesh_tjs, _]: [THREE.Mesh, number[]] = createSingleMeshBufTjs(__model__, ents_arrs1);
+    // run simulation
+    const results0: TVisibilityResult = _calcVisibility(__model__, 
+        sensor_rays[0], targets_xyz, mesh_tjs, radius, false);
+    const results1: TVisibilityResult = _calcVisibility(__model__, 
+        sensor_rays[1], targets_xyz, mesh_tjs, radius, true);
+    // cleanup
+    mesh_tjs.geometry.dispose();
+    (mesh_tjs.material as THREE.Material).dispose();
+    // return the results
+    if (results0 && results1) { return [results0, results1]; }
+    if (results0) { return results0; }
+    if (results1) { return results1; }
+    return null;
+}
+// ================================================================================================
+function _calcVisibility(
+    __model__: GIModel,
+    sensor_rays: TRay[],
+    targets_xyz: Txyz[],
+    mesh_tjs: THREE.Mesh,
+    radius: [number, number],
+    generate_lines: boolean
+): TVisibilityResult {
+    if (sensor_rays.length === 0) { return null; }
     // create data structure
     const result: TVisibilityResult = {};
     result.avg_dist = [];
@@ -121,13 +145,17 @@ export function Visibility(
     const dir_tjs: THREE.Vector3 = new THREE.Vector3();
     const ray_tjs: THREE.Raycaster = new THREE.Raycaster(origin_tjs, dir_tjs, radius[0], radius[1]);
     // shoot rays
-    for (const sensor_xyz of sensors_xyz) {
+    for (const [sensor_xyz, sensor_dir] of sensor_rays) {
         origin_tjs.x = sensor_xyz[0]; origin_tjs.y = sensor_xyz[1]; origin_tjs.z = sensor_xyz[2]; 
         const result_dists: number[] = [];
         let result_count = 0;
         const all_dists: number[] = [];
+        const hit_targets_xyz: Txyz[] = [];
         for (const target_xyz of targets_xyz) {
             const dir: Txyz = vecNorm(vecFromTo(sensor_xyz, target_xyz));
+            // check if target is behind sensor
+            if (vecDot(dir, sensor_dir) <= 0) { continue; } 
+            // shoot Raycaster
             dir_tjs.x = dir[0]; dir_tjs.y = dir[1]; dir_tjs.z = dir[2];
             // Ray(__model__, [sensor_xyz, dir], 1);
             const isects: THREE.Intersection[] = ray_tjs.intersectObject(mesh_tjs, false);
@@ -138,6 +166,7 @@ export function Visibility(
             if (isects.length === 0) {
                 result_dists.push(dist);
                 result_count += 1;
+                hit_targets_xyz.push(target_xyz);
             }
         }
         if (result_count > 0) {
@@ -161,55 +190,20 @@ export function Visibility(
             result.count_ratio.push(0);
             result.distance_ratio.push(0);
         }
-    }
-    // cleanup
-    mesh_tjs.geometry.dispose();
-    (mesh_tjs.material as THREE.Material).dispose();
-    // return the results
-    return result;
-}
-// ================================================================================================
-function _getOriginXYZs(origins: Txyz[] | TRay[] | TPlane[], offset: number): Txyz[] {
-    if (isXYZ(origins[0])) {
-        // no offset in this case
-        return origins as Txyz[];
-    }
-    const xyzs: Txyz[] = [];
-    const is_ray: boolean = isRay(origins[0]);
-    const is_pln: boolean = isPlane(origins[0]);
-    for (const origin of origins) {
-        if (is_ray) {
-            xyzs.push( vecAdd(origin[0] as Txyz, vecSetLen(origin[1] as Txyz, offset)) );
-        } else if (is_pln) {
-            xyzs.push( vecAdd(origin[0] as Txyz, 
-                vecSetLen(vecCross(origin[1] as Txyz, origin[2] as Txyz), offset)) );
-        } else {
-            throw new Error("analyze.Visibiltiy: origins arg contains an invalid value: " + origin);
+        // generate calculation lines
+        if (generate_lines) {
+            const posi0_i: number = __model__.modeldata.geom.add.addPosi();
+            __model__.modeldata.attribs.set.setEntAttribVal(
+                    EEntType.POSI, posi0_i, 'xyz', sensor_xyz);
+            for (const hit_target_xyz of hit_targets_xyz) {
+                const posi1_i: number = __model__.modeldata.geom.add.addPosi();
+                __model__.modeldata.attribs.set.setEntAttribVal(
+                        EEntType.POSI, posi1_i, 'xyz', hit_target_xyz);
+                __model__.modeldata.geom.add.addPline([posi0_i, posi1_i], false);
+            }
         }
     }
-    return xyzs;
-}
-// ================================================================================================
-function _getDirs(num_rays: number, view_ang: number): Txyz[] {
-    const dirs: Txyz[] = [];
-    const ang: number = view_ang / (num_rays - 1);
-    const start_ang: number = ang * (num_rays - 1) * -0.5;
-    for (let i = 0; i < num_rays; i++) {
-        dirs.push( vecRot([0,0,1], [0,1,0], start_ang + (ang * i)) );
-    }
-    return dirs;
-}
-// ================================================================================================
-function _vecXForm(vecs: Txyz[], pln: TPlane): Txyz[] {
-    // transform vectors from the global CS to the local CS
-    const pln2: TPlane = [[0,0,0], pln[1], pln[2]];
-    const matrix = xformMatrix(pln2, false);
-    return vecs.map( vec => multMatrix(vec, matrix));
-}
-// ================================================================================================
-function _triArea(a: number, b: number, c: number): number {
-    // calc area using Heron's formula
-    const s = (a + b + c) / 2;
-    return Math.sqrt(s * (s - a) * (s - b) * (s - c));
+    // return the results
+    return result;
 }
 // ================================================================================================

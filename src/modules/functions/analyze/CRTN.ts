@@ -23,15 +23,12 @@ import {
     vecLen,
     vecMult,
     vecNorm,
-    vecRev,
-    vecSetLen,
-    vecSub,
 } from '@design-automation/mobius-sim';
 import { checkIDs, ID } from '../../_check_ids';
 import * as chk from '../../_check_types';
 import * as d3poly from 'd3-polygon';
 import lodash from 'lodash';
-import { _rayOrisDirs as _getSensorRays, _rayOrisDirsTjs } from './_shared';
+import { _getSensorRays, _rayOrisDirsTjs } from './_shared';
 // import { Plane } from '../visualize/Plane';
 const EPS = 1e-6;
 // ================================================================================================
@@ -40,16 +37,18 @@ interface TNoiseResult {
 }
 // =================================================================================================
 /**
- * Calculates the noise impact on a set of sensors from a set of noise sources.
+ * Calculates the noise impact on a set of sensors from a set of noise sources, using the CRTN
+ * method (Calculation of Road Traffic Noise, 1988).
  * \n
  * Typically, the sensors are created as centroids of a set of windows. The noise sources are 
- * typically placed along road centrelines. 
+ * typically polylines placed along road centrelines. The CRTN method psecified that the 
+ * centrelines should be inset 3.5 meters from the road kerb that is closest to the sensors.
  * \n
  * The noise impact is calculated by shooting rays out from the sensors towards the noise sources.
  * The 'radius' argument defines the maximum radius of the calculation.
  * (The radius is used to define the maximum distance for shooting the rays.)
  * \n
- * Returns a dictionary containing different metrics.
+ * Returns a dictionary containing the noise level values, in decibels (dB).
  * \n
  * @param __model__
  * @param sensors A list of Rays or Planes, to be used as the origins for calculating the unobstructed views.
@@ -61,15 +60,15 @@ interface TNoiseResult {
  * @param length The length of each road segment, in meters.
  * @returns A dictionary containing different visibility metrics.
  */
-export function Noise(
+export function CRTN(
     __model__: GIModel,
-    sensors: Txyz[] | TRay[] | TPlane[],
+    sensors: TRay[] | TPlane[] | TRay[][] | TPlane[][],
     entities: TId | TId[] | TId[][],
     radius: number | [number, number],
     roads: TId | TId[] | TId[][],
     noise_levels: number|number[],
     length: number,
-): TNoiseResult {
+): TNoiseResult | [TNoiseResult, TNoiseResult] {
     entities = arrMakeFlat(entities) as TId[];
     roads = arrMakeFlat(roads) as TId[];
     // --- Error Check ---
@@ -77,7 +76,8 @@ export function Noise(
     let ents_arrs1: TEntTypeIdx[];
     let ents_arrs2: TEntTypeIdx[];
     if (__model__.debug) {
-        chk.checkArgs(fn_name, "sensors", sensors, [chk.isRayL, chk.isPlnL]);
+        chk.checkArgs(fn_name, "sensors", sensors, 
+            [chk.isRayL, chk.isPlnL, chk.isRayLL, chk.isPlnLL]);
         ents_arrs1 = checkIDs(__model__, fn_name, "entities", entities, 
             [ID.isIDL1], 
             [EEntType.PGON, EEntType.COLL]) as TEntTypeIdx[];
@@ -113,7 +113,7 @@ export function Noise(
     radius = Array.isArray(radius) ? radius : [1, radius];
     noise_levels = Array.isArray(noise_levels) ? noise_levels : Array(roads.length).fill(noise_levels);
     // get xyz and normal for each sensor point
-    const sensor_rays: TRay[] = _getSensorRays(__model__, sensors, 0.01); // offset by 0.01
+    const sensor_rays: TRay[][] = _getSensorRays(sensors, 0.01); // offset by 0.01
     // get edges of obstructions
     const edges_map: Map<string, [Txyz, Txyz]> = new Map();
     const rej_edges: Set<string> = new Set();
@@ -162,16 +162,22 @@ export function Noise(
         }
     }
     // run simulation
-    const noise_lvls: number[] = _calcNoise(__model__, sensor_rays, segs, edges);
+    const results0: TNoiseResult = _calcNoise(__model__, 
+        sensor_rays[0], segs, edges, radius, false);
+    const results1: TNoiseResult = _calcNoise(__model__, 
+        sensor_rays[1], segs, edges, radius, true);
     // return the results
-    return { noise_level: noise_lvls };
+    if (results0 && results1) { return [results0, results1]; }
+    if (results0) { return results0; }
+    if (results1) { return results1; }
+    return null;
 }
 // =================================================================================================
 // The following code is based on the document: Calculation of Road Traffic Noise, 1988. In the
 // comments in the code we reference various charts and paragraphsin this document. Some
 // simplifications have been made.
 // - The ground is assumed to be flat.
-// - The ground absorbtion coefficient is fixed at 0.5. 
+// - The ground absorbtion coefficient is fixed at 1. 
 // - No reflections.
 //
 // The document is written to allow for hand calculation. Since we are using computation, we take a
@@ -189,41 +195,49 @@ function _calcNoise(
     __model__: GIModel,
     sensor_rays: TRay[],
     segments: {start: Txyz, mid: Txyz, end: Txyz, noise: number}[],
-    edges:  [Txyz, Txyz][]
-): number[] {
+    edges:  [Txyz, Txyz][],
+    radius: [number, number],
+    generate_lines: boolean
+): TNoiseResult {
+    const PRINT = true;
     const results: number[] = [];
     for (const [sensor_xyz, sensor_dir] of sensor_rays) {
+        if (PRINT) { console.log("    ================================="); }
         const noise_lvls: number[] = [];
         for (const {start, mid, end, noise: road_noise} of segments) {
-            console.log(">>>noise_lvl ============================")
+            if (PRINT) { console.log("    ---------------------------------"); }
             let sensor_xyz2: Txyz = sensor_xyz;
             const dir: Txyz = vecNorm(vecFromTo(sensor_xyz2, mid));
             // check if segment is behind sensor
             if (vecDot(dir, sensor_dir) <= 0) { continue; } 
+            // check if segment is beyong radius
+            const seg_dist: number = distance(sensor_xyz, mid) ;
+            if (seg_dist < radius[0] || seg_dist > radius[1]) { continue; } 
             // create seg vector
             const seg_vec: Txyz = vecNorm(vecFromTo(start, end));
             const seg_vec_perp: Txyz = vecCross(seg_vec, [0,0,1]);
-            // check dist from sensor to seg plane
-            const check_dist: number = distance(sensor_xyz2, [start, seg_vec, [0,0,1]]);
-            if (check_dist < 7.5) {
-                // when the distance is below 7.5m, the equations are no longer valid
-                // we need to move the sensor point and print a warning to the console
-                const dir: number = vecDot(vecNorm(vecFromTo(start, sensor_xyz2)), seg_vec_perp);
-                const move_dist: number = dir > 0 ? 7.6 - check_dist : - 7.6 + check_dist;
-                console.log("Noise warning: Distance too small so moving sensor point by");
-                let move_vec: Txyz = vecCross(sensor_dir, [0,0,1])
-                if (vecDot(move_vec, seg_vec_perp) < 0) { move_vec = vecRev(move_vec); }
-                const vec_ang: number = vecAng(move_vec, seg_vec_perp);
-                let move_dist_facade: number = move_dist / Math.cos(vec_ang);
-                if (move_dist_facade > 5) {
-                    console.log("    Move distance was too large:", move_dist_facade);
-                    console.log("    Limiting move distance to 5m.");
-                    move_dist_facade = 5;
-                }
-                move_vec = vecSetLen(move_vec, move_dist_facade);
-                sensor_xyz2 = vecAdd(sensor_xyz2, move_vec);
-                console.log("   Moved from", sensor_xyz, "to", sensor_xyz2);
-            }
+            // // decided to disable this, if base_dist < 4m, then we force it to be 4m
+            // // check dist from sensor to seg plane
+            // const check_dist: number = distance(sensor_xyz2, [start, seg_vec, [0,0,1]]);
+            // if (check_dist < 7.5) {
+            //     // when the distance is below 7.5m, the equations are no longer valid
+            //     // we need to move the sensor point and print a warning to the console
+            //     const dir: number = vecDot(vecNorm(vecFromTo(start, sensor_xyz2)), seg_vec_perp);
+            //     const move_dist: number = dir > 0 ? 7.6 - check_dist : - 7.6 + check_dist;
+            //     console.log("Noise warning: Distance too small so moving sensor point by");
+            //     let move_vec: Txyz = vecCross(sensor_dir, [0,0,1])
+            //     if (vecDot(move_vec, seg_vec_perp) < 0) { move_vec = vecRev(move_vec); }
+            //     const vec_ang: number = vecAng(move_vec, seg_vec_perp);
+            //     let move_dist_facade: number = move_dist / Math.cos(vec_ang);
+            //     if (move_dist_facade > 5) {
+            //         console.log("    Move distance was too large:", move_dist_facade);
+            //         console.log("    Limiting move distance to 5m.");
+            //         move_dist_facade = 5;
+            //     }
+            //     move_vec = vecSetLen(move_vec, move_dist_facade);
+            //     sensor_xyz2 = vecAdd(sensor_xyz2, move_vec);
+            //     console.log("   Moved from", sensor_xyz, "to", sensor_xyz2);
+            // }
             // calc detour
             const [path, zone]: [Txyz[], ZONE] = _calcDetour(sensor_xyz2, mid, edges);
             // create plane through sensor perpendicular to segment
@@ -244,11 +258,15 @@ function _calcNoise(
             const view_ang: number = vecAng([vec_st[0], vec_st[1], 0],[vec_en[0], vec_en[1], 0]);
             // set the initial noise level
             let noise_lvl: number = road_noise;
-            console.log(">>>noise_lvl base", noise_lvl)
+            if (PRINT) { console.log("    noise_lvl base", noise_lvl); }
             // apply distance correction - see chart 7
-            // this is +ve is slant_dist < 13.5
-            noise_lvl += -10 * Math.log10(slant_dist/13.5);
-            console.log(">>>noise_lvl distance", noise_lvl)
+            // this is +ve if slant_dist < 13.5, i.e. if base_dist = 7.5 and hight < 11.22 
+            let dist_corr: number = base_dist > 4 ? 
+                -10 * Math.log10(slant_dist/13.5) : 
+                -10 * Math.log10(Math.sqrt(path_start[2] ^ 2 + 4 ^ 2)/13.5);
+            if (dist_corr > 0) { dist_corr = 0; }
+            noise_lvl += dist_corr;
+            if (PRINT) { console.log("     dist_corr", dist_corr, noise_lvl); }
             if (zone === ZONE.UNOBSTRUCTED) {
                 // road segment is unobstructed
                 // calc mean height of the propogation - see para 20.2
@@ -256,15 +274,17 @@ function _calcNoise(
                 // check if ground absorbtion applies 
                 if (base_dist >= 4 && h_mean < (base_dist + 5) / 6 ) {
                     // apply ground absorbtion correction - see chart 8
-                    const ground_abs: number = 0.5;
+                    const ground_abs: number = 1;
+                    let ground_abs_corr: number;
                     if (h_mean < 0.75) {
-                        noise_lvl += 5.2 * ground_abs * 
+                        ground_abs_corr  = 5.2 * ground_abs * 
                             Math.log10( 3 / (base_dist + 3.5) );
                     } else {
-                        noise_lvl += 5.2 * ground_abs * 
+                        ground_abs_corr  = 5.2 * ground_abs * 
                             Math.log10( ((6 * h_mean) - 1.5) / (base_dist + 3.5) );
                     }
-                    console.log(">>>noise_lvl ground abs", noise_lvl)
+                    noise_lvl += ground_abs_corr;
+                    if (PRINT) { console.log("     ground_abs_corr", ground_abs_corr, noise_lvl); }
                 }
             } else {
                 // road segment is obstructed
@@ -277,16 +297,16 @@ function _calcNoise(
                 const delta: number = detour_dist - slant_dist;
                 // calculate barrier correction - see Chart 9a
                 const x: number = Math.log10(delta);
-                let a: number = 0;
+                let barrier_corr: number = 0;
                 const shadow_zone = zone === ZONE.SHADOW;
                 if (shadow_zone && x < -3) {
-                    a = -5;
+                    barrier_corr = -5;
                 } else if (shadow_zone && x > 1.2) {
-                    a = -30;
+                    barrier_corr = -30;
                 } else if (!shadow_zone && x < -4) {
-                    a = -5;
+                    barrier_corr = -5;
                 } else if (!shadow_zone && x > 0) {
-                    a = 0;
+                    barrier_corr = 0;
                 } else {
                     let coefs: number[];
                     if (shadow_zone) {
@@ -297,40 +317,46 @@ function _calcNoise(
                         coefs = [0, 0.109, -0.815, 0.479, 0.3284, 0.04385];
                     }
                     for (let i = 0; i < coefs.length; i++) {
-                        a += coefs[i] * Math.pow(x, i);
+                        barrier_corr += coefs[i] * Math.pow(x, i);
                     }
                 }
-                noise_lvl += a;
-                console.log(">>>noise_lvl barrier", noise_lvl)
+                noise_lvl += barrier_corr;
+                if (PRINT) { console.log("     barrier_corr", barrier_corr, noise_lvl); }
             }
             // apply view angle correction - see chart 10
-            noise_lvl += 10 * Math.log10(view_ang / Math.PI);
-            console.log(">>>noise_lvl view ang", noise_lvl)
+            const view_ang_corr: number = 10 * Math.log10(view_ang / Math.PI);
+            noise_lvl += view_ang_corr;
+            if (PRINT) { console.log("     view_ang", view_ang * (180/Math.PI), "degrees"); }
+            if (PRINT) { console.log("     view_ang_corr", view_ang_corr, noise_lvl); }
             // check if noise level is below zero 
             if (noise_lvl < 0) { noise_lvl = 0; }
             // save the noise level for segment
             noise_lvls.push(noise_lvl);
-            // for debugging, draw the path before it got projected
-            const tmp_posis_i: number[] = [];
-            if (sensor_xyz !== sensor_xyz2) {
-                path.splice(0, 0, sensor_xyz);
+            // generate calculation lines
+            if (generate_lines) {
+                const tmp_posis_i: number[] = [];
+                if (sensor_xyz !== sensor_xyz2) {
+                    path.splice(0, 0, sensor_xyz);
+                }
+                for (const xyz of path) {
+                    const posi_i: number = __model__.modeldata.geom.add.addPosi();
+                    __model__.modeldata.attribs.set.setEntAttribVal(EEntType.POSI, posi_i, 'xyz', xyz);
+                    tmp_posis_i.push(posi_i);
+                }
+                __model__.modeldata.geom.add.addPline(tmp_posis_i, false);
             }
-            for (const xyz of path) {
-                const posi_i: number = __model__.modeldata.geom.add.addPosi();
-                __model__.modeldata.attribs.set.setEntAttribVal(EEntType.POSI, posi_i, 'xyz', xyz);
-                tmp_posis_i.push(posi_i);
-            }
-            __model__.modeldata.geom.add.addPline(tmp_posis_i, false);
-            
         }
         // merge results from multiple road segments - see chart 11 
         // L = 10 * Log(  sum( Antilog(Ln/10) )  )
         const noise_lvls_pow: number[] = noise_lvls.map( lvl =>  Math.pow(10, lvl / 10) );
         const noise_lvls_sum: number = noise_lvls_pow.reduce( (a,b) => a + b, 0 );
         const noise_lvl_final: number = 10 * Math.log10(noise_lvls_sum);
+        if (PRINT) { console.log("    ---------------------------------"); }
+        if (PRINT) { console.log("    noise_lvl ALL", noise_lvls); }
+        if (PRINT) { console.log("    noise_lvl COMBINED", noise_lvl_final); }
         results.push(noise_lvl_final);
     }
-    return results;
+    return { noise_level: results };
 }
 // =================================================================================================
 enum ZONE {
@@ -460,7 +486,7 @@ function _xformMatrix(plane: TPlane, neg: boolean): THREE.Matrix4 {
     return m3;
 }
 // =================================================================================================
-export function segments(xyz1: Txyz, xyz2: Txyz, len: number): Txyz[] {
+function segments(xyz1: Txyz, xyz2: Txyz, len: number): Txyz[] {
     const vec: Txyz = vecFromTo(xyz1, xyz2);
     const num_segs: number = Math.floor(vecLen(vec) / len);
     if (num_segs < 2) { return [xyz1, xyz2]; }
@@ -470,14 +496,5 @@ export function segments(xyz1: Txyz, xyz2: Txyz, len: number): Txyz[] {
         xyzs.push(vecAdd(xyz1, vecMult(sub_vec, i + 1)));
     }
     return xyzs;
-}
-// =================================================================================================
-// euclidean distance with x and y only
-function _dist(c1: Txyz, c2: Txyz): number {
-    const v: Txy = [
-        c1[0] - c2[0],
-        c1[1] - c2[1]
-    ];
-    return Math.hypot(v[0], v[1]);
 }
 // =================================================================================================
