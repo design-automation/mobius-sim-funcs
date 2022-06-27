@@ -149,7 +149,7 @@ export class AnalyzeFunc {
         return Sun(this.__model__, sensors, entities, radius, detail, method);
     }
     View(
-            sensors: TRay[] | TPlane[], 
+            sensors: TRay[] | TPlane[] | TRay[][] | TPlane[][],
             entities: string | string[] | string[][], 
             radius: number | [number, number], 
             num_rays: number, 
@@ -166,7 +166,7 @@ export class AnalyzeFunc {
         return Visibility(this.__model__, sensors, entities, radius, targets);
     }
     Irradiance(
-            sensors: TRay[] | TPlane[] | Txyz[], 
+            sensors: TRay[] | TPlane[] | TRay[][] | TPlane[][],
             entities: string | string[] | string[][], 
             radius: number | [number, number], 
             method: Enum._ESkyMethod
@@ -174,7 +174,7 @@ export class AnalyzeFunc {
         return Irradiance(this.__model__, sensors, entities, radius, method);
     }
     Ventilation(
-            sensors: TRay[] | TPlane[] | Txyz[], 
+            sensors: TRay[] | TPlane[] | TRay[][] | TPlane[][], 
             entities: string | string[] | string[][], 
             radius: number | [number, number],
             num_rays: number, 

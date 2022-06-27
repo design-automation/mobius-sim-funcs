@@ -19,7 +19,7 @@ import {
 import { checkIDs, ID } from '../../_check_ids';
 import * as chk from '../../_check_types';
 import { _getSensorRays } from './_shared';
-// import { Plane } from '../visualize/Plane';
+const EPS = 1e-6;
 
 // ================================================================================================
 interface TVisibilityResult {
@@ -30,6 +30,7 @@ interface TVisibilityResult {
     count_ratio?: number[];
     distance_ratio?: number[];
 }
+// =================================================================================================
 /**
  * Calculates the visibility of a set of target positions from a set of origins.
  * \n
@@ -61,7 +62,7 @@ export function Visibility(
     entities = arrMakeFlat(entities) as TId[];
     targets = arrMakeFlat(targets) as TId[];
     // --- Error Check ---
-    const fn_name = "analyze.View";
+    const fn_name = "analyze.Visibility";
     let ents_arrs1: TEntTypeIdx[];
     let ents_arrs2: TEntTypeIdx[];
     if (__model__.debug) {
@@ -90,7 +91,7 @@ export function Visibility(
     }
     // --- Error Check ---
     radius = Array.isArray(radius) ? radius : [1, radius];
-    // get planes for each sensor point
+    // get rays for each sensor point
     const sensor_rays: TRay[][] = _getSensorRays(sensors, 0.01); // offset by 0.01
     // get the target positions
     const target_posis_i: Set<number> = new Set();
@@ -110,9 +111,9 @@ export function Visibility(
     const [mesh_tjs, _]: [THREE.Mesh, number[]] = createSingleMeshBufTjs(__model__, ents_arrs1);
     // run simulation
     const results0: TVisibilityResult = _calcVisibility(__model__, 
-        sensor_rays[0], targets_xyz, mesh_tjs, radius, false);
+        sensor_rays[0], targets_xyz, radius, mesh_tjs, false);
     const results1: TVisibilityResult = _calcVisibility(__model__, 
-        sensor_rays[1], targets_xyz, mesh_tjs, radius, true);
+        sensor_rays[1], targets_xyz, radius, mesh_tjs, true);
     // cleanup
     mesh_tjs.geometry.dispose();
     (mesh_tjs.material as THREE.Material).dispose();
@@ -127,8 +128,8 @@ function _calcVisibility(
     __model__: GIModel,
     sensor_rays: TRay[],
     targets_xyz: Txyz[],
-    mesh_tjs: THREE.Mesh,
     radius: [number, number],
+    mesh_tjs: THREE.Mesh,
     generate_lines: boolean
 ): TVisibilityResult {
     if (sensor_rays.length === 0) { return null; }
@@ -141,32 +142,35 @@ function _calcVisibility(
     result.count_ratio = [];
     result.distance_ratio = [];
     // create tjs objects (to be resued for each ray)
-    const origin_tjs: THREE.Vector3 = new THREE.Vector3();
+    const sensor_tjs: THREE.Vector3 = new THREE.Vector3();
     const dir_tjs: THREE.Vector3 = new THREE.Vector3();
-    const ray_tjs: THREE.Raycaster = new THREE.Raycaster(origin_tjs, dir_tjs, radius[0], radius[1]);
+    const ray_tjs: THREE.Raycaster = new THREE.Raycaster(sensor_tjs, dir_tjs, radius[0], radius[1]);
     // shoot rays
     for (const [sensor_xyz, sensor_dir] of sensor_rays) {
-        origin_tjs.x = sensor_xyz[0]; origin_tjs.y = sensor_xyz[1]; origin_tjs.z = sensor_xyz[2]; 
-        const result_dists: number[] = [];
+        // set raycaster origin
+        sensor_tjs.x = sensor_xyz[0]; sensor_tjs.y = sensor_xyz[1]; sensor_tjs.z = sensor_xyz[2]; 
         let result_count = 0;
-        const all_dists: number[] = [];
-        const hit_targets_xyz: Txyz[] = [];
+        const result_dists: number[] = [];
+        const result_all_dists: number[] = [];
+        const result_hits_xyz: Txyz[] = [];
         for (const target_xyz of targets_xyz) {
-            const dir: Txyz = vecNorm(vecFromTo(sensor_xyz, target_xyz));
+            const ray_dir: Txyz = vecNorm(vecFromTo(sensor_xyz, target_xyz));
             // check if target is behind sensor
-            if (vecDot(dir, sensor_dir) <= 0) { continue; } 
-            // shoot Raycaster
-            dir_tjs.x = dir[0]; dir_tjs.y = dir[1]; dir_tjs.z = dir[2];
-            // Ray(__model__, [sensor_xyz, dir], 1);
+            if (vecDot(ray_dir, sensor_dir) <= -EPS) { continue; } 
+            // set raycaster direction
+            dir_tjs.x = ray_dir[0]; dir_tjs.y = ray_dir[1]; dir_tjs.z = ray_dir[2];
+            // shoot raycaster
             const isects: THREE.Intersection[] = ray_tjs.intersectObject(mesh_tjs, false);
             // get the result
             // if not intersection, the the target is visible
             const dist = distance(sensor_xyz, target_xyz);
-            all_dists.push(dist);
+            result_all_dists.push(dist);
             if (isects.length === 0) {
                 result_dists.push(dist);
                 result_count += 1;
-                hit_targets_xyz.push(target_xyz);
+                result_hits_xyz.push(target_xyz);
+            } else {
+                result_hits_xyz.push([isects[0].point.x, isects[0].point.y, isects[0].point.z]);
             }
         }
         if (result_count > 0) {
@@ -181,7 +185,7 @@ function _calcVisibility(
             result.max_dist.push(max_dist);
             result.count.push(result_count);
             result.count_ratio.push(result_count / targets_xyz.length);
-            result.distance_ratio.push(total_dist / Mathjs.sum( all_dists ));
+            result.distance_ratio.push(total_dist / Mathjs.sum( result_all_dists ));
         } else {
             result.avg_dist.push(null);
             result.min_dist.push(null);
@@ -195,10 +199,10 @@ function _calcVisibility(
             const posi0_i: number = __model__.modeldata.geom.add.addPosi();
             __model__.modeldata.attribs.set.setEntAttribVal(
                     EEntType.POSI, posi0_i, 'xyz', sensor_xyz);
-            for (const hit_target_xyz of hit_targets_xyz) {
+            for (const xyz of result_hits_xyz) {
                 const posi1_i: number = __model__.modeldata.geom.add.addPosi();
                 __model__.modeldata.attribs.set.setEntAttribVal(
-                        EEntType.POSI, posi1_i, 'xyz', hit_target_xyz);
+                        EEntType.POSI, posi1_i, 'xyz', xyz);
                 __model__.modeldata.geom.add.addPline([posi0_i, posi1_i], false);
             }
         }

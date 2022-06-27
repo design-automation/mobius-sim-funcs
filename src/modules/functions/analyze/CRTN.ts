@@ -72,7 +72,7 @@ export function CRTN(
     entities = arrMakeFlat(entities) as TId[];
     roads = arrMakeFlat(roads) as TId[];
     // --- Error Check ---
-    const fn_name = "analyze.View";
+    const fn_name = "analyze.CRTN";
     let ents_arrs1: TEntTypeIdx[];
     let ents_arrs2: TEntTypeIdx[];
     if (__model__.debug) {
@@ -199,7 +199,7 @@ function _calcNoise(
     radius: [number, number],
     generate_lines: boolean
 ): TNoiseResult {
-    const PRINT = true;
+    const PRINT = false;
     const results: number[] = [];
     for (const [sensor_xyz, sensor_dir] of sensor_rays) {
         if (PRINT) { console.log("    ================================="); }
