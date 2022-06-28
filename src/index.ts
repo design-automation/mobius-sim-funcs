@@ -69,15 +69,11 @@ export class SIMFuncs {
     // =============================================================================================
     // Constructor
     // =============================================================================================
-    constructor(model?: Model, metadata?: MetaData) {
+    constructor(model?: Model) {
         if (model) {
             this.__model__ = model;
-        } else if (metadata) {
-            const metadata = new MetaData();
-            this.__model__ = new Model(metadata);
         } else {
-
-            this.__model__ = new Model(metadata);
+            this.__model__ = new Model();
         }
         // model api
         this.model = new ModelApi(this.__model__);
