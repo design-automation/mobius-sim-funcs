@@ -3,6 +3,7 @@ import {
     arrMakeFlat,
     distance,
     EEntType,
+    getArrDepth,
     GIModel,
     idsBreak,
     multMatrix,
@@ -113,7 +114,7 @@ export function CRTN(
     radius = Array.isArray(radius) ? radius : [1, radius];
     noise_levels = Array.isArray(noise_levels) ? noise_levels : Array(roads.length).fill(noise_levels);
     // get xyz and normal for each sensor point
-    const sensor_rays: TRay[][] = _getSensorRays(sensors, 0.01); // offset by 0.01
+    const [sensors0, sensors1, two_lists]: [TRay[], TRay[], boolean] = _getSensorRays(sensors, 0.01); // offset by 0.01
     // get edges of obstructions
     const edges_map: Map<string, [Txyz, Txyz]> = new Map();
     const rej_edges: Set<string> = new Set();
@@ -163,14 +164,12 @@ export function CRTN(
     }
     // run simulation
     const results0: TNoiseResult = _calcNoise(__model__, 
-        sensor_rays[0], segs, edges, radius, false);
+        sensors0, segs, edges, radius, false);
     const results1: TNoiseResult = _calcNoise(__model__, 
-        sensor_rays[1], segs, edges, radius, true);
+        sensors1, segs, edges, radius, true);
     // return the results
-    if (results0 && results1) { return [results0, results1]; }
-    if (results0) { return results0; }
-    if (results1) { return results1; }
-    return null;
+    if (two_lists) { return [results0, results1]; }
+    return results0;
 }
 // =================================================================================================
 // The following code is based on the document: Calculation of Road Traffic Noise, 1988. In the

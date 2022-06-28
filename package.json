@@ -24,7 +24,7 @@
     "lodash": "^4.17.21",
     "mathjs": "^5.10.3",
     "proj4": "^2.5.0",
-    "three": "^0.135.0",
+    "three": "^0.140.0",
     "underscore": "^1.13.1"
   },
   "devDependencies": {

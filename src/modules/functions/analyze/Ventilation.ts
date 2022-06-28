@@ -17,7 +17,7 @@ import * as THREE from 'three';
 import lodash from 'lodash';
 import { checkIDs, ID } from '../../_check_ids';
 import * as chk from '../../_check_types';
-import { _calcExposure, _getSensorRays, _rayOrisDirsTjs } from './_shared';
+import { _getSensorRays } from './_shared';
 const EPS = 1e-6;
 // =================================================================================================
 interface TVentilationResult {
@@ -77,26 +77,24 @@ export function Ventilation(
     layers = Array.isArray(layers) ? layers : [0, layers, 1]; // start, end, step_size
     if (layers.length === 2) { layers = [layers[0], layers[1], 1]; }
     // get rays for sensor points
-    const sensor_rays: TRay[][] = _getSensorRays(sensors, 0.01); // offset by 0.01
+    const [sensors0, sensors1, two_lists]: [TRay[], TRay[], boolean] = _getSensorRays(sensors, 0.01); // offset by 0.01
     // create mesh
     const [mesh_tjs, _]: [THREE.Mesh, number[]] = createSingleMeshBufTjs(__model__, ents_arrs);
-    // get the direction vectors
+    // get the wind rose
     const wind_rose: number[] = __model__.modeldata.attribs.get.getModelAttribVal("wind") as number[];
-    // get the direction vectorsnum_vecs
+    // get the direction vectors for shooting rays
     const dir_vecs: Txyz[][] = _ventilationVecs(num_rays + 1, wind_rose);
     // run simulation
     const results0: TVentilationResult = _calcVentilation(__model__, 
-        sensor_rays[0], dir_vecs, radius, mesh_tjs, layers, wind_rose, false);
+        sensors0, dir_vecs, radius, mesh_tjs, layers, wind_rose, false);
     const results1: TVentilationResult = _calcVentilation(__model__, 
-        sensor_rays[1], dir_vecs, radius, mesh_tjs, layers, wind_rose, true);
+        sensors1, dir_vecs, radius, mesh_tjs, layers, wind_rose, true);
     // cleanup
     mesh_tjs.geometry.dispose();
     (mesh_tjs.material as THREE.Material).dispose();
     // return the results
-    if (results0 && results1) { return [results0, results1]; }
-    if (results0) { return results0; }
-    if (results1) { return results1; }
-    return null;
+    if (two_lists) { return [results0, results1]; }
+    return results0;
 }
 // =================================================================================================
 function _calcVentilation(
@@ -109,7 +107,6 @@ function _calcVentilation(
     wind_rose: number[],
     generate_lines: boolean
 ): TVentilationResult {
-    if (sensor_rays.length === 0) { return null; }
     const results = [];
     const num_layers: number = Math.round((layers[1] - layers[0]) / layers[2]);
     // create tjs objects (to be resued for each ray)

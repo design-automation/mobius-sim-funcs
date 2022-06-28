@@ -14,6 +14,7 @@ import {
     vecAdd,
     vecAng2,
     vecCross,
+    vecDot,
     vecMult,
     vecNorm,
     XAXIS,
@@ -22,7 +23,6 @@ import {
 } from '@design-automation/mobius-sim';
 import cytoscape from 'cytoscape';
 import * as THREE from 'three';
-
 
 export function degToRad(deg: number | number[]): number | number[] {
     if (Array.isArray(deg)) {
@@ -82,60 +82,61 @@ export function _rayOrisDirsTjs(__model__: GIModel, origins: Txyz[] | TRay[] | T
     return vectors_tjs;
 }
 export function _getSensorRays(
-        sensors: Txyz[] | TRay[] | TPlane[] | Txyz[][] | TRay[][] | TPlane[][],
-        offset: number): TRay[][] {
-    const is_xyz: boolean = isXYZ(sensors[0]);
+        sensors: TRay[] | TPlane[] | TRay[][] | TPlane[][],
+        offset: number): [TRay[], TRay[], boolean] {
     const is_ray: boolean = isRay(sensors[0]);
     const is_pln: boolean = isPlane(sensors[0]);
-    if (!is_xyz && !is_ray && !is_pln) {
-        const sensors_lists = sensors as Txyz[][] | TRay[][] | TPlane[][];
+    if (!is_ray && !is_pln) {
+        const sensors_lists = sensors as TRay[][] | TPlane[][];
         const rays_lists: TRay[][] = []; 
         for (const sensors_list of sensors_lists) {
             const rays: TRay[] = _getSensorRaysFromList(sensors_list, offset);
             rays_lists.push(rays);
         }
-        return rays_lists;
+        return [
+            _getSensorRaysFromList(sensors_lists[0], offset),
+            _getSensorRaysFromList(sensors_lists[1], offset),
+            true
+        ];
     }
-    const sensors_list = sensors as Txyz[] | TRay[] | TPlane[];
-    return [_getSensorRaysFromList(sensors_list, offset), []];
+    const sensors_list = sensors as TRay[] | TPlane[];
+    return [_getSensorRaysFromList(sensors_list, offset), [], false];
 }
 function _getSensorRaysFromList( 
-        sensors: Txyz[] | TRay[] | TPlane[],
+        sensors: TRay[] | TPlane[],
         offset: number): TRay[] {
     const rays: TRay[] = [];
-    const is_xyz: boolean = isXYZ(sensors[0]);
     const is_ray: boolean = isRay(sensors[0]);
     const is_pln: boolean = isPlane(sensors[0]);
     for (const origin of sensors) {
         let origin_xyz: Txyz = null;
-        let normal_xyz: Txyz = null;
-        if (is_xyz) {
-            origin_xyz = origin as Txyz;
-            normal_xyz = [0, 0, 1];
-        } else if (is_ray) {
+        let dir_xyz: Txyz = null;
+        if (is_ray) {
             origin_xyz = origin[0] as Txyz;
-            normal_xyz = vecNorm(origin[1] as Txyz);
+            dir_xyz = vecNorm(origin[1] as Txyz);
         } else if (is_pln) {
             origin_xyz = origin[0] as Txyz;
-            normal_xyz = vecCross(origin[1] as Txyz, origin[2] as Txyz);
+            dir_xyz = vecCross(origin[1] as Txyz, origin[2] as Txyz);
         } else {
             throw new Error("Sensor has invalid values");
         }
-        const origin_offset_xyz: Txyz = vecAdd(origin_xyz, vecMult(normal_xyz, offset));
-        rays.push([origin_offset_xyz, normal_xyz]);
+        const origin_offset_xyz: Txyz = vecAdd(origin_xyz, vecMult(dir_xyz, offset));
+        rays.push([origin_offset_xyz, dir_xyz]);
     }
     return rays;
 }
-function _solarRot(day_ang: number, day: number, hour_ang: number, hour: number, latitude: number, north: number): THREE.Vector3 {
+// =================================================================================================
+function _solarRot(day_ang: number, day: number, hour_ang: number, hour: number, latitude: number, north: number): Txyz {
     const vec: THREE.Vector3 = new THREE.Vector3(0, 0, -1);
     vec.applyAxisAngle(XAXIS, day_ang * day);
     vec.applyAxisAngle(YAXIS, hour_ang * hour);
     vec.applyAxisAngle(XAXIS, latitude);
     vec.applyAxisAngle(ZAXIS, -north);
-    return vec;
+    return [vec.x, vec.y, vec.z];
 }
-export function _solarRaysDirectTjs(latitude: number, north: Txy, detail: number): THREE.Vector3[][] {
-    const directions: THREE.Vector3[][] = [];
+// =================================================================================================
+export function _solarRaysDirect(latitude: number, north: Txy, detail: number): Txyz[][] {
+    const dir_vecs: Txyz[][] = [];
     // set the level of detail
     // const day_step = [182 / 4, 182 / 5, 182 / 6, 182 / 7, 182 / 8, 182 / 9, 182 / 10][detail];
     const day_step = [182 / 3, 182 / 6, 182 / 9, 182 / 12][detail];
@@ -152,13 +153,13 @@ export function _solarRaysDirectTjs(latitude: number, north: Txy, detail: number
     // create the vectors
     for (let day_count = 0; day_count < num_day_steps; day_count++) {
         const day: number = -91 + day_count * day_step;
-        const one_day_path: THREE.Vector3[] = [];
+        const one_day_path: Txyz[] = [];
         // get sunrise
         let sunrise = 0;
         let sunset = 0;
         for (let hour = 0; hour < 24; hour = hour + 0.1) {
-            const sunrise_vec: THREE.Vector3 = _solarRot(day_ang_rad, day, hour_ang_rad, hour, latitude_rad, north_rad);
-            if (sunrise_vec.z > -1e-6) {
+            const sunrise_vec: Txyz = _solarRot(day_ang_rad, day, hour_ang_rad, hour, latitude_rad, north_rad);
+            if (sunrise_vec[2] > -1e-6) {
                 sunrise = hour;
                 sunset = 24 - hour;
                 one_day_path.push(sunrise_vec);
@@ -167,8 +168,8 @@ export function _solarRaysDirectTjs(latitude: number, north: Txy, detail: number
         }
         // morning sun path, count down from midday
         for (let hour = 12; hour > sunrise; hour = hour - hour_step) {
-            const am_vec: THREE.Vector3 = _solarRot(day_ang_rad, day, hour_ang_rad, hour, latitude_rad, north_rad);
-            if (am_vec.z > -1e-6) {
+            const am_vec: Txyz = _solarRot(day_ang_rad, day, hour_ang_rad, hour, latitude_rad, north_rad);
+            if (am_vec[2] > -1e-6) {
                 one_day_path.splice(1, 0, am_vec);
             } else {
                 break;
@@ -176,23 +177,25 @@ export function _solarRaysDirectTjs(latitude: number, north: Txy, detail: number
         }
         // afternoon sunpath, count up from midday
         for (let hour = 12 + hour_step; hour < sunset; hour = hour + hour_step) {
-            const pm_vec: THREE.Vector3 = _solarRot(day_ang_rad, day, hour_ang_rad, hour, latitude_rad, north_rad);
-            if (pm_vec.z > -1e-6) {
+            const pm_vec: Txyz = _solarRot(day_ang_rad, day, hour_ang_rad, hour, latitude_rad, north_rad);
+            if (pm_vec[2] > -1e-6) {
                 one_day_path.push(pm_vec);
             } else {
                 break;
             }
         }
         // sunset
-        const sunset_vec: THREE.Vector3 = _solarRot(day_ang_rad, day, hour_ang_rad, sunset, latitude_rad, north_rad);
+        const sunset_vec: Txyz = _solarRot(day_ang_rad, day, hour_ang_rad, sunset, latitude_rad, north_rad);
         one_day_path.push(sunset_vec);
         // add it to the list
-        directions.push(one_day_path);
+        dir_vecs.push(one_day_path);
     }
     // console.log("num rays = ", arrMakeFlat(directions).length);
-    return directions;
+    return dir_vecs;
 }
-export function _solarRaysIndirectTjs(latitude: number, north: Txy, detail: number): THREE.Vector3[] {
+// =================================================================================================
+export function _solarRaysIndirect(latitude: number, north: Txy, detail: number): Txyz[] {
+    // TODO this needs updating
     const hedron_tjs: THREE.IcosahedronGeometry = new THREE.IcosahedronGeometry(1, detail + 2);
     const solar_offset = Math.cos(degToRad(66.5) as number);
     // get the atitude angle in radians
@@ -200,18 +203,7 @@ export function _solarRaysIndirectTjs(latitude: number, north: Txy, detail: numb
     // get the angle from y-axis to north vector in radians
     const north_rad = vecAng2([north[0], north[1], 0], [0, 1, 0], [0, 0, 1]);
     // calc vectors
-    const indirect_vecs: THREE.Vector3[] = [];
-
-    // THREE JS UPDATE --> EDITED
-    // for (const vec of hedron_tjs.vertices) {
-    //     if (Math.abs(vec.y) > solar_offset) {
-    //         vec.applyAxisAngle(XAXIS, latitude_rad);
-    //         vec.applyAxisAngle(ZAXIS, -north_rad);
-    //         if (vec.z > -1e-6) {
-    //             indirect_vecs.push(vec);
-    //         }
-    //     }
-    // }
+    const indirect_vecs: Txyz[] = [];
     let coordList: number[] = [];
     for (const coord of <Float32Array>hedron_tjs.getAttribute("position").array) {
         coordList.push(coord);
@@ -221,64 +213,63 @@ export function _solarRaysIndirectTjs(latitude: number, north: Txy, detail: numb
                 vec.applyAxisAngle(XAXIS, latitude_rad);
                 vec.applyAxisAngle(ZAXIS, -north_rad);
                 if (vec.z > -1e-6) {
-                    indirect_vecs.push(vec);
+                    indirect_vecs.push( [vec.x, vec.y, vec.z] );
                 }
             }
             coordList = [];
         }
     }
-
-    // console.log("num rays = ", indirect_vecs.length);
     return indirect_vecs;
 }
+// =================================================================================================
 // calc the max solar exposure for a point with no obstructions facing straight up
-function _calcMaxExposure(directions_tjs: THREE.Vector3[], weighted: boolean): number {
+export function _calcMaxExposure(dir_vecs: Txyz[], weighted: boolean): number {
     if (!weighted) {
-        return directions_tjs.length;
+        return dir_vecs.length;
     }
     let result = 0;
-    const normal_tjs: THREE.Vector3 = new THREE.Vector3(0, 0, 1);
-    for (const direction_tjs of directions_tjs) {
+    for (const dir_vec of dir_vecs) {
         // calc the weighted result based on the angle between the dir and normal
         // this applies the cosine weighting rule
-        const result_weighted: number = normal_tjs.dot(direction_tjs);
+        const result_weighted: number = vecDot(dir_vec, [0,0,1]);
         if (result_weighted > 0) {
             result = result + result_weighted;
         }
     }
     return result;
 }
-export function _calcExposure(
-    origins_normals_tjs: [THREE.Vector3, THREE.Vector3][],
-    directions_tjs: THREE.Vector3[],
-    mesh_tjs: THREE.Mesh,
-    limits: [number, number],
-    weighted: boolean
-): number[] {
-    const results = [];
-    const result_max: number = _calcMaxExposure(directions_tjs, weighted);
-    for (const [origin_tjs, normal_tjs] of origins_normals_tjs) {
-        let result = 0;
-        for (const direction_tjs of directions_tjs) {
-            const dot_normal_direction: number = normal_tjs.dot(direction_tjs);
-            if (dot_normal_direction > 0) {
-                const ray_tjs: THREE.Raycaster = new THREE.Raycaster(origin_tjs, direction_tjs, limits[0], limits[1]);
-                const isects: THREE.Intersection[] = ray_tjs.intersectObject(mesh_tjs, false);
-                if (isects.length === 0) {
-                    if (weighted) {
-                        // this applies the cosine weighting rule
-                        result = result + dot_normal_direction;
-                    } else {
-                        // this applies no cosine weighting
-                        result = result + 1;
-                    }
-                }
-            }
-        }
-        results.push(result / result_max);
-    }
-    return results;
-}
+// // =================================================================================================
+// export function _calcExposure(
+//     origins_normals_tjs: [THREE.Vector3, THREE.Vector3][],
+//     directions_tjs: THREE.Vector3[],
+//     mesh_tjs: THREE.Mesh,
+//     limits: [number, number],
+//     weighted: boolean
+// ): number[] {
+//     const results = [];
+//     const result_max: number = _calcMaxExposure(directions_tjs, weighted);
+//     for (const [origin_tjs, normal_tjs] of origins_normals_tjs) {
+//         let result = 0;
+//         for (const direction_tjs of directions_tjs) {
+//             const dot_normal_direction: number = normal_tjs.dot(direction_tjs);
+//             if (dot_normal_direction > 0) {
+//                 const ray_tjs: THREE.Raycaster = new THREE.Raycaster(origin_tjs, direction_tjs, limits[0], limits[1]);
+//                 const isects: THREE.Intersection[] = ray_tjs.intersectObject(mesh_tjs, false);
+//                 if (isects.length === 0) {
+//                     if (weighted) {
+//                         // this applies the cosine weighting rule
+//                         result = result + dot_normal_direction;
+//                     } else {
+//                         // this applies no cosine weighting
+//                         result = result + 1;
+//                     }
+//                 }
+//             }
+//         }
+//         results.push(result / result_max);
+//     }
+//     return results;
+// }
 // ================================================================================================
 
 export function _getUniquePosis(__model__: GIModel, ents_arr: TEntTypeIdx[]): number[] {

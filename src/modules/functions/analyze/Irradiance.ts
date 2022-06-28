@@ -17,7 +17,7 @@ import * as THREE from 'three';
 import { checkIDs, ID } from '../../_check_ids';
 import * as chk from '../../_check_types';
 import { _ESkyMethod } from './_enum';
-import { _calcExposure, _getSensorRays, _rayOrisDirsTjs } from './_shared';
+import { _getSensorRays } from './_shared';
 const EPS = 1e-6;
 // =================================================================================================
 interface TIrradianceResult {
@@ -96,7 +96,7 @@ export function Irradiance(
     // --- Error Check ---
     radius = Array.isArray(radius) ? radius : [1, radius];
     // get rays for sensor points
-    const sensor_rays: TRay[][] = _getSensorRays(sensors, 0.01); // offset by 0.01
+    const [sensors0, sensors1, two_lists]: [TRay[], TRay[], boolean] = _getSensorRays(sensors, 0.01); // offset by 0.01
     // create mesh
     const [mesh_tjs, _]: [THREE.Mesh, number[]] = createSingleMeshBufTjs(__model__, ents_arrs);
     // get the sky data from attribute
@@ -106,17 +106,15 @@ export function Irradiance(
     const weighted: boolean = method === _ESkyMethod.WEIGHTED;
     // run simulation
     const results0: TIrradianceResult = _calcIrradiance(__model__, 
-        sensor_rays[0], radius, sky_rad_data, mesh_tjs, weighted, false);
+        sensors0, radius, sky_rad_data, mesh_tjs, weighted, false);
     const results1: TIrradianceResult = _calcIrradiance(__model__, 
-        sensor_rays[1], radius, sky_rad_data, mesh_tjs, weighted, true);
+        sensors1, radius, sky_rad_data, mesh_tjs, weighted, true);
     // cleanup
     mesh_tjs.geometry.dispose();
     (mesh_tjs.material as THREE.Material).dispose();
     // return the results
-    if (results0 && results1) { return [results0, results1]; }
-    if (results0) { return results0; }
-    if (results1) { return results1; }
-    return null;
+    if (two_lists) { return [results0, results1]; }
+    return results0;
 }
 // =================================================================================================
 export function _calcIrradiance(
@@ -128,7 +126,6 @@ export function _calcIrradiance(
     weighted: boolean,
     generate_lines: boolean
 ): TIrradianceResult {
-    if (sensor_rays.length === 0) { return null; }
     const results = [];
     const patches: ISkyRadiancePatch[] = sky_rad_data.SkyDome.patches;
     const sky_vecs: [Txyz, number, number][] = patches.map( patch => [

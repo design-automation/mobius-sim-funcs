@@ -16,7 +16,7 @@ import uscore from 'underscore';
 
 import * as chk from '../../_check_types';
 import { _ESunPathMethod } from './_enum';
-import { _solarRaysDirectTjs, _solarRaysIndirectTjs } from './_shared';
+import { _solarRaysDirect, _solarRaysIndirect } from './_shared';
 import { tregenzaSky } from './_tregenza_sky';
 
 
@@ -107,30 +107,29 @@ export function SkyDome(__model__: GIModel, origin: Txyz | TRay | TPlane, detail
     // generate the positions on the sky dome
     switch (method) {
         case _ESunPathMethod.DIRECT:
-            const rays_dirs_tjs1: THREE.Vector3[][] = _solarRaysDirectTjs(latitude, north, detail);
-            return _sunPathGenPosisNested(__model__, rays_dirs_tjs1, radius, matrix);
+            const rays_dirs1: Txyz[][] = _solarRaysDirect(latitude, north, detail);
+            return _sunPathGenPosisNested(__model__, rays_dirs1, radius, matrix);
         case _ESunPathMethod.INDIRECT:
-            const rays_dirs_tjs2: THREE.Vector3[] = _solarRaysIndirectTjs(latitude, north, detail);
-            return _sunPathGenPosis(__model__, rays_dirs_tjs2, radius, matrix);
+            const rays_dirs2: Txyz[] = _solarRaysIndirect(latitude, north, detail);
+            return _sunPathGenPosis(__model__, rays_dirs2, radius, matrix);
         case _ESunPathMethod.SKY:
-            // const rays_dirs_tjs3: THREE.Vector3[] = _skyRayDirsTjs(detail);
-            const rays_dirs_tjs3: THREE.Vector3[] = tregenzaSky(detail).map( vec => new THREE.Vector3(... vec) );
-            return _sunPathGenPosis(__model__, rays_dirs_tjs3, radius, matrix);
+            const rays_dirs3: Txyz[] = tregenzaSky(detail);
+            return _sunPathGenPosis(__model__, rays_dirs3, radius, matrix);
         default:
             throw new Error("Sunpath method not recognised.");
     }
 }
-function _sunPathGenPosisNested(__model__: GIModel, rays_dirs_tjs: THREE.Vector3[][], radius: number, matrix: THREE.Matrix4): TId[][] {
+function _sunPathGenPosisNested(__model__: GIModel, rays_dirs: Txyz[][], radius: number, matrix: THREE.Matrix4): TId[][] {
     const posis: TId[][] = [];
-    for (const one_day_tjs of rays_dirs_tjs) {
-        posis.push(_sunPathGenPosis(__model__, one_day_tjs, radius, matrix));
+    for (const one_day of rays_dirs) {
+        posis.push(_sunPathGenPosis(__model__, one_day, radius, matrix));
     }
     return posis;
 }
-function _sunPathGenPosis(__model__: GIModel, rays_dirs_tjs: THREE.Vector3[], radius: number, matrix: THREE.Matrix4): TId[] {
+function _sunPathGenPosis(__model__: GIModel, rays_dirs: Txyz[], radius: number, matrix: THREE.Matrix4): TId[] {
     const posis_i: number[] = [];
-    for (const direction_tjs of rays_dirs_tjs) {
-        let xyz: Txyz = vecMult([direction_tjs.x, direction_tjs.y, direction_tjs.z], radius);
+    for (const ray_dir of rays_dirs) {
+        let xyz: Txyz = vecMult(ray_dir, radius);
         xyz = multMatrix(xyz, matrix);
         const posi_i: number = __model__.modeldata.geom.add.addPosi();
         __model__.modeldata.attribs.posis.setPosiCoords(posi_i, xyz);

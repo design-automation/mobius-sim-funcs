@@ -123,7 +123,7 @@ export class AnalyzeFunc {
         return Raytrace(this.__model__, rays, entities, dist, method);
     }
     Isovist(
-            sensors: TRay[] | TPlane[], 
+            sensors: TRay[] | TPlane[] | TRay[][] | TPlane[][],
             entities: string | string[] | string[][], 
             radius: number | [number, number], 
             num_rays: number
@@ -131,7 +131,7 @@ export class AnalyzeFunc {
         return Isovist(this.__model__, sensors, entities, radius, num_rays);
     }
     Sky(
-            sensors: TRay[] | TPlane[] | Txyz[], 
+            sensors: TRay[] | TPlane[] | TRay[][] | TPlane[][],
             entities: string | string[] | string[][], 
             radius: number | [number, number], 
             detail: number, 
@@ -140,7 +140,7 @@ export class AnalyzeFunc {
         return Sky(this.__model__, sensors, entities, radius, detail, method);
     }
     Sun(
-            sensors: TRay[] | TPlane[] | Txyz[], 
+            sensors: TRay[] | TPlane[] | TRay[][] | TPlane[][],
             entities: string | string[] | string[][], 
             radius: number | [number, number], 
             detail: number, 

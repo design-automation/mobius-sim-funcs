@@ -22,7 +22,6 @@ import {
 } from '@design-automation/mobius-sim';
 import { checkIDs, ID } from '../../_check_ids';
 import * as chk from '../../_check_types';
-import { Ray } from '../visualize/Ray';
 import { _getSensorRays } from './_shared';
 
 // ================================================================================================
@@ -99,10 +98,9 @@ export function View(
     // --- Error Check ---
     radius = Array.isArray(radius) ? radius : [1, radius];
     // get rays for sensor points
-    const sensor_rays: TRay[][] = _getSensorRays(sensors, 0.01); // offset by 0.01
+    const [sensors0, sensors1, two_lists]: [TRay[], TRay[], boolean] = _getSensorRays(sensors, 0.01); // offset by 0.01
     // get the ray direction vectors
     const dir_vecs: Txyz[] = _getDirs(num_rays, view_ang);
-    // Ray(__model__, dirs.map( dir => [[0,0,0], dir]) as TRay[], 1);
     // calc max perim and area
     const tri_dist: number = distance(
         [radius[1], 0, 0], 
@@ -114,17 +112,15 @@ export function View(
     const [mesh_tjs, _]: [THREE.Mesh, number[]] = createSingleMeshBufTjs(__model__, ents_arrs);
     // run simulation
     const results0: TViewResult = _calcViews(__model__, 
-        sensor_rays[0], dir_vecs, radius, mesh_tjs, max_perim, max_area, false);
+        sensors0, dir_vecs, radius, mesh_tjs, max_perim, max_area, false);
     const results1: TViewResult = _calcViews(__model__, 
-        sensor_rays[1], dir_vecs, radius, mesh_tjs, max_perim, max_area, true);
+        sensors1, dir_vecs, radius, mesh_tjs, max_perim, max_area, true);
     // cleanup
     mesh_tjs.geometry.dispose();
     (mesh_tjs.material as THREE.Material).dispose();
     // return the results
-    if (results0 && results1) { return [results0, results1]; }
-    if (results0) { return results0; }
-    if (results1) { return results1; }
-    return null;
+    if (two_lists) { return [results0, results1]; }
+    return results0;
 }
 // ================================================================================================
 function _calcViews(
@@ -137,7 +133,6 @@ function _calcViews(
     max_area: number,
     generate_lines: boolean
 ): TViewResult {
-    if (sensor_rays.length === 0) { return null; }
     // create data structure
     const result: TViewResult = {};
     result.avg_dist = [];
@@ -157,8 +152,8 @@ function _calcViews(
         sensor_tjs.x = sensor_xyz[0]; sensor_tjs.y = sensor_xyz[1]; sensor_tjs.z = sensor_xyz[2]; 
         const result_dists: number[] = [];
         const result_hits_xyz: Txyz[] = [];
-        const ray_dirs_xformed: Txyz[] = _vecXForm(dir_vecs, sensor_pln);
-        for (const ray_dir of ray_dirs_xformed) {
+        const dir_vecs_xformed: Txyz[] = _vecXForm(dir_vecs, sensor_pln);
+        for (const ray_dir of dir_vecs_xformed) {
             // set raycaster direction
             dir_tjs.x = ray_dir[0]; dir_tjs.y = ray_dir[1]; dir_tjs.z = ray_dir[2];
             // shoot raycaster

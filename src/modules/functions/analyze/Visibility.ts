@@ -92,7 +92,7 @@ export function Visibility(
     // --- Error Check ---
     radius = Array.isArray(radius) ? radius : [1, radius];
     // get rays for each sensor point
-    const sensor_rays: TRay[][] = _getSensorRays(sensors, 0.01); // offset by 0.01
+    const [sensors0, sensors1, two_lists]: [TRay[], TRay[], boolean] = _getSensorRays(sensors, 0.01); // offset by 0.01
     // get the target positions
     const target_posis_i: Set<number> = new Set();
     for (const [ent_type, ent_idx] of ents_arrs2) {
@@ -111,17 +111,15 @@ export function Visibility(
     const [mesh_tjs, _]: [THREE.Mesh, number[]] = createSingleMeshBufTjs(__model__, ents_arrs1);
     // run simulation
     const results0: TVisibilityResult = _calcVisibility(__model__, 
-        sensor_rays[0], targets_xyz, radius, mesh_tjs, false);
+        sensors0, targets_xyz, radius, mesh_tjs, false);
     const results1: TVisibilityResult = _calcVisibility(__model__, 
-        sensor_rays[1], targets_xyz, radius, mesh_tjs, true);
+        sensors1, targets_xyz, radius, mesh_tjs, true);
     // cleanup
     mesh_tjs.geometry.dispose();
     (mesh_tjs.material as THREE.Material).dispose();
     // return the results
-    if (results0 && results1) { return [results0, results1]; }
-    if (results0) { return results0; }
-    if (results1) { return results1; }
-    return null;
+    if (two_lists) { return [results0, results1]; }
+    return results0;
 }
 // ================================================================================================
 function _calcVisibility(
@@ -132,7 +130,6 @@ function _calcVisibility(
     mesh_tjs: THREE.Mesh,
     generate_lines: boolean
 ): TVisibilityResult {
-    if (sensor_rays.length === 0) { return null; }
     // create data structure
     const result: TVisibilityResult = {};
     result.avg_dist = [];
