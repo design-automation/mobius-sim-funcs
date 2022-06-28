@@ -1156,27 +1156,6 @@
 														"type": "array",
 														"elementType": {
 															"type": "reference",
-															"qualifiedName": "TRay",
-															"package": "@design-automation/mobius-sim",
-															"name": "TRay"
-														}
-													},
-													{
-														"type": "array",
-														"elementType": {
-															"type": "array",
-															"elementType": {
-																"type": "reference",
-																"qualifiedName": "TRay",
-																"package": "@design-automation/mobius-sim",
-																"name": "TRay"
-															}
-														}
-													},
-													{
-														"type": "array",
-														"elementType": {
-															"type": "reference",
 															"qualifiedName": "TPlane",
 															"package": "@design-automation/mobius-sim",
 															"name": "TPlane"
@@ -1191,6 +1170,27 @@
 																"qualifiedName": "TPlane",
 																"package": "@design-automation/mobius-sim",
 																"name": "TPlane"
+															}
+														}
+													},
+													{
+														"type": "array",
+														"elementType": {
+															"type": "reference",
+															"qualifiedName": "TRay",
+															"package": "@design-automation/mobius-sim",
+															"name": "TRay"
+														}
+													},
+													{
+														"type": "array",
+														"elementType": {
+															"type": "array",
+															"elementType": {
+																"type": "reference",
+																"qualifiedName": "TRay",
+																"package": "@design-automation/mobius-sim",
+																"name": "TRay"
 															}
 														}
 													}
@@ -1764,15 +1764,6 @@
 														"type": "array",
 														"elementType": {
 															"type": "reference",
-															"qualifiedName": "TRay",
-															"package": "@design-automation/mobius-sim",
-															"name": "TRay"
-														}
-													},
-													{
-														"type": "array",
-														"elementType": {
-															"type": "reference",
 															"qualifiedName": "TPlane",
 															"package": "@design-automation/mobius-sim",
 															"name": "TPlane"
@@ -1781,10 +1772,34 @@
 													{
 														"type": "array",
 														"elementType": {
+															"type": "array",
+															"elementType": {
+																"type": "reference",
+																"qualifiedName": "TPlane",
+																"package": "@design-automation/mobius-sim",
+																"name": "TPlane"
+															}
+														}
+													},
+													{
+														"type": "array",
+														"elementType": {
 															"type": "reference",
-															"qualifiedName": "Txyz",
+															"qualifiedName": "TRay",
 															"package": "@design-automation/mobius-sim",
-															"name": "Txyz"
+															"name": "TRay"
+														}
+													},
+													{
+														"type": "array",
+														"elementType": {
+															"type": "array",
+															"elementType": {
+																"type": "reference",
+																"qualifiedName": "TRay",
+																"package": "@design-automation/mobius-sim",
+																"name": "TRay"
+															}
 														}
 													}
 												]
@@ -1905,6 +1920,27 @@
 														"type": "array",
 														"elementType": {
 															"type": "reference",
+															"qualifiedName": "TPlane",
+															"package": "@design-automation/mobius-sim",
+															"name": "TPlane"
+														}
+													},
+													{
+														"type": "array",
+														"elementType": {
+															"type": "array",
+															"elementType": {
+																"type": "reference",
+																"qualifiedName": "TPlane",
+																"package": "@design-automation/mobius-sim",
+																"name": "TPlane"
+															}
+														}
+													},
+													{
+														"type": "array",
+														"elementType": {
+															"type": "reference",
 															"qualifiedName": "TRay",
 															"package": "@design-automation/mobius-sim",
 															"name": "TRay"
@@ -1913,10 +1949,13 @@
 													{
 														"type": "array",
 														"elementType": {
-															"type": "reference",
-															"qualifiedName": "TPlane",
-															"package": "@design-automation/mobius-sim",
-															"name": "TPlane"
+															"type": "array",
+															"elementType": {
+																"type": "reference",
+																"qualifiedName": "TRay",
+																"package": "@design-automation/mobius-sim",
+																"name": "TRay"
+															}
 														}
 													}
 												]
@@ -2428,15 +2467,6 @@
 														"type": "array",
 														"elementType": {
 															"type": "reference",
-															"qualifiedName": "TRay",
-															"package": "@design-automation/mobius-sim",
-															"name": "TRay"
-														}
-													},
-													{
-														"type": "array",
-														"elementType": {
-															"type": "reference",
 															"qualifiedName": "TPlane",
 															"package": "@design-automation/mobius-sim",
 															"name": "TPlane"
@@ -2445,10 +2475,34 @@
 													{
 														"type": "array",
 														"elementType": {
+															"type": "array",
+															"elementType": {
+																"type": "reference",
+																"qualifiedName": "TPlane",
+																"package": "@design-automation/mobius-sim",
+																"name": "TPlane"
+															}
+														}
+													},
+													{
+														"type": "array",
+														"elementType": {
 															"type": "reference",
-															"qualifiedName": "Txyz",
+															"qualifiedName": "TRay",
 															"package": "@design-automation/mobius-sim",
-															"name": "Txyz"
+															"name": "TRay"
+														}
+													},
+													{
+														"type": "array",
+														"elementType": {
+															"type": "array",
+															"elementType": {
+																"type": "reference",
+																"qualifiedName": "TRay",
+																"package": "@design-automation/mobius-sim",
+																"name": "TRay"
+															}
 														}
 													}
 												]
@@ -2578,9 +2632,9 @@
 												"types": [
 													{
 														"type": "reference",
-														"qualifiedName": "TRay",
+														"qualifiedName": "Txyz",
 														"package": "@design-automation/mobius-sim",
-														"name": "TRay"
+														"name": "Txyz"
 													},
 													{
 														"type": "reference",
@@ -2590,9 +2644,9 @@
 													},
 													{
 														"type": "reference",
-														"qualifiedName": "Txyz",
+														"qualifiedName": "TRay",
 														"package": "@design-automation/mobius-sim",
-														"name": "Txyz"
+														"name": "TRay"
 													}
 												]
 											}
@@ -2672,15 +2726,6 @@
 														"type": "array",
 														"elementType": {
 															"type": "reference",
-															"qualifiedName": "TRay",
-															"package": "@design-automation/mobius-sim",
-															"name": "TRay"
-														}
-													},
-													{
-														"type": "array",
-														"elementType": {
-															"type": "reference",
 															"qualifiedName": "TPlane",
 															"package": "@design-automation/mobius-sim",
 															"name": "TPlane"
@@ -2689,10 +2734,34 @@
 													{
 														"type": "array",
 														"elementType": {
+															"type": "array",
+															"elementType": {
+																"type": "reference",
+																"qualifiedName": "TPlane",
+																"package": "@design-automation/mobius-sim",
+																"name": "TPlane"
+															}
+														}
+													},
+													{
+														"type": "array",
+														"elementType": {
 															"type": "reference",
-															"qualifiedName": "Txyz",
+															"qualifiedName": "TRay",
 															"package": "@design-automation/mobius-sim",
-															"name": "Txyz"
+															"name": "TRay"
+														}
+													},
+													{
+														"type": "array",
+														"elementType": {
+															"type": "array",
+															"elementType": {
+																"type": "reference",
+																"qualifiedName": "TRay",
+																"package": "@design-automation/mobius-sim",
+																"name": "TRay"
+															}
 														}
 													}
 												]
@@ -2824,15 +2893,6 @@
 														"type": "array",
 														"elementType": {
 															"type": "reference",
-															"qualifiedName": "TRay",
-															"package": "@design-automation/mobius-sim",
-															"name": "TRay"
-														}
-													},
-													{
-														"type": "array",
-														"elementType": {
-															"type": "reference",
 															"qualifiedName": "TPlane",
 															"package": "@design-automation/mobius-sim",
 															"name": "TPlane"
@@ -2841,10 +2901,34 @@
 													{
 														"type": "array",
 														"elementType": {
+															"type": "array",
+															"elementType": {
+																"type": "reference",
+																"qualifiedName": "TPlane",
+																"package": "@design-automation/mobius-sim",
+																"name": "TPlane"
+															}
+														}
+													},
+													{
+														"type": "array",
+														"elementType": {
 															"type": "reference",
-															"qualifiedName": "Txyz",
+															"qualifiedName": "TRay",
 															"package": "@design-automation/mobius-sim",
-															"name": "Txyz"
+															"name": "TRay"
+														}
+													},
+													{
+														"type": "array",
+														"elementType": {
+															"type": "array",
+															"elementType": {
+																"type": "reference",
+																"qualifiedName": "TRay",
+																"package": "@design-automation/mobius-sim",
+																"name": "TRay"
+															}
 														}
 													}
 												]
@@ -3011,6 +3095,27 @@
 														"type": "array",
 														"elementType": {
 															"type": "reference",
+															"qualifiedName": "TPlane",
+															"package": "@design-automation/mobius-sim",
+															"name": "TPlane"
+														}
+													},
+													{
+														"type": "array",
+														"elementType": {
+															"type": "array",
+															"elementType": {
+																"type": "reference",
+																"qualifiedName": "TPlane",
+																"package": "@design-automation/mobius-sim",
+																"name": "TPlane"
+															}
+														}
+													},
+													{
+														"type": "array",
+														"elementType": {
+															"type": "reference",
 															"qualifiedName": "TRay",
 															"package": "@design-automation/mobius-sim",
 															"name": "TRay"
@@ -3019,10 +3124,13 @@
 													{
 														"type": "array",
 														"elementType": {
-															"type": "reference",
-															"qualifiedName": "TPlane",
-															"package": "@design-automation/mobius-sim",
-															"name": "TPlane"
+															"type": "array",
+															"elementType": {
+																"type": "reference",
+																"qualifiedName": "TRay",
+																"package": "@design-automation/mobius-sim",
+																"name": "TRay"
+															}
 														}
 													}
 												]
@@ -3154,27 +3262,6 @@
 														"type": "array",
 														"elementType": {
 															"type": "reference",
-															"qualifiedName": "TRay",
-															"package": "@design-automation/mobius-sim",
-															"name": "TRay"
-														}
-													},
-													{
-														"type": "array",
-														"elementType": {
-															"type": "array",
-															"elementType": {
-																"type": "reference",
-																"qualifiedName": "TRay",
-																"package": "@design-automation/mobius-sim",
-																"name": "TRay"
-															}
-														}
-													},
-													{
-														"type": "array",
-														"elementType": {
-															"type": "reference",
 															"qualifiedName": "TPlane",
 															"package": "@design-automation/mobius-sim",
 															"name": "TPlane"
@@ -3189,6 +3276,27 @@
 																"qualifiedName": "TPlane",
 																"package": "@design-automation/mobius-sim",
 																"name": "TPlane"
+															}
+														}
+													},
+													{
+														"type": "array",
+														"elementType": {
+															"type": "reference",
+															"qualifiedName": "TRay",
+															"package": "@design-automation/mobius-sim",
+															"name": "TRay"
+														}
+													},
+													{
+														"type": "array",
+														"elementType": {
+															"type": "array",
+															"elementType": {
+																"type": "reference",
+																"qualifiedName": "TRay",
+																"package": "@design-automation/mobius-sim",
+																"name": "TRay"
 															}
 														}
 													}
@@ -3354,7 +3462,7 @@
 					"sources": [
 						{
 							"fileName": "modules/functions/analyze/CRTN.ts",
-							"line": 63,
+							"line": 64,
 							"character": 16
 						}
 					],
@@ -3400,27 +3508,6 @@
 												"type": "array",
 												"elementType": {
 													"type": "reference",
-													"qualifiedName": "TRay",
-													"package": "@design-automation/mobius-sim",
-													"name": "TRay"
-												}
-											},
-											{
-												"type": "array",
-												"elementType": {
-													"type": "array",
-													"elementType": {
-														"type": "reference",
-														"qualifiedName": "TRay",
-														"package": "@design-automation/mobius-sim",
-														"name": "TRay"
-													}
-												}
-											},
-											{
-												"type": "array",
-												"elementType": {
-													"type": "reference",
 													"qualifiedName": "TPlane",
 													"package": "@design-automation/mobius-sim",
 													"name": "TPlane"
@@ -3435,6 +3522,27 @@
 														"qualifiedName": "TPlane",
 														"package": "@design-automation/mobius-sim",
 														"name": "TPlane"
+													}
+												}
+											},
+											{
+												"type": "array",
+												"elementType": {
+													"type": "reference",
+													"qualifiedName": "TRay",
+													"package": "@design-automation/mobius-sim",
+													"name": "TRay"
+												}
+											},
+											{
+												"type": "array",
+												"elementType": {
+													"type": "array",
+													"elementType": {
+														"type": "reference",
+														"qualifiedName": "TRay",
+														"package": "@design-automation/mobius-sim",
+														"name": "TRay"
 													}
 												}
 											}
@@ -4106,7 +4214,7 @@
 					"sources": [
 						{
 							"fileName": "modules/functions/analyze/Irradiance.ts",
-							"line": 49,
+							"line": 57,
 							"character": 16
 						}
 					],
@@ -4119,7 +4227,7 @@
 							"flags": {},
 							"comment": {
 								"shortText": "Calculate an approximation of irradiance...\n\\n\n\\n",
-								"returns": "A dictionary containing solar exposure results.\n"
+								"returns": "A dictionary containing irradiance results.\n"
 							},
 							"parameters": [
 								{
@@ -4143,20 +4251,11 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "A list of coordinates, a list of Rays or a list of Planes, to be used as the origins for calculating exposure."
+										"shortText": "A list Rays or a list of Planes, to be used as the origins for calculating\nirradiance."
 									},
 									"type": {
 										"type": "union",
 										"types": [
-											{
-												"type": "array",
-												"elementType": {
-													"type": "reference",
-													"qualifiedName": "TRay",
-													"package": "@design-automation/mobius-sim",
-													"name": "TRay"
-												}
-											},
 											{
 												"type": "array",
 												"elementType": {
@@ -4169,10 +4268,34 @@
 											{
 												"type": "array",
 												"elementType": {
+													"type": "array",
+													"elementType": {
+														"type": "reference",
+														"qualifiedName": "TPlane",
+														"package": "@design-automation/mobius-sim",
+														"name": "TPlane"
+													}
+												}
+											},
+											{
+												"type": "array",
+												"elementType": {
 													"type": "reference",
-													"qualifiedName": "Txyz",
+													"qualifiedName": "TRay",
 													"package": "@design-automation/mobius-sim",
-													"name": "Txyz"
+													"name": "TRay"
+												}
+											},
+											{
+												"type": "array",
+												"elementType": {
+													"type": "array",
+													"elementType": {
+														"type": "reference",
+														"qualifiedName": "TRay",
+														"package": "@design-automation/mobius-sim",
+														"name": "TRay"
+													}
 												}
 											}
 										]
@@ -4185,7 +4308,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "The obstructions, faces, polygons, or collections of faces or polygons."
+										"shortText": "The obstructions, polygons or collections."
 									},
 									"type": {
 										"type": "union",
@@ -4262,8 +4385,26 @@
 								}
 							],
 							"type": {
-								"type": "intrinsic",
-								"name": "any"
+								"type": "union",
+								"types": [
+									{
+										"type": "reference",
+										"name": "TIrradianceResult"
+									},
+									{
+										"type": "tuple",
+										"elements": [
+											{
+												"type": "reference",
+												"name": "TIrradianceResult"
+											},
+											{
+												"type": "reference",
+												"name": "TIrradianceResult"
+											}
+										]
+									}
+								]
 							}
 						}
 					]
@@ -4277,7 +4418,7 @@
 					"sources": [
 						{
 							"fileName": "modules/functions/analyze/Isovist.ts",
-							"line": 72,
+							"line": 73,
 							"character": 16
 						}
 					],
@@ -4289,7 +4430,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Calculates an approximation of the isovist for a set of origins, defined by XYZ coords.\n\\n\nThe isovist is calculated by shooting rays out from the origins in a radial pattern.\nThe 'radius' argument defines the maximum radius of the isovist.\n(The radius is used to define the maximum distance for shooting the rays.)\nThe 'num_rays' argument defines the number of rays that will be shot,\nin a radial pattern parallel to the XY plane, with equal angle between rays.\nMore rays will result in more accurate result, but will also be slower to execute.\n\\n\nReturns a dictionary containing different isovist metrics.\n\\n\n1. 'avg\\_dist': The average distance from origin to the perimeter.\n2. 'min\\_dist': The minimum distance from the origin to the perimeter.\n3. 'max\\_dist': The minimum distance from the origin to the perimeter.\n4. 'area': The area of the isovist.\n5. 'perimeter': The perimeter of the isovist.\n4. 'area\\_ratio': The ratio of the area of the isovist to the maximum area.\n5. 'perimeter\\_ratio': The ratio of the perimeter of the isovist to the maximum perimeter.\n6. 'circularity': The ratio of the square of the perimeter to area (Davis and Benedikt, 1979).\n7. 'compactness': The ratio of average distance to the maximum distance (Michael Batty, 2001).\n8. 'cluster': The ratio of the radius of an idealized circle with the actual area of the\nisovist to the radius of an idealized circle with the actual perimeter of the circle (Michael Batty, 2001).\n\\n\n\\n",
+								"shortText": "Calculates an approximation of the isovist for a set of origins, defined by XYZ coords.\n\\n\nThe isovist is calculated by shooting rays out from the origins in a radial pattern.\nThe 'radius' argument defines the maximum radius of the isovist.\n(The radius is used to define the maximum distance for shooting the rays.)\nThe 'num_rays' argument defines the number of rays that will be shot,\nin a radial pattern parallel to the XY plane, with equal angle between rays.\nMore rays will result in more accurate result, but will also be slower to execute.\n\\n\nReturns a dictionary containing different isovist metrics.\n\\n\n1. 'avg\\_dist': The average distance from origin to the perimeter.\n2. 'min\\_dist': The minimum distance from the origin to the perimeter.\n3. 'max\\_dist': The minimum distance from the origin to the perimeter.\n4. 'area': The area of the isovist.\n5. 'perimeter': The perimeter of the isovist.\n4. 'area\\_ratio': The ratio of the area of the isovist to the maximum area.\n5. 'perimeter\\_ratio': The ratio of the perimeter of the isovist to the maximum perimeter.\n6. 'circularity': The ratio of the square of the perimeter to area (Davis and Benedikt, 1979).\n7. 'compactness': The ratio of average distance to the maximum distance (Michael Batty, 2001).\n8. 'cluster': The ratio of the radius of an idealized circle with the actual area of the\nisovist to the radius of an idealized circle with the actual perimeter of the circle (Michael\nBatty, 2001).\n\\n\n\\n",
 								"returns": "A dictionary containing metrics.\n"
 							},
 							"parameters": [
@@ -4309,16 +4450,37 @@
 								},
 								{
 									"id": 12,
-									"name": "origins",
+									"name": "sensors",
 									"kind": 32768,
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "A list of Rays or a list of Planes, to be used as the origins for calculating the isovists."
+										"shortText": "A list of Rays or a list of Planes, to be used as the origins for calculating the\nisovists."
 									},
 									"type": {
 										"type": "union",
 										"types": [
+											{
+												"type": "array",
+												"elementType": {
+													"type": "reference",
+													"qualifiedName": "TPlane",
+													"package": "@design-automation/mobius-sim",
+													"name": "TPlane"
+												}
+											},
+											{
+												"type": "array",
+												"elementType": {
+													"type": "array",
+													"elementType": {
+														"type": "reference",
+														"qualifiedName": "TPlane",
+														"package": "@design-automation/mobius-sim",
+														"name": "TPlane"
+													}
+												}
+											},
 											{
 												"type": "array",
 												"elementType": {
@@ -4331,10 +4493,13 @@
 											{
 												"type": "array",
 												"elementType": {
-													"type": "reference",
-													"qualifiedName": "TPlane",
-													"package": "@design-automation/mobius-sim",
-													"name": "TPlane"
+													"type": "array",
+													"elementType": {
+														"type": "reference",
+														"qualifiedName": "TRay",
+														"package": "@design-automation/mobius-sim",
+														"name": "TRay"
+													}
 												}
 											}
 										]
@@ -4393,11 +4558,17 @@
 												"name": "number"
 											},
 											{
-												"type": "array",
-												"elementType": {
-													"type": "intrinsic",
-													"name": "number"
-												}
+												"type": "tuple",
+												"elements": [
+													{
+														"type": "intrinsic",
+														"name": "number"
+													},
+													{
+														"type": "intrinsic",
+														"name": "number"
+													}
+												]
 											}
 										]
 									}
@@ -4418,8 +4589,26 @@
 								}
 							],
 							"type": {
-								"type": "reference",
-								"name": "TIsovistResult"
+								"type": "union",
+								"types": [
+									{
+										"type": "reference",
+										"name": "TIsovistResult"
+									},
+									{
+										"type": "tuple",
+										"elements": [
+											{
+												"type": "reference",
+												"name": "TIsovistResult"
+											},
+											{
+												"type": "reference",
+												"name": "TIsovistResult"
+											}
+										]
+									}
+								]
 							}
 						}
 					]
@@ -5054,7 +5243,7 @@
 					"sources": [
 						{
 							"fileName": "modules/functions/analyze/Sky.ts",
-							"line": 72,
+							"line": 88,
 							"character": 16
 						}
 					],
@@ -5066,7 +5255,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Calculate an approximation of the sky exposure factor, for a set sensors positioned at specified locations.\nThe sky exposure factor for each sensor is a value between 0 and 1, where 0 means that it has no exposure\nand 1 means that it has maximum exposure.\n\\n\nEach sensor has a location and direction, specified using either rays or planes.\nThe direction of the sensor specifies what is infront and what is behind the sensor.\nFor each sensor, only exposure infront of the sensor is calculated.\n\\n\nThe exposure is calculated by shooting rays in reverse.\nfrom the sensor origin to a set of points on the sky dome.\nIf the rays hits an obstruction, then the sky dome is obstructed..\nIf the ray hits no obstructions, then the sky dome is not obstructed.\n\\n\nThe exposure factor at each sensor point is calculated as follows:\n1. Shoot rays to all sky dome points.\n2. If the ray hits an obstruction, assign a weight of 0 to that ray.\n3. If a ray does not hit any obstructions, assign a weight between 0 and 1, depending on the incidence angle.\n4. Calculate the total solar expouse by adding up the weights for all rays.\n5. Divide by the maximum possible exposure for an unobstructed sensor with a direction pointing straight up.\n\\n\nIf 'weighted' is selected, then\nthe exposure calculation takes into account the angle of incidence of the ray to the sensor direction.\nRays parallel to the sensor direction are assigned a weight of 1.\nRays at an oblique angle are assigned a weight equal to the cosine of the angle\nbetweeen the sensor direction and the ray.\n\\n\nIf 'unweighted' is selected, then all rays are assigned a weight of 1, irresepctive of angle.\n\\n\nThe detail parameter spacifies the number of rays that get generated.\nThe higher the level of detail, the more accurate but also the slower the analysis will be.\n\\n\nThe number of rays are as follows:\n0 = 145 rays,\n1 = 580 rays,\n2 = 1303 rays,\n3 = 2302 rays.\n4 = 5220 rays.\n\\n\nReturns a dictionary containing exposure results.\n\\n\n1. 'exposure': A list of numbers, the exposure factors.\n\\n\n\\n",
+								"shortText": "Calculate an approximation of the sky exposure factor, for a set sensors positioned at specified\nlocations.\nThe sky exposure factor for each sensor is a value between 0 and 1, where 0 means that it has no\nexposure\nand 1 means that it has maximum exposure.\n\\n\nEach sensor has a location and direction, specified using either rays or planes.\nThe direction of the sensor specifies what is infront and what is behind the sensor.\nFor each sensor, only exposure infront of the sensor is calculated.\n\\n\nThe exposure is calculated by shooting rays in reverse.\nfrom the sensor origin to a set of points on the sky dome.\nIf the rays hits an obstruction, then the sky dome is obstructed..\nIf the ray hits no obstructions, then the sky dome is not obstructed.\n\\n\nThe exposure factor at each sensor point is calculated as follows:\n1. Shoot rays to all sky dome points.\n2. If the ray hits an obstruction, assign a weight of 0 to that ray.\n3. If a ray does not hit any obstructions, assign a weight between 0 and 1, depending on the\nincidence angle.\n4. Calculate the total solar expouse by adding up the weights for all rays.\n5. Divide by the maximum possible exposure for an unobstructed sensor with a direction pointing\nstraight up.\n\\n\nIf 'weighted' is selected, then\nthe exposure calculation takes into account the angle of incidence of the ray to the sensor\ndirection.\nRays parallel to the sensor direction are assigned a weight of 1.\nRays at an oblique angle are assigned a weight equal to the cosine of the angle\nbetweeen the sensor direction and the ray.\n\\n\nIf 'unweighted' is selected, then all rays are assigned a weight of 1, irresepctive of angle.\n\\n\nThe detail parameter spacifies the number of rays that get generated.\nThe higher the level of detail, the more accurate but also the slower the analysis will be.\n\\n\nThe number of rays are as follows:\n0 = 145 rays,\n1 = 580 rays,\n2 = 1303 rays,\n3 = 2302 rays.\n4 = 5220 rays.\n\\n\nReturns a dictionary containing exposure results.\n\\n\n1. 'exposure': A list of numbers, the exposure factors.\n\\n\n\\n",
 								"returns": "A dictionary containing solar exposure results.\n"
 							},
 							"parameters": [
@@ -5091,20 +5280,11 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "A list of coordinates, a list of Rays or a list of Planes, to be used as the origins for calculating exposure."
+										"shortText": "A list of coordinates, a list of Rays or a list of Planes, to be used as the\norigins for calculating exposure."
 									},
 									"type": {
 										"type": "union",
 										"types": [
-											{
-												"type": "array",
-												"elementType": {
-													"type": "reference",
-													"qualifiedName": "TRay",
-													"package": "@design-automation/mobius-sim",
-													"name": "TRay"
-												}
-											},
 											{
 												"type": "array",
 												"elementType": {
@@ -5117,10 +5297,34 @@
 											{
 												"type": "array",
 												"elementType": {
+													"type": "array",
+													"elementType": {
+														"type": "reference",
+														"qualifiedName": "TPlane",
+														"package": "@design-automation/mobius-sim",
+														"name": "TPlane"
+													}
+												}
+											},
+											{
+												"type": "array",
+												"elementType": {
 													"type": "reference",
-													"qualifiedName": "Txyz",
+													"qualifiedName": "TRay",
 													"package": "@design-automation/mobius-sim",
-													"name": "Txyz"
+													"name": "TRay"
+												}
+											},
+											{
+												"type": "array",
+												"elementType": {
+													"type": "array",
+													"elementType": {
+														"type": "reference",
+														"qualifiedName": "TRay",
+														"package": "@design-automation/mobius-sim",
+														"name": "TRay"
+													}
 												}
 											}
 										]
@@ -5201,7 +5405,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "An integer between 1 and 4 inclusive, specifying the level of detail for the analysis."
+										"shortText": "An integer between 1 and 4 inclusive, specifying the level of detail for the\nanalysis."
 									},
 									"type": {
 										"type": "intrinsic",
@@ -5224,8 +5428,26 @@
 								}
 							],
 							"type": {
-								"type": "intrinsic",
-								"name": "any"
+								"type": "union",
+								"types": [
+									{
+										"type": "reference",
+										"name": "TSkyResult"
+									},
+									{
+										"type": "tuple",
+										"elements": [
+											{
+												"type": "reference",
+												"name": "TSkyResult"
+											},
+											{
+												"type": "reference",
+												"name": "TSkyResult"
+											}
+										]
+									}
+								]
 							}
 						}
 					]
@@ -5283,9 +5505,9 @@
 										"types": [
 											{
 												"type": "reference",
-												"qualifiedName": "TRay",
+												"qualifiedName": "Txyz",
 												"package": "@design-automation/mobius-sim",
-												"name": "TRay"
+												"name": "Txyz"
 											},
 											{
 												"type": "reference",
@@ -5295,9 +5517,9 @@
 											},
 											{
 												"type": "reference",
-												"qualifiedName": "Txyz",
+												"qualifiedName": "TRay",
 												"package": "@design-automation/mobius-sim",
-												"name": "Txyz"
+												"name": "TRay"
 											}
 										]
 									}
@@ -5383,7 +5605,7 @@
 					"sources": [
 						{
 							"fileName": "modules/functions/analyze/Sun.ts",
-							"line": 102,
+							"line": 118,
 							"character": 16
 						}
 					],
@@ -5395,7 +5617,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Calculate an approximation of the solar exposure factor, for a set sensors positioned at specfied locations.\nThe solar exposure factor for each sensor is a value between 0 and 1, where 0 means that it has no exposure\nand 1 means that it has maximum exposure.\n\\n\nThe calculation takes into account the geolocation and the north direction of the model.\nGeolocation is specified by a model attributes as follows:\n - @geolocation={'longitude':123,'latitude':12}.\nNorth direction is specified by a model attribute as follows, using a vector:\n - @north==[1,2]\nIf no north direction is specified, then [0,1] is the default (i.e. north is in the direction of the y-axis);\n\\n\nEach sensor has a location and direction, specified using either rays or planes.\nThe direction of the sensor specifies what is infront and what is behind the sensor.\nFor each sensor, only exposure infront of the sensor is calculated.\n\\n\nThe exposure is calculated by shooting rays in reverse.\nfrom the sensor origin to a set of points on the sky dome.\nIf the rays hits an obstruction, then the sky dome is obstructed..\nIf the ray hits no obstructions, then the sky dome is not obstructed.\n\\n\nThe exposure factor at each sensor point is calculated as follows:\n1. Shoot rays to all sky dome points.\n2. If the ray hits an obstruction, assign a wight of 0 to that ray.\n3. If a ray does not hit any obstructions, assign a weight between 0 and 1, depending on the incidence angle.\n4. Calculate the total solar expouse by adding up the weights for all rays.\n5. Divide by the maximum possible solar exposure for an unobstructed sensor.\n\\n\nThe solar exposure calculation takes into account the angle of incidence of the sun ray to the sensor direction.\nSun rays that are hitting the sensor straight on are assigned a weight of 1.\nSun rays that are hitting the sensor at an oblique angle are assigned a weight equal to the cosine of the angle.\n\\n\nIf 'direct\\_exposure' is selected, then the points on the sky dome will follow the path of the sun throughout the year.\nIf 'indirect\\_exposure' is selected, then the points on the sky dome will consist of points excluded by\nthe path of the sun throughout the year.\n\\n\nThe direct sky dome points cover a strip of sky where the sun travels.\nThe inderect sky dome points cover the segments of sky either side of the direct sun strip.\n\\n\nThe detail parameter spacifies the number of rays that get generated.\nThe higher the level of detail, the more accurate but also the slower the analysis will be.\nThe number of rays differs depending on the latitde.\n\\n\nAt latitude 0, the number of rays for 'direct' are as follows:\n0 = 44 rays,\n1 = 105 rays,\n2 = 510 rays,\n3 = 1287 rays.\n\\n\nAt latitude 0, the number of rays for 'indirect' are as follows:\n0 = 58 rays,\n1 = 204 rays,\n2 = 798 rays,\n3 = 3122 rays.\n\\n\nThe number of rays for 'sky' are as follows:\n0 = 89 rays,\n1 = 337 rays,\n2 = 1313 rays,\n3 = 5185 rays.\n\\n\nReturns a dictionary containing solar exposure results.\n\\n\nIf one  of the 'direct' methods is selected, the dictionary will contain:\n1. 'direct': A list of numbers, the direct exposure factors.\n\\n\nIf one  of the 'indirect' methods is selected, the dictionary will contain:\n1. 'indirect': A list of numbers, the indirect exposure factors.\n\\n\n\\n",
+								"shortText": "Calculate an approximation of the solar exposure factor, for a set sensors positioned at specfied\nlocations.\nThe solar exposure factor for each sensor is a value between 0 and 1, where 0 means that it has\nno exposure\nand 1 means that it has maximum exposure.\n\\n\nThe calculation takes into account the geolocation and the north direction of the model.\nGeolocation is specified by a model attributes as follows:\n - @geolocation={'longitude':123,'latitude':12}.\nNorth direction is specified by a model attribute as follows, using a vector:\n - @north==[1,2]\nIf no north direction is specified, then [0,1] is the default (i.e. north is in the direction of\nthe y-axis);\n\\n\nEach sensor has a location and direction, specified using either rays or planes.\nThe direction of the sensor specifies what is infront and what is behind the sensor.\nFor each sensor, only exposure infront of the sensor is calculated.\n\\n\nThe exposure is calculated by shooting rays in reverse.\nfrom the sensor origin to a set of points on the sky dome.\nIf the rays hits an obstruction, then the sky dome is obstructed..\nIf the ray hits no obstructions, then the sky dome is not obstructed.\n\\n\nThe exposure factor at each sensor point is calculated as follows:\n1. Shoot rays to all sky dome points.\n2. If the ray hits an obstruction, assign a wight of 0 to that ray.\n3. If a ray does not hit any obstructions, assign a weight between 0 and 1, depending on the\nincidence angle.\n4. Calculate the total solar expouse by adding up the weights for all rays.\n5. Divide by the maximum possible solar exposure for an unobstructed sensor.\n\\n\nThe solar exposure calculation takes into account the angle of incidence of the sun ray to the\nsensor direction.\nSun rays that are hitting the sensor straight on are assigned a weight of 1.\nSun rays that are hitting the sensor at an oblique angle are assigned a weight equal to the\ncosine of the angle.\n\\n\nIf 'direct\\_exposure' is selected, then the points on the sky dome will follow the path of the\nsun throughout the year.\nIf 'indirect\\_exposure' is selected, then the points on the sky dome will consist of points\nexcluded by\nthe path of the sun throughout the year.\n\\n\nThe direct sky dome points cover a strip of sky where the sun travels.\nThe inderect sky dome points cover the segments of sky either side of the direct sun strip.\n\\n\nThe detail parameter spacifies the number of rays that get generated.\nThe higher the level of detail, the more accurate but also the slower the analysis will be.\nThe number of rays differs depending on the latitde.\n\\n\nAt latitude 0, the number of rays for 'direct' are as follows:\n0 = 44 rays,\n1 = 105 rays,\n2 = 510 rays,\n3 = 1287 rays.\n\\n\nAt latitude 0, the number of rays for 'indirect' are as follows:\n0 = 58 rays,\n1 = 204 rays,\n2 = 798 rays,\n3 = 3122 rays.\n\\n\nThe number of rays for 'sky' are as follows:\n0 = 89 rays,\n1 = 337 rays,\n2 = 1313 rays,\n3 = 5185 rays.\n\\n\nReturns a dictionary containing solar exposure results.\n\\n\nIf one  of the 'direct' methods is selected, the dictionary will contain:\n1. 'direct': A list of numbers, the direct exposure factors.\n\\n\nIf one  of the 'indirect' methods is selected, the dictionary will contain:\n1. 'indirect': A list of numbers, the indirect exposure factors.\n\\n\n\\n",
 								"returns": "A dictionary containing solar exposure results.\n"
 							},
 							"parameters": [
@@ -5420,20 +5642,11 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "A list of coordinates, a list of Rays or a list of Planes, to be used as the origins for calculating exposure."
+										"shortText": "A list of coordinates, a list of Rays or a list of Planes, to be used as the\norigins for calculating exposure."
 									},
 									"type": {
 										"type": "union",
 										"types": [
-											{
-												"type": "array",
-												"elementType": {
-													"type": "reference",
-													"qualifiedName": "TRay",
-													"package": "@design-automation/mobius-sim",
-													"name": "TRay"
-												}
-											},
 											{
 												"type": "array",
 												"elementType": {
@@ -5446,10 +5659,34 @@
 											{
 												"type": "array",
 												"elementType": {
+													"type": "array",
+													"elementType": {
+														"type": "reference",
+														"qualifiedName": "TPlane",
+														"package": "@design-automation/mobius-sim",
+														"name": "TPlane"
+													}
+												}
+											},
+											{
+												"type": "array",
+												"elementType": {
 													"type": "reference",
-													"qualifiedName": "Txyz",
+													"qualifiedName": "TRay",
 													"package": "@design-automation/mobius-sim",
-													"name": "Txyz"
+													"name": "TRay"
+												}
+											},
+											{
+												"type": "array",
+												"elementType": {
+													"type": "array",
+													"elementType": {
+														"type": "reference",
+														"qualifiedName": "TRay",
+														"package": "@design-automation/mobius-sim",
+														"name": "TRay"
+													}
 												}
 											}
 										]
@@ -5530,7 +5767,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "An integer between 1 and 3 inclusive, specifying the level of detail for the analysis."
+										"shortText": "An integer between 1 and 3 inclusive, specifying the level of detail for the\nanalysis."
 									},
 									"type": {
 										"type": "intrinsic",
@@ -5544,7 +5781,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Enum, solar method: `'direct_weighted', 'direct_unweighted', 'indirect_weighted'`, or `'indirect_unweighted'`."
+										"shortText": "Enum, solar method: `'direct_weighted', 'direct_unweighted', 'indirect_weighted'`,\nor `'indirect_unweighted'`."
 									},
 									"type": {
 										"type": "reference",
@@ -5553,8 +5790,26 @@
 								}
 							],
 							"type": {
-								"type": "intrinsic",
-								"name": "any"
+								"type": "union",
+								"types": [
+									{
+										"type": "reference",
+										"name": "TSunResult"
+									},
+									{
+										"type": "tuple",
+										"elements": [
+											{
+												"type": "reference",
+												"name": "TSunResult"
+											},
+											{
+												"type": "reference",
+												"name": "TSunResult"
+											}
+										]
+									}
+								]
 							}
 						}
 					]
@@ -5568,7 +5823,7 @@
 					"sources": [
 						{
 							"fileName": "modules/functions/analyze/Ventilation.ts",
-							"line": 32,
+							"line": 41,
 							"character": 16
 						}
 					],
@@ -5581,7 +5836,7 @@
 							"flags": {},
 							"comment": {
 								"shortText": "Calculate an approximation of the ventilation frequency for a set sensors positioned at specified\nlocations.\n\\n",
-								"returns": "A dictionary containing solar exposure results.\n"
+								"returns": "A dictionary containing ventilation results.\n"
 							},
 							"parameters": [
 								{
@@ -5605,20 +5860,11 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "A list of coordinates, a list of Rays or a list of Planes, to be used as the sensors for calculating exposure."
+										"shortText": "A list of Rays or a list of Planes, to be used as the\nsensors for calculating ventilation."
 									},
 									"type": {
 										"type": "union",
 										"types": [
-											{
-												"type": "array",
-												"elementType": {
-													"type": "reference",
-													"qualifiedName": "TRay",
-													"package": "@design-automation/mobius-sim",
-													"name": "TRay"
-												}
-											},
 											{
 												"type": "array",
 												"elementType": {
@@ -5631,10 +5877,34 @@
 											{
 												"type": "array",
 												"elementType": {
+													"type": "array",
+													"elementType": {
+														"type": "reference",
+														"qualifiedName": "TPlane",
+														"package": "@design-automation/mobius-sim",
+														"name": "TPlane"
+													}
+												}
+											},
+											{
+												"type": "array",
+												"elementType": {
 													"type": "reference",
-													"qualifiedName": "Txyz",
+													"qualifiedName": "TRay",
 													"package": "@design-automation/mobius-sim",
-													"name": "Txyz"
+													"name": "TRay"
+												}
+											},
+											{
+												"type": "array",
+												"elementType": {
+													"type": "array",
+													"elementType": {
+														"type": "reference",
+														"qualifiedName": "TRay",
+														"package": "@design-automation/mobius-sim",
+														"name": "TRay"
+													}
 												}
 											}
 										]
@@ -5647,7 +5917,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "The obstructions, faces, polygons, or collections of faces or polygons."
+										"shortText": "The obstructions, polygons, or collections of polygons."
 									},
 									"type": {
 										"type": "union",
@@ -5729,7 +5999,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "The layers of rays, specified as [start, stop, step] relative to the sensors."
+										"shortText": "Three numbers specifying layers of rays, as [start, stop, step] relative to the\nsensors."
 									},
 									"type": {
 										"type": "union",
@@ -5773,8 +6043,26 @@
 								}
 							],
 							"type": {
-								"type": "intrinsic",
-								"name": "any"
+								"type": "union",
+								"types": [
+									{
+										"type": "reference",
+										"name": "TVentilationResult"
+									},
+									{
+										"type": "tuple",
+										"elements": [
+											{
+												"type": "reference",
+												"name": "TVentilationResult"
+											},
+											{
+												"type": "reference",
+												"name": "TVentilationResult"
+											}
+										]
+									}
+								]
 							}
 						}
 					]
@@ -5788,7 +6076,7 @@
 					"sources": [
 						{
 							"fileName": "modules/functions/analyze/View.ts",
-							"line": 68,
+							"line": 64,
 							"character": 16
 						}
 					],
@@ -5834,6 +6122,27 @@
 												"type": "array",
 												"elementType": {
 													"type": "reference",
+													"qualifiedName": "TPlane",
+													"package": "@design-automation/mobius-sim",
+													"name": "TPlane"
+												}
+											},
+											{
+												"type": "array",
+												"elementType": {
+													"type": "array",
+													"elementType": {
+														"type": "reference",
+														"qualifiedName": "TPlane",
+														"package": "@design-automation/mobius-sim",
+														"name": "TPlane"
+													}
+												}
+											},
+											{
+												"type": "array",
+												"elementType": {
+													"type": "reference",
 													"qualifiedName": "TRay",
 													"package": "@design-automation/mobius-sim",
 													"name": "TRay"
@@ -5842,10 +6151,13 @@
 											{
 												"type": "array",
 												"elementType": {
-													"type": "reference",
-													"qualifiedName": "TPlane",
-													"package": "@design-automation/mobius-sim",
-													"name": "TPlane"
+													"type": "array",
+													"elementType": {
+														"type": "reference",
+														"qualifiedName": "TRay",
+														"package": "@design-automation/mobius-sim",
+														"name": "TRay"
+													}
 												}
 											}
 										]
@@ -5904,11 +6216,17 @@
 												"name": "number"
 											},
 											{
-												"type": "array",
-												"elementType": {
-													"type": "intrinsic",
-													"name": "number"
-												}
+												"type": "tuple",
+												"elements": [
+													{
+														"type": "intrinsic",
+														"name": "number"
+													},
+													{
+														"type": "intrinsic",
+														"name": "number"
+													}
+												]
 											}
 										]
 									}
@@ -5943,8 +6261,26 @@
 								}
 							],
 							"type": {
-								"type": "reference",
-								"name": "TViewResult"
+								"type": "union",
+								"types": [
+									{
+										"type": "reference",
+										"name": "TViewResult"
+									},
+									{
+										"type": "tuple",
+										"elements": [
+											{
+												"type": "reference",
+												"name": "TViewResult"
+											},
+											{
+												"type": "reference",
+												"name": "TViewResult"
+											}
+										]
+									}
+								]
 							}
 						}
 					]
@@ -5958,7 +6294,7 @@
 					"sources": [
 						{
 							"fileName": "modules/functions/analyze/Visibility.ts",
-							"line": 54,
+							"line": 55,
 							"character": 16
 						}
 					],
@@ -6004,27 +6340,6 @@
 												"type": "array",
 												"elementType": {
 													"type": "reference",
-													"qualifiedName": "TRay",
-													"package": "@design-automation/mobius-sim",
-													"name": "TRay"
-												}
-											},
-											{
-												"type": "array",
-												"elementType": {
-													"type": "array",
-													"elementType": {
-														"type": "reference",
-														"qualifiedName": "TRay",
-														"package": "@design-automation/mobius-sim",
-														"name": "TRay"
-													}
-												}
-											},
-											{
-												"type": "array",
-												"elementType": {
-													"type": "reference",
 													"qualifiedName": "TPlane",
 													"package": "@design-automation/mobius-sim",
 													"name": "TPlane"
@@ -6039,6 +6354,27 @@
 														"qualifiedName": "TPlane",
 														"package": "@design-automation/mobius-sim",
 														"name": "TPlane"
+													}
+												}
+											},
+											{
+												"type": "array",
+												"elementType": {
+													"type": "reference",
+													"qualifiedName": "TRay",
+													"package": "@design-automation/mobius-sim",
+													"name": "TRay"
+												}
+											},
+											{
+												"type": "array",
+												"elementType": {
+													"type": "array",
+													"elementType": {
+														"type": "reference",
+														"qualifiedName": "TRay",
+														"package": "@design-automation/mobius-sim",
+														"name": "TRay"
 													}
 												}
 											}
@@ -13877,15 +14213,15 @@
 												"types": [
 													{
 														"type": "reference",
-														"qualifiedName": "TRay",
-														"package": "@design-automation/mobius-sim",
-														"name": "TRay"
-													},
-													{
-														"type": "reference",
 														"qualifiedName": "TPlane",
 														"package": "@design-automation/mobius-sim",
 														"name": "TPlane"
+													},
+													{
+														"type": "reference",
+														"qualifiedName": "TRay",
+														"package": "@design-automation/mobius-sim",
+														"name": "TRay"
 													}
 												]
 											}
@@ -14082,15 +14418,15 @@
 										"types": [
 											{
 												"type": "reference",
-												"qualifiedName": "TRay",
-												"package": "@design-automation/mobius-sim",
-												"name": "TRay"
-											},
-											{
-												"type": "reference",
 												"qualifiedName": "TPlane",
 												"package": "@design-automation/mobius-sim",
 												"name": "TPlane"
+											},
+											{
+												"type": "reference",
+												"qualifiedName": "TRay",
+												"package": "@design-automation/mobius-sim",
+												"name": "TRay"
 											}
 										]
 									}
@@ -22129,17 +22465,17 @@
 														"name": "string"
 													},
 													{
-														"type": "reference",
-														"qualifiedName": "TRay",
-														"package": "@design-automation/mobius-sim",
-														"name": "TRay"
-													},
-													{
 														"type": "array",
 														"elementType": {
 															"type": "intrinsic",
 															"name": "string"
 														}
+													},
+													{
+														"type": "reference",
+														"qualifiedName": "Txyz",
+														"package": "@design-automation/mobius-sim",
+														"name": "Txyz"
 													},
 													{
 														"type": "reference",
@@ -22149,9 +22485,9 @@
 													},
 													{
 														"type": "reference",
-														"qualifiedName": "Txyz",
+														"qualifiedName": "TRay",
 														"package": "@design-automation/mobius-sim",
-														"name": "Txyz"
+														"name": "TRay"
 													}
 												]
 											}
@@ -22407,17 +22743,17 @@
 														"name": "string"
 													},
 													{
-														"type": "reference",
-														"qualifiedName": "TRay",
-														"package": "@design-automation/mobius-sim",
-														"name": "TRay"
-													},
-													{
 														"type": "array",
 														"elementType": {
 															"type": "intrinsic",
 															"name": "string"
 														}
+													},
+													{
+														"type": "reference",
+														"qualifiedName": "Txyz",
+														"package": "@design-automation/mobius-sim",
+														"name": "Txyz"
 													},
 													{
 														"type": "reference",
@@ -22427,9 +22763,9 @@
 													},
 													{
 														"type": "reference",
-														"qualifiedName": "Txyz",
+														"qualifiedName": "TRay",
 														"package": "@design-automation/mobius-sim",
-														"name": "Txyz"
+														"name": "TRay"
 													}
 												]
 											}
@@ -22511,17 +22847,17 @@
 														"name": "string"
 													},
 													{
-														"type": "reference",
-														"qualifiedName": "TRay",
-														"package": "@design-automation/mobius-sim",
-														"name": "TRay"
-													},
-													{
 														"type": "array",
 														"elementType": {
 															"type": "intrinsic",
 															"name": "string"
 														}
+													},
+													{
+														"type": "reference",
+														"qualifiedName": "Txyz",
+														"package": "@design-automation/mobius-sim",
+														"name": "Txyz"
 													},
 													{
 														"type": "reference",
@@ -22531,9 +22867,9 @@
 													},
 													{
 														"type": "reference",
-														"qualifiedName": "Txyz",
+														"qualifiedName": "TRay",
 														"package": "@design-automation/mobius-sim",
-														"name": "Txyz"
+														"name": "TRay"
 													}
 												]
 											}
@@ -22626,17 +22962,17 @@
 														"name": "string"
 													},
 													{
-														"type": "reference",
-														"qualifiedName": "TRay",
-														"package": "@design-automation/mobius-sim",
-														"name": "TRay"
-													},
-													{
 														"type": "array",
 														"elementType": {
 															"type": "intrinsic",
 															"name": "string"
 														}
+													},
+													{
+														"type": "reference",
+														"qualifiedName": "Txyz",
+														"package": "@design-automation/mobius-sim",
+														"name": "Txyz"
 													},
 													{
 														"type": "reference",
@@ -22646,9 +22982,9 @@
 													},
 													{
 														"type": "reference",
-														"qualifiedName": "Txyz",
+														"qualifiedName": "TRay",
 														"package": "@design-automation/mobius-sim",
-														"name": "Txyz"
+														"name": "TRay"
 													}
 												]
 											}
@@ -22667,17 +23003,17 @@
 														"name": "string"
 													},
 													{
-														"type": "reference",
-														"qualifiedName": "TRay",
-														"package": "@design-automation/mobius-sim",
-														"name": "TRay"
-													},
-													{
 														"type": "array",
 														"elementType": {
 															"type": "intrinsic",
 															"name": "string"
 														}
+													},
+													{
+														"type": "reference",
+														"qualifiedName": "Txyz",
+														"package": "@design-automation/mobius-sim",
+														"name": "Txyz"
 													},
 													{
 														"type": "reference",
@@ -22687,9 +23023,9 @@
 													},
 													{
 														"type": "reference",
-														"qualifiedName": "Txyz",
+														"qualifiedName": "TRay",
 														"package": "@design-automation/mobius-sim",
-														"name": "Txyz"
+														"name": "TRay"
 													}
 												]
 											}
@@ -22832,17 +23168,17 @@
 												"name": "string"
 											},
 											{
-												"type": "reference",
-												"qualifiedName": "TRay",
-												"package": "@design-automation/mobius-sim",
-												"name": "TRay"
-											},
-											{
 												"type": "array",
 												"elementType": {
 													"type": "intrinsic",
 													"name": "string"
 												}
+											},
+											{
+												"type": "reference",
+												"qualifiedName": "Txyz",
+												"package": "@design-automation/mobius-sim",
+												"name": "Txyz"
 											},
 											{
 												"type": "reference",
@@ -22852,9 +23188,9 @@
 											},
 											{
 												"type": "reference",
-												"qualifiedName": "Txyz",
+												"qualifiedName": "TRay",
 												"package": "@design-automation/mobius-sim",
-												"name": "Txyz"
+												"name": "TRay"
 											}
 										]
 									}
@@ -23283,17 +23619,17 @@
 												"name": "string"
 											},
 											{
-												"type": "reference",
-												"qualifiedName": "TRay",
-												"package": "@design-automation/mobius-sim",
-												"name": "TRay"
-											},
-											{
 												"type": "array",
 												"elementType": {
 													"type": "intrinsic",
 													"name": "string"
 												}
+											},
+											{
+												"type": "reference",
+												"qualifiedName": "Txyz",
+												"package": "@design-automation/mobius-sim",
+												"name": "Txyz"
 											},
 											{
 												"type": "reference",
@@ -23303,9 +23639,9 @@
 											},
 											{
 												"type": "reference",
-												"qualifiedName": "Txyz",
+												"qualifiedName": "TRay",
 												"package": "@design-automation/mobius-sim",
-												"name": "Txyz"
+												"name": "TRay"
 											}
 										]
 									}
@@ -23432,17 +23768,17 @@
 												"name": "string"
 											},
 											{
-												"type": "reference",
-												"qualifiedName": "TRay",
-												"package": "@design-automation/mobius-sim",
-												"name": "TRay"
-											},
-											{
 												"type": "array",
 												"elementType": {
 													"type": "intrinsic",
 													"name": "string"
 												}
+											},
+											{
+												"type": "reference",
+												"qualifiedName": "Txyz",
+												"package": "@design-automation/mobius-sim",
+												"name": "Txyz"
 											},
 											{
 												"type": "reference",
@@ -23452,9 +23788,9 @@
 											},
 											{
 												"type": "reference",
-												"qualifiedName": "Txyz",
+												"qualifiedName": "TRay",
 												"package": "@design-automation/mobius-sim",
-												"name": "Txyz"
+												"name": "TRay"
 											}
 										]
 									}
@@ -23584,17 +23920,17 @@
 												"name": "string"
 											},
 											{
-												"type": "reference",
-												"qualifiedName": "TRay",
-												"package": "@design-automation/mobius-sim",
-												"name": "TRay"
-											},
-											{
 												"type": "array",
 												"elementType": {
 													"type": "intrinsic",
 													"name": "string"
 												}
+											},
+											{
+												"type": "reference",
+												"qualifiedName": "Txyz",
+												"package": "@design-automation/mobius-sim",
+												"name": "Txyz"
 											},
 											{
 												"type": "reference",
@@ -23604,9 +23940,9 @@
 											},
 											{
 												"type": "reference",
-												"qualifiedName": "Txyz",
+												"qualifiedName": "TRay",
 												"package": "@design-automation/mobius-sim",
-												"name": "Txyz"
+												"name": "TRay"
 											}
 										]
 									}
@@ -23628,17 +23964,17 @@
 												"name": "string"
 											},
 											{
-												"type": "reference",
-												"qualifiedName": "TRay",
-												"package": "@design-automation/mobius-sim",
-												"name": "TRay"
-											},
-											{
 												"type": "array",
 												"elementType": {
 													"type": "intrinsic",
 													"name": "string"
 												}
+											},
+											{
+												"type": "reference",
+												"qualifiedName": "Txyz",
+												"package": "@design-automation/mobius-sim",
+												"name": "Txyz"
 											},
 											{
 												"type": "reference",
@@ -23648,9 +23984,9 @@
 											},
 											{
 												"type": "reference",
-												"qualifiedName": "Txyz",
+												"qualifiedName": "TRay",
 												"package": "@design-automation/mobius-sim",
-												"name": "Txyz"
+												"name": "TRay"
 											}
 										]
 									}
@@ -24218,15 +24554,15 @@
 												"types": [
 													{
 														"type": "reference",
-														"qualifiedName": "TPlane",
-														"package": "@design-automation/mobius-sim",
-														"name": "TPlane"
-													},
-													{
-														"type": "reference",
 														"qualifiedName": "Txyz",
 														"package": "@design-automation/mobius-sim",
 														"name": "Txyz"
+													},
+													{
+														"type": "reference",
+														"qualifiedName": "TPlane",
+														"package": "@design-automation/mobius-sim",
+														"name": "TPlane"
 													}
 												]
 											}
@@ -24378,15 +24714,15 @@
 												"types": [
 													{
 														"type": "reference",
-														"qualifiedName": "TPlane",
-														"package": "@design-automation/mobius-sim",
-														"name": "TPlane"
-													},
-													{
-														"type": "reference",
 														"qualifiedName": "Txyz",
 														"package": "@design-automation/mobius-sim",
 														"name": "Txyz"
+													},
+													{
+														"type": "reference",
+														"qualifiedName": "TPlane",
+														"package": "@design-automation/mobius-sim",
+														"name": "TPlane"
 													}
 												]
 											}
@@ -24534,15 +24870,15 @@
 												"types": [
 													{
 														"type": "reference",
-														"qualifiedName": "TPlane",
-														"package": "@design-automation/mobius-sim",
-														"name": "TPlane"
-													},
-													{
-														"type": "reference",
 														"qualifiedName": "Txyz",
 														"package": "@design-automation/mobius-sim",
 														"name": "Txyz"
+													},
+													{
+														"type": "reference",
+														"qualifiedName": "TPlane",
+														"package": "@design-automation/mobius-sim",
+														"name": "TPlane"
 													}
 												]
 											}
@@ -24745,15 +25081,15 @@
 												"types": [
 													{
 														"type": "reference",
-														"qualifiedName": "TPlane",
-														"package": "@design-automation/mobius-sim",
-														"name": "TPlane"
-													},
-													{
-														"type": "reference",
 														"qualifiedName": "Txyz",
 														"package": "@design-automation/mobius-sim",
 														"name": "Txyz"
+													},
+													{
+														"type": "reference",
+														"qualifiedName": "TPlane",
+														"package": "@design-automation/mobius-sim",
+														"name": "TPlane"
 													}
 												]
 											}
@@ -24965,15 +25301,15 @@
 												"types": [
 													{
 														"type": "reference",
-														"qualifiedName": "TPlane",
-														"package": "@design-automation/mobius-sim",
-														"name": "TPlane"
-													},
-													{
-														"type": "reference",
 														"qualifiedName": "Txyz",
 														"package": "@design-automation/mobius-sim",
 														"name": "Txyz"
+													},
+													{
+														"type": "reference",
+														"qualifiedName": "TPlane",
+														"package": "@design-automation/mobius-sim",
+														"name": "TPlane"
 													}
 												]
 											}
@@ -25051,15 +25387,15 @@
 												"types": [
 													{
 														"type": "reference",
-														"qualifiedName": "TPlane",
-														"package": "@design-automation/mobius-sim",
-														"name": "TPlane"
-													},
-													{
-														"type": "reference",
 														"qualifiedName": "Txyz",
 														"package": "@design-automation/mobius-sim",
 														"name": "Txyz"
+													},
+													{
+														"type": "reference",
+														"qualifiedName": "TPlane",
+														"package": "@design-automation/mobius-sim",
+														"name": "TPlane"
 													}
 												]
 											}
@@ -25206,15 +25542,15 @@
 										"types": [
 											{
 												"type": "reference",
-												"qualifiedName": "TPlane",
-												"package": "@design-automation/mobius-sim",
-												"name": "TPlane"
-											},
-											{
-												"type": "reference",
 												"qualifiedName": "Txyz",
 												"package": "@design-automation/mobius-sim",
 												"name": "Txyz"
+											},
+											{
+												"type": "reference",
+												"qualifiedName": "TPlane",
+												"package": "@design-automation/mobius-sim",
+												"name": "TPlane"
 											}
 										]
 									}
@@ -25450,15 +25786,15 @@
 										"types": [
 											{
 												"type": "reference",
-												"qualifiedName": "TPlane",
-												"package": "@design-automation/mobius-sim",
-												"name": "TPlane"
-											},
-											{
-												"type": "reference",
 												"qualifiedName": "Txyz",
 												"package": "@design-automation/mobius-sim",
 												"name": "Txyz"
+											},
+											{
+												"type": "reference",
+												"qualifiedName": "TPlane",
+												"package": "@design-automation/mobius-sim",
+												"name": "TPlane"
 											}
 										]
 									}
@@ -25676,15 +26012,15 @@
 										"types": [
 											{
 												"type": "reference",
-												"qualifiedName": "TPlane",
-												"package": "@design-automation/mobius-sim",
-												"name": "TPlane"
-											},
-											{
-												"type": "reference",
 												"qualifiedName": "Txyz",
 												"package": "@design-automation/mobius-sim",
 												"name": "Txyz"
+											},
+											{
+												"type": "reference",
+												"qualifiedName": "TPlane",
+												"package": "@design-automation/mobius-sim",
+												"name": "TPlane"
 											}
 										]
 									}
@@ -25987,15 +26323,15 @@
 										"types": [
 											{
 												"type": "reference",
-												"qualifiedName": "TPlane",
-												"package": "@design-automation/mobius-sim",
-												"name": "TPlane"
-											},
-											{
-												"type": "reference",
 												"qualifiedName": "Txyz",
 												"package": "@design-automation/mobius-sim",
 												"name": "Txyz"
+											},
+											{
+												"type": "reference",
+												"qualifiedName": "TPlane",
+												"package": "@design-automation/mobius-sim",
+												"name": "TPlane"
 											}
 										]
 									}
@@ -26344,15 +26680,15 @@
 										"types": [
 											{
 												"type": "reference",
-												"qualifiedName": "TPlane",
-												"package": "@design-automation/mobius-sim",
-												"name": "TPlane"
-											},
-											{
-												"type": "reference",
 												"qualifiedName": "Txyz",
 												"package": "@design-automation/mobius-sim",
 												"name": "Txyz"
+											},
+											{
+												"type": "reference",
+												"qualifiedName": "TPlane",
+												"package": "@design-automation/mobius-sim",
+												"name": "TPlane"
 											}
 										]
 									}
@@ -26500,15 +26836,15 @@
 										"types": [
 											{
 												"type": "reference",
-												"qualifiedName": "TPlane",
-												"package": "@design-automation/mobius-sim",
-												"name": "TPlane"
-											},
-											{
-												"type": "reference",
 												"qualifiedName": "Txyz",
 												"package": "@design-automation/mobius-sim",
 												"name": "Txyz"
+											},
+											{
+												"type": "reference",
+												"qualifiedName": "TPlane",
+												"package": "@design-automation/mobius-sim",
+												"name": "TPlane"
 											}
 										]
 									}
@@ -33222,7 +33558,7 @@
 															},
 															{
 																"type": "intrinsic",
-																"name": "number"
+																"name": "string"
 															}
 														]
 													},
@@ -33235,7 +33571,7 @@
 															},
 															{
 																"type": "intrinsic",
-																"name": "string"
+																"name": "number"
 															}
 														]
 													}
@@ -33867,7 +34203,7 @@
 													},
 													{
 														"type": "intrinsic",
-														"name": "number"
+														"name": "string"
 													}
 												]
 											},
@@ -33880,7 +34216,7 @@
 													},
 													{
 														"type": "intrinsic",
-														"name": "string"
+														"name": "number"
 													}
 												]
 											}
