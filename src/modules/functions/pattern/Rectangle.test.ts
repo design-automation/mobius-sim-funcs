@@ -1,8 +1,8 @@
 import { SIMFuncs } from '../../../index'
-import { InlineClass } from '@design-automation/mobius-inline-funcs' 
+import { InlineFuncs } from '@design-automation/mobius-inline-funcs' 
 
 const sf = new SIMFuncs();
-const inl = new InlineClass();
+const inl = new InlineFuncs();
 
 test('Check Rectangle, coord origin and int size', () => {
     const Rectangle1 = sf.pattern.Rectangle([0,0,0], 10)
@@ -11,7 +11,7 @@ test('Check Rectangle, coord origin and int size', () => {
 }); 
 
 test('Check Rectangle, pln origin and list size', () => {
-    const Rectangle2 = sf.pattern.Rectangle(inl.constants.XY, [10,20])
+    const Rectangle2 = sf.pattern.Rectangle(inl.XY, [10,20])
     //@ts-ignore
     expect(Rectangle2).toStrictEqual(["ps4", "ps5", "ps6", "ps7"]);
 }); 
