@@ -303,7 +303,7 @@ export const deprecated = [
             "module": "analyze",
             "name": "Isovist",
             "replace": {
-                "origins": "sensors",
+                "sensors": "origins",
             }
         }
     },
@@ -316,8 +316,8 @@ export const deprecated = [
             "module": "analyze",
             "name": "Sky",
             "replace": {
-                "origins": "sensors",
-                "limits": "radius",
+                "sensors": "origins",
+                "radius": "limits",
             }
         }
     },
