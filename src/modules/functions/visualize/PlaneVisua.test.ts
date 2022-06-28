@@ -1,10 +1,10 @@
 import { SIMFuncs } from '../../../index'
-import { InlineClass } from '@design-automation/mobius-inline-funcs' 
+import { InlineFuncs } from '@design-automation/mobius-inline-funcs' 
 
 const sf = new SIMFuncs();
-const inl = new InlineClass();
+const inl = new InlineFuncs();
 
-const plnV = sf.visualize.Plane(inl.constants.XY, 1)
+const plnV = sf.visualize.Plane(inl.XY, 1)
 
 test('Check that visualizePlane has created plane polylines', () => {
     //@ts-ignore

@@ -1,11 +1,11 @@
 import { SIMFuncs } from '../../../index'
-import { InlineClass } from '@design-automation/mobius-inline-funcs' 
+import { InlineFuncs } from '@design-automation/mobius-inline-funcs' 
 
 import * as qEnum from '../query/_enum';
 import * as makEnum from '../make/_enum';
 
 const sf = new SIMFuncs();
-const inl = new InlineClass();
+const inl = new InlineFuncs();
 
 const posis = sf.make.Position([
     [0, 0, 0],[10, 0, 0],[10, 10, 0],[0, 10, 0],
@@ -16,7 +16,7 @@ const pl = sf.make.Polyline(posis, makEnum._EClose.CLOSE)
 
 const init_e = sf.query.Get(qEnum._EEntType.EDGE, pl)
 
-const pln = inl.constants.XZ
+const pln = inl.XZ
 sf.modify.Mirror(pl, pln);
 
 
