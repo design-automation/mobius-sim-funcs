@@ -296,28 +296,28 @@ export const deprecated = [
     },
     {
         "old_func": {
-            "module": "analysis",
+            "module": "analyze",
             "name": "Isovist"
         },
         "new_func": {
-            "module": "analysis",
+            "module": "analyze",
             "name": "Isovist",
             "replace": {
                 "origins": "sensors",
-                "select_vert_colors": "select_vert_colours"
             }
         }
     },
     {
         "old_func": {
-            "module": "analysis",
+            "module": "analyze",
             "name": "Sky"
         },
         "new_func": {
-            "module": "analysis",
+            "module": "analyze",
             "name": "Sky",
             "replace": {
                 "origins": "sensors",
+                "limits": "radius",
             }
         }
     },
