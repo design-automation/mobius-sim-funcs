@@ -1,10 +1,8 @@
 import { SIMFuncs } from '../../../index'
-import { InlineClass } from '@design-automation/mobius-inline-funcs' 
 
 import * as Enum from './_enum'
 
 const sf = new SIMFuncs();
-const inl = new InlineClass();
 
 const ps1 = sf.make.Position(
     [[0, 0, 0], [10, 0, 0]]

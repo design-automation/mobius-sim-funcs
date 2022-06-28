@@ -1,12 +1,12 @@
 import { SIMFuncs } from '../../../index'
-import { InlineClass } from '@design-automation/mobius-inline-funcs' 
+import { InlineFuncs } from '@design-automation/mobius-inline-funcs' 
 
 import * as makEnum from '../make/_enum';
 
 const sf = new SIMFuncs();
-const inl = new InlineClass();
+const inl = new InlineFuncs();
 
-const posis = sf.pattern.Arc([0,0,0],5,5,inl.constants.PI)
+const posis = sf.pattern.Arc([0,0,0],5,5,inl.PI)
 
 test('Check that arc has created correct number of posis', () => {
     //@ts-ignore

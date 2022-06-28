@@ -1,11 +1,11 @@
 import { SIMFuncs } from '../../../index'
-import { InlineClass } from '@design-automation/mobius-inline-funcs' 
+import { InlineFuncs } from '@design-automation/mobius-inline-funcs' 
 
 import * as qEnum from '../query/_enum';
 import * as makEnum from '../make/_enum';
 
 const sf = new SIMFuncs();
-const inl = new InlineClass();
+const inl = new InlineFuncs();
 
 const posis = sf.make.Position([
     [0, 0, 0],[10, 0, 0],[10, 10, 0],[0, 10, 0],
@@ -16,7 +16,7 @@ const pl = sf.make.Polyline(posis, makEnum._EClose.CLOSE)
 
 const init_e = sf.query.Get(qEnum._EEntType.EDGE, pl)
 
-sf.modify.Scale(pl, inl.constants.XY, 3);
+sf.modify.Scale(pl, inl.XY, 3);
 
 
 test('Check if Scaled ps are still the same', () => {

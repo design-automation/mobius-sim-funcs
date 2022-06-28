@@ -293,6 +293,32 @@ export const deprecated = [
                 "tolerance": "0.1"
             }
         }
-    }
-
+    },
+    {
+        "old_func": {
+            "module": "analysis",
+            "name": "Isovist"
+        },
+        "new_func": {
+            "module": "analysis",
+            "name": "Isovist",
+            "replace": {
+                "origins": "sensors",
+                "select_vert_colors": "select_vert_colours"
+            }
+        }
+    },
+    {
+        "old_func": {
+            "module": "analysis",
+            "name": "Sky"
+        },
+        "new_func": {
+            "module": "analysis",
+            "name": "Sky",
+            "replace": {
+                "origins": "sensors",
+            }
+        }
+    },
 ]
