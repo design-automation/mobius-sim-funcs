@@ -56,7 +56,7 @@
     "test": "jest",
     "start": "http-server -p 4200",
     "build": "npm run build-del && npm run build-mjs && npm run build-cjs && fixup.sh",
-    "build-del": "del /s /q build\\*",
+    "build-del": "if exist build del /s /q build\\*",
     "build-mjs": "tsc -p tsconfig-mjs.json",
     "build-cjs": "tsc -p tsconfig-cjs.json",
     "mobius": "node copy_to_mobius.js",
