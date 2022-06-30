@@ -341,6 +341,8 @@ function _getDataTypeStrFromFunc(check_fn: any): string {
             return 'a plane, defined by a list of three lists, each containing three numbers';
         case isPlnL:
             return 'a list of planes, each defined by a list of three lists, each containing three numbers';
+        case isPlnLL:
+            return 'a nested list of planes, each defined by a list of three lists, each containing three numbers';
         case isBBox:
             return 'a bounding box, defined by a list of four lists, each containing three numbers';
         case isBBoxL:

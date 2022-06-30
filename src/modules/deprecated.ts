@@ -304,6 +304,8 @@ export const deprecated = [
             "name": "Isovist",
             "replace": {
                 "sensors": "origins",
+                "radius": "dist",
+                "num_rays": "detail",
             }
         }
     },
@@ -315,6 +317,20 @@ export const deprecated = [
         "new_func": {
             "module": "analyze",
             "name": "Sky",
+            "replace": {
+                "sensors": "origins",
+                "radius": "limits",
+            }
+        }
+    },
+    {
+        "old_func": {
+            "module": "analyze",
+            "name": "Sun"
+        },
+        "new_func": {
+            "module": "analyze",
+            "name": "Sun",
             "replace": {
                 "sensors": "origins",
                 "radius": "limits",
