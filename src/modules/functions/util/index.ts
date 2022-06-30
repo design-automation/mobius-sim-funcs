@@ -2,7 +2,7 @@
  * The `util` module has some utility functions used for debugging.
  * @module
  */
-import { GIModel } from '@design-automation/mobius-sim';
+import { GIModel, TId, TPlane, Txyz } from '@design-automation/mobius-sim';
 
 import * as Enum from './_enum';
 import { EntityInfo } from './EntityInfo';
@@ -16,6 +16,7 @@ import { Select } from './Select';
 import { SendData } from './SendData';
 import { VrHotspot } from './VrHotspot';
 import { VrPanorama } from './VrPanorama';
+import { Text } from './Text';
 
 export { Select };
 export { HTTPRequest };
@@ -28,6 +29,7 @@ export { ModelCheck };
 export { ModelCompare };
 export { ModelMerge };
 export { SendData };
+export { Text };
 
 // CLASS DEFINITION
 export class UtilFunc {
@@ -76,5 +78,7 @@ export class UtilFunc {
     async HTTPRequest(request_data: any, request_url: string, method: Enum._HTTPRequestMethod) {
         return await HTTPRequest(this.__model__, request_data, request_url, method);
     }
-
+    Text(text: string, origin: Txyz | TPlane, options: object): TId {
+        return Text(this.__model__, text, origin, options);
+    }
 }
