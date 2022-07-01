@@ -36,6 +36,7 @@ const EPS = 1e-6;
 interface TNoiseResult {
     noise_level: number[]
 }
+// TODO: insert diagrams about [RayL, [Ray]] output
 // =================================================================================================
 /**
  * Calculates the noise impact on a set of sensors from a set of noise sources, using the CRTN
@@ -47,10 +48,11 @@ interface TNoiseResult {
  * \n
  * The noise impact is calculated by shooting rays out from the sensors towards the noise sources.
  * \n
- * There are 3 cases for the input of 'sensors'.
- * - `[RayL, Ray]`
- * - `[RayL, RayL]`
- * - `[Ray, Ray]`
+ * There are several cases for the input of 'sensors'.
+ * - `PlnL` will return a dictionary of values, with each value corresponding to each plane. 
+ * - `[PlnL, Pln]` will return a dictionary with two keys, while visualizing the raycasting process for `Pln`.
+ * - `RayL` will return a dictionary of values, with each value corresponding to each ray. 
+ * - `[RayL, Ray]` will return a dictionary with two keys, while visualizing the raycasting process for `Ray`.
  * \n
  * The radius is used to define the distance of the resultant rays.
  * \n
@@ -62,9 +64,9 @@ interface TNoiseResult {
  * \n
  * @param __model__
  * @param sensors A list of Rays or Planes, to be used as the origins for calculating the unobstructed views.
- * @param entities The obstructions: faces, polygons, or collections.
+ * @param entities A list of the obstructions: faces, polygons, or collections.
  * @param radius A number or list of two numbers. The maximum radius of the visibility analysis.
- * @param roads A list of Polylines defining the road segments as noise sources. 
+ * @param roads A Polyline or list of polylines defining the road segments as noise sources. 
  * @param noise_levels The noise level for each road polyline, in dB. Either a single number for all
  * roads, or a list of numbers with the same length as the list of roads.
  * @param length The length of each road segment, in meters.

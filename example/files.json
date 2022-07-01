@@ -1,5 +1,7 @@
 [
     "modify.rotate",
     "make.polygon",
-    "pattern.grid"
+    "pattern.grid",
+    "modify.offset",
+    "visualize.gradient"
 ]
