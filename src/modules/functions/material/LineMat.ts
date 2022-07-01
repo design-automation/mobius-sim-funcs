@@ -50,7 +50,9 @@ export function LineMat(__model__: GIModel, name: string,
     }
     // --- Error Check ---
     const vert_colors: number = _convertSelectEcolorsToNum(select_vert_colors);
-    _clampArr01(color);
+    if (select_vert_colors === _Ecolors.VERT_COLORS) {
+        color = [1, 1, 1];
+    }
 
     let settings_obj: object;
     if (dash_gap_scale === null) {
