@@ -2,7 +2,6 @@ import {
     arrMakeFlat,
     createSingleMeshBufTjs,
     EEntType,
-    getArrDepth,
     GIModel,
     idsBreak,
     TEntTypeIdx,
@@ -10,9 +9,6 @@ import {
     TPlane,
     TRay,
     Txyz,
-    vecAdd,
-    vecDot,
-    vecMult,
 } from '@design-automation/mobius-sim';
 import * as THREE from 'three';
 import { checkIDs, ID } from '../../_check_ids';

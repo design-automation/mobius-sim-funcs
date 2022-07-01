@@ -11,13 +11,16 @@ import {
     Txyz,
     vecAdd,
     vecDot,
+    vecLen,
     vecMult,
+    vecRot,
+    vecSetLen,
 } from '@design-automation/mobius-sim';
 import * as THREE from 'three';
 import lodash from 'lodash';
 import { checkIDs, ID } from '../../_check_ids';
 import * as chk from '../../_check_types';
-import { _getSensorRays } from './_shared';
+import { _addLine, _addPosi, _addTri, _generateLines, _getSensorRays } from './_shared';
 const EPS = 1e-6;
 // =================================================================================================
 interface TVentilationResult {
@@ -115,57 +118,67 @@ function _calcVentilation(
     const ray_tjs: THREE.Raycaster = new THREE.Raycaster(sensor_tjs, dir_tjs, radius[0], radius[1]);
     // shoot rays
     for (const [sensor_xyz, sensor_dir] of sensor_rays) {
-        sensor_tjs.x = sensor_xyz[0]; sensor_tjs.y = sensor_xyz[1]; sensor_tjs.z = sensor_xyz[2];
-        const base_z: number = sensor_xyz[2];
+        const result_rays: [Txyz, number][][] = [];
+        const ray_starts: Txyz[] = [];
         let sensor_result = 0;
-        const result_hits_xyz: Txyz[][] = [];
-        const result_start_xyz: Txyz[] = [];
-        for (let i = 0; i < wind_rose.length; i++) {
-            let wind_dir_result = 0;
-            const wind_freq: number = wind_rose[i] / (dir_vecs[i].length * num_layers);
-            for (const ray_dir of dir_vecs[i]) {
-                // check if target is behind sensor
-                const dot_ray_sensor: number = vecDot(ray_dir, sensor_dir);
-                if (dot_ray_sensor < -EPS) { continue; } 
-                // set raycaster direction
-                dir_tjs.x = ray_dir[0]; dir_tjs.y = ray_dir[1]; dir_tjs.z = ray_dir[2];
-                // loop through vertical layers
-                const hits_xyz: Txyz[] = [];
-                for (let z = layers[0]; z < layers[1]; z += layers[2]) {
-                    // save start
-                    result_start_xyz.push( [sensor_xyz[0], sensor_xyz[1], base_z + z] );
-                    // set z height
-                    sensor_tjs.setZ(base_z + z);
-                    // shoot Raycaster
+        // loop through vertical layers
+        for (let z = layers[0]; z < layers[1]; z += layers[2]) {
+            const layer_rays: [Txyz, number][] = [];
+            // save start
+            const ray_start: Txyz = [sensor_xyz[0], sensor_xyz[1], sensor_xyz[2] + z];
+            ray_starts.push( ray_start );
+            sensor_tjs.x = ray_start[0]; sensor_tjs.y = ray_start[1]; sensor_tjs.z = ray_start[2];
+            // loop through wind directions
+            for (let i = 0; i < wind_rose.length; i++) {
+                const wind_freq: number = wind_rose[i] / (dir_vecs[i].length * num_layers);
+                // loop thrugh dirs
+                for (const ray_dir of dir_vecs[i]) {
+                    // check if target is behind sensor
+                    const dot_ray_sensor: number = vecDot(ray_dir, sensor_dir);
+                    if (dot_ray_sensor < -EPS) { continue; } 
+                    // set raycaster direction
+                    dir_tjs.x = ray_dir[0]; dir_tjs.y = ray_dir[1]; dir_tjs.z = ray_dir[2];
+                    // shoot raycaster
                     const isects: THREE.Intersection[] = ray_tjs.intersectObject(mesh_tjs, false);
                     // get results
                     if (isects.length === 0) {
-                        wind_dir_result += wind_freq; // dist_ratio is 1
-                        hits_xyz.push(vecAdd(sensor_xyz, vecMult(ray_dir, radius[1])));
+                        sensor_result += wind_freq; // dist_ratio is 1
+                        const ray_end: Txyz = vecAdd(ray_start, vecMult(ray_dir, 2));
+                        layer_rays.push([ray_end, 0]);
                     } else {
                         const dist_ratio: number = isects[0].distance / radius[1];
-                        wind_dir_result += (wind_freq * dist_ratio);
-                        hits_xyz.push([isects[0].point.x, isects[0].point.y, isects[0].point.z]);
+                        sensor_result += (wind_freq * dist_ratio);
+                        const ray_end: Txyz = [isects[0].point.x, isects[0].point.y, isects[0].point.z];
+                        layer_rays.push([ray_end, 1]);
                     }
                 }
-                result_hits_xyz.push(hits_xyz);
             }
-            sensor_result += wind_dir_result;
+            result_rays.push(layer_rays);
         }
         results.push(sensor_result);
-        // generate calculation lines
+        // generate calculation lines for each sensor
         if (generate_lines) {
-            const zipped: Txyz[][] = lodash.zip(...result_hits_xyz);
-            for (let i = 0; i < zipped.length; i++) {
-                const posi0_i: number = __model__.modeldata.geom.add.addPosi();
-                __model__.modeldata.attribs.set.setEntAttribVal(
-                        EEntType.POSI, posi0_i, 'xyz', result_start_xyz[i]);
-                for (const xyz of zipped[i]) {
-                    const posi1_i: number = __model__.modeldata.geom.add.addPosi();
-                    __model__.modeldata.attribs.set.setEntAttribVal(
-                            EEntType.POSI, posi1_i, 'xyz', xyz);
-                    __model__.modeldata.geom.add.addPline([posi0_i, posi1_i], false);
-                }
+            for (let i = 0; i < result_rays.length; i++) {
+                _generateLines(__model__, ray_starts[i], result_rays[i]);
+            }
+            // vert line
+            const z_min = sensor_xyz[2] < ray_starts[0][2] ? sensor_xyz : ray_starts[0];
+            const last = ray_starts[ray_starts.length - 1];
+            const z_max = sensor_xyz[2] > last[2] ? sensor_xyz : last;
+            z_max[2] = z_max[2] + 0.2;
+            const posi0_i: number = _addPosi(__model__, z_min);
+            const posi1_i: number = _addPosi(__model__, z_max);
+            _addLine(__model__, posi0_i, posi1_i);
+            // wind rose
+            const ang_inc: number = (2 * Math.PI)/wind_rose.length;
+            for (let i = 0; i < wind_rose.length; i++) {
+                const ang2: number = (Math.PI / 2) - (ang_inc / 2) - (ang_inc * i);
+                const ang3: number = ang2 + ang_inc;
+                const vec2 = vecSetLen([Math.cos(ang2), Math.sin(ang2), 0], wind_rose[i] * 20);
+                const vec3 = vecSetLen([Math.cos(ang3), Math.sin(ang3), 0], wind_rose[i] * 20);
+                const posi2_i: number = _addPosi(__model__, vecAdd(z_max, vec2));
+                const posi3_i: number = _addPosi(__model__, vecAdd(z_max, vec3));
+                _addTri(__model__, posi1_i, posi2_i, posi3_i);
             }
         }
     }
@@ -177,12 +190,12 @@ function _ventilationVecs(num_vecs: number, wind_rose: number[]): Txyz[][] {
     const num_winds: number = wind_rose.length;
     const wind_ang: number = (Math.PI * 2) / num_winds;
     const ang_inc: number = wind_ang / num_vecs;
-    const ang_start: number = ang_inc / 2;
+    const ang_start: number = -(wind_ang / 2) + (ang_inc / 2);
     const dir_vecs: Txyz[][] = [];
     for (let wind_i = 0; wind_i < num_winds; wind_i++) {
         const vecs_wind_dir: Txyz[] = [];
         for (let vec_i = 0; vec_i < num_vecs; vec_i++) {
-            const ang: number = (wind_ang * wind_i) + ang_start + (ang_inc * vec_i);
+            const ang: number = ang_start + (wind_ang * wind_i) + (ang_inc * vec_i);
             vecs_wind_dir.push( [Math.sin(ang), Math.cos(ang), 0] );
         }
         dir_vecs.push( vecs_wind_dir );

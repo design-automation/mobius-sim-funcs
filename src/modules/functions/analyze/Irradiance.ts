@@ -1,9 +1,11 @@
 import {
     arrMakeFlat,
     createSingleMeshBufTjs,
+    EAttribDataTypeStrs,
     EEntType,
     GIModel,
     idsBreak,
+    TColor,
     TEntTypeIdx,
     TId,
     TPlane,
@@ -17,7 +19,7 @@ import * as THREE from 'three';
 import { checkIDs, ID } from '../../_check_ids';
 import * as chk from '../../_check_types';
 import { _ESkyMethod } from './_enum';
-import { _getSensorRays } from './_shared';
+import { _generateLines, _getSensorRays } from './_shared';
 const EPS = 1e-6;
 // =================================================================================================
 interface TIrradianceResult {
@@ -100,8 +102,9 @@ export function Irradiance(
     // create mesh
     const [mesh_tjs, _]: [THREE.Mesh, number[]] = createSingleMeshBufTjs(__model__, ents_arrs);
     // get the sky data from attribute
-    const sky_rad: string = __model__.modeldata.attribs.get.getModelAttribVal("sky") as string;
-    const sky_rad_data: ISkyRadiance = JSON.parse(sky_rad) as ISkyRadiance;
+    const sky_rad: any = __model__.modeldata.attribs.get.getModelAttribVal("sky") as string;
+    const sky_rad_data: ISkyRadiance = typeof sky_rad === 'string' ?
+        JSON.parse(sky_rad) as ISkyRadiance : sky_rad as ISkyRadiance;
     // weighted or unweighted
     const weighted: boolean = method === _ESkyMethod.WEIGHTED;
     // run simulation
@@ -128,11 +131,6 @@ export function _calcIrradiance(
 ): TIrradianceResult {
     const results = [];
     const patches: ISkyRadiancePatch[] = sky_rad_data.SkyDome.patches;
-    const sky_vecs: [Txyz, number, number][] = patches.map( patch => [
-        patch.vector,
-        patch.area,
-        patch.radiance
-    ]);
     // create tjs objects (to be resued for each ray)
     const sensor_tjs: THREE.Vector3 = new THREE.Vector3();
     const dir_tjs: THREE.Vector3 = new THREE.Vector3();
@@ -142,7 +140,7 @@ export function _calcIrradiance(
         // set raycaster origin
         sensor_tjs.x = sensor_xyz[0]; sensor_tjs.y = sensor_xyz[1]; sensor_tjs.z = sensor_xyz[2];
         let sensor_result = 0;
-        const result_hits_xyz: Txyz[] = [];
+        const result_rays: [Txyz, number][] = [];
         for (const patch of patches) {
             const ray_dir: Txyz = patch.vector;
             // check if target is behind sensor
@@ -161,24 +159,16 @@ export function _calcIrradiance(
                     // this applies no cosine weighting
                     sensor_result = sensor_result + (patch.radiance * patch.area);
                 }
-                result_hits_xyz.push(vecAdd(sensor_xyz, vecMult(ray_dir, radius[1])));
+                const ray_end = vecAdd(sensor_xyz, vecMult(ray_dir, 2));
+                result_rays.push([ray_end, 0]);
             } else {
-                result_hits_xyz.push([isects[0].point.x, isects[0].point.y, isects[0].point.z]);
+                const ray_end = vecAdd(sensor_xyz, vecMult(ray_dir, isects[0].distance));
+                result_rays.push([ray_end, 1]);
             }
         }
         results.push(sensor_result);
         // generate calculation lines
-        if (generate_lines) {
-            const posi0_i: number = __model__.modeldata.geom.add.addPosi();
-            __model__.modeldata.attribs.set.setEntAttribVal(
-                    EEntType.POSI, posi0_i, 'xyz', sensor_xyz);
-            for (const xyz of result_hits_xyz) {
-                const posi1_i: number = __model__.modeldata.geom.add.addPosi();
-                __model__.modeldata.attribs.set.setEntAttribVal(
-                        EEntType.POSI, posi1_i, 'xyz', xyz);
-                __model__.modeldata.geom.add.addPline([posi0_i, posi1_i], false);
-            }
-        }
+        if (generate_lines) { _generateLines(__model__, sensor_xyz, result_rays); }
     }
     return { irradiance: results };
 }

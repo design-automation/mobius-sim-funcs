@@ -264,7 +264,7 @@ export function _calcExposure(
         // set raycaster origin
         sensor_tjs.x = sensor_xyz[0]; sensor_tjs.y = sensor_xyz[1]; sensor_tjs.z = sensor_xyz[2];
         let result = 0;
-        const result_hits_xyz: Txyz[] = [];
+        const result_rays: [Txyz, number][] = [];
         for (const ray_dir of dir_vecs) {
             // check if target is behind sensor
             const dot_ray_sensor: number = vecDot(ray_dir, sensor_dir);
@@ -282,29 +282,89 @@ export function _calcExposure(
                     // this applies no cosine weighting
                     result = result + 1;
                 }   
-                result_hits_xyz.push(vecAdd(sensor_xyz, vecMult(ray_dir, radius[1])));
+                const ray_end = vecAdd(sensor_xyz, vecMult(ray_dir, 2));
+                result_rays.push([ray_end, 0]);
             } else {
-                result_hits_xyz.push([isects[0].point.x, isects[0].point.y, isects[0].point.z]);
+                const ray_end = vecAdd(sensor_xyz, vecMult(ray_dir, isects[0].distance));
+                result_rays.push([ray_end, 1]);
             }
         }
         results.push(result / result_max);
         // generate calculation lines
-        if (generate_lines) {
-            const posi0_i: number = __model__.modeldata.geom.add.addPosi();
-            __model__.modeldata.attribs.set.setEntAttribVal(
-                    EEntType.POSI, posi0_i, 'xyz', sensor_xyz);
-            for (const xyz of result_hits_xyz) {
-                const posi1_i: number = __model__.modeldata.geom.add.addPosi();
-                __model__.modeldata.attribs.set.setEntAttribVal(
-                        EEntType.POSI, posi1_i, 'xyz', xyz);
-                __model__.modeldata.geom.add.addPline([posi0_i, posi1_i], false);
-            }
-        }
+        if (generate_lines) { _generateLines(__model__, sensor_xyz, result_rays); }
     }
     return { exposure: results };
 }
+// =================================================================================================
+export function _generateLines(
+    __model__: GIModel,
+    sensor_xyz: Txyz,
+    result_rays: [Txyz, number][]
+): void {
+    // generate calculation lines
+    __model__.modeldata.attribs.set.setModelAttribVal('line_mat', {
+        "type": "LineDashedMaterial",
+        "color": [1,1,1],
+        "vertexColors": 1,
+        "dashSize": 0,
+        "gapSize": 0,
+        "scale": 1
+    });
+    // create attribs
+    if (__model__.modeldata.attribs.getAttrib(EEntType.PLINE, 'material') === undefined) {
+        __model__.modeldata.attribs.add.addAttrib(
+            EEntType.PLINE, 'material', EAttribDataTypeStrs.STRING);
+    }
+    if (__model__.modeldata.attribs.getAttrib(EEntType.VERT, 'rgb') === undefined) {
+        __model__.modeldata.attribs.add.addAttrib(
+            EEntType.VERT, 'rgb', EAttribDataTypeStrs.LIST);
+    }
+    // add geom
+    const posi0_i: number = _addPosi(__model__, sensor_xyz);
+    const plines_i: number[] = [];
+    const col_verts_i: [number[], number[]] = [[],[]]; // [white, red]
+    for (const [xyz, i] of result_rays) {
+        const posi1_i: number = _addPosi(__model__, xyz);
+        const pline_i: number = _addLine(__model__, posi0_i, posi1_i);
+        plines_i.push(pline_i);
+        const verts_i: number[] = __model__.modeldata.geom.nav.navAnyToVert(EEntType.PLINE, pline_i);
+        col_verts_i[i].push(verts_i[0]);
+        col_verts_i[i].push(verts_i[1]);
+    }
+    // line colour
+    __model__.modeldata.attribs.set.setEntsAttribVal(
+        EEntType.PLINE, plines_i, 'material', 'line_mat');
+    __model__.modeldata.attribs.set.setEntsAttribVal(
+        EEntType.VERT, col_verts_i[0], 'rgb', [1, 1, 1]); // white hit nothing
+    __model__.modeldata.attribs.set.setEntsAttribVal(
+        EEntType.VERT, col_verts_i[1], 'rgb', [1, 0, 0]); // red hit obstruction
+}
+// =================================================================================================
+export function _addTri(
+    __model__: GIModel,
+    posi0_i: number,
+    posi1_i: number,
+    posi2_i: number
+): number {
+    return __model__.modeldata.geom.add.addPgon([posi0_i, posi1_i, posi2_i])
+}
+export function _addLine(
+    __model__: GIModel,
+    posi0_i: number,
+    posi1_i: number
+): number {
+    return __model__.modeldata.geom.add.addPline([posi0_i, posi1_i], false)
+}
+export function _addPosi(
+    __model__: GIModel,
+    xyz: Txyz
+): number {
+    const posi0_i: number = __model__.modeldata.geom.add.addPosi();
+    __model__.modeldata.attribs.set.setEntAttribVal(
+            EEntType.POSI, posi0_i, 'xyz', xyz);
+    return posi0_i;
+}
 // ================================================================================================
-
 export function _getUniquePosis(__model__: GIModel, ents_arr: TEntTypeIdx[]): number[] {
     if (ents_arr.length === 0) {
         return [];
