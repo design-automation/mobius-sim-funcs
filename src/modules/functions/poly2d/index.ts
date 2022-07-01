@@ -20,6 +20,7 @@ import { OffsetRound } from './OffsetRound';
 import { Stitch } from './Stitch';
 import { Union } from './Union';
 import { Voronoi } from './Voronoi';
+import { Relationship } from './Relationship';
 
 export { Voronoi };
 export { Delaunay };
@@ -32,6 +33,7 @@ export { OffsetChamfer };
 export { OffsetRound };
 export { Stitch };
 export { Clean };
+export { Relationship };
 
 // CLASS DEFINITION
 export class Poly2dFunc {
@@ -52,6 +54,9 @@ export class Poly2dFunc {
         },
         OffsetRound: {
             end_type: Enum._EOffsetRound
+        },
+        RelationshipMethod: {
+            end_type: Enum._ERelationshipMethod
         },
     };
 
@@ -93,5 +98,8 @@ export class Poly2dFunc {
     Voronoi(pgons: string | string[], entities: string | string[]): any {
         return Voronoi(this.__model__, pgons, entities);
     }
-
+    Relationship(pgons: string|string[], entities:string|string[], 
+            method: Enum._ERelationshipMethod): boolean|boolean[] {
+        return Relationship(this.__model__, pgons, entities, method);
+    }
 }

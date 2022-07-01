@@ -26,8 +26,7 @@ export enum _ERaytraceMethod {
 }
 export enum _ESkyMethod {
     WEIGHTED = "weighted",
-    UNWEIGHTED = "unweighted",
-    ALL = "all",
+    UNWEIGHTED = "unweighted"
 }
 export enum _ESunPathMethod {
     DIRECT = "direct",

@@ -29,4 +29,6 @@ export enum _EBooleanMethod {
     DIFFERENCE = 'difference',
     SYMMETRIC = 'symmetric'
 }
- 
+export enum _ERelationshipMethod {
+    CONTAINS = 'contains'
+}

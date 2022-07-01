@@ -19,10 +19,10 @@ import lodash from 'lodash';
 import { checkIDs, ID } from '../../_check_ids';
 import * as chk from '../../_check_types';
 import { _ESolarMethod } from './_enum';
-import { _calcMaxExposure, _getSensorRays, _solarRaysDirect, _solarRaysIndirect } from './_shared';
+import { _calcExposure, _calcMaxExposure, _getSensorRays, _solarRaysDirect, _solarRaysIndirect } from './_shared';
 const EPS = 1e-6;
 // =================================================================================================
-interface TSunResult {
+interface TExposure {
     exposure: number[];
 }
 // =================================================================================================
@@ -122,7 +122,7 @@ export function Sun(
     radius: number | [number, number],
     detail: number,
     method: _ESolarMethod
-): TSunResult | [TSunResult, TSunResult] {
+): TExposure | [TExposure, TExposure] {
     entities = arrMakeFlat(entities) as TId[];
     // --- Error Check ---
     const fn_name = "analyze.Sun";
@@ -196,9 +196,9 @@ export function Sun(
     const weighted: boolean = method === _ESolarMethod.DIRECT_WEIGHTED || 
         method === _ESolarMethod.INDIRECT_WEIGHTED;
     // run simulation
-    const results0: TSunResult = _calcSun(__model__, 
+    const results0: TExposure = _calcExposure(__model__, 
         sensors0, dir_vecs, radius, mesh_tjs, weighted, false);
-    const results1: TSunResult = _calcSun(__model__, 
+    const results1: TExposure = _calcExposure(__model__, 
         sensors1, dir_vecs, radius, mesh_tjs, weighted, true);
     // cleanup
     mesh_tjs.geometry.dispose();
@@ -208,66 +208,7 @@ export function Sun(
     return results0;
 }
 // =================================================================================================
-// TODO this is exact same as _calcSky(), consider moving to shared
-export function _calcSun(
-    __model__: GIModel,
-    sensor_rays: TRay[],
-    dir_vecs: Txyz[],
-    radius: [number, number],
-    mesh_tjs: THREE.Mesh,
-    weighted: boolean,
-    generate_lines: boolean
-): TSunResult {
-    // create data structure
-    const results = [];
-    const result_max: number = _calcMaxExposure(dir_vecs, weighted);
-    // create tjs objects (to be resued for each ray)
-    const sensor_tjs: THREE.Vector3 = new THREE.Vector3();
-    const dir_tjs: THREE.Vector3 = new THREE.Vector3();
-    const ray_tjs: THREE.Raycaster = new THREE.Raycaster(sensor_tjs, dir_tjs, radius[0], radius[1]);
-    // shoot rays
-    for (const [sensor_xyz, sensor_dir] of sensor_rays) {
-        // set raycaster origin
-        sensor_tjs.x = sensor_xyz[0]; sensor_tjs.y = sensor_xyz[1]; sensor_tjs.z = sensor_xyz[2];
-        let result = 0;
-        const result_hits_xyz: Txyz[] = [];
-        for (const ray_dir of dir_vecs) {
-            // check if target is behind sensor
-            const dot_ray_sensor: number = vecDot(ray_dir, sensor_dir);
-            if (dot_ray_sensor < -EPS) { continue; } 
-            // set raycaster direction
-            dir_tjs.x = ray_dir[0]; dir_tjs.y = ray_dir[1]; dir_tjs.z = ray_dir[2];
-            // shoot raycaster
-            const isects: THREE.Intersection[] = ray_tjs.intersectObject(mesh_tjs, false);
-            // get the result
-            if (isects.length === 0) {
-                if (weighted) {
-                    // this applies the cosine weighting rule
-                    result = result + dot_ray_sensor;
-                    result_hits_xyz.push(vecAdd(sensor_xyz, vecMult(ray_dir, radius[1])));
-                } else {
-                    // this applies no cosine weighting
-                    result = result + 1;
-                    result_hits_xyz.push([isects[0].point.x, isects[0].point.y, isects[0].point.z]);
-                }
-            }
-        }
-        results.push(result / result_max);
-        // generate calculation lines
-        if (generate_lines) {
-            const posi0_i: number = __model__.modeldata.geom.add.addPosi();
-            __model__.modeldata.attribs.set.setEntAttribVal(
-                    EEntType.POSI, posi0_i, 'xyz', sensor_xyz);
-            for (const xyz of result_hits_xyz) {
-                const posi1_i: number = __model__.modeldata.geom.add.addPosi();
-                __model__.modeldata.attribs.set.setEntAttribVal(
-                        EEntType.POSI, posi1_i, 'xyz', xyz);
-                __model__.modeldata.geom.add.addPline([posi0_i, posi1_i], false);
-            }
-        }
-    }
-    return { exposure: results };
-}
+// _calcExposure is in _shared.ts
 // =================================================================================================
 function _solarDirs(latitude: number, north: Txy, detail: number, method: _ESolarMethod): Txyz[] {
     switch (method) {
