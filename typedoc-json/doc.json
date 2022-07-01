@@ -3462,7 +3462,7 @@
 					"sources": [
 						{
 							"fileName": "modules/functions/analyze/CRTN.ts",
-							"line": 73,
+							"line": 75,
 							"character": 16
 						}
 					],
@@ -3474,7 +3474,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Calculates the noise impact on a set of sensors from a set of noise sources, using the CRTN\nmethod (Calculation of Road Traffic Noise, 1988).\n\\n\nTypically, the sensors are created as centroids of a set of windows. The noise sources are\ntypically polylines placed along road centrelines. The CRTN method specified that the\ncentrelines should be inset 3.5 meters from the road kerb that is closest to the sensors.\n\\n\nThe noise impact is calculated by shooting rays out from the sensors towards the noise sources.\n\\n\nThere are 3 cases for the input of 'sensors'.\n- `[RayL, Ray]`\n- `[RayL, RayL]`\n- `[Ray, Ray]`\n\\n\nThe radius is used to define the distance of the resultant rays.\n\\n\n- If 'radius' is a number, it defines the maximum radius of the calculation.\n- If 'radius' is a list of two numbers, it defines the minimum and maximum distance of the calculation.\nThe \"min_dist\" must be less than the \"max_dist\": [min_dist, max_dist].\n\\n\nReturns a dictionary containing the noise level values, in decibels (dB).\n\\n",
+								"shortText": "Calculates the noise impact on a set of sensors from a set of noise sources, using the CRTN\nmethod (Calculation of Road Traffic Noise, 1988).\n\\n\nTypically, the sensors are created as centroids of a set of windows. The noise sources are\ntypically polylines placed along road centrelines. The CRTN method specified that the\ncentrelines should be inset 3.5 meters from the road kerb that is closest to the sensors.\n\\n\nThe noise impact is calculated by shooting rays out from the sensors towards the noise sources.\n\\n\nThere are several cases for the input of 'sensors'.\n- `PlnL` will return a dictionary of values, with each value corresponding to each plane.\n- `[PlnL, Pln]` will return a dictionary with two keys, while visualizing the raycasting process for `Pln`.\n- `RayL` will return a dictionary of values, with each value corresponding to each ray.\n- `[RayL, Ray]` will return a dictionary with two keys, while visualizing the raycasting process for `Ray`.\n\\n\nThe radius is used to define the distance of the resultant rays.\n\\n\n- If 'radius' is a number, it defines the maximum radius of the calculation.\n- If 'radius' is a list of two numbers, it defines the minimum and maximum distance of the calculation.\nThe \"min_dist\" must be less than the \"max_dist\": [min_dist, max_dist].\n\\n\nReturns a dictionary containing the noise level values, in decibels (dB).\n\\n",
 								"returns": "A dictionary containing different visibility metrics.\n"
 							},
 							"parameters": [
@@ -3556,7 +3556,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "The obstructions: faces, polygons, or collections."
+										"shortText": "A list of the obstructions: faces, polygons, or collections."
 									},
 									"type": {
 										"type": "union",
@@ -3624,7 +3624,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "A list of Polylines defining the road segments as noise sources."
+										"shortText": "A Polyline or list of polylines defining the road segments as noise sources."
 									},
 									"type": {
 										"type": "union",
@@ -4874,7 +4874,7 @@
 					"sources": [
 						{
 							"fileName": "modules/functions/analyze/Raytrace.ts",
-							"line": 88,
+							"line": 89,
 							"character": 16
 						}
 					],

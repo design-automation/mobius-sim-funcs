@@ -1,6 +1,5 @@
 import { GIModel as Model, GIMetaData as MetaData, EEntType, EEntTypeStr } from '@design-automation/mobius-sim';
 import { ModelApi } from './model_api';
-
 // functions used by mobius
 import { AnalyzeFunc } from './modules/functions/analyze';
 import { AttribFunc } from './modules/functions/attrib';
@@ -19,6 +18,8 @@ import { Poly2dFunc } from './modules/functions/poly2d';
 import { QueryFunc } from './modules/functions/query';
 import { UtilFunc } from './modules/functions/util';
 import { VisualizeFunc } from './modules/functions/visualize';
+// inline functions
+import { InlineFuncs } from '@design-automation/mobius-inline-funcs' 
 // deprecated functions
 import { deprecated } from './modules/deprecated';
 
@@ -66,6 +67,8 @@ export class SIMFuncs {
     query: QueryFunc;
     util: UtilFunc;
     visualize: VisualizeFunc;
+    // inline funcs
+    inl: InlineFuncs;
     // =============================================================================================
     // Constructor
     // =============================================================================================
@@ -95,6 +98,8 @@ export class SIMFuncs {
         this.query = new QueryFunc(this.__model__);
         this.util = new UtilFunc(this.__model__);
         this.visualize = new VisualizeFunc(this.__model__);
+        // inl
+        this.inl = new InlineFuncs(this.__model__.debug);
     }
     // =============================================================================================
     // Model
@@ -130,5 +135,7 @@ export class SIMFuncs {
         this.query.__model__ = model;
         this.util.__model__ = model;
         this.visualize.__model__ = model;
+        // inline
+        this.inl = new InlineFuncs(this.__model__.debug);
     }
 }

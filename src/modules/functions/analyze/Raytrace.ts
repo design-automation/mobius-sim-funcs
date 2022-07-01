@@ -22,7 +22,7 @@ import * as chk from '../../_check_types';
 import { _ERaytraceMethod } from './_enum';
 
 
-// ================================================================================================
+// =================================================================================================
 interface TRaytraceResult {
     hit_count?: number;
     miss_count?: number;
@@ -34,6 +34,7 @@ interface TRaytraceResult {
     distances?: number[];
     hit_pgons?: TId[];
     intersections?: Txyz[];
+    all_intersections?: Txyz[][];
 }
 /**
  * Shoot a set of rays into a set of obstructions, consisting of polygon faces.
@@ -121,6 +122,7 @@ export function Raytrace(
     // return the results
     return result;
 }
+// =================================================================================================
 // Tjs raytrace function
 function _raytraceAll(
     __model__: GIModel,
@@ -145,6 +147,7 @@ function _raytraceAll(
         return (rays as TRay[][]).map((a_rays) => _raytraceAll(__model__, a_rays, mesh, limits, method)) as TRaytraceResult[];
     }
 }
+// =================================================================================================
 //
 function _raytraceOriginsDirsTjs(__model__: GIModel, rays: TRay[]): [THREE.Vector3[], THREE.Vector3[]] {
     const origins_tjs: THREE.Vector3[] = [];
@@ -156,6 +159,7 @@ function _raytraceOriginsDirsTjs(__model__: GIModel, rays: TRay[]): [THREE.Vecto
     }
     return [origins_tjs, dirs_tjs];
 }
+// =================================================================================================
 //
 function _raytrace(
     origins_tjs: THREE.Vector3[],
@@ -170,6 +174,7 @@ function _raytrace(
     const result_dists: number[] = [];
     const result_ents: TId[] = [];
     const result_isects: Txyz[] = [];
+    const result_isects_all: Txyz[][] = [];
     for (let i = 0; i < origins_tjs.length; i++) {
         // get the origin and direction
         const origin_tjs = origins_tjs[i];
@@ -187,7 +192,10 @@ function _raytrace(
             if (method === _ERaytraceMethod.ALL || method === _ERaytraceMethod.INTERSECTIONS) {
                 const origin: Txyz = origin_tjs.toArray() as Txyz;
                 const dir: Txyz = dir_tjs.toArray() as Txyz;
-                result_isects.push(vecAdd(origin, vecSetLen(dir, limits[1])));
+                result_isects.push( vecAdd(origin, vecSetLen(dir, limits[1])) as Txyz);
+            }
+            if (method === _ERaytraceMethod.ALL_INTERSECTIONS) {
+                result_isects_all.push([]);
             }
         } else {
             result_dists.push(isects[0]["distance"]);
@@ -197,10 +205,19 @@ function _raytrace(
                 result_ents.push(idMake(EEntType.PGON, face_i) as TId);
             }
             if (method === _ERaytraceMethod.ALL || method === _ERaytraceMethod.INTERSECTIONS) {
-                const isect_tjs: THREE.Vector3 = isects[0].point;
-                result_isects.push([isect_tjs.x, isect_tjs.y, isect_tjs.z]);
+                result_isects.push([isects[0].point.x, isects[0].point.y, isects[0].point.z]);
+            }
+            if (method === _ERaytraceMethod.ALL_INTERSECTIONS) {
+                const xyzs: Txyz[] = [];
+                for (const isect of isects) {
+                    xyzs.push([isect.point.x, isect.point.y, isect.point.z]);
+                }
+                result_isects_all.push(xyzs);
             }
         }
+    }
+    if (method === _ERaytraceMethod.ALL_INTERSECTIONS) {
+        result.all_intersections = result_isects_all;
     }
     if ((method === _ERaytraceMethod.ALL || method === _ERaytraceMethod.STATS) && result_dists.length > 0) {
         result.hit_count = hit_count;
@@ -222,3 +239,4 @@ function _raytrace(
     }
     return result;
 }
+// =================================================================================================
