@@ -7,7 +7,7 @@
 import { EAttribDataTypeStrs, EEntType, GIModel } from '@design-automation/mobius-sim';
 import * as THREE from 'three';
 
-import { _Ecolors, _EMeshMaterialType, _ESide } from './_enum';
+import { _EMeshMaterialType, _ESide } from './_enum';
 
 
 // ================================================================================================
@@ -22,14 +22,14 @@ export function _convertSelectESideToNum(select: _ESide): number {
             return THREE.DoubleSide;
     }
 }
-export function _convertSelectEcolorsToNum(select: _Ecolors): number {
-    switch (select) {
-        case _Ecolors.NO_VERT_COLORS:
-            return 0;
-        default:
-            return 1;
-    }
-}
+// export function _convertSelectEcolorsToNum(select: _Ecolors): number {
+//     switch (select) {
+//         case _Ecolors.NO_VERT_COLORS:
+//             return 0;
+//         default:
+//             return 1;
+//     }
+// }
 export function _clamp01(val: number): number {
     val = (val > 1) ? 1 : val;
     val = (val < 0) ? 0 : val;

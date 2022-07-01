@@ -1,8 +1,10 @@
 import { GIModel, TColor } from '@design-automation/mobius-sim';
 
 import * as chk from '../../_check_types';
-import { _Ecolors, _ELineMaterialType } from './_enum';
-import { _clampArr01, _convertSelectEcolorsToNum, _setMaterialModelAttrib } from './_shared';
+import { _ELineMaterialType } from './_enum';
+import { _clampArr01, 
+    // _convertSelectEcolorsToNum, 
+    _setMaterialModelAttrib } from './_shared';
 
 
 // ================================================================================================
@@ -13,10 +15,8 @@ import { _clampArr01, _convertSelectEcolorsToNum, _setMaterialModelAttrib } from
  * [See the threejs docs LineDashedMaterials](https://threejs.org/docs/#api/en/materials/LineDashedMaterial)
  * \n
  * The color of the material can either ignore or apply the vertex rgb colors.
- * If 'apply' is selected, then the actual color will be a combination of the material color
- * and the vertex colors, as specified by the vertex attribute called 'rgb'.
- * In such a case, if material color is set to white, then it will
- * have no effect, and the color will be defined by the vertex [r,g,b] values.
+ * - If 'color' is set to `null`, it will apply the vertex rgb colors. 
+ * - If 'color' is set to `[r, g, b]`, it will apply the given color. 
  * \n
  * In order to assign a material to polylines in the model, a polyline attribute called 'material'
  * will be created. The value for each polyline must either be null, or must be a material name.
@@ -31,27 +31,37 @@ import { _clampArr01, _convertSelectEcolorsToNum, _setMaterialModelAttrib } from
  * line widths cannot be rendered. As a result, lines width will always be set to 1.
  * \n
  * @param name The name of the material.
- * @param color The diffuse color, as [r, g, b] values between 0 and 1. White is [1, 1, 1].
+ * @param color Null to apply vertex colors, or the diffuse color, as [r, g, b] values between 0 and 1. White is [1, 1, 1].
  * @param dash_gap_scale Size of the dash and gap, and a scale factor. (The gap and scale are optional.)
- * @param select_vert_colors Enum, select whether to use vertex colors if they exist: `'none'` or `'apply_rgb'`.
  * @returns void
  */
+// --- old vert cols 
+// @param select_vert_colors Enum, select whether to use vertex colors if they exist: `'none'` or `'apply_rgb'`.
+// * If 'apply' is selected, then the actual color will be a combination of the material color
+// * and the vertex colors, as specified by the vertex attribute called 'rgb'.
+// * In such a case, if material color is set to white, then it will
+// * have no effect, and the color will be defined by the vertex [r,g,b] values.
+
 export function LineMat(__model__: GIModel, name: string,
-            color: TColor,
+            color: TColor | null,
             dash_gap_scale: number|number[],
-            select_vert_colors: _Ecolors
         ): void {
     // --- Error Check ---
     if (__model__.debug) {
         const fn_name = 'material.LineMat';
         chk.checkArgs(fn_name, 'name', name, [chk.isStr]);
-        chk.checkArgs(fn_name, 'color', color, [chk.isColor]);
+        chk.checkArgs(fn_name, 'color', color, [chk.isColor, chk.isNull]);
         chk.checkArgs(fn_name, 'dash_gap_scale', dash_gap_scale, [chk.isNull, chk.isNum, chk.isNumL]);
     }
     // --- Error Check ---
-    const vert_colors: number = _convertSelectEcolorsToNum(select_vert_colors);
-    if (select_vert_colors === _Ecolors.VERT_COLORS) {
+    // const vert_colors: number = _convertSelectEcolorsToNum(select_vert_colors);
+    // if (select_vert_colors === _Ecolors.VERT_COLORS) {
+    var vert_colors = 0;
+    if (color == null) {
         color = [1, 1, 1];
+        vert_colors = 1;
+    } else {
+        vert_colors = 0;
     }
 
     let settings_obj: object;
