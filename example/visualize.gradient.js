@@ -11,7 +11,7 @@ function rainbowCubes() {
             for (let k = 0; k < 5; k ++) {
                 const grid = Funcs.pattern.Rectangle([i * 50, j * 50, k * 50], 20);
                 const pg = Funcs.make.Polygon(grid);
-                const cube = Funcs.make.Extrude(pgon, 20, 1, 'quads')      
+                const cube = Funcs.make.Extrude(pg, 20, 1, 'quads')      
             }}}
     const allpos = Funcs.query.Get('ps', null);
     const allpgons = Funcs.query.Get('pg', null);

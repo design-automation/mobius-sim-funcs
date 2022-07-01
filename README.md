@@ -5,6 +5,8 @@ At the core of this ecosystem is Möbius Modeller, a parametric modelling applic
 
 mobius-sim-funcs provides the main functions used when coding in Mobius, sorted into several categories.
 
+For more resources on embedding Mobius: https://mobius.design-automation.net/pages/mobius_for_your_site.html
+
 ## Documentation
 [Github Link](documentation/index.md)
 
@@ -37,6 +39,7 @@ npx tsc -init
 ```
 
 Using `mobius-sim-funcs`:
+
 5. Install mobius-sim-funcs:
 ```
 npm i @design-automation/mobius-sim-funcs
@@ -63,12 +66,4 @@ npx tsc
 node test.js
 ```
 
-If you want to link it to a html page:
-1. Create things 
-<!-- javasccript and typescript are both valid and can be installed the same way 
-Typescript. Gives u handy tips but javascript doesn't
-But you'd have to create a typescript package first in the package.json 
-
-Try to make a script in typescript that has a webpage with a slider and can change the box around 
--->
 

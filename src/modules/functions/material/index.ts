@@ -30,11 +30,12 @@ export class MaterialFunc {
 
     // Document Enums here
     __enum__ = {
-        LineMat: {
-            select_vert_colors: Enum._Ecolors
-        },
+        // LineMat: {
+        //     select_vert_colors: Enum._Ecolors
+        // },
         MeshMat: {
-            select_side: Enum._ESide, select_vert_colors: Enum._Ecolors
+            select_side: Enum._ESide
+            // select_vert_colors: Enum._Ecolors
         },
     };
 
@@ -48,11 +49,11 @@ export class MaterialFunc {
     Lambert(name: string, emissive: TColor): void {
         Lambert(this.__model__, name, emissive);
     }
-    LineMat(name: string, color: TColor, dash_gap_scale: number | number[], select_vert_colors: Enum._Ecolors): void {
-        LineMat(this.__model__, name, color, dash_gap_scale, select_vert_colors);
+    LineMat(name: string, color: TColor, dash_gap_scale: number | number[]): void {
+        LineMat(this.__model__, name, color, dash_gap_scale);
     }
-    MeshMat(name: string, color: TColor, opacity: number, select_side: Enum._ESide, select_vert_colors: Enum._Ecolors): void {
-        MeshMat(this.__model__, name, color, opacity, select_side, select_vert_colors);
+    MeshMat(name: string, color: TColor, opacity: number, select_side: Enum._ESide,): void {
+        MeshMat(this.__model__, name, color, opacity, select_side);
     }
     Phong(name: string, emissive: TColor, specular: TColor, shininess: number): void {
         Phong(this.__model__, name, emissive, specular, shininess);
