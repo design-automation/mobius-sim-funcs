@@ -686,7 +686,7 @@ irradiance.
 **Returns:** A dictionary containing irradiance results.  
   
   
-## CRTN  
+## NoiseCRTN  
   
   
 **Description:** Calculates the noise impact on a set of sensors from a set of noise sources, using the CRTN
@@ -701,10 +701,11 @@ centrelines should be inset 3.5 meters from the road kerb that is closest to the
 The noise impact is calculated by shooting rays out from the sensors towards the noise sources.
 
 
-There are 3 cases for the input of 'sensors'.
-- `[RayL, Ray]`
-- `[RayL, RayL]`
-- `[Ray, Ray]`
+There are several cases for the input of 'sensors'.
+- `PlnL` will return a dictionary of values, with each value corresponding to each plane.
+- `[PlnL, Pln]` will return a dictionary with two keys, while visualizing the raycasting process for `Pln`.
+- `RayL` will return a dictionary of values, with each value corresponding to each ray.
+- `[RayL, Ray]` will return a dictionary with two keys, while visualizing the raycasting process for `Ray`.
 
 
 The radius is used to define the distance of the resultant rays.
@@ -721,9 +722,9 @@ Returns a dictionary containing the noise level values, in decibels (dB).
   
 **Parameters:**  
   * *sensors:* A list of Rays or Planes, to be used as the origins for calculating the unobstructed views.  
-  * *entities:* The obstructions: faces, polygons, or collections.  
+  * *entities:* A list of the obstructions: faces, polygons, or collections.  
   * *radius:* A number or list of two numbers. The maximum radius of the visibility analysis.  
-  * *roads:* A list of Polylines defining the road segments as noise sources.  
+  * *roads:* A Polyline or list of polylines defining the road segments as noise sources.  
   * *noise\_levels:* The noise level for each road polyline, in dB. Either a single number for all
 roads, or a list of numbers with the same length as the list of roads.  
   * *length:* The length of each road segment, in meters.  

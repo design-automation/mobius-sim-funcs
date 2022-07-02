@@ -118,12 +118,12 @@ function _calcVentilation(
     const ray_tjs: THREE.Raycaster = new THREE.Raycaster(sensor_tjs, dir_tjs, radius[0], radius[1]);
     // shoot rays
     for (const [sensor_xyz, sensor_dir] of sensor_rays) {
-        const result_rays: [Txyz, number][][] = [];
+        const vis_rays: [Txyz, number][][] = [];
         const ray_starts: Txyz[] = [];
         let sensor_result = 0;
         // loop through vertical layers
         for (let z = layers[0]; z < layers[1]; z += layers[2]) {
-            const layer_rays: [Txyz, number][] = [];
+            const vis_layer_rays: [Txyz, number][] = [];
             // save start
             const ray_start: Txyz = [sensor_xyz[0], sensor_xyz[1], sensor_xyz[2] + z];
             ray_starts.push( ray_start );
@@ -144,22 +144,22 @@ function _calcVentilation(
                     if (isects.length === 0) {
                         sensor_result += wind_freq; // dist_ratio is 1
                         const ray_end: Txyz = vecAdd(ray_start, vecMult(ray_dir, 2));
-                        layer_rays.push([ray_end, 0]);
+                        vis_layer_rays.push([ray_end, 0]);
                     } else {
                         const dist_ratio: number = isects[0].distance / radius[1];
                         sensor_result += (wind_freq * dist_ratio);
                         const ray_end: Txyz = [isects[0].point.x, isects[0].point.y, isects[0].point.z];
-                        layer_rays.push([ray_end, 1]);
+                        vis_layer_rays.push([ray_end, 1]);
                     }
                 }
             }
-            result_rays.push(layer_rays);
+            vis_rays.push(vis_layer_rays);
         }
         results.push(sensor_result);
         // generate calculation lines for each sensor
         if (generate_lines) {
-            for (let i = 0; i < result_rays.length; i++) {
-                _generateLines(__model__, ray_starts[i], result_rays[i]);
+            for (let i = 0; i < vis_rays.length; i++) {
+                _generateLines(__model__, ray_starts[i], vis_rays[i]);
             }
             // vert line
             const z_min = sensor_xyz[2] < ray_starts[0][2] ? sensor_xyz : ray_starts[0];

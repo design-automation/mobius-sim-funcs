@@ -3,11 +3,11 @@ import {
     arrMakeFlat,
     distance,
     EEntType,
-    getArrDepth,
     GIModel,
     idsBreak,
     multMatrix,
     project,
+    TColor,
     TEntTypeIdx,
     TId,
     TPlane,
@@ -29,8 +29,7 @@ import { checkIDs, ID } from '../../_check_ids';
 import * as chk from '../../_check_types';
 import * as d3poly from 'd3-polygon';
 import lodash from 'lodash';
-import { _getSensorRays, _rayOrisDirsTjs } from './_shared';
-// import { Plane } from '../visualize/Plane';
+import { _addPosi, _getSensorRays, _initLineCol, _rayOrisDirsTjs } from './_shared';
 const EPS = 1e-6;
 // ================================================================================================
 interface TNoiseResult {
@@ -72,7 +71,7 @@ interface TNoiseResult {
  * @param length The length of each road segment, in meters.
  * @returns A dictionary containing different visibility metrics.
  */
-export function CRTN(
+export function NoiseCRTN(
     __model__: GIModel,
     sensors: TRay[] | TPlane[] | TRay[][] | TPlane[][],
     entities: TId | TId[] | TId[][],
@@ -344,16 +343,24 @@ function _calcNoise(
             noise_lvls.push(noise_lvl);
             // generate calculation lines
             if (generate_lines) {
+                _initLineCol(__model__);
                 const tmp_posis_i: number[] = [];
                 if (sensor_xyz !== sensor_xyz2) {
                     path.splice(0, 0, sensor_xyz);
                 }
                 for (const xyz of path) {
-                    const posi_i: number = __model__.modeldata.geom.add.addPosi();
-                    __model__.modeldata.attribs.set.setEntAttribVal(EEntType.POSI, posi_i, 'xyz', xyz);
+                    const posi_i: number = _addPosi(__model__, xyz);
                     tmp_posis_i.push(posi_i);
                 }
-                __model__.modeldata.geom.add.addPline(tmp_posis_i, false);
+                const pline_i: number =__model__.modeldata.geom.add.addPline(tmp_posis_i, false);
+                const verts_i: number[] = __model__.modeldata.geom.nav.navAnyToVert(EEntType.PLINE, pline_i);
+                // line colour
+                __model__.modeldata.attribs.set.setEntAttribVal(
+                    EEntType.PLINE, pline_i, 'material', 'line_mat');
+                // set col direct line is red, all other lines are white
+                const col: TColor = path.length === 2 ? [1, 0, 0] : [1, 1, 1];
+                __model__.modeldata.attribs.set.setEntsAttribVal(
+                    EEntType.VERT, verts_i, 'rgb', col);
             }
         }
         // merge results from multiple road segments - see chart 11 
@@ -506,5 +513,9 @@ function segments(xyz1: Txyz, xyz2: Txyz, len: number): Txyz[] {
         xyzs.push(vecAdd(xyz1, vecMult(sub_vec, i + 1)));
     }
     return xyzs;
+}
+
+function _addPline() {
+    throw new Error('Function not implemented.');
 }
 // =================================================================================================

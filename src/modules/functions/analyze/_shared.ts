@@ -264,7 +264,7 @@ export function _calcExposure(
         // set raycaster origin
         sensor_tjs.x = sensor_xyz[0]; sensor_tjs.y = sensor_xyz[1]; sensor_tjs.z = sensor_xyz[2];
         let result = 0;
-        const result_rays: [Txyz, number][] = [];
+        const vis_rays: [Txyz, number][] = [];
         for (const ray_dir of dir_vecs) {
             // check if target is behind sensor
             const dot_ray_sensor: number = vecDot(ray_dir, sensor_dir);
@@ -283,15 +283,15 @@ export function _calcExposure(
                     result = result + 1;
                 }   
                 const ray_end = vecAdd(sensor_xyz, vecMult(ray_dir, 2));
-                result_rays.push([ray_end, 0]);
+                vis_rays.push([ray_end, 0]);
             } else {
                 const ray_end = vecAdd(sensor_xyz, vecMult(ray_dir, isects[0].distance));
-                result_rays.push([ray_end, 1]);
+                vis_rays.push([ray_end, 1]);
             }
         }
         results.push(result / result_max);
         // generate calculation lines
-        if (generate_lines) { _generateLines(__model__, sensor_xyz, result_rays); }
+        if (generate_lines) { _generateLines(__model__, sensor_xyz, vis_rays); }
     }
     return { exposure: results };
 }
@@ -302,23 +302,7 @@ export function _generateLines(
     result_rays: [Txyz, number][]
 ): void {
     // generate calculation lines
-    __model__.modeldata.attribs.set.setModelAttribVal('line_mat', {
-        "type": "LineDashedMaterial",
-        "color": [1,1,1],
-        "vertexColors": 1,
-        "dashSize": 0,
-        "gapSize": 0,
-        "scale": 1
-    });
-    // create attribs
-    if (__model__.modeldata.attribs.getAttrib(EEntType.PLINE, 'material') === undefined) {
-        __model__.modeldata.attribs.add.addAttrib(
-            EEntType.PLINE, 'material', EAttribDataTypeStrs.STRING);
-    }
-    if (__model__.modeldata.attribs.getAttrib(EEntType.VERT, 'rgb') === undefined) {
-        __model__.modeldata.attribs.add.addAttrib(
-            EEntType.VERT, 'rgb', EAttribDataTypeStrs.LIST);
-    }
+    _initLineCol(__model__);
     // add geom
     const posi0_i: number = _addPosi(__model__, sensor_xyz);
     const plines_i: number[] = [];
@@ -340,6 +324,27 @@ export function _generateLines(
         EEntType.VERT, col_verts_i[1], 'rgb', [1, 0, 0]); // red hit obstruction
 }
 // =================================================================================================
+export function _initLineCol(
+    __model__: GIModel
+): void {
+    if (__model__.modeldata.attribs.getAttrib(EEntType.MOD, 'line_mat') !== undefined) {
+        // assume that everything is already done
+        return;
+    }
+    // create attribs
+    __model__.modeldata.attribs.set.setModelAttribVal('line_mat', {
+        "type": "LineDashedMaterial",
+        "color": [1,1,1],
+        "vertexColors": 1,
+        "dashSize": 0,
+        "gapSize": 0,
+        "scale": 1
+    });
+    __model__.modeldata.attribs.add.addAttrib(
+        EEntType.PLINE, 'material', EAttribDataTypeStrs.STRING);
+    __model__.modeldata.attribs.add.addAttrib(
+        EEntType.VERT, 'rgb', EAttribDataTypeStrs.LIST);
+}
 export function _addTri(
     __model__: GIModel,
     posi0_i: number,

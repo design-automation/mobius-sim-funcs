@@ -22,7 +22,7 @@ import {
 } from '@design-automation/mobius-sim';
 import { checkIDs, ID } from '../../_check_ids';
 import * as chk from '../../_check_types';
-import { _getSensorRays } from './_shared';
+import { _generateLines, _getSensorRays } from './_shared';
 
 // ================================================================================================
 interface TViewResult {
@@ -151,7 +151,8 @@ function _calcViews(
         // set raycaster origin
         sensor_tjs.x = sensor_xyz[0]; sensor_tjs.y = sensor_xyz[1]; sensor_tjs.z = sensor_xyz[2]; 
         const result_dists: number[] = [];
-        const result_hits_xyz: Txyz[] = [];
+        const result_xyzs: Txyz[] = [];
+        const vis_rays: [Txyz, number][] = [];
         const dir_vecs_xformed: Txyz[] = _vecXForm(dir_vecs, sensor_pln);
         for (const ray_dir of dir_vecs_xformed) {
             // set raycaster direction
@@ -161,10 +162,14 @@ function _calcViews(
             // get the result
             if (isects.length === 0) {
                 result_dists.push(radius[1]);
-                result_hits_xyz.push(vecAdd(sensor_xyz, vecMult(ray_dir, radius[1])));
+                result_xyzs.push(vecAdd(sensor_xyz, vecMult(ray_dir, radius[1])));
+                const vis_end: Txyz = vecAdd(sensor_xyz, vecMult(ray_dir, 2));
+                vis_rays.push([vis_end, 0]);
             } else {
-                result_dists.push(isects[0]["distance"]);
-                result_hits_xyz.push([isects[0].point.x, isects[0].point.y, isects[0].point.z]);
+                result_dists.push(isects[0].distance);
+                const isect_xyz: Txyz = [isects[0].point.x, isects[0].point.y, isects[0].point.z];
+                result_xyzs.push(isect_xyz);
+                vis_rays.push([isect_xyz, 1]);
             }
         }
         // calc the perimeter and area
@@ -172,7 +177,7 @@ function _calcViews(
         let area = 0;
         for (let i = 0; i < dir_vecs.length - 1; i++) {
             // calc perim
-            const c = distance(result_hits_xyz[i], result_hits_xyz[i + 1]);
+            const c = distance(result_xyzs[i], result_xyzs[i + 1]);
             perim += c;
             // calc area
             area += _triArea(result_dists[i], result_dists[i + 1], c);
@@ -189,17 +194,7 @@ function _calcViews(
         result.perimeter_ratio.push(perim / max_perim);
         result.distance_ratio.push(total_dist / (radius[1] * dir_vecs.length));
         // generate calculation lines
-        if (generate_lines) {
-            const posi0_i: number = __model__.modeldata.geom.add.addPosi();
-            __model__.modeldata.attribs.set.setEntAttribVal(
-                    EEntType.POSI, posi0_i, 'xyz', sensor_xyz);
-            for (const xyz of result_hits_xyz) {
-                const posi1_i: number = __model__.modeldata.geom.add.addPosi();
-                __model__.modeldata.attribs.set.setEntAttribVal(
-                        EEntType.POSI, posi1_i, 'xyz', xyz);
-                __model__.modeldata.geom.add.addPline([posi0_i, posi1_i], false);
-            }
-        }
+        if (generate_lines) { _generateLines(__model__, sensor_xyz, vis_rays); }
     }
     // return the results
     return result;
@@ -231,6 +226,7 @@ function _vecXForm(vecs: Txyz[], pln: TPlane): Txyz[] {
 }
 // ================================================================================================
 function _triArea(a: number, b: number, c: number): number {
+
     // calc area using Heron's formula
     const s = (a + b + c) / 2;
     return Math.sqrt(s * (s - a) * (s - b) * (s - c));

@@ -12,13 +12,15 @@ import {
     TPlane,
     TRay,
     Txyz,
+    vecAdd,
     vecDot,
     vecFromTo,
+    vecMult,
     vecNorm,
 } from '@design-automation/mobius-sim';
 import { checkIDs, ID } from '../../_check_ids';
 import * as chk from '../../_check_types';
-import { _getSensorRays } from './_shared';
+import { _generateLines, _getSensorRays } from './_shared';
 const EPS = 1e-6;
 
 // ================================================================================================
@@ -149,7 +151,7 @@ function _calcVisibility(
         let result_count = 0;
         const result_dists: number[] = [];
         const result_all_dists: number[] = [];
-        const result_hits_xyz: Txyz[] = [];
+        const vis_rays: [Txyz, number][] = [];
         for (const target_xyz of targets_xyz) {
             const ray_dir: Txyz = vecNorm(vecFromTo(sensor_xyz, target_xyz));
             // check if target is behind sensor
@@ -165,9 +167,11 @@ function _calcVisibility(
             if (isects.length === 0) {
                 result_dists.push(dist);
                 result_count += 1;
-                result_hits_xyz.push(target_xyz);
+                const vis_end: Txyz = vecAdd(sensor_xyz, vecMult(ray_dir, 2));
+                vis_rays.push([vis_end, 0]);
             } else {
-                result_hits_xyz.push([isects[0].point.x, isects[0].point.y, isects[0].point.z]);
+                const vis_end: Txyz = [isects[0].point.x, isects[0].point.y, isects[0].point.z];
+                vis_rays.push([vis_end, 1]);
             }
         }
         if (result_count > 0) {
@@ -192,17 +196,18 @@ function _calcVisibility(
             result.distance_ratio.push(0);
         }
         // generate calculation lines
-        if (generate_lines) {
-            const posi0_i: number = __model__.modeldata.geom.add.addPosi();
-            __model__.modeldata.attribs.set.setEntAttribVal(
-                    EEntType.POSI, posi0_i, 'xyz', sensor_xyz);
-            for (const xyz of result_hits_xyz) {
-                const posi1_i: number = __model__.modeldata.geom.add.addPosi();
-                __model__.modeldata.attribs.set.setEntAttribVal(
-                        EEntType.POSI, posi1_i, 'xyz', xyz);
-                __model__.modeldata.geom.add.addPline([posi0_i, posi1_i], false);
-            }
-        }
+        if (generate_lines) { _generateLines(__model__, sensor_xyz, vis_rays); }
+        // if (generate_lines) {
+        //     const posi0_i: number = __model__.modeldata.geom.add.addPosi();
+        //     __model__.modeldata.attribs.set.setEntAttribVal(
+        //             EEntType.POSI, posi0_i, 'xyz', sensor_xyz);
+        //     for (const xyz of vis_rays) {
+        //         const posi1_i: number = __model__.modeldata.geom.add.addPosi();
+        //         __model__.modeldata.attribs.set.setEntAttribVal(
+        //                 EEntType.POSI, posi1_i, 'xyz', xyz);
+        //         __model__.modeldata.geom.add.addPline([posi0_i, posi1_i], false);
+        //     }
+        // }
     }
     // return the results
     return result;
