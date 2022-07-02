@@ -319,7 +319,7 @@ export function _generateLines(
     __model__.modeldata.attribs.set.setEntsAttribVal(
         EEntType.PLINE, plines_i, 'material', 'line_mat');
     __model__.modeldata.attribs.set.setEntsAttribVal(
-        EEntType.VERT, col_verts_i[0], 'rgb', [1, 1, 1]); // white hit nothing
+        EEntType.VERT, col_verts_i[0], 'rgb', [0, 0, 1]); // white hit nothing
     __model__.modeldata.attribs.set.setEntsAttribVal(
         EEntType.VERT, col_verts_i[1], 'rgb', [1, 0, 0]); // red hit obstruction
 }

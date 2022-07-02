@@ -358,7 +358,7 @@ function _calcNoise(
                 __model__.modeldata.attribs.set.setEntAttribVal(
                     EEntType.PLINE, pline_i, 'material', 'line_mat');
                 // set col direct line is red, all other lines are white
-                const col: TColor = path.length === 2 ? [1, 0, 0] : [1, 1, 1];
+                const col: TColor = path.length === 2 ? [1, 0, 0] : [0, 0, 1];
                 __model__.modeldata.attribs.set.setEntsAttribVal(
                     EEntType.VERT, verts_i, 'rgb', col);
             }
