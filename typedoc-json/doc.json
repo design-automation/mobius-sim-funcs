@@ -2860,208 +2860,6 @@
 							]
 						},
 						{
-							"id": 238,
-							"name": "Ventilation",
-							"kind": 2048,
-							"kindString": "Method",
-							"flags": {},
-							"sources": [
-								{
-									"fileName": "modules/functions/analyze/index.ts",
-									"line": 176,
-									"character": 4
-								}
-							],
-							"signatures": [
-								{
-									"id": 239,
-									"name": "Ventilation",
-									"kind": 4096,
-									"kindString": "Call signature",
-									"flags": {},
-									"parameters": [
-										{
-											"id": 240,
-											"name": "sensors",
-											"kind": 32768,
-											"kindString": "Parameter",
-											"flags": {},
-											"type": {
-												"type": "union",
-												"types": [
-													{
-														"type": "array",
-														"elementType": {
-															"type": "reference",
-															"qualifiedName": "TPlane",
-															"package": "@design-automation/mobius-sim",
-															"name": "TPlane"
-														}
-													},
-													{
-														"type": "array",
-														"elementType": {
-															"type": "array",
-															"elementType": {
-																"type": "reference",
-																"qualifiedName": "TPlane",
-																"package": "@design-automation/mobius-sim",
-																"name": "TPlane"
-															}
-														}
-													},
-													{
-														"type": "array",
-														"elementType": {
-															"type": "reference",
-															"qualifiedName": "TRay",
-															"package": "@design-automation/mobius-sim",
-															"name": "TRay"
-														}
-													},
-													{
-														"type": "array",
-														"elementType": {
-															"type": "array",
-															"elementType": {
-																"type": "reference",
-																"qualifiedName": "TRay",
-																"package": "@design-automation/mobius-sim",
-																"name": "TRay"
-															}
-														}
-													}
-												]
-											}
-										},
-										{
-											"id": 241,
-											"name": "entities",
-											"kind": 32768,
-											"kindString": "Parameter",
-											"flags": {},
-											"type": {
-												"type": "union",
-												"types": [
-													{
-														"type": "intrinsic",
-														"name": "string"
-													},
-													{
-														"type": "array",
-														"elementType": {
-															"type": "intrinsic",
-															"name": "string"
-														}
-													},
-													{
-														"type": "array",
-														"elementType": {
-															"type": "array",
-															"elementType": {
-																"type": "intrinsic",
-																"name": "string"
-															}
-														}
-													}
-												]
-											}
-										},
-										{
-											"id": 242,
-											"name": "radius",
-											"kind": 32768,
-											"kindString": "Parameter",
-											"flags": {},
-											"type": {
-												"type": "union",
-												"types": [
-													{
-														"type": "intrinsic",
-														"name": "number"
-													},
-													{
-														"type": "tuple",
-														"elements": [
-															{
-																"type": "intrinsic",
-																"name": "number"
-															},
-															{
-																"type": "intrinsic",
-																"name": "number"
-															}
-														]
-													}
-												]
-											}
-										},
-										{
-											"id": 243,
-											"name": "num_rays",
-											"kind": 32768,
-											"kindString": "Parameter",
-											"flags": {},
-											"type": {
-												"type": "intrinsic",
-												"name": "number"
-											}
-										},
-										{
-											"id": 244,
-											"name": "layers",
-											"kind": 32768,
-											"kindString": "Parameter",
-											"flags": {},
-											"type": {
-												"type": "union",
-												"types": [
-													{
-														"type": "intrinsic",
-														"name": "number"
-													},
-													{
-														"type": "tuple",
-														"elements": [
-															{
-																"type": "intrinsic",
-																"name": "number"
-															},
-															{
-																"type": "intrinsic",
-																"name": "number"
-															}
-														]
-													},
-													{
-														"type": "tuple",
-														"elements": [
-															{
-																"type": "intrinsic",
-																"name": "number"
-															},
-															{
-																"type": "intrinsic",
-																"name": "number"
-															},
-															{
-																"type": "intrinsic",
-																"name": "number"
-															}
-														]
-													}
-												]
-											}
-										}
-									],
-									"type": {
-										"type": "intrinsic",
-										"name": "any"
-									}
-								}
-							]
-						},
-						{
 							"id": 219,
 							"name": "View",
 							"kind": 2048,
@@ -3405,6 +3203,208 @@
 									}
 								}
 							]
+						},
+						{
+							"id": 238,
+							"name": "Wind",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "modules/functions/analyze/index.ts",
+									"line": 176,
+									"character": 4
+								}
+							],
+							"signatures": [
+								{
+									"id": 239,
+									"name": "Wind",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"parameters": [
+										{
+											"id": 240,
+											"name": "sensors",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "union",
+												"types": [
+													{
+														"type": "array",
+														"elementType": {
+															"type": "reference",
+															"qualifiedName": "TPlane",
+															"package": "@design-automation/mobius-sim",
+															"name": "TPlane"
+														}
+													},
+													{
+														"type": "array",
+														"elementType": {
+															"type": "array",
+															"elementType": {
+																"type": "reference",
+																"qualifiedName": "TPlane",
+																"package": "@design-automation/mobius-sim",
+																"name": "TPlane"
+															}
+														}
+													},
+													{
+														"type": "array",
+														"elementType": {
+															"type": "reference",
+															"qualifiedName": "TRay",
+															"package": "@design-automation/mobius-sim",
+															"name": "TRay"
+														}
+													},
+													{
+														"type": "array",
+														"elementType": {
+															"type": "array",
+															"elementType": {
+																"type": "reference",
+																"qualifiedName": "TRay",
+																"package": "@design-automation/mobius-sim",
+																"name": "TRay"
+															}
+														}
+													}
+												]
+											}
+										},
+										{
+											"id": 241,
+											"name": "entities",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "union",
+												"types": [
+													{
+														"type": "intrinsic",
+														"name": "string"
+													},
+													{
+														"type": "array",
+														"elementType": {
+															"type": "intrinsic",
+															"name": "string"
+														}
+													},
+													{
+														"type": "array",
+														"elementType": {
+															"type": "array",
+															"elementType": {
+																"type": "intrinsic",
+																"name": "string"
+															}
+														}
+													}
+												]
+											}
+										},
+										{
+											"id": 242,
+											"name": "radius",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "union",
+												"types": [
+													{
+														"type": "intrinsic",
+														"name": "number"
+													},
+													{
+														"type": "tuple",
+														"elements": [
+															{
+																"type": "intrinsic",
+																"name": "number"
+															},
+															{
+																"type": "intrinsic",
+																"name": "number"
+															}
+														]
+													}
+												]
+											}
+										},
+										{
+											"id": 243,
+											"name": "num_rays",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "intrinsic",
+												"name": "number"
+											}
+										},
+										{
+											"id": 244,
+											"name": "layers",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "union",
+												"types": [
+													{
+														"type": "intrinsic",
+														"name": "number"
+													},
+													{
+														"type": "tuple",
+														"elements": [
+															{
+																"type": "intrinsic",
+																"name": "number"
+															},
+															{
+																"type": "intrinsic",
+																"name": "number"
+															}
+														]
+													},
+													{
+														"type": "tuple",
+														"elements": [
+															{
+																"type": "intrinsic",
+																"name": "number"
+															},
+															{
+																"type": "intrinsic",
+																"name": "number"
+															},
+															{
+																"type": "intrinsic",
+																"name": "number"
+															}
+														]
+													}
+												]
+											}
+										}
+									],
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								}
+							]
 						}
 					],
 					"groups": [
@@ -3439,9 +3439,9 @@
 								205,
 								187,
 								212,
-								238,
 								219,
-								226
+								226,
+								238
 							]
 						}
 					],
@@ -5815,259 +5815,6 @@
 					]
 				},
 				{
-					"id": 111,
-					"name": "Ventilation",
-					"kind": 64,
-					"kindString": "Function",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "modules/functions/analyze/Ventilation.ts",
-							"line": 44,
-							"character": 16
-						}
-					],
-					"signatures": [
-						{
-							"id": 112,
-							"name": "Ventilation",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"comment": {
-								"shortText": "Calculate an approximation of the ventilation frequency for a set sensors positioned at specified\nlocations.\n\\n",
-								"returns": "A dictionary containing ventilation results.\n"
-							},
-							"parameters": [
-								{
-									"id": 113,
-									"name": "__model__",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {},
-									"type": {
-										"type": "reference",
-										"qualifiedName": "GIModel",
-										"package": "@design-automation/mobius-sim",
-										"name": "GIModel"
-									}
-								},
-								{
-									"id": 114,
-									"name": "sensors",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"shortText": "A list of Rays or a list of Planes, to be used as the\nsensors for calculating ventilation."
-									},
-									"type": {
-										"type": "union",
-										"types": [
-											{
-												"type": "array",
-												"elementType": {
-													"type": "reference",
-													"qualifiedName": "TPlane",
-													"package": "@design-automation/mobius-sim",
-													"name": "TPlane"
-												}
-											},
-											{
-												"type": "array",
-												"elementType": {
-													"type": "array",
-													"elementType": {
-														"type": "reference",
-														"qualifiedName": "TPlane",
-														"package": "@design-automation/mobius-sim",
-														"name": "TPlane"
-													}
-												}
-											},
-											{
-												"type": "array",
-												"elementType": {
-													"type": "reference",
-													"qualifiedName": "TRay",
-													"package": "@design-automation/mobius-sim",
-													"name": "TRay"
-												}
-											},
-											{
-												"type": "array",
-												"elementType": {
-													"type": "array",
-													"elementType": {
-														"type": "reference",
-														"qualifiedName": "TRay",
-														"package": "@design-automation/mobius-sim",
-														"name": "TRay"
-													}
-												}
-											}
-										]
-									}
-								},
-								{
-									"id": 115,
-									"name": "entities",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"shortText": "The obstructions, polygons, or collections of polygons."
-									},
-									"type": {
-										"type": "union",
-										"types": [
-											{
-												"type": "intrinsic",
-												"name": "string"
-											},
-											{
-												"type": "array",
-												"elementType": {
-													"type": "intrinsic",
-													"name": "string"
-												}
-											},
-											{
-												"type": "array",
-												"elementType": {
-													"type": "array",
-													"elementType": {
-														"type": "intrinsic",
-														"name": "string"
-													}
-												}
-											}
-										]
-									}
-								},
-								{
-									"id": 116,
-									"name": "radius",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"shortText": "The max distance for raytracing."
-									},
-									"type": {
-										"type": "union",
-										"types": [
-											{
-												"type": "intrinsic",
-												"name": "number"
-											},
-											{
-												"type": "tuple",
-												"elements": [
-													{
-														"type": "intrinsic",
-														"name": "number"
-													},
-													{
-														"type": "intrinsic",
-														"name": "number"
-													}
-												]
-											}
-										]
-									}
-								},
-								{
-									"id": 117,
-									"name": "num_rays",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"shortText": "An integer specifying the number of rays to generate in each wind direction."
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								},
-								{
-									"id": 118,
-									"name": "layers",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"shortText": "Three numbers specifying layers of rays, as [start, stop, step] relative to the\nsensors."
-									},
-									"type": {
-										"type": "union",
-										"types": [
-											{
-												"type": "intrinsic",
-												"name": "number"
-											},
-											{
-												"type": "tuple",
-												"elements": [
-													{
-														"type": "intrinsic",
-														"name": "number"
-													},
-													{
-														"type": "intrinsic",
-														"name": "number"
-													}
-												]
-											},
-											{
-												"type": "tuple",
-												"elements": [
-													{
-														"type": "intrinsic",
-														"name": "number"
-													},
-													{
-														"type": "intrinsic",
-														"name": "number"
-													},
-													{
-														"type": "intrinsic",
-														"name": "number"
-													}
-												]
-											}
-										]
-									}
-								}
-							],
-							"type": {
-								"type": "union",
-								"types": [
-									{
-										"type": "reference",
-										"name": "TVentilationResult"
-									},
-									{
-										"type": "tuple",
-										"elements": [
-											{
-												"type": "reference",
-												"name": "TVentilationResult"
-											},
-											{
-												"type": "reference",
-												"name": "TVentilationResult"
-											}
-										]
-									}
-								]
-							}
-						}
-					]
-				},
-				{
 					"id": 80,
 					"name": "View",
 					"kind": 64,
@@ -6510,6 +6257,259 @@
 							}
 						}
 					]
+				},
+				{
+					"id": 111,
+					"name": "Wind",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "modules/functions/analyze/Wind.ts",
+							"line": 44,
+							"character": 16
+						}
+					],
+					"signatures": [
+						{
+							"id": 112,
+							"name": "Wind",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Calculate an approximation of the wind frequency for a set sensors positioned at specified\nlocations.\n\\n",
+								"returns": "A dictionary containing wind results.\n"
+							},
+							"parameters": [
+								{
+									"id": 113,
+									"name": "__model__",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {},
+									"type": {
+										"type": "reference",
+										"qualifiedName": "GIModel",
+										"package": "@design-automation/mobius-sim",
+										"name": "GIModel"
+									}
+								},
+								{
+									"id": 114,
+									"name": "sensors",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "A list of Rays or a list of Planes, to be used as the\nsensors for calculating wind."
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "array",
+												"elementType": {
+													"type": "reference",
+													"qualifiedName": "TPlane",
+													"package": "@design-automation/mobius-sim",
+													"name": "TPlane"
+												}
+											},
+											{
+												"type": "array",
+												"elementType": {
+													"type": "array",
+													"elementType": {
+														"type": "reference",
+														"qualifiedName": "TPlane",
+														"package": "@design-automation/mobius-sim",
+														"name": "TPlane"
+													}
+												}
+											},
+											{
+												"type": "array",
+												"elementType": {
+													"type": "reference",
+													"qualifiedName": "TRay",
+													"package": "@design-automation/mobius-sim",
+													"name": "TRay"
+												}
+											},
+											{
+												"type": "array",
+												"elementType": {
+													"type": "array",
+													"elementType": {
+														"type": "reference",
+														"qualifiedName": "TRay",
+														"package": "@design-automation/mobius-sim",
+														"name": "TRay"
+													}
+												}
+											}
+										]
+									}
+								},
+								{
+									"id": 115,
+									"name": "entities",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "The obstructions, polygons, or collections of polygons."
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "string"
+											},
+											{
+												"type": "array",
+												"elementType": {
+													"type": "intrinsic",
+													"name": "string"
+												}
+											},
+											{
+												"type": "array",
+												"elementType": {
+													"type": "array",
+													"elementType": {
+														"type": "intrinsic",
+														"name": "string"
+													}
+												}
+											}
+										]
+									}
+								},
+								{
+									"id": 116,
+									"name": "radius",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "The max distance for raytracing."
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "number"
+											},
+											{
+												"type": "tuple",
+												"elements": [
+													{
+														"type": "intrinsic",
+														"name": "number"
+													},
+													{
+														"type": "intrinsic",
+														"name": "number"
+													}
+												]
+											}
+										]
+									}
+								},
+								{
+									"id": 117,
+									"name": "num_rays",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "An integer specifying the number of rays to generate in each wind direction."
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 118,
+									"name": "layers",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "Three numbers specifying layers of rays, as [start, stop, step] relative to the\nsensors."
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "number"
+											},
+											{
+												"type": "tuple",
+												"elements": [
+													{
+														"type": "intrinsic",
+														"name": "number"
+													},
+													{
+														"type": "intrinsic",
+														"name": "number"
+													}
+												]
+											},
+											{
+												"type": "tuple",
+												"elements": [
+													{
+														"type": "intrinsic",
+														"name": "number"
+													},
+													{
+														"type": "intrinsic",
+														"name": "number"
+													},
+													{
+														"type": "intrinsic",
+														"name": "number"
+													}
+												]
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "union",
+								"types": [
+									{
+										"type": "reference",
+										"name": "TWindResult"
+									},
+									{
+										"type": "tuple",
+										"elements": [
+											{
+												"type": "reference",
+												"name": "TWindResult"
+											},
+											{
+												"type": "reference",
+												"name": "TWindResult"
+											}
+										]
+									}
+								]
+							}
+						}
+					]
 				}
 			],
 			"groups": [
@@ -6536,9 +6536,9 @@
 						16,
 						32,
 						24,
-						111,
 						80,
-						88
+						88,
+						111
 					]
 				}
 			],

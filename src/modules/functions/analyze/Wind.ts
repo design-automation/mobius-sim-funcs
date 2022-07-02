@@ -23,35 +23,35 @@ import * as chk from '../../_check_types';
 import { _addLine, _addPosi, _addTri, _generateLines, _getSensorRays } from './_shared';
 const EPS = 1e-6;
 // =================================================================================================
-interface TVentilationResult {
-    ventilation: number[];
+interface TWindResult {
+    wind: number[];
 }
 // =================================================================================================
 /**
- * Calculate an approximation of the ventilation frequency for a set sensors positioned at specified 
+ * Calculate an approximation of the wind frequency for a set sensors positioned at specified 
  * locations. 
  * \n
  * @param __model__
  * @param sensors A list of Rays or a list of Planes, to be used as the 
- * sensors for calculating ventilation.
+ * sensors for calculating wind.
  * @param entities The obstructions, polygons, or collections of polygons.
  * @param radius The max distance for raytracing.
  * @param num_rays An integer specifying the number of rays to generate in each wind direction.
  * @param layers Three numbers specifying layers of rays, as [start, stop, step] relative to the 
  * sensors.
- * @returns A dictionary containing ventilation results.
+ * @returns A dictionary containing wind results.
  */
-export function Ventilation(
+export function Wind(
     __model__: GIModel,
     sensors: TRay[] | TPlane[] | TRay[][] | TPlane[][],
     entities: TId | TId[] | TId[][],
     radius: number | [number, number],
     num_rays: number,
     layers: number | [number, number] | [number, number, number],
-): TVentilationResult | [TVentilationResult, TVentilationResult] {
+): TWindResult | [TWindResult, TWindResult] {
     entities = arrMakeFlat(entities) as TId[];
     // --- Error Check ---
-    const fn_name = "analyze.Ventilation";
+    const fn_name = "analyze.Wind";
     let ents_arrs: TEntTypeIdx[];
     if (__model__.debug) {
         chk.checkArgs(fn_name, "sensors", sensors, 
@@ -86,11 +86,11 @@ export function Ventilation(
     // get the wind rose
     const wind_rose: number[] = __model__.modeldata.attribs.get.getModelAttribVal("wind") as number[];
     // get the direction vectors for shooting rays
-    const dir_vecs: Txyz[][] = _ventilationVecs(num_rays + 1, wind_rose);
+    const dir_vecs: Txyz[][] = _windVecs(num_rays + 1, wind_rose);
     // run simulation
-    const results0: TVentilationResult = _calcVentilation(__model__, 
+    const results0: TWindResult = _calcWind(__model__, 
         sensors0, dir_vecs, radius, mesh_tjs, layers, wind_rose, false);
-    const results1: TVentilationResult = _calcVentilation(__model__, 
+    const results1: TWindResult = _calcWind(__model__, 
         sensors1, dir_vecs, radius, mesh_tjs, layers, wind_rose, true);
     // cleanup
     mesh_tjs.geometry.dispose();
@@ -100,7 +100,7 @@ export function Ventilation(
     return results0;
 }
 // =================================================================================================
-function _calcVentilation(
+function _calcWind(
     __model__: GIModel,
     sensor_rays: TRay[],
     dir_vecs: Txyz[][],
@@ -109,7 +109,7 @@ function _calcVentilation(
     layers: number[],
     wind_rose: number[],
     generate_lines: boolean
-): TVentilationResult {
+): TWindResult {
     const results = [];
     const num_layers: number = Math.round((layers[1] - layers[0]) / layers[2]);
     // create tjs objects (to be resued for each ray)
@@ -182,10 +182,10 @@ function _calcVentilation(
             }
         }
     }
-    return { ventilation: results };
+    return { wind: results };
 }
 // =================================================================================================
-function _ventilationVecs(num_vecs: number, wind_rose: number[]): Txyz[][] {
+function _windVecs(num_vecs: number, wind_rose: number[]): Txyz[][] {
     // num_vecs is the number of vecs for each wind angle
     const num_winds: number = wind_rose.length;
     const wind_ang: number = (Math.PI * 2) / num_winds;

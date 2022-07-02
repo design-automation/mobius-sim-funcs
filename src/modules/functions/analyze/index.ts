@@ -20,7 +20,7 @@ import { View } from './View';
 import { Visibility } from './Visibility';
 import { Irradiance } from './Irradiance';
 import { NoiseCRTN } from './NoiseCRTN';
-import { Ventilation } from './Ventilation';
+import { Wind } from './Wind';
 
 export { Raytrace }
 
@@ -50,7 +50,7 @@ export { Irradiance }
 
 export { NoiseCRTN }
 
-export { Ventilation }
+export { Wind }
 
 // CLASS DEFINITION
 export class AnalyzeFunc {
@@ -173,14 +173,14 @@ export class AnalyzeFunc {
         ): any {
         return Irradiance(this.__model__, sensors, entities, radius, method);
     }
-    Ventilation(
+    Wind(
             sensors: TRay[] | TPlane[] | TRay[][] | TPlane[][], 
             entities: string | string[] | string[][], 
             radius: number | [number, number],
             num_rays: number, 
             layers: number | [number, number] | [number, number, number]
         ): any {
-        return Ventilation(this.__model__, sensors, entities, radius, num_rays, layers);
+        return Wind(this.__model__, sensors, entities, radius, num_rays, layers);
     }
     NoiseCRTN(
             sensors: TRay[] | TPlane[] | TRay[][] | TPlane[][], 
