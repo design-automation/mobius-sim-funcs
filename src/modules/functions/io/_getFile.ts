@@ -130,7 +130,7 @@ export async function _getFile(source: string) {
                 }
                 if (valid_check) {
                     const backup_file = await loadFromFileSystem(backup_name);
-                    result += `"${backup_name}": \`${backup_file.replace(/\\/g, '\\\\')}\`,`;
+                    result += `"${backup_name}": \`${backup_file.replace(/\\/g, '\\\\')}\`,`; // TODO temporary fix
                 }
             }
             result += '}';

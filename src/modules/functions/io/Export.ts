@@ -86,7 +86,7 @@ async function _export(
         {
             let model_data = '';
             model_data = __model__.exportSIM(ents_arr);
-            model_data = model_data.replace(/\\/g, '\\\\\\'); // TODO temporary fix
+            // model_data = model_data.replace(/\\/g, '\\\\\\'); // TODO temporary fix
             // === save the file ===
             if (data_target === _EIODataTarget.DEFAULT) {
                 return _simulateDownload(model_data, file_name);
