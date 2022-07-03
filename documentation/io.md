@@ -56,10 +56,12 @@ The geometry will be added to the model.
 
 There are two ways of specifying the file location to be imported:
 - A url, e.g. "https://www.dropbox.com/xxxx/my_data.obj"
-- A file name in the local storage, e.g. "my\_data.obj". See documentation on local storage in the menu for more info.
+- A file name in the local storage, e.g. "my\_data.obj". See documentation on local storage in
+the menu for more info.
 
 
-To place a file in local storage, go to the Mobius menu, and select 'Local Storage' from the dropdown.
+To place a file in local storage, go to the Mobius menu, and select 'Local Storage' from the
+dropdown.
 Note that a script using a file in local storage may fail when others try to open the file.
 
   
@@ -92,8 +94,10 @@ If you export to Local Storage, there will be no popup.
 **Parameters:**  
   * *entities:* (Optional) Entities to be exported. If null, the whole model will be exported.  
   * *file\_name:* Name of the file as a string.  
-  * *data\_format:* Enum, the export file format: `'gi', 'sim', 'obj_v', 'obj_ps', 'geojson'` or `'gltf'`.  
-  * *data\_target:* Enum, where the data is to be exported to: `'Save to Hard Disk'` or `'Save to Local Storage'`.  
+  * *data\_format:* Enum, the export file format: `'gi', 'sim', 'obj_v', 'obj_ps', 'geojson'`
+or `'gltf'`.  
+  * *data\_target:* Enum, where the data is to be exported to: `'Save to Hard Disk'` or
+`'Save to Local Storage'`.  
   
 **Returns:** void  
 **Examples:**  
