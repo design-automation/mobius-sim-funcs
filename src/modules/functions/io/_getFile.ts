@@ -1,21 +1,14 @@
 import { loadAsync } from 'jszip';
-
-
-
-
-
- const requestedBytes = 1024 * 1024 * 200; // 200 MB local storage quota
-
- // ================================================================================================
- declare global {
-     interface Navigator {
-         webkitPersistentStorage: {
-             requestQuota: (a, b, c) => {}
-         };
-     }
- }
- 
-
+const requestedBytes = 1024 * 1024 * 200; // 200 MB local storage quota
+// =================================================================================================
+declare global {
+    interface Navigator {
+        webkitPersistentStorage: {
+            requestQuota: (a, b, c) => {}
+        };
+    }
+}
+// =================================================================================================
 async function getURLContent(url: string): Promise<any> {
     url = url.replace('http://', 'https://');
     if (url.indexOf('dropbox') !== -1) {
@@ -47,6 +40,7 @@ async function getURLContent(url: string): Promise<any> {
     });
     return await p;
 }
+// =================================================================================================
 async function openZipFile(zipFile) {
     const result = {};
     await loadAsync(zipFile.arrayBuffer()).then(async function (zip) {
@@ -59,6 +53,7 @@ async function openZipFile(zipFile) {
     });
     return result;
 }
+// =================================================================================================
 async function loadFromFileSystem(filecode): Promise<any> {
     const p = new Promise((resolve) => {
         navigator.webkitPersistentStorage.requestQuota(
@@ -95,6 +90,7 @@ async function loadFromFileSystem(filecode): Promise<any> {
     });
     return await p;
 }
+// =================================================================================================
 export async function _getFile(source: string) {
     if (source.startsWith('__model_data__')) {
         return source.substring(14);
@@ -114,7 +110,7 @@ export async function _getFile(source: string) {
         if (source.length > 1 && source[0] === '{') {
             return source;
         }
-        const val = source.replace(/\"|\'/g, '');
+        const val = source.replace(/\"|\'/g, ''); // TODO temporary fix
         const backup_list: string[] = JSON.parse(localStorage.getItem('mobius_backup_list'));
         if (val.endsWith('.zip')) {
             throw (new Error(`Importing zip files from local storage is not supported`));
@@ -154,5 +150,4 @@ export async function _getFile(source: string) {
         }
     }
 }
-export function _Async_Param__getFile(source: string) {
-}
+// =================================================================================================
