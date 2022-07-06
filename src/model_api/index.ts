@@ -136,7 +136,6 @@ export class ModelApi {
         source_ent_type?: EEntType, 
         source_ents_i?: number|number[]
     ): number[] {
-        console.log(">>>>>>>>>>>>>>>getEnts>>", this.__model__.modeldata.geom._geom_maps)
         if (source_ent_type === undefined) {
             return this.__model__.modeldata.geom.query.getEnts(target_ent_type);
         }
