@@ -242,16 +242,19 @@ export class Sim {
      * CONSTRUCTOR
      */
     constructor() {
+
+        // graph
         this.graph = new Graph();
         this.del = new Delete(this.graph, this);
         this.edit = new Edit(this.graph, this);
         this.tri = new Triangulate(this.graph, this);
 
-        // graph
+        // edge types
         this.graph.addEdgeType(_GR_EDGE_TYPE.ENTITY);
         this.graph.addEdgeType(_GR_EDGE_TYPE.ATTRIB);
         this.graph.addEdgeType(_GR_EDGE_TYPE.META, false);
         this.graph.addEdgeType(_GR_EDGE_TYPE.TRI);
+
         // create nodes for ents and attribs
         for (const ent_type of 
                 [ENT_TYPE.POSI, ENT_TYPE.VERT, ENT_TYPE.EDGE, ENT_TYPE.WIRE, ENT_TYPE.TRI, 
@@ -259,8 +262,10 @@ export class Sim {
             this.graph.addNode(_GR_ENT_NODE.get(ent_type));
             this.graph.addNode(_GR_ATTRIB_NODE.get(ent_type));
         }
+
         // add xyz attrib
         this._graphAddAttrib(ENT_TYPE.POSI, 'xyz', DATA_TYPE.LIST);
+
         // add empty model attrbutes map
         this.model_attribs = new Map();
     }
@@ -340,7 +345,7 @@ export class Sim {
      */
     public addPgonHole(pgon: string, posis: string[]): string {
         if (posis.length < 3) {
-            throw new Error('Too few positions for polygon.');
+            throw new Error('Too few positions for polygon hole.');
         }
         // wire
         const wire = this._graphAddEnt(ENT_TYPE.WIRE);
@@ -696,7 +701,7 @@ export class Sim {
      * If the entity is not in the collection, no error is thrown.
      * TODO Test
      * @param coll The ID of the collection from which the entity will be removed.
-     * @param ent The ID of the entity to be added to the collection.
+     * @param ent The ID of the entity to be removed from the collection.
      */
     public remCollEnt(coll: string, ent: string): void {
         this.graph.delEdge(coll, ent, _GR_EDGE_TYPE.ENTITY);
@@ -781,10 +786,11 @@ export class Sim {
     // ---------------------------------------------------------------------------------------------
     /**
      * Get an attribute value from an entity in the model, specifying the attribute name.
+     * If the entity has no value for that attribute, then `undefined` is returned.
      * TODO Raise error for deleted ents ???
      * @param ent  The ID of the entity for which to get the attribute value.
      * @param att_name  The name of the attribute.
-     * @returns The attribute value or null if no value.
+     * @returns The attribute value or `undefined` if no value.
      */
     public getAttribVal(ent: string, att_name: string): TAttribDataTypes {
         const ent_type: ENT_TYPE = this.graph.getNodeProp(ent, 'ent_type');
@@ -840,9 +846,9 @@ export class Sim {
     }
     // ---------------------------------------------------------------------------------------------
     /**
-     * Get an attribute datatype, specifying the attribute entity type and attribute name.
+     * Rename an attribute.
      * TODO test
-     * @param ent_type The entity type for getting attributes. (See ENT_TYPE)
+     * @param ent_type The entity type for the attribute.
      * @param att_name The existing name of the attribute.
      * @param new_name The new name of the attribute.
      */
@@ -894,7 +900,7 @@ export class Sim {
      * TODO test
      * @param att_name The name of the attribute.
      */
-     public delModelAttribVal(att_name: string): void {
+    public delModelAttribVal(att_name: string): void {
         this.model_attribs.delete(att_name);
     }
     // ---------------------------------------------------------------------------------------------
