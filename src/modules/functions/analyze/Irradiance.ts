@@ -41,7 +41,8 @@ interface ISkyRadiancePatch {
     alt: number,
     area: number,
     vector: Txyz, 
-    radiance: number
+    radiance: number,
+    area_fac?: number
 }
 // =================================================================================================
 /**
@@ -131,6 +132,8 @@ export function _calcIrradiance(
 ): TIrradianceResult {
     const results = [];
     const patches: ISkyRadiancePatch[] = sky_rad_data.SkyDome.patches;
+    // calc avg area of each patch
+    const patch_avg_area = 1 / patches.length;
     // create tjs objects (to be resued for each ray)
     const sensor_tjs: THREE.Vector3 = new THREE.Vector3();
     const dir_tjs: THREE.Vector3 = new THREE.Vector3();
@@ -148,16 +151,20 @@ export function _calcIrradiance(
             if (dot_ray_sensor <= -EPS) { continue; } 
             // set raycaster direction
             dir_tjs.x = ray_dir[0]; dir_tjs.y = ray_dir[1]; dir_tjs.z = ray_dir[2];
+            // calc the area factor
+            if (patch.area_fac === undefined) {
+                patch.area_fac = 1 + (patch.area - patch_avg_area);
+            }
             // shoot raycaster
             const isects: THREE.Intersection[] = ray_tjs.intersectObject(mesh_tjs, false);
             // get results
             if (isects.length === 0) {
                 if (weighted) {
                     // this applies the cosine weighting rule
-                    sensor_result = sensor_result + (patch.radiance * patch.area * dot_ray_sensor);
+                    sensor_result = sensor_result + (patch.radiance * patch.area_fac * dot_ray_sensor);
                 } else {
                     // this applies no cosine weighting
-                    sensor_result = sensor_result + (patch.radiance * patch.area);
+                    sensor_result = sensor_result + (patch.radiance * patch.area_fac);
                 }
                 const ray_end = vecAdd(sensor_xyz, vecMult(ray_dir, 2));
                 result_rays.push([ray_end, 0]);
@@ -166,7 +173,8 @@ export function _calcIrradiance(
                 result_rays.push([ray_end, 1]);
             }
         }
-        results.push(sensor_result);
+        // assuming the sky data is in wh/m2, convert result from wh/m2 to kwh/m2
+        results.push(sensor_result / 1000);
         // generate calculation lines
         if (generate_lines) { _generateLines(__model__, sensor_xyz, result_rays); }
     }
