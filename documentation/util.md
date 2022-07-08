@@ -189,8 +189,9 @@ Options can be null or a dictionary that specifies text options. For example:
 ```  
   
 **Parameters:**  
-  * *text:* The text to create.  
-  * *origin:* A coordinate.  
+  * *text:* The text to create. New lines can be created with '
+'.  
+  * *origin:* A coordinate or a plane. To rotate the text, a rotated plane can be used.  
   * *options:* Null or a dictionary (see documentation).  
   
 **Returns:** The ID of the text entity.
