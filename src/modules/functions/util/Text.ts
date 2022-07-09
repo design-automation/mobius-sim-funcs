@@ -44,6 +44,7 @@ export function Text(__model__: GIModel, text: string, origin: Txyz | TPlane, op
         chk.checkArgs(fn_name, 'options', options, [chk.isDict]);
     }
     // --- Error Check ---
+    text = text.length === 0? ' ' : text;
     // create the matrix one time
     let matrix: THREE.Matrix4;
     const origin_is_plane = getArrDepth(origin) === 2;
@@ -52,7 +53,7 @@ export function Text(__model__: GIModel, text: string, origin: Txyz | TPlane, op
     }
     // create positions
     const size: number = options["size"] === undefined ? 20 : options["size"];
-    const xyzs: Txyz[] = [[0,0,0], [size * text.length * 0.6,0,0], [0,size * 0.6,0]];
+    const xyzs: Txyz[] = [[0,0,0], [size * text.length * 0.6,0,0], [0,size * 0.5,0]];
     const posis: TEntTypeIdx[] = [];
     for (const xyz of xyzs) {
         const posi_i: number = __model__.modeldata.geom.add.addPosi();
