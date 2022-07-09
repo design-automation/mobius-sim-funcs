@@ -50,10 +50,9 @@ export function checkIDs(__model__: GIModel, fn_name: string, arg_name: string, 
             'The maximum depth of the list structure is ' + max_depth + '. ' +
             'However, the argument is a list of depth ' + arg_depth + '. ');
     }
-    // create a set of allowable entity types
-    let ent_types_set: Set<number>;
+    // if null, then ent_types is all ents
     if (ent_types === null) {
-        ent_types_set = new Set([
+        ent_types = [
             EEntType.POSI,
             EEntType.VERT,
             EEntType.TRI,
@@ -62,10 +61,10 @@ export function checkIDs(__model__: GIModel, fn_name: string, arg_name: string, 
             EEntType.POINT,
             EEntType.PLINE,
             EEntType.PGON,
-            EEntType.COLL]);
-    } else {
-        ent_types_set = new Set(ent_types);
+            EEntType.COLL];
     }
+    // create a set of allowable entity types
+    const ent_types_set: Set<number> = new Set(ent_types);
     // check the IDs
     let ents: TEntTypeIdx|TEntTypeIdx[]|TEntTypeIdx[][];
     try {
@@ -93,14 +92,29 @@ function _checkIdsAreValid(__model__: GIModel, arg: any, ent_types_set: Set<numb
                 'For this entity, the depth of the list is ' + curr_depth + ', while previous entities were in lists with a depth of ' + req_depth + '.' +
                 '</li></ul>');
         }
-        let ent_arr;
+        // check entity exists
+        if (!check_exists) {
+            // in thise case we dont want to throw an error for entities that do not exist
+            // we will check later and return true or false to the user
+            const _ent_type_str: string = arg.slice(0, 2);
+            // TODO
+            const _ent_type: number = 
+                ['ps','_v','_t','_e','_w','pt','pl','pg','co','mo'].indexOf(_ent_type_str);
+            if (_ent_type === -1) {
+                throw new Error('<ul><li>The entity ID "' + arg + '" is invalid.</li></ul>');
+            }
+            const _ent_i: number = parseInt(arg.slice(2));
+            return [_ent_type, _ent_i] as TEntTypeIdx;
+        }
+        // check the entity exists
+        let ent_arr: TEntTypeIdx;
         try {
             ent_arr = idsBreak(arg) as TEntTypeIdx; // split
         } catch (err) {
             throw new Error('<ul><li>The entity ID "' + arg + '" is not a valid Entity ID.</li></ul>'); // check valid id
         }
         // check entity exists
-        if (check_exists && !__model__.modeldata.geom.snapshot.hasEnt(__model__.modeldata.active_ssid, ent_arr[0], ent_arr[1])) {
+        if (!__model__.modeldata.geom.snapshot.hasEnt(__model__.modeldata.active_ssid, ent_arr[0], ent_arr[1])) {
             throw new Error('<ul><li>The entity with the ID "' + arg + '" has been deleted.</li></ul>'); // check id exists
         }
         // check entity type
