@@ -35,14 +35,14 @@ import * as chk from '../../_check_types';
  * @example `posis = pattern.Bezier([[0,0,0], [10,0,50], [20,0,0]], 20)`
  * @example_info Creates a list of 20 positions distributed along a Bezier curve.
  */
-export function Bezier(__model__: Sim, coords: Txyz[], num_positions: number): string[] {
-    // // --- Error Check ---
+export function Bezier(__model__: GIModel, coords: Txyz[], num_positions: number): TId[] {
+    // --- Error Check ---
     // const fn_name = 'pattern.Bezier';
-    // if (this.debug) {
-    //     chk.checkArgs(fn_name, 'coords', coords, [chk.isXYZL]);
+    // if (__model__.debug) {
+    //     chk.checkArgs(fn_name, 'coords', coords, [chk.isXYZL, chk.isPln]);
     //     chk.checkArgs(fn_name, 'num_positions', num_positions, [chk.isInt]);
     // }
-    // // --- Error Check ---
+    // --- Error Check ---
     // create the curve
     const coords_tjs: THREE.Vector3[] =
         coords.map(coord => new THREE.Vector3(coord[0], coord[1], coord[2]));
