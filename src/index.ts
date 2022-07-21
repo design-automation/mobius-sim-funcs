@@ -1,6 +1,5 @@
 import { Sim } from './mobius_sim';
 import { ModelApi } from './model_api';
-
 // functions used by mobius
 import { AnalyzeFunc } from './functions/analyze';
 import { AttribFunc } from './functions/attrib';
@@ -66,6 +65,8 @@ export class SIMFuncs {
     query: QueryFunc;
     util: UtilFunc;
     visualize: VisualizeFunc;
+    // inline funcs
+    inl: InlineFuncs;
     // =============================================================================================
     // Constructor
     // =============================================================================================
@@ -131,6 +132,8 @@ export class SIMFuncs {
         this.query.__model__ = model;
         this.util.__model__ = model;
         this.visualize.__model__ = model;
+        // inline
+        this.inl = new InlineFuncs(this.__model__.debug);
     }
     /**
      * Get debug.

@@ -46,10 +46,8 @@ to the front, and the second material is assigned to the back.
 
 
 The color of the material can either ignore or apply the vertex rgb colors.
-If 'apply' is selected, then the actual color will be a combination of the material color
-and the vertex colors, as specified by the vertex attribute called 'rgb'.
-In such a case, if material color is set to white, then it will
-have no effect, and the color will be defined by the vertex [r,g,b] values.
+- If 'color' is set to `null`, it will apply the vertex rgb colors.
+- If 'color' is set to `[r, g, b]`, it will apply the given color.
 
 
 In order to assign a material to polylines in the model, a polyline attribute called 'material'
@@ -70,9 +68,8 @@ line widths cannot be rendered. As a result, lines width will always be set to 1
   
 **Parameters:**  
   * *name:* The name of the material.  
-  * *color:* The diffuse color, as [r, g, b] values between 0 and 1. White is [1, 1, 1].  
+  * *color:* Null to apply vertex colors, or the diffuse color, as [r, g, b] values between 0 and 1. White is [1, 1, 1].  
   * *dash\_gap\_scale:* Size of the dash and gap, and a scale factor. (The gap and scale are optional.)  
-  * *select\_vert\_colors:* Enum, select whether to use vertex colors if they exist: `'none'` or `'apply_rgb'`.  
   
 **Returns:** void  
   
@@ -87,10 +84,8 @@ line widths cannot be rendered. As a result, lines width will always be set to 1
 
 
 The color of the material can either ignore or apply the vertex rgb colors.
-If 'apply' is selected, then the actual color will be a combination of the material color
-and the vertex colors, as specified by the a vertex attribute called 'rgb'.
-In such a case, if material color is set to white, then it will
-have no effect, and the color will be defined by the vertex [r,g,b] values.
+- If 'color' is set to `null`, it will apply the vertex rgb colors.
+- If 'color' is set to `[r, g, b]`, it will apply the given color.
 
 
 Additional material properties can be set by calling the functions for the more advanced materials.
@@ -108,7 +103,6 @@ needs to be created. The value for each polygon must either be null, or must be 
   * *color:* The diffuse color, as [r, g, b] values between 0 and 1. White is [1, 1, 1].  
   * *opacity:* The opacity of the glass, between 0 (totally transparent) and 1 (totally opaque).  
   * *select\_side:* Enum, select where to apply colors: `'front', 'back'`, or `'both'`.  
-  * *select\_vert\_colors:* Enum, select whether to use vertex colors if they exist: `'none'` or `'apply_rgb'`.  
   
 **Returns:** void  
   

@@ -15,11 +15,7 @@ import {
 import { checkIDs, ID } from '../_common/_check_ids';
 import { checkArgs, isStr, isStrL } from '../../_check_types';
 import { _EIODataTarget, _EIOExportDataFormat } from './_enum';
-
-
-
 const requestedBytes = 1024 * 1024 * 200; // 200 MB local storage quota
-
 // ================================================================================================
 /**
  * Export data from the model as a file.
@@ -32,8 +28,10 @@ const requestedBytes = 1024 * 1024 * 200; // 200 MB local storage quota
  * @param __model__
  * @param entities (Optional) Entities to be exported. If null, the whole model will be exported.
  * @param file_name Name of the file as a string.
- * @param data_format Enum, the export file format: `'gi', 'sim', 'obj_v', 'obj_ps', 'geojson'` or `'gltf'`.
- * @param data_target Enum, where the data is to be exported to: `'Save to Hard Disk'` or `'Save to Local Storage'`.
+ * @param data_format Enum, the export file format: `'gi', 'sim', 'obj_v', 'obj_ps', 'geojson'` 
+ * or `'gltf'`.
+ * @param data_target Enum, where the data is to be exported to: `'Save to Hard Disk'` or 
+ * `'Save to Local Storage'`.
  * @returns void
  * @example `io.Export (#pg, 'my\_model.obj', 'obj', 'Save to Hard Disk')`
  * @example_info Exports all the polygons in the model as an OBJ, saved to the hard disk.
@@ -60,9 +58,13 @@ export async function Export(__model__: Sim, entities: string | string[] | strin
     // // --- Error Check ---
     await _export(__model__, ents_arr, file_name, data_format, data_target);
 }
+// =================================================================================================
 export function _Async_Param_Export(__model__: Sim, entities: string | string[] | string[][],
     file_name: string, data_format: _EIOExportDataFormat, data_target: _EIODataTarget) {
+
+
 }
+// =================================================================================================
 async function _export(__model__: Sim, ents_arr: string[],
     file_name: string, data_format: _EIOExportDataFormat, data_target: _EIODataTarget): Promise<boolean> {
     const ssid: number = __model__.modeldata.active_ssid;
@@ -71,11 +73,10 @@ async function _export(__model__: Sim, ents_arr: string[],
             {
                 let model_data = '';
                 model_data = __model__.exportGI(ents_arr);
-                // gi_data = gi_data.replace(/\\\"/g, '\\\\\\"'); // TODO temporary fix
                 model_data = model_data.replace(/\\/g, '\\\\\\'); // TODO temporary fix
                 // === save the file ===
                 if (data_target === _EIODataTarget.DEFAULT) {
-                    return download(model_data, file_name);
+                    return _simulateDownload(model_data, file_name);
                 }
                 return await _saveResource(model_data, file_name);
             }
@@ -83,11 +84,10 @@ async function _export(__model__: Sim, ents_arr: string[],
         {
             let model_data = '';
             model_data = __model__.exportSIM(ents_arr);
-            // gi_data = gi_data.replace(/\\\"/g, '\\\\\\"'); // TODO temporary fix
-            model_data = model_data.replace(/\\/g, '\\\\\\'); // TODO temporary fix
+            // model_data = model_data.replace(/\\/g, '\\\\\\'); // TODO temporary fix
             // === save the file ===
             if (data_target === _EIODataTarget.DEFAULT) {
-                return download(model_data, file_name);
+                return _simulateDownload(model_data, file_name);
             }
             return await _saveResource(model_data, file_name);
         }
@@ -96,7 +96,7 @@ async function _export(__model__: Sim, ents_arr: string[],
                 const obj_verts_data: string = exportVertBasedObj(__model__, ents_arr, ssid);
                 // obj_data = obj_data.replace(/#/g, '%23'); // TODO temporary fix
                 if (data_target === _EIODataTarget.DEFAULT) {
-                    return download(obj_verts_data, file_name);
+                    return _simulateDownload(obj_verts_data, file_name);
                 }
                 return await _saveResource(obj_verts_data, file_name);
             }
@@ -105,7 +105,7 @@ async function _export(__model__: Sim, ents_arr: string[],
                 const obj_posis_data: string = exportPosiBasedObj(__model__, ents_arr, ssid);
                 // obj_data = obj_data.replace(/#/g, '%23'); // TODO temporary fix
                 if (data_target === _EIODataTarget.DEFAULT) {
-                    return download(obj_posis_data, file_name);
+                    return _simulateDownload(obj_posis_data, file_name);
                 }
                 return await _saveResource(obj_posis_data, file_name);
             }
@@ -119,9 +119,9 @@ async function _export(__model__: Sim, ents_arr: string[],
         //     break;
         case _EIOExportDataFormat.GEOJSON:
             {
-                const geojson_data: string = exportGeojson(__model__, ents_arr, true, ssid); // flatten
+                const geojson_data: string = exportGeojson(__model__, ents_arr, true, ssid);
                 if (data_target === _EIODataTarget.DEFAULT) {
-                    return download(geojson_data, file_name);
+                    return _simulateDownload(geojson_data, file_name);
                 }
                 return await _saveResource(geojson_data, file_name);
             }
@@ -129,7 +129,7 @@ async function _export(__model__: Sim, ents_arr: string[],
             {
                 const gltf_data: string = await exportGltf(__model__, ents_arr, ssid);
                 if (data_target === _EIODataTarget.DEFAULT) {
-                    return download(gltf_data, file_name);
+                    return _simulateDownload(gltf_data, file_name);
                 }
                 return await _saveResource(gltf_data, file_name);
             }
@@ -137,13 +137,14 @@ async function _export(__model__: Sim, ents_arr: string[],
             throw new Error('Data type not recognised');
     }
 }
-
-// ================================================================================================
+// =================================================================================================
 /**
  * Functions for saving and loading resources to file system.
  */
-
-export async function _saveResource(file: string, name: string): Promise<boolean> {
+export async function _saveResource(
+    file_data: string, 
+    name: string
+): Promise<boolean> {
     const itemstring = localStorage.getItem('mobius_backup_list');
     if (!itemstring) {
         localStorage.setItem('mobius_backup_list', `["${name}"]`);
@@ -181,7 +182,7 @@ export async function _saveResource(file: string, name: string): Promise<boolean
             // console.log(code)
             fs.root.getFile(code, { create: true }, function (fileEntry) {
                 fileEntry.createWriter(async function (fileWriter) {
-                    const bb = new Blob([file + '_|_|_'], { type: 'text/plain;charset=utf-8' });
+                    const bb = new Blob([file_data + '_|_|_'], { type: 'text/plain;charset=utf-8' });
                     await fileWriter.write(bb);
                     resolve('success')
                 }, (e) => { resolve(e); });
@@ -198,7 +199,24 @@ export async function _saveResource(file: string, name: string): Promise<boolean
     
     })
     const endmsg = await exportPromise;
-
     return true;
     // localStorage.setItem(code, file);
 }
+// =================================================================================================
+/**
+ * Make the browser think that a file is being downloaded.
+ * @param data
+ * @param filename
+ */
+function _simulateDownload(data: string, filename: string): boolean {
+    // console.log('Downloading');
+    const file = new File([data], filename, { type: 'plain/text;charset=utf-8' });
+    // console.log(file.name);
+    const link = document.createElement('a');
+    link.href = window.URL.createObjectURL(file);
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    return true;
+}
+// =================================================================================================

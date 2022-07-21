@@ -1,10 +1,28 @@
 import * as Mathjs from 'mathjs';
 import * as THREE from 'three';
-import { Sim, ENT_TYPE, Txyz } from '../../mobius_sim';
-import { TPlane, TRay } from '../_common/consts';
-// import createSingleMeshBufTjs
-// import xformMatrix, multMatrix
-
+import {
+    arrMakeFlat,
+    createSingleMeshBufTjs,
+    distance,
+    EEntType,
+    GIModel,
+    idsBreak,
+    multMatrix,
+    TEntTypeIdx,
+    TId,
+    TPlane,
+    TRay,
+    Txyz,
+    vecAdd,
+    vecCross,
+    vecMult,
+    vecRot,
+    vecSetLen,
+    xformMatrix,
+} from '@design-automation/mobius-sim';
+import { checkIDs, ID } from '../../_check_ids';
+import * as chk from '../../_check_types';
+import { _generateLines, _getSensorRays } from './_shared';
 
 // ================================================================================================
 interface TViewResult {
@@ -17,6 +35,7 @@ interface TViewResult {
     perimeter_ratio?: number[];
     distance_ratio?: number[];
 }
+// =================================================================================================
 /**
  * Calculates an approximation of the unobstructed view for a set of origins.
  * \n
@@ -35,7 +54,7 @@ interface TViewResult {
  * \n
  * \n
  * @param __model__
- * @param origins A list of Rays or Planes, to be used as the origins for calculating the unobstructed views.
+ * @param sensors A list of Rays or Planes, to be used as the origins for calculating the unobstructed views.
  * @param entities The obstructions: faces, polygons, or collections.
  * @param radius The maximum radius of the uobstructed views.
  * @param num_rays The number of rays to generate when calculating uobstructed views.
@@ -43,47 +62,77 @@ interface TViewResult {
  * @returns A dictionary containing different unobstructed view metrics.
  */
 export function View(
-    __model__: Sim,
-    origins: TRay[] | TPlane[],
-    entities: string | string[] | string[][],
-    radius: number,
+    __model__: GIModel,
+    sensors: TRay[] | TPlane[] | TRay[][] | TPlane[][],
+    entities: TId | TId[] | TId[][],
+    radius: number|[number, number],
     num_rays: number,
     view_ang: number
-): TViewResult {
-    entities = arrMakeFlat(entities) as string[];
-    // // --- Error Check ---
-    // const fn_name = "analyze.View";
-    // let ents_arrs: string[];
-    // if (this.debug) {
-    //     chk.checkArgs(fn_name, "origins", origins, [chk.isRayL, chk.isPlnL]);
-    //     ents_arrs = checkIDs(__model__, fn_name, "entities", entities, [ID.isIDL1], [ENT_TYPE.PGON, ENT_TYPE.COLL]) as string[];
-    //     chk.checkArgs(fn_name, "radius", radius, [chk.isNum, chk.isNumL]);
-    //     if (Array.isArray(radius)) {
-    //         if (radius.length !== 2) {
-    //             throw new Error('If "radius" is a list, it must have a length of two: [min_dist, max_dist].');
-    //         }
-    //         if (radius[0] >= radius[1]) {
-    //             throw new Error('If "radius" is a list, the "min_dist" must be less than the "max_dist": [min_dist, max_dist].');
-    //         }
-    //     }
-    //     chk.checkArgs(fn_name, "num_rays", num_rays, [chk.isNum]);
-    //     chk.checkArgs(fn_name, "view_ang", view_ang, [chk.isNum]);
-    // } else {
-    //     ents_arrs = idsBreak(entities) as string[];
-    // }
-    // // --- Error Check ---
-    // get planes for each sensor point
-    const sensors: TPlane[] = _getPlanes(origins, 0.01); // Offset by 0.01
-    // Plane(__model__, sensors, 0.4);
+): TViewResult | [TViewResult, TViewResult] {
+    entities = arrMakeFlat(entities) as TId[];
+    // --- Error Check ---
+    const fn_name = "analyze.View";
+    let ents_arrs: TEntTypeIdx[];
+    if (__model__.debug) {
+        chk.checkArgs(fn_name, "origins", sensors, 
+            [chk.isRayL, chk.isPlnL, chk.isRayLL, chk.isPlnLL]);
+        ents_arrs = checkIDs(__model__, fn_name, "entities", entities, 
+            [ID.isIDL1], 
+            [EEntType.PGON, EEntType.COLL]) as TEntTypeIdx[];
+        chk.checkArgs(fn_name, "radius", radius, [chk.isNum, chk.isNumL]);
+        if (Array.isArray(radius)) {
+            if (radius.length !== 2) {
+                throw new Error('If "radius" is a list, it must have a length of two: \
+                [min_dist, max_dist].');
+            }
+            if (radius[0] >= radius[1]) {
+                throw new Error('If "radius" is a list, the "min_dist" must be less than \
+                the "max_dist": [min_dist, max_dist].');
+            }
+        }
+        chk.checkArgs(fn_name, "num_rays", num_rays, [chk.isNum]);
+        chk.checkArgs(fn_name, "view_ang", view_ang, [chk.isNum]);
+    } else {
+        ents_arrs = idsBreak(entities) as TEntTypeIdx[];
+    }
+    // --- Error Check ---
+    radius = Array.isArray(radius) ? radius : [1, radius];
+    // get rays for sensor points
+    const [sensors0, sensors1, two_lists]: [TRay[], TRay[], boolean] = _getSensorRays(sensors, 0.01); // offset by 0.01
     // get the ray direction vectors
-    const dirs: Txyz[] = _getDirs(num_rays, view_ang);
-    // Ray(__model__, dirs.map( dir => [[0,0,0], dir]) as TRay[], 1);
+    const dir_vecs: Txyz[] = _getDirs(num_rays, view_ang);
     // calc max perim and area
-    const tri_dist: number = distance([radius, 0, 0], vecRot([radius, 0, 0], [0,0,1], view_ang / (num_rays - 1)));
+    const tri_dist: number = distance(
+        [radius[1], 0, 0], 
+        vecRot([radius[1], 0, 0], [0,0,1], view_ang / (num_rays - 1))
+    );
     const max_perim = tri_dist * (num_rays - 1);
-    const max_area = _triArea(radius, radius, tri_dist) * (num_rays - 1);
+    const max_area = _triArea(radius[1], radius[1], tri_dist) * (num_rays - 1);
     // create mesh
-    const [mesh_tjs, idx_to_face_i]: [THREE.Mesh, number[]] = createSingleMeshBufTjs(__model__, ents_arrs);
+    const [mesh_tjs, _]: [THREE.Mesh, number[]] = createSingleMeshBufTjs(__model__, ents_arrs);
+    // run simulation
+    const results0: TViewResult = _calcViews(__model__, 
+        sensors0, dir_vecs, radius, mesh_tjs, max_perim, max_area, false);
+    const results1: TViewResult = _calcViews(__model__, 
+        sensors1, dir_vecs, radius, mesh_tjs, max_perim, max_area, true);
+    // cleanup
+    mesh_tjs.geometry.dispose();
+    (mesh_tjs.material as THREE.Material).dispose();
+    // return the results
+    if (two_lists) { return [results0, results1]; }
+    return results0;
+}
+// ================================================================================================
+function _calcViews(
+    __model__: GIModel,
+    sensor_rays: TRay[],
+    dir_vecs: Txyz[],
+    radius: [number, number],
+    mesh_tjs: THREE.Mesh,
+    max_perim: number,
+    max_area: number,
+    generate_lines: boolean
+): TViewResult {
     // create data structure
     const result: TViewResult = {};
     result.avg_dist = [];
@@ -93,35 +142,42 @@ export function View(
     result.perimeter_ratio = [];
     result.distance_ratio = [];
     // create tjs objects (to be resued for each ray)
-    const origin_tjs: THREE.Vector3 = new THREE.Vector3();
+    const sensor_tjs: THREE.Vector3 = new THREE.Vector3();
     const dir_tjs: THREE.Vector3 = new THREE.Vector3();
-    const ray_tjs: THREE.Raycaster = new THREE.Raycaster(origin_tjs, dir_tjs, 0, radius);
+    const ray_tjs: THREE.Raycaster = new THREE.Raycaster(sensor_tjs, dir_tjs, radius[0], radius[1]);
     // shoot rays
-    for (const sensor of sensors) {
-        origin_tjs.x = sensor[0][0]; origin_tjs.y = sensor[0][1]; origin_tjs.z = sensor[0][2]; 
+    for (const [sensor_xyz, sensor_dir] of sensor_rays) {
+        const sensor_pln: TPlane = _getPlane([sensor_xyz, sensor_dir]);
+        // set raycaster origin
+        sensor_tjs.x = sensor_xyz[0]; sensor_tjs.y = sensor_xyz[1]; sensor_tjs.z = sensor_xyz[2]; 
         const result_dists: number[] = [];
-        const result_isects: Txyz[] = [];
-        const dirs2: Txyz[] = _vecXForm(dirs, sensor);
-        for (const dir2 of dirs2) {
-            // Ray(__model__, [sensor[0], dir2], 1);
-            dir_tjs.x = dir2[0]; dir_tjs.y = dir2[1]; dir_tjs.z = dir2[2];
+        const result_xyzs: Txyz[] = [];
+        const vis_rays: [Txyz, number][] = [];
+        const dir_vecs_xformed: Txyz[] = _vecXForm(dir_vecs, sensor_pln);
+        for (const ray_dir of dir_vecs_xformed) {
+            // set raycaster direction
+            dir_tjs.x = ray_dir[0]; dir_tjs.y = ray_dir[1]; dir_tjs.z = ray_dir[2];
+            // shoot raycaster
             const isects: THREE.Intersection[] = ray_tjs.intersectObject(mesh_tjs, false);
             // get the result
             if (isects.length === 0) {
-                result_dists.push(radius);
-                result_isects.push(vecAdd(sensor[0], vecMult(dir2, radius)));
+                result_dists.push(radius[1]);
+                result_xyzs.push(vecAdd(sensor_xyz, vecMult(ray_dir, radius[1])));
+                const vis_end: Txyz = vecAdd(sensor_xyz, vecMult(ray_dir, 2));
+                vis_rays.push([vis_end, 0]);
             } else {
-                result_dists.push(isects[0]["distance"]);
-                const isect_tjs: THREE.Vector3 = isects[0].point;
-                result_isects.push([isect_tjs.x, isect_tjs.y, isect_tjs.z]);
+                result_dists.push(isects[0].distance);
+                const isect_xyz: Txyz = [isects[0].point.x, isects[0].point.y, isects[0].point.z];
+                result_xyzs.push(isect_xyz);
+                vis_rays.push([isect_xyz, 1]);
             }
         }
         // calc the perimeter and area
         let perim = 0;
         let area = 0;
-        for (let i = 0; i < num_rays - 1; i++) {
+        for (let i = 0; i < dir_vecs.length - 1; i++) {
             // calc perim
-            const c = distance(result_isects[i], result_isects[i + 1]);
+            const c = distance(result_xyzs[i], result_xyzs[i + 1]);
             perim += c;
             // calc area
             area += _triArea(result_dists[i], result_dists[i + 1], c);
@@ -136,44 +192,20 @@ export function View(
         result.max_dist.push(max_dist);
         result.area_ratio.push(area / max_area);
         result.perimeter_ratio.push(perim / max_perim);
-        result.distance_ratio.push(total_dist / (radius * num_rays));
+        result.distance_ratio.push(total_dist / (radius[1] * dir_vecs.length));
+        // generate calculation lines
+        if (generate_lines) { _generateLines(__model__, sensor_xyz, vis_rays); }
     }
-    // cleanup
-    mesh_tjs.geometry.dispose();
-    (mesh_tjs.material as THREE.Material).dispose();
     // return the results
     return result;
 }
 // ================================================================================================
-function _getPlanes(origins: TRay[] | TPlane[], offset: number): TPlane[] {
-    const planes: TPlane[] = [];
-    const is_ray: boolean = isRay(origins[0]);
-    const is_pln: boolean = isPlane(origins[0]);
-    for (const origin of origins) {
-        if (is_ray) {
-            // use the ray to create a plane where the y axis is [0, 0, 1]
-            const pln: TPlane = [
-                origin[0] as Txyz,
-                vecCross(origin[1] as Txyz, [0,0,1], true),
-                [0, 0, 1]
-            ];
-            pln[0] = vecAdd(pln[0], vecSetLen(vecCross(pln[1], pln[2]), offset));
-            planes.push( pln );
-        } else if (is_pln) {
-            // use the plane to create a new plane where the y axis is [0, 0, 1]
-            const dir: Txyz = vecCross(origin[1] as Txyz, origin[2] as Txyz, true);
-            const pln: TPlane = [
-                origin[0] as Txyz,
-                vecCross([0,0,1], dir, true),
-                [0, 0, 1]
-            ];
-            pln[0] = vecAdd(pln[0], vecSetLen(vecCross(pln[1], pln[2]), offset));
-            planes.push( pln );
-        } else {
-            throw new Error("analyze.View: origins arg contains an invalid value: " + origin);
-        }
-    }
-    return planes;
+function _getPlane(sensor_ray: TRay): TPlane {
+    return [
+        sensor_ray[0] as Txyz,
+        vecCross([0,0,1], sensor_ray[1] as Txyz, true),
+        [0, 0, 1]
+    ];
 }
 // ================================================================================================
 function _getDirs(num_rays: number, view_ang: number): Txyz[] {
@@ -194,6 +226,7 @@ function _vecXForm(vecs: Txyz[], pln: TPlane): Txyz[] {
 }
 // ================================================================================================
 function _triArea(a: number, b: number, c: number): number {
+
     // calc area using Heron's formula
     const s = (a + b + c) / 2;
     return Math.sqrt(s * (s - a) * (s - b) * (s - c));

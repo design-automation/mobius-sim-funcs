@@ -5,7 +5,7 @@ import * as Enum from './_enum'
 import { TPlane } from 'src/mobius_sim';
 
 const sf = new SIMFuncs();
-const inl = new InlineClass();
+const inl = new InlineFuncs();
 
 const posis = sf.make.Position([
     [0, 0, 0],[10, 0, 0],[10, 10, 0],[0, 10, 0],
@@ -13,7 +13,7 @@ const posis = sf.make.Position([
 
 const pl = sf.make.Polyline(posis, Enum._EClose.CLOSE)
 const pg = sf.make.Polygon(posis)
-const pln = inl.plane.plnMake([5,5,0], [0,0,1], [5,5,10])
+const pln = inl.plnMake([5,5,0], [0,0,1], [5,5,10])
 
 const cut1 = sf.make.Cut(pl, pln as TPlane, Enum._ECutMethod.KEEP_BOTH)
 const cut2 = sf.make.Cut(pg, pln as TPlane, Enum._ECutMethod.KEEP_BELOW)

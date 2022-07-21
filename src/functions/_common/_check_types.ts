@@ -210,7 +210,13 @@ export function isXY(arg: Txy): void {
     isNumL(arg);
     isLLen(arg, 2);
 }
-// -------------------------------------------------------------------------------------------------
+// List of Lists Three numbers
+export function isXYL(arg: Txy[]): void {
+    isList(arg);
+    for (let i = 0; i < arg.length; i++) {
+        isXY(arg[i]);
+    }
+}
 // List Number and Int
 export function isXYInt(arg: Txy): void {
     isIntL(arg);
@@ -254,10 +260,15 @@ export function isPln(arg: TPlane): void { // TPlane = [Txyz, Txyz, Txyz]
 export function isPlnL(arg: TPlane[]): void {
     isList(arg);
     for (let i = 0; i < arg.length; i++) {
-        isPln(arg[i]);
+    isPln(arg[i]);
     }
 }
-// -------------------------------------------------------------------------------------------------
+export function isPlnLL(arg: TPlane[][]): void {
+    isList(arg);
+    for (let i = 0; i < arg.length; i++) {
+        isPlnL(arg[i]);
+    }
+}
 export function isBBox(arg: TBBox): void { // TBbox = [Txyz, Txyz, Txyz, Txyz]
     isXYZL(arg);
     isLLen(arg, 4);
@@ -354,6 +365,8 @@ function _getDataTypeStrFromFunc(check_fn: any): string {
             return 'a plane, defined by a list of three lists, each containing three numbers';
         case isPlnL:
             return 'a list of planes, each defined by a list of three lists, each containing three numbers';
+        case isPlnLL:
+            return 'a nested list of planes, each defined by a list of three lists, each containing three numbers';
         case isBBox:
             return 'a bounding box, defined by a list of four lists, each containing three numbers';
         case isBBoxL:

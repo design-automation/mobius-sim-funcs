@@ -4,9 +4,9 @@ import { InlineClass } from '@design-automation/mobius-inline-funcs'
 import * as Enum from './_enum';
 
 const sf = new SIMFuncs();
-const inl = new InlineClass();
+const inl = new InlineFuncs();
 
-const posis = sf.pattern.Arc([0,0,0],5,5,inl.constants.PI)
+const posis = sf.pattern.Arc([0,0,0],5,5,inl.PI)
 const bbox1 = sf.poly2d.BBoxPolygon(posis, Enum._EBBoxMethod.AABB)
 const bbox2 = sf.poly2d.BBoxPolygon(posis, Enum._EBBoxMethod.OBB)
 

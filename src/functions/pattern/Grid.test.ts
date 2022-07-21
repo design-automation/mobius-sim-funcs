@@ -3,16 +3,16 @@ import { InlineClass } from '@design-automation/mobius-inline-funcs'
 import * as Enum from './_enum'
 
 const sf = new SIMFuncs();
-const inl = new InlineClass();
+const inl = new InlineFuncs();
 
 test('Check Grid flat', () => {
-    const grid1 = sf.pattern.Grid(inl.constants.XY, [10,20], [2,3], Enum._EGridMethod.FLAT)
+    const grid1 = sf.pattern.Grid(inl.XY, [10,20], [2,3], Enum._EGridMethod.FLAT)
     //@ts-ignore
     expect(grid1).toStrictEqual(["ps0", "ps1", "ps2", "ps3", "ps4", "ps5"]);
 }); 
 
 test('Check Grid columns', () => {
-    const grid2 = sf.pattern.Grid(inl.constants.XY, [10,20], [2,3], Enum._EGridMethod.COLUMNS)
+    const grid2 = sf.pattern.Grid(inl.XY, [10,20], [2,3], Enum._EGridMethod.COLUMNS)
     //@ts-ignore
     expect(grid2).toStrictEqual([
         ["ps6", "ps8", "ps10"],
@@ -21,7 +21,7 @@ test('Check Grid columns', () => {
 }); 
 
 test('Check Grid rows', () => {
-    const grid3 = sf.pattern.Grid(inl.constants.XY, [10,20], [2,3], Enum._EGridMethod.ROWS)
+    const grid3 = sf.pattern.Grid(inl.XY, [10,20], [2,3], Enum._EGridMethod.ROWS)
     //@ts-ignore
     expect(grid3).toStrictEqual([
         ["ps12", "ps13"],
@@ -31,7 +31,7 @@ test('Check Grid rows', () => {
 }); 
 
 test('Check Grid quads', () => {
-    const grid4 = sf.pattern.Grid(inl.constants.XY, [10,20], [2,3], Enum._EGridMethod.QUADS)
+    const grid4 = sf.pattern.Grid(inl.XY, [10,20], [2,3], Enum._EGridMethod.QUADS)
     //@ts-ignore
     expect(grid4).toStrictEqual([
         ["ps18", "ps19", "ps21", "ps20"],

@@ -4,7 +4,7 @@ import { InlineClass } from '@design-automation/mobius-inline-funcs'
 import * as makEnum from '../make/_enum';
 
 const sf = new SIMFuncs();
-const inl = new InlineClass();
+const inl = new InlineFuncs();
 
 const posis = sf.make.Position([
     [0, 0, 0],[10, 0, 0],[10, 10, 0],[0, 10, 0],
@@ -19,7 +19,7 @@ test('Check normal of pline', () => {
     expect(Norm1).toStrictEqual([0,0,1]);
 }); 
 
-sf.modify.Rotate(pg, inl.constants.YZ, inl.constants.PI)
+sf.modify.Rotate(pg, inl.YZ, inl.PI)
 const Norm2 = sf.calc.Normal(pg, 1)
 
 test('Check normal of rotated pgon', () => {

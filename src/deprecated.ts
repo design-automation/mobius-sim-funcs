@@ -293,6 +293,48 @@ export const deprecated = [
                 "tolerance": "0.1"
             }
         }
-    }
-
+    },
+    {
+        "old_func": {
+            "module": "analyze",
+            "name": "Isovist"
+        },
+        "new_func": {
+            "module": "analyze",
+            "name": "Isovist",
+            "replace": {
+                "sensors": "origins",
+                "radius": "dist",
+                "num_rays": "detail",
+            }
+        }
+    },
+    {
+        "old_func": {
+            "module": "analyze",
+            "name": "Sky"
+        },
+        "new_func": {
+            "module": "analyze",
+            "name": "Sky",
+            "replace": {
+                "sensors": "origins",
+                "radius": "limits",
+            }
+        }
+    },
+    {
+        "old_func": {
+            "module": "analyze",
+            "name": "Sun"
+        },
+        "new_func": {
+            "module": "analyze",
+            "name": "Sun",
+            "replace": {
+                "sensors": "origins",
+                "radius": "limits",
+            }
+        }
+    },
 ]

@@ -5,7 +5,7 @@ import { _Ecolors, _EMeshMaterialType, _ESide } from './_enum';
 import {
     _clamp01,
     _clampArr01,
-    _convertSelectEcolorsToNum,
+    // _convertSelectEcolorsToNum,
     _convertSelectESideToNum,
     _setMaterialModelAttrib,
 } from './_shared';
@@ -18,10 +18,8 @@ import {
  * [See the threejs docs on basic mesh materials](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial)
  * \n
  * The color of the material can either ignore or apply the vertex rgb colors.
- * If 'apply' is selected, then the actual color will be a combination of the material color
- * and the vertex colors, as specified by the a vertex attribute called 'rgb'.
- * In such a case, if material color is set to white, then it will
- * have no effect, and the color will be defined by the vertex [r,g,b] values.
+ * - If 'color' is set to `null`, it will apply the vertex rgb colors. 
+ * - If 'color' is set to `[r, g, b]`, it will apply the given color. 
  * \n
  * Additional material properties can be set by calling the functions for the more advanced materials.
  * These include LambertMaterial, PhongMaterial, StandardMaterial, and Physical Material.
@@ -41,7 +39,7 @@ export function MeshMat(__model__: Sim, name: string,
             color: TColor,
             opacity: number,
             select_side: _ESide,
-            select_vert_colors: _Ecolors
+            // select_vert_colors: _Ecolors
         ): void {
     // // --- Error Check ---
     // if (this.debug) {
@@ -52,7 +50,14 @@ export function MeshMat(__model__: Sim, name: string,
     // }
     // // --- Error Check ---
     const side: number = _convertSelectESideToNum(select_side);
-    const vert_colors: number = _convertSelectEcolorsToNum(select_vert_colors);
+    // const vert_colors: number = _convertSelectEcolorsToNum(select_vert_colors);
+    var vert_colors = 0;
+    if (color == null) {
+        color = [1, 1, 1];
+        vert_colors = 1;
+    } else {
+        vert_colors = 0;
+    }
     opacity = _clamp01(opacity);
     const transparent: boolean = opacity < 1;
     _clampArr01(color);
@@ -60,7 +65,7 @@ export function MeshMat(__model__: Sim, name: string,
     const settings_obj = {
         type: _EMeshMaterialType.BASIC,
         side: side,
-        vertexColors: vert_colors,
+        // vertexColors: vert_colors,
         opacity: opacity,
         transparent: transparent,
         color: color

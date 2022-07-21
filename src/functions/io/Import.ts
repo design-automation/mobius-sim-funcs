@@ -11,19 +11,17 @@ import {
 
 import { _getFile } from '.';
 import { _EIOImportDataFormat } from './_enum';
-
-
-
-
-// ================================================================================================
+// =================================================================================================
 /**
  * Imports data into the model.
  * \n
  * There are two ways of specifying the file location to be imported:
  * - A url, e.g. "https://www.dropbox.com/xxxx/my_data.obj"
- * - A file name in the local storage, e.g. "my\_data.obj". See documentation on local storage in the menu for more info. 
+ * - A file name in the local storage, e.g. "my\_data.obj". See documentation on local storage in 
+ * the menu for more info. 
  * \n
- * To place a file in local storage, go to the Mobius menu, and select 'Local Storage' from the dropdown.
+ * To place a file in local storage, go to the Mobius menu, and select 'Local Storage' from the 
+ * dropdown.
  * Note that a script using a file in local storage may fail when others try to open the file.
  * \n
  * @param data_url The url to retrieve the data from.
@@ -42,7 +40,8 @@ export async function Import(__model__: Sim, data_url: string, data_format: _EIO
         const coll_results = {};
         for (const data_name in <Object>model_data) {
             if (model_data[data_name]) {
-                coll_results[data_name] = _import(__model__, <string>model_data[data_name], data_format);
+                coll_results[data_name] = _import(
+                    __model__, <string>model_data[data_name], data_format);
             }
         }
         return coll_results;
@@ -50,9 +49,14 @@ export async function Import(__model__: Sim, data_url: string, data_format: _EIO
     // single file
     return _import(__model__, model_data, data_format);
 }
+// =================================================================================================
 export function _Async_Param_Import(__model__: Sim, input_data: string, data_format: _EIOImportDataFormat): Promise<string | string[] | {}> {
     return null;
+
+
+    
 }
+// =================================================================================================
 export function _import(__model__: Sim, model_data: string, data_format: _EIOImportDataFormat): string {
     switch (data_format) {
         case _EIOImportDataFormat.GI:
@@ -74,6 +78,7 @@ export function _import(__model__: Sim, model_data: string, data_format: _EIOImp
             throw new Error('Import type not recognised');
     }
 }
+// =================================================================================================
 export function _importGI(__model__: Sim, json_str: string): number {
     const ssid: number = __model__.modeldata.active_ssid;
     // import
@@ -99,6 +104,7 @@ export function _importGI(__model__: Sim, json_str: string): number {
     // return the result
     return container_coll_i;
 }
+// =================================================================================================
 export function _importSIM(__model__: Sim, json_str: string): number {
     const ssid: number = __model__.modeldata.active_ssid;
     // import
@@ -124,6 +130,7 @@ export function _importSIM(__model__: Sim, json_str: string): number {
     // return the result
     return container_coll_i;
 }
+// =================================================================================================
 function _importObj(__model__: Sim, model_data: string): number {
     // get number of ents before merge
     const num_ents_before: number[] = __model__.metadata.getEntCounts();
@@ -136,6 +143,7 @@ function _importObj(__model__: Sim, model_data: string): number {
     __model__.modeldata.attribs.set.setEntAttribVal(ENT_TYPE.COLL, container_coll_i, 'name', 'import OBJ');
     return container_coll_i;
 }
+// =================================================================================================
 function _importGeoJSON(__model__: Sim, model_data: string): number {
     // get number of ents before merge
     const num_ents_before: number[] = __model__.metadata.getEntCounts();
@@ -148,6 +156,7 @@ function _importGeoJSON(__model__: Sim, model_data: string): number {
     __model__.modeldata.attribs.set.setEntAttribVal(ENT_TYPE.COLL, container_coll_i, 'name', 'import_GeoJSON');
     return container_coll_i;
 }
+// =================================================================================================
 function _importCityJSON(__model__: Sim, model_data: string): number {
     // get number of ents before merge
     const num_ents_before: number[] = __model__.metadata.getEntCounts();
@@ -160,35 +169,7 @@ function _importCityJSON(__model__: Sim, model_data: string): number {
     __model__.modeldata.attribs.set.setEntAttribVal(ENT_TYPE.COLL, container_coll_i, 'name', 'import_CityJSON');
     return container_coll_i;
 }
-// function _createGIColl(__model__: Sim, before: number[], after: number[]): number {
-//     throw new Error('Not implemented');
-//     // const points_i: number[] = [];
-//     // const plines_i: number[] = [];
-//     // const pgons_i: number[] = [];
-//     // for (let point_i = before[1]; point_i < after[1]; point_i++) {
-//     //     if (__model__.modeldata.geom.query.entExists(ENT_TYPE.POINT, point_i)) {
-//     //         points_i.push( point_i );
-//     //     }
-//     // }
-//     // for (let pline_i = before[2]; pline_i < after[2]; pline_i++) {
-//     //     if (__model__.modeldata.geom.query.entExists(ENT_TYPE.PLINE, pline_i)) {
-//     //         plines_i.push( pline_i );
-//     //     }
-//     // }
-//     // for (let pgon_i = before[3]; pgon_i < after[3]; pgon_i++) {
-//     //     if (__model__.modeldata.geom.query.entExists(ENT_TYPE.PGON, pgon_i)) {
-//     //         pgons_i.push( pgon_i );
-//     //     }
-//     // }
-//     // if (points_i.length + plines_i.length + pgons_i.length === 0) { return null; }
-//     // const container_coll_i: number = __model__.modeldata.geom.add.addColl(null, points_i, plines_i, pgons_i);
-//     // for (let coll_i = before[4]; coll_i < after[4]; coll_i++) {
-//     //     if (__model__.modeldata.geom.query.entExists(ENT_TYPE.COLL, coll_i)) {
-//     //         __model__.modeldata.geom.modify_coll.setCollParent(coll_i, container_coll_i);
-//     //     }
-//     // }
-//     // return container_coll_i;
-// }
+// =================================================================================================
 function _createColl(__model__: Sim, before: number[], after: number[]): number {
     const ssid: number = __model__.modeldata.active_ssid;
     const points_i: number[] = [];
@@ -215,3 +196,4 @@ function _createColl(__model__: Sim, before: number[], after: number[]): number 
     __model__.modeldata.geom.snapshot.addCollChildren(ssid, container_coll_i, colls_i);
     return container_coll_i;
 }
+// =================================================================================================

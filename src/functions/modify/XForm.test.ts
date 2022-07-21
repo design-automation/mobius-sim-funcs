@@ -5,7 +5,7 @@ import * as qEnum from '../query/_enum';
 import * as makEnum from '../make/_enum';
 
 const sf = new SIMFuncs();
-const inl = new InlineClass();
+const inl = new InlineFuncs();
 
 const posis = sf.make.Position([
     [0, 0, 0],[10, 0, 0],[10, 10, 0],[0, 10, 0],
@@ -16,7 +16,7 @@ const pl = sf.make.Polyline(posis, makEnum._EClose.CLOSE)
 
 const init_e = sf.query.Get(qEnum._ENT_TYPE.EDGE, pl)
 
-sf.modify.XForm(pl, inl.constants.XY, inl.constants.XZ);
+sf.modify.XForm(pl, inl.XY, inl.XZ);
 
 
 test('Check if XFormed ps are still the same', () => {

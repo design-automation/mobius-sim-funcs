@@ -6,18 +6,18 @@ import * as qEnum from '../query/_enum'
 import { TRay } from '../../mobius_sim';
 
 const sf = new SIMFuncs();
-const inl = new InlineClass();
+const inl = new InlineFuncs();
 
-const ps = sf.pattern.Arc([0,0,0], 10, 50, inl.constants.PI)
+const ps = sf.pattern.Arc([0,0,0], 10, 50, inl.PI)
 const pl = sf.make.Polyline(ps, maEnum._EClose.OPEN)
 
 //creating a circle of plines
 
 for (let i = 1; i < 8; i++) {
-    const ang = (i * (2 * inl.constants.PI)) / 8;
+    const ang = (i * (2 * inl.PI)) / 8;
     const rot1 = sf.make.Copy(pl, null);
     //@ts-ignore
-    const ray = inl.ray.rayMake([0,0,0], [1,0,0])
+    const ray = inl.rayMake([0,0,0], [1,0,0])
     sf.modify.Rotate(rot1, ray as TRay, ang)
 }
 

@@ -3,10 +3,10 @@ export enum _ESide {
     BACK =   'back',
     BOTH =   'both'
 }
-export enum _Ecolors {
-    NO_VERT_COLORS =   'none',
-    VERT_COLORS =   'apply_rgb'
-}
+// export enum _Ecolors {
+//     NO_VERT_COLORS =   'none',
+//     VERT_COLORS =   'apply_rgb'
+// }
 
 export enum _ELineMaterialType {
     BASIC = 'LineBasicMaterial',

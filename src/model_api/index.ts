@@ -1,7 +1,16 @@
 // functions used by mobius
-import { GIModel, EEntType, TAttribDataTypes, TId, IAttribsMaps, Txyz, TEntTypeIdx, idsBreak, 
-    EAttribDataTypeStrs, idsMake, idsMakeFromIdxs, idBreak, getEntIdxs } 
-    from '@design-automation/mobius-sim';
+import { 
+    GIModel, 
+    EEntType, 
+    TAttribDataTypes, 
+    TId, 
+    IAttribsMaps, 
+    Txyz, 
+    TEntTypeIdx, 
+    idsBreak, 
+    EAttribDataTypeStrs
+} 
+from '@design-automation/mobius-sim';
 import { IThreeJS } from '@design-automation/mobius-sim/build/cjs/geo-info/ThreejsJSON';
 
 export class ModelApi {
@@ -98,7 +107,7 @@ export class ModelApi {
     // Entities
     // =============================================================================================
     /**
-     * Return unique list of ents of to_ent_type
+     * Return unique list of ents of target_ent_type
      * @param target_ent_type 
      * @param ents
      */
@@ -122,7 +131,11 @@ export class ModelApi {
     //     const ents_i: number[] = this.__model__.modeldata.geom.nav.navAnyToAny(ent_type, target_ent_type, ent_i);
     //     return idsMakeFromIdxs(ent_type, ents_i) as TId[];
     // }
-    getEnts(target_ent_type: EEntType, source_ent_type?: EEntType, source_ents_i?: number|number[]): number[] {
+    getEnts(
+        target_ent_type: EEntType, 
+        source_ent_type?: EEntType, 
+        source_ents_i?: number|number[]
+    ): number[] {
         if (source_ent_type === undefined) {
             return this.__model__.modeldata.geom.query.getEnts(target_ent_type);
         }

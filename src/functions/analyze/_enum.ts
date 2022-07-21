@@ -22,12 +22,12 @@ export enum _ERaytraceMethod {
     DISTANCES = "distances",
     HIT_PGONS = "hit_pgons",
     INTERSECTIONS = "intersections",
+    ALL_INTERSECTIONS = "all_intersections",
     ALL = "all",
 }
 export enum _ESkyMethod {
     WEIGHTED = "weighted",
-    UNWEIGHTED = "unweighted",
-    ALL = "all",
+    UNWEIGHTED = "unweighted"
 }
 export enum _ESunPathMethod {
     DIRECT = "direct",

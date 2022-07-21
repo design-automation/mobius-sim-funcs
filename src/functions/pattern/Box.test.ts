@@ -3,10 +3,10 @@ import { InlineClass } from '@design-automation/mobius-inline-funcs'
 import * as Enum from './_enum'
 
 const sf = new SIMFuncs();
-const inl = new InlineClass();
+const inl = new InlineFuncs();
 
 test('Check box flat', () => {
-    const box1 = sf.pattern.Box(inl.constants.XY, [10,20,30], [2,3,2], Enum._EBoxMethod.FLAT)
+    const box1 = sf.pattern.Box(inl.XY, [10,20,30], [2,3,2], Enum._EBoxMethod.FLAT)
     //@ts-ignore
     expect(box1).toStrictEqual(["ps0", "ps1", "ps2", "ps3", "ps4", "ps5", "ps6", "ps7", "ps8", "ps9", "ps10", "ps11"]);
 }); 
@@ -14,7 +14,7 @@ test('Check box flat', () => {
 
 
 test('Check box columns', () => {
-    const box2 = sf.pattern.Box(inl.constants.XY, [10,20,30], [2,3,2], Enum._EBoxMethod.COLUMNS)
+    const box2 = sf.pattern.Box(inl.XY, [10,20,30], [2,3,2], Enum._EBoxMethod.COLUMNS)
     //@ts-ignore
     expect(box2).toStrictEqual([
         ["ps12", "ps14", "ps16", "ps18", "ps20", "ps22"],
@@ -23,7 +23,7 @@ test('Check box columns', () => {
 }); 
 
 test('Check box rows', () => {
-    const box3 = sf.pattern.Box(inl.constants.XY, [10,20,30], [2,3,2], Enum._EBoxMethod.ROWS)
+    const box3 = sf.pattern.Box(inl.XY, [10,20,30], [2,3,2], Enum._EBoxMethod.ROWS)
     //@ts-ignore
     expect(box3).toStrictEqual([
         ["ps24", "ps25", "ps30", "ps31"],
@@ -33,7 +33,7 @@ test('Check box rows', () => {
 }); 
 
 test('Check box layers', () => {
-    const box4 = sf.pattern.Box(inl.constants.XY, [10,20,30], [2,3,2], Enum._EBoxMethod.LAYERS)
+    const box4 = sf.pattern.Box(inl.XY, [10,20,30], [2,3,2], Enum._EBoxMethod.LAYERS)
     //@ts-ignore
     expect(box4).toStrictEqual([
         ["ps36", "ps37", "ps38", "ps39", "ps40", "ps41"],
@@ -42,7 +42,7 @@ test('Check box layers', () => {
 }); 
 
 test('Check box quads', () => {
-    const box5 = sf.pattern.Box(inl.constants.XY, [10,20,30], [2,3,2], Enum._EBoxMethod.QUADS)
+    const box5 = sf.pattern.Box(inl.XY, [10,20,30], [2,3,2], Enum._EBoxMethod.QUADS)
     //@ts-ignore
     expect(box5).toStrictEqual([
         ["ps48", "ps50", "ps51", "ps49"],

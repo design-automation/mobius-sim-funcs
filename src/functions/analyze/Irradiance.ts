@@ -1,193 +1,183 @@
-import { Sim, ENT_TYPE } from '../../mobius_sim';
-// import createSingleMeshBufTjs
+import {
+    arrMakeFlat,
+    createSingleMeshBufTjs,
+    EAttribDataTypeStrs,
+    EEntType,
+    GIModel,
+    idsBreak,
+    TColor,
+    TEntTypeIdx,
+    TId,
+    TPlane,
+    TRay,
+    Txyz,
+    vecAdd,
+    vecDot,
+    vecMult,
+} from '@design-automation/mobius-sim';
 import * as THREE from 'three';
-import uscore from 'underscore';
-
-import { _ESolarMethod } from './_enum';
-import { _calcExposure, _rayOrisDirsTjs, _solarRaysDirectTjs, _solarRaysIndirectTjs } from './_shared';
-
-
-// ================================================================================================
+import { checkIDs, ID } from '../../_check_ids';
+import * as chk from '../../_check_types';
+import { _ESkyMethod } from './_enum';
+import { _generateLines, _getSensorRays } from './_shared';
+const EPS = 1e-6;
+// =================================================================================================
+interface TIrradianceResult {
+    irradiance: number[];
+}
+interface ISkyRadiance {
+    SkyDome: {
+        units: string,
+        metric: string,
+        subdivisionType: string,
+        subdivisionAngle: number,
+        includeDirect: boolean,
+        patchCount: number,
+        patches: ISkyRadiancePatch[]
+    }
+}
+interface ISkyRadiancePatch {
+    azi: number,
+    alt: number,
+    area: number,
+    vector: Txyz, 
+    radiance: number,
+    area_fac?: number
+}
+// =================================================================================================
 /**
- * Calculate an approximation of the solar irradiance, in KWh/m2/year, for a set sensors positioned 
- * at specfied locations.
- * \n
- * The calculation uses a cumulative sky
- *  - @cumulativesky={'longitude':123,'latitude':12}.
- * North direction is specified by a model attribute as follows, using a vector:
- *  - @north==[1,2]
- * If no north direction is specified, then [0,1] is the default (i.e. north is in the direction of the y-axis);
- * \n
- * Each sensor has a location and direction, specified using either rays or planes.
- * The direction of the sensor specifies what is infront and what is behind the sensor.
- * For each sensor, only exposure infront of the sensor is calculated.
- * \n
- * The exposure is calculated by shooting rays in reverse.
- * from the sensor origin to a set of points on the sky dome.
- * If the rays hits an obstruction, then the sky dome is obstructed..
- * If the ray hits no obstructions, then the sky dome is not obstructed.
- * \n
- * The exposure factor at each sensor point is calculated as follows:
- * 1. Shoot rays to all sky dome points.
- * 2. If the ray hits an obstruction, assign a wight of 0 to that ray.
- * 3. If a ray does not hit any obstructions, assign a weight between 0 and 1, depending on the incidence angle.
- * 4. Calculate the total solar expouse by adding up the weights for all rays.
- * 5. Divide by the maximum possible solar exposure for an unobstructed sensor.
- * \n
- * The solar exposure calculation takes into account the angle of incidence of the sun ray to the sensor direction.
- * Sun rays that are hitting the sensor straight on are assigned a weight of 1.
- * Sun rays that are hitting the sensor at an oblique angle are assigned a weight equal to the cosine of the angle.
- * \n
- * If 'direct\_exposure' is selected, then the points on the sky dome will follow the path of the sun throughout the year.
- * If 'indirect\_exposure' is selected, then the points on the sky dome will consist of points excluded by
- * the path of the sun throughout the year.
- * \n
- * The direct sky dome points cover a strip of sky where the sun travels.
- * The inderect sky dome points cover the segments of sky either side of the direct sun strip.
- * \n
- * The detail parameter spacifies the number of rays that get generated.
- * The higher the level of detail, the more accurate but also the slower the analysis will be.
- * The number of rays differs depending on the latitde.
- * \n
- * At latitude 0, the number of rays for 'direct' are as follows:
- * 0 = 44 rays,
- * 1 = 105 rays,
- * 2 = 510 rays,
- * 3 = 1287 rays.
- * \n
- * At latitude 0, the number of rays for 'indirect' are as follows:
- * 0 = 58 rays,
- * 1 = 204 rays,
- * 2 = 798 rays,
- * 3 = 3122 rays.
- * \n
- * The number of rays for 'sky' are as follows:
- * 0 = 89 rays,
- * 1 = 337 rays,
- * 2 = 1313 rays,
- * 3 = 5185 rays.
- * \n
- * Returns a dictionary containing solar exposure results.
- * \n
- * If one  of the 'direct' methods is selected, the dictionary will contain:
- * 1. 'direct': A list of numbers, the direct exposure factors.
- * \n
- * If one  of the 'indirect' methods is selected, the dictionary will contain:
- * 1. 'indirect': A list of numbers, the indirect exposure factors.
+ * Calculate an approximation of irradiance...
  * \n
  * \n
  * @param __model__
- * @param origins A list of coordinates, a list of Rays or a list of Planes, to be used as the origins for calculating exposure.
- * @param detail An integer between 1 and 3 inclusive, specifying the level of detail for the analysis.
- * @param entities The obstructions, faces, polygons, or collections of faces or polygons.
- * @param limits The max distance for raytracing.
- * @param method Enum; solar method.
- * @returns A dictionary containing solar exposure results.
+ * @param sensors A list Rays or a list of Planes, to be used as the origins for calculating 
+ * irradiance.
+ * @param entities The obstructions, polygons or collections.
+ * @param radius The max distance for raytracing.
+ * @param method Enum, the sky method: `'weighted', 'unweighted'` or `'all'`.
+ * @returns A dictionary containing irradiance results.
  */
-export function Sun(
-    __model__: Sim,
-    origins: Txyz[] | TRay[] | TPlane[],
-    detail: number,
-    entities: string | string[] | string[][],
-    limits: number | [number, number],
-    method: _ESolarMethod
-): any {
-    entities = arrMakeFlat(entities) as string[];
+export function Irradiance(
+    __model__: GIModel,
+    sensors: TRay[] | TPlane[] | TRay[][] | TPlane[][],
+    entities: TId | TId[] | TId[][],
+    radius: number | [number, number],
+    method: _ESkyMethod
+): TIrradianceResult | [TIrradianceResult, TIrradianceResult] {
+    entities = arrMakeFlat(entities) as TId[];
     // --- Error Check ---
-    const fn_name = "analyze.Sun";
-    let ents_arrs: string[];
-    let latitude: number = null;
-    let north: Txy = [0, 1];
-    if (this.debug) {
-        chk.checkArgs(fn_name, "origins", origins, [chk.isXYZL, chk.isRayL, chk.isPlnL]);
-        chk.checkArgs(fn_name, "detail", detail, [chk.isInt]);
-        if (detail < 0 || detail > 3) {
-            throw new Error(fn_name + ': "detail" must be an integer between 0 and 3 inclusive.');
+    const fn_name = "analyze.Irradiance";
+    let ents_arrs: TEntTypeIdx[];
+    if (__model__.debug) {
+        chk.checkArgs(fn_name, "sensors", sensors, 
+            [chk.isRayL, chk.isPlnL, chk.isRayLL, chk.isPlnLL]);
+        ents_arrs = checkIDs(__model__, fn_name, "entities", entities, 
+            [ID.isID, ID.isIDL1], 
+            [EEntType.PGON, EEntType.COLL]) as TEntTypeIdx[];
+        chk.checkArgs(fn_name, "radius", radius, [chk.isNum, chk.isNumL]);
+        if (Array.isArray(radius)) {
+            if (radius.length !== 2) {
+                throw new Error('If "radius" is a list, it must have a length of two: \
+                [min_dist, max_dist].');
+            }
+            if (radius[0] >= radius[1]) {
+                throw new Error('If "radius" is a list, the "min_dist" must be less than \
+                the "max_dist": [min_dist, max_dist].');
+            }
         }
-        ents_arrs = checkIDs(__model__, fn_name, "entities", entities, [ID.isID, ID.isIDL1], [ENT_TYPE.PGON, ENT_TYPE.COLL]) as string[];
-        if (!__model__.modeldata.attribs.query.hasModelAttrib("geolocation")) {
+        // check that we have sky radiance data
+        if (!__model__.modeldata.attribs.query.hasModelAttrib("sky")) {
             throw new Error(
-                'analyze.Solar: model attribute "geolocation" is missing, \
-                e.g. @geolocation = {"latitude":12, "longitude":34}'
+                'analyze.Irradiance: For calculating irradiance, the model must have data, \
+                describing the sky radiance. See the documentation of the analyze.Irradiance \
+                function.'
             );
-        } else {
-            const geolocation = __model__.modeldata.attribs.get.getModelAttribVal("geolocation");
-            if (uscore.isObject(geolocation) && uscore.has(geolocation, "latitude")) {
-                latitude = geolocation["latitude"];
-            } else {
-                throw new Error(
-                    'analyze.Solar: model attribute "geolocation" is missing the "latitude" key, \
-                    e.g. @geolocation = {"latitude":12, "longitude":34}'
-                );
-            }
-        }
-        if (__model__.modeldata.attribs.query.hasModelAttrib("north")) {
-            north = __model__.modeldata.attribs.get.getModelAttribVal("north") as Txy;
-            if (!Array.isArray(north) || north.length !== 2) {
-                throw new Error(
-                    'analyze.Solar: model has a "north" attribute with the wrong type, \
-                it should be a vector with two values, \
-                e.g. @north =  [1,2]'
-                );
-            }
         }
     } else {
-        ents_arrs = idsBreak(entities) as string[];
-        const geolocation = __model__.modeldata.attribs.get.getModelAttribVal("geolocation");
-        latitude = geolocation["latitude"];
-        if (__model__.modeldata.attribs.query.hasModelAttrib("north")) {
-            north = __model__.modeldata.attribs.get.getModelAttribVal("north") as Txy;
-        }
+        ents_arrs = idsBreak(entities) as TEntTypeIdx[];
     }
-    // TODO
-    // TODO
     // --- Error Check ---
-
-    // TODO North direction
-
-    const sensor_oris_dirs_tjs: [THREE.Vector3, THREE.Vector3][] = _rayOrisDirsTjs(__model__, origins, 0.01);
-    const [mesh_tjs, idx_to_face_i]: [THREE.Mesh, number[]] = createSingleMeshBufTjs(__model__, ents_arrs);
-    limits = Array.isArray(limits) ? limits : [0, limits];
-
-    // return the result
-    const results = {};
-    switch (method) {
-        case _ESolarMethod.DIRECT_WEIGHTED:
-        case _ESolarMethod.DIRECT_UNWEIGHTED:
-            // get the direction vectors
-            const ray_dirs_tjs1: THREE.Vector3[] = uscore.flatten(_solarDirsTjs(latitude, north, detail, method));
-            // run the simulation
-            const weighted1: boolean = method === _ESolarMethod.DIRECT_WEIGHTED;
-            results["direct"] = _calcExposure(sensor_oris_dirs_tjs, ray_dirs_tjs1, mesh_tjs, limits, weighted1) as number[];
-            break;
-        case _ESolarMethod.INDIRECT_WEIGHTED:
-        case _ESolarMethod.INDIRECT_UNWEIGHTED:
-            // get the direction vectors
-            const ray_dirs_tjs2: THREE.Vector3[] = uscore.flatten(_solarDirsTjs(latitude, north, detail, method));
-            // run the simulation
-            const weighted2: boolean = method === _ESolarMethod.INDIRECT_WEIGHTED;
-            results["indirect"] = _calcExposure(sensor_oris_dirs_tjs, ray_dirs_tjs2, mesh_tjs, limits, weighted2) as number[];
-            break;
-        default:
-            throw new Error("Solar method not recognised.");
-    }
+    radius = Array.isArray(radius) ? radius : [1, radius];
+    // get rays for sensor points
+    const [sensors0, sensors1, two_lists]: [TRay[], TRay[], boolean] = _getSensorRays(sensors, 0.01); // offset by 0.01
+    // create mesh
+    const [mesh_tjs, _]: [THREE.Mesh, number[]] = createSingleMeshBufTjs(__model__, ents_arrs);
+    // get the sky data from attribute
+    const sky_rad: any = __model__.modeldata.attribs.get.getModelAttribVal("sky") as string;
+    const sky_rad_data: ISkyRadiance = typeof sky_rad === 'string' ?
+        JSON.parse(sky_rad) as ISkyRadiance : sky_rad as ISkyRadiance;
+    // weighted or unweighted
+    const weighted: boolean = method === _ESkyMethod.WEIGHTED;
+    // run simulation
+    const results0: TIrradianceResult = _calcIrradiance(__model__, 
+        sensors0, radius, sky_rad_data, mesh_tjs, weighted, false);
+    const results1: TIrradianceResult = _calcIrradiance(__model__, 
+        sensors1, radius, sky_rad_data, mesh_tjs, weighted, true);
     // cleanup
     mesh_tjs.geometry.dispose();
     (mesh_tjs.material as THREE.Material).dispose();
-    // return dict
-    return results;
+    // return the results
+    if (two_lists) { return [results0, results1]; }
+    return results0;
 }
-function _solarDirsTjs(latitude: number, north: Txy, detail: number, method: _ESolarMethod): THREE.Vector3[] | THREE.Vector3[][] {
-    switch (method) {
-        case _ESolarMethod.DIRECT_WEIGHTED:
-        case _ESolarMethod.DIRECT_UNWEIGHTED:
-            return _solarRaysDirectTjs(latitude, north, detail);
-        case _ESolarMethod.INDIRECT_WEIGHTED:
-        case _ESolarMethod.INDIRECT_UNWEIGHTED:
-            return _solarRaysIndirectTjs(latitude, north, detail);
-        // case _ESolarMethod.ALL:
-        //     throw new Error('Not implemented');
-        default:
-            throw new Error("Solar method not recognised.");
+// =================================================================================================
+export function _calcIrradiance(
+    __model__: GIModel,
+    sensor_rays: TRay[],
+    radius: [number, number],
+    sky_rad_data: ISkyRadiance,
+    mesh_tjs: THREE.Mesh,
+    weighted: boolean,
+    generate_lines: boolean
+): TIrradianceResult {
+    const results = [];
+    const patches: ISkyRadiancePatch[] = sky_rad_data.SkyDome.patches;
+    // calc avg area of each patch
+    const patch_avg_area = 1 / patches.length;
+    // create tjs objects (to be resued for each ray)
+    const sensor_tjs: THREE.Vector3 = new THREE.Vector3();
+    const dir_tjs: THREE.Vector3 = new THREE.Vector3();
+    const ray_tjs: THREE.Raycaster = new THREE.Raycaster(sensor_tjs, dir_tjs, radius[0], radius[1]);
+    // shoot rays
+    for (const [sensor_xyz, sensor_dir] of sensor_rays) {
+        // set raycaster origin
+        sensor_tjs.x = sensor_xyz[0]; sensor_tjs.y = sensor_xyz[1]; sensor_tjs.z = sensor_xyz[2];
+        let sensor_result = 0;
+        const result_rays: [Txyz, number][] = [];
+        for (const patch of patches) {
+            const ray_dir: Txyz = patch.vector;
+            // check if target is behind sensor
+            const dot_ray_sensor: number = vecDot(ray_dir, sensor_dir);
+            if (dot_ray_sensor <= -EPS) { continue; } 
+            // set raycaster direction
+            dir_tjs.x = ray_dir[0]; dir_tjs.y = ray_dir[1]; dir_tjs.z = ray_dir[2];
+            // calc the area factor
+            if (patch.area_fac === undefined) {
+                patch.area_fac = 1 + (patch.area - patch_avg_area);
+            }
+            // shoot raycaster
+            const isects: THREE.Intersection[] = ray_tjs.intersectObject(mesh_tjs, false);
+            // get results
+            if (isects.length === 0) {
+                if (weighted) {
+                    // this applies the cosine weighting rule
+                    sensor_result = sensor_result + (patch.radiance * patch.area_fac * dot_ray_sensor);
+                } else {
+                    // this applies no cosine weighting
+                    sensor_result = sensor_result + (patch.radiance * patch.area_fac);
+                }
+                const ray_end = vecAdd(sensor_xyz, vecMult(ray_dir, 2));
+                result_rays.push([ray_end, 0]);
+            } else {
+                const ray_end = vecAdd(sensor_xyz, vecMult(ray_dir, isects[0].distance));
+                result_rays.push([ray_end, 1]);
+            }
+        }
+        // assuming the sky data is in wh/m2, convert result from wh/m2 to kwh/m2
+        results.push(sensor_result / 1000);
+        // generate calculation lines
+        if (generate_lines) { _generateLines(__model__, sensor_xyz, result_rays); }
     }
+    return { irradiance: results };
 }
+// =================================================================================================

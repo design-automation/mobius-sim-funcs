@@ -5,7 +5,6 @@ import * as Enum from './_enum'
 import * as qEnum from '../query/_enum'
 
 const sf = new SIMFuncs();
-const inl = new InlineClass();
 
 const posis = sf.make.Position(
     [[0, 0, 0], [10, 0, 0], [0,10,0], [10,10,0]]
