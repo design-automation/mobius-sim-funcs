@@ -51,7 +51,8 @@ import { _EIOExportDataFormat } from './_enum';
             return gi_model_data.replace(/\\/g, '\\\\\\'); // TODO temporary fix
         case _EIOExportDataFormat.SIM:
             const sim_model_data: string = __model__.exportSIM(ents_arr);
-            return sim_model_data.replace(/\\/g, '\\\\\\'); // TODO temporary fix
+            // return sim_model_data.replace(/\\/g, '\\\\\\'); // TODO temporary fix
+            return sim_model_data;
         case _EIOExportDataFormat.OBJ_VERT:
             return exportVertBasedObj(__model__, ents_arr, ssid);
         case _EIOExportDataFormat.OBJ_POSI:
