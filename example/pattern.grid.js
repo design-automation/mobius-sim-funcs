@@ -2,7 +2,7 @@
  * PATTERN.GRID
  */
 const mobius_sim_funcs = require('@design-automation/mobius-sim-funcs');
-const Funcs = mobius_sim_funcs.Funcs();
+const Funcs = mobius_sim_funcs.SIMFuncs();
 // -------------------------------
 function makeGrid() {
     Funcs.pattern.Grid([0, 0, 0], 20, 10, 'quads') // make a grid

@@ -1,7 +1,7 @@
 import { checkIDs, ID } from '../../_check_ids';
 
 import { GIModel, TId, Txyz, EEntType, TEntTypeIdx, vecAvg } from '@design-automation/mobius-sim';
-import { getCentroid } from '.';
+import { getCentroid } from './getCentroid';
 // ================================================================================================
 export function getCentoridFromEnts(__model__: GIModel, ents: TId|TId[], fn_name: string): Txyz {
     // this must be an ID or an array of IDs, so lets get the centroid

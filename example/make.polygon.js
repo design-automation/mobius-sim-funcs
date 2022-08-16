@@ -2,7 +2,7 @@
  * MAKE.POLYGON
  */
 const mobius_sim_funcs = require('@design-automation/mobius-sim-funcs');
-const Funcs = mobius_sim_funcs.Funcs();
+const Funcs = mobius_sim_funcs.SIMFuncs();
 // -------------------------------
 function makePolygon() {
     const rect = Funcs.pattern.Rectangle([0, 0, 0], 20) // make a rectangle

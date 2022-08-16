@@ -2,7 +2,7 @@
  * MODIFY.OFFSET
  */
 const mobius_sim_funcs = require('@design-automation/mobius-sim-funcs');
-const Funcs = mobius_sim_funcs.Funcs();
+const Funcs = mobius_sim_funcs.SIMFuncs();
 // -------------------------------
 function modifyOffset() {
     // creating posis in a 3D arrangement

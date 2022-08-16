@@ -2,7 +2,7 @@
  * MODIFY.ROTATE
  */
 const mobius_sim_funcs = require('@design-automation/mobius-sim-funcs');
-const Funcs = mobius_sim_funcs.Funcs();
+const Funcs = mobius_sim_funcs.SIMFuncs();
 // -------------------------------
 function makeStair() {
     for (let i = 0; i < 20; i ++) {

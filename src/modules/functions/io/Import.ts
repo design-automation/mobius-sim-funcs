@@ -8,8 +8,8 @@ import {
     TEntTypeIdx,
     TId,
 } from '@design-automation/mobius-sim';
-import { _getFile } from '.';
 import { _EIOImportDataFormat } from './_enum';
+import { _getFile } from './_getFile';
 // =================================================================================================
 /**
  * Imports data into the model.

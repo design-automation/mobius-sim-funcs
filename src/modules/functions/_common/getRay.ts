@@ -1,5 +1,5 @@
 import { GIModel, TId, TPlane, Txyz, TRay, getArrDepth, vecCross, isRay, isPlane, isXYZ } from "@design-automation/mobius-sim";
-import { getCentoridFromEnts } from ".";
+import { getCentoridFromEnts } from "./getCentoridFromEnts";
 function rayFromPln(pln: TPlane | TPlane[]): TRay | TRay[] {
     // overloaded case
     const pln_dep: number = getArrDepth(pln);

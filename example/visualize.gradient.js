@@ -2,7 +2,7 @@
  * VISUALIZE.GRADIENT
  */
 const mobius_sim_funcs = require('@design-automation/mobius-sim-funcs');
-const Funcs = mobius_sim_funcs.Funcs();
+const Funcs = mobius_sim_funcs.SIMFuncs();
 // -------------------------------
 function rainbowCubes() {
     // using a loop to generate a grid of cubes 

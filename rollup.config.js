@@ -7,7 +7,7 @@ import nodePolyfills from 'rollup-plugin-polyfill-node';
 export default {
     input: 'src/index.ts',
     output: [{
-        file: 'example/mobius-sim-funcs.module.es.js',
+        file: 'example/mobius-sim-funcsA.module.es.js',
         format: 'es'
       }
     ],

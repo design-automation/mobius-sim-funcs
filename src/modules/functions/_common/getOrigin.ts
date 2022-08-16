@@ -1,5 +1,5 @@
 import { GIModel, TId, TPlane, Txyz, TRay, isRay, isPlane, isXYZ } from "@design-automation/mobius-sim";
-import { getCentoridFromEnts } from ".";
+import { getCentoridFromEnts } from "./getCentoridFromEnts";
 // ================================================================================================
 export function getOrigin(__model__: GIModel, data: Txyz | TRay | TPlane | TId | TId[], fn_name: string): Txyz {
     if (isXYZ(data)) {

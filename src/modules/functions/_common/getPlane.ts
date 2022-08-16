@@ -1,5 +1,5 @@
 import { GIModel, TId, TPlane, Txyz, TRay, isRay, isPlane, isXYZ } from "@design-automation/mobius-sim";
-import { getCentoridFromEnts } from ".";
+import { getCentoridFromEnts } from "./getCentoridFromEnts";
 import { plnFromRay } from "./plnFromRay";
 
 // ================================================================================================

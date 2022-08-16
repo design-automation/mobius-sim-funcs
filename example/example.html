@@ -8,7 +8,9 @@
     </head>
     <body>
         <script type="module">
-            import { Funcs } from "./mobius-sim-funcs.module.es.js";
+            import { SIMFuncs as Funcs } from "./mobius-sim-funcsA.module.es.js";
+            // import { Funcs } from "./mobius-sim-funcs.module.es.js";
+            console.log(Funcs)
             init();
             async function init() {
                 const files = await (await fetch("files.json")).json();
