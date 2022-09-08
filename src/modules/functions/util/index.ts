@@ -6,7 +6,7 @@ import { GIModel, TId, TPlane, Txyz } from '@design-automation/mobius-sim';
 
 import * as Enum from './_enum';
 import { EntityInfo } from './EntityInfo';
-import { HTTPRequest } from './httpRequest';
+import { HTTPRequest } from './HTTPRequest';
 import { ModelCheck } from './ModelCheck';
 import { ModelCompare } from './ModelCompare';
 import { ModelInfo } from './ModelInfo';
