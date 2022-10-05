@@ -2,7 +2,7 @@
     "extends": "./tsconfig.json",
     "compilerOptions": {
         "module": "esnext",
+        "target": "es2019",
         "outDir": "build/mjs",
-        "target": "es2019"
     }
 }
